@@ -1,0 +1,5 @@
+import {NextRequest,NextResponse} from 'next/server';import {addLine,createCart,getCart,removeLine,updateLine} from '@/lib/shopify/cart';
+export async function GET(req:NextRequest){try{const id=req.nextUrl.searchParams.get('cartId');if(!id)return NextResponse.json({cart:null});return NextResponse.json({cart:await getCart(id)})}catch(e:any){return NextResponse.json({error:e.message},{status:400})}}
+export async function POST(req:NextRequest){try{const b=await req.json();let cart=b.cartId?await addLine(b.cartId,b.merchandiseId,b.quantity||1):await createCart(b.merchandiseId,b.quantity||1);return NextResponse.json({cart})}catch(e:any){return NextResponse.json({error:e.message},{status:400})}}
+export async function PATCH(req:NextRequest){try{const b=await req.json();return NextResponse.json({cart:await updateLine(b.cartId,b.lineId,b.quantity)})}catch(e:any){return NextResponse.json({error:e.message},{status:400})}}
+export async function DELETE(req:NextRequest){try{const b=await req.json();return NextResponse.json({cart:await removeLine(b.cartId,b.lineId)})}catch(e:any){return NextResponse.json({error:e.message},{status:400})}}

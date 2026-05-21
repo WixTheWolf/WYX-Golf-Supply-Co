@@ -1,0 +1,10 @@
+export const PRODUCT_FRAGMENT=`fragment ProductFields on Product{id handle title description descriptionHtml productType tags featuredImage{url altText width height} images(first:8){edges{node{url altText width height}}} variants(first:20){edges{node{id title availableForSale price{amount currencyCode}}}} priceRange{minVariantPrice{amount currencyCode}}}`;
+export const PRODUCTS_QUERY=`${PRODUCT_FRAGMENT} query Products($first:Int!){products(first:$first){edges{node{...ProductFields}}}}`;
+export const PRODUCT_BY_HANDLE_QUERY=`${PRODUCT_FRAGMENT} query ProductByHandle($handle:String!){productByHandle(handle:$handle){...ProductFields}}`;
+export const COLLECTION_BY_HANDLE_QUERY=`${PRODUCT_FRAGMENT} query CollectionByHandle($handle:String!,$first:Int!){collectionByHandle(handle:$handle){title handle products(first:$first){edges{node{...ProductFields}}}}}`;
+export const CART_FRAGMENT=`fragment CartFields on Cart{id checkoutUrl totalQuantity cost{subtotalAmount{amount currencyCode} totalAmount{amount currencyCode}} lines(first:50){edges{node{id quantity cost{totalAmount{amount currencyCode}} merchandise{... on ProductVariant{id title price{amount currencyCode} product{title handle featuredImage{url altText width height}}}}}}}}`;
+export const CART_QUERY=`${CART_FRAGMENT} query Cart($id:ID!){cart(id:$id){...CartFields}}`;
+export const CART_CREATE=`${CART_FRAGMENT} mutation CartCreate($lines:[CartLineInput!]){cartCreate(input:{lines:$lines}){cart{...CartFields} userErrors{field message}}}`;
+export const CART_LINES_ADD=`${CART_FRAGMENT} mutation CartLinesAdd($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{...CartFields} userErrors{field message}}}`;
+export const CART_LINES_UPDATE=`${CART_FRAGMENT} mutation CartLinesUpdate($cartId:ID!,$lines:[CartLineUpdateInput!]!){cartLinesUpdate(cartId:$cartId,lines:$lines){cart{...CartFields} userErrors{field message}}}`;
+export const CART_LINES_REMOVE=`${CART_FRAGMENT} mutation CartLinesRemove($cartId:ID!,$lineIds:[ID!]!){cartLinesRemove(cartId:$cartId,lineIds:$lineIds){cart{...CartFields} userErrors{field message}}}`;

@@ -1,0 +1,4 @@
+import {demoProduct,demoProducts} from '@/lib/demo';import {hasShopify,reshapeProduct,shopifyFetch} from './client';import {COLLECTION_BY_HANDLE_QUERY,PRODUCT_BY_HANDLE_QUERY,PRODUCTS_QUERY} from './queries';
+export async function getProducts(){if(!hasShopify)return demoProducts;const data=await shopifyFetch<any>(PRODUCTS_QUERY,{first:24});return data.products.edges.map((e:any)=>reshapeProduct(e.node))}
+export async function getProduct(handle:string){if(!hasShopify)return demoProduct(handle);const data=await shopifyFetch<any>(PRODUCT_BY_HANDLE_QUERY,{handle});return data.productByHandle?reshapeProduct(data.productByHandle):null}
+export async function getCollection(handle:string){if(!hasShopify)return demoProducts;const data=await shopifyFetch<any>(COLLECTION_BY_HANDLE_QUERY,{handle,first:24});return data.collectionByHandle?.products.edges.map((e:any)=>reshapeProduct(e.node))||[]}
