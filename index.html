@@ -6,24 +6,24 @@
     <title>WYX Golf Supply Co. | For the Long Game.</title>
     <meta
       name="description"
-      content="Premium golf essentials by WYX Golf Supply Co. Built for serious players who are in it for the long game."
+      content="WYX Golf Supply Co. creates timeless golf goods designed with purpose, restraint, and everyday wearability."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <div class="container">
+      <div class="container nav-wrap">
         <div class="brand">WYX Golf Supply Co.</div>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Primary">
           <a href="#shop">Shop</a>
           <a href="#about">About</a>
-          <a href="#journal">Journal</a>
+          <a href="#field-notes">Field Notes</a>
         </nav>
         <a class="header-cta" href="#shop">Shop Now</a>
       </div>
@@ -31,103 +31,112 @@
 
     <main>
       <section class="hero">
-        <img
-          src="https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1800&q=80"
-          alt="Golfer lining up a long putt on a dramatic sunset green"
-          class="hero-image"
-        />
-        <div class="overlay"></div>
+        <img src="/images/wyx/hero-coastal-fairway.jpg" alt="Cinematic coastal fairway at golden hour" class="hero-image" />
+        <div class="hero-overlay"></div>
         <div class="container hero-content">
-          <p class="eyebrow">Precision Gear. Elevated Ritual.</p>
+          <p class="eyebrow">Quiet Golf Goods</p>
           <h1>For the Long Game.</h1>
-          <p class="subhead">
-            Performance-grade golf essentials crafted with cinematic style and uncompromising quality.
-          </p>
+          <p class="subhead">Premium golf goods for early tee times, late rounds, road trips, and the pursuit that never really ends.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="#shop">Shop Signature Kit</a>
-            <a class="btn btn-secondary" href="#about">Our Story</a>
+            <a class="btn btn-primary" href="#shop">Shop the Collection</a>
+            <a class="btn btn-secondary" href="#about">Explore the Brand</a>
           </div>
         </div>
       </section>
 
-      <section id="shop" class="products container section-space">
+      <section id="shop" class="section container">
         <div class="section-heading">
-          <h2>Curated for Competitive Rounds</h2>
-          <p>Purpose-built kits and elevated essentials designed for consistency under pressure.</p>
+          <p class="label">Collection</p>
+          <h2>Essentials With Restraint</h2>
+          <p>Purposeful golf goods designed for everyday rounds, travel days, and life beyond the clubhouse.</p>
         </div>
-        <div class="product-grid">
-          <article class="card product-card">
-            <img src="https://images.unsplash.com/photo-1494199505258-5f95387f933c?auto=format&fit=crop&w=900&q=80" alt="Premium golf glove and towel set arranged on dark surface" />
+        <div class="grid products-grid">
+          <article class="card">
+            <img src="/images/wyx/rope-hat-product.jpg" alt="Cream rope golf hat with WYX embroidery" />
             <div class="card-body">
-              <h3>Tour Carry Bundle</h3>
-              <p>Premium glove, alignment towel, and weatherproof pouch for all-day consistency.</p>
-              <a href="#" class="link">Add to Cart</a>
+              <h3>The Long Game Rope Hat</h3>
+              <p>A cream rope hat with restrained WYX embroidery and everyday course-to-coast wearability.</p>
+              <a href="#" class="link">View Product</a>
             </div>
           </article>
-          <article class="card product-card">
-            <img src="https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=900&q=80" alt="Golf balls and tees staged for evening range practice" />
+          <article class="card">
+            <img src="/images/wyx/forest-polo-product.jpg" alt="Forest green golf polo with subtle WYX embroidery" />
             <div class="card-body">
-              <h3>Night Range Set</h3>
-              <p>Low-light marked balls and matte tees engineered for twilight practice sessions.</p>
-              <a href="#" class="link">Add to Cart</a>
+              <h3>The Fairway Polo</h3>
+              <p>A forest green polo with clean structure, soft handfeel, and quiet chest embroidery.</p>
+              <a href="#" class="link">View Product</a>
             </div>
           </article>
-          <article class="card product-card">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Private clubhouse setting with premium member amenities" />
+          <article class="card">
+            <img src="/images/wyx/golf-towel-product.jpg" alt="Cream waffle golf towel with forest trim" />
             <div class="card-body">
-              <h3>Founders Membership</h3>
-              <p>Quarterly drops, private fittings, and member-only pricing on limited releases.</p>
-              <a href="#" class="link">Join Now</a>
+              <h3>The Waffle Golf Towel</h3>
+              <p>A premium waffle towel with forest trim, built for the bag and styled for the long game.</p>
+              <a href="#" class="link">View Product</a>
             </div>
           </article>
         </div>
       </section>
 
-      <section id="about" class="about section-space">
+      <section id="about" class="section about">
         <div class="container about-grid">
           <div>
-            <p class="eyebrow">About WYX</p>
-            <h2>Built for Players Who Play Ahead</h2>
-            <p>
-              WYX Golf Supply Co. designs clean, durable equipment that performs under pressure and looks refined on every tee box.
-              Our mission is simple: support disciplined golfers with gear that keeps pace with ambition.
-            </p>
-            <a class="btn btn-secondary" href="#journal">Read the Journal</a>
+            <p class="label">About</p>
+            <h2>Built Around the Game We Love.</h2>
+            <p>WYX Golf Supply Co. creates timeless golf goods designed with purpose, restraint, and everyday wearability. Made for early tee times, late rounds, road trips, and the pursuit that never really ends.</p>
           </div>
-          <div class="about-visual">
-            <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1200&q=80" alt="Golfer walking a fairway in soft morning light" />
+          <div class="about-image-wrap">
+            <img src="/images/wyx/walking-golfer-lifestyle.jpg" alt="Golfer walking a coastal course at sunset with WYX bag" />
           </div>
         </div>
       </section>
 
-      <section id="journal" class="journal container section-space">
+      <section class="section container brand-system">
         <div class="section-heading">
-          <h2>Journal & Long-Game Tips</h2>
-          <p>Training insights, course strategy, and equipment care for players building durable performance.</p>
+          <p class="label">Brand Marks</p>
+          <h2>WYX Signatures</h2>
         </div>
-        <div class="journal-grid">
-          <article class="card journal-card">
-            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=80" alt="Golfer practicing controlled iron swing on range" />
+        <div class="grid marks-grid">
+          <article class="mark-card"><span class="wordmark">WYX Golf Supply Co.</span></article>
+          <article class="mark-card">
+            <svg viewBox="0 0 120 50" role="img" aria-label="Endless Fairway icon"><path d="M5 36 C28 18, 54 18, 76 36 S110 54, 115 36" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+            <p>Endless Fairway</p>
+          </article>
+          <article class="mark-card"><span class="mono">W / X / Y</span><p>Stacked Monogram</p></article>
+          <article class="mark-card"><span class="seal">WYX • LONG GAME • 2026</span><p>Circular Seal</p></article>
+        </div>
+      </section>
+
+      <section class="section container detail-strip">
+        <img src="/images/wyx/leather-bag-detail.jpg" alt="Close detail of leather golf bag with brass hardware" />
+      </section>
+
+      <section id="field-notes" class="section container">
+        <div class="section-heading">
+          <p class="label">Journal</p>
+          <h2>Field Notes</h2>
+          <p>Course strategy, gear care, travel notes, and ideas for players building a better long game.</p>
+        </div>
+        <div class="grid notes-grid">
+          <article class="card">
+            <img src="/images/wyx/journal-iron-practice.jpg" alt="Iron striking turf at golden hour" />
             <div class="card-body">
-              <p class="meta">Practice System</p>
               <h3>3 Drills to Improve Ball-First Contact</h3>
-              <a href="#" class="link">Read Article</a>
+              <a href="#" class="link">Read Note</a>
             </div>
           </article>
-          <article class="card journal-card">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd59a93dd7eb?auto=format&fit=crop&w=900&q=80" alt="Close-up of golf club cleaning and care tools" />
+          <article class="card">
+            <img src="/images/wyx/journal-club-care.jpg" alt="Premium club cleaning setup on dark wood" />
             <div class="card-body">
-              <p class="meta">Equipment Care</p>
-              <h3>How to Maintain Groove Performance Week to Week</h3>
-              <a href="#" class="link">Read Article</a>
+              <h3>How to Keep Your Gear Ready Every Week</h3>
+              <a href="#" class="link">Read Note</a>
             </div>
           </article>
-          <article class="card journal-card">
-            <img src="https://images.unsplash.com/photo-1517244683847-7456b63c5969?auto=format&fit=crop&w=900&q=80" alt="Golfer reading wind on an elevated green" />
+          <article class="card">
+            <img src="/images/wyx/journal-course-strategy.jpg" alt="Golfer reading wind on an elevated coastal tee" />
             <div class="card-body">
-              <p class="meta">Course Strategy</p>
-              <h3>Decision-Making Framework for High-Pressure Holes</h3>
-              <a href="#" class="link">Read Article</a>
+              <h3>A Calm Framework for Pressure Holes</h3>
+              <a href="#" class="link">Read Note</a>
             </div>
           </article>
         </div>
@@ -135,9 +144,9 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container">
+      <div class="container nav-wrap">
         <p>© 2026 WYX Golf Supply Co.</p>
-        <a href="#shop">Start Your Kit</a>
+        <a href="#shop">Shop the Collection</a>
       </div>
     </footer>
   </body>
