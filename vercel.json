@@ -1,13 +1,8 @@
 {
-  "trailingSlash": true,
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/products", "destination": "/products/index.html" },
-    { "source": "/products/long-game-rope-hat", "destination": "/products/long-game-rope-hat/index.html" },
-    { "source": "/products/fairway-polo", "destination": "/products/fairway-polo/index.html" },
-    { "source": "/products/waffle-golf-towel", "destination": "/products/waffle-golf-towel/index.html" },
-    { "source": "/story", "destination": "/story/index.html" },
-    { "source": "/journal", "destination": "/journal/index.html" },
-    { "source": "/images/:path*", "destination": "/public/images/:path*" }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false
 }
