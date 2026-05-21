@@ -1,0 +1,9 @@
+{
+  "name": "wyx-golf-supply-co",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {}
+}
