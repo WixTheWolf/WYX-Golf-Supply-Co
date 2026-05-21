@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -20,12 +20,22 @@
     <header class="site-header">
       <div class="container">
         <div class="brand">WYX Golf Supply Co.</div>
+        <nav class="nav-links">
+          <a href="#shop">Shop</a>
+          <a href="#about">About</a>
+          <a href="#journal">Journal</a>
+        </nav>
         <a class="header-cta" href="#shop">Shop Now</a>
       </div>
     </header>
 
     <main>
       <section class="hero">
+        <img
+          src="https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1800&q=80"
+          alt="Golfer lining up a long putt on a dramatic sunset green"
+          class="hero-image"
+        />
         <div class="overlay"></div>
         <div class="container hero-content">
           <p class="eyebrow">Precision Gear. Elevated Ritual.</p>
@@ -35,39 +45,91 @@
           </p>
           <div class="actions">
             <a class="btn btn-primary" href="#shop">Shop Signature Kit</a>
-            <a class="btn btn-secondary" href="#story">Our Story</a>
+            <a class="btn btn-secondary" href="#about">Our Story</a>
           </div>
         </div>
       </section>
 
-      <section id="shop" class="products container">
-        <h2>Curated for Competitive Rounds</h2>
+      <section id="shop" class="products container section-space">
+        <div class="section-heading">
+          <h2>Curated for Competitive Rounds</h2>
+          <p>Purpose-built kits and elevated essentials designed for consistency under pressure.</p>
+        </div>
         <div class="product-grid">
-          <article class="card">
-            <h3>Tour Carry Bundle</h3>
-            <p>Premium glove, alignment towel, and weatherproof pouch for all-day consistency.</p>
-            <a href="#" class="link">Add to Cart</a>
+          <article class="card product-card">
+            <img src="https://images.unsplash.com/photo-1494199505258-5f95387f933c?auto=format&fit=crop&w=900&q=80" alt="Premium golf glove and towel set arranged on dark surface" />
+            <div class="card-body">
+              <h3>Tour Carry Bundle</h3>
+              <p>Premium glove, alignment towel, and weatherproof pouch for all-day consistency.</p>
+              <a href="#" class="link">Add to Cart</a>
+            </div>
           </article>
-          <article class="card">
-            <h3>Night Range Set</h3>
-            <p>Low-light marked balls and matte tees engineered for twilight practice sessions.</p>
-            <a href="#" class="link">Add to Cart</a>
+          <article class="card product-card">
+            <img src="https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=900&q=80" alt="Golf balls and tees staged for evening range practice" />
+            <div class="card-body">
+              <h3>Night Range Set</h3>
+              <p>Low-light marked balls and matte tees engineered for twilight practice sessions.</p>
+              <a href="#" class="link">Add to Cart</a>
+            </div>
           </article>
-          <article class="card">
-            <h3>Founders Membership</h3>
-            <p>Quarterly drops, private fittings, and member-only pricing on limited releases.</p>
-            <a href="#" class="link">Join Now</a>
+          <article class="card product-card">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Private clubhouse setting with premium member amenities" />
+            <div class="card-body">
+              <h3>Founders Membership</h3>
+              <p>Quarterly drops, private fittings, and member-only pricing on limited releases.</p>
+              <a href="#" class="link">Join Now</a>
+            </div>
           </article>
         </div>
       </section>
 
-      <section id="story" class="story">
-        <div class="container">
-          <h2>Built for Players Who Play Ahead</h2>
-          <p>
-            WYX Golf Supply Co. designs clean, durable equipment that performs under pressure and looks refined on every tee box.
-            Our mission is simple: support disciplined golfers with gear that keeps pace with ambition.
-          </p>
+      <section id="about" class="about section-space">
+        <div class="container about-grid">
+          <div>
+            <p class="eyebrow">About WYX</p>
+            <h2>Built for Players Who Play Ahead</h2>
+            <p>
+              WYX Golf Supply Co. designs clean, durable equipment that performs under pressure and looks refined on every tee box.
+              Our mission is simple: support disciplined golfers with gear that keeps pace with ambition.
+            </p>
+            <a class="btn btn-secondary" href="#journal">Read the Journal</a>
+          </div>
+          <div class="about-visual">
+            <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=1200&q=80" alt="Golfer walking a fairway in soft morning light" />
+          </div>
+        </div>
+      </section>
+
+      <section id="journal" class="journal container section-space">
+        <div class="section-heading">
+          <h2>Journal & Long-Game Tips</h2>
+          <p>Training insights, course strategy, and equipment care for players building durable performance.</p>
+        </div>
+        <div class="journal-grid">
+          <article class="card journal-card">
+            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=80" alt="Golfer practicing controlled iron swing on range" />
+            <div class="card-body">
+              <p class="meta">Practice System</p>
+              <h3>3 Drills to Improve Ball-First Contact</h3>
+              <a href="#" class="link">Read Article</a>
+            </div>
+          </article>
+          <article class="card journal-card">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd59a93dd7eb?auto=format&fit=crop&w=900&q=80" alt="Close-up of golf club cleaning and care tools" />
+            <div class="card-body">
+              <p class="meta">Equipment Care</p>
+              <h3>How to Maintain Groove Performance Week to Week</h3>
+              <a href="#" class="link">Read Article</a>
+            </div>
+          </article>
+          <article class="card journal-card">
+            <img src="https://images.unsplash.com/photo-1517244683847-7456b63c5969?auto=format&fit=crop&w=900&q=80" alt="Golfer reading wind on an elevated green" />
+            <div class="card-body">
+              <p class="meta">Course Strategy</p>
+              <h3>Decision-Making Framework for High-Pressure Holes</h3>
+              <a href="#" class="link">Read Article</a>
+            </div>
+          </article>
         </div>
       </section>
     </main>
