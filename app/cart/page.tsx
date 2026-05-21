@@ -1,0 +1,1 @@
+import type {Metadata} from 'next';import {CartPage} from '@/components/CartPage';export const metadata:Metadata={title:'Cart',description:'Review your WYX Golf Supply Co. cart and continue to Shopify checkout.'};export default function Page(){return <CartPage/>}
