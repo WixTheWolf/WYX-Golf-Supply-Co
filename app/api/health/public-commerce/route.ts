@@ -7,21 +7,24 @@ function present(names: string[]) {
   return names.some((name) => Boolean(process.env[name]));
 }
 
+const storefrontTokenNames = ['NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_API_TOKEN', 'PUBLIC_STOREFRONT_API_TOKEN', 'STOREFRONT_ACCESS_TOKEN'];
+const serverFallbackTokenNames = ['SHOPIFY_ADMIN_ACCESS_TOKEN', 'SHOPIFY_ACCESS_TOKEN'];
+const adminTokenNames = ['SHOPIFY_ADMIN_ACCESS_TOKEN', 'ADMIN_API_ACCESS_TOKEN', 'SHOPIFY_ACCESS_TOKEN'];
+
 export async function GET() {
   const storefrontDomain = present(['NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN', 'SHOPIFY_STORE_DOMAIN', 'SHOPIFY_SHOP_DOMAIN', 'SHOPIFY_DOMAIN']);
-  const storefrontToken = present(['NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_API_TOKEN', 'PUBLIC_STOREFRONT_API_TOKEN', 'STOREFRONT_ACCESS_TOKEN']);
+  const explicitStorefrontToken = present(storefrontTokenNames);
+  const serverFallbackToken = present(serverFallbackTokenNames);
+  const effectiveStorefrontToken = explicitStorefrontToken || serverFallbackToken;
   const adminDomain = present(['SHOPIFY_STORE_DOMAIN', 'NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN', 'SHOPIFY_SHOP_DOMAIN', 'SHOPIFY_DOMAIN']);
-  const adminToken = present(['SHOPIFY_ADMIN_ACCESS_TOKEN', 'ADMIN_API_ACCESS_TOKEN', 'SHOPIFY_ACCESS_TOKEN']);
+  const adminToken = present(adminTokenNames);
 
   return NextResponse.json({
-    ok: storefrontDomain && storefrontToken,
-    storefront: { domain: storefrontDomain, token: storefrontToken },
+    ok: storefrontDomain && effectiveStorefrontToken,
+    storefront: { domain: storefrontDomain, token: explicitStorefrontToken, effectiveToken: effectiveStorefrontToken, usingServerFallback: !explicitStorefrontToken && serverFallbackToken },
     admin: { domain: adminDomain, token: adminToken },
-    aliasesChecked: {
-      storefrontToken: ['NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_API_TOKEN', 'PUBLIC_STOREFRONT_API_TOKEN', 'STOREFRONT_ACCESS_TOKEN'],
-      adminToken: ['SHOPIFY_ADMIN_ACCESS_TOKEN', 'ADMIN_API_ACCESS_TOKEN', 'SHOPIFY_ACCESS_TOKEN']
-    },
-    mode: storefrontDomain && storefrontToken ? 'shopify' : 'demo',
+    aliasesChecked: { storefrontToken: storefrontTokenNames, serverFallbackToken: serverFallbackTokenNames, adminToken: adminTokenNames },
+    mode: storefrontDomain && effectiveStorefrontToken ? 'shopify' : 'demo',
     note: 'Presence check only. No secret values are exposed.'
   });
 }
