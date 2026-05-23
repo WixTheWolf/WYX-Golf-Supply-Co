@@ -12,6 +12,12 @@ export type StarterSyncResult = {
   message: string;
 };
 
+function formatGraphqlErrors(errors: unknown) {
+  if (Array.isArray(errors)) return errors.map((error: any) => error?.message || JSON.stringify(error)).join(', ');
+  if (errors && typeof errors === 'object') return Object.values(errors as Record<string, unknown>).flat().join(', ');
+  return String(errors);
+}
+
 async function adminFetch<T>(query: string, variables: Record<string, unknown>): Promise<T> {
   if (!domain || !token) throw new Error('Missing SHOPIFY_STORE_DOMAIN or SHOPIFY_ADMIN_ACCESS_TOKEN.');
   const res = await fetch(`https://${domain}/admin/api/${version}/graphql.json`, {
@@ -21,7 +27,8 @@ async function adminFetch<T>(query: string, variables: Record<string, unknown>):
     cache: 'no-store'
   });
   const json = await res.json();
-  if (json.errors) throw new Error(json.errors.map((error: { message: string }) => error.message).join(', '));
+  if (!res.ok) throw new Error(`Shopify Admin API ${res.status}: ${formatGraphqlErrors(json.errors || json)}`);
+  if (json.errors) throw new Error(formatGraphqlErrors(json.errors));
   return json.data;
 }
 
