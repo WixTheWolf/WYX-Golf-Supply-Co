@@ -1,10 +1,7 @@
 import type { Product } from '@/types/shopify';
 
 const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_SHOP_DOMAIN || process.env.SHOPIFY_DOMAIN;
-
-// Server-side fallback only. This covers Vercel projects where the Storefront token was
-// entered under a non-public Shopify token name. The token is never sent to browser code.
-const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || process.env.SHOPIFY_STOREFRONT_API_TOKEN || process.env.PUBLIC_STOREFRONT_API_TOKEN || process.env.STOREFRONT_ACCESS_TOKEN || process.env.SHOPIFY_ADMIN_ACCESS_TOKEN || process.env.SHOPIFY_ACCESS_TOKEN;
+const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || process.env.SHOPIFY_STOREFRONT_API_TOKEN || process.env.PUBLIC_STOREFRONT_API_TOKEN || process.env.STOREFRONT_ACCESS_TOKEN;
 const version = process.env.NEXT_PUBLIC_SHOPIFY_API_VERSION || process.env.SHOPIFY_API_VERSION || '2026-01';
 
 export const hasShopify = Boolean(domain && token);
@@ -18,7 +15,6 @@ export async function shopifyFetch<T>(query: string, variables: Record<string, u
     next: { revalidate: 60 }
   });
   const json = await res.json();
-  if (!res.ok) throw new Error(`Shopify Storefront API ${res.status}: ${JSON.stringify(json.errors || json)}`);
   if (json.errors) throw new Error(json.errors.map((e: { message: string }) => e.message).join(', '));
   return json.data;
 }
