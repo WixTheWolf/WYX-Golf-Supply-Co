@@ -1,8 +1,8 @@
 import { starterProducts } from '@/lib/starterProducts';
 
-const domain = process.env.SHOPIFY_STORE_DOMAIN || process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
-const token = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
-const version = process.env.SHOPIFY_API_VERSION || '2026-01';
+const domain = process.env.SHOPIFY_STORE_DOMAIN || process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_SHOP_DOMAIN || process.env.SHOPIFY_DOMAIN;
+const token = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN || process.env.ADMIN_API_ACCESS_TOKEN || process.env.SHOPIFY_ACCESS_TOKEN;
+const version = process.env.SHOPIFY_API_VERSION || process.env.NEXT_PUBLIC_SHOPIFY_API_VERSION || '2026-01';
 
 export type StarterSyncResult = {
   handle: string;
@@ -19,7 +19,7 @@ function formatGraphqlErrors(errors: unknown) {
 }
 
 async function adminFetch<T>(query: string, variables: Record<string, unknown>): Promise<T> {
-  if (!domain || !token) throw new Error('Missing SHOPIFY_STORE_DOMAIN or SHOPIFY_ADMIN_ACCESS_TOKEN.');
+  if (!domain || !token) throw new Error('Missing Shopify Admin domain or token environment variables.');
   const res = await fetch(`https://${domain}/admin/api/${version}/graphql.json`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
