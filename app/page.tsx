@@ -1,3 +1,93 @@
-import Image from 'next/image';import Link from 'next/link';import {ProductCard} from '@/components/ProductCard';import {getProducts} from '@/lib/shopify/products';import {imageMap} from '@/lib/demo';
-export default async function Home(){const products=await getProducts();return <><section className="hero"><Image src={imageMap.hero} alt="Coastal fairway at golden hour with ocean cliffs and long rolling grass" fill priority/><div className="hero-copy"><p className="eyebrow">Quiet Golf Goods</p><h1>For the Long Game.</h1><p>Premium golf goods for early tee times, late rounds, road trips, and the pursuit that never really ends.</p><div className="actions"><Link className="button primary" href="/products">Shop the Collection</Link><Link className="button secondary" href="/story">Read Our Story</Link></div></div></section><section className="section"><p className="eyebrow">Featured Catalog</p><h2>Essentials With Restraint</h2><p>Purposeful golf goods designed for everyday rounds, travel days, and life beyond the clubhouse.</p><div className="product-grid">{products.map(p=><ProductCard key={p.id} product={p}/>)}</div></section><section className="section"><div className="values-row">{['Built for the Long Game','Designed with Restraint','Made for Course & Coast','Independent & Original'].map(v=><span key={v}>{v}</span>)}</div></section><section className="story-panel"><Image src={imageMap.walk} alt="Golfer walking a coastal fairway in soft morning light" width={1200} height={900}/><div><p className="eyebrow">The Long Game</p><h2>Golf goods with restraint, built around ritual.</h2><p>WYX was built for players who care about the early tee time, the clean towel, the worn-in hat, and the quiet walk to the next shot.</p><Link className="button primary" href="/story">Read Our Story</Link></div></section><section className="section"><p className="eyebrow">Explore</p><h2>Shop by Category</h2><div className="category-row">{['Headwear','Apparel','Gear','Accessories','Club Care'].map(c=><Link key={c} href={`/products?category=${encodeURIComponent(c)}`}>{c}</Link>)}</div></section><section className="section"><p className="eyebrow">Field Notes</p><h2>Practice, care, and course strategy.</h2><div className="journal-grid"><Article href="/journal/ball-first-contact" img={imageMap.iron} title="3 Drills to Improve Ball-First Contact"/><Article href="/journal/keep-your-gear-ready" img={imageMap.care} title="How to Keep Your Gear Ready Every Week"/><Article href="/journal/pressure-holes" img={imageMap.strategy} title="A Calm Framework for Pressure Holes"/></div></section><section className="newsletter"><div><p className="eyebrow">Join the Long Game.</p><h2>Early access to drops, field notes, and limited releases.</h2></div><form><label htmlFor="email">Email address</label><input id="email" type="email" placeholder="you@example.com"/><button className="button primary" type="button">Join</button></form></section></>}
-function Article(p:{href:string;img:string;title:string}){return <article className="journal-card"><Image src={p.img} alt={p.title} width={900} height={675}/><div><h3>{p.title}</h3><Link className="text-link" href={p.href}>Read</Link></div></article>}
+import Image from 'next/image';
+import Link from 'next/link';
+import { ProductCard } from '@/components/ProductCard';
+import { availableProducts, catalogCategories, categoryCount } from '@/lib/catalog';
+import { imageMap } from '@/lib/demo';
+import { getProducts } from '@/lib/shopify/products';
+
+export default async function Home() {
+  const catalog = availableProducts(await getProducts());
+  const featured = catalog.slice(0, 6);
+  const categories = catalogCategories.slice(1).filter((category) => categoryCount(catalog, category) > 0);
+
+  return (
+    <>
+      <section className="hero">
+        <Image src={imageMap.hero} alt="Coastal fairway at golden hour" fill priority />
+        <div className="hero-copy">
+          <p className="eyebrow">WYX Golf Supply Co.</p>
+          <h1>Find Your Edge.</h1>
+          <p>Useful golf gear from independent makers, selected for the range, the first tee, and the rounds that keep calling you back.</p>
+          <div className="actions">
+            <Link className="button primary" href="/products">Shop Golf Gear</Link>
+            <Link className="button secondary" href="/story">The WYX Approach</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="trust-strip" aria-label="Store benefits">
+        <span>Independent Golf Brands</span>
+        <span>Live Supplier Inventory</span>
+        <span>Secure Shopify Checkout</span>
+        <span>Supplier-Backed Fulfillment</span>
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Fresh From The Supply Room</p>
+            <h2>Gear Worth Putting In The Bag.</h2>
+          </div>
+          <Link className="text-link" href="/products">Shop All Products</Link>
+        </div>
+        {featured.length ? <div className="product-grid">{featured.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>New products are being prepared in Shopify.</p>}
+      </section>
+
+      <section className="dark-section">
+        <div>
+          <p className="eyebrow">Built For Discovery</p>
+          <h2>Small Brands. Smart Finds. Better Rounds.</h2>
+        </div>
+        <p>WYX brings together practical golf gear and personality-driven course essentials from supplier partners. Inventory stays synced through Shopify, so the catalog can keep moving as new finds land.</p>
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">Shop The Bag</p>
+        <h2>Browse By Category.</h2>
+        <div className="category-grid">
+          {categories.map((category) => (
+            <Link key={category} href={`/products?category=${encodeURIComponent(category)}`}>
+              <span>{String(categoryCount(catalog, category)).padStart(2, '0')}</span>
+              <strong>{category}</strong>
+              <small>Explore collection</small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="story-panel">
+        <Image src={imageMap.walk} alt="Golfer walking a coastal fairway in soft light" width={1200} height={900} />
+        <div>
+          <p className="eyebrow">The Long Game</p>
+          <h2>A Supply Shop For Golfers Who Keep Looking.</h2>
+          <p>Golf rewards curiosity. WYX is built around that same instinct: find the useful thing, bring a little character to the bag, and head back out.</p>
+          <Link className="button primary" href="/story">Read Our Story</Link>
+        </div>
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">Field Notes</p>
+        <h2>Practice, Care, And Course Strategy.</h2>
+        <div className="journal-grid">
+          <Article href="/journal/ball-first-contact" img={imageMap.iron} title="3 Drills to Improve Ball-First Contact" />
+          <Article href="/journal/keep-your-gear-ready" img={imageMap.care} title="How to Keep Your Gear Ready Every Week" />
+          <Article href="/journal/pressure-holes" img={imageMap.strategy} title="A Calm Framework for Pressure Holes" />
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Article({ href, img, title }: { href: string; img: string; title: string }) {
+  return <article className="journal-card"><Image src={img} alt={title} width={900} height={675} /><div><h3>{title}</h3><Link className="text-link" href={href}>Read Field Note</Link></div></article>;
+}

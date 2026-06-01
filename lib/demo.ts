@@ -11,6 +11,8 @@ export const demoProducts: Product[] = starterProducts.map((product) => ({
   title: product.title,
   description: product.description,
   descriptionHtml: `<p>${product.description}</p>`,
+  vendor: 'WYX Golf Supply Co.',
+  availableForSale: false,
   featuredImage: { url: product.image, altText: product.title },
   images: [
     { url: product.image, altText: product.title },

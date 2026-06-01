@@ -1,7 +1,93 @@
 'use client';
-import Image from 'next/image';import Link from 'next/link';import {createContext,useContext,useEffect,useMemo,useState} from 'react';import type {Cart} from '@/types/shopify';import {money} from '@/lib/demo';
-type Ctx={cart:Cart|null;open:boolean;count:number;loading:boolean;error:string|null;setOpen:(v:boolean)=>void;add:(id:string)=>Promise<void>;refresh:()=>Promise<void>;update:(lineId:string,q:number)=>Promise<void>;remove:(lineId:string)=>Promise<void>};const CartContext=createContext<Ctx|null>(null);const key='wyx_cart_id';
-export function useCart(){const c=useContext(CartContext);if(!c)throw new Error('useCart must be used inside CartProvider');return c}
-async function call(method:string,body?:any){const r=await fetch('/api/cart',{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});const j=await r.json();if(!r.ok)throw new Error(j.error||'Cart request failed');return j.cart as Cart|null}
-export function CartProvider({children}:{children:React.ReactNode}){const[cart,setCart]=useState<Cart|null>(null);const[open,setOpen]=useState(false);const[loading,setLoading]=useState(false);const[error,setError]=useState<string|null>(null);async function refresh(){const id=localStorage.getItem(key);if(!id)return;try{setCart(await (await fetch(`/api/cart?cartId=${encodeURIComponent(id)}`)).json().then(j=>j.cart))}catch{localStorage.removeItem(key)}}async function add(merchandiseId:string){setLoading(true);setError(null);try{const next=await call('POST',{cartId:localStorage.getItem(key),merchandiseId,quantity:1});if(next){localStorage.setItem(key,next.id);setCart(next);setOpen(true)}}catch(e:any){setError(e.message)}finally{setLoading(false)}}async function update(lineId:string,quantity:number){if(!cart)return;setLoading(true);try{setCart(await call('PATCH',{cartId:cart.id,lineId,quantity}))}catch(e:any){setError(e.message)}finally{setLoading(false)}}async function remove(lineId:string){if(!cart)return;setLoading(true);try{setCart(await call('DELETE',{cartId:cart.id,lineId}))}catch(e:any){setError(e.message)}finally{setLoading(false)}}useEffect(()=>{refresh()},[]);const value=useMemo(()=>({cart,open,count:cart?.totalQuantity||0,loading,error,setOpen,add,refresh,update,remove}),[cart,open,loading,error]);return <CartContext.Provider value={value}>{children}<CartDrawer/></CartContext.Provider>}
-function CartDrawer(){const{cart,open,setOpen,loading,error,update,remove}=useCart();return <aside className={`cart-drawer ${open?'open':''}`} aria-hidden={!open}><div className="cart-head"><h2>Your Cart</h2><button onClick={()=>setOpen(false)} aria-label="Close cart">Close</button></div>{error&&<p className="error">{error}</p>}{!cart?.lines.length?<p className="muted">Your cart is ready for the long game.</p>:<div className="cart-lines">{cart.lines.map(l=><div className="cart-line" key={l.id}>{l.merchandise.product.featuredImage&&<Image src={l.merchandise.product.featuredImage.url} alt={l.merchandise.product.featuredImage.altText||l.merchandise.product.title} width={86} height={86}/>}<div><Link href={`/products/${l.merchandise.product.handle}`}>{l.merchandise.product.title}</Link><p>{l.merchandise.title}</p><p>{money(l.cost.totalAmount)}</p><div className="qty"><button onClick={()=>l.quantity>1?update(l.id,l.quantity-1):remove(l.id)}>-</button><span>{l.quantity}</span><button onClick={()=>update(l.id,l.quantity+1)}>+</button><button onClick={()=>remove(l.id)}>Remove</button></div></div></div>)}</div>}<div className="cart-foot"><p><span>Subtotal</span><strong>{cart?money(cart.cost.subtotalAmount):'$0.00'}</strong></p><button className="button primary" disabled={!cart?.checkoutUrl||loading} onClick={()=>{if(cart?.checkoutUrl)window.location.href=cart.checkoutUrl}}>Checkout</button><Link href="/cart">View Cart</Link></div></aside>}
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { money } from '@/lib/demo';
+import type { Cart } from '@/types/shopify';
+
+type CartContextValue = { cart: Cart | null; open: boolean; count: number; loading: boolean; error: string | null; setOpen: (value: boolean) => void; add: (id: string) => Promise<void>; refresh: () => Promise<void>; update: (lineId: string, quantity: number) => Promise<void>; remove: (lineId: string) => Promise<void> };
+const CartContext = createContext<CartContextValue | null>(null);
+const cartStorageKey = 'wyx_cart_id';
+
+export function useCart() {
+  const context = useContext(CartContext);
+  if (!context) throw new Error('useCart must be used inside CartProvider');
+  return context;
+}
+
+async function callCart(method: string, body?: Record<string, unknown>) {
+  const response = await fetch('/api/cart', { method, headers: { 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+  const json = await response.json();
+  if (!response.ok) throw new Error(json.error || 'Cart request failed');
+  return json.cart as Cart | null;
+}
+
+export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [cart, setCart] = useState<Cart | null>(null);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const refresh = useCallback(async () => {
+    const id = localStorage.getItem(cartStorageKey);
+    if (!id) return;
+    try {
+      const response = await fetch(`/api/cart?cartId=${encodeURIComponent(id)}`);
+      const json = await response.json();
+      setCart(json.cart);
+    } catch {
+      localStorage.removeItem(cartStorageKey);
+    }
+  }, []);
+
+  const add = useCallback(async (merchandiseId: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const next = await callCart('POST', { cartId: localStorage.getItem(cartStorageKey), merchandiseId, quantity: 1 });
+      if (next) {
+        localStorage.setItem(cartStorageKey, next.id);
+        setCart(next);
+        setOpen(true);
+      }
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to add item.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const update = useCallback(async (lineId: string, quantity: number) => {
+    if (!cart) return;
+    setLoading(true);
+    try {
+      setCart(await callCart('PATCH', { cartId: cart.id, lineId, quantity }));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to update item.');
+    } finally {
+      setLoading(false);
+    }
+  }, [cart]);
+
+  const remove = useCallback(async (lineId: string) => {
+    if (!cart) return;
+    setLoading(true);
+    try {
+      setCart(await callCart('DELETE', { cartId: cart.id, lineId }));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to remove item.');
+    } finally {
+      setLoading(false);
+    }
+  }, [cart]);
+
+  useEffect(() => { void refresh(); }, [refresh]);
+  const value = useMemo(() => ({ cart, open, count: cart?.totalQuantity || 0, loading, error, setOpen, add, refresh, update, remove }), [cart, open, loading, error, add, refresh, update, remove]);
+  return <CartContext.Provider value={value}>{children}<CartDrawer /></CartContext.Provider>;
+}
+
+function CartDrawer() {
+  const { cart, open, setOpen, loading, error, update, remove } = useCart();
+  return <aside className={`cart-drawer ${open ? 'open' : ''}`} aria-hidden={!open}><div className="cart-head"><h2>Your Bag</h2><button onClick={() => setOpen(false)} aria-label="Close cart">Close</button></div>{error && <p className="error">{error}</p>}{!cart?.lines.length ? <p className="muted">Your bag is empty. The supply room is ready when you are.</p> : <div className="cart-lines">{cart.lines.map((line) => <div className="cart-line" key={line.id}>{line.merchandise.product.featuredImage && <Image src={line.merchandise.product.featuredImage.url} alt={line.merchandise.product.featuredImage.altText || line.merchandise.product.title} width={86} height={86} />}<div><Link href={`/products/${line.merchandise.product.handle}`}>{line.merchandise.product.title}</Link><p>{line.merchandise.title}</p><p>{money(line.cost.totalAmount)}</p><div className="qty"><button onClick={() => line.quantity > 1 ? update(line.id, line.quantity - 1) : remove(line.id)} aria-label="Decrease quantity">-</button><span>{line.quantity}</span><button onClick={() => update(line.id, line.quantity + 1)} aria-label="Increase quantity">+</button><button onClick={() => remove(line.id)}>Remove</button></div></div></div>)}</div>}<div className="cart-foot"><p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p><button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={() => { if (cart?.checkoutUrl) window.location.href = cart.checkoutUrl; }}>Checkout With Shopify</button><Link href="/cart">View Bag</Link></div></aside>;
+}

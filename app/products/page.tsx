@@ -1,3 +1,30 @@
-import type {Metadata} from 'next';import {ProductCard} from '@/components/ProductCard';import {getProducts} from '@/lib/shopify/products';
-export const metadata:Metadata={title:'WYX Golf Products | Hats, Polos, Towels & Accessories',description:'Explore premium golf goods from WYX Golf Supply Co., including rope hats, polos, golf towels, leather accessories, golf balls, and club care essentials.'};
-export default async function Products({searchParams}:{searchParams:{category?:string}}){const all=await getProducts();const cat=searchParams.category;const products=cat&&cat!=='All'?all.filter(p=>[p.productType,...(p.tags||[])].some(t=>t?.toLowerCase().includes(cat.toLowerCase()))):all;return <><section className="page-hero"><p className="eyebrow">Products</p><h1>Golf Goods for the Long Game.</h1><p>Browse quiet luxury golf essentials: rope hats, polos, golf towels, leather accessories, golf balls, and club care.</p><div className="category-row">{['All','Headwear','Apparel','Gear','Accessories','Club Care'].map(c=><a key={c} href={c==='All'?'/products':`/products?category=${encodeURIComponent(c)}`}>{c}</a>)}</div></section><section className="section"><div className="product-grid">{products.map(p=><ProductCard key={p.id} product={p}/>)}</div></section></>}
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ProductCard } from '@/components/ProductCard';
+import { availableProducts, catalogCategories, categoryCount, matchesCategory } from '@/lib/catalog';
+import { getProducts } from '@/lib/shopify/products';
+
+export const metadata: Metadata = { title: 'Golf Gear & Accessories', description: 'Shop supplier-backed golf gear, golf balls, gloves, grips, towels, apparel, and accessories from WYX Golf Supply Co.' };
+
+export default async function Products({ searchParams }: { searchParams: { category?: string } }) {
+  const catalog = availableProducts(await getProducts());
+  const category = searchParams.category;
+  const products = catalog.filter((product) => matchesCategory(product, category));
+
+  return (
+    <>
+      <section className="page-hero compact">
+        <p className="eyebrow">The Supply Room</p>
+        <h1>Golf Gear With A Point Of View.</h1>
+        <p>Independent supplier finds, live inventory, and straightforward Shopify checkout. New products appear here as they are approved in the WYX catalog.</p>
+      </section>
+      <nav className="filter-row" aria-label="Product categories">
+        {catalogCategories.map((item) => <Link className={(!category && item === 'All') || category === item ? 'active' : ''} key={item} href={item === 'All' ? '/products' : `/products?category=${encodeURIComponent(item)}`}>{item}<small>{item === 'All' ? catalog.length : categoryCount(catalog, item)}</small></Link>)}
+      </nav>
+      <section className="section product-section">
+        <div className="results-heading"><p className="eyebrow">{category || 'All Products'}</p><span>{products.length} {products.length === 1 ? 'product' : 'products'}</span></div>
+        {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>No products are available in this category yet. Check back as the supply room grows.</p>}
+      </section>
+    </>
+  );
+}

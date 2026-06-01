@@ -1,1 +1,8 @@
-import type {Metadata} from 'next';export const metadata:Metadata={title:'Contact',description:'Contact WYX Golf Supply Co. for customer support, wholesale, and partnership inquiries.'};export default function Contact(){return <section className="page-hero"><p className="eyebrow">Contact</p><h1>Start a Conversation.</h1><p>For customer support, wholesale inquiries, or partnership notes, reach us at hello@example.com. Wholesale requests are reviewed with care.</p><form className="contact-form"><label>Name<input placeholder="Your name"/></label><label>Email<input type="email" placeholder="you@example.com"/></label><label>Message<textarea rows={5} placeholder="How can we help?"/></label><button className="button primary" type="button">Send Message</button></form></section>}
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = { title: 'Contact', description: 'Customer support information for WYX Golf Supply Co.' };
+
+export default function Contact() {
+  return <section className="page-hero"><p className="eyebrow">Customer Care</p><h1>Need A Hand?</h1><p>For help with an order, use the contact details included in your Shopify order confirmation. Include your order number so the supplier-backed fulfillment team can get you the clearest answer.</p><p>Shipping rates and delivery estimates are available during checkout. For general policy details, review <Link className="text-link" href="/shipping-returns">Shipping & Returns</Link>.</p></section>;
+}

@@ -1,7 +1,7 @@
 import { starterProducts } from '@/lib/starterProducts';
+import { getAdminAccessToken } from './adminToken';
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN || process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_SHOP_DOMAIN || process.env.SHOPIFY_DOMAIN;
-const token = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN || process.env.ADMIN_API_ACCESS_TOKEN || process.env.SHOPIFY_ACCESS_TOKEN;
 const version = process.env.SHOPIFY_API_VERSION || process.env.NEXT_PUBLIC_SHOPIFY_API_VERSION || '2026-01';
 
 export type StarterSyncResult = {
@@ -19,10 +19,10 @@ function formatGraphqlErrors(errors: unknown) {
 }
 
 async function adminFetch<T>(query: string, variables: Record<string, unknown>): Promise<T> {
-  if (!domain || !token) throw new Error('Missing Shopify Admin domain or token environment variables.');
+  if (!domain) throw new Error('Missing Shopify Admin domain environment variable.');
   const res = await fetch(`https://${domain}/admin/api/${version}/graphql.json`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': token },
+    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': await getAdminAccessToken() },
     body: JSON.stringify({ query, variables }),
     cache: 'no-store'
   });
@@ -75,7 +75,7 @@ async function addToCollection(productId: string, handle: string) {
 }
 
 export async function seedStarterProduct(product: (typeof starterProducts)[number], publish = false): Promise<StarterSyncResult> {
-  if (!domain || !token) return { handle: product.handle, title: product.title, status: 'skipped', message: 'Missing Shopify Admin environment variables.' };
+  if (!domain) return { handle: product.handle, title: product.title, status: 'skipped', message: 'Missing Shopify Admin environment variables.' };
 
   try {
     const existing = await adminFetch<any>(FIND_PRODUCT, { query: `handle:${product.handle}` });

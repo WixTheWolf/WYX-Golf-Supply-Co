@@ -20,5 +20,5 @@ export async function shopifyFetch<T>(query: string, variables: Record<string, u
 }
 
 export function reshapeProduct(p: any): Product {
-  return { id: p.id, handle: p.handle, title: p.title, description: p.description, descriptionHtml: p.descriptionHtml, productType: p.productType, tags: p.tags || [], featuredImage: p.featuredImage, images: (p.images?.edges || []).map((e: any) => e.node), variants: (p.variants?.edges || []).map((e: any) => e.node), priceRange: p.priceRange };
+  return { id: p.id, handle: p.handle, title: p.title, description: p.description, descriptionHtml: p.descriptionHtml, vendor: p.vendor, availableForSale: p.availableForSale, productType: p.productType, tags: p.tags || [], featuredImage: p.featuredImage, images: (p.images?.edges || []).map((e: any) => e.node), variants: (p.variants?.edges || []).map((e: any) => e.node), priceRange: p.priceRange };
 }
