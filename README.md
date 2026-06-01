@@ -10,13 +10,15 @@ Headless Next.js storefront for the WYX Golf Supply Shopify store.
 - Cart creation, quantity updates, and removal use `/api/cart`.
 - Checkout redirects to the Shopify checkout URL, so this app never handles payment details directly.
 
-The storefront does not blindly import or publish supplier listings. Product approval stays in Shopify Collective so low-quality or off-brand products do not automatically appear for sale.
+Supplier discovery and initial imports remain in Shopify Collective. A daily curator then checks imported Shopify products and automatically activates, tags, and publishes qualified golf listings. It rejects off-category products, missing images, missing suppliers, and prices outside the configured range.
 
 ## Catalog Health
 
 `GET /api/health/catalog` returns the current sellable product count and category totals.
 
 `GET /api/health/public-commerce` confirms that the Storefront API and modern Admin API client credentials are configured without exposing secret values.
+
+`GET /api/cron/catalog-curator` is called daily by Vercel with `CRON_SECRET`. Set `WYX_AUTO_PUBLISH=true` to apply qualified product updates. When false, it reports proposed actions without changing Shopify.
 
 ## Environment Variables
 
@@ -28,16 +30,18 @@ SHOPIFY_STOREFRONT_ACCESS_TOKEN=
 SHOPIFY_CLIENT_ID=
 SHOPIFY_CLIENT_SECRET=
 SHOPIFY_API_VERSION=2026-01
+CRON_SECRET=
+WYX_AUTO_PUBLISH=true
 ```
 
 If Storefront API variables are missing, the site builds with non-purchasable demo product data.
 
 ## Shopify Collective Workflow
 
-1. Review suppliers in Shopify Collective.
-2. Import approved golf products from the supplier catalog.
-3. Confirm each product is active and available to the Storefront API sales channel.
-4. The WYX storefront picks up the live product automatically.
+1. Review or connect suppliers in Shopify Collective Discovery.
+2. Import candidate golf products from the supplier catalog.
+3. The daily WYX curator scores imported products and publishes qualified listings.
+4. The storefront picks up newly published products automatically.
 5. Use `/api/health/catalog` to verify sellable product totals.
 
 ## Local Development

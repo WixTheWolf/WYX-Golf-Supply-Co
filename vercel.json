@@ -1,1 +1,1 @@
-{"framework":"nextjs","buildCommand":"npm run build"}
+{"framework":"nextjs","buildCommand":"npm run build","crons":[{"path":"/api/cron/catalog-curator","schedule":"0 15 * * *"}]}

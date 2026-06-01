@@ -12,16 +12,18 @@ const rules: Array<[Exclude<(typeof catalogCategories)[number], 'All'>, string[]
   ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler']]
 ];
 
-function searchable(product: Product) {
+type ClassifiableProduct = Pick<Product, 'title' | 'productType' | 'vendor' | 'tags'>;
+
+function searchable(product: ClassifiableProduct) {
   return [product.title, product.productType, product.vendor, ...(product.tags || [])].filter(Boolean).join(' ').toLowerCase();
 }
 
-export function categoryFor(product: Product) {
+export function categoryFor(product: ClassifiableProduct) {
   const content = searchable(product);
   return rules.find(([, words]) => words.some((word) => content.includes(word)))?.[0] || 'Accessories';
 }
 
-export function matchesCategory(product: Product, category?: string) {
+export function matchesCategory(product: ClassifiableProduct, category?: string) {
   return !category || category === 'All' || categoryFor(product).toLowerCase() === category.toLowerCase();
 }
 
