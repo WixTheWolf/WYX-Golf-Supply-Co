@@ -6,7 +6,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { money } from '@/lib/demo';
 import type { Cart } from '@/types/shopify';
 
-type CartContextValue = { cart: Cart | null; open: boolean; count: number; loading: boolean; error: string | null; setOpen: (value: boolean) => void; add: (id: string) => Promise<void>; refresh: () => Promise<void>; update: (lineId: string, quantity: number) => Promise<void>; remove: (lineId: string) => Promise<void> };
+type CartContextValue = { cart: Cart | null; open: boolean; count: number; loading: boolean; error: string | null; setOpen: (value: boolean) => void; add: (id: string) => Promise<void>; addMany: (lines: { merchandiseId: string; quantity: number }[]) => Promise<void>; refresh: () => Promise<void>; update: (lineId: string, quantity: number) => Promise<void>; remove: (lineId: string) => Promise<void> };
 const CartContext = createContext<CartContextValue | null>(null);
 const cartStorageKey = 'wyx_cart_id';
 const launchCode = 'WYX10';
@@ -59,6 +59,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  const addMany = useCallback(async (lines: { merchandiseId: string; quantity: number }[]) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const next = await callCart('POST', { cartId: localStorage.getItem(cartStorageKey), lines });
+      if (next) {
+        localStorage.setItem(cartStorageKey, next.id);
+        setCart(next);
+        setOpen(true);
+      }
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to add kit.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   const update = useCallback(async (lineId: string, quantity: number) => {
     if (!cart) return;
     setLoading(true);
@@ -84,7 +101,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [cart]);
 
   useEffect(() => { void refresh(); }, [refresh]);
-  const value = useMemo(() => ({ cart, open, count: cart?.totalQuantity || 0, loading, error, setOpen, add, refresh, update, remove }), [cart, open, loading, error, add, refresh, update, remove]);
+  const value = useMemo(() => ({ cart, open, count: cart?.totalQuantity || 0, loading, error, setOpen, add, addMany, refresh, update, remove }), [cart, open, loading, error, add, addMany, refresh, update, remove]);
   return <CartContext.Provider value={value}>{children}<CartDrawer /></CartContext.Provider>;
 }
 

@@ -1,0 +1,35 @@
+.kit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.kit-card {
+  display: grid;
+  align-content: start;
+  gap: .75rem;
+  min-height: 100%;
+  padding: 1.2rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.kit-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.kit-card li {
+  margin: .3rem 0;
+}
+
+.kit-card .button {
+  width: 100%;
+  margin-top: .5rem;
+}
+
+@media (max-width: 900px) {
+  .kit-grid {
+    grid-template-columns: 1fr;
+  }
+}

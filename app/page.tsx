@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
+import { KitAddButton } from '@/components/KitAddButton';
 import { availableProducts, catalogCategories, categoryCount } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
+import { commerceKits, kitCategorySummary, kitLines, kitProducts } from '@/lib/kits';
 import { getProducts } from '@/lib/shopify/products';
 
 export default async function Home() {
@@ -39,6 +41,32 @@ export default async function Home() {
         </div>
         <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and approved supply-room finds. Limited launch window.</p>
         <Link className="button primary" href="/products">Shop The Offer</Link>
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Built To Convert</p>
+            <h2>One-Click Golf Kits.</h2>
+          </div>
+          <Link className="text-link" href="/products">Build Your Own</Link>
+        </div>
+        <div className="kit-grid">
+          {commerceKits.map((kit) => {
+            const products = kitProducts(catalog, kit.handles);
+            const lines = kitLines(products);
+            return (
+              <article className="kit-card" key={kit.title}>
+                <p className="eyebrow">{kit.eyebrow}</p>
+                <h3>{kit.title}</h3>
+                <p>{kit.description}</p>
+                <p className="product-meta">{kitCategorySummary(products)}</p>
+                <ul>{products.map((product) => <li key={product.id}>{product.title}</li>)}</ul>
+                <KitAddButton lines={lines} />
+              </article>
+            );
+          })}
+        </div>
       </section>
 
       <section className="section">
