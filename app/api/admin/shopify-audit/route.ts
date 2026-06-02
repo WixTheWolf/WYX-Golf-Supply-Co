@@ -1,0 +1,151 @@
+import { NextResponse } from 'next/server';
+import { categoryFor } from '@/lib/catalog';
+import { getUserErrors, shopifyAdminFetch } from '@/lib/shopify/adminClient';
+
+export const dynamic = 'force-dynamic';
+
+type AdminProduct = {
+  id: string;
+  handle: string;
+  title: string;
+  vendor: string;
+  productType: string;
+  status: 'ACTIVE' | 'ARCHIVED' | 'DRAFT';
+  totalInventory: number;
+  tags: string[];
+  featuredImage?: { url: string } | null;
+  variants: { nodes: Array<{ id: string; title: string; price: string; availableForSale: boolean; inventoryQuantity: number | null; sku: string | null }> };
+  resourcePublications: { nodes: Array<{ publication: { name: string } }> };
+};
+
+const AUDIT = `#graphql
+query ShopifyAudit {
+  shop { name myshopifyDomain currencyCode plan { displayName } primaryDomain { host url } }
+  publications(first: 20) { nodes { id name } }
+  markets(first: 20) { nodes { id name enabled webPresence { domain { host url } } regions(first: 10) { nodes { name } } } }
+  codeDiscountNodes(first: 20, query: "code:WYX10") {
+    nodes {
+      id
+      codeDiscount {
+        __typename
+        ... on DiscountCodeBasic {
+          title status startsAt endsAt
+          codes(first: 5) { nodes { code } }
+          customerGets { value { __typename ... on DiscountPercentage { percentage } } }
+        }
+      }
+    }
+  }
+  products(first: 100, sortKey: CREATED_AT, reverse: true) {
+    nodes {
+      id handle title vendor productType status totalInventory tags
+      featuredImage { url }
+      variants(first: 20) { nodes { id title price availableForSale inventoryQuantity sku } }
+      resourcePublications(first: 20) { nodes { publication { name } } }
+    }
+  }
+}`;
+
+const UPDATE_PRODUCT = `#graphql
+mutation AuditProductUpdate($product: ProductUpdateInput!) {
+  productUpdate(product: $product) { product { id status tags } userErrors { field message } }
+}`;
+
+function prices(product: AdminProduct) {
+  return product.variants.nodes.map((variant) => Number(variant.price)).filter(Number.isFinite);
+}
+
+function productFlags(product: AdminProduct) {
+  const productPrices = prices(product);
+  const flags: string[] = [];
+  if (product.status !== 'ACTIVE') flags.push('not-active');
+  if (!product.featuredImage?.url) flags.push('missing-image');
+  if (!product.vendor) flags.push('missing-supplier');
+  if (product.totalInventory <= 0) flags.push('no-inventory');
+  if (!product.resourcePublications.nodes.length) flags.push('not-published');
+  if (!productPrices.length) flags.push('missing-price');
+  if (productPrices.some((price) => price > 250)) flags.push('over-250');
+  if (product.variants.nodes.every((variant) => !variant.sku)) flags.push('missing-skus');
+  return flags;
+}
+
+async function pauseProduct(product: AdminProduct, reason: string) {
+  const tags = Array.from(new Set([...(product.tags || []), `wyx-auto-paused:${reason}`]));
+  const data = await shopifyAdminFetch<any>(UPDATE_PRODUCT, { product: { id: product.id, status: 'DRAFT', tags } });
+  const errors = getUserErrors(data);
+  if (errors.length) throw new Error(errors.map((error: any) => error.message).join(', '));
+}
+
+export async function GET(request: Request) {
+  if (!process.env.CRON_SECRET || request.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const shouldFix = new URL(request.url).searchParams.get('fix') === 'true';
+  const data = await shopifyAdminFetch<any>(AUDIT);
+  const products = data.products.nodes as AdminProduct[];
+  const fixes: Array<{ title: string; action: string }> = [];
+
+  if (shouldFix) {
+    for (const product of products) {
+      const flags = productFlags(product);
+      if (product.status === 'ACTIVE' && flags.includes('no-inventory')) {
+        await pauseProduct(product, 'no-inventory');
+        fixes.push({ title: product.title, action: 'paused no-inventory product' });
+      } else if (product.status === 'ACTIVE' && flags.includes('over-250')) {
+        await pauseProduct(product, 'over-250');
+        fixes.push({ title: product.title, action: 'paused over-250 product' });
+      }
+    }
+  }
+
+  const productAudits = products.map((product) => {
+    const productPrices = prices(product);
+    return {
+      title: product.title,
+      handle: product.handle,
+      vendor: product.vendor,
+      status: product.status,
+      category: categoryFor(product),
+      totalInventory: product.totalInventory,
+      minPrice: productPrices.length ? Math.min(...productPrices) : null,
+      maxPrice: productPrices.length ? Math.max(...productPrices) : null,
+      variants: product.variants.nodes.length,
+      availableVariants: product.variants.nodes.filter((variant) => variant.availableForSale).length,
+      publications: product.resourcePublications.nodes.map((node) => node.publication.name),
+      flags: productFlags(product)
+    };
+  });
+
+  return NextResponse.json({
+    ok: true,
+    fixed: shouldFix,
+    fixes,
+    shop: data.shop,
+    publications: data.publications.nodes.map((publication: { name: string }) => publication.name),
+    markets: data.markets.nodes.map((market: any) => ({
+      name: market.name,
+      enabled: market.enabled,
+      domain: market.webPresence?.domain?.host || null,
+      regions: market.regions.nodes.map((region: { name: string }) => region.name)
+    })),
+    discounts: data.codeDiscountNodes.nodes.map((node: any) => ({
+      title: node.codeDiscount?.title,
+      status: node.codeDiscount?.status,
+      codes: node.codeDiscount?.codes?.nodes?.map((code: { code: string }) => code.code) || [],
+      startsAt: node.codeDiscount?.startsAt,
+      endsAt: node.codeDiscount?.endsAt,
+      percentage: node.codeDiscount?.customerGets?.value?.percentage || null
+    })),
+    counts: {
+      totalProducts: productAudits.length,
+      activeProducts: productAudits.filter((product) => product.status === 'ACTIVE').length,
+      draftProducts: productAudits.filter((product) => product.status === 'DRAFT').length,
+      flaggedProducts: productAudits.filter((product) => product.flags.length).length,
+      noInventory: productAudits.filter((product) => product.flags.includes('no-inventory')).length,
+      over250: productAudits.filter((product) => product.flags.includes('over-250')).length,
+      missingSkus: productAudits.filter((product) => product.flags.includes('missing-skus')).length
+    },
+    products: productAudits
+  });
+}

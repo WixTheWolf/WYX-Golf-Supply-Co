@@ -100,9 +100,9 @@ export async function curateCatalog(apply = false) {
   for (const product of products) {
     const reasons = qualify(product);
     if (reasons.length) {
-      if (apply && reasons.includes('no supplier inventory') && product.status === 'ACTIVE') {
+      if (apply && product.status === 'ACTIVE' && (reasons.includes('no supplier inventory') || reasons.includes('price outside $5-$250 range'))) {
         await pauseProduct(product);
-        decisions.push({ id: product.id, title: product.title, handle: product.handle, action: 'updated', reasons: ['paused because supplier inventory is unavailable'] });
+        decisions.push({ id: product.id, title: product.title, handle: product.handle, action: 'updated', reasons: [reasons.includes('no supplier inventory') ? 'paused because supplier inventory is unavailable' : 'paused because price is outside the conversion range'] });
         continue;
       }
       decisions.push({ id: product.id, title: product.title, handle: product.handle, action: 'skipped', reasons });
