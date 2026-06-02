@@ -4,6 +4,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { KitAddButton } from '@/components/KitAddButton';
 import { availableProducts, catalogCategories, categoryCount } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
+import { landingCollections } from '@/lib/collections';
 import { commerceKits, kitCategorySummary, kitLines, kitProducts } from '@/lib/kits';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -97,6 +98,25 @@ export default async function Home() {
               <span>{String(categoryCount(catalog, category)).padStart(2, '0')}</span>
               <strong>{category}</strong>
               <small>Explore collection</small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">SEO-Ready Collections</p>
+            <h2>Shop By Intent.</h2>
+          </div>
+          <Link className="text-link" href="/deals">Start With Deals</Link>
+        </div>
+        <div className="intent-grid">
+          {landingCollections.map((collection) => (
+            <Link href={`/collections/${collection.slug}`} key={collection.slug}>
+              <span>{collection.eyebrow}</span>
+              <strong>{collection.seoTitle}</strong>
+              <small>{collection.description}</small>
             </Link>
           ))}
         </div>
