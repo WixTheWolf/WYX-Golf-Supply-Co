@@ -7,9 +7,9 @@ const rules: Array<[Exclude<(typeof catalogCategories)[number], 'All'>, string[]
   ['Gloves', ['glove']],
   ['Grips', ['grip', 'overgrip']],
   ['Towels', ['towel']],
-  ['Headwear', ['hat', 'cap', 'headwear']],
+  ['Headwear', ['hat', 'cap', 'headwear', 'topographic']],
   ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel']],
-  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler']]
+  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie']]
 ];
 
 type ClassifiableProduct = Pick<Product, 'title' | 'productType' | 'vendor' | 'tags'>;
@@ -20,6 +20,7 @@ function searchable(product: ClassifiableProduct) {
 
 export function categoryFor(product: ClassifiableProduct) {
   const content = searchable(product);
+  if (content.includes('ball marker') || content.includes('accessory caddie') || content.includes('divot')) return 'Accessories';
   return rules.find(([, words]) => words.some((word) => content.includes(word)))?.[0] || 'Accessories';
 }
 

@@ -21,6 +21,7 @@ type Decision = {
 const allowedTerms = ['golf', 'ball', 'glove', 'grip', 'overgrip', 'towel', 'tee', 'divot', 'marker', 'hat', 'cap', 'polo', 'club', 'bag tag', 'cooler', 'flask'];
 const blockedTerms = ['disc golf', 'rv', 'atv', 'storage box', 'driving cage', 'enclosure', 'screen', 'renew protect', 'simulator'];
 const managedTag = 'wyx-auto-approved';
+const pausedTag = 'wyx-auto-paused:no-inventory';
 const publicationTerms = ['online store', 'headless'];
 
 const PRODUCTS = `#graphql
@@ -56,6 +57,7 @@ function qualify(product: AdminProduct) {
   const text = content(product);
   const reasons: string[] = [];
   if (product.status === 'ARCHIVED') reasons.push('archived');
+  if (product.totalInventory <= 0) reasons.push('no supplier inventory');
   if (!product.featuredImage?.url) reasons.push('missing image');
   if (!product.vendor) reasons.push('missing supplier');
   if (!allowedTerms.some((term) => text.includes(term))) reasons.push('no approved golf keyword');
@@ -68,6 +70,13 @@ function qualify(product: AdminProduct) {
 
 async function updateProduct(product: AdminProduct, tags: string[]) {
   const data = await shopifyAdminFetch<any>(UPDATE_PRODUCT, { product: { id: product.id, status: 'ACTIVE', tags } });
+  const errors = getUserErrors(data);
+  if (errors.length) throw new Error(errors.map((error: any) => error.message).join(', '));
+}
+
+async function pauseProduct(product: AdminProduct) {
+  const tags = Array.from(new Set([...(product.tags || []), pausedTag]));
+  const data = await shopifyAdminFetch<any>(UPDATE_PRODUCT, { product: { id: product.id, status: 'DRAFT', tags } });
   const errors = getUserErrors(data);
   if (errors.length) throw new Error(errors.map((error: any) => error.message).join(', '));
 }
@@ -91,6 +100,11 @@ export async function curateCatalog(apply = false) {
   for (const product of products) {
     const reasons = qualify(product);
     if (reasons.length) {
+      if (apply && reasons.includes('no supplier inventory') && product.status === 'ACTIVE') {
+        await pauseProduct(product);
+        decisions.push({ id: product.id, title: product.title, handle: product.handle, action: 'updated', reasons: ['paused because supplier inventory is unavailable'] });
+        continue;
+      }
       decisions.push({ id: product.id, title: product.title, handle: product.handle, action: 'skipped', reasons });
       continue;
     }
