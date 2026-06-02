@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
+import './promo.css';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 

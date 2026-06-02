@@ -27,9 +27,18 @@ export default async function Home() {
 
       <section className="trust-strip" aria-label="Store benefits">
         <span>Independent Golf Brands</span>
-        <span>Live Supplier Inventory</span>
+        <span>Use WYX10 For 10% Off</span>
         <span>Secure Shopify Checkout</span>
         <span>Supplier-Backed Fulfillment</span>
+      </section>
+
+      <section className="launch-offer">
+        <div>
+          <p className="eyebrow">Launch Offer</p>
+          <h2>Take 10% Off The First Bag Build.</h2>
+        </div>
+        <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and approved supply-room finds. Limited launch window.</p>
+        <Link className="button primary" href="/products">Shop The Offer</Link>
       </section>
 
       <section className="section">

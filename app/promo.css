@@ -1,0 +1,43 @@
+.launch-offer {
+  width: min(1240px, 92vw);
+  margin: clamp(2rem, 5vw, 4rem) auto 0;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr auto;
+  gap: 1.2rem;
+  align-items: center;
+  background: var(--forest);
+  color: var(--paper);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.launch-offer .eyebrow {
+  color: var(--lime);
+}
+
+.launch-offer p {
+  max-width: 54ch;
+}
+
+.promo-note {
+  padding: .75rem .9rem;
+  background: color-mix(in oklab, var(--lime) 28%, white 72%);
+  border: 1px solid var(--line);
+  font-size: .84rem;
+}
+
+@media (max-width: 900px) {
+  .launch-offer {
+    grid-template-columns: 1fr;
+  }
+
+  .launch-offer .button {
+    width: max-content;
+  }
+}
+
+@media (max-width: 650px) {
+  .launch-offer .button {
+    width: 100%;
+  }
+}
