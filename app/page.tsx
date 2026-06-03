@@ -8,6 +8,8 @@ import { landingCollections } from '@/lib/collections';
 import { commerceKits, kitCategorySummary, kitLines, kitProducts } from '@/lib/kits';
 import { getProducts } from '@/lib/shopify/products';
 
+export const revalidate = 300;
+
 export default async function Home() {
   const catalog = availableProducts(await getProducts());
   const featured = catalog.slice(0, 6);

@@ -8,6 +8,8 @@ import { imageMap } from '@/lib/demo';
 import { siteUrl } from '@/lib/feed';
 import { getProducts } from '@/lib/shopify/products';
 
+export const revalidate = 300;
+
 export function generateStaticParams() {
   return landingCollections.map((collection) => ({ slug: collection.slug }));
 }

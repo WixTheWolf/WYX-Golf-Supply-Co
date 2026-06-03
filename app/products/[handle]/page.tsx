@@ -10,6 +10,8 @@ import { productFaq, productValueBullets } from '@/lib/merchandising';
 import { getProduct, getProducts } from '@/lib/shopify/products';
 import { cleanText } from '@/lib/text';
 
+export const revalidate = 300;
+
 export async function generateMetadata({ params }: { params: { handle: string } }): Promise<Metadata> {
   const product = await getProduct(params.handle);
   return product ? { title: cleanText(product.title), description: cleanText(product.description), openGraph: { images: product.featuredImage ? [product.featuredImage.url] : [] } } : { title: 'Product' };

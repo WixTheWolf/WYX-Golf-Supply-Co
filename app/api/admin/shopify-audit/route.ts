@@ -20,7 +20,14 @@ type AdminProduct = {
 
 const AUDIT = `#graphql
 query ShopifyAudit {
-  shop { name myshopifyDomain currencyCode plan { displayName } primaryDomain { host url } }
+  shop {
+    name myshopifyDomain currencyCode checkoutApiSupported contactEmail email
+    enabledPresentmentCurrencies
+    paymentSettings { supportedDigitalWallets }
+    countriesInShippingZones { countryCodes }
+    plan { displayName }
+    primaryDomain { host url }
+  }
   publications(first: 20) { nodes { id name } }
   markets(first: 20) { nodes { id name enabled webPresence { domain { host url } } regions(first: 10) { nodes { name } } } }
   codeDiscountNodes(first: 20, query: "code:WYX10") {
@@ -122,6 +129,13 @@ export async function GET(request: Request) {
     fixed: shouldFix,
     fixes,
     shop: data.shop,
+    readiness: {
+      checkoutApiSupported: data.shop.checkoutApiSupported,
+      enabledPresentmentCurrencies: data.shop.enabledPresentmentCurrencies,
+      supportedDigitalWallets: data.shop.paymentSettings?.supportedDigitalWallets || [],
+      shipsToCountries: data.shop.countriesInShippingZones?.countryCodes || [],
+      contactEmailMatchesOwnerEmail: data.shop.contactEmail === data.shop.email
+    },
     publications: data.publications.nodes.map((publication: { name: string }) => publication.name),
     markets: data.markets.nodes.map((market: any) => ({
       name: market.name,

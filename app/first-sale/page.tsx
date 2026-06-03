@@ -5,6 +5,8 @@ import { availableProducts } from '@/lib/catalog';
 import { productPrice } from '@/lib/feed';
 import { getProducts } from '@/lib/shopify/products';
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: 'First Sale Launch Offer',
   description: 'A focused WYX Golf Supply Co. launch offer for giftable golf gear, bag upgrades, and under-$60 golf essentials.'

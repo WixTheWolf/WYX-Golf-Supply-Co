@@ -6,6 +6,8 @@ import { imageMap } from '@/lib/demo';
 import { isImpulseProduct, productPriceLabel, siteUrl } from '@/lib/feed';
 import { getProducts } from '@/lib/shopify/products';
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: 'Golf Deals Under $60',
   description: 'Shop WYX Golf Supply Co. golf deals, bag upgrades, ball markers, grips, gloves, and accessories under $60 with secure Shopify checkout.'

@@ -4,6 +4,8 @@ import { ProductCard } from '@/components/ProductCard';
 import { availableProducts, catalogCategories, categoryCount, matchesCategory } from '@/lib/catalog';
 import { getProducts } from '@/lib/shopify/products';
 
+export const revalidate = 300;
+
 export const metadata: Metadata = { title: 'Golf Gear & Accessories', description: 'Shop supplier-backed golf gear, golf balls, gloves, grips, towels, apparel, and accessories from WYX Golf Supply Co.' };
 
 export default async function Products({ searchParams }: { searchParams: { category?: string } }) {
