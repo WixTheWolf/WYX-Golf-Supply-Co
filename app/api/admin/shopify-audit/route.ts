@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { isAuthorizedAdminRequest, unauthorizedResponse } from '@/lib/adminAuth';
 import { categoryFor } from '@/lib/catalog';
 import { getUserErrors, shopifyAdminFetch } from '@/lib/shopify/adminClient';
 
@@ -97,9 +98,7 @@ async function pauseProduct(product: AdminProduct, reason: string) {
 }
 
 export async function GET(request: Request) {
-  if (!process.env.CRON_SECRET || request.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 });
-  }
+  if (!isAuthorizedAdminRequest(request)) return unauthorizedResponse();
 
   const shouldFix = new URL(request.url).searchParams.get('fix') === 'true';
   const data = await shopifyAdminFetch<any>(AUDIT);

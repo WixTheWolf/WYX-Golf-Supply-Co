@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
+import { isAuthorizedAdminRequest, unauthorizedResponse } from '@/lib/adminAuth';
 import { optimizeShopifyBusiness } from '@/lib/shopify/businessOptimizer';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
-  if (!process.env.CRON_SECRET || request.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 });
-  }
+  if (!isAuthorizedAdminRequest(request)) return unauthorizedResponse();
 
   try {
     const result = await optimizeShopifyBusiness();

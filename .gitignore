@@ -1,5 +1,6 @@
 .vercel
 .cron-secret.local
+.ops-secret.local
 .next/
 node_modules/
 .env*.local
