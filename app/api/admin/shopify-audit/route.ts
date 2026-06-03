@@ -67,6 +67,7 @@ function productFlags(product: AdminProduct) {
   const flags: string[] = [];
   if (product.status !== 'ACTIVE') flags.push('not-active');
   if (!product.featuredImage?.url) flags.push('missing-image');
+  if (product.featuredImage?.url && isPlaceholderProductImage(product.featuredImage.url)) flags.push('placeholder-image');
   if (!product.vendor) flags.push('missing-supplier');
   if (product.totalInventory <= 0) flags.push('no-inventory');
   if (!product.resourcePublications.nodes.length) flags.push('not-published');
@@ -74,6 +75,18 @@ function productFlags(product: AdminProduct) {
   if (productPrices.some((price) => price > 250)) flags.push('over-250');
   if (product.variants.nodes.every((variant) => !variant.sku)) flags.push('missing-skus');
   return flags;
+}
+
+function isPlaceholderProductImage(url: string) {
+  return [
+    'hero-coastal-fairway.png',
+    'forest-polo-product.png',
+    'journal-club-care.png',
+    'journal-course-strategy.png',
+    'journal-iron-practice.png',
+    'leather-bag-detail.png',
+    'walking-golfer-lifestyle..png'
+  ].some((name) => url.toLowerCase().includes(name));
 }
 
 async function pauseProduct(product: AdminProduct, reason: string) {
@@ -102,6 +115,9 @@ export async function GET(request: Request) {
       } else if (product.status === 'ACTIVE' && flags.includes('over-250')) {
         await pauseProduct(product, 'over-250');
         fixes.push({ title: product.title, action: 'paused over-250 product' });
+      } else if (product.status === 'ACTIVE' && flags.includes('placeholder-image')) {
+        await pauseProduct(product, 'placeholder-image');
+        fixes.push({ title: product.title, action: 'paused placeholder-image product' });
       }
     }
   }
@@ -115,6 +131,7 @@ export async function GET(request: Request) {
       status: product.status,
       category: categoryFor(product),
       totalInventory: product.totalInventory,
+      featuredImage: product.featuredImage?.url || null,
       minPrice: productPrices.length ? Math.min(...productPrices) : null,
       maxPrice: productPrices.length ? Math.max(...productPrices) : null,
       variants: product.variants.nodes.length,
@@ -158,7 +175,8 @@ export async function GET(request: Request) {
       flaggedProducts: productAudits.filter((product) => product.flags.length).length,
       noInventory: productAudits.filter((product) => product.flags.includes('no-inventory')).length,
       over250: productAudits.filter((product) => product.flags.includes('over-250')).length,
-      missingSkus: productAudits.filter((product) => product.flags.includes('missing-skus')).length
+      missingSkus: productAudits.filter((product) => product.flags.includes('missing-skus')).length,
+      placeholderImages: productAudits.filter((product) => product.flags.includes('placeholder-image')).length
     },
     products: productAudits
   });

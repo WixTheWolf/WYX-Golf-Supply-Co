@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { AddToCartButton } from '@/components/AddToCartButton';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
-import { categoryFor, supplierName } from '@/lib/catalog';
+import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
 import { productDescription } from '@/lib/feed';
 import { productFaq, productValueBullets } from '@/lib/merchandising';
@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: { params: { handle: string } 
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const product = await getProduct(params.handle);
-  if (!product) notFound();
+  if (!product || !product.availableForSale || !hasSaleReadyMedia(product)) notFound();
   const productCategory = categoryFor(product);
-  const allProducts = await getProducts();
+  const allProducts = availableProducts(await getProducts());
   const related = allProducts
     .filter((item) => item.handle !== product.handle && item.availableForSale)
     .sort((a, b) => Number(categoryFor(b) === productCategory) - Number(categoryFor(a) === productCategory))

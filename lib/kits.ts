@@ -12,20 +12,20 @@ export const commerceKits: CommerceKit[] = [
   {
     title: 'Range Grip Reset',
     eyebrow: 'Best Conversion Play',
-    description: 'Grip tape, a fresh towel, and a club brush. Low friction, useful, and built for fast cart adds.',
-    handles: ['pulse-golf-overgrip-tape', 'tri-fold-microfiber-golf-towel', 'magnetic-golf-club-brush-cleaner']
+    description: 'Grip tape, a real supplier towel, and a fresh grip. Low friction, useful, and built for fast cart adds.',
+    handles: ['pulse-golf-overgrip-tape', 'blue-ridge-golf-co-golf-towels', 'stick-grips-golf-camo-golf-grip']
   },
   {
     title: 'Short Game Starter',
     eyebrow: 'Under-$100 Cart Builder',
-    description: 'A putting mirror, groove tool, and marker for players who want the green-side basics handled.',
-    handles: ['alignment-putting-mirror', 'groove-sharpener-cleaner-tool', 'three-rail-ball-marker']
+    description: 'Ball markers and a glove caddie for players who want the green-side basics handled.',
+    handles: ['three-rail-ball-marker', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'glove-accessory-caddie-gray']
   },
   {
     title: 'Weekend Starter Drop',
     eyebrow: 'Aggressive Upsell',
-    description: 'Headcover, glove, and tees. Built for shoppers who want personality and utility.',
-    handles: ['coastal-green-driver-headcover', 'premium-cabretta-leather-golf-glove', 'bamboo-performance-golf-tees-50-pack']
+    description: 'Headcover, glove, and golf balls. Built for shoppers who want personality and utility.',
+    handles: ['classic-leather-edition-walnut-brown-midnight-black', 'park-paisley-womens-gold-golf-glove', 'shockd-golf-balls']
   }
 ];
 
