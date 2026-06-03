@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 };
 
 const preferredHandles = [
+  'magnetic-golf-club-brush-cleaner',
+  'tri-fold-microfiber-golf-towel',
+  'premium-cabretta-leather-golf-glove',
+  'bamboo-performance-golf-tees-50-pack',
+  'alignment-putting-mirror',
+  'groove-sharpener-cleaner-tool',
   'blue-ridge-golf-co-golf-towels',
   'two-sided-metal-golf-ball-marker-5-color-combo-pack',
   'three-rail-ball-marker',
