@@ -127,6 +127,11 @@ export default async function Home() {
             <strong>Best Golf Accessories</strong>
             <small>Practical bag upgrades selected for fast add-to-cart decisions.</small>
           </Link>
+          <Link href="/popular-golf-products-2026">
+            <span>2026 Demand</span>
+            <strong>Popular Golf Products</strong>
+            <small>Fresh gifts, useful accessories, and supplier-backed products worth scouting now.</small>
+          </Link>
           {landingCollections.map((collection) => (
             <Link href={`/collections/${collection.slug}`} key={collection.slug}>
               <span>{collection.eyebrow}</span>

@@ -14,6 +14,7 @@ export function Header() {
           <Link href="/products">Shop</Link>
           <Link href="/golf-gifts-under-60">Gifts</Link>
           <Link href="/best-golf-accessories">Accessories</Link>
+          <Link href="/popular-golf-products-2026">Popular</Link>
           <Link href="/first-sale">First Sale</Link>
           <Link href="/deals">Deals</Link>
         </nav>

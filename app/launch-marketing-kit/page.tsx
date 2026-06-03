@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { campaignUrl, launchSocialCopy, paidSearchAngles } from '@/lib/marketing';
+import { adCopyBlocks, campaignUrl, dailyGrowthChecklist, launchSocialCopy, paidSearchAngles, socialHashtags, supplierScoutingTargets } from '@/lib/marketing';
 
 export const metadata: Metadata = {
   title: 'WYX Launch Marketing Kit',
@@ -10,17 +10,12 @@ export const metadata: Metadata = {
 
 const campaignLinks = [
   ['First Sale Landing Page', campaignUrl('/first-sale', 'first_sale_push', 'social', 'bio')],
+  ['Popular Golf Products 2026', campaignUrl('/popular-golf-products-2026', 'popular_golf_products_2026', 'social', 'bio')],
   ['Golf Gifts Under $60', campaignUrl('/golf-gifts-under-60', 'golf_gifts_under_60', 'social', 'bio')],
   ['Best Golf Accessories', campaignUrl('/best-golf-accessories', 'best_golf_accessories', 'social', 'bio')],
   ['Deals Under $60', campaignUrl('/deals', 'launch_deals', 'social', 'bio')],
   ['Club Care Essentials', campaignUrl('/collections/golf-club-care', 'club_care', 'social', 'bio')],
   ['Training Aids', campaignUrl('/collections/golf-training-aids', 'training_aids', 'social', 'bio')]
-] as const;
-
-const adCopy = [
-  ['Golf Gifts Under $60', 'Useful golf gifts that actually get used. Towels, tees, gloves, markers, and club-care tools. Use WYX10 today.'],
-  ['Upgrade Your Golf Bag', 'Shop practical golf accessories for cleaner clubs, better practice, and easier rounds. Secure Shopify checkout.'],
-  ['Small Gear. Easy Yes.', 'Golf towels, tees, gloves, putting aids, and bag tools selected for fast checkout. Launch code WYX10.']
 ] as const;
 
 export default function LaunchMarketingKit() {
@@ -40,6 +35,20 @@ export default function LaunchMarketingKit() {
           <span>Use WYX10 in every caption</span>
           <span>Point paid traffic to focused pages</span>
           <span>Push small accessories first</span>
+          <span>Scout under-$60 products daily</span>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Daily Operator Sprint</p>
+            <h2>Do This Today.</h2>
+          </div>
+          <Link className="text-link" href="/popular-golf-products-2026">Share Popular Picks</Link>
+        </div>
+        <div className="marketing-grid">
+          {dailyGrowthChecklist.map((item, index) => <article className="marketing-card" key={item}><span>Step {index + 1}</span><p>{item}</p></article>)}
         </div>
       </section>
 
@@ -70,6 +79,7 @@ export default function LaunchMarketingKit() {
         </div>
         <div className="marketing-grid">
           {launchSocialCopy.map((copy) => <article className="marketing-card" key={copy}><p>{copy}</p></article>)}
+          <article className="marketing-card"><span>Hashtag Set</span><p>{socialHashtags.join(' ')}</p></article>
         </div>
       </section>
 
@@ -81,13 +91,32 @@ export default function LaunchMarketingKit() {
           </div>
         </div>
         <div className="marketing-grid">
-          {adCopy.map(([headline, body]) => (
+          {adCopyBlocks.map(([headline, body]) => (
             <article className="marketing-card" key={headline}>
               <span>{headline}</span>
               <p>{body}</p>
             </article>
           ))}
           {paidSearchAngles.map((angle) => <article className="marketing-card" key={angle}><span>Keyword Angle</span><p>{angle}</p></article>)}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Supplier Hunt</p>
+            <h2>Products To Import Next.</h2>
+          </div>
+          <Link className="text-link" href="/products">Current Catalog</Link>
+        </div>
+        <div className="marketing-grid">
+          {supplierScoutingTargets.map(([priority, target, reason]) => (
+            <article className="marketing-card" key={target}>
+              <span>{priority}</span>
+              <h3>{target}</h3>
+              <p>{reason}</p>
+            </article>
+          ))}
         </div>
       </section>
     </>
