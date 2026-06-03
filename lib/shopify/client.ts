@@ -12,7 +12,7 @@ export async function shopifyFetch<T>(query: string, variables: Record<string, u
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': token! },
     body: JSON.stringify({ query, variables }),
-    next: { revalidate: 60 }
+    cache: 'no-store'
   });
   const json = await res.json();
   if (json.errors) throw new Error(json.errors.map((e: { message: string }) => e.message).join(', '));

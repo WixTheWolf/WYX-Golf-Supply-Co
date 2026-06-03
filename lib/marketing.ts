@@ -27,7 +27,8 @@ export const launchSocialCopy = [
   'Small golf gear that actually gets used: brush cleaners, groove tools, putting mirrors, tees, towels, gloves, and headcovers. Shop WYX Golf Supply today.',
   'Need a golf gift under $60? Start with WYX. Useful golf accessories, secure Shopify checkout, and launch code WYX10.',
   'The easiest golf purchase is the thing you forgot you needed: a fresh towel, glove, grip, marker, or ball restock. WYX10 is live today.',
-  'New golf supply shop is live. Independent finds, quick bag upgrades, and checkout powered by Shopify. Start with the under-$60 picks.'
+  'New golf supply shop is live. Independent finds, quick bag upgrades, and checkout powered by Shopify. Start with the under-$60 picks.',
+  "Father's Day is June 21. Get Dad something he will actually use: golf towels, ball markers, gloves, grips, golf balls, and bag upgrades. Use WYX10."
 ];
 
 export const paidSearchAngles = [
@@ -39,7 +40,9 @@ export const paidSearchAngles = [
   'Golf gifts for men under 50',
   'Golf gifts for women under 50',
   'Cool golf accessories 2026',
-  'Best golf bag accessories'
+  'Best golf bag accessories',
+  "Father's Day golf gifts 2026",
+  'golf gifts for dad'
 ];
 
 export const socialHashtags = [
@@ -76,4 +79,5 @@ export const adCopyBlocks = [
   ['Upgrade Your Golf Bag', 'Shop practical golf accessories for cleaner clubs, better practice, and easier rounds. Secure Shopify checkout.'],
   ['Small Gear. Easy Yes.', 'Golf towels, tees, gloves, putting aids, and bag tools selected for fast checkout. Launch code WYX10.'],
   ['Popular Golf Products 2026', 'Fresh golf accessories, gifts, gloves, towels, markers, and bag upgrades. Shop WYX with WYX10.']
+  , ["Father's Day Golf Gifts", "Father's Day is June 21. Shop useful golf gifts Dad will actually use: towels, markers, gloves, balls, grips, and bag upgrades."]
 ];

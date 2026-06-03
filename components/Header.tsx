@@ -13,6 +13,7 @@ export function Header() {
         <nav className="nav-links" aria-label="Primary navigation">
           <Link href="/products">Shop</Link>
           <Link href="/golf-gifts-under-60">Gifts</Link>
+          <Link href="/fathers-day-golf-gifts">Dad Gifts</Link>
           <Link href="/best-golf-accessories">Accessories</Link>
           <Link href="/popular-golf-products-2026">Popular</Link>
           <Link href="/first-sale">First Sale</Link>

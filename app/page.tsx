@@ -43,8 +43,8 @@ export default async function Home() {
           <p className="eyebrow">Launch Offer</p>
           <h2>Take 10% Off The First Bag Build.</h2>
         </div>
-        <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and approved supply-room finds. Limited launch window.</p>
-        <Link className="button primary" href="/first-sale">Shop The Offer</Link>
+        <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and approved supply-room finds. Father's Day is June 21, so the gift window is open now.</p>
+        <Link className="button primary" href="/fathers-day-golf-gifts">Shop Dad Gifts</Link>
       </section>
 
       <section className="section">
@@ -121,6 +121,11 @@ export default async function Home() {
             <span>High-Intent Search</span>
             <strong>Golf Gifts Under $60</strong>
             <small>Useful towels, tees, gloves, tools, and accessories for gift shoppers.</small>
+          </Link>
+          <Link href="/fathers-day-golf-gifts">
+            <span>Seasonal Push</span>
+            <strong>Father's Day Golf Gifts</strong>
+            <small>Dad-ready towels, markers, gloves, balls, grips, headcovers, and bag upgrades.</small>
           </Link>
           <Link href="/best-golf-accessories">
             <span>Buyer Intent</span>
