@@ -1,5 +1,6 @@
 import { categoryFor, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
+import { cleanText } from '@/lib/text';
 import type { Product } from '@/types/shopify';
 
 export const siteUrl = 'https://wyx-golf-supply-co.vercel.app';
@@ -31,14 +32,14 @@ export function escapeXml(value: string | null | undefined) {
 }
 
 export function stripHtml(value: string | null | undefined) {
-  return String(value || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  return cleanText(String(value || '').replace(/<[^>]*>/g, ' '));
 }
 
 export function productFeedItem(product: Product) {
   const price = productPrice(product);
   return {
     id: product.handle,
-    title: product.title,
+    title: cleanText(product.title),
     description: stripHtml(product.description || product.descriptionHtml),
     link: productUrl(product),
     image: product.featuredImage?.url || product.images[0]?.url || '',

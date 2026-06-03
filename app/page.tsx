@@ -22,7 +22,7 @@ export default async function Home() {
           <h1>Find Your Edge.</h1>
           <p>Useful golf gear from independent makers, selected for the range, the first tee, and the rounds that keep calling you back.</p>
           <div className="actions">
-            <Link className="button primary" href="/products">Shop Golf Gear</Link>
+            <Link className="button primary" href="/first-sale">Shop Launch Picks</Link>
             <Link className="button secondary" href="/story">The WYX Approach</Link>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default async function Home() {
           <h2>Take 10% Off The First Bag Build.</h2>
         </div>
         <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and approved supply-room finds. Limited launch window.</p>
-        <Link className="button primary" href="/products">Shop The Offer</Link>
+        <Link className="button primary" href="/first-sale">Shop The Offer</Link>
       </section>
 
       <section className="section">

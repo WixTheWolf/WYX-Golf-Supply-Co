@@ -12,20 +12,20 @@ export const commerceKits: CommerceKit[] = [
   {
     title: 'Range Grip Reset',
     eyebrow: 'Best Conversion Play',
-    description: 'Two grip upgrades and a fresh ball pack. Low friction, useful, and built for fast cart adds.',
-    handles: ['pulse-golf-overgrip-tape', 'stick-grips-golf-camo-golf-grip', 'shockd-golf-balls']
+    description: 'Grip tape, a fresh towel, and a ball pack. Low friction, useful, and built for fast cart adds.',
+    handles: ['pulse-golf-overgrip-tape', 'blue-ridge-golf-co-golf-towels', 'shockd-golf-balls']
   },
   {
     title: 'Short Game Starter',
     eyebrow: 'Under-$100 Cart Builder',
-    description: 'A marker, accessory caddie, and balls for players who want the green-side basics handled.',
-    handles: ['three-rail-ball-marker', 'glove-accessory-caddie-gray', 'shockd-golf-balls']
+    description: 'A premium marker pack, accessory caddie, and balls for players who want the green-side basics handled.',
+    handles: ['two-sided-metal-golf-ball-marker-5-color-combo-pack', 'glove-accessory-caddie-gray', 'shockd-golf-balls']
   },
   {
     title: 'Weekend Starter Drop',
     eyebrow: 'Aggressive Upsell',
-    description: 'A sharp headwear pick plus two small bag upgrades. Built for shoppers who want personality and utility.',
-    handles: ['topographic-edition-pure-white-embroidered-carolina-blue', 'three-rail-ball-marker', 'stick-grips-golf-camo-golf-grip']
+    description: 'Headcover, towel, and grip upgrade. Built for shoppers who want personality and utility.',
+    handles: ['classic-leather-edition-walnut-brown-midnight-black', 'blue-ridge-golf-co-golf-towels', 'stick-grips-golf-camo-golf-grip']
   }
 ];
 
