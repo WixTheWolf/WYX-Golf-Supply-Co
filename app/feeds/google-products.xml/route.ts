@@ -14,6 +14,7 @@ export async function GET() {
       <description>${escapeXml(product.description)}</description>
       <link>${escapeXml(product.link)}</link>
       <g:link>${escapeXml(product.link)}</g:link>
+      <g:ads_redirect>${escapeXml(product.adsRedirect)}</g:ads_redirect>
       <g:image_link>${escapeXml(product.image)}</g:image_link>
       <g:availability>${product.availability}</g:availability>
       <g:price>${escapeXml(product.price)}</g:price>
@@ -21,6 +22,9 @@ export async function GET() {
       <g:brand>${escapeXml(product.brand)}</g:brand>
       <g:product_type>${escapeXml(product.productType)}</g:product_type>
       <g:google_product_category>${escapeXml(product.googleProductCategory)}</g:google_product_category>
+      <g:custom_label_0>${escapeXml(product.customLabel0)}</g:custom_label_0>
+      <g:custom_label_1>${escapeXml(product.customLabel1)}</g:custom_label_1>
+      <g:custom_label_2>${escapeXml(product.customLabel2)}</g:custom_label_2>
       <g:identifier_exists>false</g:identifier_exists>
     </item>`).join('');
 

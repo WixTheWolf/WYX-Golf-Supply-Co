@@ -111,9 +111,19 @@ export default async function Home() {
             <p className="eyebrow">SEO-Ready Collections</p>
             <h2>Shop By Intent.</h2>
           </div>
-          <Link className="text-link" href="/deals">Start With Deals</Link>
+          <Link className="text-link" href="/golf-gifts-under-60">Golf Gifts Under $60</Link>
         </div>
         <div className="intent-grid">
+          <Link href="/golf-gifts-under-60">
+            <span>High-Intent Search</span>
+            <strong>Golf Gifts Under $60</strong>
+            <small>Useful towels, tees, gloves, tools, and accessories for gift shoppers.</small>
+          </Link>
+          <Link href="/best-golf-accessories">
+            <span>Buyer Intent</span>
+            <strong>Best Golf Accessories</strong>
+            <small>Practical bag upgrades selected for fast add-to-cart decisions.</small>
+          </Link>
           {landingCollections.map((collection) => (
             <Link href={`/collections/${collection.slug}`} key={collection.slug}>
               <span>{collection.eyebrow}</span>

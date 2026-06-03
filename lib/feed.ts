@@ -1,5 +1,6 @@
 import { categoryFor, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
+import { campaignUrl, productMarketingLabels } from '@/lib/marketing';
 import { cleanText } from '@/lib/text';
 import type { Product } from '@/types/shopify';
 
@@ -47,17 +48,22 @@ export function productDescription(product: Pick<Product, 'description' | 'descr
 
 export function productFeedItem(product: Product) {
   const price = productPrice(product);
+  const labels = productMarketingLabels(product);
   return {
     id: product.handle,
     title: cleanText(product.title),
     description: productDescription(product),
     link: productUrl(product),
+    adsRedirect: campaignUrl(`/products/${product.handle}`, 'google_merchant', 'google', 'cpc'),
     image: product.featuredImage?.url || product.images[0]?.url || '',
     availability: product.availableForSale ? 'in stock' : 'out of stock',
     condition: 'new',
     price: `${Number(price.amount).toFixed(2)} ${price.currencyCode}`,
     brand: supplierName(product),
     productType: categoryFor(product),
-    googleProductCategory: 'Sporting Goods > Outdoor Recreation > Golf'
+    googleProductCategory: 'Sporting Goods > Outdoor Recreation > Golf',
+    customLabel0: labels.priceTier,
+    customLabel1: labels.category,
+    customLabel2: labels.conversionType
   };
 }
