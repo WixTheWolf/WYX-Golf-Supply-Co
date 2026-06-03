@@ -71,6 +71,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             <span>Use WYX10 for 10% off</span>
           </div>
           <AddToCartButton variantId={variant?.id} />
+          <AddToCartButton variantId={variant?.id} buyNow />
           <div className="purchase-points"><span>Live supplier inventory</span><span>Secure checkout powered by Shopify</span><span>Fulfilled by the product supplier</span></div>
           <div className="detail-list">
             <section><h2>Player Notes</h2><p>Early WYX customer notes and supplier reviews will appear here as orders come in. For launch, each item is screened for real product media, live inventory, and Shopify checkout availability.</p></section>
@@ -82,7 +83,7 @@ export default async function ProductPage({ params }: { params: { handle: string
       </section>
       <div className="mobile-sticky-atc" aria-label="Sticky mobile purchase bar">
         <div><strong>{money(product.priceRange.minVariantPrice)}</strong><span>{title}</span></div>
-        <AddToCartButton variantId={variant?.id} />
+        <AddToCartButton variantId={variant?.id} buyNow />
       </div>
       {related.length > 0 && <section className="section"><p className="eyebrow">Keep Looking</p><h2>More From The Supply Room.</h2><div className="product-grid">{related.map((item) => <ProductCard key={item.id} product={item} />)}</div></section>}
       <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="Save This Drop For Later." body="Join the launch list for WYX10 reminders, golf gift picks, and useful bag upgrades." />

@@ -16,6 +16,7 @@ type CartContextValue = {
   error: string | null;
   setOpen: (value: boolean) => void;
   add: (id: string) => Promise<void>;
+  buyNow: (id: string) => Promise<void>;
   addMany: (lines: CartLineInput[]) => Promise<void>;
   refresh: () => Promise<void>;
   update: (lineId: string, quantity: number) => Promise<void>;
@@ -102,6 +103,28 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  const buyNow = useCallback(async (merchandiseId: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const next = await callCart('POST', { merchandiseId, quantity: 1 });
+      if (next?.checkoutUrl) {
+        trackCartAdd(next, [merchandiseId], 'product');
+        trackEvent('InitiateCheckout', {
+          value: Number(next.cost.subtotalAmount.amount),
+          currency: next.cost.subtotalAmount.currencyCode,
+          num_items: next.totalQuantity,
+          content_ids: [merchandiseId]
+        });
+        window.location.href = checkoutUrlWithDiscount(next.checkoutUrl);
+      }
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Unable to start checkout.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   const update = useCallback(async (lineId: string, quantity: number) => {
     if (!cart) return;
     setLoading(true);
@@ -129,8 +152,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => { void refresh(); }, [refresh]);
 
   const value = useMemo(
-    () => ({ cart, open, count: cart?.totalQuantity || 0, loading, error, setOpen, add, addMany, refresh, update, remove }),
-    [cart, open, loading, error, add, addMany, refresh, update, remove]
+    () => ({ cart, open, count: cart?.totalQuantity || 0, loading, error, setOpen, add, buyNow, addMany, refresh, update, remove }),
+    [cart, open, loading, error, add, buyNow, addMany, refresh, update, remove]
   );
 
   return <CartContext.Provider value={value}>{children}<CartDrawer /></CartContext.Provider>;
