@@ -239,6 +239,74 @@
   overflow-wrap: anywhere;
 }
 
+.email-capture {
+  width: min(980px, 92vw);
+  margin: clamp(2rem, 5vw, 4rem) auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(280px, 1fr);
+  gap: clamp(1rem, 4vw, 2rem);
+  align-items: center;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.email-capture h2 {
+  margin-bottom: .5rem;
+}
+
+.email-capture p {
+  color: color-mix(in oklab, var(--paper) 76%, var(--muted) 24%);
+}
+
+.email-capture form {
+  display: grid;
+  gap: .75rem;
+}
+
+.email-capture input[type="email"] {
+  width: 100%;
+  padding: .95rem 1rem;
+  border: 1px solid color-mix(in oklab, var(--paper) 24%, transparent);
+  background: color-mix(in oklab, var(--paper) 8%, transparent);
+  color: var(--paper);
+  font: inherit;
+}
+
+.email-capture input[type="email"]::placeholder {
+  color: color-mix(in oklab, var(--paper) 55%, transparent);
+}
+
+.email-capture .button {
+  width: 100%;
+}
+
+.consent-line {
+  display: flex;
+  gap: .6rem;
+  align-items: flex-start;
+  color: color-mix(in oklab, var(--paper) 72%, var(--muted) 28%);
+  font-size: .82rem;
+  line-height: 1.4;
+}
+
+.consent-line input {
+  margin-top: .18rem;
+}
+
+.form-status {
+  margin: 0;
+  font-size: .9rem;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .conversion-panel {
   display: grid;
   gap: .75rem;
@@ -294,6 +362,7 @@
 
   .intent-grid,
   .marketing-grid,
+  .email-capture,
   .collection-hero {
     grid-template-columns: 1fr;
   }

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { KitAddButton } from '@/components/KitAddButton';
 import { availableProducts, catalogCategories, categoryCount } from '@/lib/catalog';
@@ -90,6 +91,8 @@ export default async function Home() {
         </div>
         <p>WYX brings together practical golf gear and personality-driven course essentials from supplier partners. Inventory stays synced through Shopify, so the catalog can keep moving as new finds land.</p>
       </section>
+
+      <EmailCapture source="home" campaign="home_launch_list" />
 
       <section className="section">
         <p className="eyebrow">Shop The Bag</p>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { productPrice } from '@/lib/feed';
@@ -70,6 +71,8 @@ export default async function FirstSale() {
         </div>
         {featured.length ? <div className="product-grid">{featured.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Products are syncing from Shopify.</p>}
       </section>
+
+      <EmailCapture source="first-sale" campaign="first_sale_launch_list" title="Not Ready To Buy Yet?" body="Join the launch list and keep WYX10 close. We will send useful golf drops, deals, and bag-builder picks." />
     </>
   );
 }

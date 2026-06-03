@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AddToCartButton } from '@/components/AddToCartButton';
+import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { categoryFor, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
@@ -64,6 +65,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </div>
       </section>
       {related.length > 0 && <section className="section"><p className="eyebrow">Keep Looking</p><h2>More From The Supply Room.</h2><div className="product-grid">{related.map((item) => <ProductCard key={item.id} product={item} />)}</div></section>}
+      <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="Save This Drop For Later." body="Join the launch list for WYX10 reminders, golf gift picks, and useful bag upgrades." />
     </>
   );
 }

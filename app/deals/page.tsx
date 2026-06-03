@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
@@ -58,6 +59,8 @@ export default async function Deals() {
         </div>
         {deals.length ? <div className="product-grid">{deals.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Deal products are being synced from Shopify.</p>}
       </section>
+
+      <EmailCapture source="deals" campaign="deals_launch_list" title="Want The Next Deal Drop?" body="Join the list for practical golf accessories, under-$60 picks, and launch offers." />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',

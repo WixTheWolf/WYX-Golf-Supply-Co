@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { productPrice, siteUrl } from '@/lib/feed';
@@ -58,6 +59,7 @@ export default async function GolfGiftsUnder60() {
         </div>
         <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div>
       </section>
+      <EmailCapture source="golf-gifts-under-60" campaign="golf_gifts_launch_list" title="Need Golf Gift Ideas Later?" body="Join the WYX list for under-$60 gift picks, useful bag upgrades, and launch offers." />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',

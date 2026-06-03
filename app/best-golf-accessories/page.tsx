@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { siteUrl } from '@/lib/feed';
@@ -51,6 +52,7 @@ export default async function BestGolfAccessories() {
         </div>
         <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div>
       </section>
+      <EmailCapture source="best-golf-accessories" campaign="accessories_launch_list" title="Keep The Bag Upgraded." body="Join the list for practical golf accessories, club-care tools, and first-look deals." />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
