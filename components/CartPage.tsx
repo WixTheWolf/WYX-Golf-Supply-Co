@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { trackEvent } from '@/lib/analytics';
 import { money } from '@/lib/demo';
 import { useCart } from './CartProvider';
 
@@ -37,7 +38,15 @@ export function CartPage() {
           ))}
           <div className="cart-summary">
             <p><span>Subtotal</span><strong>{money(cart.cost.subtotalAmount)}</strong></p>
-            <button className="button primary" disabled={loading} onClick={() => { window.location.href = checkoutUrlWithDiscount(cart.checkoutUrl); }}>Checkout With WYX10</button>
+            <button className="button primary" disabled={loading} onClick={() => {
+              trackEvent('InitiateCheckout', {
+                value: Number(cart.cost.subtotalAmount.amount),
+                currency: cart.cost.subtotalAmount.currencyCode,
+                num_items: cart.totalQuantity,
+                content_ids: cart.lines.map((line) => line.merchandise.id)
+              });
+              window.location.href = checkoutUrlWithDiscount(cart.checkoutUrl);
+            }}>Checkout With WYX10</button>
           </div>
         </div>
       )}

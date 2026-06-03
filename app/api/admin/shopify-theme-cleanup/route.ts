@@ -23,13 +23,15 @@ async function shopifyRest(path: string, init: RequestInit = {}) {
   return json;
 }
 
-function removeEmptyFeaturedProducts(template: any) {
+function removeEmptyFeaturedProducts(template: any, minimalFallback = false, blankFallback = false) {
   const sections = template.sections || {};
   const remove = Object.entries(sections)
     .filter(([, section]: [string, any]) => {
       const product = String(section?.settings?.product || '');
       const serialized = JSON.stringify(section);
-      return (section?.type === 'featured_product' && !product)
+      return blankFallback
+        || (minimalFallback && section?.type !== 'product-list')
+        || (section?.type === 'featured_product' && !product)
         || (section?.type === 'featured-product-information' && (!product || product.includes('player-preferred')))
         || serialized.includes('Product title');
     })
@@ -58,14 +60,17 @@ export async function GET(request: Request) {
   }
 
   try {
-    const shouldFix = new URL(request.url).searchParams.get('fix') === 'true';
+    const url = new URL(request.url);
+    const shouldFix = url.searchParams.get('fix') === 'true';
+    const minimalFallback = url.searchParams.get('minimal') === 'true';
+    const blankFallback = url.searchParams.get('blank') === 'true';
     const themes = await shopifyRest('/themes.json');
     const mainTheme = themes.themes?.find((theme: any) => theme.role === 'main');
     if (!mainTheme?.id) throw new Error('No live Shopify theme found.');
 
     const asset = await shopifyRest(`/themes/${mainTheme.id}/assets.json?asset[key]=templates/index.json`);
     const template = JSON.parse(asset.asset.value);
-    const removed = removeEmptyFeaturedProducts(template);
+    const removed = removeEmptyFeaturedProducts(template, minimalFallback, blankFallback);
 
     if (shouldFix && removed.length) {
       await shopifyRest(`/themes/${mainTheme.id}/assets.json`, {
@@ -77,6 +82,8 @@ export async function GET(request: Request) {
     return NextResponse.json({
       ok: true,
       fixed: shouldFix,
+      minimalFallback,
+      blankFallback,
       theme: { id: mainTheme.id, name: mainTheme.name, role: mainTheme.role },
       removedEmptyFeaturedProductSections: removed,
       sections: sectionSummary(template)

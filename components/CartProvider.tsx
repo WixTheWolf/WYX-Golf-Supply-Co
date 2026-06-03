@@ -144,7 +144,9 @@ function CartDrawer() {
     trackEvent('InitiateCheckout', {
       value: Number(cart.cost.subtotalAmount.amount),
       currency: cart.cost.subtotalAmount.currencyCode,
-      num_items: cart.totalQuantity
+      num_items: cart.totalQuantity,
+      content_ids: cart.lines.map((line) => line.merchandise.id),
+      contents: cart.lines.map((line) => ({ id: line.merchandise.id, quantity: line.quantity }))
     });
     window.location.href = checkoutUrlWithDiscount(cart.checkoutUrl);
   }
