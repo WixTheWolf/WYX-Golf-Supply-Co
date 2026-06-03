@@ -47,6 +47,26 @@ export const landingCollections: LandingCollection[] = [
     bullets: ['Fast equipment refresh', 'Great add-on purchase', 'Pairs with balls and markers']
   },
   {
+    slug: 'golf-club-care',
+    title: 'Golf Club Care Essentials',
+    eyebrow: 'Clean Contact',
+    description: 'Brushes, groove tools, towels, and simple reset gear for players who want cleaner contact from the range to the back nine.',
+    seoTitle: 'Golf Club Care Essentials',
+    metaDescription: 'Shop golf club care essentials from WYX Golf Supply Co., including brush cleaners, groove tools, towels, and bag-ready maintenance gear.',
+    match: (product) => ['Club Care', 'Towels'].includes(categoryFor(product)) || text(product).includes('club care') || text(product).includes('groove'),
+    bullets: ['Better pre-shot routine', 'Strong low-ticket add-ons', 'Useful for every skill level']
+  },
+  {
+    slug: 'golf-training-aids',
+    title: 'Golf Training Aids For Better Practice',
+    eyebrow: 'Practice Better',
+    description: 'Compact training aids and scoring tools for golfers who want more useful practice without rebuilding the whole bag.',
+    seoTitle: 'Golf Training Aids',
+    metaDescription: 'Shop compact golf training aids from WYX Golf Supply Co., including putting mirrors and practice-ready golf accessories.',
+    match: (product) => categoryFor(product) === 'Training Aids' || text(product).includes('training aid') || text(product).includes('putting mirror'),
+    bullets: ['Practice-focused products', 'Compact bag-friendly picks', 'Built for scoring improvement']
+  },
+  {
     slug: 'golf-bag-essentials',
     title: 'Golf Bag Essentials',
     eyebrow: 'Build The Bag',

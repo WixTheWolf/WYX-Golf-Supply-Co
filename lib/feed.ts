@@ -32,7 +32,17 @@ export function escapeXml(value: string | null | undefined) {
 }
 
 export function stripHtml(value: string | null | undefined) {
-  return cleanText(String(value || '').replace(/<[^>]*>/g, ' '));
+  return cleanText(String(value || '')
+    .replace(/<\/(p|h[1-6]|li|ul|ol|div)>/gi, '. ')
+    .replace(/<li[^>]*>/gi, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+\./g, '.')
+    .replace(/\.{2,}/g, '.')
+    .replace(/\.\s+\./g, '.'));
+}
+
+export function productDescription(product: Pick<Product, 'description' | 'descriptionHtml'>) {
+  return stripHtml(product.descriptionHtml || product.description);
 }
 
 export function productFeedItem(product: Product) {
@@ -40,7 +50,7 @@ export function productFeedItem(product: Product) {
   return {
     id: product.handle,
     title: cleanText(product.title),
-    description: stripHtml(product.description || product.descriptionHtml),
+    description: productDescription(product),
     link: productUrl(product),
     image: product.featuredImage?.url || product.images[0]?.url || '',
     availability: product.availableForSale ? 'in stock' : 'out of stock',
