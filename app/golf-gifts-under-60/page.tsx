@@ -40,12 +40,12 @@ export default async function GolfGiftsUnder60() {
         <aside className="share-card">
           <p className="eyebrow">Launch Code</p>
           <h2>WYX10 Saves 10%</h2>
-          <p>Use the launch code at Shopify checkout. Great for golfers, coaches, league partners, and last-minute gifts.</p>
+          <p>Use the launch code at checkout. Great for golfers, coaches, league partners, and last-minute gifts.</p>
         </aside>
       </section>
       <section className="deal-strip" aria-label="Gift shopping benefits">
         <span>Under-$60 golf gifts</span>
-        <span>Secure Shopify checkout</span>
+        <span>Easy checkout</span>
         <span>Useful bag upgrades</span>
         <span>Fast first-order picks</span>
       </section>

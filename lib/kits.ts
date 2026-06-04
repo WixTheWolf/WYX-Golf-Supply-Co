@@ -10,22 +10,40 @@ export type CommerceKit = {
 
 export const commerceKits: CommerceKit[] = [
   {
-    title: 'Range Grip Reset',
-    eyebrow: 'Best Conversion Play',
-    description: 'Grip tape, a real supplier towel, and a fresh grip. Low friction, useful, and built for fast cart adds.',
+    title: 'Weekend Warrior Kit',
+    eyebrow: 'Best First Cart',
+    description: 'Grip tape, a towel, and a fresh grip for players who want the bag ready before Saturday morning.',
     handles: ['pulse-golf-overgrip-tape', 'blue-ridge-golf-co-golf-towels', 'stick-grips-golf-camo-golf-grip']
   },
   {
-    title: 'Short Game Starter',
-    eyebrow: 'Under-$100 Cart Builder',
-    description: 'Ball markers and a glove caddie for players who want the green-side basics handled.',
+    title: 'Clean Contact Kit',
+    eyebrow: 'Club Care Starter',
+    description: 'A simple bag reset built around cleaner clubs, cleaner towels, and better pre-shot habits.',
+    handles: ['blue-ridge-golf-co-golf-towels', 'tri-fold-microfiber-golf-towel', 'pulse-golf-overgrip-tape']
+  },
+  {
+    title: 'Range Rat Kit',
+    eyebrow: 'Practice Session Add-On',
+    description: 'Grip tape, a glove, and useful accessories for players who live at the range after work.',
+    handles: ['pulse-golf-overgrip-tape', 'park-paisley-womens-gold-golf-glove', 'glove-accessory-caddie-gray']
+  },
+  {
+    title: 'Golf Dad Gift Kit',
+    eyebrow: 'Gift-Ready Bundle',
+    description: 'Small useful pieces Dad can put straight into the bag: markers, towel utility, and glove storage.',
     handles: ['three-rail-ball-marker', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'glove-accessory-caddie-gray']
   },
   {
-    title: 'Weekend Starter Drop',
-    eyebrow: 'Aggressive Upsell',
-    description: 'Headcover, glove, and golf balls. Built for shoppers who want personality and utility.',
+    title: '12-Handicap Survival Kit',
+    eyebrow: 'Real Round Rescue',
+    description: 'Balls, a glove, and a headcover upgrade for the player trying to keep doubles off the card.',
     handles: ['classic-leather-edition-walnut-brown-midnight-black', 'park-paisley-womens-gold-golf-glove', 'shockd-golf-balls']
+  },
+  {
+    title: 'Bachelor Party Bag',
+    eyebrow: 'Group Gift Builder',
+    description: 'Easy prize-table products and useful small gear for golf trips, scrambles, and weekend groups.',
+    handles: ['three-rail-ball-marker', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'shockd-golf-balls']
   }
 ];
 

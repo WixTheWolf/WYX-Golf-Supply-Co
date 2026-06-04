@@ -1,0 +1,16 @@
+import type { Metadata } from 'next';
+import { IntentLandingPage } from '@/components/IntentLandingPage';
+import { intentPages } from '@/lib/intentPages';
+
+const config = intentPages['clean-contact-kit'];
+
+export const revalidate = 300;
+export const metadata: Metadata = {
+  title: config.metaTitle,
+  description: config.metaDescription,
+  alternates: { canonical: '/clean-contact-kit' }
+};
+
+export default async function Page() {
+  return IntentLandingPage({ config });
+}

@@ -97,6 +97,56 @@ const collectionPlans = [
     match: (product: AdminProduct) => ['Accessories', 'Club Care', 'Training Aids', 'Towels'].includes(categoryFor(product))
   },
   {
+    handle: 'wyx-bag-essentials',
+    title: 'WYX Golf Bag Essentials',
+    descriptionHtml: '<p>Golf balls, gloves, towels, markers, grips, caddies, and useful add-ons for better weekend bag builds.</p>',
+    seo: {
+      title: 'Golf Bag Essentials | WYX Golf Supply Co.',
+      description: 'Shop golf bag essentials from WYX Golf Supply Co., including towels, gloves, grips, markers, balls, and accessories.'
+    },
+    match: (product: AdminProduct) => ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care'].includes(categoryFor(product)) && !/golf bag/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  {
+    handle: 'wyx-golf-gifts-for-dad',
+    title: 'WYX Golf Gifts For Dad',
+    descriptionHtml: '<p>Useful golf gifts for Dad, including towels, ball markers, gloves, golf balls, grips, and bag essentials.</p>',
+    seo: {
+      title: 'Golf Gifts For Dad | WYX Golf Supply Co.',
+      description: 'Shop useful golf gifts for Dad from WYX Golf Supply Co., including towels, markers, gloves, balls, and bag essentials.'
+    },
+    match: (product: AdminProduct) => minPrice(product) <= 100 || /dad|father|towel|marker|glove|grip|ball|headcover|bag/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  {
+    handle: 'wyx-weekend-golfer-essentials',
+    title: 'WYX Weekend Golfer Essentials',
+    descriptionHtml: '<p>Useful golf gear for weekend players: range-session tools, towels, gloves, balls, markers, grips, and bag accessories.</p>',
+    seo: {
+      title: 'Weekend Golfer Essentials | WYX Golf Supply Co.',
+      description: 'Shop weekend golfer essentials from WYX Golf Supply Co. for better rounds, range sessions, and bag builds.'
+    },
+    match: (product: AdminProduct) => minPrice(product) <= 90 || ['Training Aids', 'Club Care', 'Towels', 'Accessories'].includes(categoryFor(product))
+  },
+  {
+    handle: 'wyx-bachelor-party-golf-gifts',
+    title: 'WYX Bachelor Party Golf Gifts',
+    descriptionHtml: '<p>Golf gifts, cart prizes, and useful group golf accessories for bachelor parties, scrambles, and weekend trips.</p>',
+    seo: {
+      title: 'Bachelor Party Golf Gifts | WYX Golf Supply Co.',
+      description: 'Shop bachelor party golf gifts, scramble prizes, and useful group golf accessories from WYX Golf Supply Co.'
+    },
+    match: (product: AdminProduct) => minPrice(product) <= 75 || /marker|towel|flask|cooler|balls|headcover|tee|divot|caddie/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  {
+    handle: 'wyx-clean-contact-kit',
+    title: 'WYX Clean Contact Kit',
+    descriptionHtml: '<p>Towels, club-care tools, groove cleaners, and bag reset picks for cleaner clubs and better range habits.</p>',
+    seo: {
+      title: 'Clean Contact Golf Kit | WYX Golf Supply Co.',
+      description: 'Shop clean-contact golf gear from WYX Golf Supply Co., including towels, club-care tools, and bag reset picks.'
+    },
+    match: (product: AdminProduct) => ['Club Care', 'Towels'].includes(categoryFor(product)) || /clean|brush|groove|towel|care|contact/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  {
     handle: 'wyx-club-care-essentials',
     title: 'WYX Club Care Essentials',
     descriptionHtml: '<p>Golf club cleaning tools, groove cleaners, brushes, and towels built for cleaner contact and better weekly bag routines.</p>',
@@ -119,10 +169,10 @@ const collectionPlans = [
   {
     handle: 'wyx-premium-golf-bags',
     title: 'WYX Premium Golf Bags',
-    descriptionHtml: '<p>Premium supplier-backed golf bags with real product photography, live inventory, and secure Shopify checkout.</p>',
+    descriptionHtml: '<p>Premium golf bags with real product photography, active availability, and easy checkout.</p>',
     seo: {
       title: 'Premium Golf Bags | WYX Golf Supply Co.',
-      description: 'Shop premium supplier-backed golf bags from WYX Golf Supply Co. with live inventory and secure Shopify checkout.'
+      description: 'Shop premium golf bags from WYX Golf Supply Co. with real product photography and active availability.'
     },
     match: (product: AdminProduct) => /golf bag/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
   }
@@ -149,7 +199,7 @@ function trim(value: string, max: number) {
 function seoFor(product: AdminProduct) {
   const category = categoryFor(product);
   const title = trim(`${cleanText(product.title)} | ${category}`, 68);
-  const description = trim(`${productDescription(product)} Shop ${category.toLowerCase()} from WYX Golf Supply Co. with secure Shopify checkout.`, 155);
+  const description = trim(`${productDescription(product)} Shop ${category.toLowerCase()} from WYX Golf Supply Co. for real rounds and better bag builds.`, 155);
   return { title, description };
 }
 

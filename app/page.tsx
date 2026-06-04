@@ -5,6 +5,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { KitAddButton } from '@/components/KitAddButton';
 import { availableProducts, catalogCategories, categoryCount } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
+import { productPrice } from '@/lib/feed';
 import { landingCollections } from '@/lib/collections';
 import { commerceKits, kitCategorySummary, kitLines, kitProducts } from '@/lib/kits';
 import { sortByQuality } from '@/lib/productQuality';
@@ -14,7 +15,7 @@ export const revalidate = 300;
 
 export default async function Home() {
   const catalog = sortByQuality(availableProducts(await getProducts()));
-  const featured = catalog.slice(0, 6);
+  const featured = catalog.filter((product) => Number(productPrice(product).amount) <= 75).slice(0, 6);
   const categories = catalogCategories.slice(1).filter((category) => categoryCount(catalog, category) > 0);
 
   return (
@@ -23,20 +24,20 @@ export default async function Home() {
         <Image src={imageMap.hero} alt="Coastal fairway at golden hour" fill priority />
         <div className="hero-copy">
           <p className="eyebrow">WYX Golf Supply Co.</p>
-          <h1>Find Your Edge.</h1>
-          <p>Useful golf gear from independent makers, selected for the range, the first tee, and the rounds that keep calling you back.</p>
+          <h1>Better Bag. Better Gifts. Better Rounds.</h1>
+          <p>Useful golf gear for weekend players, golf dads, range rats, and anyone building a better bag without pro shop markup.</p>
           <div className="actions">
-            <Link className="button primary" href="/first-sale">Shop Launch Picks</Link>
-            <Link className="button secondary" href="/story">The WYX Approach</Link>
+            <Link className="button primary" href="/golf-gifts">Shop Golf Gifts</Link>
+            <Link className="button secondary" href="/bag-essentials">Build The Bag</Link>
           </div>
         </div>
       </section>
 
       <section className="trust-strip" aria-label="Store benefits">
-        <span>Independent Golf Brands</span>
+        <span>Trusted Golf Suppliers</span>
         <span>Use WYX10 For 10% Off</span>
-        <span>Secure Shopify Checkout</span>
-        <span>Supplier-Backed Fulfillment</span>
+        <span>Easy Checkout</span>
+        <span>U.S. Customer Support</span>
       </section>
 
       <section className="launch-offer">
@@ -48,11 +49,11 @@ export default async function Home() {
         <Link className="button primary" href="/fathers-day-golf-gifts">Shop Dad Gifts</Link>
       </section>
 
-      <section className="section">
+      <section id="kits" className="section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Built To Convert</p>
-            <h2>One-Click Golf Kits.</h2>
+            <p className="eyebrow">Fast Bag Builds</p>
+            <h2>Kits Golfers Actually Use.</h2>
           </div>
           <Link className="text-link" href="/products">Build Your Own</Link>
         </div>
@@ -67,7 +68,7 @@ export default async function Home() {
                 <p>{kit.description}</p>
                 <p className="product-meta">{kitCategorySummary(products)}</p>
                 <ul>{products.map((product) => <li key={product.id}>{product.title}</li>)}</ul>
-                <KitAddButton lines={lines} />
+                <KitAddButton lines={lines} kitName={kit.title} />
               </article>
             );
           })}
@@ -77,8 +78,8 @@ export default async function Home() {
       <section className="section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Fresh From The Supply Room</p>
-            <h2>Gear Worth Putting In The Bag.</h2>
+          <p className="eyebrow">Fresh From The Shop</p>
+          <h2>Easy First-Cart Picks.</h2>
           </div>
           <Link className="text-link" href="/products">Shop All Products</Link>
         </div>
@@ -87,10 +88,10 @@ export default async function Home() {
 
       <section className="dark-section">
         <div>
-          <p className="eyebrow">Built For Discovery</p>
-          <h2>Small Brands. Smart Finds. Better Rounds.</h2>
+          <p className="eyebrow">Why WYX</p>
+          <h2>Useful Golf Gear Without The Pro Shop Markup.</h2>
         </div>
-        <p>WYX brings together practical golf gear and personality-driven course essentials from supplier partners. Inventory stays synced through Shopify, so the catalog can keep moving as new finds land.</p>
+        <p>WYX curates useful golf products from trusted golf suppliers: gift-ready picks, bag essentials, clean-contact tools, and weekend golfer upgrades that make sense before the first tee.</p>
       </section>
 
       <EmailCapture source="home" campaign="home_launch_list" />
@@ -136,12 +137,27 @@ export default async function Home() {
           <Link href="/popular-golf-products-2026">
             <span>2026 Demand</span>
             <strong>Popular Golf Products</strong>
-            <small>Fresh gifts, useful accessories, and supplier-backed products worth scouting now.</small>
+            <small>Fresh gifts, useful accessories, and practical products worth scouting now.</small>
           </Link>
           <Link href="/premium-golf-bags">
             <span>Premium Upgrade</span>
             <strong>Premium Golf Bags</strong>
-            <small>Real supplier-backed cart bags for golfers ready to upgrade the whole setup.</small>
+            <small>Premium cart bags for golfers ready to upgrade the whole setup.</small>
+          </Link>
+          <Link href="/golf-gifts">
+            <span>Gift Shoppers</span>
+            <strong>Golf Gifts</strong>
+            <small>Gift-ready picks for golf dads, weekend players, and last-minute buyers.</small>
+          </Link>
+          <Link href="/bag-essentials">
+            <span>Core Intent</span>
+            <strong>Bag Essentials</strong>
+            <small>Balls, gloves, towels, markers, grips, and useful add-ons.</small>
+          </Link>
+          <Link href="/clean-contact-kit">
+            <span>Club Care</span>
+            <strong>Clean Contact Kit</strong>
+            <small>Towels and care tools for cleaner clubs and better range habits.</small>
           </Link>
           {landingCollections.map((collection) => (
             <Link href={`/collections/${collection.slug}`} key={collection.slug}>

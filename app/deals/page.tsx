@@ -11,7 +11,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Golf Deals Under $60',
-  description: 'Shop WYX Golf Supply Co. golf deals, bag upgrades, ball markers, grips, gloves, and accessories under $60 with secure Shopify checkout.'
+  description: 'Shop WYX Golf Supply Co. golf deals, bag upgrades, ball markers, grips, gloves, and accessories under $60.'
 };
 
 export default async function Deals() {
@@ -25,7 +25,7 @@ export default async function Deals() {
         <div>
           <p className="eyebrow">WYX Launch Deals</p>
           <h1>Golf Finds Under $60.</h1>
-          <p>Fast cart builders, bag upgrades, and giftable golf gear selected for low-friction checkout. Use code <strong>WYX10</strong> for 10% off at Shopify checkout.</p>
+          <p>Fast cart builders, bag upgrades, and giftable golf gear selected for low-friction checkout. Use code <strong>WYX10</strong> for 10% off during the launch window.</p>
           <div className="actions">
             <Link className="button primary" href="#deal-grid">Shop The Deals</Link>
             <Link className="button secondary dark" href="/products">Browse All Gear</Link>
@@ -44,8 +44,8 @@ export default async function Deals() {
 
       <section className="deal-strip" aria-label="Why shop WYX deals">
         <span>Launch code WYX10</span>
-        <span>Secure Shopify checkout</span>
-        <span>Live supplier inventory</span>
+        <span>Easy checkout</span>
+        <span>Active product availability</span>
         <span>Golf-first product curation</span>
       </section>
 

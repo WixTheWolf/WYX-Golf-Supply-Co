@@ -11,7 +11,7 @@ import { TrackingScripts } from '@/components/TrackingScripts';
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyx-golf-supply-co.vercel.app'),
   title: { default: 'WYX Golf Supply Co. | Golf Accessories, Gifts & Bag Essentials', template: '%s | WYX Golf Supply Co.' },
-  description: 'Shop golf accessories, gifts under $60, club-care tools, gloves, grips, towels, golf balls, and bag essentials with secure Shopify checkout.',
+  description: 'Shop golf accessories, gifts under $60, club-care tools, gloves, grips, towels, golf balls, and bag essentials for weekend golfers.',
   keywords: ['golf accessories', 'golf gifts under 60', 'golf towels', 'golf gloves', 'golf ball markers', 'club care tools', 'putting mirror', 'golf tees'],
   alternates: { canonical: '/' },
   openGraph: {
@@ -25,5 +25,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body><SeoJsonLd /><TrackingScripts /><CartProvider><Header /><main>{children}</main><footer className="site-footer"><div><Link className="footer-brand" href="/">WYX <span>Golf Supply Co.</span></Link><p>Independent golf finds for the range, the first tee, and the long game.</p></div><nav aria-label="Footer navigation"><Link href="/products">Shop</Link><Link href="/golf-gifts-under-60">Golf Gifts</Link><Link href="/fathers-day-golf-gifts">Dad Gifts</Link><Link href="/best-golf-accessories">Accessories</Link><Link href="/premium-golf-bags">Premium Bags</Link><Link href="/popular-golf-products-2026">Popular 2026</Link><Link href="/first-sale">First Sale</Link><Link href="/deals">Deals</Link><Link href="/story">Our Story</Link><Link href="/journal">Field Notes</Link><Link href="/shipping-returns">Shipping & Returns</Link><Link href="/privacy">Privacy</Link><Link href="/contact">Contact</Link></nav></footer></CartProvider></body></html>;
+  return <html lang="en"><body><SeoJsonLd /><TrackingScripts /><CartProvider><Header /><main>{children}</main><footer className="site-footer"><div><Link className="footer-brand" href="/">WYX <span>Golf Supply Co.</span></Link><p>Useful golf gear, gift-ready picks, and better bag builds for weekend players.</p></div><nav aria-label="Footer navigation"><Link href="/products">Shop</Link><Link href="/golf-gifts">Golf Gifts</Link><Link href="/golf-gifts-for-dad">Dad Gifts</Link><Link href="/bag-essentials">Bag Essentials</Link><Link href="/clean-contact-kit">Clean Contact</Link><Link href="/bachelor-party-golf-gifts">Group Gifts</Link><Link href="/premium-golf-bags">Premium Bags</Link><Link href="/popular-golf-products-2026">Popular 2026</Link><Link href="/deals">Deals</Link><Link href="/about">About</Link><Link href="/faq">FAQ</Link><Link href="/story">Our Story</Link><Link href="/journal">Field Notes</Link><Link href="/shipping-returns">Shipping & Returns</Link><Link href="/privacy">Privacy</Link><Link href="/contact">Contact</Link></nav></footer></CartProvider></body></html>;
 }

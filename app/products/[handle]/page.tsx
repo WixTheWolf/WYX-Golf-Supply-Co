@@ -65,18 +65,18 @@ export default async function ProductPage({ params }: { params: { handle: string
           <div className="trust-list" aria-label="Purchase confidence">
             <span>Shipping timing shown at checkout</span>
             <span>Returns policy posted before purchase</span>
-            <span>Secure Shopify checkout</span>
-            <span>Supplier fulfilled</span>
+            <span>Secure payment</span>
+            <span>Trusted golf supplier</span>
             <span>U.S. customer support</span>
             <span>Use WYX10 for 10% off</span>
           </div>
           <AddToCartButton variantId={variant?.id} />
           <AddToCartButton variantId={variant?.id} buyNow />
-          <div className="purchase-points"><span>Live supplier inventory</span><span>Secure checkout powered by Shopify</span><span>Fulfilled by the product supplier</span></div>
+          <div className="purchase-points"><span>Active product availability</span><span>Easy checkout</span><span>Built for real rounds</span></div>
           <div className="detail-list">
-            <section><h2>Player Notes</h2><p>Early WYX customer notes and supplier reviews will appear here as orders come in. For launch, each item is screened for real product media, live inventory, and Shopify checkout availability.</p></section>
-            <section><h2>Product Details</h2><p>The supplier listing above is the source of truth for this product. Review the product description for included items, sizing, and available options.</p></section>
-            <section><h2>Shipping & Returns</h2><p>Shipping rates and delivery timing are shown at Shopify checkout. Review our <Link href="/shipping-returns">shipping and returns policy</Link> before ordering.</p></section>
+            <section><h2>Player Notes</h2><p>Early WYX customer notes and reviews will appear here as orders come in. For launch, each item is screened for real product media, active availability, and useful golf intent.</p></section>
+            <section><h2>Product Details</h2><p>Review the product description above for included items, sizing, color options, and fit notes before adding it to your bag.</p></section>
+            <section><h2>Shipping & Returns</h2><p>Shipping rates and delivery timing are shown before payment. Review our <Link href="/shipping-returns">shipping and returns policy</Link> before ordering.</p></section>
             <section><h2>Quick Questions</h2>{faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</section>
           </div>
         </div>

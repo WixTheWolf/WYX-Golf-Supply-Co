@@ -11,11 +11,11 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Premium Golf Bags',
-  description: 'Shop premium supplier-backed golf bags from WYX Golf Supply Co. with real product photography, live Shopify inventory, and secure checkout.',
+  description: 'Shop premium golf bags from WYX Golf Supply Co. with real product photography, active availability, and easy checkout.',
   alternates: { canonical: '/premium-golf-bags' },
   openGraph: {
     title: 'Premium Golf Bags | WYX Golf Supply Co.',
-    description: 'Real supplier-backed golf bags for players ready to upgrade the whole setup.',
+    description: 'Premium golf bags for players ready to upgrade the whole setup.',
     url: '/premium-golf-bags'
   }
 };
@@ -29,25 +29,25 @@ export default async function PremiumGolfBags() {
         <div>
           <p className="eyebrow">Premium Golf Bags</p>
           <h1>The Whole Setup Starts With The Bag.</h1>
-          <p>These are higher-ticket, real supplier-backed golf bags with live inventory and real product media. They are for golfers ready to upgrade the full setup, not just add another small accessory.</p>
+          <p>These are higher-ticket golf bags with real product media and active availability. They are for golfers ready to upgrade the full setup, not just add another small accessory.</p>
           <div className="actions">
             <Link className="button primary" href="#bag-grid">Shop Premium Bags</Link>
             <Link className="button secondary dark" href="/fathers-day-golf-gifts">Gift Picks</Link>
           </div>
         </div>
         <div className="collection-proof">
-          <span>Real supplier inventory</span>
+          <span>Real product media</span>
           <span>Premium upgrade product</span>
-          <span>Secure Shopify checkout</span>
+          <span>Easy checkout</span>
           <span>WYX10 launch code</span>
         </div>
       </section>
 
       <section className="deal-strip" aria-label="Premium golf bag proof points">
         <span>Real product photos</span>
-        <span>Published from Shopify</span>
+        <span>Trusted golf suppliers</span>
         <span>Premium buyer intent</span>
-        <span>Supplier fulfilled</span>
+        <span>U.S. customer support</span>
       </section>
 
       <section id="bag-grid" className="section product-section">

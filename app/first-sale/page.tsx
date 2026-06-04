@@ -38,7 +38,7 @@ export default async function FirstSale() {
         <div>
           <p className="eyebrow">First Sale Push</p>
           <h1>Help Launch WYX Golf Supply.</h1>
-          <p>We are opening the supply room with useful golf gear, quick bag upgrades, and a launch code. Use <strong>WYX10</strong> for 10% off at Shopify checkout today.</p>
+          <p>We are opening the supply room with useful golf gear, quick bag upgrades, and a launch code. Use <strong>WYX10</strong> for 10% off today.</p>
           <div className="actions">
             <Link className="button primary" href="#first-sale-products">Shop The Launch Picks</Link>
             <Link className="button secondary dark" href="/deals">See All Deals</Link>
@@ -55,8 +55,8 @@ export default async function FirstSale() {
       <section className="deal-strip" aria-label="Launch offer benefits">
         <span>Use WYX10 today</span>
         <span>Under-$60 picks</span>
-        <span>Secure Shopify checkout</span>
-        <span>Supplier-backed fulfillment</span>
+        <span>Easy checkout</span>
+        <span>Trusted golf suppliers</span>
       </section>
 
       <section id="first-sale-products" className="section product-section">

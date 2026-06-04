@@ -29,10 +29,10 @@ export function productQualityScore(product: Product) {
 export function qualityReason(product: Product) {
   const price = Number(productPrice(product).amount);
   const category = categoryFor(product);
-  if (isPremiumGolfBag(product)) return 'Premium bag upgrade with real supplier inventory';
+  if (isPremiumGolfBag(product)) return 'Premium bag upgrade with real product media';
   if (price <= 35 && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories'].includes(category)) return 'Easy first-cart product golfers actually use';
   if (price <= 60) return 'Giftable under-$60 golf pick';
-  return 'Curated supplier-backed golf product';
+  return 'Curated golf product from trusted suppliers';
 }
 
 export function sortByQuality<T extends Product>(products: T[]) {

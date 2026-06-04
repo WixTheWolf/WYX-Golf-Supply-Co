@@ -7,6 +7,7 @@ import { money } from '@/lib/demo';
 import { useCart } from './CartProvider';
 
 const launchCode = 'WYX10';
+const freeShippingThreshold = 75;
 
 export function CartPage() {
   const { cart, loading, error, update, remove } = useCart();
@@ -37,6 +38,7 @@ export function CartPage() {
             </div>
           ))}
           <div className="cart-summary">
+            <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />
             <p><span>Subtotal</span><strong>{money(cart.cost.subtotalAmount)}</strong></p>
             <button className="button primary" disabled={loading} onClick={() => {
               trackEvent('InitiateCheckout', {
@@ -51,6 +53,17 @@ export function CartPage() {
         </div>
       )}
     </section>
+  );
+}
+
+function CartProgress({ amount, currency }: { amount: number; currency: string }) {
+  const remaining = Math.max(0, freeShippingThreshold - amount);
+  const percent = Math.min(100, Math.round((amount / freeShippingThreshold) * 100));
+  return (
+    <div className="cart-progress" aria-label="Free shipping progress">
+      <div><span style={{ width: `${percent}%` }} /></div>
+      <p>{remaining > 0 ? `${new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(remaining)} away from the $75 free-shipping goal.` : 'Free-shipping goal reached. Shipping options confirm at checkout.'}</p>
+    </div>
   );
 }
 

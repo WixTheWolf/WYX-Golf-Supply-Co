@@ -26,6 +26,32 @@
   font-size: .84rem;
 }
 
+.cart-progress {
+  display: grid;
+  gap: .45rem;
+  margin: .75rem 0;
+}
+
+.cart-progress > div {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--line) 55%, white 45%);
+}
+
+.cart-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lime);
+}
+
+.cart-progress p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .78rem;
+}
+
 .deal-hero {
   width: min(1240px, 92vw);
   margin: 0 auto;

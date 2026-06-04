@@ -32,9 +32,9 @@ export const landingCollections: LandingCollection[] = [
     eyebrow: 'Bag Essentials',
     description: 'Ball markers, caddies, utility pieces, and small upgrades selected to make every round feel more organized.',
     seoTitle: 'Golf Accessories',
-    metaDescription: 'Shop golf accessories from WYX Golf Supply Co., including ball markers, bag caddies, grips, and supplier-backed course essentials.',
+    metaDescription: 'Shop golf accessories from WYX Golf Supply Co., including ball markers, bag caddies, grips, and practical course essentials.',
     match: (product) => categoryFor(product) === 'Accessories',
-    bullets: ['Ball markers and bag tools', 'Live supplier availability', 'Curated for everyday rounds']
+    bullets: ['Ball markers and bag tools', 'Active product availability', 'Curated for everyday rounds']
   },
   {
     slug: 'golf-grips',
@@ -42,7 +42,7 @@ export const landingCollections: LandingCollection[] = [
     eyebrow: 'Grip Refresh',
     description: 'Grip tape and grip upgrades for players who want a fast equipment refresh without replacing the whole bag.',
     seoTitle: 'Golf Grips & Grip Tape',
-    metaDescription: 'Shop golf grips and grip tape from WYX Golf Supply Co. with live supplier inventory and secure Shopify checkout.',
+    metaDescription: 'Shop golf grips and grip tape from WYX Golf Supply Co. for fast bag refreshes and better range sessions.',
     match: (product) => categoryFor(product) === 'Grips' || text(product).includes('grip'),
     bullets: ['Fast equipment refresh', 'Great add-on purchase', 'Pairs with balls and markers']
   },
@@ -74,7 +74,7 @@ export const landingCollections: LandingCollection[] = [
     seoTitle: 'Golf Bag Essentials',
     metaDescription: 'Shop golf bag essentials from WYX Golf Supply Co., including golf balls, gloves, grips, markers, and accessories.',
     match: (product) => ['Golf Balls', 'Gloves', 'Grips', 'Accessories'].includes(categoryFor(product)),
-    bullets: ['Core round essentials', 'Useful add-ons', 'Secure Shopify checkout']
+    bullets: ['Core round essentials', 'Useful add-ons', 'Easy checkout']
   }
 ];
 

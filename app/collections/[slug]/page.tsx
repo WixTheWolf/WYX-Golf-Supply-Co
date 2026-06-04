@@ -6,6 +6,7 @@ import { availableProducts } from '@/lib/catalog';
 import { getLandingCollection, landingCollections } from '@/lib/collections';
 import { imageMap } from '@/lib/demo';
 import { siteUrl } from '@/lib/feed';
+import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function CollectionPage({ params }: { params: { slug: string } }) {
   const collection = getLandingCollection(params.slug);
   if (!collection) notFound();
-  const catalog = availableProducts(await getProducts());
+  const catalog = sortByQuality(availableProducts(await getProducts()));
   const products = catalog.filter(collection.match);
 
   return (
@@ -49,12 +50,12 @@ export default async function CollectionPage({ params }: { params: { slug: strin
       <section id="collection-products" className="section product-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">{products.length} Live Picks</p>
+            <p className="eyebrow">{products.length} Current Picks</p>
             <h2>Ready For The Bag.</h2>
           </div>
           <Link className="text-link" href="/products">Browse Everything</Link>
         </div>
-        {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>This collection is syncing from Shopify. Check the full supply room for available products.</p>}
+        {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>This collection is being prepared. Check the full shop for available products.</p>}
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/popular-golf-products-2026' },
   openGraph: {
     title: 'Popular Golf Products 2026 | WYX Golf Supply Co.',
-    description: 'Useful golf gifts and bag upgrades selected for fast Shopify checkout.',
+    description: 'Useful golf gifts and bag upgrades selected for fast checkout.',
     url: '/popular-golf-products-2026'
   }
 };
@@ -51,17 +51,17 @@ export default async function PopularGolfProducts2026() {
         <div>
           <p className="eyebrow">2026 Buyer Intent</p>
           <h1>Popular Golf Products Worth Putting In The Bag.</h1>
-          <p>WYX is focused on the products golfers buy quickly: useful gifts, course essentials, bag upgrades, towels, gloves, grips, ball markers, headcovers, and compact practice gear. Everything shown here is pulled from Shopify with live product images, variants, inventory, and checkout.</p>
+          <p>WYX is focused on the products golfers buy quickly: useful gifts, course essentials, bag upgrades, towels, gloves, grips, ball markers, headcovers, and compact practice gear. Everything shown here has real product images, active variants, and a simple path to checkout.</p>
           <div className="actions">
             <Link className="button primary" href="#popular-picks">Shop Popular Picks</Link>
             <Link className="button secondary dark" href="/deals">Use WYX10</Link>
           </div>
         </div>
         <div className="collection-proof">
-          <span>Shopify live inventory</span>
+          <span>Active product availability</span>
           <span>Secure checkout</span>
           <span>WYX10 launch discount</span>
-          <span>Supplier-backed fulfillment</span>
+          <span>Trusted golf suppliers</span>
         </div>
       </section>
 
@@ -101,7 +101,7 @@ export default async function PopularGolfProducts2026() {
         </div>
       </section>
 
-      <EmailCapture source="popular-products-2026" campaign="popular_golf_products_2026" title="Want The Next WYX Drop?" body="Join the list for fresh golf accessories, supplier finds, and launch discount reminders." />
+      <EmailCapture source="popular-products-2026" campaign="popular_golf_products_2026" title="Want The Next WYX Drop?" body="Join the list for fresh golf accessories, useful finds, and launch discount reminders." />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',

@@ -33,7 +33,7 @@ export async function GET() {
   <channel>
     <title>WYX Golf Supply Co. Product Feed</title>
     <link>${siteUrl}</link>
-    <description>Live supplier-backed golf products from WYX Golf Supply Co.</description>
+    <description>Useful golf gear and bag essentials from WYX Golf Supply Co.</description>
     <lastBuildDate>${updated}</lastBuildDate>${items}
   </channel>
 </rss>`;
