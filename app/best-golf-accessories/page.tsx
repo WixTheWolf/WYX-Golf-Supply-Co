@@ -4,6 +4,7 @@ import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { siteUrl } from '@/lib/feed';
+import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BestGolfAccessories() {
-  const products = sortByQuality(availableProducts(await getProducts()))
+  const products = sortByQuality(coreMerchProducts(availableProducts(await getProducts())))
     .filter((product) => ['Accessories', 'Club Care', 'Training Aids', 'Towels'].includes(categoryFor(product)))
     .slice(0, 12);
 

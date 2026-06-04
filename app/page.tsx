@@ -5,17 +5,20 @@ import { ProductCard } from '@/components/ProductCard';
 import { KitAddButton } from '@/components/KitAddButton';
 import { availableProducts, catalogCategories, categoryCount } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
-import { productPrice } from '@/lib/feed';
 import { landingCollections } from '@/lib/collections';
 import { commerceKits, kitCategorySummary, kitLines, kitProducts } from '@/lib/kits';
+import { bagUpgradeProducts, coreMerchProducts, firstBuyProducts, giftableProducts, tripProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
 
 export default async function Home() {
-  const catalog = sortByQuality(availableProducts(await getProducts()));
-  const featured = catalog.filter((product) => Number(productPrice(product).amount) <= 75).slice(0, 6);
+  const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
+  const firstBuys = firstBuyProducts(catalog).slice(0, 6);
+  const tripGear = tripProducts(catalog, 6);
+  const underSixty = giftableProducts(catalog, 6);
+  const bagEssentials = bagUpgradeProducts(catalog, 6);
   const categories = catalogCategories.slice(1).filter((category) => categoryCount(catalog, category) > 0);
 
   return (
@@ -24,38 +27,49 @@ export default async function Home() {
         <Image src={imageMap.hero} alt="Coastal fairway at golden hour" fill priority />
         <div className="hero-copy">
           <p className="eyebrow">WYX Golf Supply Co.</p>
-          <h1>Build A Better Golf Bag Without Buying New Clubs.</h1>
-          <p>Useful golf towels, grips, markers, gloves, balls, and bag upgrades for weekend rounds, range sessions, and last-minute golf gifts.</p>
+          <h1>Golf Gifts, Trip Gear, And Bag Upgrades For Weekend Players.</h1>
+          <p>Useful, gift-ready golf gear for dads, buddies, bachelor parties, scramble teams, and players who want their bag more dialed before the next round.</p>
           <div className="actions">
-            <Link className="button primary" href="/bag-essentials">Shop Bag Essentials</Link>
-            <Link className="button secondary" href="/golf-gifts">Shop Golf Gifts</Link>
+            <Link className="button primary" href="/golf-gifts">Shop Golf Gifts</Link>
+            <Link className="button secondary" href="/golf-trip-gear">Build A Trip Kit</Link>
           </div>
         </div>
       </section>
 
       <section className="trust-strip" aria-label="Store benefits">
-        <span>10% Off With WYX10</span>
-        <span>Gift-Ready Picks</span>
-        <span>Easy Checkout</span>
+        <span>WYX10 Saves 10%</span>
+        <span>Gifts Under $60</span>
         <span>Shipping Shown Before Payment</span>
+        <span>Support By Email</span>
       </section>
 
       <section className="launch-offer">
         <div>
           <p className="eyebrow">Launch Offer</p>
-          <h2>Take 10% Off The First Bag Build.</h2>
+          <h2>Useful Gear For The Round, The Trip, And The Guys Who Make Both Memorable.</h2>
         </div>
-        <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and small upgrades that actually get used. Father's Day is June 21, so the gift window is open now.</p>
-        <Link className="button primary" href="/fathers-day-golf-gifts">Shop Dad Gifts</Link>
+        <p>Use code <strong>WYX10</strong> at checkout. Start with towels, markers, balls, caddies, gloves, and small upgrades golfers actually bring to the course.</p>
+        <Link className="button primary" href="/golf-gifts-for-dad">Shop Dad Gifts</Link>
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Best First Buys</p>
+            <h2>The Safest First Cart.</h2>
+          </div>
+          <Link className="text-link" href="/first-sale">Use WYX10</Link>
+        </div>
+        {firstBuys.length ? <div className="product-grid">{firstBuys.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>First-buy picks are being prepared.</p>}
       </section>
 
       <section id="kits" className="section">
         <div className="section-heading split">
           <div>
             <p className="eyebrow">Better Bag Kits</p>
-            <h2>Kits Golfers Actually Use.</h2>
+            <h2>Golf Trip Kits.</h2>
           </div>
-          <Link className="text-link" href="/products">Build Your Own</Link>
+          <Link className="text-link" href="/golf-trip-gear">Build A Trip Kit</Link>
         </div>
         <div className="kit-grid">
           {commerceKits.map((kit) => {
@@ -66,9 +80,9 @@ export default async function Home() {
                 <p className="eyebrow">{kit.eyebrow}</p>
                 <h3>{kit.title}</h3>
                 <p>{kit.description}</p>
-                <p className="product-meta">{kitCategorySummary(products)}</p>
+                <p className="product-meta">{kit.complete ? 'Complete kit' : 'Build this kit'} / {kitCategorySummary(products)}</p>
                 <ul>{products.map((product) => <li key={product.id}>{product.title}</li>)}</ul>
-                <KitAddButton lines={lines} kitName={kit.title} />
+                <KitAddButton lines={lines} kitName={kit.title} label={kit.complete ? 'Add Full Kit' : 'Build This Kit'} />
               </article>
             );
           })}
@@ -79,11 +93,33 @@ export default async function Home() {
         <div className="section-heading split">
           <div>
             <p className="eyebrow">Gear Worth Keeping In The Bag.</p>
-            <h2>Small Upgrades Golfers Actually Use.</h2>
+            <h2>Gifts Under $60.</h2>
           </div>
-          <Link className="text-link" href="/products">Shop All Products</Link>
+          <Link className="text-link" href="/golf-gifts-under-60">Shop Under $60</Link>
         </div>
-        {featured.length ? <div className="product-grid">{featured.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>New products are being prepared in Shopify.</p>}
+        {underSixty.length ? <div className="product-grid">{underSixty.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>New gift picks are being prepared in Shopify.</p>}
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Golf Trip Gear</p>
+            <h2>For The Guys Who Almost Remembered Everything.</h2>
+          </div>
+          <Link className="text-link" href="/golf-trip-gear">Shop Trip Gear</Link>
+        </div>
+        {tripGear.length ? <div className="product-grid">{tripGear.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Trip gear is being prepared.</p>}
+      </section>
+
+      <section className="section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Bag Essentials</p>
+            <h2>Small Bag Upgrades. Better Rounds.</h2>
+          </div>
+          <Link className="text-link" href="/bag-upgrades">Shop Bag Upgrades</Link>
+        </div>
+        {bagEssentials.length ? <div className="product-grid">{bagEssentials.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Bag upgrades are being prepared.</p>}
       </section>
 
       <section className="dark-section">
@@ -91,7 +127,7 @@ export default async function Home() {
           <p className="eyebrow">Why WYX</p>
           <h2>Small Upgrades. Better Rounds.</h2>
         </div>
-        <p>WYX is built around the simple stuff golfers actually use: clean towels, fresh grips, reliable markers, glove storage, golf balls, and easy gift picks. No overthinking. Just better bag energy.</p>
+        <p>WYX is built around golf gifts, trip gear, and small bag upgrades that make real rounds easier. No mystery gadgets. No overbuilt nonsense. Just useful things golfers can throw in the bag and use this weekend.</p>
       </section>
 
       <EmailCapture source="home" campaign="home_launch_list" />
@@ -129,6 +165,21 @@ export default async function Home() {
             <strong>Father's Day Golf Gifts</strong>
             <small>Dad-ready towels, markers, gloves, balls, grips, headcovers, and bag upgrades.</small>
           </Link>
+          <Link href="/golf-trip-gear">
+            <span>Trip Gear</span>
+            <strong>Golf Trip Gear</strong>
+            <small>Towels, markers, balls, caddies, and small upgrades for group weekends.</small>
+          </Link>
+          <Link href="/bag-upgrades">
+            <span>Bag Upgrades</span>
+            <strong>Small Bag Upgrades</strong>
+            <small>Cleaner, easier, more ready before the next round.</small>
+          </Link>
+          <Link href="/the-roo">
+            <span>Coming Soon</span>
+            <strong>The Roo Valuables Pouch</strong>
+            <small>A better home for the tiny stuff that disappears in every golf bag.</small>
+          </Link>
           <Link href="/best-golf-accessories">
             <span>Bag Upgrades</span>
             <strong>Best Golf Accessories</strong>
@@ -138,11 +189,6 @@ export default async function Home() {
             <span>Popular Picks</span>
             <strong>Popular Golf Products</strong>
             <small>Fresh gifts, useful accessories, and practical products worth scouting now.</small>
-          </Link>
-          <Link href="/premium-golf-bags">
-            <span>Premium Upgrade</span>
-            <strong>Premium Golf Bags</strong>
-            <small>Premium cart bags for golfers ready to upgrade the whole setup.</small>
           </Link>
           <Link href="/golf-gifts">
             <span>Gift Shoppers</span>

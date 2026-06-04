@@ -10,6 +10,7 @@ import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from 
 import { money } from '@/lib/demo';
 import { productDescription } from '@/lib/feed';
 import { productBestFor, productBuyerPromise, productFaq, productValueBullets } from '@/lib/merchandising';
+import { coreMerchProducts, isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { getProduct, getProducts } from '@/lib/shopify/products';
 import { supportEmail } from '@/lib/support';
 import { cleanText } from '@/lib/text';
@@ -28,9 +29,9 @@ export async function generateMetadata({ params }: { params: { handle: string } 
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const product = await getProduct(params.handle);
-  if (!product || !product.availableForSale || !hasSaleReadyMedia(product)) notFound();
+  if (!product || !product.availableForSale || !hasSaleReadyMedia(product) || isHiddenFromCoreStorefront(product)) notFound();
   const productCategory = categoryFor(product);
-  const allProducts = availableProducts(await getProducts());
+  const allProducts = coreMerchProducts(availableProducts(await getProducts()));
   const related = allProducts
     .filter((item) => item.handle !== product.handle && item.availableForSale)
     .sort((a, b) => Number(categoryFor(b) === productCategory) - Number(categoryFor(a) === productCategory))
@@ -42,6 +43,7 @@ export default async function ProductPage({ params }: { params: { handle: string
   const faqs = productFaq(product);
   const title = cleanText(product.title);
   const description = productBuyerPromise(product);
+  const kitFit = kitFitFor(product.handle);
 
   return (
     <>
@@ -75,7 +77,10 @@ export default async function ProductPage({ params }: { params: { handle: string
           <AddToCartButton variantId={variant?.id} buyNow />
           <div className="detail-list">
             <section><h2>Best For</h2><ul>{bestFor.map((item) => <li key={item}>{item}</li>)}</ul></section>
+            <section><h2>Who This Is For</h2><p>Weekend players, golf dads, trip groups, league golfers, and gift shoppers who want useful gear without guessing at clubs or apparel sizing.</p></section>
+            <section><h2>Gift & Kit Fit</h2><p>{kitFit}</p></section>
             <section><h2>Product Details</h2><p>Review the product description above for included items, sizing, color options, and fit notes before adding it to your bag.</p></section>
+            <section><h2>Why Buy From WYX?</h2><p>WYX keeps the offer focused on practical golf gifts, trip gear, and bag upgrades. Checkout runs through Shopify, support is by email, and shipping is shown before payment.</p></section>
             <section><h2>Shipping & Returns</h2><p>Shipping rates and delivery estimates are shown before payment. If something arrives damaged or incorrect, contact WYX support at <a href={`mailto:${supportEmail}`}>{supportEmail}</a> with your order number and photos so we can help.</p></section>
             <section><h2>Launch Reviews</h2><p>WYX is new, so reviews are still coming in. Every launch product is selected because it solves a real bag, range, or gift problem for everyday golfers.</p></section>
             <section><h2>Quick Questions</h2>{faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</section>
@@ -90,4 +95,14 @@ export default async function ProductPage({ params }: { params: { handle: string
       <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="Save This Drop For Later." body="Join the launch list for WYX10 reminders, golf gift picks, and useful bag upgrades." />
     </>
   );
+}
+
+function kitFitFor(handle: string) {
+  if (/towel/.test(handle)) return 'Giftable and useful in the Golf Trip Survival Kit, Dad Golf Gift Kit, and Clean Contact Kit.';
+  if (/marker/.test(handle)) return 'A strong fit for golf trip groups, bachelor party gifts, scramble prize tables, and first-tee kits.';
+  if (/ball|shockd/.test(handle)) return 'Best as a trip-pack, prize-table, or first-tee chaos add-on.';
+  if (/caddie|magnet/.test(handle)) return 'Best for bag organization, golf trip gear, and the First Tee Chaos Kit.';
+  if (/glove|grip/.test(handle)) return 'Best as a practical bag-essential add-on or golf dad gift.';
+  if (/headcover/.test(handle)) return 'Best as a giftable bag-upgrade piece for golfers who like their setup to have personality.';
+  return 'Best as a practical WYX bag upgrade and build-your-own kit item.';
 }

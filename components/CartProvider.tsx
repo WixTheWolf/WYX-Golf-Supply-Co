@@ -178,9 +178,9 @@ function CartDrawer() {
   return (
     <aside className={`cart-drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
       <div className="cart-head"><h2>Your Bag</h2><button onClick={() => setOpen(false)} aria-label="Close cart">Close</button></div>
-      <p className="promo-note">Launch code <strong>{launchCode}</strong> saves 10% at checkout.</p>
+      <p className="promo-note">Use <strong>{launchCode}</strong> at checkout for 10% off your first order.</p>
       {error && <p className="error">{error}</p>}
-      {!cart?.lines.length ? <p className="muted">Your bag is empty. The supply room is ready when you are.</p> : (
+      {!cart?.lines.length ? <p className="muted">Your bag is empty. Let's fix that before the next tee time.</p> : (
         <div className="cart-lines">
           {cart.lines.map((line) => (
             <div className="cart-line" key={line.id}>
@@ -203,7 +203,7 @@ function CartDrawer() {
       <div className="cart-foot">
         {cart && <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />}
         <p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p>
-        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>Checkout With WYX10</button>
+        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>Continue To Checkout</button>
         <Link href="/cart">View Bag</Link>
       </div>
     </aside>

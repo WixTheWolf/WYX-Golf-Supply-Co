@@ -15,10 +15,10 @@ export function CartPage() {
     <section className="page-hero">
       <p className="eyebrow">Your Bag</p>
       <h1>Ready For The Round?</h1>
-      <p className="promo-note">Launch code <strong>{launchCode}</strong> saves 10% at checkout.</p>
+      <p className="promo-note">Use <strong>{launchCode}</strong> at checkout for 10% off your first order.</p>
       {error && <p className="error">{error}</p>}
       {!cart?.lines.length ? (
-        <p>Your bag is empty. <Link className="text-link" href="/products">Explore the supply room</Link>.</p>
+        <p>Your bag is empty. Let's fix that before the next tee time. <Link className="text-link" href="/golf-gifts">Shop golf gifts</Link>.</p>
       ) : (
         <div className="cart-page-lines">
           {cart.lines.map((line) => (
@@ -48,7 +48,7 @@ export function CartPage() {
                 content_ids: cart.lines.map((line) => line.merchandise.id)
               });
               window.location.href = checkoutUrlWithDiscount(cart.checkoutUrl);
-            }}>Checkout With WYX10</button>
+            }}>Continue To Checkout</button>
           </div>
         </div>
       )}

@@ -4,11 +4,12 @@ import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { siteUrl } from '@/lib/feed';
 import type { IntentPageConfig } from '@/lib/intentPages';
+import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export async function IntentLandingPage({ config }: { config: IntentPageConfig }) {
-  const catalog = sortByQuality(availableProducts(await getProducts()));
+  const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
   const products = catalog.filter(config.match).slice(0, 12);
 
   return (

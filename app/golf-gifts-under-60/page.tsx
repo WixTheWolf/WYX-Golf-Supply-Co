@@ -5,6 +5,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { productPrice, siteUrl } from '@/lib/feed';
 import { campaignUrl } from '@/lib/marketing';
+import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default async function GolfGiftsUnder60() {
-  const products = availableProducts(await getProducts())
+  const products = coreMerchProducts(availableProducts(await getProducts()))
     .filter((product) => Number(productPrice(product).amount) <= 60)
     .slice(0, 12);
 
@@ -30,8 +31,8 @@ export default async function GolfGiftsUnder60() {
       <section className="deal-hero">
         <div>
           <p className="eyebrow">Golf Gifts Under $60</p>
-          <h1>Small Golf Gifts That Actually Get Used.</h1>
-          <p>Skip the novelty clutter. These are useful golf gifts: towels, tees, gloves, ball markers, club-care tools, and compact practice aids that belong in the bag.</p>
+          <h1>Golf Gifts Under $60 That Actually Get Used.</h1>
+          <p>Easy golf gifts for players who already have enough polos and bad swing advice. Start with towels, markers, balls, caddies, and small bag upgrades.</p>
           <div className="actions">
             <Link className="button primary" href="#gift-grid">Shop Gift Picks</Link>
             <Link className="button secondary dark" href="/first-sale">Use WYX10</Link>

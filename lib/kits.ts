@@ -6,44 +6,44 @@ export type CommerceKit = {
   eyebrow: string;
   description: string;
   handles: string[];
+  complete: boolean;
 };
 
 export const commerceKits: CommerceKit[] = [
   {
-    title: 'The Range Rat Reset Kit',
-    eyebrow: 'Range-Ready Accessories',
-    description: 'Grip tape, a towel, and a fresh grip for players who want the bag ready before Saturday morning.',
-    handles: ['pulse-golf-overgrip-tape', 'blue-ridge-golf-co-golf-towels', 'stick-grips-golf-camo-golf-grip']
+    title: 'The Golf Trip Survival Kit',
+    eyebrow: 'Trip Weekend Builder',
+    description: "Everything you forgot to pack before pretending you're a tour pro for three days. Start with towels, markers, balls, caddies, and small bag upgrades.",
+    handles: ['blue-ridge-golf-co-golf-towels', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'shockd-golf-balls', 'glove-accessory-caddie-gray'],
+    complete: false
+  },
+  {
+    title: 'The Dad Golf Gift Kit',
+    eyebrow: 'Dad Gift Builder',
+    description: "Useful golf gifts he'll actually put in the bag, not politely toss in a drawer. Towels, markers, balls, gloves, and grip help beat novelty clutter.",
+    handles: ['tri-fold-microfiber-golf-towel', 'three-rail-ball-marker', 'shockd-golf-balls', 'pulse-golf-overgrip-tape'],
+    complete: false
   },
   {
     title: 'The Clean Contact Kit',
-    eyebrow: 'Club Care Starter',
-    description: 'Cleaner clubs. Better contact. Fewer excuses. A simple club-care setup for golfers who want their towel, grooves, and ball marker ready before the first tee.',
-    handles: ['blue-ridge-golf-co-golf-towels', 'tri-fold-microfiber-golf-towel', 'pulse-golf-overgrip-tape']
+    eyebrow: 'Coming Soon / Build Your Own',
+    description: 'Cleaner grooves. Better contact. Fewer excuses. The complete kit needs a confirmed brush or groove cleaner, so start with the available towels and add care tools once sourced.',
+    handles: ['blue-ridge-golf-co-golf-towels', 'tri-fold-microfiber-golf-towel'],
+    complete: false
   },
   {
-    title: 'The Green-Side Survival Kit',
-    eyebrow: 'Short Game Helpers',
-    description: 'Markers, glove storage, and small accessories for golfers who want the green-side basics handled.',
-    handles: ['pulse-golf-overgrip-tape', 'park-paisley-womens-gold-golf-glove', 'glove-accessory-caddie-gray']
+    title: 'The First Tee Chaos Kit',
+    eyebrow: 'Late-To-The-Tee Builder',
+    description: 'For the guy who arrives five minutes late, asks for a breakfast ball, and still thinks today is the day. Balls, marker, towel, and caddie basics.',
+    handles: ['shockd-golf-balls', 'carolina-blue-two-sided-golf-ball-marker-2-pack', 'tri-fold-microfiber-golf-towel', 'magnet-caddie'],
+    complete: false
   },
   {
-    title: 'The Golf Dad Gift Kit',
-    eyebrow: 'Gift-Ready Bundle',
-    description: "Useful golf gifts he'll actually keep in the bag. Skip the novelty junk. This kit is built around towels, markers, gloves, and small upgrades that make every round feel a little more dialed.",
-    handles: ['three-rail-ball-marker', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'glove-accessory-caddie-gray']
-  },
-  {
-    title: 'The Saturday Morning Bag Kit',
-    eyebrow: 'Weekend Round Ready',
-    description: 'Balls, a glove, and a headcover upgrade for the player trying to get the bag ready before the first tee.',
-    handles: ['classic-leather-edition-walnut-brown-midnight-black', 'park-paisley-womens-gold-golf-glove', 'shockd-golf-balls']
-  },
-  {
-    title: 'The Bachelor Party Bag Kit',
-    eyebrow: 'Group Gift Builder',
-    description: "Small golf gifts for the group that won't get left in the Airbnb. Markers, towels, balls, and bag accessories for tournament weekends, golf trips, and first-tee chaos.",
-    handles: ['three-rail-ball-marker', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'shockd-golf-balls']
+    title: 'The Prize Table Pack',
+    eyebrow: 'Scramble Prize Builder',
+    description: 'Easy golf prizes people will actually want after the scramble. Markers, towels, balls, gloves, and accessories under $50.',
+    handles: ['blue-ridge-golf-ball-markers-set-of-2', 'blue-ridge-golf-co-golf-towels', 'shockd-golf-balls', 'glove-accessory-caddie-black'],
+    complete: false
   }
 ];
 
