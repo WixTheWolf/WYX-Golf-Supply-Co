@@ -4,6 +4,7 @@ import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { productPrice, siteUrl } from '@/lib/feed';
+import { productQualityScore } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 function dadGiftScore(product: Awaited<ReturnType<typeof getProducts>>[number]) {
   const price = Number(productPrice(product).amount);
   const category = categoryFor(product);
-  let score = 0;
+  let score = productQualityScore(product);
   if (price <= 60) score += 4;
   if (price <= 35) score += 2;
   if (['Towels', 'Accessories', 'Golf Balls', 'Gloves', 'Grips'].includes(category)) score += 3;

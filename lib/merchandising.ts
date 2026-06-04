@@ -3,6 +3,7 @@ import type { Product } from '@/types/shopify';
 
 export function productValueBullets(product: Product) {
   const category = categoryFor(product);
+  if (/golf bag/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)) return ['Premium supplier-backed bag upgrade', 'Real product photography and live inventory', 'Best for golfers ready to upgrade the whole setup'];
   if (category === 'Grips') return ['Refresh your feel without replacing the bag', 'Easy add-on for range sessions and practice weeks', 'Pairs well with golf balls and markers'];
   if (category === 'Golf Balls') return ['Restock the bag before the next tee time', 'Useful gift for any golfer', 'Simple checkout through Shopify'];
   if (category === 'Gloves') return ['Small upgrade with real round-to-round utility', 'Keeps your bag better organized', 'Strong under-$60 cart builder'];

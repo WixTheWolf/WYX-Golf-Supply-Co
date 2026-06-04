@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts, catalogCategories, categoryCount, matchesCategory } from '@/lib/catalog';
+import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -9,7 +10,7 @@ export const revalidate = 300;
 export const metadata: Metadata = { title: 'Golf Gear & Accessories', description: 'Shop supplier-backed golf gear, golf balls, gloves, grips, towels, apparel, and accessories from WYX Golf Supply Co.' };
 
 export default async function Products({ searchParams }: { searchParams: { category?: string } }) {
-  const catalog = availableProducts(await getProducts());
+  const catalog = sortByQuality(availableProducts(await getProducts()));
   const category = searchParams.category;
   const products = catalog.filter((product) => matchesCategory(product, category));
 

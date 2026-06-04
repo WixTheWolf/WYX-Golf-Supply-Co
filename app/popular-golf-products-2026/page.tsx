@@ -5,6 +5,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { productPrice } from '@/lib/feed';
 import { siteUrl } from '@/lib/marketing';
+import { productQualityScore, sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 const scoutingBoard = [
-  ['Women’s Golf Apparel', 'Stretch skorts, polos, hoodies, and everyday golf layers with low-friction sizing and strong lifestyle appeal.'],
+  ["Women's Golf Apparel", 'Stretch skorts, polos, hoodies, and everyday golf layers with low-friction sizing and strong lifestyle appeal.'],
   ['Useful Gifts Under $50', 'Ball markers, towels, gloves, tees, divot tools, club-care tools, and small upgrades golfers actually keep in the bag.'],
   ['Club-Care Add-Ons', 'Brush cleaners, groove tools, microfiber towels, and weekly bag-reset products with strong add-to-cart potential.'],
   ['Practice & Training Aids', 'Putting mirrors, alignment tools, range-session helpers, and compact scoring-improvement gear.'],
@@ -31,7 +32,7 @@ const scoutingBoard = [
 function scoreProduct(product: Awaited<ReturnType<typeof getProducts>>[number]) {
   const price = Number(productPrice(product).amount);
   const category = categoryFor(product);
-  let score = 0;
+  let score = productQualityScore(product);
   if (price <= 60) score += 3;
   if (price <= 35) score += 2;
   if (['Accessories', 'Towels', 'Gloves', 'Grips', 'Golf Balls'].includes(category)) score += 2;
@@ -40,7 +41,7 @@ function scoreProduct(product: Awaited<ReturnType<typeof getProducts>>[number]) 
 }
 
 export default async function PopularGolfProducts2026() {
-  const catalog = availableProducts(await getProducts());
+  const catalog = sortByQuality(availableProducts(await getProducts()));
   const topProducts = catalog.sort((a, b) => scoreProduct(b) - scoreProduct(a)).slice(0, 9);
   const underSixty = topProducts.filter((product) => Number(productPrice(product).amount) <= 60);
 

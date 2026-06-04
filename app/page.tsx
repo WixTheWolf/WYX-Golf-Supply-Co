@@ -7,12 +7,13 @@ import { availableProducts, catalogCategories, categoryCount } from '@/lib/catal
 import { imageMap } from '@/lib/demo';
 import { landingCollections } from '@/lib/collections';
 import { commerceKits, kitCategorySummary, kitLines, kitProducts } from '@/lib/kits';
+import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
 
 export default async function Home() {
-  const catalog = availableProducts(await getProducts());
+  const catalog = sortByQuality(availableProducts(await getProducts()));
   const featured = catalog.slice(0, 6);
   const categories = catalogCategories.slice(1).filter((category) => categoryCount(catalog, category) > 0);
 
@@ -136,6 +137,11 @@ export default async function Home() {
             <span>2026 Demand</span>
             <strong>Popular Golf Products</strong>
             <small>Fresh gifts, useful accessories, and supplier-backed products worth scouting now.</small>
+          </Link>
+          <Link href="/premium-golf-bags">
+            <span>Premium Upgrade</span>
+            <strong>Premium Golf Bags</strong>
+            <small>Real supplier-backed cart bags for golfers ready to upgrade the whole setup.</small>
           </Link>
           {landingCollections.map((collection) => (
             <Link href={`/collections/${collection.slug}`} key={collection.slug}>

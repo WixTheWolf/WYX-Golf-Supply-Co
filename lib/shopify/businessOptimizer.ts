@@ -115,6 +115,16 @@ const collectionPlans = [
       description: 'Shop compact golf training aids and practice accessories from WYX Golf Supply Co.'
     },
     match: (product: AdminProduct) => categoryFor(product) === 'Training Aids'
+  },
+  {
+    handle: 'wyx-premium-golf-bags',
+    title: 'WYX Premium Golf Bags',
+    descriptionHtml: '<p>Premium supplier-backed golf bags with real product photography, live inventory, and secure Shopify checkout.</p>',
+    seo: {
+      title: 'Premium Golf Bags | WYX Golf Supply Co.',
+      description: 'Shop premium supplier-backed golf bags from WYX Golf Supply Co. with live inventory and secure Shopify checkout.'
+    },
+    match: (product: AdminProduct) => /golf bag/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
   }
 ];
 

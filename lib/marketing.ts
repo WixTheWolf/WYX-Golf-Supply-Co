@@ -69,7 +69,7 @@ export const supplierScoutingTargets = [
   ['Priority 1', 'Ball markers and divot tools', 'Low size risk, giftable, good margins, easy content.'],
   ['Priority 1', 'Golf towels and club-care tools', 'Practical repeatable need; strong bundle/add-on behavior.'],
   ['Priority 1', 'Gloves and grip tape', 'Consumable products that active golfers replace.'],
-  ['Priority 2', 'Women’s golf apparel and skorts', 'Growing demand, strong visual content, but sizing/returns need care.'],
+  ['Priority 2', "Women's golf apparel and skorts", 'Growing demand, strong visual content, but sizing/returns need care.'],
   ['Priority 2', 'Rope hats and headcovers', 'Brand/style-led products that make WYX feel curated.'],
   ['Priority 3', 'Putting mirrors and compact training aids', 'Higher-intent buyers; good SEO landing-page match.']
 ];
