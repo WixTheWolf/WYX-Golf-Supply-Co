@@ -14,14 +14,14 @@ export const commerceKits: CommerceKit[] = [
     title: 'The Golf Trip Survival Kit',
     eyebrow: 'Trip Weekend Builder',
     description: "Everything you forgot to pack before pretending you're a tour pro for three days. Start with towels, markers, balls, caddies, and small bag upgrades.",
-    handles: ['blue-ridge-golf-co-golf-towels', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'shockd-golf-balls', 'glove-accessory-caddie-gray'],
+    handles: ['buy-3-get-1-free-bundle-shockd-golf-balls', 'dartee-golf-glove', 'blue-ridge-golf-co-golf-towels', 'glove-accessory-caddie-gray'],
     complete: false
   },
   {
     title: 'The Dad Golf Gift Kit',
     eyebrow: 'Dad Gift Builder',
     description: "Useful golf gifts he'll actually put in the bag, not politely toss in a drawer. Towels, markers, balls, gloves, and grip help beat novelty clutter.",
-    handles: ['tri-fold-microfiber-golf-towel', 'three-rail-ball-marker', 'shockd-golf-balls', 'pulse-golf-overgrip-tape'],
+    handles: ['augusta-bear-hat', 'dartee-golf-glove', 'three-rail-ball-marker', 'pulse-golf-overgrip-tape'],
     complete: false
   },
   {
@@ -35,14 +35,14 @@ export const commerceKits: CommerceKit[] = [
     title: 'The First Tee Chaos Kit',
     eyebrow: 'Late-To-The-Tee Builder',
     description: 'For the guy who arrives five minutes late, asks for a breakfast ball, and still thinks today is the day. Balls, marker, towel, and caddie basics.',
-    handles: ['shockd-golf-balls', 'carolina-blue-two-sided-golf-ball-marker-2-pack', 'tri-fold-microfiber-golf-towel', 'magnet-caddie'],
+    handles: ['golf-or-die-game-set', 'shockd-golf-balls-patriot-edition', 'the-bolt-ball-marker', 'magnet-caddie'],
     complete: false
   },
   {
     title: 'The Prize Table Pack',
     eyebrow: 'Scramble Prize Builder',
     description: 'Easy golf prizes people will actually want after the scramble. Markers, towels, balls, gloves, and accessories under $50.',
-    handles: ['blue-ridge-golf-ball-markers-set-of-2', 'blue-ridge-golf-co-golf-towels', 'shockd-golf-balls', 'glove-accessory-caddie-black'],
+    handles: ['got-em-ball-marker-limited-edition', 'blue-ridge-golf-ball-markers-set-of-2', 'shockd-golf-balls', 'glove-accessory-caddie-black'],
     complete: false
   }
 ];

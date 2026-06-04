@@ -1,6 +1,6 @@
 # Product Merchandising Audit
 
-Positioning: WYX Golf Supply Co. sells golf gifts, trip gear, and bag upgrades for weekend players.
+Positioning: WYX Golf Co. sells golf gifts, trip gear, and bag upgrades for weekend players.
 
 Status definitions:
 
@@ -49,3 +49,36 @@ Supplier terms are based on available Shopify context and current sourcing notes
 - SYB Phone Pouch is hidden from core storefront grids because it does not support the golf gifts/trip gear/bag upgrades positioning.
 - All placeholder-image drafts remain hidden.
 
+## June 2026 Expanded Catalog Pass
+
+Shopify now has 86 products in the audit set, including 78 active products. The extra depth helps, but only if the customer sees the right depth. The core storefront should feel like a golf gift and trip shop, not a supplier dump.
+
+### Promote
+
+| Supplier | Products | Status | Why |
+|---|---|---|---|
+| SHOCK'D Golf Balls | Bundle, Patriot Edition, standard balls, Bolt marker, GOT 'EM marker | HERO | Best first-sale fit: low price, useful, funny without being messy, great for trips and scramble prizes. |
+| Dartee Golf | Golf Glove | HERO | Strong photo, clean price, real utility, giftable under $25. |
+| Guerrilla Golf | Augusta Bear Hat, Pimento Drip Blade, driver/putter covers | HERO/SUPPORTING | Adds personality and brand texture. These make WYX feel less generic. |
+| Golf or Die | Golf or Die Game Set | SUPPORTING | Great golf-trip and bachelor-party product, but low inventory means it should support, not lead every page. |
+| Blue Ridge, Pins and Aces, VukGripz, VivanTee, Stick Grips, OnPointGolf.us | Towels, caddies, grips, gloves, markers | SUPPORTING | Useful bag gear that fills kits and filters. Keep visible, but let higher-personality products lead. |
+
+### Hide From Core Storefront
+
+| Supplier/Product Group | Status | Reason |
+|---|---|---|
+| GolfbaysUSA simulator, mat, screen, storage, and protective-case products | HIDE | Too expensive, too technical, too far from WYX gift/trip positioning. They make the shop feel random and high-risk. |
+| Dartee no-inventory handles: White Eagle, Josh Kelley Signature, Gulf Stream Gator, White Braid | HIDE | Inventory flags are not clean enough to put in front of customers. |
+| Guerrilla no-inventory handles: Legalize Mulligans, Layup? T-Shirt, Looper, Dude Abides Golf Towel, Zona towel, Hack Daniels Golf Towel | HIDE | No-inventory or draft flags. These can come back when stock is clean. |
+| SYB Phone Pouch | HIDE | Not golf-native enough and muddies the brand promise. |
+| $349.95 premium bags | HIDE FROM CORE | Keep off homepage, gifts, trip kits, and first-sale pages. Dedicated premium bag page only. |
+
+### Homepage Priority
+
+The Short List now prioritizes:
+
+1. BUY 3 GET 1 FREE BUNDLE - SHOCK'D Golf Balls
+2. Dartee Golf Glove
+3. Augusta Bear Hat
+
+These three give the homepage a better mix: consumable trip/prize product, useful gear, and personality gift.

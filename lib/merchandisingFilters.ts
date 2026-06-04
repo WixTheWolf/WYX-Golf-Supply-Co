@@ -4,11 +4,24 @@ import { isPremiumGolfBag } from '@/lib/productQuality';
 import type { Product } from '@/types/shopify';
 
 const hiddenHandles = new Set([
-  'syb-phone-pouch'
+  'syb-phone-pouch',
+  'white-eagle',
+  'josh-kelley-signature-low-taper-fade',
+  'gulf-stream-gator',
+  'white-braid',
+  'legalize-mulligans',
+  'layup-t-shirt',
+  'looper',
+  'dude-abides-golf-towel',
+  'zona-towel',
+  'hack-daniels-golf-towel'
 ]);
 
 const confirmedSupplierVendors = [
   'Blue Ridge Golf Co.',
+  'Dartee Golf',
+  'Golf or Die',
+  'Guerrilla Golf',
   'Pins and Aces',
   'Stick Grips',
   'VukGripz',
@@ -17,8 +30,12 @@ const confirmedSupplierVendors = [
   "SHOCK'D Golf Balls"
 ];
 
+const blockedSupplierVendors = [
+  'GolfbaysUSA'
+];
+
 export function isHiddenFromCoreStorefront(product: Product) {
-  return hiddenHandles.has(product.handle);
+  return hiddenHandles.has(product.handle) || (product.vendor ? blockedSupplierVendors.includes(product.vendor) : false);
 }
 
 export function isConfirmedSupplierProduct(product: Product) {
@@ -34,15 +51,33 @@ export function coreMerchProducts(products: Product[]) {
 }
 
 export function firstBuyProducts(products: Product[]) {
-  const heroHandles = new Set([
-    'tri-fold-microfiber-golf-towel',
+  const heroHandles = [
+    'buy-3-get-1-free-bundle-shockd-golf-balls',
+    'dartee-golf-glove',
+    'augusta-bear-hat',
+    'pimento-drip-blade',
+    'golf-or-die-game-set',
+    'the-bolt-ball-marker',
+    'got-em-ball-marker-limited-edition',
+    'shockd-golf-balls-patriot-edition',
     'blue-ridge-golf-co-golf-towels',
     'two-sided-metal-golf-ball-marker-5-color-combo-pack',
     'glove-accessory-caddie-gray',
     'magnet-caddie',
-    'shockd-golf-balls'
+    'shockd-golf-balls',
+    'tri-fold-microfiber-golf-towel'
+  ];
+  return heroHandles
+    .map((handle) => products.find((product) => product.handle === handle))
+    .filter(Boolean) as Product[];
+}
+
+export function premiumBagProducts(products: Product[]) {
+  const premiumBagVendors = new Set([
+    'Pins and Aces',
+    'Blue Ridge Golf Co.'
   ]);
-  return products.filter((product) => heroHandles.has(product.handle));
+  return products.filter((product) => product.vendor && premiumBagVendors.has(product.vendor) && !isHiddenFromCoreStorefront(product));
 }
 
 export function giftableProducts(products: Product[], limit = 12) {

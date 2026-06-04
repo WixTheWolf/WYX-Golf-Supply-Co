@@ -32,6 +32,10 @@ function shortReason(product: Product) {
   if (text.includes('towel')) return 'The easy yes for trips, carts, and cleaning up before the next shot.';
   if (text.includes('marker')) return 'Small, giftable, and useful enough to actually stay in the bag.';
   if (text.includes('ball')) return 'A practical add-on for trip bags, prize tables, and first-tee chaos.';
+  if (text.includes('glove')) return 'A clean first-cart upgrade with real utility and a sharp gift price.';
+  if (text.includes('hat')) return 'Personality without trying too hard. Easy gift, easy cart.';
+  if (text.includes('headcover') || text.includes('cover')) return 'Turns the bag into a little more of a statement.';
+  if (text.includes('game set')) return 'Built for golf trips, bachelor weekends, and post-round bragging rights.';
   if (text.includes('caddie')) return 'Keeps the little stuff from turning into a bottom-pocket search party.';
   return 'A useful WYX pick for weekend players and gift shoppers.';
 }

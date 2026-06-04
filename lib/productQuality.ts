@@ -18,8 +18,9 @@ export function productQualityScore(product: Product) {
   if (price <= 60) score += 5;
   if (price <= 35) score += 3;
   if (['Golf Balls', 'Gloves', 'Grips', 'Towels'].includes(category)) score += 4;
+  if (['Headwear', 'Apparel'].includes(category)) score += 2;
   if (category === 'Accessories') score += 3;
-  if (/marker|towel|glove|grip|ball|caddie|headcover/i.test(title)) score += 4;
+  if (/marker|towel|glove|grip|ball|caddie|headcover|hat|cover|game/i.test(title)) score += 4;
   if (isPremiumGolfBag(product)) score += 3;
   if (price > 250 && !isPremiumGolfBag(product)) score -= 6;
 
@@ -30,6 +31,7 @@ export function qualityReason(product: Product) {
   const price = Number(productPrice(product).amount);
   const category = categoryFor(product);
   if (isPremiumGolfBag(product)) return 'Premium bag upgrade for the full setup';
+  if (/hat|headcover|putter cover|game/i.test(product.title)) return 'Personality-driven golf gift with stronger visual pull';
   if (price <= 35 && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories'].includes(category)) return 'Easy first-cart product golfers actually use';
   if (price <= 60) return 'Giftable under-$60 golf pick';
   return 'Useful golf gear for everyday rounds';

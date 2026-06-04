@@ -4,6 +4,7 @@ import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { siteUrl } from '@/lib/feed';
+import { premiumBagProducts } from '@/lib/merchandisingFilters';
 import { isPremiumGolfBag, sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PremiumGolfBags() {
-  const products = sortByQuality(availableProducts(await getProducts()).filter(isPremiumGolfBag));
+  const products = sortByQuality(premiumBagProducts(availableProducts(await getProducts()).filter(isPremiumGolfBag)));
 
   return (
     <>
