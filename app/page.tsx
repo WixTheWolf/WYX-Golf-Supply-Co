@@ -14,11 +14,11 @@ import { getProducts } from '@/lib/shopify/products';
 export const revalidate = 300;
 
 const categoryPills = [
-  { label: 'Golf Gifts', href: '/golf-gifts', icon: 'GG' },
-  { label: 'Trip Gear', href: '/golf-trip-gear', icon: 'TG' },
-  { label: 'Dad Gifts', href: '/golf-gifts-for-dad', icon: 'DG' },
-  { label: 'Scramble Prizes', href: '/scramble-prizes', icon: 'SP' },
-  { label: 'Bag Upgrades', href: '/bag-upgrades', icon: 'BU' }
+  { label: 'Golf Gifts', href: '/golf-gifts', icon: '🎁' },
+  { label: 'Trip Gear', href: '/golf-trip-gear', icon: '✈️' },
+  { label: 'Dad Gifts', href: '/golf-gifts-for-dad', icon: '🏌️' },
+  { label: 'Scramble Prizes', href: '/scramble-prizes', icon: '🏆' },
+  { label: 'Bag Upgrades', href: '/bag-upgrades', icon: '🎒' }
 ];
 
 export default async function Home() {
@@ -84,15 +84,18 @@ export default async function Home() {
           <Link className="text-link" href="/golf-trip-gear">Build A Trip Kit</Link>
         </div>
         <div className="kit-grid">
-          {commerceKits.slice(0, 3).map((kit) => (
-            <article className="kit-card kit-card-simple" key={kit.title}>
-              <p className="eyebrow">{kit.eyebrow}</p>
-              <h3>{kit.title}</h3>
-              <p>{kit.description}</p>
-              <p className="product-meta">{kit.complete ? 'Complete kit' : 'Coming soon / build from available picks'}</p>
-              <Link className="text-link" href="/golf-trip-gear">View Kit</Link>
-            </article>
-          ))}
+          {commerceKits.slice(0, 3).map((kit, index) => {
+            const isBuildableKit = index < 2;
+            return (
+              <article className="kit-card kit-card-simple" key={kit.title}>
+                <p className="eyebrow">{kit.eyebrow}</p>
+                <h3>{kit.title}</h3>
+                <p>{kit.description}</p>
+                <p className="product-meta">{isBuildableKit ? 'Buildable kit' : 'Coming soon / build from available picks'}</p>
+                <Link className="text-link" href="/golf-trip-gear">{isBuildableKit ? 'View Kit' : 'Coming Soon'}</Link>
+              </article>
+            );
+          })}
         </div>
         <div className="section-link-row"><Link className="button secondary dark" href="/golf-trip-gear">See All Kits</Link></div>
       </section>
