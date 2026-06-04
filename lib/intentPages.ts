@@ -100,6 +100,24 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => bagUpgradeProducts([product], 1).length > 0
   },
+  'scramble-prizes': {
+    slug: 'scramble-prizes',
+    title: 'Scramble Prizes People Actually Want.',
+    eyebrow: 'Prize Table Gear',
+    description: 'Tournament gifts, prize-table gear, and small golf accessories that beat another sleeve of random balls.',
+    metaTitle: 'Golf Scramble Prizes',
+    metaDescription: 'Shop scramble prizes, tournament gifts, and useful golf prize-table gear from WYX Golf Co.',
+    primaryCta: 'Shop Prize Packs',
+    secondaryCta: 'Bachelor Party Gifts',
+    secondaryHref: '/bachelor-party-golf-gifts',
+    proof: ['Prize-table ready', 'Under-$60 picks', 'Group golf friendly', 'Useful after the round'],
+    faq: [
+      ['What makes a good scramble prize?', 'Pick something small, useful, and easy for any golfer to take home: markers, towels, balls, caddies, and compact accessories.'],
+      ['Can I buy for a whole group?', 'Yes. Start with lower-priced markers, towels, and golf balls, then mix in a few better bag upgrades.'],
+      ['Do you do custom packs?', 'Not yet. Custom and personalized packs are on the sourcing list.']
+    ],
+    match: (product) => !isPremiumGolfBag(product) && (under(product, 60) || has(product, /marker|towel|ball|glove|caddie|prize|scramble/))
+  },
   'weekend-golfer': {
     slug: 'weekend-golfer',
     title: 'Weekend Golfer Gear That Earns A Spot',

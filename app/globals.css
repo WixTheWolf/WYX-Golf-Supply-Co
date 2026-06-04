@@ -2,3 +2,34 @@
 .trust-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;margin:1rem 0}.trust-list span{padding:.65rem .75rem;background:color-mix(in oklab,var(--cream) 72%,white 28%);border:1px solid var(--line);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.mobile-sticky-atc{display:none}
 .button.secondary.dark{background:var(--forest);border-color:var(--forest);color:var(--paper)}
 @media(max-width:650px){body{padding-bottom:92px}.product-detail{padding-top:1.2rem}.gallery{gap:.5rem}.purchase-panel h1{font-size:clamp(2.1rem,12vw,3.2rem)}.trust-list{grid-template-columns:1fr}.mobile-sticky-atc{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,.7fr);gap:.75rem;align-items:center;padding:.7rem .9rem;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(16,39,30,.12)}.mobile-sticky-atc span{display:block;max-width:42vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:.72rem}.mobile-sticky-atc .button{min-height:42px;padding:.6rem .75rem}.mobile-sticky-atc .dev-note,.mobile-sticky-atc .error{display:none}}
+
+.hero:after{background:linear-gradient(100deg,rgba(16,39,30,.94),rgba(16,39,30,.58) 48%,rgba(20,32,25,.18) 78%)}
+.hero-copy{width:min(820px,92vw);display:grid;gap:1rem}
+.hero-copy h1{max-width:10ch;margin-bottom:.25rem;text-wrap:balance}
+.hero-copy p{max-width:54ch;font-size:clamp(1.08rem,1.8vw,1.28rem)}
+.hero-proof{display:flex;gap:.5rem;flex-wrap:wrap;max-width:760px}
+.hero-proof span{padding:.55rem .68rem;background:rgba(255,253,247,.1);border:1px solid rgba(255,253,247,.22);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.section,.page-hero{padding:clamp(4.6rem,8vw,8rem) 0}
+.section-heading{margin-bottom:2.2rem}
+.product-grid,.journal-grid{gap:1.45rem}
+.category-strip-section{width:min(1240px,92vw);margin:0 auto;padding:0 0 clamp(2rem,5vw,4rem)}
+.category-strip{display:flex;gap:.75rem;overflow-x:auto;padding:.25rem 0 1rem;scroll-snap-type:x proximity}
+.category-strip a{min-width:170px;display:grid;gap:.35rem;padding:1rem;background:var(--paper);border:1px solid var(--line);text-decoration:none;scroll-snap-align:start}
+.category-strip span{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--forest);color:var(--paper);font-weight:700;font-size:.72rem;letter-spacing:.08em}
+.category-strip strong{font-family:Georgia,serif;font-size:1.25rem;letter-spacing:-.04em}
+.category-strip small{color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.editorial-product-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:1.45rem}
+.editorial-product-card,.coming-soon-card{background:var(--paper);border:1px solid var(--line)}
+.editorial-product-card.featured{grid-row:span 2}
+.editorial-product-card>div,.coming-soon-card{padding:1.1rem}
+.editorial-image-link{position:relative;display:block;overflow:hidden;background:#e5e1d8;text-decoration:none}
+.editorial-image-link img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.editorial-product-card.featured .editorial-image-link img{aspect-ratio:4/4.3}
+.editorial-image-link span{position:absolute;left:.85rem;bottom:.85rem;padding:.34rem .6rem;background:var(--forest);color:var(--paper);font-size:.64rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.editorial-product-card h3 a{text-decoration:none}
+.coming-soon-card{display:grid;align-content:end;min-height:100%;background:linear-gradient(135deg,color-mix(in oklab,var(--paper) 88%,var(--sand) 12%),var(--paper))}
+.coming-soon-card h3{font-size:clamp(1.8rem,3vw,2.8rem)}
+.curated-card .product-status{background:var(--sand);color:var(--ink)}
+.intent-filter-row{padding-top:.8rem;border-bottom:0}
+@media(max-width:900px){.editorial-product-grid{grid-template-columns:1fr}.editorial-product-card.featured{grid-row:auto}.category-strip-section{width:100%;padding-left:4vw}.category-strip{padding-right:4vw}}
+@media(max-width:650px){.hero{min-height:76vh}.hero-copy h1{max-width:11ch}.hero-proof{display:grid;grid-template-columns:1fr 1fr}}
