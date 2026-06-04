@@ -55,3 +55,11 @@ h1,h2,h3,.category-grid strong,.category-strip strong,.footer-brand{font-family:
 .product-status,.editorial-image-link span{background:var(--forest);color:var(--paper)}
 .curated-card .product-status{background:var(--sand);color:var(--ink)}
 .product-card:hover,.editorial-product-card:hover,.category-strip a:hover{border-color:rgba(194,168,94,.72)}
+.category-strip a{align-content:center;min-height:112px}
+.category-strip a strong{align-self:auto}
+.section-link-row{display:flex;justify-content:center;margin-top:1.4rem}
+.kit-card-simple{display:grid;align-content:start;gap:.4rem}
+.kit-card-simple .text-link{margin-top:auto}
+.why-wyx{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,4vw,4rem);align-items:start;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-wyx p:last-child{margin-bottom:0}
+@media(max-width:900px){.why-wyx{grid-template-columns:1fr}}

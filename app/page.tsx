@@ -1,33 +1,33 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import curatedPicks from '@/data/curated-picks.json';
 import { ComingSoonCard } from '@/components/ComingSoonCard';
-import { CuratedPickCard } from '@/components/CuratedPickCard';
 import { EditorialProductCard } from '@/components/EditorialProductCard';
 import { EmailCapture } from '@/components/EmailCapture';
-import { KitAddButton } from '@/components/KitAddButton';
-import { availableProducts, catalogCategories, categoryCount, categoryFor } from '@/lib/catalog';
+import { availableProducts } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
 import { createProductAllocator, comingSoonCards } from '@/lib/homeMerchandising';
-import { commerceKits, kitCategorySummary, kitLines, kitProducts } from '@/lib/kits';
+import { commerceKits } from '@/lib/kits';
 import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
-import type { CuratedPick } from '@/types/curated';
 
 export const revalidate = 300;
+
+const categoryPills = [
+  { label: 'Golf Gifts', href: '/golf-gifts', icon: 'GG' },
+  { label: 'Trip Gear', href: '/golf-trip-gear', icon: 'TG' },
+  { label: 'Dad Gifts', href: '/golf-gifts-for-dad', icon: 'DG' },
+  { label: 'Scramble Prizes', href: '/scramble-prizes', icon: 'SP' },
+  { label: 'Bag Upgrades', href: '/bag-upgrades', icon: 'BU' }
+];
 
 export default async function Home() {
   const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
   const allocator = createProductAllocator();
   const shortList = allocator.take(firstBuyProducts(catalog), 3);
-  const tripKitProducts = kitProducts(catalog, commerceKits[0]?.handles || []);
-  allocator.mark(tripKitProducts);
   const justAdded = allocator.take(catalog, 4);
-  const categories = catalogCategories.slice(1).filter((category) => categoryCount(catalog, category) > 0);
   const comingSoon = comingSoonCards(3 - shortList.length, ['The Roo Valuables Pouch', 'Divot Tool + Marker Set', 'Wet/Dry Trip Towel']);
   const justAddedComingSoon = comingSoonCards(4 - justAdded.length, ['Golf Trip Tee Pack', 'Scramble Prize Pack', 'Magnetic Club Brush', 'Bag Tag Drop']);
-  const externalPicks = curatedPicks as CuratedPick[];
 
   return (
     <>
@@ -66,11 +66,10 @@ export default async function Home() {
 
       <section className="category-strip-section" aria-label="Browse by category">
         <div className="category-strip">
-          {categories.slice(0, 8).map((category) => (
-            <Link key={category} href={`/products?category=${encodeURIComponent(category)}`}>
-              <span aria-hidden="true">{categoryIcon(category)}</span>
-              <strong>{category}</strong>
-              <small>{categoryCount(catalog, category)} picks</small>
+          {categoryPills.map((category) => (
+            <Link key={category.label} href={category.href}>
+              <span aria-hidden="true">{category.icon}</span>
+              <strong>{category.label}</strong>
             </Link>
           ))}
         </div>
@@ -85,21 +84,17 @@ export default async function Home() {
           <Link className="text-link" href="/golf-trip-gear">Build A Trip Kit</Link>
         </div>
         <div className="kit-grid">
-          {commerceKits.slice(0, 3).map((kit) => {
-            const products = kitProducts(catalog, kit.handles);
-            const lines = kitLines(products);
-            return (
-              <article className="kit-card" key={kit.title}>
-                <p className="eyebrow">{kit.eyebrow}</p>
-                <h3>{kit.title}</h3>
-                <p>{kit.description}</p>
-                <p className="product-meta">{kit.complete ? 'Complete kit' : 'Build this kit'} / {kitCategorySummary(products)}</p>
-                <ul>{products.map((product) => <li key={product.id}>{product.title}</li>)}</ul>
-                <KitAddButton lines={lines} kitName={kit.title} label={kit.complete ? 'Add Full Kit' : 'Build This Kit'} />
-              </article>
-            );
-          })}
+          {commerceKits.slice(0, 3).map((kit) => (
+            <article className="kit-card kit-card-simple" key={kit.title}>
+              <p className="eyebrow">{kit.eyebrow}</p>
+              <h3>{kit.title}</h3>
+              <p>{kit.description}</p>
+              <p className="product-meta">{kit.complete ? 'Complete kit' : 'Coming soon / build from available picks'}</p>
+              <Link className="text-link" href="/golf-trip-gear">View Kit</Link>
+            </article>
+          ))}
         </div>
+        <div className="section-link-row"><Link className="button secondary dark" href="/golf-trip-gear">See All Kits</Link></div>
       </section>
 
       <section className="section">
@@ -116,18 +111,18 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="section-heading split">
-          <div>
-            <p className="eyebrow">Curated Picks</p>
-            <h2>Outside Finds We Are Watching.</h2>
-          </div>
-          <Link className="text-link" href="/short-list">Open The Short List</Link>
+      <section className="section why-wyx">
+        <div>
+          <p className="eyebrow">Why WYX</p>
+          <h2>Golf Goods With A Little More Point Of View.</h2>
         </div>
-        <div className="product-grid">
-          {externalPicks.slice(0, 4).map((pick) => <CuratedPickCard key={pick.url} pick={pick} />)}
+        <div>
+          <p>WYX Golf Co. is built for players who care about the ritual as much as the score. The early tee time. The clean towel. The worn-in hat. The small pieces of gear that make the round feel like yours.</p>
+          <p>We keep the shop focused on useful gifts, trip gear, and bag upgrades with personality, because golf gear should be easy to buy and even easier to actually use.</p>
         </div>
       </section>
+
+      <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Drop Before Your Foursome Does." body="Join the WYX list for golf trip gear, useful gifts, new drops, and launch discounts." />
 
       <section className="section">
         <p className="eyebrow">Field Notes</p>
@@ -138,22 +133,10 @@ export default async function Home() {
           <Article href="/journal/pressure-holes" img={imageMap.strategy} title="A Calm Framework for Pressure Holes" />
         </div>
       </section>
-
-      <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Drop Before Your Foursome Does." body="Join the WYX list for golf trip gear, useful gifts, new drops, and launch discounts." />
     </>
   );
 }
 
 function Article({ href, img, title }: { href: string; img: string; title: string }) {
   return <article className="journal-card"><Image src={img} alt={title} width={900} height={675} /><div><h3>{title}</h3><Link className="text-link" href={href}>Read Field Note</Link></div></article>;
-}
-
-function categoryIcon(category: string) {
-  if (category === 'Golf Balls') return 'GB';
-  if (category === 'Gloves') return 'GL';
-  if (category === 'Grips') return 'GR';
-  if (category === 'Towels') return 'TW';
-  if (category === 'Club Care') return 'CC';
-  if (category === 'Accessories') return 'AX';
-  return categoryFor({ title: category, productType: category, vendor: '', tags: [] }).slice(0, 2).toUpperCase();
 }
