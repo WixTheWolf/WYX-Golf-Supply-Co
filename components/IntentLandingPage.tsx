@@ -30,7 +30,7 @@ export async function IntentLandingPage({ config }: { config: IntentPageConfig }
 
       <section className="deal-strip" aria-label={`${config.title} benefits`}>
         <span>WYX10 launch offer</span>
-        <span>Trusted golf suppliers</span>
+        <span>Trusted golf gear</span>
         <span>Mobile-first cart</span>
         <span>U.S. customer support</span>
       </section>

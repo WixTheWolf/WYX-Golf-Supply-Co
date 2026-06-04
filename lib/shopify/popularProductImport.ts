@@ -37,7 +37,7 @@ export const popularProducts: PopularProduct[] = [
     productType: 'Accessories',
     image: `${siteUrl}/images/hero-coastal-fairway.png`,
     description: 'A simple 50-pack of bamboo golf tees for restocking the bag before the next round.',
-    details: ['50 tees per pack', 'Bag, cart, and travel ready', 'Low-friction cart add-on', 'Useful gift add-on for every handicap'],
+    details: ['50 tees per pack', 'Bag, cart, and travel ready', 'Easy golf bag restock', 'Useful gift add-on for every handicap'],
     sku: 'WYX-TEES-050',
     quantity: 140,
     tags: ['popular-seller', 'golf tees', 'golf essentials', 'under-10']
@@ -115,7 +115,7 @@ export const popularProducts: PopularProduct[] = [
     productType: 'Club Care',
     image: `${siteUrl}/images/journal-iron-practice.png`,
     description: 'A pocket-sized groove cleaner for players who want cleaner contact and better spin from their scoring clubs.',
-    details: ['Compact pocket profile', 'Works as a quick club-care reset', 'Pairs well with towels and brush cleaners', 'Easy low-ticket checkout add-on'],
+    details: ['Compact pocket profile', 'Works as a quick club-care reset', 'Pairs well with towels and brush cleaners', 'Easy under-$20 bag upgrade'],
     sku: 'WYX-GROOVE-001',
     quantity: 90,
     tags: ['popular-seller', 'groove cleaner', 'club care', 'under-20']
@@ -163,7 +163,7 @@ function errors(payload: Record<string, any>) {
 }
 
 function descriptionHtml(product: PopularProduct) {
-  return `<p>${product.description}</p><h3>Why it sells</h3><ul>${product.details.map((detail) => `<li>${detail}</li>`).join('')}</ul><p><strong>Launch note:</strong> WYX-stocked popular accessory pick selected for fast checkout and everyday golf utility.</p>`;
+  return `<p>${product.description}</p><h3>Why golfers use it</h3><ul>${product.details.map((detail) => `<li>${detail}</li>`).join('')}</ul><p>Selected for everyday rounds, range sessions, and better bag habits.</p>`;
 }
 
 async function publishProduct(productId: string) {

@@ -10,39 +10,39 @@ export type CommerceKit = {
 
 export const commerceKits: CommerceKit[] = [
   {
-    title: 'Weekend Warrior Kit',
-    eyebrow: 'Best First Cart',
+    title: 'The Range Rat Reset Kit',
+    eyebrow: 'Range-Ready Accessories',
     description: 'Grip tape, a towel, and a fresh grip for players who want the bag ready before Saturday morning.',
     handles: ['pulse-golf-overgrip-tape', 'blue-ridge-golf-co-golf-towels', 'stick-grips-golf-camo-golf-grip']
   },
   {
-    title: 'Clean Contact Kit',
+    title: 'The Clean Contact Kit',
     eyebrow: 'Club Care Starter',
-    description: 'A simple bag reset built around cleaner clubs, cleaner towels, and better pre-shot habits.',
+    description: 'Cleaner clubs. Better contact. Fewer excuses. A simple club-care setup for golfers who want their towel, grooves, and ball marker ready before the first tee.',
     handles: ['blue-ridge-golf-co-golf-towels', 'tri-fold-microfiber-golf-towel', 'pulse-golf-overgrip-tape']
   },
   {
-    title: 'Range Rat Kit',
-    eyebrow: 'Practice Session Add-On',
-    description: 'Grip tape, a glove, and useful accessories for players who live at the range after work.',
+    title: 'The Green-Side Survival Kit',
+    eyebrow: 'Short Game Helpers',
+    description: 'Markers, glove storage, and small accessories for golfers who want the green-side basics handled.',
     handles: ['pulse-golf-overgrip-tape', 'park-paisley-womens-gold-golf-glove', 'glove-accessory-caddie-gray']
   },
   {
-    title: 'Golf Dad Gift Kit',
+    title: 'The Golf Dad Gift Kit',
     eyebrow: 'Gift-Ready Bundle',
-    description: 'Small useful pieces Dad can put straight into the bag: markers, towel utility, and glove storage.',
+    description: "Useful golf gifts he'll actually keep in the bag. Skip the novelty junk. This kit is built around towels, markers, gloves, and small upgrades that make every round feel a little more dialed.",
     handles: ['three-rail-ball-marker', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'glove-accessory-caddie-gray']
   },
   {
-    title: '12-Handicap Survival Kit',
-    eyebrow: 'Real Round Rescue',
-    description: 'Balls, a glove, and a headcover upgrade for the player trying to keep doubles off the card.',
+    title: 'The Saturday Morning Bag Kit',
+    eyebrow: 'Weekend Round Ready',
+    description: 'Balls, a glove, and a headcover upgrade for the player trying to get the bag ready before the first tee.',
     handles: ['classic-leather-edition-walnut-brown-midnight-black', 'park-paisley-womens-gold-golf-glove', 'shockd-golf-balls']
   },
   {
-    title: 'Bachelor Party Bag',
+    title: 'The Bachelor Party Bag Kit',
     eyebrow: 'Group Gift Builder',
-    description: 'Easy prize-table products and useful small gear for golf trips, scrambles, and weekend groups.',
+    description: "Small golf gifts for the group that won't get left in the Airbnb. Markers, towels, balls, and bag accessories for tournament weekends, golf trips, and first-tee chaos.",
     handles: ['three-rail-ball-marker', 'two-sided-metal-golf-ball-marker-5-color-combo-pack', 'shockd-golf-balls']
   }
 ];

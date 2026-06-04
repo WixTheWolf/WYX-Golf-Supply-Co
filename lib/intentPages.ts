@@ -29,9 +29,9 @@ const has = (product: Product, pattern: RegExp) => pattern.test(haystack(product
 export const intentPages: Record<string, IntentPageConfig> = {
   'golf-gifts': {
     slug: 'golf-gifts',
-    title: 'Golf Gifts That Actually Get Used',
+    title: 'Golf Gifts That Actually Get Used.',
     eyebrow: 'Gift-Ready Picks',
-    description: 'Useful bag upgrades for golf dads, league partners, range regulars, and last-minute gift shoppers. No clutter, just gear golfers can put to work.',
+    description: 'Useful towels, markers, grips, gloves, balls, and bag accessories for golfers who already have enough polos.',
     metaTitle: 'Golf Gifts That Actually Get Used',
     metaDescription: 'Shop useful golf gifts from WYX Golf Supply Co., including towels, ball markers, gloves, grips, golf balls, and bag accessories.',
     primaryCta: 'Shop Golf Gifts',
@@ -47,9 +47,9 @@ export const intentPages: Record<string, IntentPageConfig> = {
   },
   'golf-gifts-for-dad': {
     slug: 'golf-gifts-for-dad',
-    title: 'Golf Gifts For Dad That Will Make The Bag',
+    title: "Golf Gifts For Dad That Aren't Another Mug.",
     eyebrow: 'Golf Dad Approved',
-    description: 'Practical gifts for dads who play early, practice after work, and always have one more round on the calendar.',
+    description: "Useful bag upgrades, towels, markers, gloves, and golf accessories he'll actually bring to the course.",
     metaTitle: 'Golf Gifts For Dad',
     metaDescription: 'Shop golf gifts for Dad from WYX Golf Supply Co., including useful towels, ball markers, gloves, golf balls, grips, and bag essentials.',
     primaryCta: 'Shop Dad Gifts',
@@ -58,22 +58,22 @@ export const intentPages: Record<string, IntentPageConfig> = {
     proof: ['Golf dad approved', 'Useful for real rounds', 'Easy gift bundles', 'WYX10 launch offer'],
     faq: [
       ['What should I buy a golf dad?', 'Start with products he will use every round: towels, balls, gloves, ball markers, grips, and bag organizers.'],
-      ['Are these novelty gifts?', 'No. WYX prioritizes practical gear with real product images and active checkout availability.'],
-      ['What if I am not sure what he needs?', 'Choose a low-friction accessory or build a small kit. Useful beats complicated.']
+      ['Are these novelty gifts?', 'No. WYX prioritizes practical gear golfers can bring to the course.'],
+      ['What if I am not sure what he needs?', 'Choose an easy bag accessory or build a small kit. Useful beats complicated.']
     ],
     match: (product) => under(product, 100) || has(product, /dad|father|towel|marker|glove|grip|ball|headcover|bag/)
   },
   'bag-essentials': {
     slug: 'bag-essentials',
-    title: 'Golf Bag Essentials For Weekend Players',
+    title: 'Build A Better Bag.',
     eyebrow: 'Better Bag Builds',
-    description: 'The small things that keep a round moving: balls, gloves, towels, markers, grips, caddies, and clean-contact tools.',
+    description: 'Small golf accessories that keep your round cleaner, easier, and more organized.',
     metaTitle: 'Golf Bag Essentials',
     metaDescription: 'Shop golf bag essentials from WYX Golf Supply Co., including golf balls, gloves, towels, ball markers, grips, caddies, and accessories.',
     primaryCta: 'Build The Bag',
     secondaryCta: 'Shop Accessories',
     secondaryHref: '/best-golf-accessories',
-    proof: ['Weekend golfer approved', 'Useful add-ons', 'Under-$75 cart builders', 'Built for real rounds'],
+    proof: ['Weekend golfer approved', 'Useful add-ons', 'Under-$75 golf picks', 'Built for real rounds'],
     faq: [
       ['What belongs in every golf bag?', 'A clean towel, fresh glove, balls, markers, tees or tools, and a few small pieces that make the round easier.'],
       ['Why start with essentials?', 'They are easier to buy, easier to gift, and more likely to be used immediately than complex equipment.'],
@@ -131,7 +131,7 @@ export const intentPages: Record<string, IntentPageConfig> = {
     faq: [
       ['Why does clean contact matter?', 'Clean grooves and a dry face help the club do its job, especially on wedges and approach shots.'],
       ['What should be in a clean-contact kit?', 'A towel, brush or groove tool, and a few simple pieces that keep the bag organized.'],
-      ['Is this a good gift?', 'Yes. Club-care gear is low-friction, useful, and easy to buy for almost any golfer.']
+      ['Is this a good gift?', 'Yes. Club-care gear is useful, easy to buy, and a good fit for almost any golfer.']
     ],
     match: (product) => categoryIn(product, ['Club Care', 'Towels']) || has(product, /clean|brush|groove|towel|care|contact/)
   }

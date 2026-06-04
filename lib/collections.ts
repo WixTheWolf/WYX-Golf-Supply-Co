@@ -34,7 +34,7 @@ export const landingCollections: LandingCollection[] = [
     seoTitle: 'Golf Accessories',
     metaDescription: 'Shop golf accessories from WYX Golf Supply Co., including ball markers, bag caddies, grips, and practical course essentials.',
     match: (product) => categoryFor(product) === 'Accessories',
-    bullets: ['Ball markers and bag tools', 'Active product availability', 'Curated for everyday rounds']
+    bullets: ['Ball markers and bag tools', 'Ready for everyday rounds', 'Built for better bag habits']
   },
   {
     slug: 'golf-grips',

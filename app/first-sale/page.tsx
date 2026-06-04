@@ -36,18 +36,18 @@ export default async function FirstSale() {
     <>
       <section className="first-sale-hero">
         <div>
-          <p className="eyebrow">First Sale Push</p>
-          <h1>Help Launch WYX Golf Supply.</h1>
-          <p>We are opening the supply room with useful golf gear, quick bag upgrades, and a launch code. Use <strong>WYX10</strong> for 10% off today.</p>
+          <p className="eyebrow">WYX Launch</p>
+          <h1>Help Launch WYX Golf Supply Co.</h1>
+          <p>We're building a golf shop around useful bag upgrades, gift-ready picks, and small accessories golfers actually use. Use <strong>WYX10</strong> for 10% off your first order.</p>
           <div className="actions">
             <Link className="button primary" href="#first-sale-products">Shop The Launch Picks</Link>
             <Link className="button secondary dark" href="/deals">See All Deals</Link>
           </div>
         </div>
         <aside className="share-card">
-          <p className="eyebrow">Post This Today</p>
-          <h2>Quick Share Copy</h2>
-          <p>New golf supply shop is live. WYX has useful bag upgrades, towels, markers, grips, gloves, and golf balls. Use WYX10 for 10% off today.</p>
+          <p className="eyebrow">Share WYX With A Golf Buddy</p>
+          <h2>Copy/Paste This</h2>
+          <p>WYX Golf Supply Co. just launched with useful golf towels, markers, grips, gloves, balls, and bag accessories. Use WYX10 for 10% off your first order.</p>
           <p><strong>Share link:</strong><br /><span>https://wyx-golf-supply-co.vercel.app/first-sale</span></p>
         </aside>
       </section>
@@ -56,7 +56,7 @@ export default async function FirstSale() {
         <span>Use WYX10 today</span>
         <span>Under-$60 picks</span>
         <span>Easy checkout</span>
-        <span>Trusted golf suppliers</span>
+        <span>Useful golf gear</span>
       </section>
 
       <section id="first-sale-products" className="section product-section">
@@ -67,7 +67,7 @@ export default async function FirstSale() {
           </div>
           <Link className="text-link" href="/products">Browse Full Catalog</Link>
         </div>
-        {featured.length ? <div className="product-grid">{featured.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Products are syncing from Shopify.</p>}
+        {featured.length ? <div className="product-grid">{featured.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Launch picks are being prepared.</p>}
       </section>
 
       <EmailCapture source="first-sale" campaign="first_sale_launch_list" title="Not Ready To Buy Yet?" body="Join the launch list and keep WYX10 close. We will send useful golf drops, deals, and bag-builder picks." />

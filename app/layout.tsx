@@ -7,6 +7,7 @@ import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
 import { TrackingScripts } from '@/components/TrackingScripts';
+import { supportEmail } from '@/lib/support';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyx-golf-supply-co.vercel.app'),
@@ -25,5 +26,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body><SeoJsonLd /><TrackingScripts /><CartProvider><Header /><main>{children}</main><footer className="site-footer"><div><Link className="footer-brand" href="/">WYX <span>Golf Supply Co.</span></Link><p>Useful golf gear, gift-ready picks, and better bag builds for weekend players.</p></div><nav aria-label="Footer navigation"><Link href="/products">Shop</Link><Link href="/golf-gifts">Golf Gifts</Link><Link href="/golf-gifts-for-dad">Dad Gifts</Link><Link href="/bag-essentials">Bag Essentials</Link><Link href="/clean-contact-kit">Clean Contact</Link><Link href="/bachelor-party-golf-gifts">Group Gifts</Link><Link href="/premium-golf-bags">Premium Bags</Link><Link href="/popular-golf-products-2026">Popular 2026</Link><Link href="/deals">Deals</Link><Link href="/about">About</Link><Link href="/faq">FAQ</Link><Link href="/story">Our Story</Link><Link href="/journal">Field Notes</Link><Link href="/shipping-returns">Shipping & Returns</Link><Link href="/privacy">Privacy</Link><Link href="/contact">Contact</Link></nav></footer></CartProvider></body></html>;
+  return <html lang="en"><body><SeoJsonLd /><TrackingScripts /><CartProvider><Header /><main>{children}</main><footer className="site-footer"><div><Link className="footer-brand" href="/">WYX <span>Golf Supply Co.</span></Link><p>Useful golf gear for weekend players, golf dads, range rats, and gift shoppers.</p><p className="footer-note">Use <strong>WYX10</strong> for 10% off your first bag upgrade.</p><p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p></div><nav aria-label="Footer navigation"><Link href="/products">Shop</Link><Link href="/golf-gifts">Golf Gifts</Link><Link href="/bag-essentials">Bag Essentials</Link><Link href="/golf-gifts-for-dad">Dad Gifts</Link><Link href="/deals">Deals</Link><Link href="/popular-golf-products-2026">Popular 2026</Link><Link href="/first-sale">First Sale</Link><Link href="/journal">Field Notes</Link><Link href="/story">Story</Link><Link href="/faq">FAQ</Link><Link href="/shipping-returns">Shipping & Returns</Link><Link href="/contact">Contact</Link><Link href="/privacy">Privacy</Link></nav></footer></CartProvider></body></html>;
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { AddToCartButton } from '@/components/AddToCartButton';
-import { categoryFor, supplierName } from '@/lib/catalog';
+import { categoryFor } from '@/lib/catalog';
 import { money } from '@/lib/demo';
 import { cleanText } from '@/lib/text';
 import type { Product } from '@/types/shopify';
@@ -15,10 +15,10 @@ export function ProductCard({ product }: { product: Product }) {
     <article className="product-card">
       <Link href={`/products/${product.handle}`} className="product-image-link" aria-label={`View ${title}`}>
         {image ? <Image src={image.url} alt={alt} width={900} height={675} /> : <span className="image-placeholder">Image coming soon</span>}
-        <span className="product-status">Ready To Ship</span>
+        <span className="product-status">WYX Pick</span>
       </Link>
       <div className="product-card-body">
-        <p className="product-meta">{categoryFor(product)} <span>By {supplierName(product)}</span></p>
+        <p className="product-meta">{categoryFor(product)}</p>
         <h3><Link href={`/products/${product.handle}`}>{title}</Link></h3>
         <div className="product-card-footer">
           <span className="price">{money(product.priceRange.minVariantPrice)}</span>

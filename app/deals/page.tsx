@@ -24,8 +24,8 @@ export default async function Deals() {
       <section className="deal-hero">
         <div>
           <p className="eyebrow">WYX Launch Deals</p>
-          <h1>Golf Finds Under $60.</h1>
-          <p>Fast cart builders, bag upgrades, and giftable golf gear selected for low-friction checkout. Use code <strong>WYX10</strong> for 10% off during the launch window.</p>
+          <h1>Launch Deals For A Better Bag.</h1>
+          <p>Use WYX10 for 10% off your first golf bag upgrade while the launch offer is active.</p>
           <div className="actions">
             <Link className="button primary" href="#deal-grid">Shop The Deals</Link>
             <Link className="button secondary dark" href="/products">Browse All Gear</Link>
@@ -45,19 +45,19 @@ export default async function Deals() {
       <section className="deal-strip" aria-label="Why shop WYX deals">
         <span>Launch code WYX10</span>
         <span>Easy checkout</span>
-        <span>Active product availability</span>
-        <span>Golf-first product curation</span>
+        <span>Gift-ready picks</span>
+        <span>Built for everyday rounds</span>
       </section>
 
       <section id="deal-grid" className="section product-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Low-Friction Cart Builders</p>
+            <p className="eyebrow">Better Bag Deals</p>
             <h2>Small Gear. Easy Yes.</h2>
           </div>
           <Link className="text-link" href="/products">Shop Full Catalog</Link>
         </div>
-        {deals.length ? <div className="product-grid">{deals.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Deal products are being synced from Shopify.</p>}
+        {deals.length ? <div className="product-grid">{deals.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Deal products are being prepared.</p>}
       </section>
 
       <EmailCapture source="deals" campaign="deals_launch_list" title="Want The Next Deal Drop?" body="Join the list for practical golf accessories, under-$60 picks, and launch offers." />

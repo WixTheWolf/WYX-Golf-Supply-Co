@@ -24,20 +24,20 @@ export default async function Home() {
         <Image src={imageMap.hero} alt="Coastal fairway at golden hour" fill priority />
         <div className="hero-copy">
           <p className="eyebrow">WYX Golf Supply Co.</p>
-          <h1>Better Bag. Better Gifts. Better Rounds.</h1>
-          <p>Useful golf gear for weekend players, golf dads, range rats, and anyone building a better bag without pro shop markup.</p>
+          <h1>Build A Better Golf Bag Without Buying New Clubs.</h1>
+          <p>Useful golf towels, grips, markers, gloves, balls, and bag upgrades for weekend rounds, range sessions, and last-minute golf gifts.</p>
           <div className="actions">
-            <Link className="button primary" href="/golf-gifts">Shop Golf Gifts</Link>
-            <Link className="button secondary" href="/bag-essentials">Build The Bag</Link>
+            <Link className="button primary" href="/bag-essentials">Shop Bag Essentials</Link>
+            <Link className="button secondary" href="/golf-gifts">Shop Golf Gifts</Link>
           </div>
         </div>
       </section>
 
       <section className="trust-strip" aria-label="Store benefits">
-        <span>Trusted Golf Suppliers</span>
-        <span>Use WYX10 For 10% Off</span>
+        <span>10% Off With WYX10</span>
+        <span>Gift-Ready Picks</span>
         <span>Easy Checkout</span>
-        <span>U.S. Customer Support</span>
+        <span>Shipping Shown Before Payment</span>
       </section>
 
       <section className="launch-offer">
@@ -45,14 +45,14 @@ export default async function Home() {
           <p className="eyebrow">Launch Offer</p>
           <h2>Take 10% Off The First Bag Build.</h2>
         </div>
-        <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and approved supply-room finds. Father's Day is June 21, so the gift window is open now.</p>
+        <p>Use code <strong>WYX10</strong> at checkout on golf balls, gloves, grips, towels, and small upgrades that actually get used. Father's Day is June 21, so the gift window is open now.</p>
         <Link className="button primary" href="/fathers-day-golf-gifts">Shop Dad Gifts</Link>
       </section>
 
       <section id="kits" className="section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Fast Bag Builds</p>
+            <p className="eyebrow">Better Bag Kits</p>
             <h2>Kits Golfers Actually Use.</h2>
           </div>
           <Link className="text-link" href="/products">Build Your Own</Link>
@@ -78,8 +78,8 @@ export default async function Home() {
       <section className="section">
         <div className="section-heading split">
           <div>
-          <p className="eyebrow">Fresh From The Shop</p>
-          <h2>Easy First-Cart Picks.</h2>
+            <p className="eyebrow">Gear Worth Keeping In The Bag.</p>
+            <h2>Small Upgrades Golfers Actually Use.</h2>
           </div>
           <Link className="text-link" href="/products">Shop All Products</Link>
         </div>
@@ -89,9 +89,9 @@ export default async function Home() {
       <section className="dark-section">
         <div>
           <p className="eyebrow">Why WYX</p>
-          <h2>Useful Golf Gear Without The Pro Shop Markup.</h2>
+          <h2>Small Upgrades. Better Rounds.</h2>
         </div>
-        <p>WYX curates useful golf products from trusted golf suppliers: gift-ready picks, bag essentials, clean-contact tools, and weekend golfer upgrades that make sense before the first tee.</p>
+        <p>WYX is built around the simple stuff golfers actually use: clean towels, fresh grips, reliable markers, glove storage, golf balls, and easy gift picks. No overthinking. Just better bag energy.</p>
       </section>
 
       <EmailCapture source="home" campaign="home_launch_list" />
@@ -113,29 +113,29 @@ export default async function Home() {
       <section className="section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">SEO-Ready Collections</p>
-            <h2>Shop By Intent.</h2>
+            <p className="eyebrow">Shop The Round</p>
+            <h2>Find The Right Bag Upgrade.</h2>
           </div>
           <Link className="text-link" href="/golf-gifts-under-60">Golf Gifts Under $60</Link>
         </div>
         <div className="intent-grid">
           <Link href="/golf-gifts-under-60">
-            <span>High-Intent Search</span>
+            <span>Gift-Ready Picks</span>
             <strong>Golf Gifts Under $60</strong>
             <small>Useful towels, tees, gloves, tools, and accessories for gift shoppers.</small>
           </Link>
           <Link href="/fathers-day-golf-gifts">
-            <span>Seasonal Push</span>
+            <span>Golf Dad Approved</span>
             <strong>Father's Day Golf Gifts</strong>
             <small>Dad-ready towels, markers, gloves, balls, grips, headcovers, and bag upgrades.</small>
           </Link>
           <Link href="/best-golf-accessories">
-            <span>Buyer Intent</span>
+            <span>Bag Upgrades</span>
             <strong>Best Golf Accessories</strong>
             <small>Practical bag upgrades selected for fast add-to-cart decisions.</small>
           </Link>
           <Link href="/popular-golf-products-2026">
-            <span>2026 Demand</span>
+            <span>Popular Picks</span>
             <strong>Popular Golf Products</strong>
             <small>Fresh gifts, useful accessories, and practical products worth scouting now.</small>
           </Link>
@@ -150,7 +150,7 @@ export default async function Home() {
             <small>Gift-ready picks for golf dads, weekend players, and last-minute buyers.</small>
           </Link>
           <Link href="/bag-essentials">
-            <span>Core Intent</span>
+            <span>Weekend Essentials</span>
             <strong>Bag Essentials</strong>
             <small>Balls, gloves, towels, markers, grips, and useful add-ons.</small>
           </Link>

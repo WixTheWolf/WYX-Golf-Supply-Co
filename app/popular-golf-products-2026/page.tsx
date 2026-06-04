@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 const scoutingBoard = [
-  ["Women's Golf Apparel", 'Stretch skorts, polos, hoodies, and everyday golf layers with low-friction sizing and strong lifestyle appeal.'],
+  ["Women's Golf Apparel", 'Stretch skorts, polos, hoodies, and everyday golf layers with easy sizing and strong lifestyle appeal.'],
   ['Useful Gifts Under $50', 'Ball markers, towels, gloves, tees, divot tools, club-care tools, and small upgrades golfers actually keep in the bag.'],
   ['Club-Care Add-Ons', 'Brush cleaners, groove tools, microfiber towels, and weekly bag-reset products with strong add-to-cart potential.'],
   ['Practice & Training Aids', 'Putting mirrors, alignment tools, range-session helpers, and compact scoring-improvement gear.'],
@@ -49,25 +49,25 @@ export default async function PopularGolfProducts2026() {
     <>
       <section className="collection-hero">
         <div>
-          <p className="eyebrow">2026 Buyer Intent</p>
+          <p className="eyebrow">Popular Golf Gear</p>
           <h1>Popular Golf Products Worth Putting In The Bag.</h1>
-          <p>WYX is focused on the products golfers buy quickly: useful gifts, course essentials, bag upgrades, towels, gloves, grips, ball markers, headcovers, and compact practice gear. Everything shown here has real product images, active variants, and a simple path to checkout.</p>
+          <p>Start with the products golfers reach for often: useful gifts, course essentials, bag upgrades, towels, gloves, grips, ball markers, headcovers, and compact practice gear.</p>
           <div className="actions">
             <Link className="button primary" href="#popular-picks">Shop Popular Picks</Link>
             <Link className="button secondary dark" href="/deals">Use WYX10</Link>
           </div>
         </div>
         <div className="collection-proof">
-          <span>Active product availability</span>
+          <span>Useful golf gear</span>
           <span>Secure checkout</span>
           <span>WYX10 launch discount</span>
-          <span>Trusted golf suppliers</span>
+          <span>Built for everyday rounds</span>
         </div>
       </section>
 
       <section className="deal-strip" aria-label="Popular golf product focus">
         <span>Gifts under $60</span>
-        <span>Small cart builders</span>
+        <span>Small bag upgrades</span>
         <span>Useful accessories</span>
         <span>Mobile-first checkout</span>
       </section>
@@ -80,14 +80,14 @@ export default async function PopularGolfProducts2026() {
           </div>
           <Link className="text-link" href="/products">Browse Full Catalog</Link>
         </div>
-        {topProducts.length ? <div className="product-grid">{topProducts.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Products are syncing from Shopify.</p>}
+        {topProducts.length ? <div className="product-grid">{topProducts.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Products are being prepared.</p>}
       </section>
 
       <section className="section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">First Cart Strategy</p>
-            <h2>Why These Products Move.</h2>
+            <p className="eyebrow">Better Bag Basics</p>
+            <h2>Why Golfers Keep These Around.</h2>
           </div>
           <Link className="text-link" href="/golf-gifts-under-60">{underSixty.length} Under-$60 Picks</Link>
         </div>
