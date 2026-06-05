@@ -14,7 +14,7 @@ const displayFont = Fraunces({ subsets: ['latin'], variable: '--font-display', d
 const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://wyx-golf-supply-co.vercel.app'),
+  metadataBase: new URL('https://wyxgolfsupply.com'),
   title: { default: 'WYX Golf Co. | Golf Gifts, Trip Kits & Bag Gear', template: '%s | WYX Golf Co.' },
   description: 'Shop golf gifts, trip kits, and bag gear with personality for weekend players, golf dads, bachelor parties, scramble teams, and gift shoppers.',
   keywords: ['golf gifts', 'golf trip gear', 'golf gifts under 60', 'golf dad gifts', 'bachelor party golf gifts', 'golf bag upgrades', 'golf towels', 'golf ball markers'],
