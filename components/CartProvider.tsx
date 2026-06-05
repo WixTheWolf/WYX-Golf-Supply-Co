@@ -117,7 +117,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           num_items: next.totalQuantity,
           content_ids: [merchandiseId]
         });
-        window.location.href = checkoutUrlWithDiscount(next.checkoutUrl);
+        window.location.href = next.checkoutUrl;
       }
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Unable to start checkout.');
@@ -172,7 +172,7 @@ function CartDrawer() {
       content_ids: cart.lines.map((line) => line.merchandise.id),
       contents: cart.lines.map((line) => ({ id: line.merchandise.id, quantity: line.quantity }))
     });
-    window.location.href = checkoutUrlWithDiscount(cart.checkoutUrl);
+    window.location.href = cart.checkoutUrl;
   }
 
   return (
@@ -219,10 +219,4 @@ function CartProgress({ amount, currency }: { amount: number; currency: string }
       <p>{remaining > 0 ? `${new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(remaining)} away from the $75 free-shipping goal.` : 'Free-shipping goal reached. Shipping options confirm at checkout.'}</p>
     </div>
   );
-}
-
-function checkoutUrlWithDiscount(checkoutUrl: string) {
-  const url = new URL(checkoutUrl);
-  url.searchParams.set('discount', launchCode);
-  return url.toString();
 }
