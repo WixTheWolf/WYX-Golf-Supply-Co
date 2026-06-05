@@ -13,11 +13,11 @@ import { getProducts } from '@/lib/shopify/products';
 export const revalidate = 300;
 
 const categoryPills = [
-  { label: 'Golf Gifts', href: '/golf-gifts', icon: 'Gift' },
-  { label: 'Trip Gear', href: '/golf-trip-gear', icon: 'Trip' },
-  { label: 'Dad Gifts', href: '/golf-gifts-for-dad', icon: 'Dad' },
-  { label: 'Scramble Prizes', href: '/scramble-prizes', icon: 'Win' },
-  { label: 'Bag Upgrades', href: '/bag-upgrades', icon: 'Bag' }
+  { label: 'Hats', href: '/products?category=Headwear', icon: '01' },
+  { label: 'Apparel', href: '/products?category=Apparel', icon: '02' },
+  { label: 'Golf Gifts', href: '/golf-gifts', icon: '03' },
+  { label: 'Trip Gear', href: '/golf-trip-gear', icon: '04' },
+  { label: 'Bag Upgrades', href: '/bag-upgrades', icon: '05' }
 ];
 
 export default async function Home() {
@@ -32,17 +32,17 @@ export default async function Home() {
         <Image src={imageMap.hero} alt="Coastal fairway at golden hour" fill priority />
         <div className="hero-copy">
           <p className="eyebrow">WYX Golf Co.</p>
-          <h1>Useful Golf Gear For The Bag, Trip, And Gift Table.</h1>
-          <p>Curated golf towels, gloves, balls, markers, and bag upgrades a weekend golfer can actually use today.</p>
+          <h1>Premium Golf Goods With Weekend Energy.</h1>
+          <p>Hats, apparel, balls, gloves, towels, markers, and bag gear selected to feel good in the cart and better on the course.</p>
           <div className="hero-proof">
-            <span>Buyable picks only</span>
-            <span>Giftable under $60</span>
-            <span>Shipping shown before payment</span>
+            <span>Curated suppliers</span>
+            <span>Course-ready style</span>
+            <span>Real product media</span>
             <span>WYX10 saves 10%</span>
           </div>
           <div className="actions">
-            <Link className="button primary" href="/products">Shop Buy-Ready Gear</Link>
-            <Link className="button secondary" href="/golf-gifts">Find A Golf Gift</Link>
+            <Link className="button primary" href="/products">Shop WYX Select</Link>
+            <Link className="button secondary" href="/products?category=Apparel">Shop Apparel</Link>
           </div>
         </div>
       </section>
@@ -50,10 +50,10 @@ export default async function Home() {
       {shortList.length > 0 && <section className="section short-list-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">The Short List</p>
-            <h2>Three Picks A Golfer Would Actually Put In The Bag.</h2>
+            <p className="eyebrow">WYX Select</p>
+            <h2>Start With The Pieces That Make The Whole Shop Feel Better.</h2>
           </div>
-          <Link className="text-link" href="/short-list">See The Full Short List</Link>
+          <Link className="text-link" href="/products">Shop All</Link>
         </div>
         <div className="editorial-product-grid">
           {shortList.map((product, index) => <EditorialProductCard key={product.id} product={product} featured={index === 0} />)}
@@ -75,7 +75,7 @@ export default async function Home() {
         <div className="section-heading split">
           <div>
             <p className="eyebrow">Trip Kit Builder</p>
-            <h2>Build A Small Kit That Solves Real Round Problems.</h2>
+            <h2>Build A Kit That Looks Intentional, Not Random.</h2>
           </div>
           <Link className="text-link" href="/golf-trip-gear">Build A Trip Kit</Link>
         </div>
@@ -87,7 +87,7 @@ export default async function Home() {
                 <p className="eyebrow">{kit.eyebrow}</p>
                 <h3>{kit.title}</h3>
                 <p>{kit.description}</p>
-                <p className="product-meta">{isBuildableKit ? 'Buildable from current picks' : 'Use current WYX picks'}</p>
+                <p className="product-meta">{isBuildableKit ? 'Buildable from WYX Select' : 'Use current WYX picks'}</p>
                 <Link className="text-link" href="/golf-trip-gear">View Kit</Link>
               </article>
             );
@@ -99,8 +99,8 @@ export default async function Home() {
       {justAdded.length > 0 && <section className="section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Buy-Ready Picks</p>
-            <h2>Fresh Finds With A Clear Reason To Buy.</h2>
+            <p className="eyebrow">Cart Builders</p>
+            <h2>Easy Adds That Still Feel Like The Same Shop.</h2>
           </div>
           <Link className="text-link" href="/products">Shop All</Link>
         </div>
@@ -111,16 +111,16 @@ export default async function Home() {
 
       <section className="section why-wyx">
         <div>
-          <p className="eyebrow">Why WYX</p>
-          <h2>Fewer Products. Better Reasons To Buy.</h2>
+          <p className="eyebrow">Assortment Rule</p>
+          <h2>No Swap Meet Energy.</h2>
         </div>
         <div>
-          <p>WYX Golf Co. is built around useful golf goods that make sense for real rounds: clean towels, fresh gloves, ball restocks, markers, trip gear, and bag upgrades.</p>
-          <p>If a product does not have inventory, real product media, a fair price, and a clear use case for a weekend golfer, it should not lead the storefront.</p>
+          <p>WYX should feel like a tight golf shop: good hats, wearable apparel, useful accessories, sharp gifts, and bag gear that belongs together.</p>
+          <p>Products need inventory, real media, a fair price, and a reason a golfer would add them today. If it feels random, cheap, or disconnected from the rest of the cart, it should not lead the storefront.</p>
         </div>
       </section>
 
-      <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Buy-Ready Drop." body="Join the WYX list for useful golf gifts, trip gear, bag upgrades, and launch discounts." />
+      <EmailCapture source="home" campaign="home_launch_list" title="Get The Next WYX Select Drop." body="Join the list for better golf hats, apparel, trip gear, gifts, and launch discounts." />
     </>
   );
 }
