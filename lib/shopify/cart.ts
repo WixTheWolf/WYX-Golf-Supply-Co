@@ -4,13 +4,8 @@ import { CART_CREATE, CART_DISCOUNT_CODES_UPDATE, CART_LINES_ADD, CART_LINES_REM
 
 const launchCode = 'WYX10';
 const storefrontDomain = 'wyxgolfsupply.com';
-const checkoutDomain = cleanDomain(
-  process.env.SHOPIFY_CHECKOUT_DOMAIN ||
-  process.env.SHOPIFY_STORE_DOMAIN ||
-  process.env.SHOPIFY_SHOP_DOMAIN ||
-  process.env.SHOPIFY_DOMAIN ||
-  'wyxgolfsupply.myshopify.com'
-);
+const shopifyCheckoutDomain = 'wyxgolfsupply.myshopify.com';
+const checkoutDomain = cleanDomain(process.env.SHOPIFY_CHECKOUT_DOMAIN || shopifyCheckoutDomain);
 
 function cleanDomain(value: string) {
   return value.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
@@ -23,8 +18,9 @@ function line(node: any) {
 function checkoutUrl(url: string) {
   try {
     const parsed = new URL(url);
-    if (checkoutDomain && parsed.hostname !== checkoutDomain && parsed.hostname.endsWith(storefrontDomain)) {
-      parsed.hostname = checkoutDomain;
+    const shouldRewrite = parsed.hostname === storefrontDomain || parsed.hostname.endsWith(`.${storefrontDomain}`);
+    if (shouldRewrite) {
+      parsed.hostname = checkoutDomain || shopifyCheckoutDomain;
     }
     return parsed.toString();
   } catch {
