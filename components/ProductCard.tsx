@@ -16,7 +16,7 @@ export function ProductCard({ product }: { product: Product }) {
     <article className="product-card">
       <Link href={`/products/${product.handle}`} className="product-image-link" aria-label={`View ${title}`}>
         {image ? <Image src={image.url} alt={alt} width={900} height={675} /> : <span className="image-placeholder">Image coming soon</span>}
-        <span className="product-status">Buy-Today Pick</span>
+        <span className="product-status">WYX Select</span>
       </Link>
       <div className="product-card-body">
         <p className="product-meta">{categoryFor(product)}</p>
@@ -24,7 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="buy-reason">{qualityReason(product)}</p>
         <div className="product-card-footer">
           <span className="price">{money(product.priceRange.minVariantPrice)}</span>
-          <Link className="text-link" href={`/products/${product.handle}`}>Why Buy</Link>
+          <Link className="text-link" href={`/products/${product.handle}`}>View Details</Link>
         </div>
         <AddToCartButton variantId={variant?.id} />
       </div>
