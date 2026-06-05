@@ -3,15 +3,39 @@ import { hasShopify, shopifyFetch } from './client';
 import { CART_CREATE, CART_DISCOUNT_CODES_UPDATE, CART_LINES_ADD, CART_LINES_REMOVE, CART_LINES_UPDATE, CART_QUERY } from './queries';
 
 const launchCode = 'WYX10';
+const storefrontDomain = 'wyxgolfsupply.com';
+const checkoutDomain = cleanDomain(
+  process.env.SHOPIFY_CHECKOUT_DOMAIN ||
+  process.env.SHOPIFY_STORE_DOMAIN ||
+  process.env.SHOPIFY_SHOP_DOMAIN ||
+  process.env.SHOPIFY_DOMAIN ||
+  'wyxgolfsupply.myshopify.com'
+);
+
+function cleanDomain(value: string) {
+  return value.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+}
 
 function line(node: any) {
   return { id: node.id, quantity: node.quantity, cost: node.cost, merchandise: node.merchandise };
 }
 
+function checkoutUrl(url: string) {
+  try {
+    const parsed = new URL(url);
+    if (checkoutDomain && parsed.hostname !== checkoutDomain && parsed.hostname.endsWith(storefrontDomain)) {
+      parsed.hostname = checkoutDomain;
+    }
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+}
+
 function cart(c: any): Cart {
   return {
     id: c.id,
-    checkoutUrl: c.checkoutUrl,
+    checkoutUrl: checkoutUrl(c.checkoutUrl),
     totalQuantity: c.totalQuantity,
     discountCodes: c.discountCodes || [],
     cost: c.cost,
