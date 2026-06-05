@@ -11,12 +11,12 @@ export function Header() {
       <header className="site-header">
         <Link className="brand" href="/"><strong>WYX</strong><span>Golf Co.</span></Link>
         <nav className="nav-links" aria-label="Primary navigation">
-          <Link href="/golf-gifts">Gifts</Link>
-          <Link href="/golf-trip-gear">Trip Kits</Link>
-          <Link href="/golf-gifts-for-dad">Dad Gifts</Link>
-          <Link href="/scramble-prizes">Scramble Prizes</Link>
-          <Link href="/the-roo">The Roo</Link>
           <Link href="/products">Shop</Link>
+          <Link href="/golf-gifts">Gifts</Link>
+          <Link href="/products?category=Headwear">Hats</Link>
+          <Link href="/products?category=Apparel">Apparel</Link>
+          <Link href="/golf-trip-gear">Trip Gear</Link>
+          <Link href="/bag-upgrades">Bag Upgrades</Link>
         </nav>
         <button className="header-cta" onClick={() => setOpen(true)} aria-label={`Open cart with ${count} items`}>Bag ({count})</button>
       </header>
