@@ -24,12 +24,17 @@ function errs(payload: any) {
   if (errors.length) throw new Error(errors.map((e: any) => e.message).join(', '));
 }
 
-async function applyLaunchCode(nextCart: Cart) {
+async function tryApplyLaunchCode(nextCart: Cart) {
   const alreadyApplied = nextCart.discountCodes?.some((discount) => discount.code.toUpperCase() === launchCode && discount.applicable);
   if (alreadyApplied) return nextCart;
-  const data = await shopifyFetch<any>(CART_DISCOUNT_CODES_UPDATE, { cartId: nextCart.id, discountCodes: [launchCode] });
-  errs(data);
-  return cart(data.cartDiscountCodesUpdate.cart);
+
+  try {
+    const data = await shopifyFetch<any>(CART_DISCOUNT_CODES_UPDATE, { cartId: nextCart.id, discountCodes: [launchCode] });
+    errs(data);
+    return cart(data.cartDiscountCodesUpdate.cart);
+  } catch {
+    return nextCart;
+  }
 }
 
 export async function getCart(id: string) {
@@ -40,28 +45,28 @@ export async function getCart(id: string) {
 
 export async function createCart(merchandiseId: string, quantity = 1) {
   if (!hasShopify) throw new Error('Real checkout requires Shopify env vars');
-  const d = await shopifyFetch<any>(CART_CREATE, { lines: [{ merchandiseId, quantity }], discountCodes: [launchCode] });
+  const d = await shopifyFetch<any>(CART_CREATE, { lines: [{ merchandiseId, quantity }] });
   errs(d);
-  return cart(d.cartCreate.cart);
+  return tryApplyLaunchCode(cart(d.cartCreate.cart));
 }
 
 export async function addLine(cartId: string, merchandiseId: string, quantity = 1) {
   const d = await shopifyFetch<any>(CART_LINES_ADD, { cartId, lines: [{ merchandiseId, quantity }] });
   errs(d);
-  return applyLaunchCode(cart(d.cartLinesAdd.cart));
+  return tryApplyLaunchCode(cart(d.cartLinesAdd.cart));
 }
 
 export async function createCartWithLines(lines: { merchandiseId: string; quantity: number }[]) {
   if (!hasShopify) throw new Error('Real checkout requires Shopify env vars');
-  const d = await shopifyFetch<any>(CART_CREATE, { lines, discountCodes: [launchCode] });
+  const d = await shopifyFetch<any>(CART_CREATE, { lines });
   errs(d);
-  return cart(d.cartCreate.cart);
+  return tryApplyLaunchCode(cart(d.cartCreate.cart));
 }
 
 export async function addLines(cartId: string, lines: { merchandiseId: string; quantity: number }[]) {
   const d = await shopifyFetch<any>(CART_LINES_ADD, { cartId, lines });
   errs(d);
-  return applyLaunchCode(cart(d.cartLinesAdd.cart));
+  return tryApplyLaunchCode(cart(d.cartLinesAdd.cart));
 }
 
 export async function updateLine(cartId: string, lineId: string, quantity: number) {
