@@ -54,6 +54,8 @@ export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
     'buy-3-get-1-free-bundle-shockd-golf-balls',
     'dartee-golf-glove',
+    'augusta-bear-hat',
+    'pimento-drip-blade',
     'the-bolt-ball-marker',
     'got-em-ball-marker-limited-edition',
     'blue-ridge-golf-co-golf-towels',
@@ -62,9 +64,7 @@ export function firstBuyProducts(products: Product[]) {
     'magnet-caddie',
     'shockd-golf-balls',
     'tri-fold-microfiber-golf-towel',
-    'golf-or-die-game-set',
-    'augusta-bear-hat',
-    'pimento-drip-blade'
+    'golf-or-die-game-set'
   ];
   return heroHandles
     .map((handle) => products.find((product) => product.handle === handle))
@@ -87,12 +87,12 @@ export function giftableProducts(products: Product[], limit = 12) {
 
 export function bagUpgradeProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isBuyTodayProduct(product) && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care'].includes(categoryFor(product)))
+    .filter((product) => isBuyTodayProduct(product) && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care', 'Headwear', 'Apparel'].includes(categoryFor(product)))
     .slice(0, limit);
 }
 
 export function tripProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isBuyTodayProduct(product) && /marker|towel|ball|caddie|glove|grip|headcover/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
+    .filter((product) => isBuyTodayProduct(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
     .slice(0, limit);
 }
