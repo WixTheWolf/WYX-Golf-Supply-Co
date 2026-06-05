@@ -9,7 +9,7 @@ function loadEnvFile(file: string) {
       const match = line.match(/^([^#=\s]+)=(.*)$/);
       if (!match) continue;
       const [, key, rawValue] = match;
-      const value = rawValue.trim().replace(/^['"]|['"]$/g, '');
+      const value = rawValue.trim().replace(/^["']|["']$/g, '');
       if (!process.env[key]) process.env[key] = value;
     }
   } catch {
@@ -22,7 +22,8 @@ async function main() {
   loadEnvFile('.env.production.local');
   loadEnvFile('.env.vercel.local');
 
-  const result = await optimizeShopifyBusiness();
+  const apply = !process.argv.includes('--dry-run');
+  const result = await optimizeShopifyBusiness({ apply });
   console.log(JSON.stringify(result, null, 2));
 }
 
