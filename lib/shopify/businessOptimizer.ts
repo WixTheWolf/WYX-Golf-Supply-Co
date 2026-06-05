@@ -1,5 +1,6 @@
 import { categoryFor } from '@/lib/catalog';
 import { productDescription } from '@/lib/feed';
+import { isBuyTodayProduct } from '@/lib/productQuality';
 import { cleanText } from '@/lib/text';
 import type { Product } from '@/types/shopify';
 import { getUserErrors, shopifyAdminFetch } from './adminClient';
@@ -8,7 +9,7 @@ type AdminProduct = Omit<Product, 'availableForSale' | 'variants'> & {
   availableForSale: boolean;
   status: 'ACTIVE' | 'ARCHIVED' | 'DRAFT';
   totalInventory: number;
-  variants: Array<{ id: string; title: string; price: string }>;
+  variants: Array<{ id: string; title: string; availableForSale: boolean; price: { amount: string; currencyCode: string } }>;
 };
 
 type AdminCollection = {
@@ -28,7 +29,7 @@ query BusinessOptimizerProducts {
       id handle title description descriptionHtml vendor productType tags status totalInventory
       featuredImage { url altText width height }
       images(first: 8) { edges { node { url altText width height } } }
-      variants(first: 20) { edges { node { id title price } } }
+      variants(first: 20) { edges { node { id title availableForSale price } } }
       priceRange { minVariantPrice { amount currencyCode } }
     }
   }
@@ -185,7 +186,10 @@ function reshape(product: any): AdminProduct {
     ...product,
     availableForSale: product.status === 'ACTIVE' && product.totalInventory > 0,
     images: (product.images?.edges || []).map((edge: any) => edge.node),
-    variants: (product.variants?.edges || []).map((edge: any) => edge.node)
+    variants: (product.variants?.edges || []).map((edge: any) => ({
+      ...edge.node,
+      price: { amount: edge.node.price, currencyCode: product.priceRange.minVariantPrice.currencyCode }
+    }))
   };
 }
 
@@ -206,7 +210,7 @@ function seoFor(product: AdminProduct) {
 }
 
 function minPrice(product: AdminProduct) {
-  const prices = product.variants.map((variant) => Number(variant.price)).filter(Number.isFinite);
+  const prices = product.variants.map((variant) => Number(variant.price.amount)).filter(Number.isFinite);
   return prices.length ? Math.min(...prices) : Number(product.priceRange.minVariantPrice.amount);
 }
 
@@ -226,6 +230,7 @@ function tagsFor(product: AdminProduct) {
     ...(product.tags || []),
     'wyx-seo-optimized',
     'wyx-marketing-ready',
+    'wyx-buy-today',
     `wyx-category:${labels.category.toLowerCase().replaceAll(' ', '-')}`,
     `wyx-price:${labels.priceTier}`,
     `wyx-conversion:${labels.conversionType}`
@@ -326,7 +331,8 @@ async function ensureCollection(plan: (typeof collectionPlans)[number], products
 export async function optimizeShopifyBusiness(options: OptimizerOptions = {}) {
   const apply = options.apply ?? true;
   const data = await shopifyAdminFetch<any>(PRODUCTS);
-  const products = data.products.nodes.map(reshape).filter((product: AdminProduct) => product.status === 'ACTIVE' && product.availableForSale);
+  const activeProducts = data.products.nodes.map(reshape).filter((product: AdminProduct) => product.status === 'ACTIVE' && product.availableForSale);
+  const products = activeProducts.filter(isBuyTodayProduct);
   const publicationIdsToUse = publicationIds(data.publications.nodes);
 
   const productUpdates: Array<{ title: string; handle: string; action: string; tagsToAdd?: string[]; seo?: { title: string; description: string } }> = [];
@@ -338,7 +344,9 @@ export async function optimizeShopifyBusiness(options: OptimizerOptions = {}) {
   return {
     ok: true,
     apply,
-    activeProducts: products.length,
+    activeProducts: activeProducts.length,
+    buyTodayProducts: products.length,
+    excludedActiveProducts: activeProducts.length - products.length,
     plannedProductUpdates: productUpdates.filter((update) => update.action.startsWith('would-')).length,
     appliedProductUpdates: productUpdates.filter((update) => update.action === 'product-seo-tags-updated').length,
     plannedCollectionChanges: collections.filter((collection) => collection.action.startsWith('would-')).length,
