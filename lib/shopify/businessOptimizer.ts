@@ -8,7 +8,7 @@ type AdminProduct = Omit<Product, 'availableForSale' | 'variants'> & {
   availableForSale: boolean;
   status: 'ACTIVE' | 'ARCHIVED' | 'DRAFT';
   totalInventory: number;
-  variants: Array<{ id: string; title: string; availableForSale: boolean; price: string }>;
+  variants: Array<{ id: string; title: string; price: string }>;
 };
 
 type AdminCollection = {
@@ -18,6 +18,8 @@ type AdminCollection = {
   products: { nodes: Array<{ id: string }> };
   resourcePublications: { nodes: Array<{ publication: { id: string; name: string } }> };
 };
+
+type OptimizerOptions = { apply?: boolean };
 
 const PRODUCTS = `#graphql
 query BusinessOptimizerProducts {
@@ -230,7 +232,23 @@ function tagsFor(product: AdminProduct) {
   ]));
 }
 
-async function updateProductMarketing(product: AdminProduct) {
+function missingTags(product: AdminProduct) {
+  const existing = new Set(product.tags || []);
+  return tagsFor(product).filter((tag) => !existing.has(tag));
+}
+
+async function updateProductMarketing(product: AdminProduct, apply: boolean) {
+  const tagsToAdd = missingTags(product);
+  if (!apply) {
+    return {
+      title: product.title,
+      handle: product.handle,
+      action: tagsToAdd.length ? 'would-update-product-seo-tags' : 'would-refresh-product-seo',
+      tagsToAdd,
+      seo: seoFor(product)
+    };
+  }
+
   const data = await shopifyAdminFetch<any>(UPDATE_PRODUCT, {
     product: {
       id: product.id,
@@ -240,16 +258,20 @@ async function updateProductMarketing(product: AdminProduct) {
   });
   const updateErrors = errors(data);
   if (updateErrors.length) throw new Error(`${product.title}: ${updateErrors.join(', ')}`);
-  return { title: product.title, handle: product.handle, action: 'product-seo-tags-updated' };
+  return { title: product.title, handle: product.handle, action: 'product-seo-tags-updated', tagsToAdd };
 }
 
 function publicationIds(publications: Array<{ id: string; name: string }>) {
   return publications.filter((publication) => /online store|headless/i.test(publication.name)).map((publication) => publication.id);
 }
 
-async function publish(id: string, currentPublications: AdminCollection['resourcePublications'], ids: string[]) {
+function missingPublicationInputs(currentPublications: AdminCollection['resourcePublications'] | undefined, ids: string[]) {
   const existing = new Set((currentPublications?.nodes || []).map((node) => node.publication.id));
-  const input = ids.filter((publicationId) => !existing.has(publicationId)).map((publicationId) => ({ publicationId }));
+  return ids.filter((publicationId) => !existing.has(publicationId)).map((publicationId) => ({ publicationId }));
+}
+
+async function publish(id: string, currentPublications: AdminCollection['resourcePublications'] | undefined, ids: string[]) {
+  const input = missingPublicationInputs(currentPublications, ids);
   if (!input.length) return false;
   const data = await shopifyAdminFetch<any>(PUBLISH, { id, input });
   const publishErrors = errors(data);
@@ -257,13 +279,15 @@ async function publish(id: string, currentPublications: AdminCollection['resourc
   return true;
 }
 
-async function ensureCollection(plan: (typeof collectionPlans)[number], products: AdminProduct[], publicationIdsToUse: string[]) {
+async function ensureCollection(plan: (typeof collectionPlans)[number], products: AdminProduct[], publicationIdsToUse: string[], apply: boolean) {
   const productIds = products.filter(plan.match).map((product) => product.id);
   const found = await shopifyAdminFetch<any>(COLLECTION_BY_HANDLE, { handle: plan.handle });
   let collection = found.collectionByHandle as AdminCollection | null;
-  let action: 'created' | 'updated' | 'exists' = 'exists';
+  let action: 'created' | 'updated' | 'exists' | 'would-create' | 'would-update' | 'would-publish' = 'exists';
 
   if (!collection) {
+    if (!apply) return { title: plan.title, handle: plan.handle, products: productIds.length, action: 'would-create' };
+
     const created = await shopifyAdminFetch<any>(COLLECTION_CREATE, {
       input: {
         title: plan.title,
@@ -281,6 +305,8 @@ async function ensureCollection(plan: (typeof collectionPlans)[number], products
     const existingIds = new Set(collection.products.nodes.map((product) => product.id));
     const missingIds = productIds.filter((id) => !existingIds.has(id));
     if (missingIds.length) {
+      if (!apply) return { title: plan.title, handle: plan.handle, products: productIds.length, missingProducts: missingIds.length, action: 'would-update' };
+
       const added = await shopifyAdminFetch<any>(COLLECTION_ADD_PRODUCTS, { id: collection.id, productIds: missingIds });
       const addErrors = errors(added);
       if (addErrors.length) throw new Error(`${plan.title}: ${addErrors.join(', ')}`);
@@ -288,24 +314,35 @@ async function ensureCollection(plan: (typeof collectionPlans)[number], products
     }
   }
 
-  if (collection) await publish(collection.id, collection.resourcePublications, publicationIdsToUse);
+  const missingPublications = missingPublicationInputs(collection?.resourcePublications, publicationIdsToUse).length;
+  if (collection && missingPublications) {
+    if (!apply) return { title: plan.title, handle: plan.handle, products: productIds.length, missingPublications, action: 'would-publish' };
+    await publish(collection.id, collection.resourcePublications, publicationIdsToUse);
+  }
+
   return { title: plan.title, handle: plan.handle, products: productIds.length, action };
 }
 
-export async function optimizeShopifyBusiness() {
+export async function optimizeShopifyBusiness(options: OptimizerOptions = {}) {
+  const apply = options.apply ?? true;
   const data = await shopifyAdminFetch<any>(PRODUCTS);
   const products = data.products.nodes.map(reshape).filter((product: AdminProduct) => product.status === 'ACTIVE' && product.availableForSale);
   const publicationIdsToUse = publicationIds(data.publications.nodes);
 
-  const productUpdates: Array<{ title: string; handle: string; action: string }> = [];
-  for (const product of products) productUpdates.push(await updateProductMarketing(product));
+  const productUpdates: Array<{ title: string; handle: string; action: string; tagsToAdd?: string[]; seo?: { title: string; description: string } }> = [];
+  for (const product of products) productUpdates.push(await updateProductMarketing(product, apply));
 
-  const collections: Array<{ title: string; handle: string; products: number; action: string }> = [];
-  for (const plan of collectionPlans) collections.push(await ensureCollection(plan, products, publicationIdsToUse));
+  const collections: Array<{ title: string; handle: string; products: number; action: string; missingProducts?: number; missingPublications?: number }> = [];
+  for (const plan of collectionPlans) collections.push(await ensureCollection(plan, products, publicationIdsToUse, apply));
 
   return {
     ok: true,
+    apply,
     activeProducts: products.length,
+    plannedProductUpdates: productUpdates.filter((update) => update.action.startsWith('would-')).length,
+    appliedProductUpdates: productUpdates.filter((update) => update.action === 'product-seo-tags-updated').length,
+    plannedCollectionChanges: collections.filter((collection) => collection.action.startsWith('would-')).length,
+    appliedCollectionChanges: collections.filter((collection) => ['created', 'updated'].includes(collection.action)).length,
     productUpdates,
     collections
   };
