@@ -4,7 +4,7 @@ import { campaignUrl, productMarketingLabels } from '@/lib/marketing';
 import { cleanText } from '@/lib/text';
 import type { Product } from '@/types/shopify';
 
-export const siteUrl = 'https://wyx-golf-supply-co.vercel.app';
+export const siteUrl = 'https://wyxgolfsupply.com';
 
 export function productUrl(product: Pick<Product, 'handle'>) {
   return `${siteUrl}/products/${product.handle}`;
