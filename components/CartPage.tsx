@@ -40,14 +40,14 @@ export function CartPage() {
           <div className="cart-summary">
             <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />
             <p><span>Subtotal</span><strong>{money(cart.cost.subtotalAmount)}</strong></p>
-            <button className="button primary" disabled={loading} onClick={() => {
+            <button className="button primary" disabled={loading || !cart.checkoutUrl} onClick={() => {
               trackEvent('InitiateCheckout', {
                 value: Number(cart.cost.subtotalAmount.amount),
                 currency: cart.cost.subtotalAmount.currencyCode,
                 num_items: cart.totalQuantity,
                 content_ids: cart.lines.map((line) => line.merchandise.id)
               });
-              window.location.href = checkoutUrlWithDiscount(cart.checkoutUrl);
+              window.location.href = cart.checkoutUrl;
             }}>Continue To Checkout</button>
           </div>
         </div>
@@ -65,10 +65,4 @@ function CartProgress({ amount, currency }: { amount: number; currency: string }
       <p>{remaining > 0 ? `${new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(remaining)} away from the $75 free-shipping goal.` : 'Free-shipping goal reached. Shipping options confirm at checkout.'}</p>
     </div>
   );
-}
-
-function checkoutUrlWithDiscount(checkoutUrl: string) {
-  const url = new URL(checkoutUrl);
-  url.searchParams.set('discount', launchCode);
-  return url.toString();
 }
