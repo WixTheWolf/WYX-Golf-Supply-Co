@@ -10,7 +10,7 @@ import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
 
-export const metadata: Metadata = { title: 'Golf Gear & Accessories', description: 'Shop golf gear, golf balls, gloves, grips, towels, apparel, and accessories from WYX Golf Supply Co.' };
+export const metadata: Metadata = { title: 'WYX Select Golf Gear', description: 'Shop a tighter WYX selection of golf hats, apparel, balls, gloves, towels, markers, and bag accessories.' };
 
 const intentFilters = [
   { label: 'Under $25', value: 'under-25' },
@@ -30,15 +30,15 @@ export default async function Products({ searchParams }: { searchParams: { categ
   return (
     <>
       <section className="page-hero compact">
-        <p className="eyebrow">Shop WYX</p>
-        <h1>Golf Gear Worth Keeping In The Bag.</h1>
-        <p>Useful towels, grips, gloves, markers, balls, and accessories for weekend golfers, range sessions, and giftable bag upgrades.</p>
+        <p className="eyebrow">WYX Select</p>
+        <h1>A Tighter Golf Shop, Built For Better Carts.</h1>
+        <p>Course-ready hats and apparel, useful golf accessories, giftable bag gear, and trip pieces that feel like they belong together.</p>
       </section>
       <nav className="filter-row" aria-label="Product categories">
         {visibleCategories.map((item) => <Link className={(!category && item === 'All') || category === item ? 'active' : ''} key={item} href={item === 'All' ? '/products' : `/products?category=${encodeURIComponent(item)}`}>{item}<small>{item === 'All' ? catalog.length : categoryCount(catalog, item)}</small></Link>)}
       </nav>
       <nav className="filter-row intent-filter-row" aria-label="Shop filters">
-        <Link className={!filter ? 'active' : ''} href={category ? `/products?category=${encodeURIComponent(category)}` : '/products'}>All Picks</Link>
+        <Link className={!filter ? 'active' : ''} href={category ? `/products?category=${encodeURIComponent(category)}` : '/products'}>All Select</Link>
         {intentFilters.map((item) => {
           const params = new URLSearchParams();
           if (category) params.set('category', category);
@@ -47,8 +47,8 @@ export default async function Products({ searchParams }: { searchParams: { categ
         })}
       </nav>
       <section className="section product-section">
-        <div className="results-heading"><p className="eyebrow">{filterLabel(filter) || category || 'All Products'}</p><span>{products.length} {products.length === 1 ? 'product' : 'products'}</span></div>
-        {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>No products are available in this category yet. Check the full shop for current WYX picks.</p>}
+        <div className="results-heading"><p className="eyebrow">{filterLabel(filter) || category || 'All Select'}</p><span>{products.length} {products.length === 1 ? 'product' : 'products'}</span></div>
+        {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>No products are available in this category yet. Check the full shop for current WYX Select picks.</p>}
       </section>
     </>
   );
@@ -61,8 +61,8 @@ function matchesIntentFilter(product: Product, filter?: string) {
   if (filter === 'under-25') return price < 25;
   if (filter === '25-60') return price >= 25 && price <= 60;
   if (filter === 'over-60') return price > 60;
-  if (filter === 'gift-ready') return price <= 60 || /gift|marker|towel|balls|caddie|headcover/.test(haystack);
-  if (filter === 'trip-gear') return /trip|marker|towel|balls|caddie|glove|grip|headcover/.test(haystack);
+  if (filter === 'gift-ready') return price <= 60 || /gift|marker|towel|balls|caddie|headcover|hat|cap|shirt|polo|hoodie|belt/.test(haystack);
+  if (filter === 'trip-gear') return /trip|marker|towel|balls|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt/.test(haystack);
   return true;
 }
 
