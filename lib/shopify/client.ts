@@ -1,10 +1,17 @@
 import type { Product } from '@/types/shopify';
 
-const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_SHOP_DOMAIN || process.env.SHOPIFY_DOMAIN;
+const configuredDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_STORE_DOMAIN || process.env.SHOPIFY_SHOP_DOMAIN || process.env.SHOPIFY_DOMAIN;
+const domain = normalizeShopifyDomain(configuredDomain);
 const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN || process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || process.env.SHOPIFY_STOREFRONT_API_TOKEN || process.env.PUBLIC_STOREFRONT_API_TOKEN || process.env.STOREFRONT_ACCESS_TOKEN;
 const version = process.env.NEXT_PUBLIC_SHOPIFY_API_VERSION || process.env.SHOPIFY_API_VERSION || '2026-01';
 
 export const hasShopify = Boolean(domain && token);
+
+function normalizeShopifyDomain(value?: string) {
+  const clean = value?.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+  if (!clean || clean === 'wyxgolfsupply.com' || clean === 'www.wyxgolfsupply.com') return 'wyxgolfsupply.myshopify.com';
+  return clean;
+}
 
 export async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}): Promise<T> {
   if (!hasShopify) throw new Error('Shopify env vars missing. Demo data is active.');
