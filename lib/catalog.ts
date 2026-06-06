@@ -45,15 +45,17 @@ export function supplierName(product: Product) {
 const placeholderImageNames = [
   'hero-coastal-fairway.png',
   'forest-polo-product.png',
+  'golf-towel-product.png',
   'journal-club-care.png',
   'journal-course-strategy.png',
   'journal-iron-practice.png',
   'leather-bag-detail.png',
+  'rope-hat-product.png',
   'walking-golfer-lifestyle..png'
 ];
 
 export function hasSaleReadyMedia(product: Pick<Product, 'featuredImage' | 'images'>) {
   const urls = [product.featuredImage?.url, ...(product.images || []).map((image) => image.url)].filter(Boolean).map((url) => String(url).toLowerCase());
   if (!urls.length) return false;
-  return !urls.some((url) => placeholderImageNames.some((name) => url.includes(name)));
+  return !urls.some((url) => placeholderImageNames.some((name) => url.includes(name)) || url.includes('/images/'));
 }
