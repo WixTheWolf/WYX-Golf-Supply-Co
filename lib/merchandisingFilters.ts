@@ -14,7 +14,11 @@ const hiddenHandles = new Set([
   'looper',
   'dude-abides-golf-towel',
   'zona-towel',
-  'hack-daniels-golf-towel'
+  'hack-daniels-golf-towel',
+  'tri-fold-microfiber-golf-towel',
+  'waffle-golf-towel',
+  'coastal-rope-hat',
+  'forest-performance-polo'
 ]);
 
 const confirmedSupplierVendors = [
@@ -39,7 +43,7 @@ export function isHiddenFromCoreStorefront(product: Product) {
 }
 
 export function isConfirmedSupplierProduct(product: Product) {
-  return (product.vendor ? confirmedSupplierVendors.includes(product.vendor) : false) || product.handle === 'tri-fold-microfiber-golf-towel';
+  return product.vendor ? confirmedSupplierVendors.includes(product.vendor) : false;
 }
 
 export function isCoreMerchProduct(product: Product) {
@@ -63,7 +67,6 @@ export function firstBuyProducts(products: Product[]) {
     'glove-accessory-caddie-gray',
     'magnet-caddie',
     'shockd-golf-balls',
-    'tri-fold-microfiber-golf-towel',
     'golf-or-die-game-set'
   ];
   return heroHandles
