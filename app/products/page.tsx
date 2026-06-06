@@ -10,7 +10,11 @@ import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
 
-export const metadata: Metadata = { title: 'WYX Select Golf Gear', description: 'Shop a tighter WYX selection of golf hats, apparel, balls, gloves, towels, markers, and bag accessories.' };
+export const metadata: Metadata = {
+  title: 'Shop Golf Gifts, Hats, Apparel, Trip Gear & Bag Upgrades',
+  description: 'Shop WYX Select golf gear: curated golf gifts, hats, apparel, towels, ball markers, gloves, golf balls, trip gear, and bag upgrades for weekend golfers.',
+  alternates: { canonical: '/products' }
+};
 
 const intentFilters = [
   { label: 'Under $25', value: 'under-25' },
@@ -18,6 +22,14 @@ const intentFilters = [
   { label: 'Over $60', value: 'over-60' },
   { label: 'Gift Ready', value: 'gift-ready' },
   { label: 'Trip Gear', value: 'trip-gear' }
+];
+
+const buyingPaths = [
+  ['Golf gifts', '/golf-gifts', 'Low-risk gifts with clear round-to-round utility.'],
+  ['Hats', '/products?category=Headwear', 'Course-ready style that works outside the round too.'],
+  ['Apparel', '/products?category=Apparel', 'Wearable golf pieces that make the cart feel premium.'],
+  ['Trip gear', '/golf-trip-gear', 'Packable pieces for group golf weekends and prize tables.'],
+  ['Bag upgrades', '/bag-upgrades', 'Small gear that cleans up the bag and earns repeat use.']
 ];
 
 export default async function Products({ searchParams }: { searchParams: { category?: string; filter?: string } }) {
@@ -33,7 +45,29 @@ export default async function Products({ searchParams }: { searchParams: { categ
         <p className="eyebrow">WYX Select</p>
         <h1>A Tighter Golf Shop, Built For Better Carts.</h1>
         <p>Course-ready hats and apparel, useful golf accessories, giftable bag gear, and trip pieces that feel like they belong together.</p>
+        <div className="intent-proof-grid" aria-label="WYX shopping promises">
+          <span>Real product media</span>
+          <span>Inventory first</span>
+          <span>Giftable price points</span>
+          <span>No random filler</span>
+        </div>
       </section>
+
+      <section className="section seo-guide">
+        <div>
+          <p className="eyebrow">Shop By Intent</p>
+          <h2>Use The Right Buying Path.</h2>
+          <p>Most WYX carts should start with a clear reason: a gift, a golf trip, a wearable piece, or a practical bag upgrade.</p>
+        </div>
+        <div className="collection-copy-grid">
+          {buyingPaths.map(([title, href, copy]) => <article key={href}>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+            <Link className="text-link" href={href}>Shop {title}</Link>
+          </article>)}
+        </div>
+      </section>
+
       <nav className="filter-row" aria-label="Product categories">
         {visibleCategories.map((item) => <Link className={(!category && item === 'All') || category === item ? 'active' : ''} key={item} href={item === 'All' ? '/products' : `/products?category=${encodeURIComponent(item)}`}>{item}<small>{item === 'All' ? catalog.length : categoryCount(catalog, item)}</small></Link>)}
       </nav>
@@ -50,6 +84,22 @@ export default async function Products({ searchParams }: { searchParams: { categ
         <div className="results-heading"><p className="eyebrow">{filterLabel(filter) || category || 'All Select'}</p><span>{products.length} {products.length === 1 ? 'product' : 'products'}</span></div>
         {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>No products are available in this category yet. Check the full shop for current WYX Select picks.</p>}
       </section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'WYX Select Golf Gear',
+        description: metadata.description,
+        url: 'https://wyxgolfsupply.com/products',
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: products.slice(0, 24).map((product, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            url: `https://wyxgolfsupply.com/products/${product.handle}`,
+            name: product.title
+          }))
+        }
+      }) }} />
     </>
   );
 }
