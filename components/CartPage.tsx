@@ -48,7 +48,7 @@ export function CartPage() {
                 content_ids: cart.lines.map((line) => line.merchandise.id)
               });
               window.location.href = cart.checkoutUrl;
-            }}>Continue To Checkout</button>
+            }}>Checkout</button>
           </div>
         </div>
       )}
