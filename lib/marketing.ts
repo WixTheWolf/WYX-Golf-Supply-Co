@@ -22,13 +22,58 @@ export function productMarketingLabels(product: Product) {
   };
 }
 
+export const channelPlan = [
+  {
+    channel: 'Social bio links',
+    audience: 'Instagram, TikTok, YouTube Shorts, and golf group followers',
+    promise: 'Start with one easy link that sends shoppers to gifts, hats, apparel, trip gear, and deals.',
+    href: '/sell-more-places',
+    cta: 'Open channel hub',
+    campaign: 'social_bio_hub'
+  },
+  {
+    channel: 'Google and SEO',
+    audience: 'People searching for golf gifts, golf hats, golf trip gear, and bag upgrades',
+    promise: 'Send high-intent searches to focused landing pages instead of a generic homepage.',
+    href: '/golf-gifts',
+    cta: 'Shop golf gifts',
+    campaign: 'organic_golf_gifts'
+  },
+  {
+    channel: 'Email and SMS list',
+    audience: 'Browsers who are not ready to buy today',
+    promise: 'Capture the buyer with WYX10, new drops, and cart-worthy product bundles.',
+    href: '/deals',
+    cta: 'See launch deals',
+    campaign: 'email_launch_deals'
+  },
+  {
+    channel: 'Group golf buyers',
+    audience: 'Bachelor parties, scramble captains, league golfers, and trip planners',
+    promise: 'Make bulk-friendly products easy to find: markers, towels, balls, hats, and prize-table gear.',
+    href: '/bachelor-party-golf-gifts',
+    cta: 'Shop group gifts',
+    campaign: 'group_golf_buyers'
+  },
+  {
+    channel: 'Marketplace discovery',
+    audience: 'Shopping feeds, product ads, and future marketplace channels',
+    promise: 'Keep product titles, images, prices, and categories clean enough to syndicate outside the site.',
+    href: '/products',
+    cta: 'Shop WYX Select',
+    campaign: 'marketplace_ready_catalog'
+  }
+];
+
 export const launchSocialCopy = [
   'Golf bag looking a little tired? WYX has towels, tees, gloves, markers, club-care tools, hats, apparel, and trip gear ready for checkout. Use WYX10 for 10% off.',
   'Small golf gear that actually gets used: brush cleaners, groove tools, putting mirrors, towels, gloves, hats, apparel, and headcovers. Shop WYX Golf Supply today.',
   'Need a golf gift under $60? Start with WYX. Useful golf accessories, easy checkout, and launch code WYX10.',
   'The easiest golf purchase is the thing you forgot you needed: a fresh towel, glove, grip, marker, hat, or ball restock. WYX10 is live today.',
   'New golf supply shop is live. Useful finds, quick bag upgrades, apparel, hats, and easy checkout. Start with the under-$60 picks.',
-  "Father's Day is June 21. Get Dad something he will actually use: golf towels, ball markers, gloves, grips, golf balls, hats, and bag upgrades. Use WYX10."
+  "Father's Day is June 21. Get Dad something he will actually use: golf towels, ball markers, gloves, grips, golf balls, hats, and bag upgrades. Use WYX10.",
+  'Planning a golf trip or scramble? WYX has markers, towels, balls, hats, and prize-table gear that actually gets used. Start at wyxgolfsupply.com/sell-more-places.',
+  'One golf shop, multiple ways to buy: gifts, hats, apparel, trip gear, bag upgrades, and launch deals. Use WYX10 at checkout.'
 ];
 
 export const paidSearchAngles = [
@@ -44,7 +89,9 @@ export const paidSearchAngles = [
   "Father's Day golf gifts 2026",
   'golf gifts for dad',
   'golf hats and apparel',
-  'golf trip gear for groups'
+  'golf trip gear for groups',
+  'golf scramble prize ideas',
+  'bachelor party golf gifts'
 ];
 
 export const socialHashtags = [
@@ -61,10 +108,11 @@ export const socialHashtags = [
 export const dailyGrowthChecklist = [
   'Post one product carousel: towel, marker, glove, grip, hat, shirt, or headcover. Use the matching product page, not the homepage.',
   'Post one short-form video idea: "3 things every golf bag should have before Saturday morning."',
-  'Share /golf-gifts, /golf-trip-gear, or /products?category=Headwear in bio or story with WYX10.',
+  'Share /sell-more-places in social bios, /golf-gifts in gift posts, and /golf-trip-gear in trip posts. Keep WYX10 visible.',
   'Comment helpfully on local golf-course, range, simulator, and golf-group posts without spamming links.',
   'Add at least two new supplier products to review: one under-$25 impulse item and one $35-$60 giftable upgrade.',
-  'Check Shopify analytics for product views, add-to-cart, reached checkout, and top landing page.'
+  'Check Shopify analytics for product views, add-to-cart, reached checkout, and top landing page.',
+  'Check which UTM campaigns drove sessions: social_bio_hub, organic_golf_gifts, email_launch_deals, group_golf_buyers, marketplace_ready_catalog.'
 ];
 
 export const supplierScoutingTargets = [
@@ -82,5 +130,7 @@ export const adCopyBlocks = [
   ['Upgrade Your Golf Bag', 'Shop practical golf accessories for cleaner clubs, better practice, easier rounds, and better-looking bags.'],
   ['Small Gear. Easy Yes.', 'Golf towels, gloves, hats, apparel, putting aids, and bag tools selected for fast checkout. Launch code WYX10.'],
   ['Popular Golf Products 2026', 'Fresh golf accessories, gifts, gloves, towels, markers, apparel, hats, and bag upgrades. Shop WYX with WYX10.'],
-  ["Father's Day Golf Gifts", "Father's Day is June 21. Shop useful golf gifts Dad will actually use: towels, markers, gloves, balls, hats, grips, and bag upgrades."]
+  ["Father's Day Golf Gifts", "Father's Day is June 21. Shop useful golf gifts Dad will actually use: towels, markers, gloves, balls, hats, grips, and bag upgrades."],
+  ['Golf Trip Gear', 'Packable golf gifts, towels, markers, balls, hats, and prize-table gear for bachelor parties, scrambles, and weekend trips.'],
+  ['Golf Hats And Apparel', 'Course-ready hats and apparel that make a WYX cart feel sharper than random golf gear.']
 ];
