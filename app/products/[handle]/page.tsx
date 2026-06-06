@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { AddToCartButton } from '@/components/AddToCartButton';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
+import { ProductPurchaseControls } from '@/components/ProductPurchaseControls';
 import { ProductViewTracker } from '@/components/ProductViewTracker';
 import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
@@ -62,15 +62,15 @@ export default async function ProductPage({ params }: { params: { handle: string
           category: productCategory,
           brand: { '@type': 'Brand', name: supplierName(product) },
           seller: { '@type': 'OnlineStore', name: 'WYX Golf Supply Co.', url: siteUrl },
-          offers: {
+          offers: product.variants.filter((item) => item.availableForSale).map((item) => ({
             '@type': 'Offer',
             url: productUrl,
-            priceCurrency: variant?.price.currencyCode,
-            price: variant?.price.amount,
-            availability: variant ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            priceCurrency: item.price.currencyCode,
+            price: item.price.amount,
+            availability: 'https://schema.org/InStock',
             itemCondition: 'https://schema.org/NewCondition',
             seller: { '@type': 'OnlineStore', name: 'WYX Golf Supply Co.' }
-          }
+          }))
         },
         {
           '@context': 'https://schema.org',
@@ -114,8 +114,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             <span>U.S. customer support</span>
             <span>Use WYX10 for 10% off</span>
           </div>
-          <AddToCartButton variantId={variant?.id} />
-          <AddToCartButton variantId={variant?.id} buyNow />
+          <ProductPurchaseControls variants={product.variants} productTitle={title} />
           <div className="detail-list">
             <section><h2>Best For</h2><ul>{bestFor.map((item) => <li key={item}>{item}</li>)}</ul></section>
             <section><h2>Who This Is For</h2><p>{whoThisIsFor(productCategory)}</p></section>
@@ -130,7 +129,7 @@ export default async function ProductPage({ params }: { params: { handle: string
       </section>
       <div className="mobile-sticky-atc" aria-label="Sticky mobile purchase bar">
         <div><strong>{money(product.priceRange.minVariantPrice)}</strong><span>{title}</span></div>
-        <AddToCartButton variantId={variant?.id} buyNow />
+        <ProductPurchaseControls variants={product.variants} productTitle={title} compact />
       </div>
       {related.length > 0 && <section className="section"><p className="eyebrow">Pair It With</p><h2>Build The Bag Around It.</h2><div className="product-grid">{related.map((item) => <ProductCard key={item.id} product={item} />)}</div></section>}
       <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="Save This Drop For Later." body="Join the launch list for WYX10 reminders, golf gift picks, and useful bag upgrades." />
