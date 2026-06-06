@@ -26,7 +26,7 @@ export function productValueBullets(product: Product) {
   if (category === 'Headwear' || /hat|cap/.test(text)) return ['Course-ready style without feeling overbuilt', 'Easy gift for golfers, dads, and trip groups', 'Pairs well with towels, markers, balls, and apparel'];
   if (category === 'Apparel' || /shirt|polo|hoodie|belt/.test(text)) return ['Wearable golf style for rounds, range days, and weekends', 'Strong cart builder with hats and bag accessories', 'Better gift profile than random novelty golf gear'];
   if (category === 'Grips') return ['Refresh your feel without replacing the bag', 'Easy add-on for range sessions and practice weeks', 'Pairs well with golf balls and markers'];
-  if (category === 'Golf Balls') return ['Restock the bag before the next tee time', 'Useful gift for any golfer', 'Simple checkout'];
+  if (category === 'Golf Balls') return ['Restock the bag before the next tee time', 'Useful gift for any golfer', 'Easy fit for trips and prize tables'];
   if (category === 'Gloves') return ['Small upgrade with real round-to-round utility', 'Keeps your bag better organized', 'Easy under-$60 golf gift'];
   if (category === 'Towels') return ['Keeps clubs, balls, and hands cleaner', 'Works for rounds, range sessions, and trip kits', 'Low-risk golf gift with real utility'];
   return ['Useful bag upgrade for everyday rounds', 'Easy golf gift', 'Built for real rounds, range sessions, and bag organization'];
