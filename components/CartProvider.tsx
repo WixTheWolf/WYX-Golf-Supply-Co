@@ -56,17 +56,26 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const clearStoredCart = useCallback(() => {
+    localStorage.removeItem(cartStorageKey);
+    setCart(null);
+  }, []);
+
   const refresh = useCallback(async () => {
     const id = localStorage.getItem(cartStorageKey);
     if (!id) return;
     try {
       const response = await fetch(`/api/cart?cartId=${encodeURIComponent(id)}`);
       const json = await response.json();
+      if (!response.ok || !json.cart) {
+        clearStoredCart();
+        return;
+      }
       setCart(json.cart);
     } catch {
-      localStorage.removeItem(cartStorageKey);
+      clearStoredCart();
     }
-  }, []);
+  }, [clearStoredCart]);
 
   const add = useCallback(async (merchandiseId: string) => {
     setLoading(true);
@@ -110,6 +119,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     try {
       const next = await callCart('POST', { merchandiseId, quantity: 1 });
       if (next?.checkoutUrl) {
+        localStorage.setItem(cartStorageKey, next.id);
+        setCart(next);
         trackCartAdd(next, [merchandiseId], 'product');
         trackEvent('InitiateCheckout', {
           value: Number(next.cost.subtotalAmount.amount),
@@ -130,7 +141,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     if (!cart) return;
     setLoading(true);
     try {
-      setCart(await callCart('PATCH', { cartId: cart.id, lineId, quantity }));
+      const next = await callCart('PATCH', { cartId: cart.id, lineId, quantity });
+      if (next) setCart(next);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Unable to update item.');
     } finally {
@@ -142,7 +154,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     if (!cart) return;
     setLoading(true);
     try {
-      setCart(await callCart('DELETE', { cartId: cart.id, lineId }));
+      const next = await callCart('DELETE', { cartId: cart.id, lineId });
+      if (next) setCart(next);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Unable to remove item.');
     } finally {
