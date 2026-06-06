@@ -7,7 +7,7 @@ export function Header() {
   const { count, setOpen } = useCart();
   return (
     <>
-      <div className="announcement">Launch offer: WYX10 saves 10% on your first order.</div>
+      <div className="announcement">WYX10 saves 10% on your first order.</div>
       <header className="site-header">
         <Link className="brand" href="/"><strong>WYX</strong><span>Golf Co.</span></Link>
         <nav className="nav-links" aria-label="Primary navigation">
@@ -16,7 +16,7 @@ export function Header() {
           <Link href="/products?category=Headwear">Hats</Link>
           <Link href="/products?category=Apparel">Apparel</Link>
           <Link href="/golf-trip-gear">Trip Gear</Link>
-          <Link href="/sell-more-places">Channels</Link>
+          <Link href="/golf-gifts-for-dad">Dad Gifts</Link>
         </nav>
         <button className="header-cta" onClick={() => setOpen(true)} aria-label={`Open cart with ${count} items`}>Bag ({count})</button>
       </header>
