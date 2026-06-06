@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/golf-gifts-under-60' },
   openGraph: {
     title: 'Golf Gifts Under $60',
-    description: 'Useful golf gifts and bag upgrades selected for fast checkout.',
+    description: 'Useful golf gifts and bag upgrades selected for weekend golfers.',
     url: '/golf-gifts-under-60'
   }
 };
@@ -46,7 +46,7 @@ export default async function GolfGiftsUnder60() {
       </section>
       <section className="deal-strip" aria-label="Gift shopping benefits">
         <span>Under-$60 golf gifts</span>
-        <span>Easy checkout</span>
+        <span>Easy gift picks</span>
         <span>Useful bag upgrades</span>
         <span>Fast first-order picks</span>
       </section>
