@@ -12,7 +12,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Shop Golf Gifts, Hats, Apparel, Trip Gear & Bag Upgrades',
-  description: 'Shop WYX Select golf gear: curated golf gifts, hats, apparel, towels, ball markers, gloves, golf balls, trip gear, and bag upgrades for weekend golfers.',
+  description: 'Shop WYX Golf Supply Co. for golf gifts, hats, apparel, towels, ball markers, gloves, golf balls, trip gear, and bag upgrades for weekend golfers.',
   alternates: { canonical: '/products' }
 };
 
@@ -42,14 +42,14 @@ export default async function Products({ searchParams }: { searchParams: { categ
   return (
     <>
       <section className="page-hero compact">
-        <p className="eyebrow">WYX Select</p>
-        <h1>A Tighter Golf Shop, Built For Better Carts.</h1>
-        <p>Course-ready hats and apparel, useful golf accessories, giftable bag gear, and trip pieces that feel like they belong together.</p>
+        <p className="eyebrow">Shop</p>
+        <h1>Golf Gear Worth Adding To The Bag.</h1>
+        <p>Course-ready hats, apparel, golf gifts, balls, markers, gloves, towels, and trip gear for weekend golfers.</p>
         <div className="intent-proof-grid" aria-label="WYX shopping promises">
-          <span>Real product media</span>
-          <span>Inventory first</span>
+          <span>Gifts under $60</span>
+          <span>Trip-ready picks</span>
           <span>Giftable price points</span>
-          <span>No random filler</span>
+          <span>Support by email</span>
         </div>
       </section>
 
@@ -72,7 +72,7 @@ export default async function Products({ searchParams }: { searchParams: { categ
         {visibleCategories.map((item) => <Link className={(!category && item === 'All') || category === item ? 'active' : ''} key={item} href={item === 'All' ? '/products' : `/products?category=${encodeURIComponent(item)}`}>{item}<small>{item === 'All' ? catalog.length : categoryCount(catalog, item)}</small></Link>)}
       </nav>
       <nav className="filter-row intent-filter-row" aria-label="Shop filters">
-        <Link className={!filter ? 'active' : ''} href={category ? `/products?category=${encodeURIComponent(category)}` : '/products'}>All Select</Link>
+        <Link className={!filter ? 'active' : ''} href={category ? `/products?category=${encodeURIComponent(category)}` : '/products'}>All Gear</Link>
         {intentFilters.map((item) => {
           const params = new URLSearchParams();
           if (category) params.set('category', category);
@@ -81,13 +81,13 @@ export default async function Products({ searchParams }: { searchParams: { categ
         })}
       </nav>
       <section className="section product-section">
-        <div className="results-heading"><p className="eyebrow">{filterLabel(filter) || category || 'All Select'}</p><span>{products.length} {products.length === 1 ? 'product' : 'products'}</span></div>
-        {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>No products are available in this category yet. Check the full shop for current WYX Select picks.</p>}
+        <div className="results-heading"><p className="eyebrow">{filterLabel(filter) || category || 'All Gear'}</p><span>{products.length} {products.length === 1 ? 'product' : 'products'}</span></div>
+        {products.length ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>No products are available in this category yet. Check the full shop for current picks.</p>}
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        name: 'WYX Select Golf Gear',
+        name: 'WYX Golf Supply Co. golf gear',
         description: metadata.description,
         url: 'https://wyxgolfsupply.com/products',
         mainEntity: {
