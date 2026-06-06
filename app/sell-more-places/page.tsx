@@ -12,7 +12,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Shop WYX Everywhere | Golf Gifts, Hats, Apparel & Trip Gear',
-  description: 'Find WYX Golf Supply Co. through social, email, search, group golf gift guides, launch deals, and curated golf product pages.',
+  description: 'Shop WYX Golf Supply Co. by gift, trip, hat, apparel, deal, and bag-upgrade pages.',
   alternates: { canonical: '/sell-more-places' }
 };
 
@@ -34,11 +34,11 @@ export default async function SellMorePlaces() {
   return (
     <>
       <section className="page-hero compact">
-        <p className="eyebrow">Shop WYX Everywhere</p>
-        <h1>More Ways To Find The Right Golf Gear.</h1>
-        <p>Use this hub for social bios, email campaigns, group golf buyers, search traffic, and launch promotions. It routes shoppers to the right WYX page instead of forcing every buyer through the same homepage.</p>
+        <p className="eyebrow">Shop By Need</p>
+        <h1>Find The Right Golf Gear Faster.</h1>
+        <p>Start with the page that fits the round: gifts, hats, apparel, trip gear, bag upgrades, or launch deals. No digging through a random catalog.</p>
         <div className="actions">
-          <Link className="button primary" href="#channel-links">Choose A Buying Path</Link>
+          <Link className="button primary" href="#channel-links">Choose Your Gear</Link>
           <Link className="button secondary dark" href="/products">Shop All Gear</Link>
         </div>
       </section>
@@ -55,14 +55,14 @@ export default async function SellMorePlaces() {
       <section className="section seo-guide">
         <div>
           <p className="eyebrow">Fast Links</p>
-          <h2>Send Each Customer To The Best Page.</h2>
-          <p>Different buyers need different doors into the shop. These links are built for bios, captions, email buttons, group chats, QR codes, and paid ads.</p>
+          <h2>Start With The Right Shelf.</h2>
+          <p>Gift shoppers, trip planners, scramble captains, and weekend golfers should not have to hunt for the right products.</p>
         </div>
         <div className="collection-copy-grid">
           {quickLinks.map(([label, href, copy]) => <article key={href}>
             <h3>{label}</h3>
             <p>{copy}</p>
-            <Link className="text-link" href={campaignUrl(href, `quick_${label.toLowerCase().replaceAll(' ', '_')}`)}>Open {label}</Link>
+            <Link className="text-link" href={campaignUrl(href, `quick_${label.toLowerCase().replaceAll(' ', '_')}`)}>Shop {label}</Link>
           </article>)}
         </div>
       </section>
@@ -70,8 +70,8 @@ export default async function SellMorePlaces() {
       {products.length > 0 && <section className="section product-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Best First Clicks</p>
-            <h2>Products Worth Sending Traffic To.</h2>
+            <p className="eyebrow">Start Here</p>
+            <h2>Easy Products To Add First.</h2>
           </div>
           <Link className="text-link" href="/products">Browse Full Shop</Link>
         </div>
@@ -80,15 +80,15 @@ export default async function SellMorePlaces() {
 
       <section className="section channel-copy-section">
         <div>
-          <p className="eyebrow">Copy Bank</p>
-          <h2>Use These Posts To Drive Traffic.</h2>
+          <p className="eyebrow">Quick Notes</p>
+          <h2>What WYX Is Good For.</h2>
           <div className="copy-bank-grid">
             {launchSocialCopy.slice(0, 6).map((copy) => <article key={copy}><p>{copy}</p></article>)}
           </div>
         </div>
         <div>
-          <p className="eyebrow">Search Angles</p>
-          <h2>Campaigns To Build Around.</h2>
+          <p className="eyebrow">Popular Searches</p>
+          <h2>Golf Gear People Are Looking For.</h2>
           <ul className="channel-list">{paidSearchAngles.slice(0, 10).map((angle) => <li key={angle}>{angle}</li>)}</ul>
         </div>
       </section>
@@ -107,7 +107,7 @@ export default async function SellMorePlaces() {
         {
           '@context': 'https://schema.org',
           '@type': 'ItemList',
-          name: 'WYX multi-channel shopping paths',
+          name: 'WYX shopping paths',
           itemListElement: quickLinks.map(([label, href], index) => ({
             '@type': 'ListItem',
             position: index + 1,
