@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/fathers-day-golf-gifts' },
   openGraph: {
     title: "Father's Day Golf Gifts 2026 | WYX Golf Supply Co.",
-    description: 'Useful golf gifts for Dad with easy checkout and launch code WYX10.',
+    description: 'Useful golf gifts for Dad with practical bag upgrades and launch code WYX10.',
     url: '/fathers-day-golf-gifts'
   }
 };
@@ -58,7 +58,7 @@ export default async function FathersDayGolfGifts() {
         <span>Father's Day June 21</span>
         <span>{underSixty} under-$60 picks</span>
         <span>Useful golf gifts</span>
-        <span>Easy checkout</span>
+        <span>Easy gift bundle</span>
       </section>
 
       <section id="dad-gift-grid" className="section product-section">
