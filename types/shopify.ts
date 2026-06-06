@@ -1,6 +1,6 @@
 export type Money = { amount: string; currencyCode: string };
 export type ShopifyImage = { url: string; altText?: string | null; width?: number; height?: number };
-export type ProductVariant = { id: string; title: string; availableForSale: boolean; price: Money };
+export type ProductVariant = { id: string; title: string; availableForSale: boolean; price: Money; selectedOptions?: Array<{ name: string; value: string }>; image?: ShopifyImage | null };
 export type Product = {
   id: string;
   handle: string;
