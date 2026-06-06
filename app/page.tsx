@@ -7,6 +7,7 @@ import { availableProducts } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
 import { createProductAllocator } from '@/lib/homeMerchandising';
 import { commerceKits } from '@/lib/kits';
+import { channelPlan } from '@/lib/marketing';
 import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
@@ -50,6 +51,7 @@ export default async function Home() {
   const allocator = createProductAllocator();
   const shortList = allocator.take(firstBuyProducts(catalog), 3);
   const justAdded = allocator.take(catalog, 4);
+  const channelHighlights = channelPlan.slice(0, 3);
 
   return (
     <>
@@ -107,6 +109,24 @@ export default async function Home() {
             <h3>{item.title}</h3>
             <p>{item.copy}</p>
             <ul>{item.links.map(([label, href]) => <li key={href}><Link className="text-link" href={href}>{label}</Link></li>)}</ul>
+          </article>)}
+        </div>
+      </section>
+
+      <section className="section channel-home-section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">More Ways To Buy</p>
+            <h2>Meet Customers Where They Already Are.</h2>
+          </div>
+          <Link className="text-link" href="/sell-more-places">Open Channel Hub</Link>
+        </div>
+        <div className="channel-mini-grid">
+          {channelHighlights.map((channel) => <article key={channel.channel}>
+            <p className="eyebrow">{channel.channel}</p>
+            <h3>{channel.audience}</h3>
+            <p>{channel.promise}</p>
+            <Link className="text-link" href={channel.href}>{channel.cta}</Link>
           </article>)}
         </div>
       </section>
