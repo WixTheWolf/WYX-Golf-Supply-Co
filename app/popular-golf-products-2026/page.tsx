@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/popular-golf-products-2026' },
   openGraph: {
     title: 'Popular Golf Products 2026 | WYX Golf Supply Co.',
-    description: 'Useful golf gifts and bag upgrades selected for fast checkout.',
+    description: 'Useful golf gifts and bag upgrades selected for weekend golfers.',
     url: '/popular-golf-products-2026'
   }
 };
@@ -69,7 +69,7 @@ export default async function PopularGolfProducts2026() {
         <span>Gifts under $60</span>
         <span>Small bag upgrades</span>
         <span>Useful accessories</span>
-        <span>Mobile-first checkout</span>
+        <span>Easy first cart</span>
       </section>
 
       <section id="popular-picks" className="section product-section">
