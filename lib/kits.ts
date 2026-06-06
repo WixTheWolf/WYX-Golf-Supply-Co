@@ -28,7 +28,7 @@ export const commerceKits: CommerceKit[] = [
     title: 'The Clean Contact Kit',
     eyebrow: 'Coming Soon / Build Your Own',
     description: 'Cleaner grooves. Better contact. Fewer excuses. The complete kit needs a confirmed brush or groove cleaner, so start with the available towels and add care tools once sourced.',
-    handles: ['blue-ridge-golf-co-golf-towels', 'tri-fold-microfiber-golf-towel'],
+    handles: ['blue-ridge-golf-co-golf-towels', 'glove-accessory-caddie-gray'],
     complete: false
   },
   {
