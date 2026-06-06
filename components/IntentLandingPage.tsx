@@ -33,7 +33,7 @@ export async function IntentLandingPage({ config }: { config: IntentPageConfig }
       <section className="deal-strip" aria-label={`${config.title} benefits`}>
         <span>WYX10 launch offer</span>
         <span>Trusted golf gear</span>
-        <span>Mobile-first cart</span>
+        <span>Built for weekend rounds</span>
         <span>U.S. customer support</span>
       </section>
 
@@ -41,7 +41,7 @@ export async function IntentLandingPage({ config }: { config: IntentPageConfig }
         <div>
           <p className="eyebrow">Shopping Guide</p>
           <h2>How To Pick The Right One.</h2>
-          <p>For this collection, WYX prioritizes products with real golf utility, clear product media, available inventory, and a reason to add them to the cart today.</p>
+          <p>Start with gear that solves a real golf problem: a better gift, an easier trip, a cleaner bag, or a sharper course fit.</p>
         </div>
         <div className="collection-copy-grid">
           <article>
