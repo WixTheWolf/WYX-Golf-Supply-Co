@@ -16,7 +16,7 @@ export function Header() {
           <Link href="/products?category=Headwear">Hats</Link>
           <Link href="/products?category=Apparel">Apparel</Link>
           <Link href="/golf-trip-gear">Trip Gear</Link>
-          <Link href="/bag-upgrades">Bag Upgrades</Link>
+          <Link href="/sell-more-places">Channels</Link>
         </nav>
         <button className="header-cta" onClick={() => setOpen(true)} aria-label={`Open cart with ${count} items`}>Bag ({count})</button>
       </header>
