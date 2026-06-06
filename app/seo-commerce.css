@@ -15,6 +15,19 @@
 .product-recommendation-grid a{display:block;padding:.85rem;background:color-mix(in oklab,var(--cream) 70%,white 30%);border:1px solid var(--line);text-decoration:none}
 .product-recommendation-grid strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
 .product-recommendation-grid span{display:block;color:var(--muted);font-size:.86rem}
+.variant-purchase{display:grid;gap:.65rem;margin:1rem 0}
+.variant-selector{margin:0;padding:0;border:0}
+.variant-selector legend{margin-bottom:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.variant-option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.variant-option-grid label{display:flex;align-items:center;gap:.5rem;min-height:44px;padding:.65rem .75rem;background:var(--paper);border:1px solid var(--line);cursor:pointer;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.variant-option-grid label.selected{border-color:var(--forest);background:color-mix(in oklab,var(--lime) 24%,var(--paper) 76%)}
+.variant-option-grid input{accent-color:var(--forest)}
+.selected-variant-note{margin:.1rem 0;color:var(--muted);font-size:.86rem}
+.variant-purchase.compact{margin:0;gap:.35rem}
+.variant-purchase.compact .variant-selector legend,.variant-purchase.compact .selected-variant-note{display:none}
+.variant-purchase.compact .variant-option-grid{grid-template-columns:1fr;max-height:95px;overflow:auto}
+.variant-purchase.compact .variant-option-grid label{min-height:34px;padding:.45rem .55rem;font-size:.68rem}
+.variant-purchase.compact .button{min-height:38px;margin-top:0;font-size:.65rem}
 .channel-hub-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;align-items:stretch}
 .channel-card,.channel-mini-grid article,.copy-bank-grid article{display:flex;min-height:100%;flex-direction:column;padding:1rem;background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 44px rgba(11,31,23,.06)}
 .channel-card h2{font-size:clamp(1.35rem,2vw,1.8rem);letter-spacing:-.04em}
@@ -28,4 +41,4 @@
 .channel-list li{padding:.75rem;background:var(--paper);border:1px solid var(--line);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 @media(max-width:1100px){.channel-hub-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:900px){.seo-guide,.seo-guide-grid,.collection-copy-grid,.intent-proof-grid,.product-recommendation-grid,.channel-mini-grid,.channel-copy-section{grid-template-columns:1fr 1fr}.channel-hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:650px){.seo-guide,.seo-guide-grid,.collection-copy-grid,.intent-proof-grid,.product-recommendation-grid,.channel-mini-grid,.channel-copy-section,.copy-bank-grid,.channel-hub-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.seo-guide,.seo-guide-grid,.collection-copy-grid,.intent-proof-grid,.product-recommendation-grid,.channel-mini-grid,.channel-copy-section,.copy-bank-grid,.channel-hub-grid,.variant-option-grid{grid-template-columns:1fr}}
