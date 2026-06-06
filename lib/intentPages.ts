@@ -38,7 +38,7 @@ export const intentPages: Record<string, IntentPageConfig> = {
     primaryCta: 'Shop Golf Gifts',
     secondaryCta: 'Under $60 Picks',
     secondaryHref: '/golf-gifts-under-60',
-    proof: ['Gift-ready picks', 'Useful bag upgrades', 'Launch code WYX10', 'Easy checkout'],
+    proof: ['Gift-ready picks', 'Useful bag upgrades', 'Launch code WYX10', 'Bag-friendly picks'],
     faq: [
       ['What makes a good golf gift?', 'Choose something useful, easy to size, and simple to put in the bag: towels, markers, balls, gloves, grips, and small accessories.'],
       ['Is WYX good for last-minute gifts?', 'Yes. Start with under-$60 products and checkout will show available delivery timing before payment.'],
@@ -128,7 +128,7 @@ export const intentPages: Record<string, IntentPageConfig> = {
     primaryCta: 'Shop Weekend Picks',
     secondaryCta: 'Build A Kit',
     secondaryHref: '/#kits',
-    proof: ['Range-ready gear', 'Real-round utility', 'Simple checkout', 'Launch discount'],
+    proof: ['Range-ready gear', 'Real-round utility', 'Bag-friendly picks', 'Launch discount'],
     faq: [
       ['What is the best first WYX product?', 'A towel, glove, ball marker, grip, or ball restock is the easiest first cart.'],
       ['Are these products for beginners?', 'Yes. They are useful for casual players, weekend regulars, and golfers who just want a better organized bag.'],
