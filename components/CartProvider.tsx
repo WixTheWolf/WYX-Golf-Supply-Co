@@ -216,7 +216,7 @@ function CartDrawer() {
       <div className="cart-foot">
         {cart && <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />}
         <p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p>
-        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>Continue To Checkout</button>
+        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>Checkout</button>
         <Link href="/cart">View Bag</Link>
       </div>
     </aside>
