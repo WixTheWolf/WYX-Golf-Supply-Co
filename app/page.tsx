@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { EditorialProductCard } from '@/components/EditorialProductCard';
@@ -12,12 +13,36 @@ import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
 
+export const metadata: Metadata = {
+  title: 'Curated Golf Gifts, Hats, Apparel & Bag Gear',
+  description: 'Shop WYX Golf Supply Co. for curated golf gifts, hats, apparel, trip gear, towels, markers, gloves, balls, and bag upgrades for weekend golfers.',
+  alternates: { canonical: '/' }
+};
+
 const categoryPills = [
   { label: 'Hats', href: '/products?category=Headwear', icon: '01' },
   { label: 'Apparel', href: '/products?category=Apparel', icon: '02' },
   { label: 'Golf Gifts', href: '/golf-gifts', icon: '03' },
   { label: 'Trip Gear', href: '/golf-trip-gear', icon: '04' },
   { label: 'Bag Upgrades', href: '/bag-upgrades', icon: '05' }
+];
+
+const buyerGuide = [
+  {
+    title: 'Best first cart',
+    copy: 'Start with one wearable piece and one useful bag item: a hat, shirt, towel, marker, glove, or ball restock.',
+    links: [['Shop Hats', '/products?category=Headwear'], ['Shop Gifts', '/golf-gifts']]
+  },
+  {
+    title: 'Best golf gifts',
+    copy: 'Choose products with low sizing risk, clear utility, and strong gift value under $60 whenever possible.',
+    links: [['Under $60 Gifts', '/golf-gifts-under-60'], ['Dad Gifts', '/golf-gifts-for-dad']]
+  },
+  {
+    title: 'Best trip gear',
+    copy: 'For group golf weekends, prioritize packable accessories, towels, markers, balls, caddies, hats, and simple prizes.',
+    links: [['Trip Gear', '/golf-trip-gear'], ['Scramble Prizes', '/scramble-prizes']]
+  }
 ];
 
 export default async function Home() {
@@ -31,9 +56,9 @@ export default async function Home() {
       <section className="hero">
         <Image src={imageMap.hero} alt="Coastal fairway at golden hour" fill priority />
         <div className="hero-copy">
-          <p className="eyebrow">WYX Golf Co.</p>
+          <p className="eyebrow">WYX Golf Supply Co.</p>
           <h1>Premium Golf Goods With Weekend Energy.</h1>
-          <p>Hats, apparel, balls, gloves, towels, markers, and bag gear selected to feel good in the cart and better on the course.</p>
+          <p>Hats, apparel, golf gifts, trip gear, and bag upgrades selected to feel good in the cart and better on the course.</p>
           <div className="hero-proof">
             <span>Curated suppliers</span>
             <span>Course-ready style</span>
@@ -42,7 +67,7 @@ export default async function Home() {
           </div>
           <div className="actions">
             <Link className="button primary" href="/products">Shop WYX Select</Link>
-            <Link className="button secondary" href="/products?category=Apparel">Shop Apparel</Link>
+            <Link className="button secondary" href="/golf-gifts">Find A Golf Gift</Link>
           </div>
         </div>
       </section>
@@ -68,6 +93,21 @@ export default async function Home() {
               <strong>{category.label}</strong>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="section seo-guide">
+        <div>
+          <p className="eyebrow">Buyer's Guide</p>
+          <h2>What Should A Golfer Buy From WYX First?</h2>
+          <p>WYX is built around high-confidence golf purchases: things golfers can wear, gift, pack for a trip, or drop in the bag without needing club specs or a fitting session.</p>
+        </div>
+        <div className="seo-guide-grid">
+          {buyerGuide.map((item) => <article className="seo-guide-card" key={item.title}>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            <ul>{item.links.map(([label, href]) => <li key={href}><Link className="text-link" href={href}>{label}</Link></li>)}</ul>
+          </article>)}
         </div>
       </section>
 
@@ -121,6 +161,17 @@ export default async function Home() {
       </section>
 
       <EmailCapture source="home" campaign="home_launch_list" title="Get The Next WYX Select Drop." body="Join the list for better golf hats, apparel, trip gear, gifts, and launch discounts." />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'WYX Golf Supply Co. featured golf gear',
+        itemListElement: shortList.map((product, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          url: `https://wyxgolfsupply.com/products/${product.handle}`,
+          name: product.title
+        }))
+      }) }} />
     </>
   );
 }
