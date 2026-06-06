@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
-import { productPrice } from '@/lib/feed';
+import { productPrice, siteUrl } from '@/lib/feed';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -32,6 +32,7 @@ export default async function FirstSale() {
   const picks = preferredHandles.flatMap((handle) => products.find((product) => product.handle === handle) ?? []).slice(0, 6);
   const fallback = products.filter((product) => Number(productPrice(product).amount) <= 60).slice(0, 6);
   const featured = picks.length >= 3 ? picks : fallback;
+  const shareUrl = `${siteUrl}/first-sale`;
 
   return (
     <>
@@ -48,8 +49,8 @@ export default async function FirstSale() {
         <aside className="share-card">
           <p className="eyebrow">Share WYX With A Golf Buddy</p>
           <h2>Copy/Paste This</h2>
-          <p>WYX Golf Supply Co. just launched with useful golf towels, markers, grips, gloves, balls, and bag accessories. Use WYX10 for 10% off your first order.</p>
-          <p><strong>Share link:</strong><br /><span>https://wyx-golf-supply-co.vercel.app/first-sale</span></p>
+          <p>WYX Golf Supply Co. just launched with useful golf towels, markers, grips, gloves, balls, hats, apparel, and bag accessories. Use WYX10 for 10% off your first order.</p>
+          <p><strong>Share link:</strong><br /><span>{shareUrl}</span></p>
         </aside>
       </section>
 
