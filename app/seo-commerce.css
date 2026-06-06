@@ -1,0 +1,19 @@
+.seo-guide{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,4vw,4rem);align-items:start;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.seo-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.seo-guide-card{padding:1rem;background:var(--paper);border:1px solid var(--line)}
+.seo-guide-card h3{font-size:1.35rem;letter-spacing:-.03em}
+.seo-guide-card ul,.conversion-panel ul,.ai-answer-box ul{margin:.75rem 0 0;padding-left:1.1rem}
+.seo-guide-card li,.conversion-panel li,.ai-answer-box li{margin:.35rem 0}
+.ai-answer-box{margin:1rem 0;padding:1rem;background:color-mix(in oklab,var(--cream) 72%,white 28%);border:1px solid var(--line)}
+.ai-answer-box strong{display:block;margin-bottom:.35rem;font-family:var(--font-display),Georgia,serif;font-size:1.2rem;letter-spacing:-.03em}
+.intent-proof-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+.intent-proof-grid span{padding:.75rem;background:var(--paper);border:1px solid var(--line);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.collection-copy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.collection-copy-grid article{padding:1rem;background:var(--paper);border:1px solid var(--line)}
+.collection-copy-grid h3{font-size:1.35rem;letter-spacing:-.03em}
+.product-recommendation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1rem 0}
+.product-recommendation-grid a{display:block;padding:.85rem;background:color-mix(in oklab,var(--cream) 70%,white 30%);border:1px solid var(--line);text-decoration:none}
+.product-recommendation-grid strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.product-recommendation-grid span{display:block;color:var(--muted);font-size:.86rem}
+@media(max-width:900px){.seo-guide,.seo-guide-grid,.collection-copy-grid,.intent-proof-grid,.product-recommendation-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.seo-guide,.seo-guide-grid,.collection-copy-grid,.intent-proof-grid,.product-recommendation-grid{grid-template-columns:1fr}}
