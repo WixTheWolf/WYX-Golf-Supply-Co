@@ -98,9 +98,10 @@ export default async function ProductPage({ params }: { params: { handle: string
           <h1>{title}</h1>
           <p className="price large">{money(product.priceRange.minVariantPrice)}</p>
           <p>{description}</p>
+          <p className="promo-note">Use <strong>WYX10</strong> for 10% off your first order.</p>
           <div className="ai-answer-box">
             <strong>Quick take</strong>
-            <p>{title} is best for {bestFor.slice(0, 3).join(', ').toLowerCase()}. It fits WYX because it is useful, giftable, and easy to pair with other golf gear.</p>
+            <p>{quickTakeFor(product.handle, productCategory, title)}</p>
           </div>
           <div className="conversion-panel">
             <strong>Why golfers use it</strong>
@@ -117,12 +118,10 @@ export default async function ProductPage({ params }: { params: { handle: string
           <ProductPurchaseControls variants={product.variants} productTitle={title} />
           <div className="detail-list">
             <section><h2>Best For</h2><ul>{bestFor.map((item) => <li key={item}>{item}</li>)}</ul></section>
-            <section><h2>Who This Is For</h2><p>{whoThisIsFor(productCategory)}</p></section>
-            <section><h2>Gift & Kit Fit</h2><p>{kitFit}</p></section>
-            <section><h2>Product Details</h2><p>Review the product description above for included items, sizing, color options, and fit notes before adding it to your bag.</p></section>
-            <section><h2>Why Buy From WYX?</h2><p>WYX keeps the offer focused on practical golf gifts, hats, apparel, trip gear, and bag upgrades. Checkout runs through Shopify, support is by email, and shipping is shown before payment.</p></section>
+            <section><h2>Gift Note</h2><p>{giftNoteFor(product.handle, productCategory)}</p></section>
+            <section><h2>Pair It With</h2><p>{kitFit}</p></section>
+            <section><h2>Why Buy From WYX?</h2><p>WYX keeps the shop focused on wearable golf gear, easy gifts, trip gear, prize-table picks, and small bag upgrades that fit real rounds.</p></section>
             <section><h2>Shipping & Returns</h2><p>Shipping rates and delivery estimates are shown before payment. If something arrives damaged or incorrect, contact WYX support at <a href={`mailto:${supportEmail}`}>{supportEmail}</a> with your order number and photos so we can help.</p></section>
-            <section><h2>Launch Reviews</h2><p>WYX is new, so reviews are still coming in. Every launch product is selected because it solves a real bag, range, style, trip, or gift problem for everyday golfers.</p></section>
             <section><h2>Quick Questions</h2>{faqs.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</section>
           </div>
         </div>
@@ -137,12 +136,25 @@ export default async function ProductPage({ params }: { params: { handle: string
   );
 }
 
-function whoThisIsFor(category: string) {
-  if (category === 'Headwear') return 'Golfers who want course-ready style, trip groups building matching carts, and gift shoppers who want low-risk golf apparel.';
-  if (category === 'Apparel') return 'Weekend golfers, golf dads, and trip groups who want wearable golf gear that feels more premium than random novelty apparel.';
-  if (category === 'Golf Balls') return 'Golfers restocking before a round, group-trip buyers, prize tables, and anyone buying a practical golf gift.';
-  if (category === 'Towels' || category === 'Club Care') return 'Golfers who care about clean clubs, dry grips, and small bag habits that make rounds feel more prepared.';
-  return 'Weekend players, golf dads, trip groups, league golfers, and gift shoppers who want useful gear without guessing at clubs or complicated specs.';
+function quickTakeFor(handle: string, category: string, title: string) {
+  if (/shockd|ball/.test(handle) || category === 'Golf Balls') return 'A loud, easy ball restock for trips, prize tables, and weekend rounds.';
+  if (/marker/.test(handle)) return 'A small bag upgrade that works for gifts, scrambles, and golf-trip side bets.';
+  if (/hat|cap/.test(handle) || category === 'Headwear') return 'An easy style piece for the course, the trip, and everything after the round.';
+  if (category === 'Apparel') return 'A wearable golf piece that gives the cart more personality without feeling like novelty gear.';
+  if (/towel/.test(handle) || category === 'Towels') return 'A bag-ready towel for wet grips, clean club faces, and everyday rounds.';
+  if (/glove|grip/.test(handle)) return 'A practical bag upgrade golfers can use right away.';
+  if (/caddie|magnet/.test(handle)) return 'A small organizer for the stuff that usually disappears in the bottom of the bag.';
+  return `${title} is a useful add for weekend rounds, golf trips, and giftable bag upgrades.`;
+}
+
+function giftNoteFor(handle: string, category: string) {
+  if (/shockd|ball/.test(handle) || category === 'Golf Balls') return 'Golf balls are an easy gift because they get used, lost, and restocked all season.';
+  if (/marker/.test(handle)) return 'Ball markers are small, affordable, and easy to add to a golf gift without guessing a size.';
+  if (/hat|cap/.test(handle) || category === 'Headwear') return 'Hats are one of the safest golf gifts when you want something personal without needing club specs.';
+  if (category === 'Apparel') return 'Apparel works best when you know the golfer already likes course-ready weekend gear.';
+  if (/towel/.test(handle) || category === 'Towels') return 'A towel is a useful golf gift because it goes straight on the bag and gets used every round.';
+  if (/glove|grip/.test(handle)) return 'Gloves and grip accessories make strong add-on gifts because golfers burn through them over time.';
+  return 'A good golf gift should be easy to understand, easy to use, and useful before the next tee time.';
 }
 
 function kitFitFor(handle: string, category: string) {
