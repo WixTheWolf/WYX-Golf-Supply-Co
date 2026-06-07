@@ -33,8 +33,30 @@ function redirectSnippet() {
     var checkoutPaths = ['/cart/c', '/checkouts', '/checkout', '/orders'];
     var isShopifyHost = shopifyHosts.indexOf(window.location.hostname) !== -1;
     var isCheckoutPath = checkoutPaths.some(function (path) { return window.location.pathname.indexOf(path) === 0; });
+    function addReturnLink() {
+      if (document.getElementById('wyx-return-to-storefront')) return;
+      var link = document.createElement('a');
+      link.id = 'wyx-return-to-storefront';
+      link.href = 'https://${targetHost}';
+      link.textContent = 'Return to WYX Golf Supply';
+      link.style.position = 'fixed';
+      link.style.right = '18px';
+      link.style.bottom = '18px';
+      link.style.zIndex = '2147483647';
+      link.style.padding = '12px 16px';
+      link.style.borderRadius = '999px';
+      link.style.background = '#07140f';
+      link.style.color = '#fff';
+      link.style.font = '700 13px/1.2 system-ui,-apple-system,BlinkMacSystemFont,sans-serif';
+      link.style.textDecoration = 'none';
+      link.style.boxShadow = '0 12px 32px rgba(0,0,0,.18)';
+      document.body.appendChild(link);
+    }
     if (isShopifyHost && !isCheckoutPath) {
       window.location.replace('https://${targetHost}' + window.location.pathname + window.location.search + window.location.hash);
+    } else if (isShopifyHost && isCheckoutPath) {
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addReturnLink);
+      else addReturnLink();
     }
   }());
 </script>`;
