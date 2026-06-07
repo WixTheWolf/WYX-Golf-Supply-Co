@@ -1,60 +1,50 @@
 import { categoryFor } from '@/lib/catalog';
+import { productPrice } from '@/lib/feed';
 import type { Product } from '@/types/shopify';
 
-export type CommerceKit = {
+export type KitDefinition = {
+  slug: string;
   title: string;
   eyebrow: string;
   description: string;
-  handles: string[];
-  complete: boolean;
+  cta: string;
+  match: (product: Product) => boolean;
 };
 
-export const commerceKits: CommerceKit[] = [
+export const kitDefinitions: KitDefinition[] = [
   {
-    title: 'The Golf Trip Survival Kit',
-    eyebrow: 'Trip Weekend Builder',
-    description: "Everything you forgot to pack before pretending you're a tour pro for three days. Start with towels, markers, balls, caddies, and small bag upgrades.",
-    handles: ['buy-3-get-1-free-bundle-shockd-golf-balls', 'dartee-golf-glove', 'blue-ridge-golf-co-golf-towels', 'glove-accessory-caddie-gray'],
-    complete: false
+    slug: 'dad-gift-kit',
+    title: 'Dad Golf Gift Kit',
+    eyebrow: 'Easy Gift Bundle',
+    description: 'Start with useful golf gear Dad can put straight in the bag: towels, gloves, balls, markers, hats, and small accessories.',
+    cta: 'Add Dad Gift Kit',
+    match: (product) => Number(productPrice(product).amount) <= 60 && /towel|marker|glove|grip|ball|hat|cap|caddie/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
   },
   {
-    title: 'The Dad Golf Gift Kit',
-    eyebrow: 'Dad Gift Builder',
-    description: "Useful golf gifts he'll actually put in the bag, not politely toss in a drawer. Towels, markers, balls, gloves, and grip help beat novelty clutter.",
-    handles: ['augusta-bear-hat', 'dartee-golf-glove', 'three-rail-ball-marker', 'pulse-golf-overgrip-tape'],
-    complete: false
+    slug: 'golf-trip-kit',
+    title: 'Golf Trip Kit',
+    eyebrow: 'Trip Gear',
+    description: 'Packable gear for buddy trips, bachelor weekends, scrambles, and the first tee when nobody remembered everything.',
+    cta: 'Add Trip Kit',
+    match: (product) => /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
   },
   {
-    title: 'The Clean Contact Kit',
-    eyebrow: 'Coming Soon / Build Your Own',
-    description: 'Cleaner grooves. Better contact. Fewer excuses. The complete kit needs a confirmed brush or groove cleaner, so start with the available towels and add care tools once sourced.',
-    handles: ['blue-ridge-golf-co-golf-towels', 'glove-accessory-caddie-gray'],
-    complete: false
-  },
-  {
-    title: 'The First Tee Chaos Kit',
-    eyebrow: 'Late-To-The-Tee Builder',
-    description: 'For the guy who arrives five minutes late, asks for a breakfast ball, and still thinks today is the day. Balls, marker, towel, and caddie basics.',
-    handles: ['golf-or-die-game-set', 'shockd-golf-balls-patriot-edition', 'the-bolt-ball-marker', 'magnet-caddie'],
-    complete: false
-  },
-  {
-    title: 'The Prize Table Pack',
-    eyebrow: 'Scramble Prize Builder',
-    description: 'Easy golf prizes people will actually want after the scramble. Markers, towels, balls, gloves, and accessories under $50.',
-    handles: ['got-em-ball-marker-limited-edition', 'blue-ridge-golf-ball-markers-set-of-2', 'shockd-golf-balls', 'glove-accessory-caddie-black'],
-    complete: false
+    slug: 'bag-upgrade-kit',
+    title: 'Bag Upgrade Kit',
+    eyebrow: 'Better Bag Build',
+    description: 'Small upgrades that make a golf bag cleaner, easier, and more ready for the next round.',
+    cta: 'Add Bag Kit',
+    match: (product) => ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care', 'Headwear'].includes(categoryFor(product))
   }
 ];
 
-export function kitProducts(products: Product[], handles: string[]) {
-  return handles.map((handle) => products.find((product) => product.handle === handle)).filter(Boolean) as Product[];
+export function kitBySlug(slug: string) {
+  return kitDefinitions.find((kit) => kit.slug === slug);
 }
 
-export function kitLines(products: Product[]) {
-  return products.map((product) => product.variants.find((variant) => variant.availableForSale)).filter(Boolean).map((variant) => ({ merchandiseId: variant!.id, quantity: 1 }));
-}
-
-export function kitCategorySummary(products: Product[]) {
-  return Array.from(new Set(products.map((product) => categoryFor(product)))).join(' / ');
+export function kitProducts(products: Product[], kit: KitDefinition, limit = 4) {
+  return products
+    .filter(kit.match)
+    .sort((a, b) => Number(productPrice(a).amount) - Number(productPrice(b).amount))
+    .slice(0, limit);
 }
