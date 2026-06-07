@@ -38,6 +38,14 @@ const blockedSupplierVendors = [
   'GolfbaysUSA'
 ];
 
+const homepageBlockedHandles = new Set([
+  'park-paisley-womens-gold-golf-glove'
+]);
+
+const homepageBlockedVendors = new Set([
+  "SHOCK'D Golf Balls"
+]);
+
 export function isHiddenFromCoreStorefront(product: Product) {
   return hiddenHandles.has(product.handle) || (product.vendor ? blockedSupplierVendors.includes(product.vendor) : false);
 }
@@ -54,9 +62,14 @@ export function coreMerchProducts(products: Product[]) {
   return products.filter(isCoreMerchProduct);
 }
 
+export function isHomepageProduct(product: Product) {
+  return !homepageBlockedHandles.has(product.handle)
+    && !(product.vendor && homepageBlockedVendors.has(product.vendor))
+    && categoryFor(product) !== 'Golf Balls';
+}
+
 export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
-    'buy-3-get-1-free-bundle-shockd-golf-balls',
     'dartee-golf-glove',
     'augusta-bear-hat',
     'pimento-drip-blade',
@@ -66,11 +79,11 @@ export function firstBuyProducts(products: Product[]) {
     'two-sided-metal-golf-ball-marker-5-color-combo-pack',
     'glove-accessory-caddie-gray',
     'magnet-caddie',
-    'shockd-golf-balls',
     'golf-or-die-game-set'
   ];
   return heroHandles
     .map((handle) => products.find((product) => product.handle === handle))
+    .filter((product) => product && isHomepageProduct(product))
     .filter(Boolean) as Product[];
 }
 
