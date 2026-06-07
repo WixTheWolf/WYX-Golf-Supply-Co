@@ -1,18 +1,19 @@
 import type { Product } from '@/types/shopify';
 import { hasMisleadingProductMedia } from '@/lib/productReadiness';
 
-export const catalogCategories = ['All', 'Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Club Care', 'Headwear', 'Apparel', 'Accessories'] as const;
+export const catalogCategories = ['All', 'Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Golf Tech', 'Club Care', 'Headwear', 'Apparel', 'Accessories'] as const;
 
 const rules: Array<[Exclude<(typeof catalogCategories)[number], 'All'>, string[]]> = [
   ['Golf Balls', ['golf balls', 'golf ball set', 'prank ball']],
   ['Gloves', ['glove']],
   ['Grips', ['grip', 'overgrip']],
   ['Towels', ['towel']],
-  ['Training Aids', ['training aid', 'putting mirror', 'alignment mirror']],
+  ['Training Aids', ['training aid', 'training aids', 'putting mirror', 'alignment mirror', 'putting gate', 'putting mat', 'alignment stick', 'swing trainer', 'swing tempo', 'tempo trainer', 'chipping net', 'short game', 'range gear']],
+  ['Golf Tech', ['golf tech', 'rangefinder', 'laser rangefinder', 'gps speaker', 'golf gps', 'launch monitor']],
   ['Club Care', ['club care', 'club brush', 'brush cleaner', 'groove cleaner', 'groove sharpener']],
   ['Headwear', ['hat', 'cap', 'headwear']],
-  ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel']],
-  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter', 'retriever']]
+  ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel', 'sock', 'socks', 'quarter zip', 'pullover', 'belt']],
+  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter', 'retriever', 'pouch', 'organizer', 'shoe bag']]
 ];
 
 type ClassifiableProduct = Pick<Product, 'title' | 'productType' | 'vendor' | 'tags'>;
@@ -29,6 +30,10 @@ export function categoryFor(product: ClassifiableProduct) {
 
 export function matchesCategory(product: ClassifiableProduct, category?: string) {
   return !category || category === 'All' || categoryFor(product).toLowerCase() === category.toLowerCase();
+}
+
+export function saleReadyProducts(products: Product[]) {
+  return availableProducts(products).filter((product) => product.variants.some((variant) => variant.availableForSale));
 }
 
 export function availableProducts(products: Product[]) {

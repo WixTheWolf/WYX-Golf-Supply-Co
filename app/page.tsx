@@ -19,57 +19,81 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' }
 };
 
-const occasions = [
-  { label: 'Golf Gifts', href: '/golf-gifts', image: imageMap.leather, copy: 'Easy wins for golfers who are hard to shop for.', cta: 'Shop Gifts' },
-  { label: 'Hats', href: '/products?category=Headwear', image: imageMap.ropeHat, copy: 'Course-ready style that works after the round too.', cta: 'Shop Hats' },
-  { label: 'Apparel', href: '/products?category=Apparel', image: imageMap.polo, copy: 'Wearable golf pieces for weekends, trips, and clubhouse stops.', cta: 'Shop Apparel' },
-  { label: 'Trip Gear', href: '/golf-trip-gear', image: imageMap.walk, copy: 'Packable gear for buddy trips, bachelor weekends, and travel bags.', cta: 'Shop Trip Gear' },
-  { label: 'Dad Gifts', href: '/golf-gifts-for-dad', image: imageMap.care, copy: 'Useful golf gifts he will actually keep in the bag.', cta: 'Shop Dad Gifts' },
-  { label: 'Scramble Prizes', href: '/scramble-prizes', image: imageMap.iron, copy: 'Small prizes that beat another sleeve of forgettable logo balls.', cta: 'Shop Prizes' }
+const kits = [
+  { title: 'Trip Kit', href: '/kits/golf-trip-kit', image: imageMap.walk, copy: 'Packable gear for the boys weekend.' },
+  { title: 'Dad Kit', href: '/kits/dad-gift-kit', image: imageMap.care, copy: 'Useful gifts he will actually use.' },
+  { title: 'Bag Kit', href: '/kits/bag-upgrade-kit', image: imageMap.leather, copy: 'Small upgrades. Better setup.' }
 ];
 
-const kits = [
-  { title: 'Dad Gift Kit', href: '/kits/dad-gift-kit', copy: 'Towels, gloves, markers, balls, and easy bag upgrades for Dad.' },
-  { title: 'Golf Trip Kit', href: '/kits/golf-trip-kit', copy: 'Packable picks for buddy trips, scrambles, and bachelor weekends.' },
-  { title: 'Bag Upgrade Kit', href: '/kits/bag-upgrade-kit', copy: 'Small gear that makes the bag cleaner, sharper, and easier to use.' }
+const trustSignals = [
+  'Secure Shopify checkout',
+  'Shipping shown before payment',
+  'Real supplier product photos',
+  'Support by email'
+];
+
+const visualStories = [
+  { title: 'Wear It', href: '/products?category=Headwear', image: imageMap.ropeHat, copy: 'Hats and apparel for the course and the stop after.' },
+  { title: 'Pack It', href: '/golf-trip-gear', image: imageMap.walk, copy: 'Trip-ready pieces for buddy weekends and scramble crews.' },
+  { title: 'Clip It', href: '/bag-upgrades', image: imageMap.leather, copy: 'Markers, caddies, covers, towels, and bag upgrades.' }
 ];
 
 export default async function Home() {
   const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
   const allocator = createProductAllocator();
-  const shortList = allocator.take(firstBuyProducts(catalog), 6);
-  const under60 = giftableProducts(catalog, 8)
+  const homepageCatalog = catalog
+    .filter(isHomepageProduct)
+    .filter((product) => Number(productPrice(product).amount) <= 250);
+  const shortList = allocator.take(firstBuyProducts(homepageCatalog), 4);
+  const shortListHandles = new Set(shortList.map((product) => product.handle));
+  const under60 = giftableProducts(homepageCatalog, 12)
     .filter(isHomepageProduct)
     .filter((product) => Number(productPrice(product).amount) < 60)
+    .filter((product) => !shortListHandles.has(product.handle))
     .slice(0, 4);
 
   return (
     <>
       <section className="hero launch-hero">
-        <Image src={imageMap.hero} alt="Golf friends walking a course at golden hour" fill priority />
+        <Image src={imageMap.hero} alt="Golf friends walking a course at golden hour" fill priority sizes="100vw" />
         <div className="hero-copy launch-hero-copy">
           <p className="eyebrow">WYX Golf Supply Co.</p>
-          <h1>Golf Gear For The Boys, The Trip, And The Bag.</h1>
-          <p>Hats, apparel, golf gifts, balls, markers, and bag upgrades for weekend rounds, golf trips, dad gifts, and scramble crews.</p>
+          <h1>Gear For The Boys Weekend.</h1>
+          <p>Golf gifts, trip kits, hats, apparel, and bag upgrades built for real rounds.</p>
           <div className="actions">
-            <Link className="button primary" href="#short-list">Shop The Short List</Link>
-            <Link className="button secondary" href="/golf-gifts">Find A Golf Gift</Link>
+            <Link className="button primary" href="/kits/golf-trip-kit">Shop Trip Kits</Link>
+            <Link className="button secondary" href="/golf-gifts-for-dad">Shop Dad Gifts</Link>
           </div>
           <div className="hero-proof compact-proof">
-            <span>Gifts under $60</span>
-            <span>WYX10 saves 10%</span>
-            <span>Shipping shown before payment</span>
-            <span>Support by email</span>
+            {trustSignals.map((item) => <span key={item}>{item}</span>)}
           </div>
+        </div>
+      </section>
+
+      <section className="section visual-story-section">
+        <div className="section-heading">
+          <p className="eyebrow">Shop By Occasion</p>
+          <h2>Start With The Round You Are Buying For.</h2>
+        </div>
+        <div className="visual-story-grid">
+          {visualStories.map((story) => (
+            <Link className="visual-story-card" key={story.title} href={story.href}>
+              <Image src={story.image} alt={`${story.title} golf gear`} width={900} height={675} loading="lazy" sizes="(max-width: 650px) 92vw, (max-width: 900px) 46vw, 31vw" />
+              <span>
+                <strong>{story.title}</strong>
+                <small>{story.copy}</small>
+                <em>Shop Now</em>
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
 
       {shortList.length > 0 && <section id="short-list" className="section short-list-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Shop The Short List</p>
-            <h2>Start Here.</h2>
-            <p>The easiest WYX picks to wear, gift, pack, or drop in the bag before the next round.</p>
+            <p className="eyebrow">Short List</p>
+            <h2>Four Easy Wins.</h2>
           </div>
           <Link className="text-link" href="/products">Shop All</Link>
         </div>
@@ -78,20 +102,19 @@ export default async function Home() {
         </div>
       </section>}
 
-      <section className="section occasion-section">
-        <div className="section-heading">
-          <p className="eyebrow">Shop By Occasion</p>
-          <h2>Find The Right Golf Gift Faster.</h2>
+      <section id="kits" className="section kit-visual-section">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Bundles</p>
+            <h2>Start With A Kit.</h2>
+          </div>
+          <Link className="text-link" href="/kits/golf-trip-kit">Build A Trip Kit</Link>
         </div>
-        <div className="occasion-grid">
-          {occasions.map((occasion) => (
-            <Link className="occasion-card" key={occasion.label} href={occasion.href}>
-              <Image src={occasion.image} alt={`${occasion.label} golf gear`} width={900} height={675} loading="lazy" />
-              <span>
-                <strong>{occasion.label}</strong>
-                <small>{occasion.copy}</small>
-                <em>{occasion.cta}</em>
-              </span>
+        <div className="kit-visual-grid">
+          {kits.map((kit) => (
+            <Link className="kit-visual-card" key={kit.href} href={kit.href}>
+              <Image src={kit.image} alt={`${kit.title} golf bundle`} width={900} height={675} loading="lazy" sizes="(max-width: 650px) 92vw, (max-width: 900px) 46vw, 31vw" />
+              <span><strong>{kit.title}</strong><small>{kit.copy}</small><em>Build Kit</em></span>
             </Link>
           ))}
         </div>
@@ -100,9 +123,8 @@ export default async function Home() {
       {under60.length > 0 && <section className="section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Best Gifts Under $60</p>
-            <h2>Golf Gifts That Won't End Up In A Drawer.</h2>
-            <p>Useful gear for players who already have enough polos, mugs, and bad swing advice.</p>
+            <p className="eyebrow">Under $60</p>
+            <h2>Easy Golf Gifts.</h2>
           </div>
           <Link className="text-link" href="/golf-gifts-under-60">Shop Gifts Under $60</Link>
         </div>
@@ -111,29 +133,12 @@ export default async function Home() {
         </div>
       </section>}
 
-      <section id="kits" className="section">
-        <div>
-          <p className="eyebrow">Kit Builder</p>
-          <h2>Build A Better First Cart.</h2>
-          <p>Start with products that naturally belong together, then review the bag before checkout.</p>
-        </div>
-        <div className="kit-grid">
-          {kits.map((kit) => (
-            <article className="kit-card" key={kit.href}>
-              <h3>{kit.title}</h3>
-              <p>{kit.copy}</p>
-              <Link className="button secondary dark" href={kit.href}>Build Kit</Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="section why-wyx">
         <div>
           <p className="eyebrow">Why WYX?</p>
-          <h2>Golf Gear That Fits Real Rounds.</h2>
+          <h2>Curated For Weekend Golfers.</h2>
         </div>
-        <p>We focus on golf gear that actually fits real rounds: wearable pieces, easy gifts, trip gear, prize-table picks, and small bag upgrades that make sense in the cart.</p>
+        <p>WYX keeps the shop tight: golf gifts, trip gear, hats, apparel, and small bag upgrades that make sense for real rounds.</p>
       </section>
 
       <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Drop Before Your Foursome Does." body="Join the WYX list for new golf gifts, trip gear, and launch discounts." />

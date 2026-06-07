@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
-import { availableProducts, catalogCategories, categoryCount, matchesCategory } from '@/lib/catalog';
+import { catalogCategories, categoryCount, matchesCategory, saleReadyProducts } from '@/lib/catalog';
 import { productPrice } from '@/lib/feed';
-import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 import type { Product } from '@/types/shopify';
@@ -21,19 +20,22 @@ const intentFilters = [
   { label: '$25-$60', value: '25-60' },
   { label: 'Over $60', value: 'over-60' },
   { label: 'Gift Ready', value: 'gift-ready' },
-  { label: 'Trip Gear', value: 'trip-gear' }
+  { label: 'Trip Gear', value: 'trip-gear' },
+  { label: 'Improve Your Game', value: 'game-improvement' }
 ];
 
 const buyingPaths = [
   ['Golf gifts', '/golf-gifts', 'Low-risk gifts with clear round-to-round utility.'],
   ['Hats', '/products?category=Headwear', 'Course-ready style that works outside the round too.'],
   ['Apparel', '/products?category=Apparel', 'Wearable golf pieces that make the cart feel premium.'],
+  ['Training', '/products?category=Training%20Aids', 'Putting, swing, alignment, and range tools for better practice.'],
+  ['Golf tech', '/products?category=Golf%20Tech', 'Rangefinders, GPS gear, and useful cart tech when quality checks out.'],
   ['Trip gear', '/golf-trip-gear', 'Packable pieces for group golf weekends and prize tables.'],
   ['Bag upgrades', '/bag-upgrades', 'Small gear that cleans up the bag and earns repeat use.']
 ];
 
 export default async function Products({ searchParams }: { searchParams: { category?: string; filter?: string } }) {
-  const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
+  const catalog = sortByQuality(saleReadyProducts(await getProducts()));
   const category = searchParams.category;
   const filter = searchParams.filter;
   const visibleCategories = catalogCategories.filter((item) => item === 'All' || categoryCount(catalog, item) > 0);
@@ -44,7 +46,7 @@ export default async function Products({ searchParams }: { searchParams: { categ
       <section className="page-hero compact">
         <p className="eyebrow">Shop</p>
         <h1>Golf Gear Worth Adding To The Bag.</h1>
-        <p>Course-ready hats, apparel, golf gifts, balls, markers, gloves, towels, and trip gear for weekend golfers.</p>
+        <p>Course-ready hats, apparel, golf gifts, swing trainers, range gear, balls, markers, gloves, towels, and trip gear for weekend golfers.</p>
         <div className="intent-proof-grid" aria-label="WYX shopping promises">
           <span>Gifts under $60</span>
           <span>Trip-ready picks</span>
@@ -57,7 +59,7 @@ export default async function Products({ searchParams }: { searchParams: { categ
         <div>
           <p className="eyebrow">Shop By Intent</p>
           <h2>Use The Right Buying Path.</h2>
-          <p>Most WYX carts should start with a clear reason: a gift, a golf trip, a wearable piece, or a practical bag upgrade.</p>
+          <p>Most WYX carts should start with a clear reason: a gift, a golf trip, a wearable piece, better practice, useful golf tech, or a practical bag upgrade.</p>
         </div>
         <div className="collection-copy-grid">
           {buyingPaths.map(([title, href, copy]) => <article key={href}>
@@ -111,8 +113,9 @@ function matchesIntentFilter(product: Product, filter?: string) {
   if (filter === 'under-25') return price < 25;
   if (filter === '25-60') return price >= 25 && price <= 60;
   if (filter === 'over-60') return price > 60;
-  if (filter === 'gift-ready') return price <= 60 || /gift|marker|towel|balls|caddie|headcover|hat|cap|shirt|polo|hoodie|belt/.test(haystack);
-  if (filter === 'trip-gear') return /trip|marker|towel|balls|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt/.test(haystack);
+  if (filter === 'gift-ready') return price <= 60 || /gift|marker|towel|balls|caddie|headcover|hat|cap|shirt|polo|hoodie|belt|sock/.test(haystack);
+  if (filter === 'trip-gear') return /trip|travel|marker|towel|balls|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt|shoe bag|cooler|pouch/.test(haystack);
+  if (filter === 'game-improvement') return /training|trainer|putting|alignment|swing|tempo|chipping|rangefinder|gps|range gear|short game|club care|brush|groove/.test(haystack);
   return true;
 }
 
