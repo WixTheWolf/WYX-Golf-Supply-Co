@@ -46,7 +46,7 @@ export const freshProducts: FreshProduct[] = [
     details: ['Compact metal marker set', 'Easy gift add-on', 'Useful for league nights and weekend rounds'],
     sku: 'WYX-BRG-MARKER-SET2',
     quantity: 25,
-    sourceUrl: 'https://blueridgegolfco.com/products/blue-ridge-golf-co-ball-marker-set',
+    sourceUrl: 'https://blueridgegolfco.com/products/blue-ridge-golf-ball-marker-set',
     tags: ['golf gifts', 'ball marker', 'under-15', 'bag essentials', 'fresh-pick']
   },
   {
@@ -301,13 +301,71 @@ async function publishProduct(productId: string) {
   if (publishErrors.length) throw new Error(publishErrors.join(', '));
 }
 
-export async function importFreshProducts() {
+export async function importProductDrafts(products: FreshProduct[]) {
   const locations = await shopifyAdminFetch<any>(LOCATIONS);
   const locationId = locations.locations.nodes[0]?.id;
   if (!locationId) throw new Error('No Shopify location found for inventory quantities.');
 
   const results: Array<{ handle: string; title: string; status: 'created' | 'exists'; shopifyStatus: string; quantity?: number }> = [];
-  for (const product of freshProducts) {
+  for (const product of products) {
+    const existing = await shopifyAdminFetch<any>(FIND_PRODUCT, { query: `handle:${product.handle}` });
+    const found = existing.products.nodes[0];
+    if (found) {
+      results.push({ handle: product.handle, title: product.title, status: 'exists', shopifyStatus: found.status });
+      continue;
+    }
+
+    const created = await shopifyAdminFetch<any>(PRODUCT_CREATE, {
+      product: {
+        title: product.title,
+        handle: product.handle,
+        descriptionHtml: descriptionHtml(product),
+        vendor: product.vendor,
+        productType: product.productType,
+        tags: [...product.tags, 'wyx-fresh-pick'],
+        status: 'DRAFT',
+        seo: {
+          title: `${product.title} | WYX Golf Supply Co.`,
+          description: product.description
+        }
+      },
+      media: product.image ? [{ originalSource: product.image, alt: product.title, mediaContentType: 'IMAGE' }] : []
+    });
+    const createErrors = errors(created);
+    if (createErrors.length) throw new Error(`${product.title}: ${createErrors.join(', ')}`);
+
+    const productId = created.productCreate.product.id;
+    const variants = await shopifyAdminFetch<any>(VARIANT_CREATE, {
+      productId,
+      strategy: 'REMOVE_STANDALONE_VARIANT',
+      variants: [{
+        price: product.price,
+        compareAtPrice: product.compareAtPrice,
+        inventoryPolicy: 'DENY',
+        inventoryItem: { sku: product.sku, tracked: true, requiresShipping: true },
+        inventoryQuantities: [{ locationId, availableQuantity: product.quantity }],
+        optionValues: [{ optionName: 'Title', name: 'Default Title' }]
+      }]
+    });
+    const variantErrors = errors(variants);
+    if (variantErrors.length) throw new Error(`${product.title}: ${variantErrors.join(', ')}`);
+
+    results.push({ handle: product.handle, title: product.title, status: 'created', shopifyStatus: 'DRAFT', quantity: product.quantity });
+  }
+  return results;
+}
+
+export async function importFreshProducts() {
+  return importProducts(freshProducts);
+}
+
+async function importProducts(products: FreshProduct[]) {
+  const locations = await shopifyAdminFetch<any>(LOCATIONS);
+  const locationId = locations.locations.nodes[0]?.id;
+  if (!locationId) throw new Error('No Shopify location found for inventory quantities.');
+
+  const results: Array<{ handle: string; title: string; status: 'created' | 'exists'; shopifyStatus: string; quantity?: number }> = [];
+  for (const product of products) {
     const existing = await shopifyAdminFetch<any>(FIND_PRODUCT, { query: `handle:${product.handle}` });
     const found = existing.products.nodes[0];
     if (found) {
