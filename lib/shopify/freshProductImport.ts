@@ -7,13 +7,14 @@ type FreshProduct = {
   productType: string;
   price: string;
   compareAtPrice?: string;
-  image: string;
+  image?: string;
   description: string;
   details: string[];
   sku: string;
   quantity: number;
   sourceUrl: string;
   tags: string[];
+  status?: 'ACTIVE' | 'DRAFT';
 };
 
 export const freshProducts: FreshProduct[] = [
@@ -89,6 +90,156 @@ export const freshProducts: FreshProduct[] = [
     quantity: 20,
     sourceUrl: 'https://pinsandaces.com/products/magnet-caddie',
     tags: ['bag organization', 'golf accessories', 'golf gifts', 'under-30', 'fresh-pick']
+  },
+  {
+    title: 'Divot Tool + Magnetic Ball Marker Set',
+    handle: 'divot-tool-magnetic-ball-marker-set',
+    vendor: 'Supplier Review',
+    productType: 'Golf Accessories',
+    price: '19.99',
+    compareAtPrice: '24.99',
+    description: 'A pocket-ready divot repair tool and magnetic ball marker set for golfers who want one clean green-side essential.',
+    details: ['Strong under-$25 gift candidate', 'Works for dad gifts, scrambles, and trip kits', 'Low sizing risk and easy cart add-on'],
+    sku: 'WYX-SR-DIVOT-MARKER-SET',
+    quantity: 0,
+    sourceUrl: 'supplier-review:JP Lann or GT Golf Supply divot tool and marker set',
+    tags: ['supplier-review', 'golf gifts', 'ball marker', 'divot tool', 'under-25', 'scramble-prize'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'Premium Golf Towel',
+    handle: 'premium-golf-towel-supplier-review',
+    vendor: 'Supplier Review',
+    productType: 'Towels',
+    price: '24.99',
+    compareAtPrice: '29.99',
+    description: 'A premium golf towel candidate for clean-contact kits, golf trips, and everyday bag upgrades.',
+    details: ['Must use real supplier or manufactured WYX product photos before activation', 'Best for trip kits and dad gifts', 'Easy repeatable accessory category'],
+    sku: 'WYX-SR-PREMIUM-TOWEL',
+    quantity: 0,
+    sourceUrl: 'supplier-review:GT Golf Supply, JP Lann, or approved towel supplier',
+    tags: ['supplier-review', 'golf gifts', 'towel', 'trip-gear', 'bag-upgrade'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'Golf Trip Tee Marker Towel Bundle',
+    handle: 'golf-trip-tee-marker-towel-bundle',
+    vendor: 'WYX Golf Supply Co.',
+    productType: 'Golf Gift Bundle',
+    price: '39.99',
+    compareAtPrice: '49.99',
+    description: 'A ready-made golf trip starter bundle built around the small things every group forgets: tees, markers, and a towel.',
+    details: ['Bundle only real supplier products already approved in Shopify', 'Strong buddy-trip and bachelor-party fit', 'Designed to raise average order value without adding clutter'],
+    sku: 'WYX-BUNDLE-TRIP-STARTER',
+    quantity: 0,
+    sourceUrl: 'bundle-review:assemble from approved Shopify products',
+    tags: ['supplier-review', 'bundle', 'trip-gear', 'golf gifts', 'scramble-prize'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'Compact Golf Laser Rangefinder',
+    handle: 'compact-golf-laser-rangefinder',
+    vendor: 'Supplier Review',
+    productType: 'Golf Tech',
+    price: '129.99',
+    compareAtPrice: '159.99',
+    description: 'A compact laser rangefinder candidate for golfers who want useful course tech without a premium price jump.',
+    details: ['Warranty and returns must be confirmed before activation', 'Best for tech and training expansion', 'Keep under $150 retail if margin allows'],
+    sku: 'WYX-SR-RANGEFINDER',
+    quantity: 0,
+    sourceUrl: 'supplier-review:rangefinder supplier with warranty and return terms',
+    tags: ['supplier-review', 'golf tech', 'rangefinder', 'training-aid', 'premium'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'Putting Alignment Mirror',
+    handle: 'putting-alignment-mirror-supplier-review',
+    vendor: 'Supplier Review',
+    productType: 'Training Aids',
+    price: '34.99',
+    compareAtPrice: '44.99',
+    description: 'A putting alignment mirror candidate for simple, visual practice at home or on the putting green.',
+    details: ['Needs real product demo images or video', 'Compact enough for the golf bag', 'Strong gift for golfers trying to score better'],
+    sku: 'WYX-SR-PUTTING-MIRROR',
+    quantity: 0,
+    sourceUrl: 'supplier-review:putting mirror or gate trainer supplier',
+    tags: ['supplier-review', 'training-aid', 'putting', 'golf gifts', 'under-50'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'Swing Tempo Trainer',
+    handle: 'swing-tempo-trainer-supplier-review',
+    vendor: 'Supplier Review',
+    productType: 'Training Aids',
+    price: '29.99',
+    compareAtPrice: '39.99',
+    description: 'A swing tempo trainer candidate for range sessions, warmups, and golfers working on rhythm instead of another random gadget.',
+    details: ['Avoid cheap versions with unclear instructions', 'Best for range and training pages', 'Good under-$40 gift candidate'],
+    sku: 'WYX-SR-SWING-TEMPO',
+    quantity: 0,
+    sourceUrl: 'supplier-review:swing tempo or grip trainer supplier',
+    tags: ['supplier-review', 'training-aid', 'range-gear', 'golf gifts', 'under-40'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'Brush + Groove Cleaner Kit',
+    handle: 'brush-groove-cleaner-kit',
+    vendor: 'Supplier Review',
+    productType: 'Club Care',
+    price: '24.99',
+    compareAtPrice: '34.99',
+    description: 'A clean-contact kit candidate with a brush and groove cleaner for golfers who want cleaner clubs without overthinking it.',
+    details: ['Must be a real packaged kit or clearly bundled approved items', 'Strong checkout add-on', 'Fits towels and bag-upgrade pages'],
+    sku: 'WYX-SR-BRUSH-GROOVE-KIT',
+    quantity: 0,
+    sourceUrl: 'supplier-review:JP Lann, GT Golf Supply, or approved club-care supplier',
+    tags: ['supplier-review', 'club-care', 'bag-upgrade', 'clean-contact', 'under-35'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'Golf Valuables Pouch',
+    handle: 'golf-valuables-pouch-supplier-review',
+    vendor: 'Supplier Review',
+    productType: 'Golf Accessories',
+    price: '34.99',
+    compareAtPrice: '44.99',
+    description: 'A premium valuables pouch candidate for tees, markers, cash, keys, and the small stuff that disappears in a golf bag.',
+    details: ['Needs premium-looking lifestyle and product photos', 'Strong trip and bag-organization fit', 'Good companion to The Roo positioning'],
+    sku: 'WYX-SR-VALUABLES-POUCH',
+    quantity: 0,
+    sourceUrl: 'supplier-review:golf valuables pouch supplier or WYX manufactured product',
+    tags: ['supplier-review', 'bag-organization', 'trip-gear', 'golf gifts', 'under-50'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'WYX Rope Hat Capsule',
+    handle: 'wyx-rope-hat-capsule',
+    vendor: 'WYX Golf Supply Co.',
+    productType: 'Headwear',
+    price: '38.00',
+    compareAtPrice: '44.00',
+    description: 'A WYX rope hat capsule candidate for the first real owned-brand merch drop.',
+    details: ['Do not activate until embroidery artwork and product photos are real', 'Start with two colorways maximum', 'Best owned-brand item because sizing risk is low'],
+    sku: 'WYX-POD-ROPE-HAT',
+    quantity: 0,
+    sourceUrl: 'supplier-review:Bear Grips, POD embroidery supplier, or owned inventory',
+    tags: ['supplier-review', 'wyx-merch', 'headwear', 'golf hats', 'apparel'],
+    status: 'DRAFT'
+  },
+  {
+    title: 'WYX Performance Polo Capsule',
+    handle: 'wyx-performance-polo-capsule',
+    vendor: 'WYX Golf Supply Co.',
+    productType: 'Apparel',
+    price: '68.00',
+    compareAtPrice: '78.00',
+    description: 'A WYX performance polo capsule candidate for a small, premium apparel drop once sizing and real photos are ready.',
+    details: ['Do not activate without size chart, fit notes, and real product photos', 'Start with two core colors', 'Higher AOV but higher return risk than hats'],
+    sku: 'WYX-POD-PERFORMANCE-POLO',
+    quantity: 0,
+    sourceUrl: 'supplier-review:Bear Grips, Cullinan Golf, POD apparel supplier, or owned inventory',
+    tags: ['supplier-review', 'wyx-merch', 'apparel', 'golf polo', 'premium'],
+    status: 'DRAFT'
   }
 ];
 
@@ -133,7 +284,8 @@ function errors(payload: Record<string, any>) {
 }
 
 function descriptionHtml(product: FreshProduct) {
-  return `<p>${product.description}</p><h3>Why golfers use it</h3><ul>${product.details.map((detail) => `<li>${detail}</li>`).join('')}</ul><p>Useful golf gear for weekend rounds, range sessions, golf trips, and better bag habits.</p>`;
+  const sourceNote = product.status === 'DRAFT' ? '<p><strong>Internal note:</strong> supplier terms, product media, inventory, and fulfillment must be confirmed before this product is activated.</p>' : '';
+  return `<p>${product.description}</p><h3>Why golfers use it</h3><ul>${product.details.map((detail) => `<li>${detail}</li>`).join('')}</ul><p>Useful golf gear for weekend rounds, range sessions, golf trips, and better bag habits.</p>${sourceNote}`;
 }
 
 async function publishProduct(productId: string) {
@@ -169,13 +321,13 @@ export async function importFreshProducts() {
         vendor: product.vendor,
         productType: product.productType,
         tags: [...product.tags, 'wyx-fresh-pick'],
-        status: 'ACTIVE',
+        status: product.status || 'ACTIVE',
         seo: {
           title: `${product.title} | WYX Golf Supply Co.`,
           description: product.description
         }
       },
-      media: [{ originalSource: product.image, alt: product.title, mediaContentType: 'IMAGE' }]
+      media: product.image ? [{ originalSource: product.image, alt: product.title, mediaContentType: 'IMAGE' }] : []
     });
     const createErrors = errors(created);
     if (createErrors.length) throw new Error(`${product.title}: ${createErrors.join(', ')}`);
@@ -196,8 +348,8 @@ export async function importFreshProducts() {
     const variantErrors = errors(variants);
     if (variantErrors.length) throw new Error(`${product.title}: ${variantErrors.join(', ')}`);
 
-    await publishProduct(productId);
-    results.push({ handle: product.handle, title: product.title, status: 'created', shopifyStatus: 'ACTIVE', quantity: product.quantity });
+    if ((product.status || 'ACTIVE') === 'ACTIVE') await publishProduct(productId);
+    results.push({ handle: product.handle, title: product.title, status: 'created', shopifyStatus: product.status || 'ACTIVE', quantity: product.quantity });
   }
   return results;
 }
