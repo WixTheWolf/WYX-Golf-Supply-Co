@@ -74,7 +74,7 @@ export const landingCollections: LandingCollection[] = [
     seoTitle: 'Golf Bag Essentials',
     metaDescription: 'Shop golf bag essentials from WYX Golf Supply Co., including golf balls, gloves, grips, markers, and accessories.',
     match: (product) => ['Golf Balls', 'Gloves', 'Grips', 'Accessories'].includes(categoryFor(product)),
-    bullets: ['Core round essentials', 'Useful add-ons', 'Easy checkout']
+    bullets: ['Core round essentials', 'Useful add-ons', 'Easy first cart']
   }
 ];
 
