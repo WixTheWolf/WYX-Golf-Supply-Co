@@ -82,7 +82,7 @@ const collectionPlans = [
   {
     handle: 'wyx-golf-gifts-under-60',
     title: 'WYX Golf Gifts Under $60',
-    descriptionHtml: '<p>Useful golf gifts under $60, including towels, tees, gloves, ball markers, club-care tools, and training aids selected for fast checkout.</p>',
+    descriptionHtml: '<p>Useful golf gifts under $60, including towels, tees, gloves, ball markers, club-care tools, and training aids selected for real rounds.</p>',
     seo: {
       title: 'Golf Gifts Under $60 | WYX Golf Supply Co.',
       description: 'Shop useful golf gifts under $60 from WYX Golf Supply Co. Towels, tees, gloves, markers, tools, and practice aids.'
@@ -172,7 +172,7 @@ const collectionPlans = [
   {
     handle: 'wyx-premium-golf-bags',
     title: 'WYX Premium Golf Bags',
-    descriptionHtml: '<p>Premium golf bags with real product photography, active availability, and easy checkout.</p>',
+    descriptionHtml: '<p>Premium golf bags with real product photography, active availability, and course-ready utility.</p>',
     seo: {
       title: 'Premium Golf Bags | WYX Golf Supply Co.',
       description: 'Shop premium golf bags from WYX Golf Supply Co. with real product photography and active availability.'
