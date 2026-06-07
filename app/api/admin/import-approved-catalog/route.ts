@@ -5,15 +5,8 @@ import { importProductDrafts } from '@/lib/shopify/freshProductImport';
 
 export const dynamic = 'force-dynamic';
 
-const ownerApprovedRunKey = 'wyx-owner-approved-catalog-2026-06-07';
-
-function isOwnerApprovedRequest(request: Request) {
-  const url = new URL(request.url);
-  return url.searchParams.get('run') === ownerApprovedRunKey;
-}
-
 export async function POST(request: Request) {
-  if (!isAuthorizedAdminRequest(request) && !isOwnerApprovedRequest(request)) return unauthorizedResponse();
+  if (!isAuthorizedAdminRequest(request)) return unauthorizedResponse();
 
   try {
     const products = await importProductDrafts(catalogExpansionProducts);
