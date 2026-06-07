@@ -20,9 +20,12 @@
 .variant-selector legend{margin-bottom:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .variant-option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
 .variant-option-grid label{display:flex;align-items:center;gap:.5rem;min-height:44px;padding:.65rem .75rem;background:var(--paper);border:1px solid var(--line);cursor:pointer;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.variant-option-grid img{width:36px;height:36px;object-fit:cover;border:1px solid var(--line)}
 .variant-option-grid label.selected{border-color:var(--forest);background:color-mix(in oklab,var(--lime) 24%,var(--paper) 76%)}
 .variant-option-grid input{accent-color:var(--forest)}
 .selected-variant-note{margin:.1rem 0;color:var(--muted);font-size:.86rem}
+.selected-variant-image{width:96px;aspect-ratio:1;background:var(--paper);border:1px solid var(--line)}
+.selected-variant-image img{width:100%;height:100%;object-fit:cover}
 .variant-purchase.compact{margin:0;gap:.35rem}
 .variant-purchase.compact .variant-selector legend,.variant-purchase.compact .selected-variant-note{display:none}
 .variant-purchase.compact .variant-option-grid{grid-template-columns:1fr;max-height:95px;overflow:auto}
