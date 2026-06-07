@@ -44,7 +44,7 @@ export default async function Deals() {
 
       <section className="deal-strip" aria-label="Why shop WYX deals">
         <span>Launch code WYX10</span>
-        <span>Easy checkout</span>
+        <span>Easy first cart</span>
         <span>Gift-ready picks</span>
         <span>Built for everyday rounds</span>
       </section>
