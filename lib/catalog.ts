@@ -1,4 +1,5 @@
 import type { Product } from '@/types/shopify';
+import { hasMisleadingProductMedia } from '@/lib/productReadiness';
 
 export const catalogCategories = ['All', 'Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Club Care', 'Headwear', 'Apparel', 'Accessories'] as const;
 
@@ -31,7 +32,7 @@ export function matchesCategory(product: ClassifiableProduct, category?: string)
 }
 
 export function availableProducts(products: Product[]) {
-  return products.filter((product) => product.availableForSale && hasSaleReadyMedia(product));
+  return products.filter((product) => product.availableForSale && hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product));
 }
 
 export function categoryCount(products: Product[], category: string) {
