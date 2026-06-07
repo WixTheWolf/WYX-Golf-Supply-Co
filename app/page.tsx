@@ -28,6 +28,12 @@ const occasions = [
   { label: 'Scramble Prizes', href: '/scramble-prizes', image: imageMap.iron, copy: 'Small prizes that beat another sleeve of forgettable logo balls.', cta: 'Shop Prizes' }
 ];
 
+const kits = [
+  { title: 'Dad Gift Kit', href: '/kits/dad-gift-kit', copy: 'Towels, gloves, markers, balls, and easy bag upgrades for Dad.' },
+  { title: 'Golf Trip Kit', href: '/kits/golf-trip-kit', copy: 'Packable picks for buddy trips, scrambles, and bachelor weekends.' },
+  { title: 'Bag Upgrade Kit', href: '/kits/bag-upgrade-kit', copy: 'Small gear that makes the bag cleaner, sharper, and easier to use.' }
+];
+
 export default async function Home() {
   const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
   const allocator = createProductAllocator();
@@ -104,13 +110,21 @@ export default async function Home() {
         </div>
       </section>}
 
-      <section id="kits" className="section trip-kit-panel">
+      <section id="kits" className="section">
         <div>
-          <p className="eyebrow">Trip Kit Builder</p>
-          <h2>Build The Golf Trip Kit.</h2>
-          <p>Everything you forgot to pack before pretending you're a tour pro for three days.</p>
+          <p className="eyebrow">Kit Builder</p>
+          <h2>Build A Better First Cart.</h2>
+          <p>Start with products that naturally belong together, then review the bag before checkout.</p>
         </div>
-        <Link className="button secondary dark" href="/golf-trip-gear">Build A Trip Kit</Link>
+        <div className="kit-grid">
+          {kits.map((kit) => (
+            <article className="kit-card" key={kit.href}>
+              <h3>{kit.title}</h3>
+              <p>{kit.copy}</p>
+              <Link className="button secondary dark" href={kit.href}>Build Kit</Link>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section why-wyx">
