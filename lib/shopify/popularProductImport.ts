@@ -176,6 +176,15 @@ async function publishProduct(productId: string) {
 }
 
 export async function importPopularProducts() {
+  if (process.env.ALLOW_SYNTHETIC_PRODUCTS !== 'true') {
+    return [{
+      handle: 'synthetic-products-disabled',
+      title: 'Synthetic WYX product import disabled',
+      status: 'exists' as const,
+      shopifyStatus: 'DISABLED'
+    }];
+  }
+
   const locations = await shopifyAdminFetch<any>(LOCATIONS);
   const locationId = locations.locations.nodes[0]?.id;
   if (!locationId) throw new Error('No Shopify location found for inventory quantities.');
