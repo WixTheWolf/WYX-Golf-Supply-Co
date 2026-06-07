@@ -44,6 +44,55 @@ function responseError(message: string, status = 400) {
   return NextResponse.json({ ok: false, error: message }, { status });
 }
 
+async function subscribeToKlaviyo(email: string, source: string, campaign: string, now: string) {
+  const privateKey = process.env.KLAVIYO_PRIVATE_API_KEY;
+  const listId = process.env.KLAVIYO_LIST_ID;
+  if (!privateKey || !listId) return null;
+
+  const response = await fetch('https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/', {
+    method: 'POST',
+    headers: {
+      Authorization: `Klaviyo-API-Key ${privateKey}`,
+      'Content-Type': 'application/vnd.api+json',
+      revision: process.env.KLAVIYO_API_REVISION || '2024-07-15'
+    },
+    body: JSON.stringify({
+      data: {
+        type: 'profile-subscription-bulk-create-job',
+        attributes: {
+          profiles: {
+            data: [{
+              type: 'profile',
+              attributes: {
+                email,
+                properties: { source, campaign },
+                subscriptions: {
+                  email: {
+                    marketing: {
+                      consent: 'SUBSCRIBED',
+                      consented_at: now
+                    }
+                  }
+                }
+              }
+            }]
+          }
+        },
+        relationships: {
+          list: { data: { type: 'list', id: listId } }
+        }
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Klaviyo subscribe failed: ${text || response.status}`);
+  }
+
+  return { ok: true, status: 'klaviyo_subscribed' };
+}
+
 async function ensureLeadDefinition() {
   const result = await shopifyAdminFetch<any>(LEAD_DEFINITION_CREATE, {
     definition: {
@@ -97,6 +146,7 @@ export async function POST(request: Request) {
   const tags = Array.from(new Set(['wyx-email-subscriber', 'wyx-launch-list', `wyx-source:${source}`, `wyx-campaign:${campaign}`]));
 
   try {
+    const klaviyo = await subscribeToKlaviyo(email, source, campaign, now).catch((error) => ({ ok: false, error: error instanceof Error ? error.message : 'Klaviyo failed' }));
     const input = {
       email,
       tags,
@@ -116,7 +166,7 @@ export async function POST(request: Request) {
       return responseError(message);
     }
 
-    return NextResponse.json({ ok: true, status: 'created' });
+    return NextResponse.json({ ok: true, status: 'created', klaviyo });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Subscription failed.';
     if (/write_customers|customerCreate/i.test(message)) {
