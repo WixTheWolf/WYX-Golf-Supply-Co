@@ -39,7 +39,7 @@ export default async function PremiumGolfBags() {
         <div className="collection-proof">
           <span>Full-bag upgrades</span>
           <span>Weekend golfer ready</span>
-          <span>Easy checkout</span>
+          <span>Course-ready utility</span>
           <span>WYX10 launch code</span>
         </div>
       </section>
