@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { isAuthorizedAdminRequest, unauthorizedResponse } from '@/lib/adminAuth';
 import { categoryFor } from '@/lib/catalog';
+import { productReadinessFlags } from '@/lib/productReadiness';
 import { getUserErrors, shopifyAdminFetch } from '@/lib/shopify/adminClient';
 
 export const dynamic = 'force-dynamic';
@@ -14,8 +15,9 @@ type AdminProduct = {
   status: 'ACTIVE' | 'ARCHIVED' | 'DRAFT';
   totalInventory: number;
   tags: string[];
-  featuredImage?: { url: string } | null;
-  variants: { nodes: Array<{ id: string; title: string; price: string; availableForSale: boolean; inventoryQuantity: number | null; sku: string | null }> };
+  featuredImage?: { url: string; altText?: string | null } | null;
+  images: { nodes: Array<{ url: string; altText?: string | null; width?: number; height?: number }> };
+  variants: { nodes: Array<{ id: string; title: string; price: string; availableForSale: boolean; inventoryQuantity: number | null; sku: string | null; selectedOptions: Array<{ name: string; value: string }>; image?: { url: string; altText?: string | null } | null }> };
   resourcePublications: { nodes: Array<{ publication: { name: string } }> };
 };
 
@@ -47,8 +49,9 @@ query ShopifyAudit {
   products(first: 100, sortKey: CREATED_AT, reverse: true) {
     nodes {
       id handle title vendor productType status totalInventory tags
-      featuredImage { url }
-      variants(first: 20) { nodes { id title price availableForSale inventoryQuantity sku } }
+      featuredImage { url altText }
+      images(first: 8) { nodes { url altText width height } }
+      variants(first: 20) { nodes { id title price availableForSale inventoryQuantity sku selectedOptions { name value } image { url altText } } }
       resourcePublications(first: 20) { nodes { publication { name } } }
     }
   }
@@ -75,6 +78,19 @@ function productFlags(product: AdminProduct) {
   if (!productPrices.length) flags.push('missing-price');
   if (productPrices.some((price) => price > 250)) flags.push('over-250');
   if (product.variants.nodes.every((variant) => !variant.sku)) flags.push('missing-skus');
+  flags.push(...productReadinessFlags({
+    ...product,
+    availableForSale: product.status === 'ACTIVE' && product.totalInventory > 0,
+    description: '',
+    featuredImage: product.featuredImage,
+    images: product.images.nodes,
+    variants: product.variants.nodes.map((variant) => ({
+      ...variant,
+      price: { amount: variant.price, currencyCode: 'USD' },
+      image: variant.image || null
+    })),
+    priceRange: { minVariantPrice: { amount: String(Math.min(...productPrices, 0)), currencyCode: 'USD' } }
+  }));
   return flags;
 }
 
