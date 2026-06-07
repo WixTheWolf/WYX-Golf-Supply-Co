@@ -39,10 +39,12 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
         <div className="variant-option-grid">
           {availableVariants.map((variant) => <label className={selectedVariantId === variant.id ? 'selected' : ''} key={variant.id}>
             <input type="radio" name={`variant-${productTitle}`} value={variant.id} checked={selectedVariantId === variant.id} onChange={() => setSelectedVariantId(variant.id)} />
+            {variant.image?.url && <img src={variant.image.url} alt={variant.image.altText || variantLabel(variant)} loading="lazy" />}
             <span>{variantLabel(variant)}</span>
           </label>)}
         </div>
       </fieldset>}
+      {selectedVariant?.image?.url && !compact && <div className="selected-variant-image"><img src={selectedVariant.image.url} alt={selectedVariant.image.altText || variantLabel(selectedVariant)} loading="lazy" /></div>}
       {selectedVariant && <p className="selected-variant-note">Selected: <strong>{variantLabel(selectedVariant)}</strong></p>}
       {!selectedVariant && requiresChoice && <p className="selected-variant-note">Choose a color or option before checkout.</p>}
       <button className="button primary full" disabled={disabled} onClick={addSelected}>{loading ? 'Adding...' : disabled ? 'Choose Option' : 'Add To Bag'}</button>
