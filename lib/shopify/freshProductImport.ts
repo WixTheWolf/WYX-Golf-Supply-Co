@@ -1,6 +1,7 @@
 import { getUserErrors, shopifyAdminFetch } from './adminClient';
+import { catalogExpansionProducts } from './catalogExpansionProducts';
 
-type FreshProduct = {
+export type FreshProduct = {
   title: string;
   handle: string;
   vendor: string;
@@ -240,7 +241,8 @@ export const freshProducts: FreshProduct[] = [
     sourceUrl: 'supplier-review:Bear Grips, Cullinan Golf, POD apparel supplier, or owned inventory',
     tags: ['supplier-review', 'wyx-merch', 'apparel', 'golf polo', 'premium'],
     status: 'DRAFT'
-  }
+  },
+  ...catalogExpansionProducts
 ];
 
 const FIND_PRODUCT = `#graphql
