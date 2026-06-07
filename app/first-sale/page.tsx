@@ -57,7 +57,7 @@ export default async function FirstSale() {
       <section className="deal-strip" aria-label="Launch offer benefits">
         <span>Use WYX10 today</span>
         <span>Under-$60 picks</span>
-        <span>Easy checkout</span>
+        <span>Easy first cart</span>
         <span>Useful golf gear</span>
       </section>
 
