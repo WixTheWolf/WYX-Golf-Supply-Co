@@ -7,7 +7,7 @@ import { availableProducts } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
 import { productPrice } from '@/lib/feed';
 import { createProductAllocator } from '@/lib/homeMerchandising';
-import { coreMerchProducts, firstBuyProducts, giftableProducts } from '@/lib/merchandisingFilters';
+import { coreMerchProducts, firstBuyProducts, giftableProducts, isHomepageProduct } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -39,6 +39,7 @@ export default async function Home() {
   const allocator = createProductAllocator();
   const shortList = allocator.take(firstBuyProducts(catalog), 6);
   const under60 = giftableProducts(catalog, 8)
+    .filter(isHomepageProduct)
     .filter((product) => Number(productPrice(product).amount) < 60)
     .slice(0, 4);
 
