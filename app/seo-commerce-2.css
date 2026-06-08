@@ -49,3 +49,22 @@
 .cart-page-lines .cart-line.wide{border-bottom:1px solid var(--line);padding:.85rem 0}
 .cart-page-lines .cart-line.wide:first-child{padding-top:0}
 .cart-page-lines .cart-line.wide:last-child{border-bottom:none}
+
+/* ── product-image overlay CTA — "View" on hover ── */
+.product-image-link{position:relative;display:block;overflow:hidden}
+.product-image-link::after{content:"View →";position:absolute;inset:auto 0 0;z-index:2;display:flex;align-items:center;justify-content:center;height:36px;background:color-mix(in oklab,var(--forest) 90%,transparent);color:var(--paper);font-size:.64rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transform:translateY(100%);transition:transform .22s var(--ease-out-expo,cubic-bezier(.16,1,.3,1))}
+.product-image-link:hover::after{transform:translateY(0)}
+/* ── product-status badge — absolute top-left ── */
+.product-status{position:absolute;top:.55rem;left:.55rem;z-index:1;padding:.28rem .52rem;background:var(--forest);color:var(--paper);font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;pointer-events:none}
+/* ── section rhythm — add section-label for eyebrow+h2 combos ── */
+.section-label{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.section-label .eyebrow{display:block;margin-bottom:.3rem}
+.section-label h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.05em;line-height:1;margin:0}
+/* ── gift-guide section heading — warm left accent ── */
+.gift-guide-heading{display:flex;align-items:baseline;gap:.75rem;border-left:3px solid var(--lime);padding-left:.85rem}
+/* ── header brand — tighter on mobile ── */
+@media(max-width:480px){.brand strong{font-size:1.25rem}.brand span{display:none}}
+/* ── product-grid gap — breathe on large screens ── */
+@media(min-width:1200px){.product-grid{gap:1.25rem}}
+/* ── intent-proof-grid — forest bg on the active chip feel ── */
+.intent-proof-grid span:hover{background:color-mix(in oklab,var(--forest) 8%,var(--paper) 92%);border-color:color-mix(in oklab,var(--forest) 30%,var(--line) 70%)}
