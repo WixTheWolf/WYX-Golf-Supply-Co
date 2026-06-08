@@ -715,3 +715,21 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 /* consent-line — tighten */
 .consent-line{display:flex;align-items:flex-start;gap:.5rem;font-size:.72rem;color:var(--muted);cursor:pointer;margin-top:.25rem}
 .consent-line input{margin-top:.15rem;accent-color:var(--forest);flex-shrink:0}
+
+/* ── intent-filter-row — smaller/softer secondary filter strip ── */
+.intent-filter-row{margin-top:-.35rem;padding-bottom:.35rem}
+.intent-filter-row a{font-size:.64rem;padding:.45rem .75rem;background:transparent;border-color:var(--line);color:var(--muted)}
+.intent-filter-row a:hover,.intent-filter-row a.active{background:color-mix(in oklab,var(--forest) 12%,var(--paper) 88%);color:var(--forest);border-color:color-mix(in oklab,var(--forest) 35%,var(--line) 65%)}
+.intent-filter-row a.active{font-weight:800}
+/* products page seo-guide — tighten for listing page context */
+.products-page .seo-guide{padding:1.2rem 0}
+/* product-card — subtle lime stripe on hover (editorial feel) */
+.product-card:hover{border-left-color:var(--lime)}
+/* product-card border-left init */
+.product-card{border-left:2px solid transparent;transition:border-left-color .2s ease,box-shadow .25s ease,transform .2s ease}
+/* occasion-card — mobile min-height */
+@media(max-width:450px){.occasion-card{min-height:200px}.occasion-card strong{font-size:1.3rem}}
+/* journal section eyebrow */
+.section .journal-grid+.text-link,.journal-grid~.text-link{margin-top:1rem;display:inline-block}
+/* page-hero — border-bottom line on interior pages */
+.page-hero:not(.launch-hero-copy){border-bottom:1px solid var(--line);margin-bottom:clamp(1.5rem,3vw,2.5rem)}
