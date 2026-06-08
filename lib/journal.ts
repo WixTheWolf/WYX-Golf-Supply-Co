@@ -296,6 +296,52 @@ export const posts = [
     ]
   },
   {
+    slug: 'golf-belt-guide',
+    title: 'Golf Belt Guide — Why It Matters More Than You Think',
+    seo: 'Golf Belt Guide | WYX Golf Supply Co.',
+    description: 'Why a stretch golf belt is one of the most underrated bag upgrades, what to look for, and how it changes how you dress for the course.',
+    image: imageMap.polo,
+    sections: [
+      ['Why A Golf Belt Matters', 'A golf belt keeps your shirt tucked through 18 holes of rotation and bending. A cheap dress belt or a woven fabric belt will loosen by the back nine. A stretch belt with a non-slip grip stays put from the first tee to the 18th green.'],
+      ['Stretch vs. Leather', 'Leather belts look sharp at the clubhouse but restrict hip turn in the golf swing. Stretch belts with a flat-grip buckle allow full rotation without binding at the hip. For performance golfers, stretch wins. For dress rounds and twilight, either works.'],
+      ['What To Look For', 'A low-profile buckle (under 1.5 inches) fits cleanly under a shirt untuck. A 35mm width fits most golf pants without overhanging. Neutral colors — black, tan, charcoal — work across every polo in the bag.'],
+      ['Sizing', 'Most golfers wear belt size equal to pant size + 2 inches. A 34 waist = 36 belt for most cuts. Check the product sizing guide — stretch belts often have wider size ranges than leather.'],
+      ['Gift Potential', 'A stretch golf belt is one of the cleanest golf gifts in the $30–$50 range that most golfers never buy themselves. Practical, wearable, and useful every round.'],
+      ['WYX Pick', 'The WYX stretch belt pairs with every polo in the bag. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'golf-hat-guide',
+    title: 'Golf Hat Guide — Rope, Snapback, Dad Cap, Bucket: Which One Is You?',
+    seo: 'Golf Hat Guide — Which Style Is Right For You | WYX Golf Supply Co.',
+    description: 'A breakdown of every golf hat style — rope hat, snapback, dad cap, bucket hat — with fit notes, course appropriateness, and gifting angle for each.',
+    image: imageMap.hero,
+    sections: [
+      ['Rope Hat', 'The rope hat (also called a trucker-style with a braided rope detail) is the most recognizable golf hat style right now. Curved brim, mesh back, structured front panel. Works on and off the course. Most WYX rope hats are one-size-fits-most with a snapback closure.'],
+      ['Snapback', 'Flat brim, structured front, snapback rear closure. Younger skew, more streetwear-adjacent. Works well for golfers who wear hats off the course regularly. Better for wide heads than fitted options.'],
+      ['Dad Cap', 'Unstructured, low-profile, curved brim. The most comfortable hat for long rounds. Easier to gift because sizing is more forgiving. The style that ages well — wears the same on round 1 as round 100.'],
+      ['Bucket Hat', 'Full sun protection, packable, works for tropical and coastal courses. Not traditional at private clubs. Great for warm-weather trips, beach golf, and golfers who burn.'],
+      ['Fit Notes', 'Most golf hats adjust to fit 7–7 7/8 head sizes. If you are buying for someone else, an adjustable hat is safer than a fitted one. Avoid fitted caps as gifts unless you know the head size.'],
+      ['WYX Hat Lineup', 'WYX carries rope hats, snapbacks, and dad caps. All are adjustable. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'golf-towel-guide',
+    title: 'Golf Towel Guide — Why Every Bag Needs One (And What To Look For)',
+    seo: 'Golf Towel Guide | WYX Golf Supply Co.',
+    description: 'What makes a good golf towel, the difference between waffle and microfiber, where to clip it, and why it is one of the best small gifts in golf.',
+    image: imageMap.towel,
+    sections: [
+      ['Why A Golf Towel Matters', 'A clean club face before every shot is the simplest, cheapest performance upgrade in golf. Dirt and debris in the grooves reduces spin and consistency. A towel hanging from the bag ring takes 3 seconds to use and has a real effect on approach shots and wedge play.'],
+      ['Microfiber vs. Waffle', 'Microfiber dries faster and cleans more effectively at removing debris. Waffle-weave towels hold more moisture and are better for deep cleaning — but take longer to dry between uses. For hot, dry conditions: waffle. For rain or humid rounds: microfiber.'],
+      ['Tri-Fold vs. Loop End', 'Tri-fold towels fold in thirds with an internal pocket — useful for carrying divot tools or a tee supply. Loop-end towels have a metal grommet at the center and hang from the bag ring on both ends (wet end and dry end), the most practical setup for in-round cleaning.'],
+      ['Clip vs. Loop', 'A towel without a clip or grommet is almost useless on the course. Make sure any golf towel you buy has a way to hang from the bag. A carabiner or split ring works if the grommet is not included.'],
+      ['Size', 'Standard golf towels are 16x24 inches minimum. Larger is better for courses where you play in morning dew. Smaller towels miss coverage on club faces and hands.'],
+      ['Gift Angle', 'A quality golf towel is one of the most universally useful golf gifts — no sizing, immediate value, clear function. One of the easiest first-cart additions for any golfer or gift buyer.'],
+      ['WYX Towels', 'WYX carries loop-end and waffle-weave options. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
     slug: 'how-to-organize-your-golf-bag',
     title: 'How To Organize Your Golf Bag (And What To Cut)',
     seo: 'How To Organize Your Golf Bag | WYX Golf Supply Co.',

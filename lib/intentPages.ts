@@ -370,6 +370,42 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 25)
   },
+  'golf-towels': {
+    slug: 'golf-towels',
+    title: 'Golf Towels That Actually Stay On The Bag.',
+    eyebrow: 'Clean Every Shot',
+    description: 'Loop-end, waffle-weave, and tri-fold golf towels built for real rounds — hang from any bag ring, clean every club face, and make the best small golf gifts that actually get used.',
+    metaTitle: 'Golf Towels | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf towels from WYX Golf Supply Co. — loop-end microfiber and waffle-weave options for every bag. One of the best small golf gifts under $35.',
+    primaryCta: 'Shop Golf Towels',
+    secondaryCta: 'Ball Markers',
+    secondaryHref: '/golf-gifts',
+    proof: ['Hangs from any bag ring', 'Microfiber and waffle options', 'Great stocking stuffer', 'WYX10 launch code'],
+    faq: [
+      ['What is the best golf towel?', 'A loop-end microfiber towel with a grommet or carabiner attachment is the most practical setup. It hangs from the bag ring on both ends — wet end for cleaning, dry end for hands.'],
+      ['Is a golf towel a good gift?', 'Yes — it is one of the most universally useful golf gifts. No sizing, immediate practical value, and every golfer needs one. Under $35 for most options.'],
+      ['What size golf towel do I need?', '16x24 inches minimum. Larger covers more surface per use and holds up better in wet conditions. WYX towels are full-size and include a grommet clip.']
+    ],
+    match: (product) => categoryIn(product, ['Towels']) || has(product, /towel|golf towel|microfiber/)
+  },
+  'golf-belts': {
+    slug: 'golf-belts',
+    title: 'Golf Belts That Move With Your Swing.',
+    eyebrow: 'On The Course',
+    description: 'Stretch golf belts with low-profile buckles that stay put through 18 holes. The underrated bag upgrade most golfers never buy themselves — and one of the best gifts in the $30–$50 range.',
+    metaTitle: 'Golf Belts | Stretch Golf Belts | WYX Golf Supply Co.',
+    metaDescription: 'Shop stretch golf belts from WYX Golf Supply Co. — low-profile buckles, full hip rotation, fits every polo. Under $50 and one of the best golf gifts that gets used.',
+    primaryCta: 'Shop Golf Belts',
+    secondaryCta: 'Golf Apparel',
+    secondaryHref: '/golf-apparel',
+    proof: ['Stays put through 18 holes', 'Full hip rotation', 'Pairs with every polo', 'WYX10 launch code'],
+    faq: [
+      ['What is a stretch golf belt?', 'A stretch golf belt uses an elastic or woven stretch fabric with a low-profile non-slip buckle. It allows full hip rotation through the swing without binding at the waist — unlike rigid leather belts.'],
+      ['What size golf belt do I need?', 'Most golfers wear belt size = pant size + 2 inches. For a 34-inch waist, buy a 36-inch belt. Stretch belts often have wider size ranges and more forgiveness.'],
+      ['Is a golf belt a good gift?', 'Yes — it is practical, under $50, and something most golfers never prioritize for themselves. No sizing guesswork beyond the size range. One of the better mid-range golf gifts.']
+    ],
+    match: (product) => categoryIn(product, ['Accessories', 'Apparel']) || has(product, /belt|golf belt|stretch belt/)
+  },
   'golf-travel-bag': {
     slug: 'golf-travel-bag',
     title: 'Golf Trip Gear — Pack Right, Play Better.',

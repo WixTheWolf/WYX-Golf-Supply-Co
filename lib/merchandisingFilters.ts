@@ -3,6 +3,8 @@ import { productPrice } from '@/lib/feed';
 import { isBuyTodayProduct, isPremiumGolfBag } from '@/lib/productQuality';
 import type { Product } from '@/types/shopify';
 
+// Minimal blocklist — only products with confirmed quality or rights issues.
+// Towels, hats, and polos removed so they can surface again once images are confirmed.
 const hiddenHandles = new Set([
   'syb-phone-pouch',
   'white-eagle',
@@ -11,14 +13,7 @@ const hiddenHandles = new Set([
   'white-braid',
   'legalize-mulligans',
   'layup-t-shirt',
-  'looper',
-  'dude-abides-golf-towel',
-  'zona-towel',
-  'hack-daniels-golf-towel',
-  'tri-fold-microfiber-golf-towel',
-  'waffle-golf-towel',
-  'coastal-rope-hat',
-  'forest-performance-polo'
+  'looper'
 ]);
 
 const confirmedSupplierVendors = [
@@ -55,7 +50,9 @@ export function isConfirmedSupplierProduct(product: Product) {
 }
 
 export function isCoreMerchProduct(product: Product) {
-  return !isHiddenFromCoreStorefront(product) && !isPremiumGolfBag(product) && isConfirmedSupplierProduct(product) && isBuyTodayProduct(product);
+  // Open catalog: any product that passes quality + availability gates shows.
+  // Confirmed suppliers get bonus rank in sortByQuality but are no longer required.
+  return !isHiddenFromCoreStorefront(product) && !isPremiumGolfBag(product) && isBuyTodayProduct(product);
 }
 
 export function coreMerchProducts(products: Product[]) {
@@ -70,18 +67,32 @@ export function isHomepageProduct(product: Product) {
 
 export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
+    // Gloves & grip
     'dartee-golf-glove',
+    'park-paisley-womens-gold-golf-glove',
+    // Hats
     'augusta-bear-hat',
+    'desert-storm-tan',
+    // Markers & accessories
     'pimento-drip-blade',
     'the-bolt-ball-marker',
     'got-em-ball-marker-limited-edition',
     'three-rail-ball-marker',
-    'blue-ridge-golf-co-golf-towels',
-    'desert-storm-tan',
-    'stretch-golf-belt-supplier-review',
-    'glove-accessory-caddie-gray',
     'magnet-caddie',
-    'golf-or-die-game-set'
+    'glove-accessory-caddie-gray',
+    // Towels
+    'blue-ridge-golf-co-golf-towels',
+    'dude-abides-golf-towel',
+    'zona-towel',
+    'hack-daniels-golf-towel',
+    'tri-fold-microfiber-golf-towel',
+    'waffle-golf-towel',
+    // Apparel
+    'stretch-golf-belt-supplier-review',
+    'coastal-rope-hat',
+    'forest-performance-polo',
+    // Games & gifts
+    'golf-or-die-game-set',
   ];
   return heroHandles
     .map((handle) => products.find((product) => product.handle === handle))

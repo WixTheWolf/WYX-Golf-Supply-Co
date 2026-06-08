@@ -18,7 +18,7 @@ export function isBuyTodayProduct(product: Product) {
   const hasAvailableVariant = product.variants.some((variant) => variant.availableForSale);
   const hasRealMedia = Boolean(product.featuredImage?.url || product.images[0]?.url);
   const isGameImprovement = category === 'Training Aids' || category === 'Golf Tech' || /training|trainer|putting|alignment|rangefinder|gps|range gear|swing|tempo|chipping/i.test(haystack);
-  const isAffordable = price > 0 && (price <= 75 || (isGameImprovement && price <= 150));
+  const isAffordable = price > 0 && (price <= 120 || (isGameImprovement && price <= 250) || (/golf bag|stand bag|cart bag|travel bag/i.test(haystack) && price <= 400));
   const isApparel = category === 'Headwear' || category === 'Apparel' || apparelTerms.test(haystack);
   const isPracticalGolfItem = dailyUseCategories.includes(category) || firstCartTerms.test(haystack) || isApparel;
   const isWeakNoveltyItem = weakBuyTerms.test(haystack) && !/hat|cap|headcover|game/i.test(haystack);

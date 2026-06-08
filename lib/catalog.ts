@@ -34,9 +34,11 @@ function publicPriceAllowed(product: Product) {
   const category = categoryFor(product);
   const text = searchable(product);
   if (price <= 0) return false;
-  if (category === 'Golf Tech' || category === 'Training Aids' || /rangefinder|gps|training|trainer|putting|alignment|swing|tempo|chipping/.test(text)) return price <= 150;
-  if (/golf bag|premium bag/.test(text)) return price <= 250;
-  return price <= 100;
+  if (category === 'Golf Tech' || /rangefinder|gps|launch monitor/.test(text)) return price <= 350;
+  if (category === 'Training Aids' || /training|trainer|putting|alignment|swing|tempo|chipping/.test(text)) return price <= 200;
+  if (/golf bag|premium bag|stand bag|cart bag|travel bag/.test(text)) return price <= 400;
+  if (category === 'Apparel' || category === 'Headwear') return price <= 150;
+  return price <= 150;
 }
 
 function passesPublicCatalogGate(product: Product) {
