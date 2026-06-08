@@ -525,3 +525,11 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .deal-pick:hover{border-color:var(--lime);transform:translateY(-2px)}
 /* kit-visual-card span strong — ensure Fraunces */
 .kit-visual-card strong{font-family:var(--font-display),Georgia,serif;font-weight:900}
+/* trust-badge-section span — hover lift */
+.trust-badge-section span{transition:border-color .15s ease,box-shadow .15s ease}
+.trust-badge-section span:hover{border-color:color-mix(in oklab,var(--lime) 55%,var(--line) 45%);box-shadow:0 4px 12px rgba(11,31,23,.06)}
+/* email-capture — section spacing and form button polish */
+.email-capture .button.primary{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.email-capture .button.primary:not(:disabled):hover{background:color-mix(in oklab,var(--lime) 88%,white 12%)}
+/* purchase-panel — subtle lime left stripe at top */
+.purchase-panel{border-top:3px solid var(--lime)}
