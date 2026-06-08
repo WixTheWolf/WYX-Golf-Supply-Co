@@ -77,7 +77,7 @@ export function firstBuyProducts(products: Product[]) {
     'got-em-ball-marker-limited-edition',
     'three-rail-ball-marker',
     'blue-ridge-golf-co-golf-towels',
-    'two-sided-metal-golf-ball-marker-5-color-combo-pack',
+    'desert-storm-tan',
     'stretch-golf-belt-supplier-review',
     'glove-accessory-caddie-gray',
     'magnet-caddie',

@@ -541,3 +541,5 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .kit-visual-card small{color:color-mix(in oklab,var(--paper) 72%,transparent);font-size:.78rem;font-style:normal;letter-spacing:.03em}
 /* kit-visual-card em — "Build Kit" CTA text */
 .kit-visual-card em{font-style:normal;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+/* quick-paths — 3-col handles up to 9 items cleanly at 3 rows */
+@media(min-width:900px){.quick-paths{grid-template-columns:repeat(3,minmax(0,1fr))}}

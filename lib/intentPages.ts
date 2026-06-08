@@ -189,5 +189,77 @@ export const intentPages: Record<string, IntentPageConfig> = {
       ['Is this a good gift?', 'Yes. Club-care gear is useful, easy to buy, and a good fit for almost any golfer.']
     ],
     match: (product) => !isPremiumGolfBag(product) && (categoryIn(product, ['Club Care', 'Towels']) || has(product, /clean|brush|groove|towel|care|contact/))
+  },
+  'golf-hats': {
+    slug: 'golf-hats',
+    title: 'Golf Hats Worth Wearing Off The Course.',
+    eyebrow: 'Headwear',
+    description: 'Rope hats, snapbacks, and dad caps built for tee times, travel days, and every casual hour after the round.',
+    metaTitle: 'Golf Hats | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf hats from WYX Golf Supply Co., including rope hats, snapbacks, and dad caps for course wear, travel, and everyday carry.',
+    primaryCta: 'Shop Hats',
+    secondaryCta: 'Shop Apparel',
+    secondaryHref: '/golf-apparel',
+    proof: ['Course and casual wear', 'Adjustable fit', 'Giftable headwear', 'WYX10 launch offer'],
+    faq: [
+      ['What types of golf hats do you carry?', 'Rope hats, snapbacks, and unstructured dad caps. All built with course wear and everyday use in mind.'],
+      ['Do the hats fit most head sizes?', 'Yes. Snapbacks and adjustable closures make sizing easy for most golfers.'],
+      ['Are golf hats a good gift?', 'Yes. Hats are easy to buy, easy to size, and useful whether or not the recipient plays every week.']
+    ],
+    match: (product) => categoryIn(product, ['Headwear']) || has(product, /hat|cap|headwear|rope hat|snapback/)
+  },
+  'golf-apparel': {
+    slug: 'golf-apparel',
+    title: 'Golf Apparel Built For The Round And Everything After.',
+    eyebrow: 'Apparel',
+    description: 'Polos, quarter-zips, hoodies, and performance socks for players who want clean, functional gear that holds up beyond the 18th hole.',
+    metaTitle: 'Golf Apparel | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf apparel from WYX Golf Supply Co., including golf polos, quarter-zips, hoodies, and performance socks for course and everyday wear.',
+    primaryCta: 'Shop Apparel',
+    secondaryCta: 'Shop Hats',
+    secondaryHref: '/golf-hats',
+    proof: ['Course-ready fit', 'Clean WYX detail', 'Performance fabrics', 'WYX10 launch offer'],
+    faq: [
+      ['What apparel do you carry?', 'Polos, quarter-zip pullovers, hoodies, and performance socks — all built to work on the course and off it.'],
+      ['Is WYX apparel true to size?', 'Sizing notes are on each product page. Most pieces run standard athletic fit.'],
+      ['Is golf apparel a good gift?', 'Yes. Polos and quarter-zips are strong gift candidates. When unsure on size, socks or a hat are the safest choice.']
+    ],
+    match: (product) => categoryIn(product, ['Apparel']) || has(product, /polo|shirt|hoodie|quarter.?zip|pullover|apparel|sock/)
+  },
+  'golf-training-aids': {
+    slug: 'golf-training-aids',
+    title: 'Training Aids For Golfers Who Actually Want To Get Better.',
+    eyebrow: 'Practice Gear',
+    description: 'Swing trainers, alignment sticks, putting aids, and range gear for weekend golfers who want more than a few warm-up swings.',
+    metaTitle: 'Golf Training Aids | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf training aids from WYX Golf Supply Co., including swing trainers, alignment sticks, putting aids, and range gear for weekend golfers.',
+    primaryCta: 'Shop Training Aids',
+    secondaryCta: 'Golf Tech',
+    secondaryHref: '/golf-tech',
+    proof: ['Range-ready gear', 'Great gift for improving golfers', 'Compact and bag-friendly', 'WYX10 saves 10%'],
+    faq: [
+      ['What training aids work best for weekend golfers?', 'Swing tempo trainers, alignment sticks, and putting aids are the most practical. They work at the range, in the backyard, or indoors.'],
+      ['Are training aids a good gift?', 'Yes, especially for golfers who take the game seriously. Tempo trainers and alignment sticks are easy to use right away.'],
+      ['Do I need lessons to use training aids?', 'No. Most products include clear directions and work as standalone tools for building feel and consistency.']
+    ],
+    match: (product) => categoryIn(product, ['Training Aids']) || has(product, /training|trainer|tempo|alignment|putting|chipping|swing|range gear/)
+  },
+  'golf-tech': {
+    slug: 'golf-tech',
+    title: 'Golf Tech That Earns Its Place In The Bag.',
+    eyebrow: 'Golf Technology',
+    description: 'Laser rangefinders, GPS speakers, and tech upgrades for golfers who want better information on every shot.',
+    metaTitle: 'Golf Tech & Rangefinders | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf tech from WYX Golf Supply Co., including laser rangefinders, GPS speakers, and smart bag upgrades for serious weekend golfers.',
+    primaryCta: 'Shop Golf Tech',
+    secondaryCta: 'Training Aids',
+    secondaryHref: '/golf-training-aids',
+    proof: ['Accurate yardages', 'Great dad gift', 'High-value upgrade', 'WYX10 launch code'],
+    faq: [
+      ['Is a rangefinder worth it?', 'Yes. Knowing exact yardages changes how you approach every shot. Most golfers who try one keep using it.'],
+      ['What is the best rangefinder gift for under $150?', 'Look for pin-seeker models with slope mode toggle. Under $150 is a practical gift range that covers solid performance.'],
+      ['Do you carry GPS speakers?', 'We are sourcing GPS speaker options. Rangefinders are available now.']
+    ],
+    match: (product) => categoryIn(product, ['Golf Tech']) || has(product, /rangefinder|gps|launch monitor|golf tech|gps speaker/)
   }
 };

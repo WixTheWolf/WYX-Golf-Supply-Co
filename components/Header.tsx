@@ -26,9 +26,10 @@ export function Header() {
         <nav className="nav-links" aria-label="Primary navigation">
           <Link href="/products">Shop</Link>
           <Link href="/golf-gifts">Gifts</Link>
-          <Link href="/products?category=Headwear">Hats</Link>
-          <Link href="/products?category=Apparel">Apparel</Link>
-          <Link href="/golf-trip-gear">Trip Gear</Link>
+          <Link href="/golf-hats">Hats</Link>
+          <Link href="/golf-apparel">Apparel</Link>
+          <Link href="/golf-training-aids">Training</Link>
+          <Link href="/golf-tech">Tech</Link>
           <Link href="/golf-gifts-for-dad">Dad Gifts</Link>
         </nav>
         <button className="header-cta" onClick={() => setOpen(true)} aria-label={`Open cart with ${count} items`}>Bag ({count})</button>

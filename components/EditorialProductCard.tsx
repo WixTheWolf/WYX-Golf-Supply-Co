@@ -29,11 +29,20 @@ export function EditorialProductCard({ product, featured = false }: { product: P
 
 function shortReason(product: Product) {
   const text = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
+  if (text.includes('rangefinder')) return 'Know your yardage every time. The upgrade that changes how you think about every approach.';
+  if (text.includes('swing trainer') || text.includes('tempo trainer') || text.includes('swing tempo')) return 'Grooves a repeatable rhythm at the range. Good gift for the golfer who actually wants to get better.';
+  if (text.includes('alignment stick') || text.includes('alignment sticks')) return 'The training aid every golfer uses. Simple, useful, and easy to add to any order.';
+  if (text.includes('quarter zip') || text.includes('quarter-zip')) return 'Warm enough for early tee times and coastal evenings. Layers over any polo.';
+  if (text.includes('hoodie')) return 'The post-round essential. Built for range sessions, travel days, and everything after the last hole.';
+  if (text.includes('sock')) return 'Three pairs, arch support, clean WYX stripe. The practical add-on every golfer can use.';
+  if (text.includes('snapback')) return 'Flat brim, clean mark. Wears as well off the course as on it.';
+  if (text.includes('dad') && text.includes('cap')) return 'The unstructured everyday cap that looks right on the course and everywhere else.';
   if (text.includes('towel')) return 'The easy yes for trips, carts, and cleaning up before the next shot.';
   if (text.includes('marker')) return 'Small, giftable, and useful enough to actually stay in the bag.';
   if (text.includes('ball')) return 'A practical add-on for trip bags, prize tables, and first-tee chaos.';
   if (text.includes('glove')) return 'A clean first-cart upgrade with real utility and a sharp gift price.';
-  if (text.includes('hat')) return 'Personality without trying too hard. Easy gift, easy cart.';
+  if (text.includes('hat') || text.includes('cap')) return 'Personality without trying too hard. Easy gift, easy cart.';
+  if (text.includes('polo') || text.includes('shirt')) return 'Clean structure, quiet detail. Wears well beyond the first tee.';
   if (text.includes('headcover') || text.includes('cover')) return 'Turns the bag into a little more of a statement.';
   if (text.includes('game set')) return 'Built for golf trips, bachelor weekends, and post-round bragging rights.';
   if (text.includes('caddie')) return 'Keeps the little stuff from turning into a bottom-pocket search party.';

@@ -35,9 +35,12 @@ const trustSignals = [
 const quickPaths = [
   ['Golf Gifts', '/golf-gifts'],
   ['Dad Gifts', '/golf-gifts-for-dad'],
-  ['Hats', '/products?category=Headwear'],
-  ['Apparel', '/products?category=Apparel'],
-  ['Training Aids', '/products?category=Training%20Aids'],
+  ['Hats', '/golf-hats'],
+  ['Apparel', '/golf-apparel'],
+  ['Training', '/golf-training-aids'],
+  ['Rangefinders', '/golf-tech'],
+  ['Trip Gear', '/golf-trip-gear'],
+  ['Under $60', '/golf-gifts-under-60'],
   ['Bag Upgrades', '/bag-upgrades']
 ];
 
