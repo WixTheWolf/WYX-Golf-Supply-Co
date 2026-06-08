@@ -1,0 +1,25 @@
+/* seo-commerce-2.css — extended polish layer for WYX Golf Supply Co.
+   Same rules: only compositor-friendly motion, brand tokens, no !important except print.
+   Appended via /loop keep building. */
+
+/* ── story page — long-form brand narrative ── */
+.story-page{max-width:760px;margin:0 auto}
+.story-page h1{font-family:var(--font-display),Georgia,serif;font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-.055em;line-height:.95;margin-bottom:.75rem}
+.story-page h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.5rem,3vw,2.2rem);letter-spacing:-.04em;margin:2.5rem 0 .65rem}
+.story-page p{font-size:1rem;line-height:1.75;margin-bottom:1.2rem;max-width:65ch}
+.story-page blockquote{border-left:3px solid var(--lime);padding:.5rem 0 .5rem 1.25rem;margin:2rem 0;font-style:italic;color:var(--muted);font-size:1.05rem}
+/* ── shipping-returns page ── */
+.policy-page{max-width:720px;margin:0 auto}
+.policy-page h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.3rem,2.5vw,1.8rem);letter-spacing:-.04em;border-bottom:1px solid var(--line);padding-bottom:.5rem;margin:2.25rem 0 .9rem}
+.policy-page p,.policy-page li{font-size:.95rem;line-height:1.7;color:var(--muted)}
+.policy-page ul{padding-left:1.2rem;margin:.5rem 0 1rem}
+.policy-page li{margin:.3rem 0}
+/* ── kit page ── */
+.kit-hero{padding:clamp(3rem,6vw,5rem) 0;border-bottom:1px solid var(--line)}
+.kit-hero h1{font-family:var(--font-display),Georgia,serif;font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-.05em;line-height:.95;max-width:14ch}
+.kit-hero p{max-width:48ch;font-size:1.05rem;line-height:1.6;color:var(--muted);margin:.75rem 0 1.25rem}
+/* ── hover glow on primary CTA sitewide ── */
+.button.primary:not(:disabled){transition:background .18s ease,box-shadow .2s ease,transform .15s ease}
+.button.primary:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(11,31,23,.18)}
+/* ── product-card image — prevent layout shift ── */
+.product-image-link img{aspect-ratio:4/3;object-fit:cover;width:100%;display:block}

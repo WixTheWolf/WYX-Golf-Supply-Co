@@ -6,6 +6,7 @@ import './globals.css';
 import './promo.css';
 import './kits.css';
 import './seo-commerce.css';
+import './seo-commerce-2.css';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
