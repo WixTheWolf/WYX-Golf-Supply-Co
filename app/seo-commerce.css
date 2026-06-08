@@ -146,3 +146,28 @@
 .detail-list details p,.detail-list details ul{margin-top:.65rem}
 /* promo-note — small badge on product page */
 .promo-note{display:inline-block;padding:.42rem .7rem;background:color-mix(in oklab,var(--lime) 22%,var(--paper) 78%);border:1px solid color-mix(in oklab,var(--lime) 40%,var(--line) 60%);font-size:.82rem;font-weight:700}
+/* journal listing — editorial 2-col grid */
+.journal-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.journal-card{display:grid;grid-template-rows:auto 1fr;background:var(--paper);border:1px solid var(--line);overflow:hidden;transition:box-shadow .25s ease,transform .25s ease}
+.journal-card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(11,31,23,.1)}
+.journal-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s ease}
+.journal-card:hover img{transform:scale(1.03)}
+.journal-card>div{padding:1.4rem 1.6rem 1.8rem;display:flex;flex-direction:column;gap:.6rem}
+.journal-card h2{font-size:clamp(1.2rem,1.8vw,1.5rem);line-height:1.25;margin:0;letter-spacing:-.02em}
+.journal-card p{font-size:.94rem;line-height:1.55;margin:0;color:var(--muted);flex:1}
+.journal-card .text-link{margin-top:.4rem;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;align-self:flex-start}
+@media(max-width:700px){.journal-grid{grid-template-columns:1fr}}
+/* article page — readable long-form layout */
+.article{max-width:720px;margin:0 auto;padding:clamp(3rem,6vw,5rem) 1.5rem clamp(4rem,8vw,8rem)}
+.article .eyebrow{display:block;margin-bottom:.75rem}
+.article h1{font-size:clamp(2rem,4.5vw,3.5rem);line-height:1.15;letter-spacing:-.03em;max-width:22ch;margin:0 0 1.25rem}
+.article>p:first-of-type{font-size:1.15rem;line-height:1.6;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:1.5rem;margin-bottom:2rem}
+.article img{width:100%;aspect-ratio:3/2;object-fit:cover;margin:1.5rem 0 2rem;display:block}
+.article section{margin-bottom:2.25rem}
+.article section h2{font-size:clamp(1.25rem,2.5vw,1.65rem);letter-spacing:-.02em;margin:0 0 .65rem}
+.article section p{font-size:1rem;line-height:1.7;margin:0}
+.article>p:last-of-type{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted)}
+.article>p:last-of-type a{color:var(--forest);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+/* add-to-cart button — loading/disabled feedback states */
+.button.primary.full:disabled{opacity:.55;cursor:wait}
+.button.primary.full:not(:disabled):active{transform:scale(.985)}
