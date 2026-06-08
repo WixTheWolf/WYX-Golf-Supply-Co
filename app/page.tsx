@@ -80,7 +80,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {shortList.length > 0 && <section id="short-list" className="section short-list-section">
+      {shortList.length > 0 && <section id="short-list" className="section short-list-section reveal">
         <div className="section-heading split">
           <div>
             <p className="eyebrow">Start Here</p>
@@ -93,7 +93,7 @@ export default async function Home() {
         </div>
       </section>}
 
-      <section className="conversion-strip" aria-label="Shop WYX categories">
+      <section className="conversion-strip reveal" aria-label="Shop WYX categories">
         <div>
           <p className="eyebrow">Quick Shop</p>
           <h2>Find The Right Gift Fast.</h2>
@@ -103,11 +103,11 @@ export default async function Home() {
         </nav>
       </section>
 
-      <section className="trust-badge-section" aria-label="Shopping trust signals">
+      <section className="trust-badge-section reveal" aria-label="Shopping trust signals">
         {cartBoosts.map((item) => <span key={item}>{item}</span>)}
       </section>
 
-      <section id="kits" className="section kit-visual-section">
+      <section id="kits" className="section kit-visual-section reveal">
         <div className="section-heading split">
           <div>
             <p className="eyebrow">Bundles</p>
@@ -125,7 +125,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {under60.length > 0 && <section className="section">
+      {under60.length > 0 && <section className="section reveal">
         <div className="section-heading split">
           <div>
             <p className="eyebrow">Under $60</p>
@@ -138,12 +138,11 @@ export default async function Home() {
         </div>
       </section>}
 
-      <section className="section why-wyx">
+      <section className="section why-wyx reveal">
         <div>
           <p className="eyebrow">Why WYX?</p>
           <h2>No Random Golf Junk.</h2>
         </div>
-        <p>Every homepage pick should be giftable, useful, and easy to imagine in a real weekend golf cart.</p>
       </section>
 
       <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Drop Before Your Foursome Does." body="Join the WYX list for new golf gifts, trip gear, and launch discounts." />

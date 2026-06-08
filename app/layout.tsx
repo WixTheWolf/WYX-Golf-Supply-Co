@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Fraunces, Inter } from 'next/font/google';
+import { Fraunces, DM_Sans } from 'next/font/google';
+import { ScrollRevealInit } from '@/components/ScrollRevealInit';
 import './globals.css';
 import './promo.css';
 import './kits.css';
@@ -12,7 +13,7 @@ import { TrackingScripts } from '@/components/TrackingScripts';
 import { supportEmail } from '@/lib/support';
 
 const displayFont = Fraunces({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
-const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const sansFont = DM_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
@@ -34,5 +35,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en" className={`${displayFont.variable} ${sansFont.variable}`}><body><SeoJsonLd /><TrackingScripts /><CartProvider><Header /><main>{children}</main><footer className="site-footer"><div><Link className="footer-brand" href="/">WYX <span>Golf Co.</span></Link><p>Golf gifts, hats, apparel, trip kits, and bag gear with personality.</p><p className="footer-note">Use <strong>WYX10</strong> at checkout for 10% off your first order.</p><p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p></div><nav aria-label="Footer navigation"><Link href="/golf-gifts">Golf Gifts</Link><Link href="/golf-trip-gear">Trip Gear</Link><Link href="/products?category=Headwear">Hats</Link><Link href="/products?category=Apparel">Apparel</Link><Link href="/bag-upgrades">Bag Upgrades</Link><Link href="/kits/dad-gift-kit">Dad Kit</Link><Link href="/kits/golf-trip-kit">Trip Kit</Link><Link href="/golf-gifts-for-dad">Dad Gifts</Link></nav></footer></CartProvider></body></html>;
+  return <html lang="en" className={`${displayFont.variable} ${sansFont.variable}`}><body><ScrollRevealInit /><SeoJsonLd /><TrackingScripts /><CartProvider><Header /><main>{children}</main><footer className="site-footer"><div><Link className="footer-brand" href="/">WYX <span>Golf Co.</span></Link><p>Golf gifts, hats, apparel, trip kits, and bag gear with personality.</p><p className="footer-note">Use <strong>WYX10</strong> at checkout for 10% off your first order.</p><p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p></div><nav aria-label="Footer navigation"><Link href="/golf-gifts">Golf Gifts</Link><Link href="/golf-trip-gear">Trip Gear</Link><Link href="/products?category=Headwear">Hats</Link><Link href="/products?category=Apparel">Apparel</Link><Link href="/bag-upgrades">Bag Upgrades</Link><Link href="/kits/dad-gift-kit">Dad Kit</Link><Link href="/kits/golf-trip-kit">Trip Kit</Link><Link href="/golf-gifts-for-dad">Dad Gifts</Link></nav></footer></CartProvider></body></html>;
 }

@@ -57,4 +57,17 @@ npm run dev
 npm run build
 ```
 
+### Optional ECC plugin setup
+
+If you use an environment that supports the plugin marketplace, you can add the ECC plugin and install it with:
+
+```sh
+/plugin marketplace add https://github.com/affaan-m/ECC
+/plugin install ecc@ecc
+```
+
+A helper script is also available at `scripts/install-ecc-plugin.sh`.
+
+> Note: the current shell environment does not expose a `plugin` CLI command, so I could not run those commands here.
+
 The live storefront is deployed to `https://wyx-golf-supply-co.vercel.app`.
