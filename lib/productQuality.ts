@@ -2,10 +2,10 @@ import { categoryFor } from '@/lib/catalog';
 import { productPrice } from '@/lib/feed';
 import type { Product } from '@/types/shopify';
 
-const dailyUseCategories = ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Club Care', 'Accessories', 'Headwear', 'Apparel'];
-const firstCartTerms = /marker|towel|glove|grip|ball|tee|divot|brush|groove|caddie|headcover|hat|cap|shirt|polo|hoodie|belt|apparel|game/i;
+const dailyUseCategories = ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Golf Tech', 'Club Care', 'Accessories', 'Headwear', 'Apparel'];
+const firstCartTerms = /marker|towel|glove|grip|ball|tee|divot|brush|groove|caddie|headcover|hat|cap|shirt|polo|hoodie|belt|apparel|game|training|trainer|putting|alignment|rangefinder|gps|range gear|swing|tempo|chipping/i;
 const apparelTerms = /hat|cap|shirt|polo|hoodie|belt|apparel/i;
-const weakBuyTerms = /poster|sticker|decal|novelty/i;
+const weakBuyTerms = /poster|sticker|decal|novelty|simulator|hitting mat|impact screen|enclosure|display rack|bungee|protective case/i;
 
 export function isPremiumGolfBag(product: Product) {
   return /golf bag/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`);
@@ -17,7 +17,8 @@ export function isBuyTodayProduct(product: Product) {
   const haystack = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`;
   const hasAvailableVariant = product.variants.some((variant) => variant.availableForSale);
   const hasRealMedia = Boolean(product.featuredImage?.url || product.images[0]?.url);
-  const isAffordable = price > 0 && price <= 75;
+  const isGameImprovement = category === 'Training Aids' || category === 'Golf Tech' || /training|trainer|putting|alignment|rangefinder|gps|range gear|swing|tempo|chipping/i.test(haystack);
+  const isAffordable = price > 0 && (price <= 75 || (isGameImprovement && price <= 150));
   const isApparel = category === 'Headwear' || category === 'Apparel' || apparelTerms.test(haystack);
   const isPracticalGolfItem = dailyUseCategories.includes(category) || firstCartTerms.test(haystack) || isApparel;
   const isWeakNoveltyItem = weakBuyTerms.test(haystack) && !/hat|cap|headcover|game/i.test(haystack);
@@ -43,6 +44,7 @@ export function productQualityScore(product: Product) {
   if (category === 'Headwear') score += 4;
   if (category === 'Apparel') score += 3;
   if (/marker|towel|glove|grip|ball|tee|divot|brush|groove|caddie/i.test(title)) score += 6;
+  if (/training|trainer|putting|alignment|rangefinder|gps|range gear|swing|tempo|chipping/i.test(title)) score += 5;
   if (/hat|cap|shirt|polo|hoodie|belt/.test(title)) score += 4;
   if (/gift|trip|scramble|bundle|set/i.test(title)) score += 3;
   if (isPremiumGolfBag(product)) score += 2;
@@ -63,6 +65,8 @@ export function qualityReason(product: Product) {
   if (/ball|bundle/i.test(title)) return 'Easy restock for the next round, trip, or prize table.';
   if (/hat|cap/i.test(title) || category === 'Headwear') return 'Easy golf style for the course, range, and weekend rotation.';
   if (/shirt|polo|hoodie|belt/i.test(title) || category === 'Apparel') return 'Wearable golf gear that works as a gift or everyday round upgrade.';
+  if (/rangefinder|gps|golf tech/i.test(title) || category === 'Golf Tech') return 'Useful golf tech with a clear round-to-round job.';
+  if (/training|trainer|putting|alignment|swing|tempo|chipping/i.test(title) || category === 'Training Aids') return 'Compact practice gear for golfers trying to score better.';
   if (/headcover|putter cover|game/i.test(title)) return 'Personality-driven gift with enough golf utility to justify the cart.';
   if (price <= 35 && dailyUseCategories.includes(category)) return 'Low-friction add-on golfers actually use.';
   if (price <= 60) return 'Giftable under-$60 golf pick with a clear use case.';

@@ -22,6 +22,30 @@ function searchable(product: ClassifiableProduct) {
   return [product.title, product.productType, product.vendor, ...(product.tags || [])].filter(Boolean).join(' ').toLowerCase();
 }
 
+const blockedPublicVendors = new Set([
+  'GolfbaysUSA'
+]);
+
+const weakPublicTerms = /simulator|hitting mat|impact screen|enclosure|display rack|bungee|protective case|foam triangle|pelmet|rubber ball tray/i;
+
+function publicPriceAllowed(product: Product) {
+  const prices = product.variants.map((variant) => Number(variant.price.amount)).filter(Number.isFinite);
+  const price = prices.length ? Math.min(...prices) : Number(product.priceRange.minVariantPrice.amount);
+  const category = categoryFor(product);
+  const text = searchable(product);
+  if (price <= 0) return false;
+  if (category === 'Golf Tech' || category === 'Training Aids' || /rangefinder|gps|training|trainer|putting|alignment|swing|tempo|chipping/.test(text)) return price <= 150;
+  if (/golf bag|premium bag/.test(text)) return price <= 250;
+  return price <= 100;
+}
+
+function passesPublicCatalogGate(product: Product) {
+  const text = searchable(product);
+  if (product.vendor && blockedPublicVendors.has(product.vendor)) return false;
+  if (weakPublicTerms.test(text)) return false;
+  return publicPriceAllowed(product);
+}
+
 export function categoryFor(product: ClassifiableProduct) {
   const content = searchable(product);
   if (content.includes('ball retriever') || content.includes('ball marker') || content.includes('accessory caddie') || content.includes('divot') || content.includes('headcover')) return 'Accessories';
@@ -37,7 +61,7 @@ export function saleReadyProducts(products: Product[]) {
 }
 
 export function availableProducts(products: Product[]) {
-  return products.filter((product) => product.availableForSale && hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product));
+  return products.filter((product) => product.availableForSale && hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product) && passesPublicCatalogGate(product));
 }
 
 export function categoryCount(products: Product[], category: string) {

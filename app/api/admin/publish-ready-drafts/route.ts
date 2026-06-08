@@ -58,7 +58,8 @@ function hasRealImage(product: any) {
 
 function isPremiumSupplierProduct(product: any) {
   const text = [product.title, product.vendor, product.productType, ...(product.tags || [])].join(' ').toLowerCase();
-  return /(golf bag|headcover|apparel|hat|skort|polo|glove|towel|marker|grip)/i.test(text);
+  if (/simulator|hitting mat|impact screen|enclosure|display rack|bungee|protective case/i.test(text)) return false;
+  return /(headcover|apparel|hat|cap|skort|polo|shirt|hoodie|quarter zip|belt|sock|glove|towel|marker|grip|training aid|putting|alignment|swing trainer|tempo trainer|chipping|rangefinder|golf tech|gps|club care|brush|groove)/i.test(text);
 }
 
 function publicationIds(publications: Array<{ id: string; name: string }>) {
