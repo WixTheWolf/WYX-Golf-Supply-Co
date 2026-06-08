@@ -43,6 +43,8 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Golf grips & grip tape: ${siteUrl}/golf-grips
 - Golf gifts for coworkers: ${siteUrl}/golf-gifts-for-coworkers
 - Golf putting mat & putting mirror: ${siteUrl}/golf-putting-mat
+- Golf travel bag & trip gear: ${siteUrl}/golf-travel-bag
+- Best golf gifts under $100: ${siteUrl}/best-golf-gifts-under-100
 - Scramble prize ideas: ${siteUrl}/scramble-prize-ideas
 - Golf gifts under $25: ${siteUrl}/golf-gifts-under-25
 - Shipping and returns: ${siteUrl}/shipping-returns

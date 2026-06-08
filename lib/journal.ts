@@ -296,6 +296,53 @@ export const posts = [
     ]
   },
   {
+    slug: 'how-to-organize-your-golf-bag',
+    title: 'How To Organize Your Golf Bag (And What To Cut)',
+    seo: 'How To Organize Your Golf Bag | WYX Golf Supply Co.',
+    description: 'A practical system for organizing your golf bag by zone — clubs, accessories, snacks, rain gear — so you can find everything without digging every round.',
+    image: imageMap.leather,
+    sections: [
+      ['The Problem With Most Bags', 'Most golfers have the same three problems: a ball pocket stuffed with tees from 2019, a side pocket that became a junk drawer, and no consistent home for the things they actually use every round. The fix is not a new bag — it is a system.'],
+      ['Zone 1: Club Wells', 'Drivers and woods go in the top well where the longest shafts fit without stress on the headcovers. Irons fill the middle. Wedges and the putter live in the bottom or putter well if your bag has one. Never let irons and woods share a well — the contact scratches faces.'],
+      ['Zone 2: The Front Pocket', 'This pocket is for the things you touch every hole: ball marker, tees, scorecard holder, divot tool. Nothing else earns a spot here. A magnetic hat clip keeps your marker off the scorecard and out of the pocket.'],
+      ['Zone 3: The Ball Pocket', 'Keep 6 balls maximum. More than that is weight you do not need. Rotate out scuffed balls after each round — donate them or use them for range practice. Three playable balls and three backups is the right load.'],
+      ['Zone 4: Rain And Cold', 'One dedicated pocket for the rain jacket and an extra glove. Nothing else. This is the emergency pocket — when the weather changes, you want to find the jacket in one motion.'],
+      ['Zone 5: Everything Else', 'Snacks, sunscreen, phone charger, earbuds. The everything-else pocket is last priority. It should not spill into the front pocket system. Once a month, empty it completely and audit what actually earned a return trip.'],
+      ['WYX Bag Upgrades', 'A scorecard holder, a club brush on the bag ring, and a leather bag tag make the bag feel complete without adding weight. Use code WYX10 for 10% off your first WYX order.']
+    ]
+  },
+  {
+    slug: 'golf-accessories-under-100',
+    title: 'The Best Golf Accessories Under $100 — What Actually Stays In The Bag',
+    seo: 'Best Golf Accessories Under $100 | WYX Golf Supply Co.',
+    description: 'A curated list of golf accessories under $100 that make every round better — not novelty, not overpriced, not forgotten after one use.',
+    image: imageMap.hero,
+    sections: [
+      ['The Right Budget For Golf Accessories', 'Under $100 is where most of the best golf accessories live. Gloves, towels, alignment sticks, scorecard holders, rangefinders — you can build a complete bag upgrade kit for under $100 and use everything in it every round.'],
+      ['$15–$25: The Non-Negotiables', 'Bamboo tees (50-pack, biodegradable), a magnetic hat clip with ball marker, and a grip tape roll. These consumables replenish themselves in cart value — buy them every season.'],
+      ['$25–$50: The Bag Upgrades', 'A golf towel with a clip loop, a leather scorecard holder, and alignment sticks. Every serious bag has all three. None require sizing. All ship immediately.'],
+      ['$50–$75: The Skill Builders', 'A putting alignment mirror and a swing tempo trainer. Highest ROI practice tools for the weekend golfer who cannot get to lessons every week. Both fix real problems between rounds.'],
+      ['$75–$100: The High-Visibility Win', 'A laser rangefinder in the $75–$100 range changes how you think about every approach shot. Knowing your exact yardage removes one variable from a game full of them.'],
+      ['One Cart. One Code.', 'WYX10 takes 10% off your first order. A towel + alignment sticks + scorecard holder + marker = under $100 shipped. Practical, gift-ready, and everything goes straight in the bag.']
+    ]
+  },
+  {
+    slug: 'golf-trip-packing-list',
+    title: 'Golf Trip Packing List — What To Bring And What To Leave',
+    seo: 'Golf Trip Packing List | WYX Golf Supply Co.',
+    description: 'The definitive golf trip packing list for weekend trips, destination rounds, and bachelor party golf weekends — organized by bag zone and travel priority.',
+    image: imageMap.walk,
+    sections: [
+      ['The Rule: Pack For 4 Rounds', 'If you are going for a 4-round trip, pack for exactly 4 rounds. More than that is weight. Two gloves, 12–16 balls, one box of tees, one rain jacket. Everything else is logistical clutter.'],
+      ['Golf Bag Essentials', 'Towel (wet/dry), club brush, ball markers (bring two — you will lose one), divot tool, scorecard holder, tee supply, extra glove, sunscreen. These never leave the bag regardless of destination.'],
+      ['Travel Bag For The Clubs', 'A hard-case travel bag protects clubs from airline baggage. A soft-shell travel bag with padding works for car trips. The non-negotiable is wrapping the drivers — a headcover and a towel around the shaft does the job.'],
+      ['Apparel For Four Rounds', 'Four polos or performance shirts, two mid-layers (quarter-zip or lightweight jacket), one rain jacket, four pairs of performance socks, two pairs of golf shorts or pants. Pack exactly this and you are set for any weather swing.'],
+      ['Shoe Bag', 'A vented shoe bag keeps spikes separate from clothes in the travel bag. It takes 30 seconds to pack and avoids the dirt-in-the-clothes problem on every trip.'],
+      ['What To Leave Home', 'Range finders you never use. Extra headcovers. A full box of 24 balls (buy locally if needed). Anything you are bringing "just in case" that you have not used in three rounds.'],
+      ['WYX Trip Gear', 'Golf shoe bag, towel, scorecard holder, and a club brush are the four WYX picks that belong in every travel bag. Use WYX10 for 10% off your first order.']
+    ]
+  },
+  {
     slug: 'fathers-day-golf-gifts-last-minute',
     title: "Last-Minute Father's Day Golf Gifts That Still Feel Intentional",
     seo: "Last-Minute Father's Day Golf Gifts | WYX Golf Supply Co.",

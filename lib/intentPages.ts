@@ -370,6 +370,42 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 25)
   },
+  'golf-travel-bag': {
+    slug: 'golf-travel-bag',
+    title: 'Golf Trip Gear — Pack Right, Play Better.',
+    eyebrow: 'Trip Ready',
+    description: 'Shoe bags, towels, club brushes, and bag accessories built for golf travel weekends — car trips, destination rounds, and bachelor party golf weekends.',
+    metaTitle: 'Golf Travel Bag & Trip Gear | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf travel gear from WYX Golf Supply Co. — shoe bags, towels, scorecard holders, and trip accessories for golf weekends and destination rounds.',
+    primaryCta: 'Shop Trip Gear',
+    secondaryCta: 'Golf Trip Kits',
+    secondaryHref: '/golf-trip-gear',
+    proof: ['Packs in any travel bag', 'Keeps gear separated', 'Ships before your trip', 'WYX10 launch code'],
+    faq: [
+      ['What should I pack in a golf travel bag?', 'The essentials: a vented shoe bag, a clean towel, a club brush, a scorecard holder, extra tees, and a second glove. These cover every practical need for a 4-round trip without adding bulk.'],
+      ['Do I need a special golf shoe bag?', 'Yes — a vented golf shoe bag keeps spikes away from clothes and lets moisture escape. Regular stuff sacks trap odor and moisture. Any golfer who travels more than twice a year should have one.'],
+      ['What are the best golf gifts for a golf trip?', 'A shoe bag, a golf towel, and a scorecard holder make a practical trip gift bundle for under $80. Everything goes in the bag and gets used on day one.']
+    ],
+    match: (product) => categoryIn(product, ['Accessories', 'Towels', 'Club Care']) || has(product, /shoe bag|travel bag|trip gear|scorecard|club brush|towel/)
+  },
+  'best-golf-gifts-under-100': {
+    slug: 'best-golf-gifts-under-100',
+    title: 'Best Golf Gifts Under $100 — What Actually Gets Used.',
+    eyebrow: 'Real Budget',
+    description: 'Curated golf accessories under $100 — from $15 consumables to $75 rangefinders. Every pick earns a spot in the bag.',
+    metaTitle: 'Best Golf Gifts Under $100 | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts under $100 from WYX Golf Supply Co. — alignment sticks, putting mirrors, rangefinders, towels, gloves, and bag accessories for weekend golfers.',
+    primaryCta: 'Shop Under $100',
+    secondaryCta: 'Under $60 Picks',
+    secondaryHref: '/golf-gifts-under-60',
+    proof: ['Every pick under $100', 'No sizing on most picks', 'Practical over novelty', 'WYX10 launch code'],
+    faq: [
+      ['What are the best golf gifts under $100?', 'The best gifts in this range are layered by price: under $25 for consumables (markers, tees, grip tape), $25–$60 for bag upgrades (towel, alignment sticks, scorecard holder), and $60–$100 for skill tools (putting mirror + trainer combo or rangefinder).'],
+      ['Is a rangefinder a good gift under $100?', 'Entry-level pin-seeker rangefinders can land under $100. They are the highest-impact purchase for a weekend golfer who wants actual yardages instead of estimates.'],
+      ['Can I build a golf gift bundle under $100?', 'Yes. Towel + alignment sticks + scorecard holder + ball marker = under $90 at WYX. Use WYX10 for an additional 10% off your first order.']
+    ],
+    match: (product) => under(product, 100)
+  },
   'golf-putting-mat': {
     slug: 'golf-putting-mat',
     title: 'Golf Putting Gear — Mirror, Mat, and Practice Tools That Work.',

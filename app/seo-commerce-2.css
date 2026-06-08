@@ -183,3 +183,31 @@
 /* ── seo-guide-card border accent on hover ── */
 .seo-guide-card{transition:border-color .18s ease}
 .seo-guide-card:hover{border-color:color-mix(in oklab,var(--lime) 40%,var(--line) 60%)}
+
+/* ── trip / travel intent page — icon chips ── */
+.trip-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
+.trip-chips span{display:inline-flex;align-items:center;gap:.3rem;padding:.28rem .72rem;border:1px solid var(--line);font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--forest)}
+/* ── price tier strip — 4-bucket layout for under-$100 page ── */
+.price-tier-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin:1.5rem 0}
+@media(max-width:600px){.price-tier-strip{grid-template-columns:repeat(2,1fr)}}
+.price-tier{padding:.85rem;border:1px solid var(--line);text-align:center}
+.price-tier .tier-label{font-size:.62rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.25rem}
+.price-tier .tier-range{font-family:var(--font-display),Georgia,serif;font-size:1.3rem;letter-spacing:-.04em;color:var(--forest)}
+/* ── article image — full bleed with max-height ── */
+.article>img{width:100%;max-height:420px;object-fit:cover;display:block;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+/* ── trust-list — space items better on mobile ── */
+@media(max-width:480px){.trust-list{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}}
+/* ── ai-answer-box — conversational panel polish ── */
+.ai-answer-box{background:color-mix(in oklab,var(--cream) 70%,var(--paper) 30%);border-left:3px solid var(--lime);padding:.85rem 1rem;margin:1rem 0}
+.ai-answer-box strong{font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
+.ai-answer-box p{font-size:.92rem;line-height:1.6;color:var(--ink);margin:0}
+/* ── breadcrumbs — clean separator ── */
+.breadcrumbs{display:flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem;color:var(--muted)}
+.breadcrumbs a{color:var(--muted);text-decoration:none}
+.breadcrumbs a:hover{color:var(--forest)}
+.breadcrumbs span[aria-hidden]{color:var(--line)}
+/* ── journal article — related CTA block ── */
+.article-cta-block{background:var(--forest);color:var(--paper);padding:clamp(1.5rem,3vw,2.5rem);margin-top:clamp(2rem,5vw,4rem);display:flex;flex-direction:column;gap:.75rem}
+.article-cta-block .eyebrow{color:var(--lime)}
+.article-cta-block h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.05em;line-height:1;margin:0}
+.article-cta-block a.button{align-self:flex-start}
