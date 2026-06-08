@@ -509,3 +509,13 @@ h3{font-size:1.45rem;font-weight:700}
 @media(min-width:1200px){.product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 /* occasion-grid — 4 col wide */
 @media(min-width:1200px){.occasion-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* h4 — editorial sub-heading size, Fraunces already applied by h1-h4 rule */
+h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;margin:.15rem 0 .55rem}
+/* page-hero h1 — tighter max-width on info/policy pages for readability */
+.page-hero h1{max-width:22ch}
+/* product-card img — no orphan border on hover */
+.product-card img{border-radius:0}
+/* filter-row a — transition for pill state change */
+.filter-row a{transition:background .15s ease,border-color .15s ease,color .15s ease}
+/* editorial-product-grid responsive — 2-col on medium */
+@media(min-width:651px) and (max-width:899px){.editorial-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
