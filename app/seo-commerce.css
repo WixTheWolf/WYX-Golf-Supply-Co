@@ -97,3 +97,12 @@
 .quick-paths a::after{content:"→";position:absolute;right:.7rem;opacity:0;transform:translateX(-5px);transition:opacity .18s ease,transform .18s ease;font-style:normal;font-weight:700}
 .quick-paths a:hover{padding-right:2rem}
 .quick-paths a:hover::after{opacity:1;transform:translateX(0)}
+/* kit-visual-card — use brand display font (Fraunces) consistently */
+.kit-visual-card strong{font-family:var(--font-display),Georgia,Times New Roman,serif}
+/* footer-note — subdued metadata lines in the footer */
+.footer-note{margin:.2rem 0;color:var(--muted);font-size:.82rem}
+.footer-note strong{color:var(--forest)}
+/* scroll-margin-top — prevent sticky header from clipping anchor targets */
+#short-list,#kits{scroll-margin-top:5rem}
+/* focus-visible ring — keyboard accessibility for interactive elements */
+.button:focus-visible,.text-link:focus-visible,.quick-paths a:focus-visible,.kit-visual-card:focus-visible,.editorial-image-link:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
