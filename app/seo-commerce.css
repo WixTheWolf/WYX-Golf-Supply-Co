@@ -499,3 +499,13 @@ h3{font-size:1.45rem;font-weight:700}
 .marketing-grid .marketing-card span{display:block;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
 .marketing-card p{margin:0;font-size:.9rem;line-height:1.55;word-break:break-word}
 @media(max-width:650px){.marketing-grid{grid-template-columns:1fr}}
+/* focus-visible — global keyboard nav ring for interactive elements */
+.filter-row a:focus-visible,.variant-option-grid label:focus-within,.detail-list summary:focus-visible,.nav-links a:focus-visible,.header-cta:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+/* variant-option-grid label — transition for selection state */
+.variant-option-grid label{transition:border-color .15s ease,background .15s ease}
+/* product-card-footer — price + link consistent baseline */
+.product-card-footer{font-size:.88rem}
+/* product-grid at 4 col on large viewports */
+@media(min-width:1200px){.product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* occasion-grid — 4 col wide */
+@media(min-width:1200px){.occasion-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
