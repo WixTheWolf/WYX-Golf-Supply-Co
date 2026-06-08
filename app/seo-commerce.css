@@ -228,3 +228,24 @@ h3{font-size:1.45rem;font-weight:700}
 .page-hero h1{font-weight:900;letter-spacing:-.04em}
 /* section heading h2 — strong editorial contrast */
 .section-heading h2,.why-wyx h2{font-weight:900}
+/* text selection — brand colors for a polished touch */
+::selection{background:var(--lime);color:var(--ink)}
+/* scrollbar — thin, branded in supporting browsers */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:color-mix(in oklab,var(--forest) 40%,transparent 60%);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--forest)}
+/* announcement bar — subtle marquee-ready text with lime spans */
+.announcement{letter-spacing:.16em}
+/* quick-paths nav — wrap gracefully on mobile */
+.quick-paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.6rem}
+.quick-paths a{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;border:1px solid var(--line);text-decoration:none;font-size:.71rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--paper);transition:background .18s ease,border-color .18s ease,padding-right .18s ease}
+.quick-paths a:hover{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+/* fix: remove arrow override that conflicts with the lime-fill hover */
+.quick-paths a::after,.quick-paths a:hover{padding-right:initial}
+/* intent proof — tighter visual consistency with homepage trust strip */
+.intent-proof-grid{margin-top:1.5rem}
+/* product section — clear visual break before related products */
+.product-section{border-top:1px solid var(--line);padding-top:2.5rem}
+/* quick-paths — remove legacy arrow pseudo to avoid conflict with lime fill */
+.quick-paths a::after{content:none}
