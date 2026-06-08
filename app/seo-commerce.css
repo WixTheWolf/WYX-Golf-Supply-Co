@@ -106,6 +106,10 @@
 #short-list,#kits{scroll-margin-top:5rem}
 /* focus-visible ring — keyboard accessibility for interactive elements */
 .button:focus-visible,.text-link:focus-visible,.quick-paths a:focus-visible,.kit-visual-card:focus-visible,.editorial-image-link:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+/* scroll reveal — pairs with ScrollRevealInit.tsx IntersectionObserver */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+.reveal.is-revealed{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 /* trust-list — product page badges, consistent gold checkmark with homepage */
 .trust-list span::before{content:"✓";display:inline-block;margin-right:.42rem;color:var(--lime);font-weight:900}
 /* detail-list accordion — +/− indicator and smooth open/close feel */
