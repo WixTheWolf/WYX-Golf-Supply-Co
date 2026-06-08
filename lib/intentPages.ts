@@ -370,6 +370,42 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 25)
   },
+  'golf-grips': {
+    slug: 'golf-grips',
+    title: 'Golf Grips & Grip Tape — DIY Regripping Made Easy.',
+    eyebrow: 'Grip Upgrade',
+    description: 'Grip tape rolls, regripping supplies, and club-care gear for weekend golfers who want to regrip at home and stop paying shop rates every season.',
+    metaTitle: 'Golf Grips & Grip Tape | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf grip tape and regripping supplies from WYX Golf Supply Co. — one roll covers a full set. DIY regripping under $20 including supplies.',
+    primaryCta: 'Shop Grip Tape',
+    secondaryCta: 'Club Care',
+    secondaryHref: '/bag-upgrades',
+    proof: ['One roll = full set', 'DIY in 45 minutes', 'Stops slipping immediately', 'WYX10 launch code'],
+    faq: [
+      ['How do I know when to regrip my golf clubs?', 'If your grips feel slick when dry, show shiny worn patches, or you are gripping tighter to compensate, it is time. Most golfers should regrip once a season.'],
+      ['Can I regrip golf clubs at home?', 'Yes — you need grip tape, solvent (or paint thinner), a utility knife, and about 45 minutes. One roll of double-sided grip tape covers a full 14-club set.'],
+      ['Is grip tape different from regular tape?', 'Golf grip tape is double-sided and designed to hold against sweat and repeated rotation. Regular tape degrades quickly. Use golf-specific tape for a lasting bond.']
+    ],
+    match: (product) => categoryIn(product, ['Grips', 'Club Care']) || has(product, /grip tape|regrip|grip solvent|club grip/)
+  },
+  'golf-gifts-for-coworkers': {
+    slug: 'golf-gifts-for-coworkers',
+    title: 'Golf Gifts For Coworkers That Land Every Time.',
+    eyebrow: 'Office Ready',
+    description: 'Practical golf accessories for office gifting — no sizing risk, under $60, ships in clean packaging. Works for any skill level from once-a-year scramble golfer to weekend regular.',
+    metaTitle: 'Golf Gifts For Coworkers | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts for coworkers from WYX Golf Supply Co. — ball markers, gloves, towels, and bag accessories under $60. No sizing required. Ships fast.',
+    primaryCta: 'Shop Coworker Gifts',
+    secondaryCta: 'Under $25 Picks',
+    secondaryHref: '/golf-gifts-under-25',
+    proof: ['No sizing on most picks', 'Ships fast and clean', 'Under $60 options', 'WYX10 launch code'],
+    faq: [
+      ['What is a good golf gift for a coworker?', 'The safest golf gifts are accessories with no sizing: ball markers, hat clips, grip tape, towels, and scorecard holders. All useful, all under $50, and none require knowing their preferences.'],
+      ['How much should I spend on a golf gift for a coworker?', 'For a general office gift, $20–$35 is standard. For a closer colleague or manager, $40–$60 gives you room for a real bag upgrade.'],
+      ['Can I get golf gifts shipped to an office?', 'Yes. WYX ships to any US address. Most orders arrive in 3–5 business days. Use WYX10 for 10% off your first order.']
+    ],
+    match: (product) => under(product, 60) && categoryIn(product, ['Accessories', 'Towels', 'Gloves', 'Headwear'])
+  },
   'scramble-prize-ideas': {
     slug: 'scramble-prize-ideas',
     title: 'Scramble Prize Ideas That Players Actually Want.',

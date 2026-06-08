@@ -296,6 +296,51 @@ export const posts = [
     ]
   },
   {
+    slug: 'best-golf-grips-2026',
+    title: 'Best Golf Grips 2026 — When To Regrip And What To Buy',
+    seo: 'Best Golf Grips 2026 | WYX Golf Supply Co.',
+    description: 'Everything you need to know about golf grips in 2026 — when to regrip, which grip tape works, and what the best grips feel like on worn-out clubs.',
+    image: imageMap.hero,
+    sections: [
+      ['When To Regrip', 'Grips last about 30–40 rounds or one full season in a wet climate. If the grip feels slick even when dry, or you can see shiny spots on the surface, it is time. Most golfers wait too long and then wonder why their swing feels off.'],
+      ['Best Grip Tape For DIY', 'Double-sided golf grip tape is the only material you need. One standard roll covers a full 14-club set. Pair it with grip solvent (or paint thinner in a pinch) and a utility knife. The job takes about 45 minutes start to finish.'],
+      ['Grip Size Matters', 'Standard grips fit most men and women. Midsize grips add about 1/16 inch in diameter and reduce the tendency to flip the hands through impact — useful if you are fighting a draw or hook. Jumbo grips are mainly for putting or players with larger hands.'],
+      ['What To Look For', 'Tackiness on contact, consistent texture across the full grip, and no swell or taper inconsistency. Cord grips handle moisture better; rubber grips are softer and quieter. Most weekend golfers do well with a standard rubber grip.'],
+      ['Cost To DIY vs Shop', 'A golf shop charges $4–$8 per club for regripping plus the cost of the grips. DIY with WYX grip tape and new grips costs less than $2 per club all-in. On 14 clubs, that is a real difference.'],
+      ['WYX Tip', 'Use code WYX10 for 10% off grip tape and accessories. The first regrip feels slower than the second — by the third club you will have it down.']
+    ]
+  },
+  {
+    slug: 'how-to-clean-golf-clubs',
+    title: 'How To Clean Golf Clubs Properly (And Why It Matters)',
+    seo: 'How To Clean Golf Clubs | WYX Golf Supply Co.',
+    description: 'A practical guide to cleaning golf clubs — irons, wedges, woods, and putters — plus the tools that make it faster every round.',
+    image: imageMap.hero,
+    sections: [
+      ['Why Clean Clubs Matter', 'Dirt in the grooves of a wedge can cost you 20–30% of your spin. On a 60-yard shot that is the difference between checking up and running through the back. Clean clubs perform more consistently — it is not about aesthetics.'],
+      ['What You Need', 'A soft-bristle brush (or club brush), warm soapy water, a microfiber towel, and a groove pick for packed mud. That is the full kit. A club brush with a groove pick attached covers everything for in-round cleaning.'],
+      ['Cleaning Irons And Wedges', 'Soak the heads for 2–3 minutes in warm soapy water. Scrub with a brush in the grooves and across the face. Rinse and dry completely before storage. Never soak wooden or graphite-shaft clubs — only the head needs it.'],
+      ['Cleaning Drivers And Woods', 'Wipe the face and crown with a damp cloth after every round. Avoid submerging drivers. Use a light spray of water on the face and brush gently — the finish on woods is thinner and scratches easier than irons.'],
+      ['In-Round Cleaning', 'A wet towel loop on your bag handles in-round cleaning faster than any other method. Dry one end, wet the other. Wipe the face before every shot on approach or wedge play. It takes 3 seconds and keeps grooves clear.'],
+      ['WYX Club Brush', 'The WYX club brush has a dual-sided head: nylon bristles for the face and a groove pick for packed dirt. It clips to any bag ring and handles both. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'golf-gifts-for-coworkers',
+    title: 'Golf Gifts For Coworkers — What Works For Any Budget',
+    seo: 'Golf Gifts For Coworkers | WYX Golf Supply Co.',
+    description: 'Golf gift ideas for coworkers, colleagues, and office occasions — no sizing required, under $60, practical for any level of golfer.',
+    image: imageMap.hero,
+    sections: [
+      ['Keep It Practical', 'The best golf gift for a coworker is something they can use immediately without guessing at their level. Skip custom-fit gear and focus on accessories: a ball marker, a glove, grip tape, or a towel. These go in the bag and stay there.'],
+      ['Under $25 Office Gift', 'A magnetic hat clip with a ball marker ($24) is one of the best small golf gifts you can give. It solves a real problem — no more patting pockets on the green — and it works for any golfer. No sizing, no shipping worry, real utility.'],
+      ['Under $50 Coworker Gift', 'Golf towels, alignment sticks, or a scorecard holder all land in the $30–$50 range. These are the kind of bag upgrades that feel intentional without being over-the-top. Easy to wrap, easy to ship.'],
+      ['Group Gift Option', 'If the whole team is chipping in, a curated bundle of 3–4 accessories makes a strong group gift. Try: towel + ball marker set + glove + hat clip. Total comes in under $100 and covers real bag essentials.'],
+      ['What To Avoid', 'Novelty golf gifts (funny headcovers, gag balls, costume tees) wear out fast. If the coworker is a serious golfer, stick to practical gear. If they are casual, anything small and fun works.'],
+      ['WYX10 For Orders', 'Use code WYX10 for 10% off your first WYX order. Coworker golf gifts are the perfect cart for a first order — practical, well-priced, and ships clean.']
+    ]
+  },
+  {
     slug: 'twilight-golf',
     title: 'Twilight Golf and the Long Game',
     seo: 'Twilight Golf and the Long Game | WYX Golf Supply Co.',

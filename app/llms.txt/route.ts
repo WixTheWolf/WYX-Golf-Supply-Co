@@ -40,6 +40,8 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Golf practice gear: ${siteUrl}/golf-practice-gear
 - Golf gifts for women: ${siteUrl}/golf-gifts-for-women
 - Best golf accessories 2026: ${siteUrl}/best-golf-accessories-2026
+- Golf grips & grip tape: ${siteUrl}/golf-grips
+- Golf gifts for coworkers: ${siteUrl}/golf-gifts-for-coworkers
 - Scramble prize ideas: ${siteUrl}/scramble-prize-ideas
 - Golf gifts under $25: ${siteUrl}/golf-gifts-under-25
 - Shipping and returns: ${siteUrl}/shipping-returns
