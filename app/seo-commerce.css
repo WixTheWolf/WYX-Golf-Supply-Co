@@ -494,3 +494,8 @@ h3{font-size:1.45rem;font-weight:700}
 .first-sale-hero .share-card{position:sticky;top:6rem;background:var(--paper);border:1px solid var(--line);padding:1.5rem;border-left:3px solid var(--lime)}
 @media(max-width:900px){.first-sale-hero{grid-template-columns:1fr}}
 @media(max-width:900px){.first-sale-hero .share-card{position:static}}
+/* marketing-grid — 2-col grid of marketing-card items */
+.marketing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+.marketing-grid .marketing-card span{display:block;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.marketing-card p{margin:0;font-size:.9rem;line-height:1.55;word-break:break-word}
+@media(max-width:650px){.marketing-grid{grid-template-columns:1fr}}
