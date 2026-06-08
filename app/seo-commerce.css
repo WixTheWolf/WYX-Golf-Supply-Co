@@ -218,3 +218,13 @@
 .product-card .text-link:hover{color:var(--pine)}
 /* section eyebrow — consistent spacing when above h2 */
 .section-heading .eyebrow,.page-hero .eyebrow{margin-bottom:.35rem;display:block}
+/* headings — use loaded Fraunces display font instead of fallback Georgia */
+h1,h2,h3,h4{font-family:var(--font-display),Georgia,'Times New Roman',serif}
+/* h3 — kit cards, product panel accordions feel more editorial */
+h3{font-size:1.45rem;font-weight:700}
+/* purchase-panel h2 (accordion heads) — keep at readable size */
+.purchase-panel h2,.detail-list h2{font-size:1.35rem;letter-spacing:-.025em}
+/* page-hero h1 — generous display weight */
+.page-hero h1{font-weight:900;letter-spacing:-.04em}
+/* section heading h2 — strong editorial contrast */
+.section-heading h2,.why-wyx h2{font-weight:900}
