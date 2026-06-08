@@ -370,6 +370,24 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 25)
   },
+  'golf-putting-mat': {
+    slug: 'golf-putting-mat',
+    title: 'Golf Putting Gear — Mirror, Mat, and Practice Tools That Work.',
+    eyebrow: 'Putting Practice',
+    description: 'Putting mirrors, practice aids, and setup tools for weekend golfers who want to fix their putting at home — no lesson required.',
+    metaTitle: 'Golf Putting Mat & Putting Mirror | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf putting practice gear from WYX Golf Supply Co. — putting alignment mirrors and training aids for home use. Fix your setup in 15 minutes.',
+    primaryCta: 'Shop Putting Gear',
+    secondaryCta: 'All Training Aids',
+    secondaryHref: '/golf-practice-gear',
+    proof: ['Fix setup at home', 'Works on any surface', 'Pairs with any mat', 'WYX10 launch code'],
+    faq: [
+      ['Do putting mats actually improve your game?', 'Yes — specifically for alignment and distance control. Pair a mat with a putting mirror for the highest-leverage home practice setup in golf.'],
+      ['What is a putting alignment mirror?', 'A putting mirror is a flat reflective surface you set on the ground at address. It shows your eye position, shoulder alignment, and putter face angle before you stroke — the three most common putting setup errors.'],
+      ['Is a putting mirror a good golf gift?', 'Yes — it is practical, under $40, works on any surface, and addresses a real problem most golfers have. One of the best training aid gifts for any skill level.']
+    ],
+    match: (product) => categoryIn(product, ['Training Aids']) || has(product, /putting mirror|putting mat|putting aid|alignment mirror/)
+  },
   'golf-grips': {
     slug: 'golf-grips',
     title: 'Golf Grips & Grip Tape — DIY Regripping Made Easy.',

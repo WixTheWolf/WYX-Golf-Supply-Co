@@ -296,6 +296,51 @@ export const posts = [
     ]
   },
   {
+    slug: 'fathers-day-golf-gifts-last-minute',
+    title: "Last-Minute Father's Day Golf Gifts That Still Feel Intentional",
+    seo: "Last-Minute Father's Day Golf Gifts | WYX Golf Supply Co.",
+    description: "Father's Day is June 21. If you're shopping late, here are the golf gifts that ship fast, skip the sizing risk, and feel like you planned it all along.",
+    image: imageMap.hero,
+    sections: [
+      ['Why Golf Gifts Work Last Minute', 'Consumable golf accessories have no sizing guesswork. A glove, a towel, grip tape, ball markers — every golfer can use them starting round one. No returns, no disappointment.'],
+      ['Ships Fast From WYX', 'Most WYX orders ship in 1–2 business days. Order by June 18 for standard delivery before Father\'s Day June 21. Use WYX10 for 10% off your first cart.'],
+      ['Best Under $25', 'Magnetic hat clip with ball marker ($24). Goes straight in the bag, solves an actual problem, and ships fast. One of the cleanest last-minute golf gifts at any price point.'],
+      ['Best Under $50', 'A golf towel + ball marker set is a complete, practical gift that feels deliberate even if you ordered it yesterday. Add grip tape for a bag-upgrade bundle under $50.'],
+      ['Best Under $60 For A Serious Golfer', 'Alignment sticks + a scorecard holder = practice tool + bag upgrade in one order. Under $60, no sizing, ships in time. Easy yes for any dad who plays more than twice a month.'],
+      ['The WYX10 Play', 'First order gets 10% off with code WYX10 during the launch window. Father\'s Day is the perfect first cart moment.']
+    ]
+  },
+  {
+    slug: 'golf-putting-mat-guide',
+    title: 'Golf Putting Mat Guide — Do They Actually Work?',
+    seo: 'Golf Putting Mat Guide | WYX Golf Supply Co.',
+    description: 'Honest guide to golf putting mats — who they help, what to look for, how to use one at home, and what to pair with one for the most useful practice setup.',
+    image: imageMap.hero,
+    sections: [
+      ['Do Putting Mats Actually Help?', 'Yes — for specific problems. If your miss is alignment (where you aim vs. where the ball goes), a putting mirror paired with any flat surface catches it immediately. If your miss is distance control, a mat with a target gives you real feedback in real time.'],
+      ['What To Look For', 'Surface texture matters most. Cheap mats roll fast and inconsistently. A good mat mimics stimp 10–11 conditions — closer to most real greens. Avoid anything under 6 feet for distance control work.'],
+      ['Putting Mirror + Mat Combo', 'A putting mirror is the highest-leverage home putting tool. It confirms eye position and face angle at setup before the stroke. Pair it with a mat for a complete indoor session: mirror for setup, mat for stroke feedback.'],
+      ['Ball Position And Alignment', 'Most weekend golfers play the ball too far back in their stance on putts. The mirror shows this instantly. Fix the setup first — the stroke improves automatically in most cases.'],
+      ['Practice Routine', 'Ten 6-foot putts with the mirror for setup check. Twenty 20-foot lag putts for distance control on the mat. Five 3-footers to build confidence. Fifteen minutes total. More consistent than a full range session for saving strokes.'],
+      ['WYX Putting Mirror', 'The WYX putting mirror works on any flat surface — tile, hardwood, carpet with a mat underneath. Use code WYX10 for 10% off your first WYX order.']
+    ]
+  },
+  {
+    slug: 'best-golf-gifts-for-teenagers',
+    title: 'Best Golf Gifts For Teenage Golfers (That They Actually Use)',
+    seo: 'Best Golf Gifts For Teen Golfers | WYX Golf Supply Co.',
+    description: 'Golf gift ideas for teenage golfers — practical accessories that go in the bag, are priced for gift budgets, and skip the sizing guesswork.',
+    image: imageMap.hero,
+    sections: [
+      ['Teen Golfers Are Practical', 'A teenage golfer does not need novelty. They need consumables and real bag accessories. Grip tape, ball markers, a clean hat, and alignment sticks get used every practice session.'],
+      ['Best Under $25 For A Teen', 'A magnetic hat clip with ball marker ($24) is the most useful sub-$25 golf gift for any golfer. They actually use it every round — no more losing a marker or checking pockets on the green.'],
+      ['Best Under $50', 'Alignment sticks ($22) are the best practice gift for a developing golfer. Every PGA Tour player has a set. They fix setup, alignment, and swing path — the three most common problems in a developing game.'],
+      ['Avoid Novelty', 'Funny headcovers, trick balls, and novelty accessories feel fun in the bag for one round and then disappear. Stick to practical: grip tape, towels, markers, tees, gloves. These stay in the bag.'],
+      ['If They Take Lessons', 'A putting mirror is the highest-leverage home tool for a golfer actively improving. It shows eye position and face angle — two things a lesson might address but a mirror reinforces every day for free.'],
+      ['WYX10 First Order', 'Use WYX10 for 10% off. Golf accessories are the perfect first WYX cart — practical, useful, and the kind of thing any golfer needs restocked.']
+    ]
+  },
+  {
     slug: 'best-golf-grips-2026',
     title: 'Best Golf Grips 2026 — When To Regrip And What To Buy',
     seo: 'Best Golf Grips 2026 | WYX Golf Supply Co.',

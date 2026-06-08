@@ -161,3 +161,25 @@
 @media(max-width:480px){.intent-proof-grid{gap:.4rem}.intent-proof-grid span{font-size:.68rem;padding:.3rem .6rem}}
 /* ── journal post sections — subtle entry spacing ── */
 .article section+section{padding-top:clamp(1.25rem,3vw,2rem);border-top:1px solid var(--line)}
+
+/* ── putting-mat / practice intent pages ── */
+.collection-hero[data-slug="golf-putting-mat"] .collection-hero-eyebrow,
+.collection-hero[data-slug="golf-practice-gear"] .collection-hero-eyebrow{letter-spacing:.13em}
+/* ── last-minute urgency strip — warm amber accent ── */
+.urgency-strip{background:color-mix(in oklab,var(--sand) 55%,var(--cream) 45%);border:1px solid color-mix(in oklab,var(--sand) 80%,var(--line) 20%);padding:.5rem 1rem;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-align:center;color:var(--forest)}
+/* ── journal grid card — hover lift ── */
+.journal-card{transition:transform .18s ease,box-shadow .18s ease}
+.journal-card:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(11,31,23,.1)}
+/* ── quick-paths bar — subtle scroll hint on small screens ── */
+@media(max-width:600px){.quick-paths{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.quick-paths::-webkit-scrollbar{display:none}}
+/* ── product-detail section — alt bg on "why" block ── */
+.product-why{background:var(--cream);padding:clamp(1.25rem,3vw,2rem);margin-top:1.5rem}
+.product-why h2{font-family:var(--font-display),Georgia,serif;font-size:1.15rem;letter-spacing:-.03em;margin:0 0 .5rem;color:var(--forest)}
+.product-why p{font-size:.9rem;line-height:1.65;color:var(--muted);margin:0}
+/* ── hero promo badge — absolute lime corner tag ── */
+.hero-badge{display:inline-block;background:var(--lime);color:var(--ink);font-size:.62rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .65rem;margin-bottom:.85rem}
+/* ── collection proof — 2-col on medium screens ── */
+@media(min-width:500px) and (max-width:799px){.intent-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* ── seo-guide-card border accent on hover ── */
+.seo-guide-card{transition:border-color .18s ease}
+.seo-guide-card:hover{border-color:color-mix(in oklab,var(--lime) 40%,var(--line) 60%)}
