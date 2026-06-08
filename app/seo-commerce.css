@@ -340,3 +340,18 @@ h3{font-size:1.45rem;font-weight:700}
 .filter-row a.active{background:var(--lime);color:var(--ink);border-color:var(--lime)}
 /* results-heading span — muted count */
 .results-heading span{color:var(--muted);font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+/* email input — focus ring and hover treatment */
+.email-capture input[type="email"]:focus{outline:2px solid var(--lime);outline-offset:0;border-color:var(--lime)}
+.email-capture input[type="email"]:hover{border-color:color-mix(in oklab,var(--paper) 45%,transparent)}
+/* email-capture h2 — display font for editorial weight */
+.email-capture h2{font-family:var(--font-display),Georgia,serif;font-weight:900;letter-spacing:-.04em}
+/* link on page — consistent underline offset across body copy */
+.article a:not(.button),.page-hero a:not(.button){text-underline-offset:4px;text-decoration-thickness:1px}
+/* product-card body p (buy-reason) — slightly tighter spacing */
+.product-card .buy-reason{font-size:.84rem;margin:.3rem 0 .6rem}
+/* breadcrumbs — lime accent on last item */
+.breadcrumbs span:last-child{color:var(--forest);font-weight:700}
+/* deal-strip — full-width on mobile */
+@media(max-width:650px){.deal-strip{grid-template-columns:1fr 1fr}}
+/* article/journal p — optimized reading size */
+.article p,.journal-card p{font-size:.96rem;line-height:1.68}
