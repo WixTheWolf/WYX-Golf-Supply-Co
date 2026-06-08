@@ -117,3 +117,18 @@
 .share-card p{font-size:.88rem;line-height:1.55;color:color-mix(in oklab,var(--paper) 82%,transparent)}
 /* ── deal-hero — responsive grid on mobile ── */
 @media(max-width:700px){.deal-hero{display:block}.share-card{margin-top:1.25rem}}
+
+/* ── how-to article — numbered section headings ── */
+.article section{counter-increment:section}
+.article section h2::before{content:counter(section) ". ";color:var(--lime);font-size:.8em;font-weight:900;letter-spacing:-.02em}
+/* ── journal listing — masonry feel on wide screens ── */
+@media(min-width:1200px){.journal-grid{grid-template-rows:masonry}}
+/* ── intent page — 2-col proof grid on mobile ── */
+@media(max-width:500px){.intent-proof-grid{grid-template-columns:1fr 1fr}}
+/* ── product-card category badge colors by type ── */
+.product-status[data-category="Training Aids"]{background:color-mix(in oklab,var(--pine) 85%,var(--lime) 15%)}
+.product-status[data-category="Club Care"]{background:color-mix(in oklab,var(--forest) 80%,var(--sand) 20%)}
+/* ── collection-hero description — better line measure ── */
+.collection-hero p{max-width:48ch}
+/* ── first-cart CTA — lime bg on focused quick-path ── */
+.quick-paths a:first-child{border-color:color-mix(in oklab,var(--lime) 55%,var(--line) 45%);font-weight:900}

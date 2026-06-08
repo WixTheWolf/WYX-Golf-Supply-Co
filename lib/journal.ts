@@ -170,6 +170,62 @@ export const posts = [
     ]
   },
   {
+    slug: 'how-to-regrip-golf-clubs',
+    title: 'How To Re-Grip Golf Clubs At Home (Step by Step)',
+    seo: 'How To Re-Grip Golf Clubs | WYX Golf Supply Co.',
+    description: 'A step-by-step guide to re-gripping golf clubs at home using grip tape, solvent, and new grips — cheaper and faster than paying the shop.',
+    image: imageMap.care,
+    sections: [
+      ['What You Need', 'Grip tape (double-sided, 2-inch), grip solvent (or mineral spirits), a hook blade or utility knife, a vice or clamp, and your new grips. The whole kit costs about $25 at home versus $5–$10 per club at a shop.'],
+      ['Step 1: Remove The Old Grip', 'Slide a hook blade under the butt end of the grip and cut from top to bottom. Peel the old grip and tape off. Clean any residue with solvent on a rag.'],
+      ['Step 2: Apply Tape', 'Wrap double-sided grip tape around the grip end of the shaft, slightly overlapping the butt cap. One strip covers most grips. Fold the top over the butt cap.'],
+      ['Step 3: Apply Solvent', 'Pour solvent into the new grip, cap the small end with your thumb, and shake to coat the inside. Pour the excess over the tape on the shaft.'],
+      ['Step 4: Slide And Align', 'Slide the grip onto the shaft quickly while the solvent keeps the tape slick. Align the logo and any alignment rib immediately — you have about 30 seconds before it sets.'],
+      ['Step 5: Let It Cure', 'Wait 24 hours before playing. The grip will be fully bonded and ready for the range.']
+    ]
+  },
+  {
+    slug: 'best-golf-gifts-2026',
+    title: 'Best Golf Gifts 2026 — The Only List You Need',
+    seo: 'Best Golf Gifts 2026 | WYX Golf Supply Co.',
+    description: 'The best golf gifts for 2026: practical picks for dads, weekend golfers, gift shoppers, and trip planners. All curated by WYX Golf Supply Co.',
+    image: imageMap.hero,
+    sections: [
+      ['The Consistent Winners', 'Year to year, the best golf gifts are the same: a fresh glove, a clean towel, a ball marker, a sleeve of balls, and grip tape. These are the consumables every golfer depletes and rarely buys for themselves.'],
+      ['The 2026 Upgrade Picks', 'This year, three accessories have moved up the useful-gift list: magnetic hat clips (simple, practical, always needed), putting alignment mirrors (home practice with real feedback), and leather scorecard holders (the bag detail most golfers skip).'],
+      ['For The Golfer Who Has Everything', 'For golfers who are well-equipped, lean into practice tools and club care: alignment sticks, a groove cleaner, and grip tape are the gifts that improve the game and stay in the bag permanently.'],
+      ['The Budget Breakdown', 'Under $25: grip tape, bamboo tees, ball markers. Under $50: alignment sticks, putting mirror, magnetic hat clip, scorecard holder. Under $75: glove + towel + marker bundle, golf umbrella, shoe bag. Use WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'how-to-improve-golf-swing-at-home',
+    title: 'How To Improve Your Golf Swing At Home (No Range Needed)',
+    seo: 'How To Improve Golf Swing At Home | WYX Golf Supply Co.',
+    description: 'Practical golf swing drills you can do at home — no range, no balls, no simulator required. For weekend golfers who want to build better habits between rounds.',
+    image: imageMap.iron,
+    sections: [
+      ['The Mirror Drill', 'Set up in front of a full-length mirror and rehearse your setup and takeaway. Check your posture, spine angle, and knee flex. Most swing problems start before the club moves.'],
+      ['The Towel Drill', 'Fold a towel and place it under both armpits. Make half swings without dropping the towel. This teaches connected arm motion and stops the over-the-top move.'],
+      ['Tempo Training', 'Use a weighted tempo trainer or a 7-iron with slow-motion swings. Count a 3-to-1 ratio: three beats back, one beat through. Slow practice ingrains timing faster than fast swings.'],
+      ['Putting On Carpet', 'A putting alignment mirror on carpet catches eye position and face angle problems that cost strokes every round. 15 minutes a night is enough to build a repeatable stroke.'],
+      ['The Half-Swing Drill', 'Full swings magnify errors. Half swings reveal them. Take a 9-iron into the backyard and make controlled half swings until impact is consistent. Then add length gradually.']
+    ]
+  },
+  {
+    slug: 'golf-gifts-for-women',
+    title: 'Golf Gifts For Women Golfers That Are Actually Good',
+    seo: 'Golf Gifts For Women Golfers | WYX Golf Supply Co.',
+    description: 'Practical and stylish golf gift ideas for women golfers — accessories, training aids, and bag upgrades that work regardless of skill level.',
+    image: imageMap.walk,
+    sections: [
+      ['Skip The Pink Version', 'The best golf gifts for women are the same as the best golf gifts for anyone: useful, practical, easy to add to the bag. Avoid pink-colored novelty versions of standard accessories.'],
+      ['Universal Wins', 'A premium cabretta glove in her size, a quality towel, a milled ball marker, and a leather scorecard holder are practical gifts that work for every skill level and every bag setup.'],
+      ['For The Golfer Who Practices', 'A putting alignment mirror and alignment sticks are the most useful training tools for golfers at any level. Neither has a size or gender version — they just work.'],
+      ['The Sizing Issue', 'For gloves, confirm her dominant hand and approximate glove size if possible. Most other golf accessories — markers, towels, scorecard holders, grip tape, tees — have zero sizing risk.'],
+      ['WYX Gift Note', 'All WYX products ship in clean packaging and apply code WYX10 at checkout. Use the golf gifts page to build a simple first cart.']
+    ]
+  },
+  {
     slug: 'scramble-prize-ideas-guide',
     title: 'The Best Scramble Prize Ideas (That Actually Get Used)',
     seo: 'Best Scramble Prize Ideas | WYX Golf Supply Co.',

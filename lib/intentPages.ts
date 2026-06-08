@@ -316,6 +316,42 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => categoryIn(product, ['Training Aids']) || has(product, /alignment|putting mirror|swing trainer|tempo trainer|training aid|range gear/)
   },
+  'golf-gifts-for-women': {
+    slug: 'golf-gifts-for-women',
+    title: 'Golf Gifts For Women Golfers That Actually Get Used.',
+    eyebrow: 'For Her Game',
+    description: 'Practical golf gift ideas for women golfers — gloves, towels, ball markers, scorecard holders, and training aids that work for every skill level and every bag.',
+    metaTitle: 'Golf Gifts For Women | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts for women from WYX Golf Supply Co. — gloves, towels, ball markers, scorecard holders, and training aids. No sizing guesswork for most picks.',
+    primaryCta: 'Shop Gifts For Her',
+    secondaryCta: 'Golf Gifts Under $60',
+    secondaryHref: '/golf-gifts-under-60',
+    proof: ['No sizing risk on most picks', 'Useful for every skill level', 'Ships in clean packaging', 'WYX10 launch code'],
+    faq: [
+      ['What are the best golf gifts for women?', 'The best golf gifts for women are the same as for any golfer: a quality glove, a clean towel, a ball marker, and small bag accessories. Avoid novelty pink versions — go practical.'],
+      ['Do I need to know her glove size?', 'For a glove, yes — ask for her dominant hand and approximate size. For everything else (towels, markers, scorecard holders, grip tape, tees), there is no sizing risk.'],
+      ['Are alignment sticks a good gift for a woman golfer?', 'Yes — alignment sticks are the most universally useful practice tool in golf. No size, no style preference required. They go in the bag immediately.']
+    ],
+    match: (product) => under(product, 75) || categoryIn(product, ['Accessories', 'Towels', 'Gloves', 'Training Aids'])
+  },
+  'best-golf-accessories-2026': {
+    slug: 'best-golf-accessories-2026',
+    title: 'Best Golf Accessories 2026 — What Actually Stays In The Bag.',
+    eyebrow: '2026 Picks',
+    description: 'The best golf accessories for 2026 — bag markers, towels, gloves, grip tape, alignment sticks, and club-care gear that weekend golfers use every round.',
+    metaTitle: 'Best Golf Accessories 2026 | WYX Golf Supply Co.',
+    metaDescription: 'Shop the best golf accessories for 2026 from WYX Golf Supply Co. — ball markers, towels, gloves, alignment sticks, grip tape, and bag upgrades for weekend golfers.',
+    primaryCta: 'Shop 2026 Picks',
+    secondaryCta: 'Golf Gifts',
+    secondaryHref: '/golf-gifts',
+    proof: ['Practical over novelty', 'Under $60 most picks', 'Consumable & giftable', 'WYX10 launch code'],
+    faq: [
+      ['What are the best golf accessories for 2026?', 'The best golf accessories are the ones that stay in the bag for years: a quality glove, a clean towel, a milled ball marker, grip tape, and alignment sticks. These are practical, low-risk, and always welcome.'],
+      ['What golf accessories should every golfer have?', 'Every bag should have: a clean towel, a reliable glove, ball markers, a divot tool, a tee supply, and a club brush. Most golfers are light on one or two of these — fill the gap.'],
+      ['What golf accessories are good as gifts?', 'Ball markers, gloves, towels, grip tape, alignment sticks, and scorecard holders are all easy gift choices. Most have no sizing risk and go straight into the bag.']
+    ],
+    match: (product) => under(product, 100) && categoryIn(product, ['Accessories', 'Towels', 'Gloves', 'Grips', 'Club Care', 'Training Aids'])
+  },
   'golf-gifts-under-25': {
     slug: 'golf-gifts-under-25',
     title: 'Golf Gifts Under $25 That Are Actually Good.',
