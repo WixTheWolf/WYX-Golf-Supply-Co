@@ -101,3 +101,19 @@
 .seo-guide .eyebrow{font-family:var(--font-display),Georgia,serif;font-size:.68rem;letter-spacing:.08em}
 /* ── product-card — magnetic/clip badge = sand bg ── */
 .product-card[data-type="Accessories"] .product-status{background:color-mix(in oklab,var(--sand) 55%,var(--forest) 45%)}
+
+/* ── scramble-prize-ideas / golf-gifts-under-25 intent pages ── */
+/* Both use IntentLandingPage — existing collection-hero styles apply */
+/* Extra: deal-strip on these pages gets a tournament context color */
+.scramble-hero .deal-strip span::before,.prize-strip span::before{content:"🏆 ";font-size:.9em}
+/* ── journal grid — 3-col on 1200px+ ── */
+@media(min-width:1200px){.journal-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ── journal-card read-time / date meta ── */
+.journal-card .eyebrow{display:block;font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin-bottom:.25rem}
+/* ── deal-hero aside share-card — warmer background ── */
+.share-card{background:color-mix(in oklab,var(--pine) 90%,var(--forest) 10%);color:var(--paper);padding:1.25rem 1.4rem}
+.share-card .eyebrow{color:var(--lime)}
+.share-card h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.05em;margin:.2rem 0 .5rem}
+.share-card p{font-size:.88rem;line-height:1.55;color:color-mix(in oklab,var(--paper) 82%,transparent)}
+/* ── deal-hero — responsive grid on mobile ── */
+@media(max-width:700px){.deal-hero{display:block}.share-card{margin-top:1.25rem}}

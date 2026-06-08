@@ -114,3 +114,33 @@ export function tripProducts(products: Product[], limit = 12) {
     .filter((product) => isBuyTodayProduct(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
     .slice(0, limit);
 }
+
+export function practiceProducts(products: Product[], limit = 12) {
+  return products
+    .filter((product) => isBuyTodayProduct(product))
+    .filter((product) => ['Training Aids'].includes(categoryFor(product)) || /alignment|putting mirror|swing trainer|tempo|practice|range gear/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
+    .slice(0, limit);
+}
+
+export function dadGiftProducts(products: Product[], limit = 12) {
+  const dadScore = (product: Product): number => {
+    const price = Number(productPrice(product).amount);
+    const category = categoryFor(product);
+    let score = 0;
+    if (price <= 60) score += 4;
+    if (price <= 35) score += 3;
+    if (['Towels', 'Accessories', 'Golf Balls', 'Gloves', 'Grips'].includes(category)) score += 3;
+    if (/marker|towel|glove|grip|ball|caddie|scorecard|alignment|hat|cap/i.test(`${product.title} ${(product.tags || []).join(' ')}`)) score += 2;
+    return score;
+  };
+  return products
+    .filter((product) => isBuyTodayProduct(product))
+    .sort((a, b) => dadScore(b) - dadScore(a))
+    .slice(0, limit);
+}
+
+export function giftUnder25Products(products: Product[], limit = 12) {
+  return products
+    .filter((product) => isBuyTodayProduct(product) && Number(productPrice(product).amount) <= 25)
+    .slice(0, limit);
+}

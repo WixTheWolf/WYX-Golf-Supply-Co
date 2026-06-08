@@ -170,6 +170,76 @@ export const posts = [
     ]
   },
   {
+    slug: 'scramble-prize-ideas-guide',
+    title: 'The Best Scramble Prize Ideas (That Actually Get Used)',
+    seo: 'Best Scramble Prize Ideas | WYX Golf Supply Co.',
+    description: 'A practical guide to scramble prizes for golf tournaments, charity events, and company outings — what players want, what to avoid, and how to build a prize table.',
+    image: imageMap.strategy,
+    sections: [
+      ['Start With The Bag', 'The best scramble prizes are things every golfer can use: a ball marker, a glove, a towel, a sleeve of balls. Avoid novelty items, branded stress balls, and plastic trophies.'],
+      ['The $15–$35 Sweet Spot', 'Prize table items in the $15–$35 range feel substantial without burning budget. Ball markers, magnetic hat clips, scorecard holders, and grip tape hit this window well and have zero sizing risk.'],
+      ['The Premium Anchor', 'Every good prize table has one or two $50–$100 anchors for the podium finishes. A nice hat, a premium glove, or a leather bag tag works here without going overboard.'],
+      ['Closest To The Pin Awards', 'CTPs work best with individual awards — something personal and usable. A milled ball marker set, a magnetic hat clip, or a leather bag tag is a clean gift for the winning approach.'],
+      ['Buying In Bulk', 'Add multiple units to your cart before checkout. Use WYX10 for 10% off your first order. Email WYX support for larger group buys.']
+    ]
+  },
+  {
+    slug: 'golf-putting-tips',
+    title: '5 Putting Tips That Work on Any Green',
+    seo: 'Golf Putting Tips | WYX Golf Supply Co.',
+    description: 'Five practical putting tips for weekend golfers: setup, read, speed, routine, and mental approach.',
+    image: imageMap.strategy,
+    sections: [
+      ['Eye Position Over the Ball', 'Most putting inconsistency starts with eye position. Your eyes should be directly over the ball or slightly inside. A putting mirror is the fastest way to check and fix this.'],
+      ['Read From Behind', 'Always walk behind the ball and look toward the hole before reading from the low side. The slope reveals itself better when you look up the line from behind.'],
+      ['Control Speed, Not Direction', 'Most missed putts are a speed problem, not a line problem. Practice lag putting from 20 and 30 feet before worrying about makeable distance.'],
+      ['Use a Pre-Putt Routine', 'One practice stroke, a look, and then go. A consistent routine removes the decision-making that stalls putting.'],
+      ['Aim at a Small Target', 'Pick the smallest possible spot on your intended line — a pebble, a discoloration — and putt through it. Small targets produce more committed strokes.']
+    ]
+  },
+  {
+    slug: 'best-golf-gifts-for-him',
+    title: 'Best Golf Gifts For Him — The No-Guess List',
+    seo: 'Best Golf Gifts For Him | WYX Golf Supply Co.',
+    description: 'The best golf gifts for him: what actually stays in the bag, what gets used every round, and how to choose without knowing his skill level.',
+    image: imageMap.leather,
+    sections: [
+      ['Rule 1: Useful Over Clever', 'The best golf gifts for him are the ones that go into the bag and come back out on every round. Towels, gloves, markers, and balls beat anything novelty every time.'],
+      ['Rule 2: Avoid Sizing When You Can', 'Unless you know his exact size, skip polos and gloves and start with accessories that have no size risk: markers, scorecard holders, grip tape, magnetic hat clips.'],
+      ['Rule 3: Consumable Is Always Welcome', 'A sleeve of balls, a fresh glove, or a roll of grip tape is never wrong. Golfers always need these and rarely buy them for themselves.'],
+      ['The $25–$60 Zone', 'This is the easiest golf gift budget. A towel + marker combo, a magnetic hat clip + ball marker set, or a leather scorecard holder all land here with no sizing, no guessing, and easy shipping.'],
+      ['If He Practices', 'For the golfer who goes to the range, alignment sticks and a putting mirror are genuinely useful. Both are under $40 and make real improvement possible between rounds.']
+    ]
+  },
+  {
+    slug: 'golf-bag-setup-guide',
+    title: 'How To Set Up A Golf Bag The Right Way',
+    seo: 'Golf Bag Setup Guide | WYX Golf Supply Co.',
+    description: 'A practical golf bag setup guide: where things go, what to carry, what to cut, and how to make the bag feel composed before every round.',
+    image: imageMap.leather,
+    sections: [
+      ['The Zone System', 'Think of your bag in three zones: top (rarely used clubs), middle (irons and wedges), bottom (putter and extra putter grips). Organize for easy access, not aesthetic.'],
+      ['What Goes In The Side Pockets', 'Balls in one pocket, tees in the side slot, glove in the small pocket at the top. Keep the caddie or small organizer in the front pocket for markers, divot tools, and small accessories.'],
+      ['The Towel Rule', 'One wet towel on the ring, one dry towel in a side pocket. Wash both weekly. A clean bag is part of a calm round.'],
+      ['What To Cut', 'Old scorecards, broken tees, dead balls, protein bar wrappers. Empty the bag once a month. If you haven't touched it in two rounds, it doesn't earn a spot.'],
+      ['Small Upgrades That Change Feel', 'A leather bag tag, a milled ball marker, a scorecard holder, and a fresh set of grips make the bag feel intentional without a full rebuild.']
+    ]
+  },
+  {
+    slug: 'golf-stocking-stuffer-ideas',
+    title: 'Golf Stocking Stuffer Ideas (Under $30)',
+    seo: 'Golf Stocking Stuffer Ideas | WYX Golf Supply Co.',
+    description: 'The best golf stocking stuffers under $30 — ball markers, grip tape, magnetic hat clips, tee packs, and small accessories any golfer will actually use.',
+    image: imageMap.hero,
+    sections: [
+      ['Why Small Gifts Work In Golf', 'Golf accessories are consumable. Gloves wear out. Grip tape gets used. Markers disappear. Every golfer needs restocking — and small gifts hit the perfect price point for a stocking.'],
+      ['Best Under $25', 'Magnetic hat clip + ball marker ($24), grip tape roll ($16), ball marker pack. These go straight into the bag and last a full season.'],
+      ['Best Under $30', 'Golf alignment sticks ($22) are the most useful practice tool in golf. A scorecard holder ($38) is the most underrated bag upgrade in this list.'],
+      ['The Bundle Move', 'Three small golf accessories in a stocking feels more intentional than one. Try: grip tape + magnetic hat clip + ball markers for under $65 shipped.'],
+      ['Use WYX10', 'Use code WYX10 for 10% off your first WYX order during the launch window. Golf stocking stuffers are the perfect first cart.']
+    ]
+  },
+  {
     slug: 'twilight-golf',
     title: 'Twilight Golf and the Long Game',
     seo: 'Twilight Golf and the Long Game | WYX Golf Supply Co.',

@@ -315,5 +315,41 @@ export const intentPages: Record<string, IntentPageConfig> = {
       ['Are training aids a good golf gift?', 'Yes — especially for golfers who are working on their game. Alignment sticks, putting mirrors, and tempo trainers are all practical, under $50, and easy to wrap.']
     ],
     match: (product) => categoryIn(product, ['Training Aids']) || has(product, /alignment|putting mirror|swing trainer|tempo trainer|training aid|range gear/)
+  },
+  'golf-gifts-under-25': {
+    slug: 'golf-gifts-under-25',
+    title: 'Golf Gifts Under $25 That Are Actually Good.',
+    eyebrow: 'Budget Wins',
+    description: 'Ball markers, grip tape, magnetic hat clips, and small bag essentials that make great stocking stuffers and add-on gifts — all under $25.',
+    metaTitle: 'Golf Gifts Under $25 | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts under $25 from WYX Golf Supply Co. — ball markers, grip tape, magnetic hat clips, and bag essentials. Great stocking stuffers for golfers.',
+    primaryCta: 'Shop Under $25',
+    secondaryCta: 'Under $60 Picks',
+    secondaryHref: '/golf-gifts-under-60',
+    proof: ['All under $25', 'Ships with other items', 'Great stocking stuffers', 'WYX10 launch code'],
+    faq: [
+      ['What are the best golf gifts under $25?', 'Ball markers, magnetic hat clips, grip tape rolls, and novelty golf balls are all great under $25. They get used every round and never collect dust.'],
+      ['Are cheap golf gifts worth giving?', 'Yes — consumable golf accessories like markers and grip tape are always welcome. They are practical, not novelty, so they stay in the bag.'],
+      ['Can I bundle under-$25 golf gifts?', 'Absolutely. Two or three small accessories bundled together feel more intentional than one item. Try a marker + grip tape + tee pack.']
+    ],
+    match: (product) => under(product, 25)
+  },
+  'scramble-prize-ideas': {
+    slug: 'scramble-prize-ideas',
+    title: 'Scramble Prize Ideas That Players Actually Want.',
+    eyebrow: 'Tournament Ready',
+    description: 'Ball markers, towels, gloves, hats, and golf accessories that work for scramble prize tables, closest-to-the-pin awards, and group golf events.',
+    metaTitle: 'Scramble Prize Ideas | Golf Tournament Prizes | WYX Golf Supply Co.',
+    metaDescription: 'Shop scramble prize ideas from WYX Golf Supply Co. — towels, ball markers, gloves, hats, and golf accessories for tournament events and group golf weekends.',
+    primaryCta: 'Shop Scramble Prizes',
+    secondaryCta: 'Bachelor Party Gear',
+    secondaryHref: '/bachelor-party-golf-gifts',
+    proof: ['Easy to bulk buy', 'Under $60 most picks', 'Works for any handicap', 'WYX10 launch code'],
+    faq: [
+      ['What are good scramble prizes?', 'The best scramble prizes are universally useful: golf towels, ball marker sets, a sleeve of balls, a glove, or a simple hat. Avoid novelty items most players will leave behind.'],
+      ['How much should I spend on scramble prizes?', 'Most scramble prizes land in the $15–$60 range. $20–$35 feels substantial without blowing the budget. A few premium anchors at $50–$75 for top finishes round out a good prize table.'],
+      ['Can I buy scramble prizes in bulk from WYX?', 'Yes — add multiple units to your cart and use WYX10 for 10% off. Email support if you need a larger group order.']
+    ],
+    match: (product) => under(product, 75) || categoryIn(product, ['Accessories', 'Towels', 'Gloves', 'Headwear', 'Golf Balls'])
   }
 };
