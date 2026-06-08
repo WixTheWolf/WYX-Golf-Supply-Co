@@ -733,3 +733,19 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .section .journal-grid+.text-link,.journal-grid~.text-link{margin-top:1rem;display:inline-block}
 /* page-hero — border-bottom line on interior pages */
 .page-hero:not(.launch-hero-copy){border-bottom:1px solid var(--line);margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+
+/* article section h2 — display font for journal subheads */
+.article section h2{font-family:var(--font-display),Georgia,serif;font-weight:900;letter-spacing:-.04em}
+/* article h1 — display font */
+.article h1{font-family:var(--font-display),Georgia,serif;font-weight:900}
+/* page-hero — display font on h1 */
+.page-hero h1{font-family:var(--font-display),Georgia,serif}
+/* collections page eyebrow — label style */
+.collections-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.collection-card{display:block;padding:1.2rem;background:var(--paper);border:1px solid var(--line);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.collection-card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,31,23,.09);border-color:color-mix(in oklab,var(--sand) 55%,var(--line) 45%)}
+.collection-card h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.1rem,2vw,1.5rem);letter-spacing:-.03em;margin:0 0 .35rem}
+.collection-card p{font-size:.84rem;color:var(--muted);line-height:1.45;margin:0}
+@media(max-width:650px){.collections-grid{grid-template-columns:1fr 1fr}}
+/* @media print — clean receipt/order print */
+@media print{.announcement,.site-header,.nav-links,.email-capture,.site-footer,.mobile-sticky-atc,.filter-row,.deal-strip{display:none!important}.page-hero{padding:1rem 0}.product-grid{grid-template-columns:repeat(2,1fr)}}
