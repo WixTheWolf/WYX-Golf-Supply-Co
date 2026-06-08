@@ -14,9 +14,14 @@ import { getProducts } from '@/lib/shopify/products';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Golf Gifts, Trip Kits, Hats, Apparel & Bag Upgrades',
-  description: 'Shop WYX Golf Supply Co. for golf gifts, trip gear, hats, apparel, balls, markers, and bag upgrades for weekend golfers.',
-  alternates: { canonical: '/' }
+  title: "Golf Gifts, Father's Day Golf Gifts, Hats & Bag Upgrades | WYX Golf Supply Co.",
+  description: "Shop WYX Golf Supply Co. for Father's Day golf gifts, golf gloves, balls, alignment sticks, hats, apparel, and bag upgrades for weekend golfers. Use WYX10 for 10% off.",
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: "Golf Gifts & Father's Day Golf Gifts | WYX Golf Supply Co.",
+    description: "Father's Day golf gifts, training aids, gloves, balls, and bag upgrades. Curated for weekend golfers. Use WYX10 for 10% off your first order.",
+    url: 'https://wyxgolfsupply.com'
+  }
 };
 
 const kits = [
@@ -33,13 +38,13 @@ const trustSignals = [
 ];
 
 const quickPaths = [
+  ["Dad Gifts 🎁", '/fathers-day-golf-gifts'],
   ['Golf Gifts', '/golf-gifts'],
   ['Gloves', '/golf-gloves'],
-  ['Hats', '/golf-hats'],
   ['Golf Balls', '/golf-balls'],
+  ['Hats', '/golf-hats'],
   ['Training', '/golf-practice-gear'],
-  ['Rangefinders', '/golf-tech'],
-  ['Dad Gifts', '/golf-gifts-for-dad'],
+  ['Under $25', '/golf-gifts-under-25'],
   ['Under $60', '/golf-gifts-under-60'],
   ['Bag Upgrades', '/bag-upgrades']
 ];
