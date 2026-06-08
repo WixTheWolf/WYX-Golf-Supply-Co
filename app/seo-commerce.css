@@ -86,10 +86,11 @@
 .editorial-product-card:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(11,31,23,.11)}
 @media(max-width:900px){.kit-visual-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.kit-visual-grid{grid-template-columns:1fr}.kit-visual-card{min-height:260px}}
-/* why-wyx — larger headline, pull-quote treatment on the right */
-.why-wyx{padding:clamp(3rem,6vw,5.5rem) 0}
-.why-wyx h2{font-size:clamp(3rem,5.5vw,5.8rem)}
-.why-wyx>p{font-family:Georgia,Times New Roman,serif;font-size:clamp(1.2rem,2vw,1.65rem);line-height:1.38;letter-spacing:-.02em;max-width:36ch;align-self:center}
+/* why-wyx — full-width centered brand statement */
+.why-wyx{display:block;padding:clamp(3rem,6vw,5.5rem) 0;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-wyx .eyebrow{display:block;margin-bottom:.5rem}
+.why-wyx h2{font-size:clamp(3rem,6vw,6.5rem);max-width:14ch;margin-inline:auto}
+.why-wyx>p{font-family:Georgia,Times New Roman,serif;font-size:clamp(1.1rem,1.8vw,1.5rem);line-height:1.4;letter-spacing:-.02em;max-width:44ch;margin-inline:auto}
 /* trust badges — gold checkmark prefix */
 .trust-badge-section span::before{content:"✓";display:inline-block;margin-right:.42rem;color:var(--lime);font-weight:900}
 /* quick-paths — sliding arrow on hover */
@@ -97,6 +98,10 @@
 .quick-paths a::after{content:"→";position:absolute;right:.7rem;opacity:0;transform:translateX(-5px);transition:opacity .18s ease,transform .18s ease;font-style:normal;font-weight:700}
 .quick-paths a:hover{padding-right:2rem}
 .quick-paths a:hover::after{opacity:1;transform:translateX(0)}
+/* email-capture — sync bg to var(--forest) for design consistency */
+.email-capture{background:var(--forest)}
+/* mobile nav — tighter layout, hide overflow links below 480px */
+@media(max-width:480px){.nav-links a:nth-child(n+4){display:none}.nav-links{gap:.75rem}}
 /* kit-visual-card — use brand display font (Fraunces) consistently */
 .kit-visual-card strong{font-family:var(--font-display),Georgia,Times New Roman,serif}
 /* footer-note — subdued metadata lines in the footer */
