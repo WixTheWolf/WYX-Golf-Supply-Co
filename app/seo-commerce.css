@@ -265,3 +265,17 @@ h3{font-size:1.45rem;font-weight:700}
 .collection-copy-grid h3{color:var(--forest);font-size:1.2rem}
 /* seo-guide left column padding */
 .section.seo-guide{padding-top:clamp(3rem,5vw,4.5rem);padding-bottom:clamp(3rem,5vw,4.5rem)}
+/* kit-add — wrapper for the add-all-to-bag CTA on kit pages */
+.kit-add{display:grid;gap:.5rem;min-width:220px}
+.kit-add .button.primary.full{font-size:.78rem;letter-spacing:.1em}
+.kit-add .selected-variant-note{font-size:.72rem;text-align:center}
+/* kit-grid — enforce section wrapper padding */
+.section.kit-grid{padding-top:clamp(2.5rem,5vw,4rem)}
+/* intent-proof-grid — checkmark prefix like trust badges */
+.intent-proof-grid span::before{content:"✓";display:inline-block;margin-right:.38rem;color:var(--pine);font-weight:900}
+/* section split heading — align text-link vertically */
+.section-heading.split .text-link{white-space:nowrap;padding-bottom:.2rem}
+/* page-hero compact — reduce bottom gap before proof grid */
+.page-hero.compact{padding-bottom:clamp(1.5rem,3vw,2.5rem)}
+/* kit-card h2 — slightly smaller for the sidebar kit cards */
+.kit-card h2{font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.1}
