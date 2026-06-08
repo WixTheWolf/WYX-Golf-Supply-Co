@@ -309,3 +309,20 @@ h3{font-size:1.45rem;font-weight:700}
 .editorial-product-card h3,.product-card h3{font-family:var(--font-display),Georgia,serif;letter-spacing:-.02em}
 /* trust-strip — lime glow on hover (desktop) */
 @media(hover:hover){.trust-strip span:hover{background:color-mix(in oklab,var(--forest) 75%,var(--pine) 25%);cursor:default}}
+/* qty buttons — styled +/- stepper */
+.qty button{background:transparent;border:1px solid var(--line);font-size:.82rem;font-weight:700;cursor:pointer;transition:background .15s ease,border-color .15s ease;border-radius:2px}
+.qty button:hover{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+.qty span{min-width:2rem;text-align:center;font-weight:700}
+/* cart-summary — flex layout for subtotal row */
+.cart-summary>p{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:.75rem;font-size:.88rem}
+.cart-summary>p strong{font-family:var(--font-display),Georgia,serif;font-size:1.3rem;letter-spacing:-.03em}
+/* cart-line wide — image size constrained */
+.cart-line.wide img{width:88px;height:88px;object-fit:cover;border:1px solid var(--line);flex-shrink:0}
+/* dark-section — lime accent on left edge */
+.dark-section{border-left:4px solid var(--lime)}
+/* dark-section h2 — lighter weight for contrast against dark bg */
+.dark-section h2{font-weight:700;letter-spacing:-.035em}
+/* category-grid strong — apply display font */
+.category-grid strong{font-family:var(--font-display),Georgia,serif;font-weight:900;font-size:clamp(1.3rem,2.2vw,1.75rem)}
+/* story-panel — left-col image aspect ratio */
+.story-panel>img{aspect-ratio:4/5;object-fit:cover}
