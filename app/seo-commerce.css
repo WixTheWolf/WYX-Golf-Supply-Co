@@ -543,3 +543,13 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .kit-visual-card em{font-style:normal;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
 /* quick-paths — 3-col handles up to 9 items cleanly at 3 rows */
 @media(min-width:900px){.quick-paths{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* nav-links — 7 items need tighter gap to fit without overflow */
+.nav-links{gap:1rem}
+@media(max-width:1100px){.nav-links{gap:.7rem}}
+/* nav-links — hide last 3 on medium screens (keep core 4) */
+@media(max-width:820px){.nav-links a:nth-child(n+5){display:none}}
+/* nav-links a — slightly smaller on medium */
+@media(max-width:1100px){.nav-links a,.header-cta{font-size:.65rem}}
+/* intent-proof-grid — 4 col on desktop, 2 on tablet is already handled */
+/* training/tech badge — lime pill for category eyebrow on new pages */
+.collection-hero .eyebrow{color:var(--lime);opacity:.9}
