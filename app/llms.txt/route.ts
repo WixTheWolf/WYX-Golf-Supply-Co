@@ -31,8 +31,10 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Bachelor party golf gifts: ${siteUrl}/bachelor-party-golf-gifts
 - Scramble prizes: ${siteUrl}/scramble-prizes
 - Bag upgrades: ${siteUrl}/bag-upgrades
-- Golf hats: ${siteUrl}/products?category=Headwear
-- Golf apparel: ${siteUrl}/products?category=Apparel
+- Golf hats: ${siteUrl}/golf-hats
+- Golf apparel: ${siteUrl}/golf-apparel
+- Golf training aids: ${siteUrl}/golf-training-aids
+- Golf tech & rangefinders: ${siteUrl}/golf-tech
 - Shipping and returns: ${siteUrl}/shipping-returns
 - Contact: ${siteUrl}/contact
 
