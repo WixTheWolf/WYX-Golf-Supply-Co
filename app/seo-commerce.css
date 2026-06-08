@@ -553,3 +553,16 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 /* intent-proof-grid — 4 col on desktop, 2 on tablet is already handled */
 /* training/tech badge — lime pill for category eyebrow on new pages */
 .collection-hero .eyebrow{color:var(--lime);opacity:.9}
+/* golf-tech / training pages — product-card for Training Aids and Golf Tech */
+/* These intent pages benefit from a slightly taller card image to show product detail */
+.product-card[data-category="Training Aids"] .product-image-link,
+.product-card[data-category="Golf Tech"] .product-image-link{aspect-ratio:1}
+/* intent-proof-grid — 2-col on mid screens for training/tech pages */
+@media(min-width:651px) and (max-width:899px){.intent-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* page-hero — compact variant tighter padding for category header pages */
+.page-hero.compact{padding-top:clamp(2rem,4vw,3.5rem)}
+/* category-grid strong — Fraunces on category tiles (already applied but ensure weight) */
+.category-grid strong{font-weight:900}
+/* nav-links Training / Tech — highlight active category intent pages */
+.nav-links a[href="/golf-training-aids"]:hover,
+.nav-links a[href="/golf-tech"]:hover{color:var(--lime)}
