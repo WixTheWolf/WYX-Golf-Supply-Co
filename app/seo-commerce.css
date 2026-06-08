@@ -451,3 +451,28 @@ h3{font-size:1.45rem;font-weight:700}
 /* section gap — product grids use 1.25rem gap for breathing room */
 .product-grid{gap:1.25rem}
 .editorial-product-grid{gap:1.35rem}
+/* gallery-main — slight border for definition */
+.gallery-main{border:1px solid var(--line)}
+/* gallery thumbnails — consistent sizing */
+.gallery img:not(.gallery-main){aspect-ratio:1;object-fit:cover}
+/* detail-list section h2 — accordion headers editorial weight */
+.detail-list section h2{font-size:1.1rem;font-weight:700;letter-spacing:-.02em;cursor:pointer}
+/* supplier tag — brand pill styling */
+.supplier{display:inline-block;margin-bottom:.4rem;padding:.25rem .55rem;background:var(--cream);border:1px solid var(--line);border-radius:999px}
+/* image-placeholder — warmer, more intentional empty state */
+.image-placeholder{background:color-mix(in oklab,var(--cream) 80%,var(--paper) 20%);color:var(--muted);font-size:.66rem;letter-spacing:.18em}
+/* cart-drawer — display font for drawer heading */
+.cart-drawer h2{font-family:var(--font-display),Georgia,serif;font-weight:900}
+/* footer brand — display font for footer-brand strong */
+.footer-brand strong{font-family:var(--font-display),Georgia,serif;font-weight:900;letter-spacing:-.04em}
+/* cart-progress — free shipping progress bar */
+.cart-progress{margin:.75rem 0 .5rem}
+.cart-progress>div{height:4px;background:var(--line);border-radius:99px;overflow:hidden}
+.cart-progress>div span{display:block;height:100%;background:var(--lime);border-radius:99px;transition:width .4s cubic-bezier(.16,1,.3,1)}
+.cart-progress p{font-size:.72rem;color:var(--muted);margin:.45rem 0 0;letter-spacing:.04em}
+/* cart-page-lines — layout */
+.cart-page-lines{display:grid;gap:0;max-width:600px;margin:1.5rem 0 0}
+/* consent-line — email form fine print */
+.consent-line{font-size:.62rem;color:color-mix(in oklab,var(--paper) 55%,transparent);line-height:1.5;max-width:440px}
+/* honeypot — hidden from screen + bots can't easily detect hidden */
+.honeypot{position:absolute!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}
