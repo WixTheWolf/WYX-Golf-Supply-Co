@@ -91,3 +91,13 @@
 /* ── header scroll shadow — elevates nav on scroll ── */
 .site-header{transition:box-shadow .2s ease}
 .site-header.scrolled{box-shadow:0 2px 16px rgba(11,31,23,.1)}
+
+/* ── golf-gloves / golf-balls / golf-practice-gear intent pages ── */
+/* These use IntentLandingPage — all existing collection-hero rules apply.
+   Extra: proof chip color for consumable/repeat-purchase categories */
+.collection-proof span[data-category="gloves"],
+.collection-proof span[data-category="balls"]{border-left-color:var(--lime)}
+/* ── seo-guide left col eyebrow — Fraunces small ── */
+.seo-guide .eyebrow{font-family:var(--font-display),Georgia,serif;font-size:.68rem;letter-spacing:.08em}
+/* ── product-card — magnetic/clip badge = sand bg ── */
+.product-card[data-type="Accessories"] .product-status{background:color-mix(in oklab,var(--sand) 55%,var(--forest) 45%)}

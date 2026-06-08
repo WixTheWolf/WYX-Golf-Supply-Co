@@ -261,5 +261,59 @@ export const intentPages: Record<string, IntentPageConfig> = {
       ['Do you carry GPS speakers?', 'We are sourcing GPS speaker options. Rangefinders are available now.']
     ],
     match: (product) => categoryIn(product, ['Golf Tech']) || has(product, /rangefinder|gps|launch monitor|golf tech|gps speaker/)
+  },
+  'golf-gloves': {
+    slug: 'golf-gloves',
+    title: 'Golf Gloves That Last More Than One Season.',
+    eyebrow: 'Grip & Feel',
+    description: 'Cabretta leather golf gloves with built-in ball markers and breathable mesh backs. The one piece of gear you replace every few months — make it count.',
+    metaTitle: 'Golf Gloves | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gloves from WYX Golf Supply Co. — cabretta leather palm, built-in ball marker, breathable mesh back. One of the best golf gifts under $30.',
+    primaryCta: 'Shop Golf Gloves',
+    secondaryCta: 'All Golf Gifts',
+    secondaryHref: '/golf-gifts',
+    proof: ['Cabretta leather grip', 'Built-in ball marker', 'Breathable mesh back', 'Fits S / M / L / XL'],
+    faq: [
+      ['What is a cabretta leather golf glove?', 'Cabretta leather comes from a specific type of sheep that produces a very thin, soft hide. It gives the closest feel to gripping bare-handed while still protecting your grip hand.'],
+      ['How often should I replace a golf glove?', 'Most regular golfers replace a glove every 10–15 rounds or when the palm shows visible wear. Playing in rain or heat speeds up wear.'],
+      ['Is a golf glove a good gift?', 'Yes — it is consumable, easy to size, practical, and priced well. One of the best stocking stuffers for a golfer.']
+    ],
+    match: (product) => categoryIn(product, ['Gloves']) || has(product, /glove|cabretta|grip hand/)
+  },
+  'golf-balls': {
+    slug: 'golf-balls',
+    title: 'Golf Balls Worth Keeping Track Of.',
+    eyebrow: 'On The Tee',
+    description: 'High-visibility and standard golf ball options for weekend rounds, practice sessions, scrambles, and gifting. Always useful, always welcome in the bag.',
+    metaTitle: 'Golf Balls | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf balls from WYX Golf Supply Co. — high-vis, standard, and gift sets for weekend golfers, scramble events, and bag upgrades.',
+    primaryCta: 'Shop Golf Balls',
+    secondaryCta: 'Ball Markers',
+    secondaryHref: '/golf-gifts',
+    proof: ['Great for scrambles', 'Easy to gift', 'WYX10 launch code', 'In-stock and ship-ready'],
+    faq: [
+      ['What golf ball is best for a weekend golfer?', 'Most weekend golfers do well with a soft, low-compression ball that spins less off the driver but still gives short-game feedback. High-vis options are great for early mornings and wooded courses.'],
+      ['Are golf balls a good gift?', 'Yes — they are consumable, always useful, and priced right for any budget. Add a ball marker or glove for a complete gift.'],
+      ['Can you buy golf balls in sets?', 'Yes. WYX carries ball sets in sleeve and full-sleeve configurations. Check product listings for current options.']
+    ],
+    match: (product) => categoryIn(product, ['Golf Balls']) || has(product, /golf ball|ball set|sleeve/)
+  },
+  'golf-practice-gear': {
+    slug: 'golf-practice-gear',
+    title: 'Practice Gear That Actually Moves The Needle.',
+    eyebrow: 'Range & Backyard',
+    description: 'Alignment sticks, putting mirrors, swing trainers, and tempo trainers. The tools weekend golfers use to fix real problems between rounds — without a lesson.',
+    metaTitle: 'Golf Practice Gear & Training Aids | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf practice gear from WYX Golf Supply Co. — alignment sticks, putting mirrors, swing trainers, and tempo aids for weekend golfers.',
+    primaryCta: 'Shop Practice Gear',
+    secondaryCta: 'Golf Tech',
+    secondaryHref: '/golf-tech',
+    proof: ['Alignment sticks in every bag', 'Putting mirror for home use', 'Swing tempo trainer', 'Under $50 most picks'],
+    faq: [
+      ['What is the best golf training aid for beginners?', 'Alignment sticks are the best starting point — they are cheap, versatile, and used at every level. A putting mirror is the second best purchase for fixing your setup.'],
+      ['Can I practice golf at home?', 'Yes. A putting mirror and a putting mat cover 40% of the game in your living room. Swing tempo trainers work in any open space.'],
+      ['Are training aids a good golf gift?', 'Yes — especially for golfers who are working on their game. Alignment sticks, putting mirrors, and tempo trainers are all practical, under $50, and easy to wrap.']
+    ],
+    match: (product) => categoryIn(product, ['Training Aids']) || has(product, /alignment|putting mirror|swing trainer|tempo trainer|training aid|range gear/)
   }
 };

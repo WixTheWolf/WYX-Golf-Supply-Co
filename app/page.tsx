@@ -34,12 +34,12 @@ const trustSignals = [
 
 const quickPaths = [
   ['Golf Gifts', '/golf-gifts'],
-  ['Dad Gifts', '/golf-gifts-for-dad'],
+  ['Gloves', '/golf-gloves'],
   ['Hats', '/golf-hats'],
-  ['Apparel', '/golf-apparel'],
-  ['Training', '/golf-training-aids'],
+  ['Golf Balls', '/golf-balls'],
+  ['Training', '/golf-practice-gear'],
   ['Rangefinders', '/golf-tech'],
-  ['Trip Gear', '/golf-trip-gear'],
+  ['Dad Gifts', '/golf-gifts-for-dad'],
   ['Under $60', '/golf-gifts-under-60'],
   ['Bag Upgrades', '/bag-upgrades']
 ];
@@ -179,6 +179,24 @@ export default async function Home() {
           url: `https://wyxgolfsupply.com/products/${product.handle}`,
           name: product.title
         }))
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'WYX Golf Supply Co.',
+        url: 'https://wyxgolfsupply.com',
+        logo: 'https://wyxgolfsupply.com/images/hero-coastal-fairway.png',
+        description: 'Curated golf gifts, hats, apparel, training aids, and bag upgrades for weekend golfers.',
+        sameAs: []
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          { '@type': 'Question', name: 'What are the best golf gifts under $60?', acceptedAnswer: { '@type': 'Answer', text: 'The best golf gifts under $60 include golf gloves, golf balls, alignment sticks, ball markers, golf towels, scorecard holders, and magnetic hat clips. WYX Golf Supply Co. carries all of these with free shipping thresholds and a 10% launch discount with code WYX10.' } },
+          { '@type': 'Question', name: 'What golf training aids actually work?', acceptedAnswer: { '@type': 'Answer', text: 'Alignment sticks and putting mirrors are the two training aids proven to improve most golfers fastest. Alignment sticks fix stance and swing path; a putting mirror fixes eye position and face angle at setup. Both are under $40.' } },
+          { '@type': 'Question', name: 'What should I put in a golf gift bag?', acceptedAnswer: { '@type': 'Answer', text: 'A good golf gift bag starts with a glove, a sleeve of balls, a ball marker, and a towel. Add a scorecard holder or alignment sticks for golfers who practice. WYX Golf Supply Co. has all of these and ships together.' } }
+        ]
       }) }} />
     </>
   );

@@ -30,6 +30,10 @@ export function EditorialProductCard({ product, featured = false }: { product: P
 function shortReason(product: Product) {
   const text = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
   if (text.includes('rangefinder')) return 'Know your yardage every time. The upgrade that changes how you think about every approach.';
+  if (text.includes('scorecard holder') || text.includes('scorecard')) return 'Full-grain leather, pencil loop, and a tee pocket. One of the cleanest $38 bag upgrades.';
+  if (text.includes('putting mirror') || text.includes('alignment mirror')) return 'Fix your eye position in 5 minutes on any surface. The putting practice tool that actually works.';
+  if (text.includes('hat clip') || text.includes('magnetic')) return 'Stick it on your brim and never pat your pocket for a marker again. The easiest upgrade in the bag.';
+  if (text.includes('grip tape') || text.includes('re-grip')) return 'One roll. Re-grip a full set at home. Stop paying the shop rate every season.';
   if (text.includes('swing trainer') || text.includes('tempo trainer') || text.includes('swing tempo')) return 'Grooves a repeatable rhythm at the range. Good gift for the golfer who actually wants to get better.';
   if (text.includes('alignment stick') || text.includes('alignment sticks')) return 'The training aid every golfer uses. Simple, useful, and easy to add to any order.';
   if (text.includes('quarter zip') || text.includes('quarter-zip')) return 'Warm enough for early tee times and coastal evenings. Layers over any polo.';
