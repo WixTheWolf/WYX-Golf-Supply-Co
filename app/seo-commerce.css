@@ -428,3 +428,13 @@ h3{font-size:1.45rem;font-weight:700}
 .kit-visual-card h3{font-size:clamp(1.4rem,2.5vw,2rem);text-shadow:0 2px 12px rgba(7,20,15,.35)}
 /* section padding on compact page-hero before actions */
 .page-hero .actions{margin-top:1.5rem}
+/* deal-pick — Fraunces for product title, lime border on hover */
+.deal-pick span{font-family:var(--font-display),Georgia,serif;font-size:1.15rem;letter-spacing:-.025em;line-height:1.1}
+.deal-pick strong{font-family:var(--font-display),Georgia,serif;font-weight:900;font-size:1.05rem;letter-spacing:-.02em}
+.deal-pick:hover{border-color:color-mix(in oklab,var(--lime) 65%,var(--line) 35%)}
+/* deal-card-stack — slight gap increase */
+.deal-card-stack{gap:1rem}
+/* deal-pick img — slight border */
+.deal-pick img{border:1px solid var(--line)}
+/* deal-hero h1 — tighten tracking to match rest of site */
+.deal-hero h1{letter-spacing:-.04em;font-weight:900}
