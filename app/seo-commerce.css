@@ -487,3 +487,10 @@ h3{font-size:1.45rem;font-weight:700}
 /* journal-card img — zoom on hover */
 .journal-card img{transition:transform .35s ease}
 .journal-card:hover img{transform:scale(1.035)}
+/* first-sale-hero — two-column promotional hero with share card */
+.first-sale-hero{width:min(1240px,92vw);margin:0 auto;padding:clamp(3.5rem,7vw,6rem) 0;display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.first-sale-hero h1{font-size:clamp(2.8rem,6vw,5.5rem);line-height:1.01;letter-spacing:-.05em;max-width:14ch}
+.first-sale-hero p{max-width:52ch;font-size:1.05rem;line-height:1.65}
+.first-sale-hero .share-card{position:sticky;top:6rem;background:var(--paper);border:1px solid var(--line);padding:1.5rem;border-left:3px solid var(--lime)}
+@media(max-width:900px){.first-sale-hero{grid-template-columns:1fr}}
+@media(max-width:900px){.first-sale-hero .share-card{position:static}}
