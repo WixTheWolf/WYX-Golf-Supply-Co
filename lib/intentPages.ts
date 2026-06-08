@@ -370,6 +370,24 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 25)
   },
+  'golf-divot-tools': {
+    slug: 'golf-divot-tools',
+    title: 'Golf Divot Tools — The One Accessory Every Bag Needs.',
+    eyebrow: 'Etiquette Essential',
+    description: 'Magnetic divot tools with built-in ball markers — the most practical small golf accessory for the green, and one of the easiest golf gifts under $30.',
+    metaTitle: 'Golf Divot Tools | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf divot tools from WYX Golf Supply Co. — magnetic divot tools with milled ball markers. Under $30 and one of the best small golf gifts.',
+    primaryCta: 'Shop Divot Tools',
+    secondaryCta: 'Ball Markers',
+    secondaryHref: '/golf-ball-markers',
+    proof: ['Magnetic ball marker included', 'Fork and plunger styles', 'Works for every golfer', 'WYX10 launch code'],
+    faq: [
+      ['What is a golf divot tool used for?', 'A divot tool repairs ball marks (pitch marks) on the putting green. Properly repaired marks recover in 24 hours. Unrepaired marks can take two weeks. Every golfer on every course needs one.'],
+      ['What is the best golf divot tool?', 'A fork-style or plunger divot tool with a magnetic ball marker attachment covers two green tasks in one tool. It is the most practical setup — one item in the pocket, two jobs handled.'],
+      ['Is a divot tool a good golf gift?', 'Yes — one of the best golf gifts under $25. No sizing, immediate utility, and golfers lose or misplace them constantly. A quality magnetic divot tool with a milled marker is a gift that goes in the bag and stays there.']
+    ],
+    match: (product) => has(product, /divot|pitch mark|ball mark repair|divot tool/)
+  },
   'golf-gift-sets': {
     slug: 'golf-gift-sets',
     title: 'Golf Gift Sets — Curated Bundles That Feel Intentional.',

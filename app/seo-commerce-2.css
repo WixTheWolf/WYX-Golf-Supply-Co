@@ -184,6 +184,18 @@
 .seo-guide-card{transition:border-color .18s ease}
 .seo-guide-card:hover{border-color:color-mix(in oklab,var(--lime) 40%,var(--line) 60%)}
 
+/* ── faq-page — grouped accordion layout ── */
+.faq-page{max-width:760px;margin:0 auto;padding:clamp(1.5rem,3vw,3rem) 0}
+.faq-group{margin-bottom:clamp(2rem,4vw,3.5rem)}
+.faq-group h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.2rem,2.5vw,1.7rem);letter-spacing:-.04em;border-bottom:2px solid var(--lime);padding-bottom:.4rem;margin:0 0 1rem;color:var(--forest)}
+.faq-page details{border-bottom:1px solid var(--line);padding:.75rem 0}
+.faq-page details:first-of-type{border-top:1px solid var(--line)}
+.faq-page summary{font-size:.95rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:.5rem;color:var(--ink)}
+.faq-page summary::-webkit-details-marker{display:none}
+.faq-page summary::after{content:"+";font-size:1.1rem;font-weight:300;color:var(--muted);flex-shrink:0;transition:transform .18s ease}
+.faq-page details[open] summary::after{transform:rotate(45deg)}
+.faq-page details p{font-size:.92rem;line-height:1.7;color:var(--muted);margin:.6rem 0 0;max-width:60ch}
+.faq-footer{font-size:.88rem;color:var(--muted);margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.5rem}
 /* ── urgency-strip — Father's Day deadline banner ── */
 .urgency-strip{background:var(--forest);color:var(--paper);padding:.55rem 1.25rem;font-size:.8rem;font-weight:700;letter-spacing:.02em;text-align:center;display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap}
 .urgency-strip strong{color:var(--lime)}

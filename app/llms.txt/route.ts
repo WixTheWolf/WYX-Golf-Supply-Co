@@ -50,6 +50,7 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Golf ball markers & hat clips: ${siteUrl}/golf-ball-markers
 - Golf headcovers: ${siteUrl}/golf-headcovers
 - Golf gift sets & bundles: ${siteUrl}/golf-gift-sets
+- Golf divot tools: ${siteUrl}/golf-divot-tools
 - Scramble prize ideas: ${siteUrl}/scramble-prize-ideas
 - Golf gifts under $25: ${siteUrl}/golf-gifts-under-25
 - Shipping and returns: ${siteUrl}/shipping-returns

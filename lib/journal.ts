@@ -296,6 +296,36 @@ export const posts = [
     ]
   },
   {
+    slug: 'golf-divot-tool-guide',
+    title: 'Golf Divot Tool Guide — The One Accessory Every Golfer Needs',
+    seo: 'Golf Divot Tool Guide | WYX Golf Supply Co.',
+    description: 'Why every golfer needs a divot tool, the difference between fork and plunger styles, and why a quality divot tool makes one of the best small golf gifts.',
+    image: imageMap.iron,
+    sections: [
+      ['Why Divot Tools Matter', 'An unrepaired ball mark on a putting green can take up to two weeks to fully recover. A repaired mark recovers in 24 hours. Every golfer who cares about the course — and about the other golfers behind them — carries a divot tool. It is basic golf etiquette.'],
+      ['Fork vs. Plunger', 'Fork-style divot tools have two prongs that insert around the ball mark and lift the turf edges inward. Plunger-style tools use a circular push mechanism — faster for golfers who want a one-hand operation. Both work. Fork-style is more traditional. Plunger-style is faster.'],
+      ['Magnetic Divot Tools', 'Some divot tools include a magnetic ball marker attachment on the top — one tool covers two common green tasks. These are among the best small golf gifts because they consolidate two accessories into one.'],
+      ['Where To Carry It', 'Front pocket of the bag, shirt pocket, or clipped to a bag ring. The divot tool should always be on your person on the green — not in the bag. Many golfers clip it to a hat clip or keep it with the ball marker for single-reach access.'],
+      ['As A Gift', 'A quality divot tool with a magnetic ball marker is one of the best golf gifts under $30 — no sizing, immediately useful, and something golfers lose and replace constantly.'],
+      ['WYX Pick', 'WYX carries magnetic divot tools with milled ball markers. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'golf-gifts-for-him-2026',
+    title: "Golf Gifts For Him 2026 — What He'll Actually Use",
+    seo: 'Golf Gifts For Him 2026 | WYX Golf Supply Co.',
+    description: 'The definitive golf gifts for him guide for 2026 — ranked by usefulness, priced by budget, and focused on bag accessories that survive more than one round.',
+    image: imageMap.hero,
+    sections: [
+      ['The Rule: Practical Over Novelty', 'A good golf gift for him is something he can put in the bag immediately and use every round. Skip novelty. Skip anything that requires knowing his swing, his clubs, or his taste in ball flight. Go practical: markers, towels, grips, alignment sticks.'],
+      ['Under $25: The Easy Yes', 'Bamboo tee pack ($14) + magnetic hat clip with marker ($24) = under $40 for two items he will use every round. These are the add-on gifts every golfer needs restocked. Practical, fast to ship, no sizing.'],
+      ['Under $50: The Bag Upgrade', 'A golf towel ($28–$34) + scorecard holder ($38) = the two bag upgrades most golfers never buy for themselves. Both go directly in the bag. Under $75 together with WYX10.'],
+      ['Under $75: The Game Improvement Gift', 'Alignment sticks ($22) + putting mirror ($34) + ball marker set ($18) = the complete practice gift set for a golfer who is actively working on his game. Under $80 total. Use WYX10 to bring it closer to $70.'],
+      ['Under $100: The Confident Splurge', 'A laser rangefinder in the $75–$100 range is the one tech gift that changes how a golfer thinks about every approach shot. High perceived value, used every round, and a gift he would not typically buy himself mid-season.'],
+      ['WYX10 For Every Budget', 'Use code WYX10 for 10% off your first WYX order. It works across all budgets and trims every gift set by roughly the cost of one accessory.']
+    ]
+  },
+  {
     slug: 'golf-gift-sets-guide',
     title: 'Golf Gift Sets — How To Build One That Feels Intentional',
     seo: 'Golf Gift Sets | WYX Golf Supply Co.',
