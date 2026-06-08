@@ -171,3 +171,25 @@
 /* add-to-cart button — loading/disabled feedback states */
 .button.primary.full:disabled{opacity:.55;cursor:wait}
 .button.primary.full:not(:disabled):active{transform:scale(.985)}
+/* faq-section — constrained Q&A layout with visual separation */
+.faq-section{border-top:1px solid var(--line);margin-top:1rem}
+.faq-section .detail-list{max-width:720px;margin-top:1.25rem}
+.faq-section .detail-list details{border-top:1px solid var(--line);padding:.9rem 0}
+.faq-section .detail-list details:last-child{border-bottom:1px solid var(--line)}
+.faq-section .detail-list summary{font-size:.95rem;font-weight:700;letter-spacing:-.01em;cursor:pointer;user-select:none;list-style:none}
+.faq-section .detail-list summary::-webkit-details-marker{display:none}
+.faq-section .detail-list summary::after{content:"+";float:right;font-size:1.2rem;font-weight:300;color:var(--muted);transition:transform .2s ease}
+.faq-section .detail-list details[open] summary::after{content:"−"}
+.faq-section .detail-list details p{margin:.65rem 0 .25rem;font-size:.94rem;line-height:1.65;color:var(--muted)}
+/* header-cta — lime accent on hover */
+.header-cta:hover{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+.header-cta{transition:background .18s ease,color .18s ease,border-color .18s ease}
+/* site-footer nav links — underline on hover */
+.site-footer nav a{position:relative;transition:color .15s ease}
+.site-footer nav a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--lime);transition:width .2s ease}
+.site-footer nav a:hover::after{width:100%}
+/* product card — lime status badge text legible */
+.product-status{color:var(--ink)}
+/* purchase-panel — lime CTA button subtle glow */
+.purchase-panel .button.primary:not(:disabled):hover{box-shadow:0 0 0 3px color-mix(in oklab,var(--lime) 35%,transparent 65%)}
+.purchase-panel .button.primary{transition:box-shadow .18s ease}
