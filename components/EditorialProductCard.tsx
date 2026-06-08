@@ -30,11 +30,18 @@ export function EditorialProductCard({ product, featured = false }: { product: P
 function shortReason(product: Product) {
   const text = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
   if (text.includes('rangefinder')) return 'Know your yardage every time. The upgrade that changes how you think about every approach.';
-  if (text.includes('scorecard holder') || text.includes('scorecard')) return 'Full-grain leather, pencil loop, and a tee pocket. One of the cleanest $38 bag upgrades.';
+  if (text.includes('yardage book') || text.includes('scorecard holder') || text.includes('scorecard')) return 'Full-grain leather, pencil loop, tee pocket, and snap closure. One of the best golf gifts under $60.';
   if (text.includes('umbrella')) return 'Double-canopy, wind-vented, fits over you and the bag. The round-saver for early tee times in bad weather.';
   if (text.includes('shoe bag') || text.includes('shoe bag')) return 'Mesh-vented nylon. Keeps spikes separate from clothes on every trip.';
   if (text.includes('bamboo tee') || text.includes('golf tee')) return 'Fifty bamboo tees, biodegradable, stronger than wood. The consumable that always needs restocking.';
   if (text.includes('hat case') || text.includes('hat carrying')) return 'Rigid-shell protection for your favorite round hat. Packs in a carry-on without crushing the brim.';
+  if (text.includes('groove sharpener') || text.includes('wedge tool')) return 'Restores spin to worn wedges in 10 minutes. Six groove widths, carbide head, extends wedge life by 2–3 seasons.';
+  if (text.includes('grip solvent') || text.includes('regrip kit') || text.includes('solvent')) return 'Everything to regrip 14 clubs at home. Saves $50–$80 over shop rates in one afternoon.';
+  if (text.includes('bag organizer') || text.includes('organizer insert')) return 'Drops into any 14-way bag pocket and creates 6 separated compartments. Stops the bottom-pocket search.';
+  if (text.includes('cooler tube') || text.includes('bag cooler')) return 'Holds 6 cans cold for 18 holes and clips to any bag D-ring. The trip accessory you did not know you needed.';
+  if (text.includes('rain jacket') || text.includes('packable')) return 'Stuffs into its own chest pocket. Wind and water-resistant, clean enough for the clubhouse, essential for any trip.';
+  if (text.includes('phone mount') || text.includes('cart mount')) return 'Clamps to any cart bar, holds in rain, 360° rotation, MagSafe compatible. One mounting, every round.';
+  if (text.includes('milled ball marker set') || (text.includes('ball marker') && text.includes('set'))) return 'Three milled aluminum markers in gold, silver, and gunmetal. Ships gift-ready in a kraft box.';
   if (text.includes('club brush') || text.includes('groove cleaner')) return 'Dual-sided with a groove pick and nylon bristles. Clips to the bag ring and cleans between every shot.';
   if (text.includes('putting mirror') || text.includes('alignment mirror')) return 'Fix your eye position in 5 minutes on any surface. The putting practice tool that actually works.';
   if (text.includes('hat clip') || text.includes('magnetic')) return 'Stick it on your brim and never pat your pocket for a marker again. The easiest upgrade in the bag.';

@@ -459,5 +459,187 @@ export const starterProducts: StarterProduct[] = [
     seoTitle: 'Golf Club Brush & Groove Cleaner | WYX Golf Supply Co.',
     metaDescription: 'A dual-sided club brush with groove pick and carabiner clip — practical club care gear for any bag. WYX Golf Supply Co.',
     tags: ['club care', 'club brush', 'groove cleaner', 'golf accessories', 'golf gifts', 'under $60', 'stocking stuffer']
+  },
+
+  // ── TRIP KIT PRODUCTS ────────────────────────────────────────────────────
+  {
+    title: 'Packable Golf Rain Jacket',
+    handle: 'packable-golf-rain-jacket',
+    price: '88.00',
+    badge: 'Trip Essential',
+    image: imageMap.hero,
+    productType: 'Apparel',
+    collectionHandle: 'apparel',
+    description: 'A lightweight packable rain jacket that stuffs into its own chest pocket and fits inside any golf bag side pocket. Wind and water-resistant shell, clean enough for the clubhouse.',
+    details: [
+      'Packs into its own chest pocket — carry-on and bag-ready',
+      'Wind and water-resistant bonded shell',
+      'Elastic cuffs, adjustable hem drawcord',
+      'Clean profile — no loud logos or bulky seams',
+      'Available in Charcoal, Forest, and Black'
+    ],
+    materials: 'Lightweight wind and water-resistant bonded ripstop shell.',
+    care: 'Machine wash cold, hang dry. Do not iron.',
+    seoTitle: 'Packable Golf Rain Jacket | WYX Golf Supply Co.',
+    metaDescription: 'A packable golf rain jacket that fits in any bag side pocket — wind and water-resistant, clean enough for the clubhouse, essential for golf trips.',
+    tags: ['golf apparel', 'golf rain jacket', 'packable jacket', 'golf trip gear', 'golf travel', 'under $100']
+  },
+  {
+    title: 'Golf Bag Cooler Tube',
+    handle: 'golf-bag-cooler-tube',
+    price: '36.00',
+    badge: 'Trip Favourite',
+    image: imageMap.hero,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'An insulated soft cooler tube that attaches to any golf bag side ring and holds 6 cans. Keeps drinks cold for 18 holes without leaving the bag.',
+    details: [
+      'Holds 6 standard cans — ice or ice pack compatible',
+      'Insulated neoprene body, water-resistant lining',
+      'Clips to any golf bag D-ring or side webbing',
+      'Zip-top closure, wipe-clean interior',
+      'Available in Black and Forest'
+    ],
+    materials: 'Neoprene exterior, TPU-lined insulated interior.',
+    care: 'Wipe clean with a damp cloth. Air dry with zip open.',
+    seoTitle: 'Golf Bag Cooler Tube | WYX Golf Supply Co.',
+    metaDescription: 'An insulated golf bag cooler tube that holds 6 cans and clips to any bag side ring — the essential trip accessory for 18 holes.',
+    tags: ['golf accessories', 'golf cooler', 'golf bag cooler', 'golf trip gear', 'bachelor party golf', 'golf gifts for him', 'under $60']
+  },
+  {
+    title: 'Waterproof Golf Cart Phone Mount',
+    handle: 'golf-cart-phone-mount',
+    price: '28.00',
+    badge: 'Tech Essential',
+    image: imageMap.hero,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'A waterproof magnetic phone mount that clamps to any golf cart bar or push cart handle. Holds any phone case — no wireless disruption, no vibration fall-off.',
+    details: [
+      'Magnetic hold with 6kg pull strength — phone stays put on bumpy cart paths',
+      'IP65 waterproof rated — works in rain',
+      'Universal clamp fits any cart bar diameter',
+      'MagSafe-compatible magnetic disc (adapter included)',
+      '360° rotation — portrait or landscape'
+    ],
+    materials: 'Zinc alloy body, rubber-padded clamp, neodymium magnet.',
+    care: 'Wipe clean with a damp cloth.',
+    seoTitle: 'Golf Cart Phone Mount | WYX Golf Supply Co.',
+    metaDescription: 'A waterproof magnetic golf cart phone mount that clamps to any cart bar. MagSafe compatible, IP65 rated, 360° rotation. WYX Golf Supply Co.',
+    tags: ['golf tech', 'golf accessories', 'golf cart accessories', 'golf trip gear', 'phone mount', 'golf gifts for him']
+  },
+
+  // ── DAD GIFT KIT PRODUCTS ────────────────────────────────────────────────
+  {
+    title: 'Full-Grain Leather Scorecard & Yardage Book Holder',
+    handle: 'leather-yardage-book-holder',
+    price: '54.00',
+    badge: 'Dad Pick',
+    image: imageMap.leather,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'A full-grain leather holder that fits both a standard scorecard and a yardage book. Pencil loop on the side, snap closure, and a tee pocket on the inside cover.',
+    details: [
+      'Full-grain leather exterior — breaks in over time',
+      'Holds standard scorecard and yardage book simultaneously',
+      'Exterior pencil loop and interior tee pocket',
+      'Snap closure keeps everything dry and flat',
+      'Available in Tan and Black'
+    ],
+    materials: 'Full-grain cowhide leather with brushed brass snap.',
+    care: 'Condition with leather cream once or twice a season. Wipe clean with a dry cloth.',
+    seoTitle: 'Leather Scorecard & Yardage Book Holder | WYX Golf Supply Co.',
+    metaDescription: 'A full-grain leather scorecard and yardage book holder with pencil loop, tee pocket, and snap closure. One of the best golf gifts under $60.',
+    tags: ['golf accessories', 'scorecard holder', 'yardage book holder', 'leather golf gift', 'golf gifts for dad', 'father\'s day golf gifts', 'under $60']
+  },
+  {
+    title: 'Personalized Ball Marker Set — 3 Milled Coins',
+    handle: 'milled-ball-marker-set-3',
+    price: '42.00',
+    badge: 'Gift Ready',
+    image: imageMap.iron,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'Three milled aluminum ball markers in different finishes — gold, silver, and gunmetal. Flat profile, 25mm diameter, no catching on the putting surface.',
+    details: [
+      'Three markers: brushed gold, polished silver, gunmetal matte',
+      'Milled aluminum — flat profile for smooth green removal',
+      '25mm diameter, 2.5mm thickness',
+      'Comes in a kraft gift box — ships gift-ready',
+      'Pairs with any magnetic hat clip'
+    ],
+    materials: 'Milled 6061 aluminum alloy with anodized finish.',
+    care: 'Wipe clean with a dry cloth.',
+    seoTitle: 'Milled Ball Marker Set — 3 Pack | WYX Golf Supply Co.',
+    metaDescription: 'A set of three milled aluminum ball markers in gold, silver, and gunmetal. Ships in a kraft gift box — one of the best golf gifts under $50.',
+    tags: ['ball markers', 'golf accessories', 'milled ball marker', 'golf gifts for dad', 'golf gifts under $50', 'stocking stuffer', 'father\'s day golf gifts']
+  },
+
+  // ── BAG UPGRADE KIT PRODUCTS ─────────────────────────────────────────────
+  {
+    title: 'Golf Bag Organizer Insert',
+    handle: 'golf-bag-organizer-insert',
+    price: '32.00',
+    badge: 'Bag Upgrade',
+    image: imageMap.leather,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'A structured fabric insert that drops into the top pocket of any 14-way golf bag and creates 6 separated compartments for tees, markers, a divot tool, sunscreen, a phone, and snacks.',
+    details: [
+      'Fits any 14-way or cart bag top pocket',
+      '6 separated compartments — keys, tees, marker, sunscreen, snack, misc',
+      'Rigid foam base keeps it upright when the bag tips',
+      'Pull-tab for fast removal at round end',
+      'Available in Black and Forest'
+    ],
+    materials: '600D polyester shell with EVA foam base.',
+    care: 'Hand wash cold. Air dry with the insert out of the bag.',
+    seoTitle: 'Golf Bag Organizer Insert | WYX Golf Supply Co.',
+    metaDescription: 'A structured golf bag organizer insert that creates 6 compartments in any 14-way bag pocket. One of the most practical bag upgrades under $40.',
+    tags: ['golf accessories', 'bag organizer', 'golf bag insert', 'bag upgrade', 'golf gifts for dad', 'golf organization', 'under $40']
+  },
+  {
+    title: 'Golf Grip Solvent & Tape Kit',
+    handle: 'grip-solvent-tape-kit',
+    price: '26.00',
+    badge: 'DIY Ready',
+    image: imageMap.care,
+    productType: 'Grips',
+    collectionHandle: 'accessories',
+    description: 'Everything you need to regrip a full 14-club set at home in one afternoon: two rolls of double-sided grip tape, 8oz of grip solvent, and a vise clamp rubber insert.',
+    details: [
+      '2 rolls double-sided golf grip tape (covers 14+ clubs each)',
+      '8oz grip solvent — activates tape for slip-on installation',
+      'Rubber vise clamp insert — protects shaft in a bench vise',
+      'Step-by-step regripping guide included',
+      'Saves $50–$80 vs. shop regripping on a full set'
+    ],
+    materials: 'Double-sided rubber-based tape, petroleum-based grip solvent, molded rubber vise insert.',
+    care: 'Store solvent in a cool, dry place away from flame.',
+    seoTitle: 'Golf Grip Solvent & Tape Kit | WYX Golf Supply Co.',
+    metaDescription: 'A complete golf regripping kit — two rolls of grip tape, 8oz solvent, and a vise insert for regripping a full set at home. Saves $50–$80 vs. shop rates.',
+    tags: ['golf grips', 'grip tape', 'regripping kit', 'golf accessories', 'club maintenance', 'diy golf', 'bag upgrade', 'under $30']
+  },
+  {
+    title: 'Groove Sharpener & Wedge Tool',
+    handle: 'groove-sharpener-wedge-tool',
+    price: '22.00',
+    badge: 'Spin Saver',
+    image: imageMap.care,
+    productType: 'Club Care',
+    collectionHandle: 'accessories',
+    description: 'A precision groove sharpener with 6 groove widths that restores spin to worn wedges and irons — legal for recreational play and tour use.',
+    details: [
+      '6 groove widths from U to V-groove profiles',
+      'Carbide cutting head — lasts 100+ sharpening sessions',
+      'Built-in depth stop prevents over-cutting',
+      'Legal for recreational and amateur tournament play',
+      'Extends wedge life by 2–3 seasons'
+    ],
+    materials: 'Aerospace aluminum body with carbide cutting inserts.',
+    care: 'Brush grooves clean before sharpening. Store in the included pouch.',
+    seoTitle: 'Golf Groove Sharpener | WYX Golf Supply Co.',
+    metaDescription: 'A precision golf groove sharpener with 6 widths that restores spin to worn wedges and irons. Legal for recreational play. Under $25.',
+    tags: ['club care', 'groove sharpener', 'wedge maintenance', 'golf accessories', 'bag upgrade', 'golf gifts for dad', 'stocking stuffer', 'under $25']
   }
 ];
