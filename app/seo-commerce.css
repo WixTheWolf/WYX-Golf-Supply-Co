@@ -293,3 +293,19 @@ h3{font-size:1.45rem;font-weight:700}
 .nav-links a[aria-current="page"]::after{content:"";display:block;width:100%;height:2px;background:var(--lime);margin-top:2px}
 /* announcement — lime callout words */
 .announcement a,.announcement strong{color:var(--lime);font-weight:700}
+/* primary button — subtle depth on hover */
+.button.primary:not(:disabled):hover{background:color-mix(in oklab,var(--lime) 88%,white 12%);box-shadow:0 4px 14px color-mix(in oklab,var(--lime) 40%,transparent 60%)}
+.button.primary{transition:background .18s ease,box-shadow .18s ease,transform .14s ease}
+.button.primary:not(:disabled):active{transform:scale(.97)}
+/* secondary dark button — outline lift on hover */
+.button.secondary.dark:not(:disabled):hover{background:color-mix(in oklab,var(--forest) 85%,var(--pine) 15%);box-shadow:0 4px 14px rgba(11,31,23,.25)}
+/* product card h3 — tighter size for grid context */
+.product-card h3{font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.2}
+/* purchase-panel h1 — extra tight tracking for large display */
+.purchase-panel h1{letter-spacing:-.05em;line-height:.95}
+/* price.large on product page — display font for editorial weight */
+.price.large{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:900;letter-spacing:-.04em;line-height:1}
+/* editorial product card h3 — display font match */
+.editorial-product-card h3,.product-card h3{font-family:var(--font-display),Georgia,serif;letter-spacing:-.02em}
+/* trust-strip — lime glow on hover (desktop) */
+@media(hover:hover){.trust-strip span:hover{background:color-mix(in oklab,var(--forest) 75%,var(--pine) 25%);cursor:default}}
