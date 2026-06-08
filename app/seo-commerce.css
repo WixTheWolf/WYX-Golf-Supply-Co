@@ -438,3 +438,16 @@ h3{font-size:1.45rem;font-weight:700}
 .deal-pick img{border:1px solid var(--line)}
 /* deal-hero h1 — tighten tracking to match rest of site */
 .deal-hero h1{letter-spacing:-.04em;font-weight:900}
+/* share-card — lime left border accent + display font heading */
+.share-card{border-left:3px solid var(--lime)}
+.share-card h2{font-family:var(--font-display),Georgia,serif;font-weight:900;letter-spacing:-.04em}
+.share-card span{font-family:var(--font-display),Georgia,serif;font-size:1.1rem;letter-spacing:-.02em;font-weight:700}
+/* button.dark variant — ensure forest text on cream context */
+.button.dark{border-color:var(--forest)}
+/* product-section — reveal animation stagger for intent landing products */
+.is-revealed .product-grid>.product-card:nth-child(7){animation-delay:.46s}
+.is-revealed .product-grid>.product-card:nth-child(8){animation-delay:.53s}
+.is-revealed .product-grid>.product-card:nth-child(n+9){animation-delay:.58s}
+/* section gap — product grids use 1.25rem gap for breathing room */
+.product-grid{gap:1.25rem}
+.editorial-product-grid{gap:1.35rem}
