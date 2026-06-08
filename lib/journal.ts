@@ -130,6 +130,46 @@ export const posts = [
     ]
   },
   {
+    slug: 'fathers-day-golf-gifts-2026',
+    title: "Father's Day Golf Gifts 2026 — The Short List",
+    seo: "Father's Day Golf Gifts 2026 | WYX Golf Supply Co.",
+    description: "The best Father's Day golf gifts for 2026: what to buy, what to skip, and how to build a bundle that actually gets used.",
+    image: imageMap.walk,
+    sections: [
+      ["Start With The Bag", "The best Father's Day golf gifts are already in the bag — you just need to replace them. A new glove, a fresh sleeve of balls, a clean towel, and a simple ball marker cover most golfers without any sizing risk."],
+      ["The Under-$60 Zone", "Most golf dads don't need a new driver. They need the small stuff: markers, grips, caddies, socks, alignment sticks. These are the gifts that actually get used on the next round, not left in the closet."],
+      ["If He Practices", "For the golfer who goes to the range, alignment sticks and a putting mirror are the two training aids that actually move the needle fastest. Both are under $40."],
+      ["The Scorecard Note", "A leather scorecard holder with a pencil loop and tee pocket is one of the cleanest $38 upgrades in any bag. Small, thoughtful, and something he'll use every round without thinking about it."],
+      ["The Bundle Play", "A glove + ball marker + towel is the easiest Father's Day bundle at any budget. It takes five minutes to put together and covers the most useful real-round upgrades in the bag. Use WYX10 for 10% off your first order."]
+    ]
+  },
+  {
+    slug: 'best-golf-gloves-guide',
+    title: 'How To Choose A Golf Glove (And When To Replace It)',
+    seo: 'Best Golf Gloves Guide | WYX Golf Supply Co.',
+    description: 'A practical guide to choosing a golf glove, understanding cabretta leather, sizing correctly, and knowing when to replace it.',
+    image: imageMap.leather,
+    sections: [
+      ['Cabretta vs Synthetic', 'Cabretta leather gives you the closest feel to gripping bare-handed. It wears faster but performs better. Synthetic blends last longer and tolerate rain better. For most weekend golfers, cabretta is the right call.'],
+      ['How To Size A Golf Glove', 'A golf glove should be snug in the palm with no bunching at the fingers. The Velcro closure should overlap at the midpoint. Most players find their clothing glove size runs about one size larger than their golf glove.'],
+      ['When To Replace It', 'Replace a golf glove when the palm shows visible wear or stretches loose. Most golfers who play twice a week go through two to three gloves per season.'],
+      ['The Ball Marker Bonus', 'A built-in ball marker on the Velcro closure means one less thing to search for on the green. Small feature, big round-to-round convenience.']
+    ]
+  },
+  {
+    slug: 'alignment-sticks-guide',
+    title: 'How To Use Alignment Sticks (The Right Way)',
+    seo: 'Alignment Sticks Drills Guide | WYX Golf Supply Co.',
+    description: 'A practical alignment stick guide for weekend golfers — fix your stance, ball position, and swing path at the range.',
+    image: imageMap.iron,
+    sections: [
+      ['The Basics', 'Lay one stick down the target line, parallel to your feet. This shows you immediately if you are set up square, open, or closed. Most amateurs aim 10–15 yards right of their target and compensate with the swing.'],
+      ['Ball Position Check', 'Place a stick perpendicular to your stance line, pointing at the target, even with the ball. Every club has an optimal ball position — this makes it visible instead of guessed.'],
+      ['Swing Path Drill', 'Stick two rods in the ground just outside your target line, forming a gate for the club to pass through at impact. Miss the sticks. The path self-corrects fast.'],
+      ['At Home', 'Alignment sticks work on any surface — carpet, driveway, grass. You can rehearse setup and tempo without hitting a ball.']
+    ]
+  },
+  {
     slug: 'twilight-golf',
     title: 'Twilight Golf and the Long Game',
     seo: 'Twilight Golf and the Long Game | WYX Golf Supply Co.',
