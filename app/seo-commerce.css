@@ -203,3 +203,18 @@
 /* launch-hero — ensure the hero-proof social proof block is readable */
 .hero-proof.compact-proof{display:flex;align-items:center;gap:.65rem;margin-top:1rem;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sand)}
 .hero-proof.compact-proof strong{color:var(--paper)}
+/* gallery thumbnails — hover ring + slight zoom */
+.gallery img:not(.gallery-main){cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;border:2px solid transparent}
+.gallery img:not(.gallery-main):hover{transform:scale(1.02);box-shadow:0 6px 20px rgba(11,31,23,.12);border-color:var(--lime)}
+/* breadcrumbs — separator spacing refinement */
+.breadcrumbs span{color:var(--line);font-size:.66rem}
+.breadcrumbs a:hover{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
+/* product card — eyebrow category label hidden (redundant with product-status badge) */
+.product-card .product-meta{display:none}
+/* product card footer — price uses display font for weight */
+.product-card .price{font-family:var(--font-display),Georgia,serif;font-size:1.1rem;letter-spacing:-.02em}
+/* product card — text-link arrow nudge on hover */
+.product-card .text-link{transition:color .15s ease,gap .15s ease}
+.product-card .text-link:hover{color:var(--pine)}
+/* section eyebrow — consistent spacing when above h2 */
+.section-heading .eyebrow,.page-hero .eyebrow{margin-bottom:.35rem;display:block}
