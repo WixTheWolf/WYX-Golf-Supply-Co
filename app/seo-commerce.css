@@ -533,3 +533,11 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .email-capture .button.primary:not(:disabled):hover{background:color-mix(in oklab,var(--lime) 88%,white 12%)}
 /* purchase-panel — subtle lime left stripe at top */
 .purchase-panel{border-top:3px solid var(--lime)}
+/* section-heading eyebrow — pine on cream for hierarchy */
+.section-heading .eyebrow{color:var(--pine)}
+/* short-list results-heading span — muted count formatting */
+.results-heading>span{color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;align-self:flex-end;padding-bottom:.2rem}
+/* kit-visual-card small — muted copy under title */
+.kit-visual-card small{color:color-mix(in oklab,var(--paper) 72%,transparent);font-size:.78rem;font-style:normal;letter-spacing:.03em}
+/* kit-visual-card em — "Build Kit" CTA text */
+.kit-visual-card em{font-style:normal;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
