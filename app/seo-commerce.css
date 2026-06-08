@@ -694,3 +694,24 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 /* nav-links — active page indicator via underline */
 .nav-links a[aria-current="page"]{color:var(--forest);font-weight:900}
 .nav-links a[aria-current="page"]::after{width:100%}
+
+/* ── coming-soon-card — muted placeholder treatment ── */
+.coming-soon-card{padding:1.4rem;background:color-mix(in oklab,var(--cream) 60%,var(--paper) 40%);border:1px dashed var(--line);display:flex;flex-direction:column;gap:.5rem}
+.coming-soon-card .eyebrow{color:var(--muted);font-size:.62rem}
+.coming-soon-card h3{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.1rem,1.6vw,1.3rem);letter-spacing:-.03em;margin:0}
+.coming-soon-card p{font-size:.84rem;color:var(--muted);line-height:1.5;margin:0}
+/* curated-card — external/affiliate badge differentiation */
+.curated-card .product-status{background:color-mix(in oklab,var(--sand) 48%,var(--paper) 52%);color:var(--ink)}
+.curated-card .product-image-link::after{content:"↗";position:absolute;top:.5rem;right:.5rem;background:var(--paper);color:var(--forest);font-size:.7rem;font-weight:900;padding:.2rem .35rem;border:1px solid var(--line);opacity:0;transition:opacity .2s ease}
+.curated-card .product-image-link:hover::after{opacity:1}
+/* button.full — full-width variant */
+.button.full{width:100%;justify-content:center}
+/* dev-note — hidden in production, subtle in dev */
+.dev-note{font-size:.72rem;color:var(--muted);font-style:italic;margin:.35rem 0}
+/* error — warm red for form errors */
+.error{color:#b91c1c;font-size:.84rem;font-weight:700;margin:.35rem 0}
+/* email-capture form — flex row on desktop */
+@media(min-width:651px){.email-capture form{display:flex;gap:.65rem;align-items:flex-start}.email-capture input[type="email"]{flex:1}.email-capture .button{white-space:nowrap}}
+/* consent-line — tighten */
+.consent-line{display:flex;align-items:flex-start;gap:.5rem;font-size:.72rem;color:var(--muted);cursor:pointer;margin-top:.25rem}
+.consent-line input{margin-top:.15rem;accent-color:var(--forest);flex-shrink:0}
