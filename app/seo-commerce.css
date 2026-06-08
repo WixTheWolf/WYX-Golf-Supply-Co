@@ -79,6 +79,14 @@
 .kit-visual-card strong{font-family:Georgia,Times New Roman,serif;font-size:1.75rem;line-height:1;letter-spacing:-.045em}
 .kit-visual-card small{max-width:28ch;color:color-mix(in oklab,var(--paper) 84%,transparent);font-size:.92rem;line-height:1.35}
 .kit-visual-card em{font-style:normal;color:var(--sand);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+/* product grid stagger — cascade reveal for grid children */
+.product-grid>.product-card:nth-child(1),.editorial-product-grid>.editorial-product-card:nth-child(1){transition-delay:.05s}
+.product-grid>.product-card:nth-child(2),.editorial-product-grid>.editorial-product-card:nth-child(2){transition-delay:.12s}
+.product-grid>.product-card:nth-child(3),.editorial-product-grid>.editorial-product-card:nth-child(3){transition-delay:.19s}
+.product-grid>.product-card:nth-child(4),.editorial-product-grid>.editorial-product-card:nth-child(4){transition-delay:.26s}
+/* kit-card — richer background, hover border highlight */
+.kit-card{background:linear-gradient(135deg,var(--paper),color-mix(in oklab,var(--cream) 60%,var(--paper) 40%));transition:border-color .2s ease,box-shadow .2s ease}
+.kit-card:hover{border-color:color-mix(in oklab,var(--lime) 55%,var(--line) 45%);box-shadow:0 12px 32px rgba(11,31,23,.09)}
 /* editorial product card — image hover zoom + lift */
 .editorial-image-link img{transition:transform .38s ease}
 .editorial-product-card:hover .editorial-image-link img{transform:scale(1.04)}
@@ -109,6 +117,10 @@
 .footer-note strong{color:var(--forest)}
 /* scroll-margin-top — prevent sticky header from clipping anchor targets */
 #short-list,#kits{scroll-margin-top:5rem}
+/* collection-proof — checkmark prefix matching trust badge treatment */
+.collection-proof span::before{content:"✓";display:inline-block;margin-right:.42rem;color:var(--lime);font-weight:900}
+/* intent products anchor — clear sticky header */
+#intent-products{scroll-margin-top:5rem}
 /* focus-visible ring — keyboard accessibility for interactive elements */
 .button:focus-visible,.text-link:focus-visible,.quick-paths a:focus-visible,.kit-visual-card:focus-visible,.editorial-image-link:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
 /* scroll reveal — pairs with ScrollRevealInit.tsx IntersectionObserver */
