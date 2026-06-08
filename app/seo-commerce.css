@@ -193,3 +193,13 @@
 /* purchase-panel — lime CTA button subtle glow */
 .purchase-panel .button.primary:not(:disabled):hover{box-shadow:0 0 0 3px color-mix(in oklab,var(--lime) 35%,transparent 65%)}
 .purchase-panel .button.primary{transition:box-shadow .18s ease}
+/* kit-visual-section — wrapper spacing for the homepage kits block */
+.kit-visual-section{padding:clamp(3rem,6vw,5.5rem) 0;border-bottom:1px solid var(--line)}
+.kit-visual-section .section-heading{margin-bottom:1.75rem}
+/* short-list-section — tighter top padding since it follows hero directly */
+.short-list-section{padding-top:clamp(2rem,4vw,3.5rem)}
+/* conversion-strip — full-bleed category strip spacing and baseline */
+.conversion-strip{width:min(1240px,92vw);margin:0 auto;padding:clamp(2.5rem,5vw,4.5rem) 0}
+/* launch-hero — ensure the hero-proof social proof block is readable */
+.hero-proof.compact-proof{display:flex;align-items:center;gap:.65rem;margin-top:1rem;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sand)}
+.hero-proof.compact-proof strong{color:var(--paper)}
