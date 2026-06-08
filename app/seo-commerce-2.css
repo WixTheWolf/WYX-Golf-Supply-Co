@@ -184,6 +184,27 @@
 .seo-guide-card{transition:border-color .18s ease}
 .seo-guide-card:hover{border-color:color-mix(in oklab,var(--lime) 40%,var(--line) 60%)}
 
+/* ── ball-marker / accessory intent pages — chip row ── */
+.marker-chip-row{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 1rem}
+.marker-chip-row span{display:inline-block;padding:.22rem .6rem;border:1px solid var(--line);font-size:.68rem;font-weight:700;letter-spacing:.06em;color:var(--pine)}
+/* ── headcover intent — featured image panel ── */
+.headcover-visual{aspect-ratio:4/3;background:var(--cream);display:flex;align-items:center;justify-content:center;overflow:hidden}
+/* ── product-card — headwear category lime border ── */
+.editorial-product-card[data-category="Headwear"]{border-top:2px solid color-mix(in oklab,var(--lime) 60%,transparent 40%)}
+/* ── journal article — author/date byline ── */
+.article-byline{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:-.2rem 0 1.5rem;display:flex;gap:.75rem;align-items:center}
+.article-byline::before{content:"";display:block;width:24px;height:1px;background:var(--lime)}
+/* ── conversion-strip — quick shop nav on cream bg ── */
+.conversion-strip{background:var(--cream)}
+/* ── quick-paths — active state indicator ── */
+.quick-paths a[aria-current="page"]{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+/* ── email-capture — urgency note ── */
+.email-capture-note{font-size:.76rem;color:color-mix(in oklab,var(--paper) 70%,transparent);margin-top:.4rem;letter-spacing:.02em}
+/* ── promo-note — WYX10 code highlight ── */
+.promo-note strong{background:var(--lime);color:var(--ink);padding:0 .3rem;font-size:.9em}
+/* ── trust-badge-section — subtle grid on wide screens ── */
+@media(min-width:900px){.trust-badge-section{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;text-align:center}}
+
 /* ── trip / travel intent page — icon chips ── */
 .trip-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0}
 .trip-chips span{display:inline-flex;align-items:center;gap:.3rem;padding:.28rem .72rem;border:1px solid var(--line);font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--forest)}

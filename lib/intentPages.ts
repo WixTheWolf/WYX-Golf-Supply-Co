@@ -370,6 +370,42 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 25)
   },
+  'golf-ball-markers': {
+    slug: 'golf-ball-markers',
+    title: 'Golf Ball Markers That Stay In The Bag.',
+    eyebrow: 'On The Green',
+    description: 'Milled ball markers, magnetic hat clips, and accessory caddies for golfers who are done losing markers in their pockets every round.',
+    metaTitle: 'Golf Ball Markers | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf ball markers from WYX Golf Supply Co. — milled markers, magnetic hat clips, and accessory caddies. Best small golf gifts under $35.',
+    primaryCta: 'Shop Ball Markers',
+    secondaryCta: 'Golf Gifts Under $25',
+    secondaryHref: '/golf-gifts-under-25',
+    proof: ['Stays on the brim', 'Milled flat profile', 'Great stocking stuffer', 'WYX10 launch code'],
+    faq: [
+      ['What is the best golf ball marker?', 'A milled flat marker with a magnetic hat clip is the most practical setup. The marker attaches to the brim, releases with one hand, and reattaches without looking. No more pocket searches on the green.'],
+      ['Are ball markers a good gift?', 'Yes — one of the best sub-$35 golf gifts with zero sizing risk. Every golfer needs markers and they are always getting lost. A quality milled marker with a clip is a gift that goes in the bag and stays there.'],
+      ['What is an accessory caddie?', 'A silicone loop that attaches to a golf glove and holds a ball marker and tee. Puts both where your hand already is — no pocket digging, no marker on the scorecard.']
+    ],
+    match: (product) => has(product, /ball marker|hat clip|magnetic marker|magnet caddie|accessory caddie|divot tool/)
+  },
+  'golf-headcovers': {
+    slug: 'golf-headcovers',
+    title: 'Golf Headcovers That Make A Statement.',
+    eyebrow: 'Bag Personality',
+    description: 'Driver headcovers, putter covers, and iron covers that protect your clubs while giving your bag a point of view. The most visible golf accessory on the course.',
+    metaTitle: 'Golf Headcovers | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf headcovers from WYX Golf Supply Co. — driver covers and putter headcovers with bag personality. Great golf gifts that get seen every round.',
+    primaryCta: 'Shop Headcovers',
+    secondaryCta: 'Ball Markers',
+    secondaryHref: '/golf-ball-markers',
+    proof: ['Seen every hole', 'Driver + putter options', 'Statement piece', 'WYX10 launch code'],
+    faq: [
+      ['Why do I need a golf headcover?', 'A driver headcover prevents shaft-to-shaft contact in the bag on every cart ride. Over time, unprotected drivers develop finish wear and micro-scratches. A good headcover protects a $400+ investment for the cost of a dinner.'],
+      ['Is a golf headcover a good gift?', 'Yes — especially for golfers with a clear aesthetic. A driver or putter cover is visible every hole and reflects the golfer\'s personality. Stick to neutral or statement-but-clean designs for gift buying.'],
+      ['What is the difference between a driver and putter cover?', 'A driver cover fits the clubhead and part of the hosel, with a sock sleeve for the shaft. A putter cover (mallet or blade) fits just the head and is designed for the shape of the putter. Check putter shape before buying — mallets and blades are not interchangeable.']
+    ],
+    match: (product) => has(product, /headcover|head cover|putter cover|driver cover|iron cover/)
+  },
   'golf-towels': {
     slug: 'golf-towels',
     title: 'Golf Towels That Actually Stay On The Bag.',

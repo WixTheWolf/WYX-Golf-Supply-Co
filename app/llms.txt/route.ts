@@ -47,6 +47,8 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Best golf gifts under $100: ${siteUrl}/best-golf-gifts-under-100
 - Golf towels: ${siteUrl}/golf-towels
 - Golf belts: ${siteUrl}/golf-belts
+- Golf ball markers & hat clips: ${siteUrl}/golf-ball-markers
+- Golf headcovers: ${siteUrl}/golf-headcovers
 - Scramble prize ideas: ${siteUrl}/scramble-prize-ideas
 - Golf gifts under $25: ${siteUrl}/golf-gifts-under-25
 - Shipping and returns: ${siteUrl}/shipping-returns

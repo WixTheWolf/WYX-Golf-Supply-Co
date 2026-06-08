@@ -296,6 +296,52 @@ export const posts = [
     ]
   },
   {
+    slug: 'best-golf-ball-markers',
+    title: 'Best Golf Ball Markers — What To Buy And Why They Matter',
+    seo: 'Best Golf Ball Markers | WYX Golf Supply Co.',
+    description: 'The complete guide to golf ball markers — milled vs. magnetic, hat clip vs. pocket, what makes a good one, and why it is one of the best small golf gifts.',
+    image: imageMap.iron,
+    sections: [
+      ['Why A Ball Marker Matters', 'On any green where your ball is in someone else\'s line, you need to mark it. The standard quarter works. A milled ball marker does the same job with more intention — and it stays in the bag instead of disappearing into a pocket with loose change.'],
+      ['Milled vs. Standard', 'Milled ball markers are machined from aluminum or brass with a flat profile that does not catch on the green surface. Cheaper markers can have raised edges that snag on the putting surface. A good milled marker sits flat, is heavy enough to feel intentional, and reads as a premium gift even at $18–$24.'],
+      ['Magnetic Hat Clip', 'The magnetic hat clip attaches to a brim and holds the ball marker magnetically. You mark your ball without reaching into a pocket — the marker releases with a light pull and reattaches in one motion. Once you use a magnetic clip, a pocket marker feels like a downgrade.'],
+      ['Accessory Caddie', 'An accessory caddie is a silicone loop that attaches to a golf glove and holds a ball marker + tee. It puts both on the glove where they are always accessible. Useful for golfers who struggle with pocket access or glove-vs-marker workflow on the green.'],
+      ['Best As A Gift', 'A milled ball marker set with a magnetic hat clip is one of the best golf gifts under $35 that any golfer can use starting round one. No sizing. Immediate value. Goes in the bag and stays there.'],
+      ['WYX Markers', 'WYX carries milled ball markers, magnetic hat clips, and accessory caddies. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'golf-headcover-guide',
+    title: 'Golf Headcover Guide — What To Look For And When They Matter',
+    seo: 'Golf Headcover Guide | WYX Golf Supply Co.',
+    description: 'A practical guide to golf headcovers — why driver covers matter, what makes a good iron cover, and how headcovers work as a golf gift and bag personality piece.',
+    image: imageMap.hero,
+    sections: [
+      ['Why Headcovers Matter', 'A driver without a headcover picks up micro-scratches from shaft-to-shaft contact in the bag on every bumpy cart ride. Over time the finish degrades. A good headcover takes 2 seconds to put on and preserves a $400–$600 driver for years.'],
+      ['Driver Headcover', 'The driver headcover takes the most abuse — it goes on and off every hole. Look for a knit or leather exterior with a soft sock interior. The sock sleeve should reach the full length of the shaft sleeve area. No exposed velcro that can catch on other headcovers.'],
+      ['Iron Covers', 'Most casual golfers do not use iron covers. Tour players and serious golfers in walk-and-carry setups often do because irons in a stand bag contact each other on every step. Iron covers are more common in Japan than the US, but the logic is sound.'],
+      ['Putter Cover', 'The putter cover is the most personal golf accessory on the bag. It is visible on every green, stays on the bag all round, and reflects the golfer\'s taste more than any other single item. A clean mallet or blade cover in a neutral color signals intention.'],
+      ['As A Gift', 'A driver headcover is one of the most personalized golf gifts you can give — it goes on the most visible club in the bag. Blade covers for putters are similarly statement-making. Both are medium-risk gifts (style preference matters), so stick to neutral or brand-aligned designs.'],
+      ['WYX Picks', 'WYX headcovers are designed for bag personality without going novelty. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'how-to-choose-a-golf-glove',
+    title: 'How To Choose A Golf Glove (Sizing, Material, When To Replace)',
+    seo: 'How To Choose A Golf Glove | WYX Golf Supply Co.',
+    description: 'A complete guide to choosing a golf glove — sizing, cabretta vs. synthetic, which hand to wear it on, when to replace it, and what makes a good golf glove gift.',
+    image: imageMap.hero,
+    sections: [
+      ['Which Hand Wears The Glove?', 'Right-handed golfers wear the glove on the left hand (the lead hand). Left-handed golfers wear it on the right hand. The glove goes on whichever hand is at the top of the grip — the hand that does most of the work through impact.'],
+      ['Cabretta vs. Synthetic', 'Cabretta leather is the premium standard — it comes from a specific type of sheepskin that produces a thin, soft hide that grips naturally and conforms to the hand over time. Synthetic gloves are more durable and weather-resistant but sacrifice feel. For performance: cabretta. For durability or hot/humid conditions: synthetic.'],
+      ['Sizing', 'Golf gloves are sized S, M, ML, L, XL and some brands include Cadet sizes for wider short fingers. Measure hand width at the widest point (across the knuckles) and finger length. A properly sized glove fits snugly with no material bunching at the fingertips. Too loose = glove twists during swing.'],
+      ['When To Replace', 'A glove typically lasts 10–15 rounds before the palm and thumb show wear. Playing in rain or heat accelerates degradation. When the grip side of the thumb shows visible wear or the palm feels slick even when clean, replace it.'],
+      ['Ball Marker Feature', 'Some golf gloves include a built-in ball marker on the velcro closure — a small milled disc or coin-sized marker attached to the wrist strap. It saves a pocket search on every green. Worth seeking out if the price is close.'],
+      ['Gift Sizing', 'Buying a glove as a gift requires knowing the recipient\'s dominant hand and approximate size. For gifting without sizing info, choose an accessory instead (marker, towel, grip tape) — no sizing risk.'],
+      ['WYX Gloves', 'WYX carries cabretta leather gloves with a built-in ball marker in S, M, L, XL. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
     slug: 'golf-belt-guide',
     title: 'Golf Belt Guide — Why It Matters More Than You Think',
     seo: 'Golf Belt Guide | WYX Golf Supply Co.',
