@@ -117,6 +117,14 @@
 .footer-note strong{color:var(--forest)}
 /* scroll-margin-top — prevent sticky header from clipping anchor targets */
 #short-list,#kits{scroll-margin-top:5rem}
+/* cart drawer polish */
+.cart-drawer h2{font-size:1.45rem;letter-spacing:-.03em;margin:0}
+.cart-head button{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--muted);padding:.35rem .5rem;transition:color .15s ease}
+.cart-head button:hover{color:var(--forest)}
+.cart-lines{flex:1;overflow-y:auto;max-height:calc(100vh - 320px);padding:.5rem 0}
+.cart-foot{display:grid;gap:.65rem;border-top:1px solid var(--line);padding-top:.85rem;margin-top:.85rem}
+.cart-foot a{display:flex;justify-content:center;align-items:center;min-height:40px;border:1px solid var(--line);font-size:.71rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .18s ease,border-color .18s ease}
+.cart-foot a:hover{background:var(--forest);color:var(--paper);border-color:var(--forest)}
 /* collection-proof — checkmark prefix matching trust badge treatment */
 .collection-proof span::before{content:"✓";display:inline-block;margin-right:.42rem;color:var(--lime);font-weight:900}
 /* intent products anchor — clear sticky header */
