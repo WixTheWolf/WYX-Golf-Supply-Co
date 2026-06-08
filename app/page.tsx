@@ -54,7 +54,27 @@ export default async function Home() {
   const homepageCatalog = catalog
     .filter(isHomepageProduct)
     .filter((product) => Number(productPrice(product).amount) <= 250);
-  const shortList = allocator.take(firstBuyProducts(homepageCatalog), 4);
+
+  function uniqueByHandle(products: typeof homepageCatalog) {
+    const seen = new Set<string>();
+    return products.filter((product) => {
+      if (seen.has(product.handle)) return false;
+      seen.add(product.handle);
+      return true;
+    });
+  }
+
+  const beltProduct = homepageCatalog.find((product) => /\bbelt\b/i.test(product.title));
+  const lineMarkerProduct = homepageCatalog.find((product) => /(three[- ]rail|^3[- ]line|line marker|ball marker)/i.test(`${product.title} ${product.handle}`));
+
+  const heroProducts = uniqueByHandle([
+    ...firstBuyProducts(homepageCatalog),
+    beltProduct,
+    lineMarkerProduct,
+    ...giftableProducts(homepageCatalog, 20)
+  ].filter(Boolean) as typeof homepageCatalog);
+
+  const shortList = allocator.take(heroProducts, 6);
   const shortListHandles = new Set(shortList.map((product) => product.handle));
   const under60 = giftableProducts(homepageCatalog, 12)
     .filter(isHomepageProduct)
