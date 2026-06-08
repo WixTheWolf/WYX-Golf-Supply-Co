@@ -624,3 +624,30 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .quick-paths a:active{background:color-mix(in oklab,var(--lime) 18%,var(--paper) 82%)}
 /* trust-badge-section — lime check prefix via before */
 .trust-badge-section span::before{content:"✓ ";color:var(--lime);font-weight:900}
+
+/* ── product-recommendation-grid — lift and brand the featured picks ── */
+.product-recommendation-grid a{transition:transform .2s ease,box-shadow .2s ease}
+.product-recommendation-grid a:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(11,31,23,.1);border-color:color-mix(in oklab,var(--sand) 60%,var(--line) 40%)}
+.product-recommendation-grid strong{color:var(--ink);font-size:.8rem}
+.product-recommendation-grid span{margin-top:.2rem}
+/* intent product section — anchor scroll offset */
+#intent-products{scroll-margin-top:80px}
+/* deal-strip — more prominent benefit chips on intent pages */
+.deal-strip{font-size:.72rem;font-weight:800;letter-spacing:.09em}
+/* seo-guide — left column shopping guide intro */
+.seo-guide>div:first-child>p{max-width:36ch;font-size:.94rem;line-height:1.6;color:var(--muted)}
+.seo-guide>div:first-child h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.7rem,3vw,2.6rem);letter-spacing:-.05em}
+/* collection-copy-grid article — hover lift */
+.collection-copy-grid article{transition:transform .2s ease,box-shadow .2s ease}
+.collection-copy-grid article:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,31,23,.08)}
+/* collection-copy-grid article p — body copy contrast */
+.collection-copy-grid article p{font-size:.9rem;line-height:1.65;color:var(--muted);margin:.5rem 0 0}
+/* product-section eyebrow — muted count label */
+#intent-products .eyebrow{color:var(--muted)}
+/* faq detail-list summary — lime arrow */
+.faq-section .detail-list summary::after{color:var(--lime);font-weight:700}
+/* why-wyx — forest bg variation for brand contrast break */
+.why-wyx{background:var(--forest);color:var(--paper);border-color:transparent}
+.why-wyx .eyebrow{color:var(--lime)}
+.why-wyx h2{color:var(--paper)}
+.why-wyx>p{color:color-mix(in oklab,var(--paper) 82%,transparent);font-family:var(--font-sans),system-ui,sans-serif}
