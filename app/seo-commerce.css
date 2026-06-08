@@ -651,3 +651,28 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .why-wyx .eyebrow{color:var(--lime)}
 .why-wyx h2{color:var(--paper)}
 .why-wyx>p{color:color-mix(in oklab,var(--paper) 82%,transparent);font-family:var(--font-sans),system-ui,sans-serif}
+
+/* ── editorial-product-card.featured — hero first-pick treatment ── */
+.editorial-product-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1.1fr .9fr;gap:0;border:2px solid var(--lime)}
+.editorial-product-card.featured .editorial-image-link{aspect-ratio:4/3}
+.editorial-product-card.featured .editorial-image-link img{height:100%;object-fit:cover}
+.editorial-product-card.featured>div{padding:clamp(1.4rem,3vw,2.4rem);display:flex;flex-direction:column;justify-content:center;gap:.75rem}
+.editorial-product-card.featured h3{font-size:clamp(1.4rem,2.5vw,2rem);letter-spacing:-.04em;line-height:1.1}
+.editorial-product-card.featured .eyebrow{font-size:.68rem;color:var(--lime);font-weight:900}
+.editorial-product-card.featured>div>p{font-size:.97rem;line-height:1.6;color:var(--muted);max-width:42ch}
+.editorial-product-card.featured .product-card-footer{margin-top:auto;border-top:1px solid var(--line);padding-top:.85rem}
+.editorial-product-card.featured .price{font-size:1.3rem}
+@media(max-width:650px){.editorial-product-card.featured{grid-template-columns:1fr}}
+/* brand strong on journal-card h2 — display font */
+.journal-card h2{font-family:var(--font-display),Georgia,serif;font-weight:900;letter-spacing:-.04em}
+/* product-image-link — lime focus ring */
+.product-image-link:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+/* button focus — lime ring always */
+.button:focus-visible{outline:2px solid var(--lime);outline-offset:4px}
+/* text-link focus */
+.text-link:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:2px}
+/* scrollbar brand — webkit */
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:var(--sand);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--forest)}
