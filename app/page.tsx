@@ -32,10 +32,20 @@ const trustSignals = [
   'Support by email'
 ];
 
-const visualStories = [
-  { title: 'Wear It', href: '/products?category=Headwear', image: imageMap.ropeHat, copy: 'Hats and apparel for the course and the stop after.' },
-  { title: 'Pack It', href: '/golf-trip-gear', image: imageMap.walk, copy: 'Trip-ready pieces for buddy weekends and scramble crews.' },
-  { title: 'Clip It', href: '/bag-upgrades', image: imageMap.leather, copy: 'Markers, caddies, covers, towels, and bag upgrades.' }
+const quickPaths = [
+  ['Golf Gifts', '/golf-gifts'],
+  ['Dad Gifts', '/golf-gifts-for-dad'],
+  ['Hats', '/products?category=Headwear'],
+  ['Apparel', '/products?category=Apparel'],
+  ['Training Aids', '/products?category=Training%20Aids'],
+  ['Bag Upgrades', '/bag-upgrades']
+];
+
+const cartBoosts = [
+  'WYX10 saves 10% on your first order',
+  'Low-risk gifts under $60',
+  'Checkout is live and secured by Shopify',
+  'Curated for weekend golfers'
 ];
 
 export default async function Home() {
@@ -61,7 +71,7 @@ export default async function Home() {
           <h1>Gear For The Boys Weekend.</h1>
           <p>Golf gifts, trip kits, hats, apparel, and bag upgrades built for real rounds.</p>
           <div className="actions">
-            <Link className="button primary" href="/kits/golf-trip-kit">Shop Trip Kits</Link>
+            <Link className="button primary" href="#short-list">Shop Best Picks</Link>
             <Link className="button secondary" href="/golf-gifts-for-dad">Shop Dad Gifts</Link>
           </div>
           <div className="hero-proof compact-proof">
@@ -70,30 +80,11 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="section visual-story-section">
-        <div className="section-heading">
-          <p className="eyebrow">Shop By Occasion</p>
-          <h2>Start With The Round You Are Buying For.</h2>
-        </div>
-        <div className="visual-story-grid">
-          {visualStories.map((story) => (
-            <Link className="visual-story-card" key={story.title} href={story.href}>
-              <Image src={story.image} alt={`${story.title} golf gear`} width={900} height={675} loading="lazy" sizes="(max-width: 650px) 92vw, (max-width: 900px) 46vw, 31vw" />
-              <span>
-                <strong>{story.title}</strong>
-                <small>{story.copy}</small>
-                <em>Shop Now</em>
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {shortList.length > 0 && <section id="short-list" className="section short-list-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Short List</p>
-            <h2>Four Easy Wins.</h2>
+            <p className="eyebrow">Start Here</p>
+            <h2>Best First-Cart Picks.</h2>
           </div>
           <Link className="text-link" href="/products">Shop All</Link>
         </div>
@@ -101,6 +92,20 @@ export default async function Home() {
           {shortList.map((product, index) => <EditorialProductCard key={product.id} product={product} featured={index === 0} />)}
         </div>
       </section>}
+
+      <section className="conversion-strip" aria-label="Shop WYX categories">
+        <div>
+          <p className="eyebrow">Quick Shop</p>
+          <h2>Find The Right Gift Fast.</h2>
+        </div>
+        <nav className="quick-paths" aria-label="Popular shopping paths">
+          {quickPaths.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+        </nav>
+      </section>
+
+      <section className="trust-badge-section" aria-label="Shopping trust signals">
+        {cartBoosts.map((item) => <span key={item}>{item}</span>)}
+      </section>
 
       <section id="kits" className="section kit-visual-section">
         <div className="section-heading split">
@@ -136,9 +141,9 @@ export default async function Home() {
       <section className="section why-wyx">
         <div>
           <p className="eyebrow">Why WYX?</p>
-          <h2>Curated For Weekend Golfers.</h2>
+          <h2>No Random Golf Junk.</h2>
         </div>
-        <p>WYX keeps the shop tight: golf gifts, trip gear, hats, apparel, and small bag upgrades that make sense for real rounds.</p>
+        <p>Every homepage pick should be giftable, useful, and easy to imagine in a real weekend golf cart.</p>
       </section>
 
       <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Drop Before Your Foursome Does." body="Join the WYX list for new golf gifts, trip gear, and launch discounts." />
