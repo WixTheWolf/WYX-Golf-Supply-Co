@@ -476,3 +476,14 @@ h3{font-size:1.45rem;font-weight:700}
 .consent-line{font-size:.62rem;color:color-mix(in oklab,var(--paper) 55%,transparent);line-height:1.5;max-width:440px}
 /* honeypot — hidden from screen + bots can't easily detect hidden */
 .honeypot{position:absolute!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}
+/* faq page — detail-list detail borders when not in .faq-section */
+.detail-list details{border-top:1px solid var(--line);padding:.75rem 0}
+.detail-list details:last-child{border-bottom:1px solid var(--line)}
+/* category-grid — Fraunces override for strong inside category cards */
+.category-grid strong{font-family:var(--font-display),Georgia,serif;font-weight:900;font-size:1.65rem;letter-spacing:-.05em}
+/* journal-card hover — subtle lift consistent with product-card */
+.journal-card{transition:box-shadow .25s ease,transform .25s ease}
+.journal-card:hover{box-shadow:0 8px 28px rgba(16,39,30,.13);transform:translateY(-2px)}
+/* journal-card img — zoom on hover */
+.journal-card img{transition:transform .35s ease}
+.journal-card:hover img{transform:scale(1.035)}
