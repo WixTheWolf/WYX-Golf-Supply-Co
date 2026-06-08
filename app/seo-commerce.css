@@ -79,11 +79,16 @@
 .kit-visual-card strong{font-family:Georgia,Times New Roman,serif;font-size:1.75rem;line-height:1;letter-spacing:-.045em}
 .kit-visual-card small{max-width:28ch;color:color-mix(in oklab,var(--paper) 84%,transparent);font-size:.92rem;line-height:1.35}
 .kit-visual-card em{font-style:normal;color:var(--sand);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-/* product grid stagger — cascade reveal for grid children */
-.product-grid>.product-card:nth-child(1),.editorial-product-grid>.editorial-product-card:nth-child(1){transition-delay:.05s}
-.product-grid>.product-card:nth-child(2),.editorial-product-grid>.editorial-product-card:nth-child(2){transition-delay:.12s}
-.product-grid>.product-card:nth-child(3),.editorial-product-grid>.editorial-product-card:nth-child(3){transition-delay:.19s}
-.product-grid>.product-card:nth-child(4),.editorial-product-grid>.editorial-product-card:nth-child(4){transition-delay:.26s}
+/* product grid stagger — entrance animation triggered when parent gets .is-revealed */
+@keyframes card-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.is-revealed .product-card,.is-revealed .editorial-product-card,.is-revealed .journal-card,.is-revealed .kit-visual-card{animation:card-in .5s cubic-bezier(.16,1,.3,1) both}
+.is-revealed .product-card:nth-child(1),.is-revealed .editorial-product-card:nth-child(1),.is-revealed .journal-card:nth-child(1){animation-delay:.04s}
+.is-revealed .product-card:nth-child(2),.is-revealed .editorial-product-card:nth-child(2),.is-revealed .journal-card:nth-child(2){animation-delay:.11s}
+.is-revealed .product-card:nth-child(3),.is-revealed .editorial-product-card:nth-child(3),.is-revealed .journal-card:nth-child(3){animation-delay:.18s}
+.is-revealed .product-card:nth-child(4),.is-revealed .editorial-product-card:nth-child(4),.is-revealed .journal-card:nth-child(4){animation-delay:.25s}
+.is-revealed .product-card:nth-child(5),.is-revealed .editorial-product-card:nth-child(5){animation-delay:.32s}
+.is-revealed .product-card:nth-child(6),.is-revealed .editorial-product-card:nth-child(6){animation-delay:.39s}
+@media(prefers-reduced-motion:reduce){.is-revealed .product-card,.is-revealed .editorial-product-card,.is-revealed .journal-card,.is-revealed .kit-visual-card{animation:none}}
 /* kit-card — richer background, hover border highlight */
 .kit-card{background:linear-gradient(135deg,var(--paper),color-mix(in oklab,var(--cream) 60%,var(--paper) 40%));transition:border-color .2s ease,box-shadow .2s ease}
 .kit-card:hover{border-color:color-mix(in oklab,var(--lime) 55%,var(--line) 45%);box-shadow:0 12px 32px rgba(11,31,23,.09)}
