@@ -68,3 +68,26 @@
 @media(min-width:1200px){.product-grid{gap:1.25rem}}
 /* ── intent-proof-grid — forest bg on the active chip feel ── */
 .intent-proof-grid span:hover{background:color-mix(in oklab,var(--forest) 8%,var(--paper) 92%);border-color:color-mix(in oklab,var(--forest) 30%,var(--line) 70%)}
+
+/* ── mobile typography — prevent oversized headings from breaking layout ── */
+@media(max-width:480px){
+  h1{overflow-wrap:break-word;word-break:break-word}
+  .hero-copy h1,.launch-hero-copy h1{font-size:clamp(2.4rem,11vw,3.6rem)}
+  .section-heading h2,.section-label h2{font-size:clamp(1.6rem,8vw,2.4rem)}
+}
+/* ── footer-note — brand contact as a warm CTA ── */
+.footer-note a{color:var(--forest);font-weight:700;text-underline-offset:3px;text-decoration:underline}
+.footer-note a:hover{color:var(--pine)}
+/* ── site-footer — bottom safe-area for iOS ── */
+.site-footer{padding-bottom:env(safe-area-inset-bottom,0)}
+/* ── trust-list — lime check before each item ── */
+.trust-list span::before{content:"✓ ";color:var(--lime);font-weight:900}
+/* ── purchase-panel — sticky panel top on desktop ── */
+@media(min-width:900px){.purchase-panel{position:sticky;top:6rem;align-self:start}}
+/* ── gallery — aspect ratio 4:3 on all images ── */
+.gallery-main{aspect-ratio:4/3;object-fit:cover;width:100%;display:block}
+/* ── product-detail — two-column layout on tablet+ ── */
+@media(min-width:900px){.product-detail{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4vw,4rem);align-items:start}}
+/* ── header scroll shadow — elevates nav on scroll ── */
+.site-header{transition:box-shadow .2s ease}
+.site-header.scrolled{box-shadow:0 2px 16px rgba(11,31,23,.1)}
