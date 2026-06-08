@@ -194,7 +194,7 @@
 .site-footer nav a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--lime);transition:width .2s ease}
 .site-footer nav a:hover::after{width:100%}
 /* product card — lime status badge text legible */
-.product-status{color:var(--ink)}
+.product-status{color:var(--paper)}
 /* purchase-panel — lime CTA button subtle glow */
 .purchase-panel .button.primary:not(:disabled):hover{box-shadow:0 0 0 3px color-mix(in oklab,var(--lime) 35%,transparent 65%)}
 .purchase-panel .button.primary{transition:box-shadow .18s ease}
@@ -416,3 +416,15 @@ h3{font-size:1.45rem;font-weight:700}
 .collection-hero h1{letter-spacing:-.045em;font-weight:900}
 /* why-wyx h2 — extra large and centered */
 .why-wyx h2{letter-spacing:-.055em;line-height:.92}
+/* editorial-image-link span — lime variant for category tag */
+.editorial-image-link span{background:var(--forest);border:1px solid rgba(255,253,247,.15)}
+/* editorial-product-card body — tighter vertical flow */
+.editorial-product-card>div>.eyebrow{margin:.1rem 0 .2rem}
+.editorial-product-card>div>h3{font-size:clamp(1rem,1.8vw,1.3rem);margin:.1rem 0 .4rem}
+.editorial-product-card>div>p{font-size:.88rem;line-height:1.5;color:var(--muted);margin:0 0 .5rem}
+/* product-image-link — consistent base color while shimmer runs */
+.product-image-link{background-color:#e5e1d8}
+/* kit-visual-card — text contrast for overlay */
+.kit-visual-card h3{font-size:clamp(1.4rem,2.5vw,2rem);text-shadow:0 2px 12px rgba(7,20,15,.35)}
+/* section padding on compact page-hero before actions */
+.page-hero .actions{margin-top:1.5rem}
