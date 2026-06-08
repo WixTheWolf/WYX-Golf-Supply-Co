@@ -23,3 +23,29 @@
 .button.primary:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(11,31,23,.18)}
 /* ── product-card image — prevent layout shift ── */
 .product-image-link img{aspect-ratio:4/3;object-fit:cover;width:100%;display:block}
+
+/* ── policy-card — shipping/returns accordion blocks ── */
+.policy-card{padding:1.25rem 0;border-bottom:1px solid var(--line)}
+.policy-card:first-of-type{border-top:1px solid var(--line);margin-top:1.5rem}
+.policy-card h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.1rem,2vw,1.5rem);letter-spacing:-.03em;margin:0 0 .5rem;color:var(--forest)}
+.policy-card p{font-size:.92rem;line-height:1.65;color:var(--muted);margin:0;max-width:60ch}
+/* ── seo-guide — guard min-height so grid doesn't collapse ── */
+.seo-guide-card{min-height:160px}
+/* ── nav hover underline — lime slide animation ── */
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--lime);border-radius:1px;transition:width .18s ease}
+.nav-links a:hover::after,.nav-links a[aria-current="page"]::after{width:100%}
+/* ── occasion-card — mobile 2-up grid ── */
+@media(max-width:650px){.occasion-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}}
+/* ── editorial-grid — 3-col min, fills at 1200px ── */
+@media(min-width:900px){.editorial-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1200px){.editorial-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* ── loading skeleton — shimmer for async content ── */
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skeleton{border-radius:2px;background:linear-gradient(90deg,var(--cream) 25%,color-mix(in oklab,var(--paper) 85%,var(--cream) 15%) 50%,var(--cream) 75%);background-size:200% 100%;animation:shimmer 1.6s ease infinite}
+/* ── product-section empty state ── */
+.product-section>p{padding:2rem 0;color:var(--muted);font-size:.92rem}
+/* ── cart-page-lines — subtle row dividers ── */
+.cart-page-lines .cart-line.wide{border-bottom:1px solid var(--line);padding:.85rem 0}
+.cart-page-lines .cart-line.wide:first-child{padding-top:0}
+.cart-page-lines .cart-line.wide:last-child{border-bottom:none}
