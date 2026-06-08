@@ -519,3 +519,9 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .filter-row a{transition:background .15s ease,border-color .15s ease,color .15s ease}
 /* editorial-product-grid responsive — 2-col on medium */
 @media(min-width:651px) and (max-width:899px){.editorial-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* deal-pick span — Fraunces override from promo.css Georgia */
+.deal-pick span{font-family:var(--font-display),Georgia,serif;font-weight:900;letter-spacing:-.03em}
+/* deal-pick — lime accent on hover border instead of plain forest */
+.deal-pick:hover{border-color:var(--lime);transform:translateY(-2px)}
+/* kit-visual-card span strong — ensure Fraunces */
+.kit-visual-card strong{font-family:var(--font-display),Georgia,serif;font-weight:900}
