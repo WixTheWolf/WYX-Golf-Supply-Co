@@ -566,3 +566,15 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 /* nav-links Training / Tech — highlight active category intent pages */
 .nav-links a[href="/golf-training-aids"]:hover,
 .nav-links a[href="/golf-tech"]:hover{color:var(--lime)}
+/* product-card — slight cream bg on hover to feel warm not cold */
+.product-card:hover{background:color-mix(in oklab,var(--paper) 92%,var(--cream) 8%)}
+/* editorial-product-card eyebrow — "Short List" label tone */
+.editorial-product-card .eyebrow{color:var(--pine);font-size:.62rem}
+/* short-list-section — slightly more vertical breathing room */
+.short-list-section{padding-top:clamp(4rem,8vw,7rem)}
+/* product-card-body h3 — tighter tracking for small card headlines */
+.product-card-body h3{font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.15;letter-spacing:-.02em;margin-bottom:.3rem}
+/* product-card-footer price — display font for number */
+.product-card-footer .price{font-family:var(--font-display),Georgia,serif;font-size:1.1rem;font-weight:900;letter-spacing:-.03em}
+/* add-to-bag link — compact on product cards */
+.product-card-footer .text-link{font-size:.64rem;letter-spacing:.1em}
