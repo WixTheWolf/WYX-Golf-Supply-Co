@@ -370,6 +370,24 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 25)
   },
+  'golf-gift-sets': {
+    slug: 'golf-gift-sets',
+    title: 'Golf Gift Sets — Curated Bundles That Feel Intentional.',
+    eyebrow: 'Bundle & Save',
+    description: 'Pre-built golf gift ideas across $30, $60, and $100 budgets — practical bag accessories, training aids, and apparel grouped for easy gifting.',
+    metaTitle: 'Golf Gift Sets & Bundles | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gift sets from WYX Golf Supply Co. — curated bundles across $30, $60, and $100 budgets for golfers. Use WYX10 for 10% off any order.',
+    primaryCta: 'Shop Gift Sets',
+    secondaryCta: 'Under $60 Picks',
+    secondaryHref: '/golf-gifts-under-60',
+    proof: ['Curated $30–$100 sets', 'Ships in clean packaging', 'No sizing on most picks', 'WYX10 launch code'],
+    faq: [
+      ['How do I build a golf gift set?', 'Pick 2–4 practical accessories in the same price tier: a ball marker, a towel, grip tape, and alignment sticks all work together. Avoid mixing novelty and practical items — it dilutes the intent.'],
+      ['What is a good golf gift set under $60?', 'Golf towel + ball marker set + grip tape roll = under $60 at WYX. Three different bag needs, all practical, all immediately useful. Use WYX10 for an additional 10% off.'],
+      ['Can I get gift sets shipped for Father\'s Day?', 'Yes — most WYX orders ship in 1–2 business days. Order by June 18 for standard delivery before Father\'s Day June 21.']
+    ],
+    match: (product) => Number(product.priceRange.minVariantPrice.amount) <= 100
+  },
   'golf-ball-markers': {
     slug: 'golf-ball-markers',
     title: 'Golf Ball Markers That Stay In The Bag.',

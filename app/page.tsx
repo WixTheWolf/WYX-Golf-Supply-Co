@@ -41,12 +41,15 @@ const quickPaths = [
   ["Dad Gifts 🎁", '/fathers-day-golf-gifts'],
   ['Golf Gifts', '/golf-gifts'],
   ['Gloves', '/golf-gloves'],
-  ['Golf Balls', '/golf-balls'],
+  ['Ball Markers', '/golf-ball-markers'],
+  ['Towels', '/golf-towels'],
   ['Hats', '/golf-hats'],
   ['Training', '/golf-practice-gear'],
   ['Under $25', '/golf-gifts-under-25'],
   ['Under $60', '/golf-gifts-under-60'],
-  ['Bag Upgrades', '/bag-upgrades']
+  ['Bag Upgrades', '/bag-upgrades'],
+  ['Belts', '/golf-belts'],
+  ['Headcovers', '/golf-headcovers']
 ];
 
 const cartBoosts = [
@@ -92,6 +95,9 @@ export default async function Home() {
 
   return (
     <>
+      <div className="urgency-strip" role="banner" aria-label="Father's Day shopping deadline">
+        🎁 <strong>Father&apos;s Day is June 21</strong> — 13 days to shop. <Link href="/fathers-day-golf-gifts">See golf gifts for dad →</Link>
+      </div>
       <section className="hero launch-hero">
         <Image src={imageMap.hero} alt="Golf friends walking a course at golden hour" fill priority sizes="100vw" />
         <div className="hero-copy launch-hero-copy">

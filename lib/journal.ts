@@ -296,6 +296,52 @@ export const posts = [
     ]
   },
   {
+    slug: 'golf-gift-sets-guide',
+    title: 'Golf Gift Sets — How To Build One That Feels Intentional',
+    seo: 'Golf Gift Sets | WYX Golf Supply Co.',
+    description: 'How to build a golf gift set that feels curated rather than random — what to pair, what to skip, and the price points that work for every occasion.',
+    image: imageMap.leather,
+    sections: [
+      ['Why Gift Sets Beat Single Items', 'A single ball marker costs $18 and feels small in a bag. Three items at $18–$24 each feel like a complete set. The same $60 budget lands differently when it arrives as a curated bundle of useful gear.'],
+      ['The $30 Set', 'Magnetic hat clip ($24) + bamboo tee pack ($14) = $38 shipped with WYX10. Two items, both practical, both immediately useful. Easy to present together. This is the best small gift set in golf.'],
+      ['The $60 Set', 'Golf towel + ball marker set + grip tape roll = under $60 with WYX10. Three items that cover three different bag needs. This is the set for a coworker, a friend\'s birthday, or a Father\'s Day add-on.'],
+      ['The $100 Set', 'Alignment sticks + putting mirror + ball marker set = under $95. This is the game-improvement set — practical, useful for a golfer who practices, and well under $100.'],
+      ['What Not To Bundle', 'Avoid mixing novelty items with practical gear. A gag gift next to a quality milled marker confuses the intent. Keep the set focused: either all practical bag gear, or all apparel, not both.'],
+      ['Presentation', 'WYX ships in clean packaging. If you want to present the bundle in a bag, a small canvas pouch or kraft box from any craft store takes 2 minutes to assemble and elevates the gift considerably.'],
+      ['WYX10', 'Use code WYX10 for 10% off your first order — the easiest way to trim a gift set budget without dropping any of the picks.']
+    ]
+  },
+  {
+    slug: 'golf-scorecard-holder-guide',
+    title: 'Golf Scorecard Holder Guide — The Underrated Bag Upgrade',
+    seo: 'Golf Scorecard Holder Guide | WYX Golf Supply Co.',
+    description: 'Why a leather scorecard holder is one of the most underrated bag upgrades in golf, what to look for, and why it makes a great golf gift under $40.',
+    image: imageMap.leather,
+    sections: [
+      ['Why Most Golfers Don\'t Have One', 'The scorecard usually ends up folded in a back pocket, soggy by the 7th hole, or lost at the turn. A leather scorecard holder puts the card flat, legible, and dry for all 18 holes. Once you use one, you do not go back.'],
+      ['What To Look For', 'Full-grain leather, a pencil loop on the side, and a magnetic closure or snap that holds under wind. Some holders include a tee pocket or a zippered pouch — useful, but not required. The core job is keeping the card flat and readable.'],
+      ['Size Matters', 'Standard scorecard holders fit USGA-size cards (3.5×6 inches folded). Some custom courses have different card sizes. Most leather holders fit 3.5x6 and under without cutting corners.'],
+      ['As A Gift', 'A leather scorecard holder is one of the cleanest bag upgrade gifts under $40 — elegant, practical, and something most golfers never buy themselves. No sizing. Works for every handicap. The gift that changes a small workflow every round.'],
+      ['Who Uses Them', 'Golfers who keep score seriously — not just for their own card, but for tracking others in a group or running a net format with multiple scorecards. Also popular among golfers who play solo or in walking formats where a scorecard gets more wear.'],
+      ['WYX Pick', 'The WYX scorecard holder is full-grain leather with a pencil loop and a tee pocket. Use code WYX10 for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'best-golf-gifts-for-beginners',
+    title: 'Best Golf Gifts For Beginners — What Actually Helps Them Improve',
+    seo: 'Best Golf Gifts For Beginners | WYX Golf Supply Co.',
+    description: 'Golf gift ideas for beginners — training aids, gloves, alignment sticks, and bag accessories that help new golfers improve without overwhelming them.',
+    image: imageMap.iron,
+    sections: [
+      ['Start With The Fundamentals', 'A beginning golfer needs a few things: a glove, tees, a ball supply, and alignment sticks. These four items cover the basic gear gap without trying to optimize swing weight or shaft flex — things that don\'t matter until the fundamentals are in.'],
+      ['Best Gift Under $25: Alignment Sticks', 'Alignment sticks are the single highest-return practice tool for a beginning golfer. They are used at every lesson, cost $22, and address the two most common beginner problems: bad alignment and ball position. Every golf teacher recommends them.'],
+      ['Best Gift Under $50: Glove + Alignment Sticks', 'A cabretta leather glove ($28) plus alignment sticks ($22) = $50 and covers grip and alignment — the two most impactful fundamentals for a new golfer. This is the most useful beginner golf gift set you can build.'],
+      ['What To Skip', 'Club fitting aids, launch monitors, and swing analyzer tech are for mid-handicap golfers who already have consistent ball contact. A beginner does not have the swing repeatability to extract value from data tools yet.'],
+      ['The One Splurge That Pays Off', 'A putting mirror ($32–$38) is the one tech-adjacent training aid that helps beginners immediately. It shows eye position and putter face angle at setup — two things every beginner gets wrong and every teacher fixes first.'],
+      ['WYX10 For Beginners', 'Use code WYX10 for 10% off your first order. A glove + alignment sticks + ball marker is a complete beginner gift set under $70 with the discount.']
+    ]
+  },
+  {
     slug: 'best-golf-ball-markers',
     title: 'Best Golf Ball Markers — What To Buy And Why They Matter',
     seo: 'Best Golf Ball Markers | WYX Golf Supply Co.',
