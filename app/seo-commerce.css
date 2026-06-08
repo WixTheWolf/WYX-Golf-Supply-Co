@@ -676,3 +676,21 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 ::-webkit-scrollbar-track{background:var(--paper)}
 ::-webkit-scrollbar-thumb{background:var(--sand);border-radius:4px}
 ::-webkit-scrollbar-thumb:hover{background:var(--forest)}
+
+/* ── conversion-panel — warm bg, readable buy-reason block ── */
+.conversion-panel{background:color-mix(in oklab,var(--cream) 60%,var(--paper) 40%);border:1px solid var(--line);padding:1rem 1.1rem;border-radius:0}
+.conversion-panel ul{list-style:none;padding:0}
+.conversion-panel li::before{content:"✓ ";color:var(--lime);font-weight:900}
+/* promo-note WYX10 — highlight the code */
+.promo-note strong{color:var(--pine);background:color-mix(in oklab,var(--lime) 28%,transparent);padding:.1em .3em}
+/* ai-answer-box — subtle left accent */
+.ai-answer-box{border-left:3px solid var(--lime)}
+/* breadcrumbs — full path styling */
+.breadcrumbs{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+/* product-grid — tighter on wider screens */
+@media(min-width:1400px){.product-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+/* footer-brand tagline */
+.footer-brand small{display:block;color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.15rem}
+/* nav-links — active page indicator via underline */
+.nav-links a[aria-current="page"]{color:var(--forest);font-weight:900}
+.nav-links a[aria-current="page"]::after{width:100%}
