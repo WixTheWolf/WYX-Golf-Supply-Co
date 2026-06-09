@@ -188,7 +188,7 @@ export const extraPosts = [
     title: 'How to Choose the Right Golf Glove (and When to Replace It)',
     seo: 'Golf Glove Guide | How to Choose a Golf Glove | WYX Golf Supply Co.',
     description: 'A practical guide to selecting, fitting, and replacing golf gloves — how to read the wear patterns, when cabretta beats synthetic, and why a fresh glove is the cheapest swing improvement you will make.',
-    image: imageMap.glove,
+    image: imageMap.leather,
     sections: [
       ['Fit Is Everything', 'A glove should fit like a second skin — snug across the knuckles and palm with no bunching at the fingers. Loose gloves allow the club to move in your hand under pressure, costing you face control. The simplest test: put the glove on and make a fist. If the leather wrinkles at the fingers, size down.'],
       ['Cabretta vs. Synthetic', 'Cabretta leather (AAA grade sheepskin) delivers the best feel and breathability in dry conditions — the choice for scratch players and anyone who prioritizes grip feedback. Synthetic gloves hold up longer in humid and wet conditions and cost less. The best round setup: cabretta in fair weather, synthetic as your rain backup.'],
@@ -202,7 +202,7 @@ export const extraPosts = [
     title: 'Golf Rain Gear: What to Wear, What to Carry, and How to Stay Dry',
     seo: 'Golf Rain Gear Guide | What to Wear Golfing in Rain | WYX Golf Supply Co.',
     description: 'A practical look at golf rain gear — what actually keeps you dry, what just gets you wet more slowly, and the three items that change how you play in rain.',
-    image: imageMap.rain,
+    image: imageMap.strategy,
     sections: [
       ['The Three Rain Essentials', 'A good rain round requires three things: (1) a waterproof jacket with taped seams that moves freely on the backswing, (2) a rain glove or pair of rain gloves that actually grip better when wet, and (3) a 62-inch double-canopy umbrella that will not invert in a gust. Everything else is secondary.'],
       ['What Makes a Good Rain Jacket', 'Look for fully taped seams (not just critically taped), a stretch panel across the back or underarm gusset for backswing freedom, and a hem long enough to cover the waistband when rotating. Budget jackets have water-resistant finishes that wash out — a real waterproof membrane is worth the extra $30.'],
@@ -217,7 +217,7 @@ export const extraPosts = [
     title: 'Golf Corporate Gift Guide: What to Give the Client Who Already Has Everything',
     seo: 'Golf Corporate Gift Guide | Golf Gifts for Clients | WYX Golf Supply Co.',
     description: 'A thoughtful guide to corporate golf gifts — useful accessories that land without guessing a handicap or clothing size, price ranges for every budget, and the gifts that get used, not re-gifted.',
-    image: imageMap.marker,
+    image: imageMap.iron,
     sections: [
       ['The Corporate Gift Problem', 'Most corporate golf gifts miss for the same reason: they are generic. Branded ball markers, novelty headcovers, and logo tee sets look like what they are — bulk orders from a catalog. A gift that earns a permanent spot in the bag says more than one that gets left at the hotel.'],
       ['Under $30: Daily-Use Accessories', 'A milled ball marker set ($42), a full-grain leather bag tag ($34), or a quality microfiber towel ($18) all work across handicaps and do not require knowing their bag, clubs, or clothing size. The ball marker set is particularly strong — it is something most golfers want but would not buy for themselves.'],
@@ -247,7 +247,7 @@ export const extraPosts = [
     title: 'Golf Accessories for Women: What Is Actually Worth Carrying',
     seo: 'Golf Accessories for Women | Best Golf Gifts for Women | WYX Golf Supply Co.',
     description: 'A practical look at golf accessories designed for women who play seriously — quality gloves, sun protection, bag essentials, and the accessories that improve a round without adding weight.',
-    image: imageMap.hat,
+    image: imageMap.ropeHat,
     sections: [
       ['The Glove Problem', 'Women\'s golf gloves are often sized smaller but made to the same standard as men\'s cabretta. The most common mistake: buying a glove that fits snugly in the store but loosens after one hole of sweating. For women\'s hands, AAA cabretta in a fitted size beats thicker, looser synthetic every round.'],
       ['Sun Protection That Does Not Slow You Down', 'UPF 50+ arm sleeves are the most practical sun protection for a full round — they cover more area than sunscreen without reapplication, they breathe better than a long-sleeve shirt, and they come off in 10 seconds when the sun drops. A sun gaiter adds face and neck coverage for exposed courses or tournament days.'],
@@ -262,7 +262,7 @@ export const extraPosts = [
     title: 'The Golf Pre-Round Checklist: What to Verify Before the First Tee',
     seo: 'Golf Pre-Round Checklist | What to Bring Golf | WYX Golf Supply Co.',
     description: 'The 14-item pre-round checklist for recreational golfers — what to verify, pack, and check before the first tee, from tee time to first drive.',
-    image: imageMap.bag,
+    image: imageMap.leather,
     sections: [
       ['The Night Before', 'Check the weather forecast and pack accordingly — rain gear if there is a 30%+ chance. Charge your GPS watch or rangefinder. Confirm your tee time and the course GPS is loaded. Clean any dirty clubs from last round. Replace worn tees and restock ball markers.'],
       ['Bag Checklist (Morning Of)', 'Count balls — minimum of 6, 9 is comfortable. Gloves: at least one fresh glove, two if it is hot. Tees: 20+ minimum. Ball markers: 2 in your pocket before the round, not just in the bag. Divot tool, towel (clipped and accessible), and your scorecard holder.'],
@@ -292,7 +292,7 @@ export const extraPosts = [
     title: 'Golf Gifts That Actually Get Used (And the Ones That Get Re-Gifted)',
     seo: 'Golf Gifts That Get Used | Practical Golf Gift Ideas | WYX Golf Supply Co.',
     description: 'An honest breakdown of the golf gifts that earn a permanent spot in the bag versus the ones that get left in the car and eventually re-gifted at the office holiday exchange.',
-    image: imageMap.bag,
+    image: imageMap.leather,
     sections: [
       ['The Bag Test', "The simplest filter for any golf gift: will it live in the bag permanently? A clip-on towel passes. A themed divot tool passes. A novelty prank golf ball does not pass. Golf bags are functional objects that golfers know intimately — if it does not have a specific use and a specific home in the bag, it will not stay."],
       ['Gets Used: Gloves', "A 3-pack of cabretta gloves is used within 3 rounds — sometimes within 1. Golfers go through gloves faster than they buy them, meaning they are always playing with a glove slightly past its prime. A fresh 3-pack lands immediately and earns goodwill every time the next one comes out of the packaging."],
@@ -308,7 +308,7 @@ export const extraPosts = [
     title: 'Best Golf Accessories Under $50 — 9 Picks That Actually Get Used',
     seo: 'Best Golf Accessories Under $50 | WYX Golf Supply Co.',
     description: 'Nine golf accessories under $50 that earn a permanent spot in the bag — no gimmicks, no novelty gear, just the practical picks that improve every round.',
-    image: imageMap.bag,
+    image: imageMap.leather,
     sections: [
       ['Microfiber Clip-On Towel ($18)', 'A good clip-on towel attaches to the bag ring, hangs on the left side for right-handed players, and cleans club faces before every shot. A microfiber towel with a carabiner clip that actually opens wide enough to hook to a bag ring is worth $18. Cheap towels slide off. Good ones stay all season.'],
       ['Groove Sharpener ($22)', 'Worn grooves cost 1-2 shots on any chip or pitch from rough or sand. A carbide-tip groove sharpener resharpens wedge and iron grooves at home in 5 minutes. After 6 months of play, wedge grooves wear enough that spin control degrades measurably. Most golfers do not own this.'],
@@ -341,7 +341,7 @@ export const extraPosts = [
     title: "Last-Minute Father's Day Golf Gifts That Still Feel Thoughtful",
     seo: "Last Minute Father's Day Golf Gifts | Golf Gifts for Dad Fast | WYX Golf Supply Co.",
     description: "Running out of time before Father's Day? The golf gifts that ship fast, look intentional, and actually get used — no panic buying required.",
-    image: imageMap.marker,
+    image: imageMap.iron,
     sections: [
       ['The Late Buyer Reality', "Father's Day catches most people two days before. The instinct is to panic-buy whatever is available with same-day shipping from a big retailer. The result: a generic gift set in a box that looks like what it is — a panic purchase. A better approach: a single well-chosen accessory from a curated source still reads as thoughtful even when it arrives on time."],
       ['Under $25 That Ships Fast', "Alignment sticks ($24), a ball marker set, or a bamboo tee set all ship quickly from WYX and look intentional when they arrive. Alignment sticks are a legitimately useful training aid that most weekend golfers do not own — the gift looks researched because it requires knowing something about what actually improves a golf game."],

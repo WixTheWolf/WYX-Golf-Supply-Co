@@ -204,6 +204,24 @@ export const extraIntentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product: Product) => under(product, 150) || categoryIn(product, ['Accessories', 'Apparel', 'Golf Tech', 'Gloves'])
   },
+  'golf-training-aids-for-beginners': {
+    slug: 'golf-training-aids-for-beginners',
+    title: 'Golf Training Aids for Beginners — 4 That Actually Make a Difference.',
+    eyebrow: 'Beginner Golf',
+    description: 'The four training aids that improve swing path, putting consistency, setup alignment, and tempo for beginner golfers — no lessons required, results show in one range session.',
+    metaTitle: 'Golf Training Aids for Beginners | WYX Golf Supply Co.',
+    metaDescription: 'Shop beginner golf training aids at WYX — alignment sticks, putting mirror, tempo trainer, and chipping net. Four aids that work without lessons. Use WYX10 for 10% off.',
+    primaryCta: 'Shop Training Aids',
+    secondaryCta: 'See Full Golf Gift Guide',
+    secondaryHref: '/golf-gifts',
+    proof: ['Alignment sticks $24', 'Putting mirror $32', 'Chipping net $44', 'WYX10 saves 10%'],
+    faq: [
+      ['What are the best training aids for beginner golfers?', 'The four most effective beginner golf training aids: (1) alignment sticks ($24) — fix path, stance, and ball position; (2) a putting mirror ($32) — fix eye position and face angle at setup; (3) a chipping net ($44) — build short game at home; (4) a tempo trainer ($28) — fix the most common beginner swing flaw (too fast). All four can be used without a lesson.'],
+      ['Do golf training aids really work?', 'Yes, when they target the correct problem. Alignment sticks work because they give immediate visual feedback on path and stance — two of the top three beginner swing errors. A putting mirror works because it fixes eye position, which controls whether the putter face is square at setup. Both work in one session. Swing trainers that fix sequence and tempo also show results quickly for golfers who swing over the top.'],
+      ['What is the best beginner golf gift under $30?', 'Alignment sticks ($24) are the best beginner golf gift under $30. Two fiberglass sticks placed on the ground before each range session fix 3-4 of the most common beginner errors simultaneously: open stance, ball position too far forward, alignment left or right of target, and over-the-top swing path. Most PGA Tour players use them at every practice session — the same tool works for beginners.']
+    ],
+    match: (product: Product) => categoryIn(product, ['Training Aids']) || /alignment|putting|chipping|tempo|training/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
   'golf-club-care-kit': {
     slug: 'golf-club-care-kit',
     title: 'Golf Club Care Kit — Clean Grooves, Fresh Grips, Sharp Wedges.',
