@@ -382,6 +382,24 @@ export const extraPosts = [
     ]
   },
   {
+    slug: 'how-to-organize-a-golf-bag',
+    title: 'How to Organize a Golf Bag — Zone by Zone',
+    seo: 'How to Organize a Golf Bag | Golf Bag Setup Guide | WYX Golf Supply Co.',
+    description: 'The complete golf bag organization guide — what goes in each pocket, what clips to each ring, and the system that makes the bag ready every round without searching for anything.',
+    image: imageMap.walk,
+    sections: [
+      ['Why Bag Organization Matters', 'A disorganized golf bag creates friction at the worst moments: searching for tees on the tee box, fumbling for a ball marker on the green, grabbing the wrong pocket for a glove in a downpour. The organized bag has one system, every round. After 3 rounds it becomes automatic — no thought required.'],
+      ['Zone 1: The D-Ring — Clip-On Towel', 'The bag\'s D-ring on the front panel is purpose-built for a clip-on towel. Thread the carabiner or clip through the ring once — it stays there all season. The towel swings free so it dries between holes. Accessible by either hand while walking. Never put the towel in a pocket. It stays wet, takes up space, and is hard to reach mid-stride.'],
+      ['Zone 2: The Secondary Ring — Club Brush', 'The bag\'s secondary ring (often on the lower front panel or side) holds a carabiner-clip club brush. After every iron shot: 3 seconds with the nylon bristle side across the face, groove pick for packed clay. It stays on the bag all season. Combined cost with the towel: $34. These two items do more for consistent ball striking than any swing tip.'],
+      ['Zone 3: The Hat Brim — Ball Marker', 'A magnetic hat-clip marker lives on the hat brim all round. One-click remove at the green, one-click return. The coin markers store in the ball pocket as backup. The best ball marker gift is one the golfer does not have to think about — a magnetic hat clip removes the "which pocket is my coin in" problem permanently.'],
+      ['Zone 4: Front Zipper Pocket — Tees + Divot Tool', 'The small front zipper pocket: 10-15 tees, a divot tool, a pencil stub. Accessible by either hand on the tee box without opening a large pocket. Refill tees after every round — running out of tees mid-round is the most avoidable golf problem.'],
+      ['Zone 5: Apparel Pocket — Golf Gloves', 'The fleece-lined apparel pocket protects leather from bag abrasion. Store spare gloves sealed in packaging. The active glove goes in loose when resting hands. Rotate 3 gloves through a summer round in heat — each glove dries on the bag for 12 holes between uses. The 3-pack rotation is only possible if the backup gloves are in the bag, sealed.'],
+      ['Zone 6: Ball Pocket — Balls + Coin Markers', 'The large ball pocket holds 6-12 balls of a single model plus spare coin ball markers. One model per round — do not mix compression ratings or cover constructions mid-round. A full sleeve of backup balls sits ready. At a ball-per-hole rate on tough courses, 6 balls is a minimum carry.'],
+      ['Zone 7: Side Pockets — Scorecard Holder + Rangefinder', 'The large side pockets balance bag weight. Distribute heavy items across both sides: rangefinder on one side, water bottle on the other. The scorecard holder sits flat in one side pocket with the course yardage guide. Anything valuable (phone, wallet, keys) goes in the pockets with the most secure zipper.'],
+      ['Zone 8: Club Tube — Alignment Sticks', 'Two alignment sticks slide beside the clubs in the club tube. Every bag has enough room to slip two rods alongside the club shafts. Pull them for range warm-up, return before the round. Alignment sticks are the most-used training aid in professional golf — they belong in the bag, not at home.']
+    ]
+  },
+  {
     slug: 'golf-gifts-under-35-guide',
     title: 'The Best Golf Gifts Under $35 — Six Picks That Get Used Every Round',
     seo: 'Best Golf Gifts Under $35 | Golf Gift Ideas Under $35 | WYX Golf Supply Co.',
