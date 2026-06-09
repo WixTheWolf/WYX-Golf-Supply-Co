@@ -679,5 +679,35 @@ export const extraPosts = [
       ['Drill 3: Lag Putting', 'From 9 feet (the full mat), putt with the goal of stopping the ball within 12 inches of the far end, short or long. No cup target — just proximity. Lag putting practice calibrates pace judgment: the most common 3-putt is a first putt that leaves 6+ feet. Five lag putts before every practice session builds the feel for distance that is impossible to develop exclusively at the cup.'],
       ['The WYX Putting Setup', 'The WYX Golf Putting Mat ($54) and Putting Alignment Mirror ($32) are both available at wyxgolfsupply.com. Together they create a complete home putting studio for under $90 before WYX10. Use WYX10 at checkout for 10% off the whole order. The mat rolls up and stores behind a door; the mirror fits in any bag pocket.']
     ]
+  },
+  {
+    slug: 'golf-birthday-gifts-guide',
+    title: 'Golf Birthday Gifts: The Picks That Actually Get Used',
+    seo: 'Golf Birthday Gifts | What to Get a Golfer for Their Birthday | WYX Golf Supply Co.',
+    description: 'Golf birthday gift ideas by budget — from a $18 microfiber towel to a $119 rangefinder. Picks that earn a bag spot, not a shelf spot.',
+    image: imageMap.leather,
+    sections: [
+      ['The Rule for Golf Birthday Gifts', 'The best golf birthday gift is the one he or she uses on the first round after receiving it — not the one that ends up in a closet. That narrows the field fast. Avoid: novelty items, accessories they already own in excess (ball markers, divot tools), anything that requires them to change equipment or swing. Focus on: bag essentials they use every round, training tools that build a daily habit, and the practical upgrade they keep mentioning but never buy.'],
+      ['Under $25: Alignment Sticks ($24)', 'The training tool every instructor uses, almost no amateur owns. Two sticks in a sleeve — one for ball position, one for club path, one for aim. 10 minutes before a round, they confirm setup instead of guessing. Used every range session from the first time out. No size risk. Works for every swing type and skill level. The practical birthday gift for the golfer who wants to improve.'],
+      ['Under $40: Glove 3-Pack ($32)', 'Golfers burn through 8-15 gloves a season and almost never buy in bulk. A 3-pack means starting the next three rounds with a fresh cabretta glove — not the cracked one from last spring. Used within one round of receiving them. Available in S/M/ML/L — pick ML if unsure, it fits the widest range. The most-used, most-overlooked golf consumable.'],
+      ['Under $50: Leather Scorecard Holder ($38)', 'Full-grain leather with pencil loop and ball marker pocket. The bag upgrade that gets noticed by playing partners and lasts a decade. Engraving-ready front panel for initials, a nickname, or a short note. The elegant birthday gift in the "sweet spot" budget — generous without being excessive.'],
+      ['Under $125: Laser Rangefinder ($119)', 'If the birthday golfer does not own a rangefinder, this is the gift. Slope compensation, pin-lock vibration, 800-yard range. The most impactful golf tech upgrade available — removes all yardage guesswork and replaces the mental loop of "do I have enough club" with a precise number. Used every single round from the first time out. Use WYX10 for $11.90 off.'],
+      ['How to Order', 'All picks available at wyxgolfsupply.com. Use WYX10 at checkout for 10% off any order. Ships in 1-3 days. Free returns within 30 days. If you are unsure which glove size — pick ML. If you are unsure on alignment sticks vs. scorecard holder — the scorecard holder lasts longer and gets used on every single round, while alignment sticks get used at the range. Both are excellent choices under $40.']
+    ]
+  },
+  {
+    slug: 'golf-corporate-gift-guide',
+    title: 'Golf Corporate Gifts That Earn Real Respect (Not Just a Thank You)',
+    seo: 'Golf Corporate Gifts | Golf Gifts for Clients and Colleagues | WYX Golf Supply Co.',
+    description: 'Golf corporate gift ideas for clients, colleagues, and tournament prizes that show you understand the game — not just that you found the golf aisle.',
+    image: imageMap.strategy,
+    sections: [
+      ['What Makes a Corporate Golf Gift Work', 'A corporate golf gift succeeds when the recipient uses it at their next round and remembers who gave it. That rules out: novelty items, cheap ball sets, and anything that gets grouped with the promo pile. What works: quality accessories they recognize the value of immediately, practical tools that improve the experience, and gifts that say "we understand your game" rather than "we found the golf section."'],
+      ['The Leather Scorecard Holder ($38)', 'The most elegant corporate golf gift in the under-$50 tier. Full-grain leather, pencil loop, ball marker pocket, engraving-ready front panel. Give it with their initials or company initials and it becomes a permanent bag accessory. Used every round. Costs less than a business lunch but lasts longer. The gift that playing partners ask about.'],
+      ['The Glove 3-Pack ($32)', 'No corporate gift is more immediately useful than a fresh glove. A cabretta 3-pack means three rounds starting clean — not with the worn glove they have been meaning to replace. Size-safe at ML for most recipients. The consumable gift that says you know golf, not just that you ordered from a catalog.'],
+      ['The Laser Rangefinder ($119)', 'The premium corporate golf gift that earns genuine appreciation. If the recipient plays regular golf but does not own a rangefinder, this changes their game visibly on the first round. Slope compensation, pin-lock vibration, 800-yard range. The gift that makes a measurable difference in how they play — which is exactly what a memorable corporate gift does.'],
+      ['Tournament Prize Tiers', 'Closest to the pin and longest drive prizes: microfiber towel ($18) or alignment sticks ($24) — useful, not cheap, no size risk. Gross winner: rangefinder ($119) or GPS watch ($149) — the premium prize that players actually compete for. Team gift: leather scorecard holder ($38 per person) — personalized, quality, and specific to the game. All available in bulk with WYX10 for 10% off any order size.'],
+      ['Ordering for Groups', 'WYX Golf Supply Co. ships to a single address or multiple addresses. Use WYX10 for 10% off any order. No minimum quantity. For personalized scorecard holders or larger tournament prize orders, contact us at wyxgolfsupply.com/contact and we will confirm availability and lead time. Most orders ship in 1-3 business days.']
+    ]
   }
 ];
