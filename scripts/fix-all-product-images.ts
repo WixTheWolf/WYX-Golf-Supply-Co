@@ -196,9 +196,9 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/S3a30fedfd573446a9a5c4c01d52233908.jpg_480x480q75.jpg',
     alt: 'Mallet putter headcover tour knit stretch fit magnetic snap',
   },
-  'iron-headcovers-set-9': {
+  'iron-head-cover-set-9-piece': {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/S3a30fedfd573446a9a5c4c01d52233908.jpg_480x480q75.jpg',
-    alt: 'Golf iron headcovers set',
+    alt: 'Golf iron headcovers set 9-piece',
   },
 
   // ── RAIN / BAG ACCESSORIES ───────────────────────────────────────────────────
