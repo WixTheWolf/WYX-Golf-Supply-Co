@@ -12,11 +12,7 @@
  * Set PUBLISH_DIRECT_PRODUCTS=false to create as DRAFT instead.
  */
 
-import * as dotenv from 'dotenv';
-import { resolve } from 'path';
-
-dotenv.config({ path: resolve(process.cwd(), '.env.local') });
-
+// Env vars loaded by tsx --env-file .env.local (see package.json seed:direct-products)
 import { seedDirectProducts } from '../lib/shopify/directSeed';
 
 async function main() {
