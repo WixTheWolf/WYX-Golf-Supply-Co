@@ -246,5 +246,93 @@ export const directProducts: DirectProduct[] = [
     tags: ['alignment board', 'golf training aid', 'golf alignment', 'golf practice', 'golf gifts for him', 'golf improvement', 'under $40'],
     imageUrl: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&h=900&fit=crop&q=80',
     imageAlt: 'Golfer practicing alignment and stance on range'
+  },
+  {
+    title: 'Cabretta Leather Golf Glove 3-Pack — Men\'s ML',
+    handle: 'cabretta-golf-glove-3-pack-mens',
+    price: '32.00',
+    productType: 'Gloves',
+    collectionHandle: 'gloves',
+    description: 'Three genuine cabretta leather golf gloves in men\'s ML — the consumable every golfer runs out of. Fresh cabretta for every 10 rounds, no more playing on a dried-out cracked glove.',
+    details: [
+      'Genuine cabretta leather palm and fingers for maximum feel and grip',
+      'Three gloves — enough for 30-45 rounds without reordering',
+      'Men\'s ML (Medium-Large) — fits most hand sizes',
+      'Perforated back panel for airflow in warm weather',
+      'Adjustable velcro tab closure — secure fit on any swing'
+    ],
+    materials: 'Cabretta sheepskin leather palm, stretch-mesh back, velcro closure.',
+    care: 'Air dry after each round — never in direct sun or dryer. Store flat.',
+    seoTitle: 'Cabretta Golf Glove 3-Pack Men\'s | WYX Golf Supply Co.',
+    metaDescription: 'Genuine cabretta leather golf glove 3-pack for men. Three gloves for 30-45 rounds of fresh grip. Under $35. Use WYX10 for 10% off.',
+    tags: ['golf glove', 'cabretta glove', 'golf gloves', 'mens golf glove', 'golf gifts for dad', 'under $35', 'golf accessories', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1594735308830-1e09e0d93f39?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf glove on hand during golf swing'
+  },
+  {
+    title: 'Microfiber Golf Towel — Clip-On Carabiner, 16x24"',
+    handle: 'microfiber-golf-towel-clip-on',
+    price: '18.00',
+    productType: 'Towels',
+    collectionHandle: 'accessories',
+    description: 'A 16x24" microfiber golf towel with a heavy-gauge carabiner clip that actually opens wide enough to attach to any bag ring. Dual-sided: waffle weave for clubs, smooth side for ball and grip.',
+    details: [
+      'Dual-sided: waffle weave for club face scrubbing, smooth side for ball and grip clean',
+      'Heavy-gauge carabiner clip opens 1.5" — fits any bag ring, cart, or trolley handle',
+      '16x24" — large enough to hang open across the bag face',
+      'Machine washable, holds no odor after 3+ wash cycles',
+      'Stays damp longer than terry cloth — cleans more clubs per wet'
+    ],
+    materials: '80% polyester / 20% polyamide microfiber. Stainless steel carabiner.',
+    care: 'Machine wash cold, tumble dry low. Do not use fabric softener (reduces absorption).',
+    seoTitle: 'Golf Towel Clip-On Microfiber | WYX Golf Supply Co.',
+    metaDescription: 'A 16x24" dual-sided microfiber golf towel with heavy-gauge carabiner clip. Hangs on any bag ring. Machine washable. Under $20. Use WYX10 for 10% off.',
+    tags: ['golf towel', 'microfiber towel', 'golf accessories', 'clip on towel', 'golf gifts for dad', 'golf bag accessories', 'under $20', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1515191107209-c28698631303?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf towel hanging on golf bag during round'
+  },
+  {
+    title: 'Premium Golf Ball Mix Pack — 12 Urethane Tour Balls',
+    handle: 'premium-golf-ball-mix-pack-12',
+    price: '34.00',
+    productType: 'Golf Balls',
+    collectionHandle: 'golf-balls',
+    description: 'A 12-ball mix pack of premium urethane tour-grade golf balls — reconditioned to USGA standards. Play the same ball the tour plays at a fraction of new retail. Ideal for a round or two before committing to a specific model.',
+    details: [
+      '12 urethane-cover tour balls — reconditioned to excellent play condition',
+      'Mix of Titleist Pro V1, Pro V1x, Callaway Chrome Soft, TaylorMade TP5',
+      'Each ball inspected: no cuts, no cracks, paint scratched only cosmetically',
+      'USGA conforming — legal for all competition and handicap rounds',
+      'Packaged in a resealable sleeve set — no loose balls rattling in the box'
+    ],
+    materials: 'Urethane cover, multi-layer construction. Varies by model in mix.',
+    care: 'Store at room temperature. Avoid extended exposure to heat.',
+    seoTitle: 'Premium Golf Ball Mix Pack 12 | Tour Golf Balls | WYX Golf Supply Co.',
+    metaDescription: 'A 12-ball mix pack of premium urethane tour golf balls reconditioned to excellent play condition. Pro V1, Chrome Soft, TP5. Under $35. WYX10 saves 10%.',
+    tags: ['golf balls', 'premium golf balls', 'tour golf balls', 'urethane golf balls', 'golf gifts', 'golf gifts for dad', 'under $35', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf balls on green grass'
+  },
+  {
+    title: 'Dual-Sided Golf Club Brush & Groove Pick',
+    handle: 'dual-sided-golf-club-brush-groove-pick',
+    price: '16.00',
+    productType: 'Club Care',
+    collectionHandle: 'accessories',
+    description: 'A dual-sided club brush with a stiff nylon bristle face, a brass wire side for compacted groove debris, and a retractable groove pick — plus a carabiner clip to live on the bag permanently.',
+    details: [
+      'Dual sides: nylon bristle for club face cleaning, brass wire for compacted groove dirt',
+      'Retractable groove pick clears tightly packed debris from wedge grooves',
+      'Carabiner clip attaches to any bag ring or cart hook',
+      'Zinc alloy body — will not rust or corrode in rain',
+      'Works on all club types: irons, wedges, woods, putters'
+    ],
+    materials: 'Zinc alloy body, nylon bristles, brass wire, retractable steel pick. Stainless carabiner.',
+    care: 'Rinse with fresh water after heavy mud use. Air dry before clipping back to bag.',
+    seoTitle: 'Golf Club Brush Groove Pick | Dual-Sided | WYX Golf Supply Co.',
+    metaDescription: 'A dual-sided golf club brush with brass wire, nylon bristle, retractable groove pick, and carabiner clip. Attaches to any bag permanently. Under $20.',
+    tags: ['golf club brush', 'groove pick', 'club care', 'golf accessories', 'golf bag accessories', 'golf gifts', 'under $20', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf club brush and grove cleaning tools'
   }
 ];
