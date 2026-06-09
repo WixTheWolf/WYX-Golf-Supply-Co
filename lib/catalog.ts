@@ -72,14 +72,14 @@ function isCuratedProduct(product: Product) {
 }
 
 export function availableProducts(products: Product[]) {
-  return products.filter(
-    (product) =>
-      product.availableForSale &&
-      hasSaleReadyMedia(product) &&
-      !hasMisleadingProductMedia(product) &&
-      passesPublicCatalogGate(product) &&
-      isCuratedProduct(product)
-  );
+  return products.filter((product) => {
+    if (!product.availableForSale) return false;
+    if (!passesPublicCatalogGate(product)) return false;
+    // WYX-curated products bypass media quality gates — they are our own catalog
+    if (isCuratedProduct(product)) return true;
+    // Non-curated products must pass image checks to prevent bad dropship media
+    return hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product);
+  });
 }
 
 export function categoryCount(products: Product[], category: string) {
