@@ -382,6 +382,36 @@ export const extraPosts = [
     ]
   },
   {
+    slug: 'bachelor-party-golf-trip-planning',
+    title: 'How to Plan a Bachelor Party Golf Trip — The Gear and Gift Checklist',
+    seo: 'Bachelor Party Golf Trip Planning | Golf Bachelor Weekend | WYX Golf Supply Co.',
+    description: 'The complete bachelor party golf trip planning guide — what gear to pack, what gift to get the groom, and how to organize matching picks for the squad.',
+    image: imageMap.walk,
+    sections: [
+      ['The Best Man Checklist', 'A bachelor party golf weekend has three moving parts: travel logistics (someone else handles), round bookings (someone else handles), and gear (your department). The best man who shows up with a groom gift, matching accessories for the squad, and a plan for the round wins the weekend.'],
+      ['The Groom Gift', 'The groom gift should be something he will use every round for years — not a one-trip item. Three options: (1) GPS watch ($149) — the one gift that changes every round immediately, wrist yardage on 40,000+ courses, he will mention it the whole trip. (2) Leather scorecard holder ($38) — elegant, practical, used all weekend and every weekend after. (3) Milled ball marker gift set ($28) — the gift in a box that signals you knew what he actually wanted. Pick one; do not overthink it.'],
+      ['The Squad Matching Pick', 'One matching item for the group does more for the trip aesthetic than anything else. The easiest: matching clip-on towels ($18 each). Every bag gets the same towel color. It photographs well, it is practical, and at $18 per person for 8 guys it is $144 total — the best man can absorb that as the organizational cost. Alternative: matching ball marker sets ($28 each) if the budget is there.'],
+      ['What to Pack (Gear Checklist)', '(1) At least 3 gloves — golf trips are hard on leather. Carry a fresh 3-pack. (2) 12+ balls — budget for 2 balls per round on an unfamiliar course. (3) Extra tees — 500-count bamboo pack fits in a pocket. (4) Alignment sticks — the warm-up ritual on a trip course establishes who is serious. (5) A club brush — 4 rounds in 3 days means gross grooves by round 2. (6) Sunscreen and a hat — obvious but always forgotten.'],
+      ['The Group Round Strategy', 'The bachelor party round is not the round to putt out every stroke. Play best ball. Track one score for the group. The groom hits first on every tee. The custom: whoever wins the hole carries the towel (the groom\'s towel, specifically) to the next tee. It is a stupid ritual that everyone remembers. Make it yours.'],
+      ['Use WYX10 for the Group Order', 'Order all the group picks at once at wyxgolfsupply.com. Use WYX10 for 10% off. On a 10-person order of $18 towels ($180 total), WYX10 saves $18 back to the best man fund. Browse the full trip gear list at /golf-trip-gear.']
+    ]
+  },
+  {
+    slug: 'golf-scramble-prize-ideas-guide',
+    title: 'Golf Scramble Prize Ideas — What Players Actually Want to Win',
+    seo: 'Golf Scramble Prize Ideas | Tournament Prize Guide | WYX Golf Supply Co.',
+    description: 'The practical guide to golf scramble prizes — what players actually want to win, budget by category, and how to make every player go home with something useful.',
+    image: imageMap.strategy,
+    sections: [
+      ['The Trophy Problem', 'Most golf scramble prizes are trophies or generic gift cards. Trophies go on a shelf for 6 weeks and get forgotten. Gift cards feel like homework. The best golf prizes are things players put directly in their bag that day — accessories they use every round. The test: if the prize can travel home in a golf bag pocket, it is a good prize.'],
+      ['Closest-to-Pin: $18–$32', 'The CTP prize should feel personal — it is a skill prize, not a participation reward. Milled ball marker set ($28 in a gift box) is perfect: feels valuable, fits in a pocket, used on every green. A premium divot tool + hat clip combo ($22) is also strong. A clip-on microfiber towel ($18) is the accessible choice if multiple CTP holes need prizes.'],
+      ['Long Drive: $24–$48', 'Long drive prizes reward the longest hitter — go practical or go training-aid. Alignment sticks ($24) are the meta pick: every serious golfer wants to hit longer and straighter, and alignment sticks are the single most effective training aid for that. A cabretta glove 3-pack ($32) says "you grip it hard, here are the gloves to survive it." A cord regrip kit ($48) is the ultimate long drive prize for the player who takes their game seriously.'],
+      ['Winning Team: $32–$75 per player', 'The winning team prize should feel significant. Per player: glove 3-pack + clip-on towel bundle ($50) is the practical combo every golfer uses every round. Leather scorecard holder ($38) is elegant and memorable. GPS watch ($149) is the premium individual prize that wins the whole room — if the prize budget supports it.'],
+      ['Participation / Raffle Prizes: $14–$22', 'Every player should go home with something. Budget options that actually get used: bamboo tee 500-count pack ($14) — everyone runs out, no one stockpiles. Dual-sided club brush ($16) — carabiner clip, lives on the bag all season. Ball stamp set ($22) — interactive and unique, players use it before the next round.'],
+      ['Organizer Tips', 'Order everything from one place to simplify shipping logistics. Use WYX10 at WYX Golf Supply Co. for 10% off the full order. For groups of 20, a $36 savings on towels at $18 each = 2 extra towels for the event table. Tip: buy 10% more of the participation items than your headcount — people always bring plus-ones.']
+    ]
+  },
+  {
     slug: 'how-to-organize-a-golf-bag',
     title: 'How to Organize a Golf Bag — Zone by Zone',
     seo: 'How to Organize a Golf Bag | Golf Bag Setup Guide | WYX Golf Supply Co.',
