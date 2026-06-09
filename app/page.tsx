@@ -198,19 +198,19 @@ export default async function Home() {
           <h2 id="why-wyx-heading">No Random Golf Junk.</h2>
         </div>
         <div className="care-step-grid">
-          <div className="care-step-card">
+          <div className="care-step">
             <strong>Curated for Weekend Golfers</strong>
             <p>Every product passes the bag test — if it does not earn a permanent spot in the bag, it does not make the catalog. No novelty gear, no branded tchotchkes, no items that get used once and re-gifted.</p>
           </div>
-          <div className="care-step-card">
+          <div className="care-step">
             <strong>Practical Over Flashy</strong>
             <p>The golfer who uses a quality microfiber towel, a milled ball marker, and fresh cabretta gloves every round plays better than one with a premium bag full of gear they never use. WYX stocks the former.</p>
           </div>
-          <div className="care-step-card">
+          <div className="care-step">
             <strong>Real Prices, No Markup Theater</strong>
             <p>Transparent pricing across the catalog. Use WYX10 for 10% off your first order. Everything ships via secure Shopify checkout — no account required, shipping shown before payment.</p>
           </div>
-          <div className="care-step-card">
+          <div className="care-step">
             <strong>Built for Gifts That Land</strong>
             <p>Every item in the WYX catalog is chosen because it is the thing the golfer in your life wants but would not buy for themselves. If it fails the &quot;will he actually use this&quot; test, it does not ship from WYX.</p>
           </div>
@@ -223,19 +223,19 @@ export default async function Home() {
           <h2>Gear That Earns a Permanent Bag Spot.</h2>
         </div>
         <div className="care-step-grid">
-          <div className="care-step-card">
+          <div className="care-step">
             <p>&ldquo;Bought the cabretta glove 3-pack as a Father&apos;s Day gift and my dad texted me the next morning that he already used the first one at his Saturday game. First golf gift I&apos;ve given that he actually used the same weekend.&rdquo;</p>
             <strong>— Sarah M., gift buyer</strong>
           </div>
-          <div className="care-step-card">
+          <div className="care-step">
             <p>&ldquo;The alignment sticks have been in my bag every range session since I ordered them. Also did a complete warm-up with the resistance bands before my last round and shot my best nine holes of the year. Under $50 total.&rdquo;</p>
             <strong>— James T., weekend golfer</strong>
           </div>
-          <div className="care-step-card">
+          <div className="care-step">
             <p>&ldquo;Got the magnetic divot tool and ball marker set as a gift and it&apos;s now the only marker I use. The one that came with my bag is in a drawer somewhere. Good weight, good magnet, looks sharp on the green.&rdquo;</p>
             <strong>— Chris L., 12 handicap</strong>
           </div>
-          <div className="care-step-card">
+          <div className="care-step">
             <p>&ldquo;Used the impact tape for the first time this season and found out I was hitting the driver heel by about an inch. After 20 minutes of adjustments on the range the pattern shifted center. Shot 4 under my handicap that afternoon.&rdquo;</p>
             <strong>— Mike R., golf instructor</strong>
           </div>
