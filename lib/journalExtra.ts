@@ -617,5 +617,37 @@ export const extraPosts = [
       ['Chipping Net — the backyard range', 'A 4-target chipping net ($44) turns the backyard into a short-game range. Four color-coded target pockets from 6 inches to 24 inches give progressively harder targets. The narrow targets force trajectory control rather than just getting the ball airborne. Fold it flat in 60 seconds when done. This is the tool for golfers who cannot get to the course but have 20 minutes before dinner.'],
       ['The Full Practice Setup', 'The ideal home practice setup costs under $100: alignment sticks ($24) + putting alignment mirror ($32) + chipping net ($44) = $100 before WYX10. That three-tool setup covers the full shot spectrum — alignment and aim, putting mechanics, and short game trajectory. All available at wyxgolfsupply.com. Use WYX10 at checkout for 10% off.']
     ]
+  },
+  {
+    slug: 'night-golf-guide',
+    title: 'Night Golf: How to Play, What to Bring, and Why You Should Try It',
+    seo: 'Night Golf Guide | How to Play Night Golf | LED Golf Balls | WYX Golf Supply Co.',
+    description: 'Night golf is one of the most underrated ways to play — cooler temps, empty courses, and a completely different challenge. Here is how to set it up and what you need.',
+    image: imageMap.walk,
+    sections: [
+      ['What Is Night Golf?', 'Night golf is golf played after dark on a standard or designated night golf course. The fairways are typically lit by glow sticks along the edges, and players use LED or glow golf balls that activate on impact and remain visible in the dark. Courses that host night golf events usually open after sunset, often on Fridays and Saturdays in summer. Some courses run full 18-hole night rounds. Others run 9-hole twilight events that blend into darkness over the back nine.'],
+      ['LED Golf Balls — How They Work', 'LED golf balls have a small LED core that activates on the first impact — drive, chip, putt. After activation, the ball glows for 8+ minutes per light cycle, visible from 100+ yards in full darkness. The WYX Night Golf Glow Ball Set ($42) includes 12 balls in 4 colors (white, red, blue, green) — 3 of each. Playing each person in the group a different color eliminates ball identification confusion in the dark. Standard 1.68-inch diameter, two-piece construction.'],
+      ['How to Find a Night Golf Course', 'Search for "night golf near me" or check your local course calendar for Friday and Saturday evening events. Resort courses, charity tournaments, and golf clubs near vacation areas run the most night golf events. Some courses permanently illuminate a 9-hole loop for after-hours play. The fastest path to a night round: call your home course and ask if they permit twilight play with LED balls on the back nine in summer.'],
+      ['What to Bring', 'Night golf bag checklist: (1) LED golf balls — bring 2-3 per person. (2) Glow sticks or LED clip-on lights for the bag — marks your equipment in the dark. (3) Headlamp — for reading putts and the scorecard. (4) Insect repellent — courses near water get busy after dark. (5) Light layers — it cools down quickly after sunset even in summer. (6) Your scorecard holder — harder to write in the dark without a light source.'],
+      ['Why Night Golf Is Worth It', 'Night golf is slower, cooler, and fundamentally different from a regular round. The darkness eliminates the visual reference points you rely on normally — aim, distance, hazards. It forces trust in your routine and feel rather than visual confirmation. Most golfers report that night golf is more relaxing than a regular round, because the darkness lowers the self-consciousness about watching your ball. The WYX Night Golf Glow Ball Set at wyxgolfsupply.com — use WYX10 for 10% off.']
+    ]
+  },
+  {
+    slug: 'golf-gifts-for-golfers-who-have-everything-guide',
+    title: "Golf Gifts for Golfers Who Have Everything: 8 Picks They Don't Own Yet",
+    seo: "Golf Gifts for Golfers Who Have Everything | Unique Golf Gifts | WYX Golf Supply Co.",
+    description: "Golf gifts for the golfer who has every club, every gadget, and the full bag — 8 picks they almost certainly do not own yet, all under $150.",
+    image: imageMap.leather,
+    sections: [
+      ['The Gift Problem', 'A golfer who plays 30+ rounds a year and has been at it for a decade has most of the obvious gifts. New clubs are too personal (and usually picked themselves). Balls are fine but forgettable. Gear guides for this golfer skip to the second tier: the things he uses every round but never bothers to buy for himself.'],
+      ['1. Night Golf Glow Ball Set ($42)', 'A 12-pack of LED-core light-up golf balls in four colors. Even a golfer who has played for 20 years has almost certainly never played a full night round with LED balls. It is a different experience — not a substitute for regular golf, but an event. The WYX Night Golf Glow Ball Set ($42) gives them the gear to set it up. Use WYX10 for 10% off.'],
+      ['2. Leather Scorecard Holder ($38)', 'Full-grain vegetable-tanned leather with a pencil loop and ball marker pocket. A golfer who has everything almost certainly has a plastic or paper scorecard — not a leather holder. This is the bag upgrade they notice every round but have never ordered.'],
+      ['3. Laser Rangefinder ($119)', 'If they do not own one, a rangefinder is the most impactful technology gift in golf. If they do own one, check whether it has slope compensation — older models often do not. The WYX Laser Rangefinder ($119) has slope, pin-lock vibration, and 6x magnification.'],
+      ['4. Cord Grip Regrip Kit ($48)', 'A golfer who has everything has never regripped their own clubs at home — they have always paid a pro shop. The WYX Cord Grip Regrip Kit ($48) includes 13 cord grips, solvent, tape, and a vice clamp. One afternoon project that upgrades the whole set and costs under $50 including the new grips.'],
+      ['5. Stainless Flask with Ball Marker Lid ($36)', 'An 8oz stainless flask with a milled ball marker threaded into the lid. Even the well-equipped golfer almost certainly does not have a flask that doubles as a ball marker. This is the 19th-hole gift that gets used and mentioned.'],
+      ['6. Putting Alignment Mirror ($32)', 'Tour coaches use putting mirrors because they show objective facts — eye position, shoulder line, putter path — without video. A golfer who has everything has probably never used one at home. Give them the tool that their teaching pro charges $100/hour to demonstrate.'],
+      ['7. Backyard Chipping Net ($44)', 'Even a serious golfer who plays regularly rarely has a backyard chipping net. It is the gap between range sessions: 20 minutes of chipping in the backyard before dinner, every weeknight, without driving anywhere. Four-target folding frame, stores behind a door.'],
+      ['8. Golf Shoe Travel Bag ($28)', 'This gift is almost never owned — golfers travel with their shoes loose in the trunk or stuffed in a regular bag. The ventilated golf shoe travel bag with a center divider is the practical gift that immediately solves a problem they did not know they needed solved. Under $30.']
+    ]
   }
 ];
