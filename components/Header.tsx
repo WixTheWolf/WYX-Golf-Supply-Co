@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCart } from './CartProvider';
 
-const FATHERS_DAY_CUTOFF = '2026-06-11';
+const FATHERS_DAY_STANDARD_CUTOFF = '2026-06-17';
+const FATHERS_DAY_LAST_MINUTE_CUTOFF = '2026-06-20';
 const FATHERS_DAY_END = '2026-06-21';
 const DEFAULT_ANNOUNCEMENT = 'WYX10 saves 10% on your first order.';
-const FATHERS_DAY_ANNOUNCEMENT = "Father's Day gifts are live. Shop dad picks before June 11.";
-const LATE_GIFT_ANNOUNCEMENT = 'Late gift plan: choose a gift card, then use WYX10 for his next round.';
+const FATHERS_DAY_ANNOUNCEMENT = "Father’s Day is June 21 — use WYX10 for 10% off dad’s golf gift.";
+const LAST_MINUTE_ANNOUNCEMENT = "Last minute Father’s Day picks ship fast — order today for June 21 delivery.";
+const LATE_GIFT_ANNOUNCEMENT = "Father’s Day is tomorrow — lightweight picks still ship fast. Use WYX10.";
 
 export function Header() {
   const { count, setOpen } = useCart();
@@ -40,7 +42,8 @@ export function Header() {
 
 function announcementForDate(date: Date) {
   const localDate = formatLocalDate(date);
-  if (localDate <= FATHERS_DAY_CUTOFF) return FATHERS_DAY_ANNOUNCEMENT;
+  if (localDate <= FATHERS_DAY_STANDARD_CUTOFF) return FATHERS_DAY_ANNOUNCEMENT;
+  if (localDate <= FATHERS_DAY_LAST_MINUTE_CUTOFF) return LAST_MINUTE_ANNOUNCEMENT;
   if (localDate <= FATHERS_DAY_END) return LATE_GIFT_ANNOUNCEMENT;
   return DEFAULT_ANNOUNCEMENT;
 }
