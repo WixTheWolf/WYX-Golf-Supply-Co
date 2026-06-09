@@ -171,6 +171,15 @@ export default async function FathersDayGolfGifts() {
         </div>
       </section>
 
+      {daysLeft <= 10 && (
+        <section className="section reveal" style={{ textAlign: 'center' }}>
+          <p className="eyebrow">Running Out of Time?</p>
+          <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', marginBottom: '1rem' }}>See the Fast-Ship Picks.</h2>
+          <p style={{ maxWidth: '520px', margin: '0 auto 1.5rem' }}>Small, flat accessories that ship in lightweight packaging and arrive before June 21 — even on a tight timeline.</p>
+          <Link className="button primary" href="/last-minute-fathers-day-golf-gifts">Last Minute Gift Guide →</Link>
+        </section>
+      )}
+
       <EmailCapture
         source="fathers-day-golf-gifts"
         campaign="fathers_day_2026"
