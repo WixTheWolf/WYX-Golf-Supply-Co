@@ -382,6 +382,23 @@ export const extraPosts = [
     ]
   },
   {
+    slug: 'golf-gifts-under-35-guide',
+    title: 'The Best Golf Gifts Under $35 — Six Picks That Get Used Every Round',
+    seo: 'Best Golf Gifts Under $35 | Golf Gift Ideas Under $35 | WYX Golf Supply Co.',
+    description: 'Six golf gifts under $35 that earn a permanent bag spot — practical accessories, training tools, and everyday-use picks at the price point that lands.',
+    image: imageMap.strategy,
+    sections: [
+      ['Why $35 Is the Sweet Spot', 'Golf gift guides fall into two failure modes: too cheap (novelty items that live in a drawer) or too expensive (premium gear where the buyer overthinks the choice). The $35 range avoids both. It is high enough to get a real product that a golfer actually uses, and low enough to pull the trigger without second-guessing. Every pick on this list gets used multiple times per round, every round.'],
+      ['1. Microfiber Clip-On Towel — $18', 'Cleans club faces between iron shots (clean grooves spin the ball), wipes grips in light rain, and cleans the ball before an important putt. The clip attaches to any bag D-ring — it stays there all season. Most golfers buy one cheap towel and use it until it is black and mildewed. A quality microfiber towel for $18 is one of the highest-ROI golf purchases at any price.'],
+      ['2. Dual-Sided Club Brush — $16', 'Two sides: nylon bristle for club face cleaning, brass wire for packed groove debris. Plus a retractable groove pick and a carabiner clip. The groove pick alone is worth the price — it is the only way to clear the compacted sand and clay that a bristle brush leaves behind. Clips to the bag ring permanently. Costs $16. This is the most undersold golf accessory at this price.'],
+      ['3. Alignment Sticks — $24', 'Two fiberglass rods that fix the most common beginner and intermediate error: misalignment. Place sticks on the ground at the range — one for foot line, one for ball position — and every range session becomes immediately more productive. Tour players warm up with alignment sticks. They work because alignment errors are invisible to the player but obvious on a stick.'],
+      ['4. Milled Ball Marker Set — $28', 'A magnetic hat-clip marker plus 3 precision-milled coins in a small gift box. This is the classic under-$30 golf gift that hits: it is something every golfer wants, looks good as a gift, and will be used on every green for years. A $2 poker chip marker works. A milled coin marker makes the player feel like they are playing seriously.'],
+      ['5. Performance Golf Hat — $34', 'Low crown, stretch fit, moisture-wicking sweatband, UPF 30+. This is the hat for a round in the sun without a constant readjust. The test: does the hat feel the same on hole 18 as hole 1? With a stretch fit and structured crown, yes. Most golf hats fail by hole 9.'],
+      ['6. Bamboo Tee 500-Count Pack — $14', 'Mathematically the most efficient golf gift under $20. 500 bamboo tees, $14. A golfer loses 10-20 tees per 18 holes — dropped in the rough, broken by the driver, stolen by the wind. A 500-count pack is a full season of tees for the price of lunch. Not glamorous. Always appreciated.'],
+      ['Use WYX10 for 10% Off', 'Browse the full under-$35 gift list at wyxgolfsupply.com/golf-gifts-under-35. Use WYX10 at checkout for 10% off your first order.']
+    ]
+  },
+  {
     slug: 'fathers-day-golf-gifts-under-50',
     title: "Father's Day Golf Gifts Under $50 — 8 Picks That Actually Get Used",
     seo: "Father's Day Golf Gifts Under $50 | Golf Dad Gifts 2026 | WYX Golf Supply Co.",

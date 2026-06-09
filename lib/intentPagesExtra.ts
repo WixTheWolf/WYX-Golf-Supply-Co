@@ -347,5 +347,23 @@ export const extraIntentPages: Record<string, IntentPageConfig> = {
       ["What golf accessories fit in a golf bag?", "Every golf bag has side pockets for accessories. Essential fits: tees in the front zipper pocket, gloves in the apparel pocket, towel on the D-ring (clip-on), ball marker in the ball pocket, club brush on the bag ring. A scorecard holder goes in the front panel pocket. An alignment stick tube goes beside the clubs."]
     ],
     match: (product: Product) => categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Club Care']) || /glove|towel|marker|brush|tee|alignment/i.test(`${product.title} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-gifts-for-boyfriend': {
+    slug: 'golf-gifts-for-boyfriend',
+    title: 'Golf Gifts for Your Boyfriend',
+    eyebrow: 'Gift Guide',
+    description: 'Golf gifts for a boyfriend that actually make it into the bag — practical accessories, training tools, and bag upgrades in every price range. No sizing guesswork.',
+    metaTitle: 'Golf Gifts for Boyfriend — Practical Picks He Will Actually Use | WYX Golf Supply Co.',
+    metaDescription: 'The best golf gifts for your boyfriend: cabretta gloves, clip-on towels, GPS watches, milled ball markers. Practical picks in every price range. WYX10 for 10% off.',
+    primaryCta: 'Shop Golf Gifts for Him',
+    secondaryCta: 'See All Golf Gifts',
+    secondaryHref: '/golf-gifts',
+    proof: ['Under $30 picks', 'Under $60 picks', 'Premium picks', 'WYX10 launch code'],
+    faq: [
+      ['What are good golf gifts for a boyfriend?', 'The best golf gifts for a boyfriend: cabretta glove 3-pack ($32 — used every round), a milled ball marker set ($28 — the gift golfers want but never buy themselves), alignment sticks ($24 — what tour pros warm up with), or a GPS watch ($149 — the premium gift that changes every round). All are size-free, no guesswork.'],
+      ['What golf gifts work if I don't know much about golf?', "The safe picks for any golfer: a glove 3-pack (all golfers use gloves, and they always need more), a quality clip-on towel (used every round), and a ball marker set (required on every green). These three items total under $80 before WYX10 and are used every single round — they can't miss."],
+      ['What is a unique golf gift for a boyfriend?', 'For a unique golf gift: a milled ball marker set (not the $8 plastic version — a proper precision-milled set in a gift box), a leather scorecard holder (an accessory most golfers think about but never buy), or a GPS watch (yardage on 40,000+ courses from the wrist). These are the picks he wants but skips buying for himself.']
+    ],
+    match: (product: Product) => categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Golf Tech', 'Training Aids', 'Golf Balls']) || /glove|towel|marker|gps|alignment|brush/i.test(`${product.title} ${(product.tags || []).join(' ')}`)
   }
 };
