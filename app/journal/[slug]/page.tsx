@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';import Image from 'next/image';import Link from 'next/link';import {notFound} from 'next/navigation';import {getPost,posts} from '@/lib/journal';
+import type {Metadata} from 'next';import Image from 'next/image';import Link from 'next/link';import {notFound} from 'next/navigation';import {getPost,allPosts as posts} from '@/lib/journal';
 export function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}export async function generateMetadata({params}:{params:{slug:string}}):Promise<Metadata>{const p=getPost(params.slug);return p?{title:p.seo,description:p.description,openGraph:{images:[p.image]}}:{title:'Journal'}}
 const siteUrl = 'https://wyxgolfsupply.com';
 

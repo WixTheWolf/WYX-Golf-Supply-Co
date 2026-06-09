@@ -1,4 +1,5 @@
 import { imageMap } from './demo';
+import { extraPosts } from './journalExtra';
 
 export const posts = [
   {
@@ -783,6 +784,8 @@ export const posts = [
   }
 ];
 
+export const allPosts = [...posts, ...extraPosts];
+
 export function getPost(slug: string) {
-  return posts.find((post) => post.slug === slug);
+  return allPosts.find((post) => post.slug === slug);
 }

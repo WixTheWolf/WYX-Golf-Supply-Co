@@ -2,6 +2,7 @@ import { categoryFor } from '@/lib/catalog';
 import { bagUpgradeProducts, tripProducts } from '@/lib/merchandisingFilters';
 import { isPremiumGolfBag } from '@/lib/productQuality';
 import type { Product } from '@/types/shopify';
+import { extraIntentPages } from './intentPagesExtra';
 
 export type IntentPageConfig = {
   slug: string;
@@ -783,5 +784,6 @@ export const intentPages: Record<string, IntentPageConfig> = {
       ['Does sharpening golf grooves really help?', 'Yes — for wedges and short irons used around the green. A groove sharpener restores the sharp edge that creates backspin. It is legal for recreational play and extends wedge life 2–3 seasons before replacement is necessary.']
     ],
     match: (product) => categoryIn(product, ['Club Care']) || /brush|groove|grip tape|solvent|regrip/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
-  }
+  },
+  ...extraIntentPages
 };
