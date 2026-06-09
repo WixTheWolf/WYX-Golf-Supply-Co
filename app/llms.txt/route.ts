@@ -71,6 +71,12 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Golf gifts for men: ${siteUrl}/golf-gifts-for-men
 - Golf accessories every golfer needs: ${siteUrl}/golf-accessories-every-golfer-needs
 - Father's Day golf gifts: ${siteUrl}/fathers-day-golf-gifts
+- Last minute Father's Day golf gifts: ${siteUrl}/last-minute-fathers-day-golf-gifts
+- Golf home practice equipment: ${siteUrl}/golf-home-practice
+- Golf rain gloves: ${siteUrl}/golf-rain-gloves
+- Golf putter headcovers: ${siteUrl}/golf-putter-headcovers
+- Golf impact tape: ${siteUrl}/golf-impact-tape
+- Golf bag rain cover: ${siteUrl}/golf-bag-rain-cover
 - Golf trip kit: ${siteUrl}/kits/golf-trip-kit
 - Dad golf gift kit: ${siteUrl}/kits/dad-gift-kit
 - Bag upgrade kit: ${siteUrl}/kits/bag-upgrade-kit
@@ -83,7 +89,7 @@ WYX publishes buying guides and golf tips at ${siteUrl}/journal — topics inclu
 
 ## Products
 
-WYX carries golf gloves (cabretta 3-pack), golf balls (tour ball mix pack), alignment sticks, putting alignment mirrors, magnetic hat clips, scorecard holders, cord regrip kits (13 grips + solvent + tape), rangefinders, GPS watches, swing tempo trainers, golf towels (microfiber clip-on), ball marker sets (milled coins + hat clip), leather bag tags, course pouches, stretch performance golf hats, rope hats, snapbacks, fairway polos, quarter-zips, performance compression socks, polarized golf sunglasses, UPF 50+ arm sleeves and sun gaiters, insulated golf tumblers, collapsible ball retrievers, golf bag rain hoods, iron head covers, portable putting cups, stroke counter wristbands, golf umbrellas, spike wrench kits, and cart organizer caddies.
+WYX carries 74+ products: golf gloves (cabretta 3-pack + rain gloves), golf balls (tour ball mix pack), alignment sticks (fiberglass 2-pack), putting alignment mirrors, magnetic hat clips and ball marker sets, scorecard holders, cord regrip kits, rangefinders with carrying cases, GPS watches, swing tempo trainers, golf towels (microfiber clip-on + waffle weave), ball marker sets (milled coins + hat clip), leather bag tags, course pouches, stretch performance golf hats, rope hats, snapbacks, fairway polos, quarter-zips, performance compression socks, polarized golf sunglasses, UPF 50+ arm sleeves and sun gaiters, insulated golf tumblers, collapsible ball retrievers, golf bag rain covers (universal waterproof), putter headcovers (blade + mallet), iron headcovers, golf impact tape (50-pack face labels), resistance warm-up bands, yardage book holders, shoe cleaning kits, glove drying clips, cart cup holders (insulated), cart organizer bags (6-pocket), collapsible chipping nets (backyard), indoor putting mats (9ft), ball line marker stencil kits, tee holder bag clips, golf shoe bags (drawstring), groove sharpeners, personalized ball stamps, 62-inch double-canopy golf umbrellas, and cart organizer bags.
 
 ## Price range
 
