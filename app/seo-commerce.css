@@ -710,8 +710,16 @@ h4{font-size:clamp(1.1rem,2vw,1.4rem);letter-spacing:-.025em;line-height:1.15;ma
 .dev-note{font-size:.72rem;color:var(--muted);font-style:italic;margin:.35rem 0}
 /* error — warm red for form errors */
 .error{color:#b91c1c;font-size:.84rem;font-weight:700;margin:.35rem 0}
-/* email-capture form — flex row on desktop */
-@media(min-width:651px){.email-capture form{display:flex;gap:.65rem;align-items:flex-start}.email-capture input[type="email"]{flex:1}.email-capture .button{white-space:nowrap}}
+/* email-capture form — proper sizing on all viewports */
+.email-capture form{display:flex;flex-direction:column;gap:.6rem;width:100%}
+.email-capture input[type="email"]{width:100%;min-height:48px;padding:.75rem 1rem;font-size:1rem;border-radius:6px;border:1.5px solid rgba(255,255,255,.25);box-sizing:border-box}
+.email-capture .button.primary{min-height:48px;padding:.75rem 1.5rem;font-size:.88rem;width:100%;text-align:center}
+@media(min-width:651px){
+  .email-capture form{flex-direction:row;align-items:flex-start;flex-wrap:wrap}
+  .email-capture input[type="email"]{flex:1 1 260px;width:auto}
+  .email-capture .button.primary{flex:0 0 auto;width:auto;white-space:nowrap}
+  .email-capture .consent-line{flex-basis:100%}
+}
 /* consent-line — tighten */
 .consent-line{display:flex;align-items:flex-start;gap:.5rem;font-size:.72rem;color:var(--muted);cursor:pointer;margin-top:.25rem}
 .consent-line input{margin-top:.15rem;accent-color:var(--forest);flex-shrink:0}
