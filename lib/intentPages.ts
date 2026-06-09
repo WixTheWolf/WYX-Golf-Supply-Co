@@ -711,5 +711,41 @@ export const intentPages: Record<string, IntentPageConfig> = {
       ['What is the best training aid for a new golfer?', 'A putting alignment mirror gives the fastest visible feedback and costs under $30. Fix your eye position first — it is the root of most missed putts for new players.']
     ],
     match: (product) => under(product, 60) || categoryIn(product, ['Gloves', 'Golf Balls', 'Accessories', 'Training Aids', 'Towels'])
+  },
+  'golf-tech-gifts': {
+    slug: 'golf-tech-gifts',
+    title: 'Golf Tech Gifts — Rangefinders, GPS Watches, and Phone Mounts.',
+    eyebrow: 'Golf Tech',
+    description: 'The golf technology products that actually improve rounds — laser rangefinders, GPS watches, and waterproof phone mounts. Ranked by real-round impact, not spec sheets.',
+    metaTitle: 'Golf Tech Gifts | Rangefinder GPS Watch | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf tech gifts at WYX Golf Supply Co. — laser rangefinders, GPS watches, waterproof phone mounts. Under $150 each. Free shipping over $50.',
+    primaryCta: 'Shop Golf Tech',
+    secondaryCta: 'Compare GPS vs Rangefinder',
+    secondaryHref: '/golf-rangefinder',
+    proof: ['Rangefinder under $130', 'GPS watch under $150', 'Phone mount $28', 'WYX10 launch code'],
+    faq: [
+      ['What golf tech is actually worth buying?', 'In order of impact: (1) rangefinder or GPS watch for yardage, (2) waterproof phone mount for app access on the cart, (3) swing tempo trainer for practice sessions. Everything else is bonus.'],
+      ['Is a rangefinder or GPS watch better for golf?', 'Rangefinders win on precision — accurate to ±1 yard with flag lock. GPS watches win on speed — no aiming, just a glance. Casual golfers usually prefer GPS watches. Precision players prefer rangefinders.'],
+      ['What is a good golf tech gift under $150?', 'The WYX GPS Watch (40,000 courses, 18-hole battery, $149) or the WYX Rangefinder (flag lock, slope switch, $129). Both include a carrying case and use WYX10 for 10% off.']
+    ],
+    match: (product) => categoryIn(product, ['Golf Tech'])
+  },
+  'golf-gifts-for-golfers-who-have-everything': {
+    slug: 'golf-gifts-for-golfers-who-have-everything',
+    title: 'Golf Gifts for Golfers Who Have Everything.',
+    eyebrow: 'Gift Guide',
+    description: 'Premium consumables, category upgrades, and tech picks for the golfer who already has every club and bag — the products avid golfers know they need but never buy for themselves.',
+    metaTitle: 'Golf Gifts for Golfers Who Have Everything | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts for golfers who have everything at WYX. Consumables, GPS watches, groove sharpeners, grip kits — upgrades they know they need but never buy. Free shipping over $50.',
+    primaryCta: 'Shop All Picks',
+    secondaryCta: 'See Golf Tech',
+    secondaryHref: '/golf-tech-gifts',
+    proof: ['Premium consumables', 'Upgrades they skipped', 'Under $200 bundles', 'WYX10 launch code'],
+    faq: [
+      ['What do you get a golfer who has everything?', 'Consumables and maintenance gear. Every golfer runs out of gloves, tees, and balls. And most avid golfers have never bought a groove sharpener, a bag organizer, or a grip kit for themselves — even though they know the value.'],
+      ['Is a GPS watch a good gift for an avid golfer?', 'Yes — dedicated golf GPS watches are different from smartwatches. They load 40,000+ courses without an app, auto-advance holes, and last a full round on a single charge. Avid golfers who do not already have one will use it every round.'],
+      ['What is a good high-end golf gift?', 'A leather scorecard holder + milled ball marker set in gift packaging makes a premium impression under $100. A GPS watch or rangefinder hits the $130–$150 range. A full grip kit or groove restoration set is a working gift under $50.']
+    ],
+    match: (product) => categoryIn(product, ['Golf Tech', 'Club Care', 'Accessories']) || under(product, 150)
   }
 };

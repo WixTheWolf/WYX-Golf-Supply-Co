@@ -653,6 +653,32 @@ export const posts = [
     ]
   },
   {
+    slug: 'golf-gifts-for-golfers-who-have-everything',
+    title: 'Golf Gifts for Golfers Who Have Everything',
+    seo: 'Golf Gifts for Golfers Who Have Everything | WYX Golf Supply Co.',
+    description: 'What to give the golfer who already has every club, gadget, and bag — consumables they actually run out of, premium accessories they would not buy themselves, and kits that feel considered.',
+    image: imageMap.leather,
+    sections: [
+      ['The Problem With "Has Everything"', 'Most golfers who "have everything" have every big item — driver, irons, bag, rangefinder. They do not have endless gloves, tees, or ball markers. Consumables are the answer.'],
+      ['Premium Consumables', 'A dozen premium balls, a 50-pack of bamboo tees, and a 3-pack of cabretta gloves cover 3–4 months of weekend golf and always get used. No one buys these for themselves.'],
+      ['The Upgrade They Skipped', 'GPS watches, groove sharpeners, grip kits, and bag organizers are all things avid golfers know they should have but never prioritize. They make excellent gifts precisely because the recipient knows their value.'],
+      ['WYX Pick', 'The WYX GPS Watch + Groove Sharpener + Grip Solvent Kit combination covers tech, maintenance, and feel — three categories most avid golfers have not upgraded recently. Under $200 combined with WYX10.']
+    ]
+  },
+  {
+    slug: 'best-golf-tech-gifts',
+    title: 'Best Golf Tech Gifts: Rangefinders, GPS Watches, and What Is Worth Buying',
+    seo: 'Best Golf Tech Gifts | Rangefinder vs GPS Watch | WYX Golf Supply Co.',
+    description: 'The golf tech products actually worth buying — rangefinders, GPS watches, phone mounts, and launch monitors — ranked by what improves real rounds for real golfers.',
+    image: imageMap.strategy,
+    sections: [
+      ['Rangefinder: The High-ROI Tech', 'A laser rangefinder with flag-lock returns visible ROI in the first round. Knowing your exact yardage to the flag changes club selection immediately. It is the highest-impact first tech purchase for any golfer.'],
+      ['GPS Watch: The Pace of Play Upgrade', 'A dedicated golf GPS watch is faster than a rangefinder for routine approach yardage — no aiming required. Front, middle, back in one glance. Best for golfers who play a lot and want speed over precision.'],
+      ['Phone Mount: Underrated', 'A waterproof cart phone mount is a $28 upgrade that makes GPS apps, music, and shot tracking accessible without digging into a bag pocket every hole. Massively undervalued.'],
+      ['WYX Pick', 'The WYX Rangefinder and GPS Watch are both under $150. The phone mount is $28. All three together are under $310 — the complete golf tech setup for a serious weekend player.']
+    ]
+  },
+  {
     slug: 'twilight-golf',
     title: 'Twilight Golf and the Long Game',
     seo: 'Twilight Golf and the Long Game | WYX Golf Supply Co.',
