@@ -118,8 +118,8 @@ export default async function Home() {
           <h1>Gear For The Boys Weekend.</h1>
           <p>Golf gifts, trip kits, hats, apparel, and bag upgrades built for real rounds.</p>
           <div className="actions">
-            <Link className="button primary" href="#short-list">Shop Best Picks</Link>
-            <Link className="button secondary" href="/golf-gifts-for-dad">Shop Dad Gifts</Link>
+            <Link className="button primary" href="/fathers-day-golf-gifts">Father&apos;s Day Gifts</Link>
+            <Link className="button secondary" href="#short-list">Shop Best Picks</Link>
           </div>
           <div className="hero-proof compact-proof">
             {trustSignals.map((item) => <span key={item}>{item}</span>)}
@@ -155,8 +155,8 @@ export default async function Home() {
       </section>
 
       <div className="proof-numbers reveal" aria-label="WYX by the numbers">
-        <div><strong>50+</strong><span>Products in catalog</span></div>
-        <div><strong>$14</strong><span>Lowest priced pick</span></div>
+        <div><strong>74+</strong><span>Products in catalog</span></div>
+        <div><strong>$10</strong><span>Lowest priced pick</span></div>
         <div><strong>WYX10</strong><span>10% off first order</span></div>
         <div><strong>June 21</strong><span>Father&apos;s Day deadline</span></div>
       </div>
