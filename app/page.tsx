@@ -49,7 +49,11 @@ const quickPaths = [
   ['Under $60', '/golf-gifts-under-60'],
   ['Bag Upgrades', '/bag-upgrades'],
   ['Belts', '/golf-belts'],
-  ['Headcovers', '/golf-headcovers']
+  ['Headcovers', '/golf-headcovers'],
+  ['GPS Watch', '/golf-gps-watch'],
+  ['Sunglasses', '/golf-sunglasses'],
+  ['Arm Sleeves', '/golf-arm-sleeves'],
+  ['Trip Gear', '/golf-trip-gear']
 ];
 
 const cartBoosts = [
@@ -140,6 +144,12 @@ export default async function Home() {
       <section className="trust-badge-section reveal" aria-label="Shopping trust signals">
         {cartBoosts.map((item) => <span key={item}>{item}</span>)}
       </section>
+
+      <div className="proof-numbers reveal" aria-label="WYX by the numbers">
+        <div><strong>43</strong><span>Products in catalog</span></div>
+        <div><strong>$18</strong><span>Lowest priced pick</span></div>
+        <div><strong>WYX10</strong><span>10% off first order</span></div>
+      </div>
 
       <section id="kits" className="section kit-visual-section reveal">
         <div className="section-heading split">

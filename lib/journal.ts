@@ -601,6 +601,58 @@ export const posts = [
     ]
   },
   {
+    slug: 'golf-rangefinder-guide',
+    title: 'Golf Rangefinder Guide: With Slope vs Without, and What to Buy',
+    seo: 'Golf Rangefinder Guide | Slope vs No Slope | WYX Golf Supply Co.',
+    description: 'How to choose a golf rangefinder — slope vs non-slope, tournament legal rules, what distance accuracy actually matters, and when a GPS watch is a better choice.',
+    image: imageMap.strategy,
+    sections: [
+      ['Slope vs Non-Slope', 'Slope rangefinders show adjusted yardage for uphill and downhill lies — a 150-yard shot playing 158 yards uphill, for example. They are not tournament legal but are legal for casual play and practice.'],
+      ['Non-Slope for Competition', 'USGA rules allow non-slope rangefinders in most amateur competitions. If you play in member-guest events or any stroke play, stick to a non-slope or a unit with a slope lockout switch.'],
+      ['Distance Accuracy vs Speed', 'Most modern rangefinders are accurate to within a yard. The bigger differentiator is acquisition speed — how fast it locks onto the flag vs trees behind it. Look for first-target priority (flag lock) on any shortlist.'],
+      ['WYX Pick', 'The WYX rangefinder has first-target priority, 6x magnification, and a carrying case. Under $130. Use WYX10 at checkout for 10% off your first order.']
+    ]
+  },
+  {
+    slug: 'how-to-improve-putting',
+    title: 'How To Improve Your Putting: Drills That Actually Work',
+    seo: 'How To Improve Putting | Golf Putting Drills | WYX Golf Supply Co.',
+    description: 'The putting drills that fix the most common problems — gate drills, mirror work, and distance control training that you can do at home before any round.',
+    image: imageMap.iron,
+    sections: [
+      ['Eye Position First', 'Most inconsistent putting starts with eyes not directly over the ball at address. A putting alignment mirror fixes this in one session — you see the reflection and immediately know if you are set up correctly.'],
+      ['The Gate Drill', 'Place two tees just wider than the putter head at the equator. If you miss the gate, the path is the problem, not the face. Do this 20 times before every range session for two weeks.'],
+      ['Distance Control Over Accuracy', 'Three-putts come from distance, not direction. Hit 10 putts from 30 feet and try to leave every one within 18 inches. Track misses short vs long, then adjust your stroke length, not your aim.'],
+      ['WYX Pick', 'The WYX Putting Alignment Mirror shows eye line, ball position, and putter path simultaneously. The highest ROI training aid for casual golfers who want to stop three-putting.']
+    ]
+  },
+  {
+    slug: 'golf-gifts-for-boss',
+    title: 'Golf Gifts for Your Boss: What to Give Without Overthinking It',
+    seo: 'Golf Gifts for Boss | Corporate Golf Gifts | WYX Golf Supply Co.',
+    description: 'The right golf gifts to give a boss or colleague — practical, universally useful, appropriately priced, and safe for any professional relationship.',
+    image: imageMap.leather,
+    sections: [
+      ['Keep It Useful, Not Personal', 'A good gift for a boss-golfer hits a practical note. Consumables (balls, tees, gloves) are safe at any price. Accessories (ball markers, towels, scorecard holders) feel considered without being personal.'],
+      ['Price Range by Context', 'Casual office: $25–$45. Client-level: $50–$75. Formal business gift: $75–$100 with a clean branded touchpoint. Stay in range — going too high signals the wrong message.'],
+      ['Universal Safe Picks', 'A leather scorecard holder and ball marker set in a gift box, a quality microfiber towel, or a club brush set all work regardless of handicap, gender, or bag setup.'],
+      ['WYX Pick', 'The WYX Leather Yardage Book and Scorecard Holder ($54) or the Milled Ball Marker 3-Pack ($42) both ship gift-ready in kraft packaging. Use WYX10 for 10% off.']
+    ]
+  },
+  {
+    slug: 'golf-accessories-for-beginners',
+    title: 'Golf Accessories for Beginners: What to Buy First',
+    seo: 'Golf Accessories for Beginners | Starter Golf Gear | WYX Golf Supply Co.',
+    description: 'The golf accessories every new golfer needs first — what to buy, what to skip, and how to build a functional starter bag without wasting money.',
+    image: imageMap.walk,
+    sections: [
+      ['Start With Consumables', 'New golfers lose a lot of balls and break a lot of tees. Start with a sleeve of decent balls (not tour balls), a pack of 50 bamboo tees, and a golf glove. That is the working set for the first 10 rounds.'],
+      ['The Accessories That Actually Help', 'A ball marker (so you do not have to use a coin), a divot tool (course etiquette from day one), and a clip-on towel (keeps grips dry). These three items cost under $30 combined and make you look like you have played before.'],
+      ['What to Skip Early', 'Skip laser rangefinders until you know the game. Skip expensive headcovers. Skip novelty accessories. They gather dust after 3 rounds.'],
+      ['WYX Pick', 'The WYX starter bundle: bamboo tees, a cabretta glove, a microfiber towel, and a ball marker set. Under $80 combined. Use WYX10 at checkout.']
+    ]
+  },
+  {
     slug: 'twilight-golf',
     title: 'Twilight Golf and the Long Game',
     seo: 'Twilight Golf and the Long Game | WYX Golf Supply Co.',

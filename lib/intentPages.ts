@@ -657,5 +657,59 @@ export const intentPages: Record<string, IntentPageConfig> = {
       ['Can I buy scramble prizes in bulk from WYX?', 'Yes — add multiple units to your cart and use WYX10 for 10% off. Email support if you need a larger group order.']
     ],
     match: (product) => under(product, 75) || categoryIn(product, ['Accessories', 'Towels', 'Gloves', 'Headwear', 'Golf Balls'])
+  },
+  'golf-rangefinder': {
+    slug: 'golf-rangefinder',
+    title: 'Golf Rangefinder — Know Your Yardage. Every Approach.',
+    eyebrow: 'Golf Tech',
+    description: 'A laser golf rangefinder with first-target priority flag lock, 6× magnification, and a slope-mode switch for tournament compliance. Under $130.',
+    metaTitle: 'Golf Rangefinder | Laser Yardage | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf rangefinders at WYX Golf Supply Co. — first-target priority, slope mode with tournament switch, 6x magnification. Under $130 with free shipping.',
+    primaryCta: 'Shop Rangefinders',
+    secondaryCta: 'Compare GPS Watch',
+    secondaryHref: '/golf-gps-watch',
+    proof: ['First-target priority flag lock', 'Slope-mode tournament switch', '±1 yard accuracy', 'WYX10 launch code'],
+    faq: [
+      ['What is first-target priority on a rangefinder?', 'First-target priority (also called flag lock or pin-seeker mode) locks onto the closest target — the flagstick — rather than trees or background objects behind the green. It is the most important feature for golfers.'],
+      ['Are slope rangefinders legal in tournaments?', 'Rangefinders with a lockable slope switch are tournament legal when slope is turned off. Pure slope-mode-only units are not allowed in USGA-governed events. When in doubt, check with the competition committee.'],
+      ['Rangefinder vs GPS watch — which is better?', 'Rangefinders give more precise point-to-flag yardage (±1 yard). GPS watches give faster front/middle/back distances without aiming. Rangefinders win for approach accuracy; GPS watches win for pace of play.']
+    ],
+    match: (product) => /rangefinder|laser rangefinder/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-gifts-for-boss': {
+    slug: 'golf-gifts-for-boss',
+    title: 'Golf Gifts for Your Boss — Professional, Useful, On Budget.',
+    eyebrow: 'Corporate Golf Gift',
+    description: 'Golf gifts that work for bosses, clients, and colleagues — practical accessories at professional price points that ship gift-ready without overthinking it.',
+    metaTitle: 'Golf Gifts for Boss | Corporate Golf Gifts | WYX Golf Supply Co.',
+    metaDescription: 'Shop corporate golf gifts at WYX Golf Supply Co. — leather scorecard holders, ball marker sets, towels, and accessories that ship gift-ready. Under $75.',
+    primaryCta: 'Shop Corporate Golf Gifts',
+    secondaryCta: 'See All Accessories',
+    secondaryHref: '/collections/accessories',
+    proof: ['Ships gift-ready', 'Under $75 most picks', 'No sizing required', 'WYX10 launch code'],
+    faq: [
+      ['What is a good golf gift for a boss?', 'Stay practical and universal. A leather scorecard holder, a milled ball marker set, a quality towel, or a club brush set all work regardless of handicap or bag setup. Avoid personalization unless you know their preference.'],
+      ['How much should I spend on a golf gift for my boss?', 'For a casual office context, $25–$50 is the right range. For a client or senior executive, $50–$100 feels appropriate. Above $100, the gift starts to feel more personal than professional.'],
+      ['Do golf gifts need to be personalized?', 'No — unpersonalized accessories are safer corporate gifts because they do not require sizing or style assumptions. A leather scorecard holder in kraft gift packaging looks intentional without needing a monogram.']
+    ],
+    match: (product) => under(product, 100) || categoryIn(product, ['Accessories', 'Towels', 'Gloves'])
+  },
+  'golf-accessories-for-beginners': {
+    slug: 'golf-accessories-for-beginners',
+    title: 'Golf Accessories for Beginners — What to Buy First.',
+    eyebrow: 'Starter Gear',
+    description: 'The golf accessories every new golfer needs first: consumables for the first 10 rounds, course-etiquette essentials, and the one training aid worth buying before anything else.',
+    metaTitle: 'Golf Accessories for Beginners | Starter Golf Gear | WYX Golf Supply Co.',
+    metaDescription: 'Shop beginner golf accessories at WYX Golf Supply Co. — gloves, tees, ball markers, divot tools, towels, and starter training aids. Under $80 for the full set.',
+    primaryCta: 'Shop Starter Gear',
+    secondaryCta: 'See All Accessories',
+    secondaryHref: '/collections/accessories',
+    proof: ['No experience needed', 'Under $80 full starter set', 'Ships in 2–4 days', 'WYX10 launch code'],
+    faq: [
+      ['What accessories does a beginner golfer need?', 'The essential five: a golf glove (1), a pack of tees (2), a ball marker (3), a divot tool (4), and a clip-on towel (5). These cover the basics for every round and cost under $50 combined.'],
+      ['Do beginners need a rangefinder?', 'Not at first. Learn yardages from course markers and GPS apps before adding a rangefinder. The money is better spent on a lesson or a sleeve of better balls for the first 20 rounds.'],
+      ['What is the best training aid for a new golfer?', 'A putting alignment mirror gives the fastest visible feedback and costs under $30. Fix your eye position first — it is the root of most missed putts for new players.']
+    ],
+    match: (product) => under(product, 60) || categoryIn(product, ['Gloves', 'Golf Balls', 'Accessories', 'Training Aids', 'Towels'])
   }
 };

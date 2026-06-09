@@ -253,3 +253,34 @@
 .article-cta-block .eyebrow{color:var(--lime)}
 .article-cta-block h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.05em;line-height:1;margin:0}
 .article-cta-block a.button{align-self:flex-start}
+/* ── featured tech badge — GPS watch, rangefinder card highlight ── */
+.editorial-product-card.tech-featured{border:1.5px solid var(--lime);position:relative}
+.editorial-product-card.tech-featured::before{content:'New';position:absolute;top:.75rem;right:.75rem;background:var(--lime);color:var(--forest);font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.2em .55em;z-index:2}
+/* ── quick-paths — expanded scroll strip ── */
+.quick-paths{display:flex;flex-wrap:nowrap;gap:.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.25rem;mask-image:linear-gradient(to right,transparent 0,#000 3%,#000 97%,transparent 100%)}
+.quick-paths::-webkit-scrollbar{display:none}
+.quick-paths a{flex-shrink:0;white-space:nowrap}
+/* ── product-why reasons block ── */
+.product-why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:2rem 0}
+.product-why-item{display:flex;flex-direction:column;gap:.35rem;padding:1rem;background:var(--paper);border:1px solid var(--line)}
+.product-why-item strong{font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--forest)}
+.product-why-item p{font-size:.88rem;color:var(--ink);margin:0;line-height:1.5}
+/* ── kit page — category diversity visual indicator ── */
+.kit-categories{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0}
+.kit-cat-chip{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25em .65em;border:1px solid var(--lime);color:var(--forest);background:transparent}
+/* ── intent page — product grid override (tighter mobile) ── */
+@media(max-width:640px){.intent-product-grid{grid-template-columns:repeat(2,1fr);gap:.75rem}}
+/* ── rangefinder / GPS tech comparison strip ── */
+.tech-compare-strip{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin:1.5rem 0}
+.tech-compare-strip > div{background:var(--paper);padding:1rem;display:flex;flex-direction:column;gap:.35rem}
+.tech-compare-strip strong{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tech-compare-strip p{font-size:.88rem;margin:0;line-height:1.5}
+.tech-compare-strip .winner{color:var(--forest);font-weight:700}
+/* ── journal card grid — responsive 2-col ── */
+@media(min-width:768px){.journal-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.journal-grid{grid-template-columns:repeat(3,1fr)}}
+/* ── social proof numbers bar ── */
+.proof-numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:clamp(1.5rem,4vw,3rem) 0}
+.proof-numbers > div{background:var(--paper);padding:clamp(.75rem,2vw,1.25rem);text-align:center;display:flex;flex-direction:column;gap:.2rem}
+.proof-numbers strong{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.05em;color:var(--forest)}
+.proof-numbers span{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
