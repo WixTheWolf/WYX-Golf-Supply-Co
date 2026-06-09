@@ -382,6 +382,54 @@ export const extraPosts = [
     ]
   },
   {
+    slug: 'last-minute-fathers-day-golf-gifts-2026',
+    title: "Last-Minute Father's Day Golf Gifts 2026 — Under $35, Ships in Time",
+    seo: "Last Minute Father's Day Golf Gifts 2026 | Golf Dad Gifts June 2026 | WYX Golf Supply Co.",
+    description: "Five last-minute Father's Day golf gifts under $35 that ship in time for June 21 — practical picks that get used every round, not forgotten by July.",
+    image: imageMap.strategy,
+    sections: [
+      ['The Last-Minute Reality', "Father's Day is June 21. If you are reading this in the second week of June, you are not late — you are in the last-minute window. The good news: the best golf gifts for Dad are not the ones that require lead time. A glove 3-pack, a ball marker set, and a clip-on towel all ship standard and arrive in time with days to spare. Here are the five picks for the June golfer."],
+      ['1. Microfiber Clip-On Towel — $18', 'Ships fast, arrives fast. Dad clips it to the bag D-ring and uses it on hole 1 of the first round after it arrives. Used every round all season. The best last-minute practical golf gift at any price.'],
+      ['2. Dual-Sided Club Brush — $16', 'Carabiner clip, dual bristle sides, retractable groove pick. Ships in a small box, arrives quickly, goes directly on the bag. Under $20 and used after every iron shot.'],
+      ['3. Alignment Sticks — $24', 'Two fiberglass rods in a bag tube. The training aid every golfer should have and most do not. The range session before the next round becomes immediately more productive.'],
+      ['4. Milled Ball Marker Set — $28', 'Ships in a gift box. Three milled coins plus a magnetic hat clip. The gift that feels considered even on a quick order. Dad uses it on every green.'],
+      ['5. Cabretta Glove 3-Pack — $32', 'Always needed. The practical last-minute gift that lands: he goes out to the first tee a week after Father\'s Day and reaches for a fresh glove and thinks of you. That is what a good gift does.'],
+      ["Order Now with WYX10", "Browse all golf gifts for Dad at wyxgolfsupply.com/golf-gifts-for-dad. Use WYX10 at checkout for 10% off. Father's Day is June 21 — order with standard shipping if you are placing the order before June 16."]
+    ]
+  },
+  {
+    slug: 'summer-golf-gear-checklist-2026',
+    title: 'Summer Golf Gear Checklist 2026 — What Every Bag Needs in the Heat',
+    seo: 'Summer Golf Gear Checklist 2026 | Summer Golf Accessories | WYX Golf Supply Co.',
+    description: 'The complete summer golf gear checklist for 2026 — sun protection, hydration accessories, glove rotation, and heat-specific bag upgrades that make summer rounds survivable.',
+    image: imageMap.walk,
+    sections: [
+      ['Why Summer Golf Is Different', 'Summer golf means 90°+ heat indexes, 5-hour rounds in full sun, and sweating through a glove in 6 holes. The standard cold-weather bag setup is not adequate. Summer requires a different gear philosophy: more gloves, better sun protection, hydration gear, and accessories that still perform when wet.'],
+      ['1. Three-Glove Rotation', 'In summer heat, one cabretta glove lasts 6 holes before it is soaked and starting to lose grip. A 3-glove rotation: hole 1-6 on glove one, 7-12 on glove two, 13-18 on glove three. Each glove dries on the bag for 12 holes between uses. This rotation requires a glove 3-pack minimum — ideally 4-5 gloves for a summer season.'],
+      ['2. UPF 50+ Arm Sleeves', 'The most effective sun protection tool for golfers. UPF 50+ arm sleeves cover from wrist to elbow, do not require re-application, do not sweat off, and do not interfere with the swing. The 2026 summer update: mesh-vent construction moves sweat away from the skin rather than trapping it.'],
+      ['3. Insulated Water Bottle for the Bag', 'A round in summer heat requires 64+ oz of water across 18 holes. An insulated tumbler or bottle in the bag side pocket keeps ice water cold through the back 9. The mental benefit of cold water on hole 13 is real — it is the round\'s reset button.'],
+      ['4. UV Sun Gaiter', 'Covers the neck, lower face, and ears — the three areas most missed by hats and sunscreen. UPF 50+ fabric, pull-up during the back 9 when the sun is worst. A $22 purchase that does what SPF 50 cannot maintain over a 5-hour round.'],
+      ['5. Performance Hat with Sweatband', 'A low-crown stretch-fit hat with a moisture-wicking sweatband is the summer round essential. The sweatband absorbs and releases between holes — the hat stays stable and dry through hole 18 without a readjust.'],
+      ['6. Extra Clip-On Towel', 'In summer, one towel is not enough. The first towel handles club faces. The second towel (on the cart or caddy bag) handles hands, face, and grip wipes. Both towels hang on the bag to dry between uses. At $18 each, running two towels through summer is the single cheapest bag upgrade.'],
+      ['The Summer Golf Bag — Full Checklist', 'Complete summer bag setup: 3-5 cabretta gloves, alignment sticks in the club tube, 2 clip-on towels on the bag rings, UPF arm sleeves in the side pocket, UV sun gaiter in the front pocket, insulated water bottle in the large pocket, extra tees in the zipper pocket, a club brush on the ring, ball markers in the ball pocket. Under $150 for the full summer setup before WYX10.']
+    ]
+  },
+  {
+    slug: 'golf-pre-round-checklist',
+    title: 'The Golf Pre-Round Checklist — What to Do Before the First Tee',
+    seo: 'Golf Pre-Round Checklist | Golf Warm-Up Routine | WYX Golf Supply Co.',
+    description: 'The 15-minute pre-round checklist every golfer should follow — bag check, warm-up sequence, and the gear verification that prevents the mid-round scramble for tees.',
+    image: imageMap.iron,
+    sections: [
+      ['Why Pre-Round Prep Matters', 'The golfer who shows up 10 minutes before their tee time and goes straight to the tee box always hits a bad first drive. It is not a coincidence — it is physics. Cold muscles, unconfirmed aim, and an unchecked bag all contribute to the first-hole disaster. A 15-minute pre-round routine eliminates all three.'],
+      ['Step 1: Bag Check (2 minutes)', 'Before the car door closes: (1) glove — is it fresh? (2) balls — 6-12 in the pocket, all one model, (3) tees — front zipper pocket has 15+ bamboo tees, (4) ball marker — on the hat or in the ball pocket, (5) towel — clipped to the D-ring, (6) divot tool — front pocket, (7) rangefinder or GPS watch — charged. Missing any of these is fixable at the shop. After the first tee, it is not.'],
+      ['Step 2: Putting Green (5 minutes)', '5 minutes on the practice green before any range time. Purpose: feel the speed of the greens today — not last week, not at your home course, today. Roll 3 putts from 20 feet. Roll 3 putts from 6 feet. The pre-round 3-putt on hole 2 comes from not warming up on the speed. The putting green fixes that.'],
+      ['Step 3: Alignment Sticks at the Range (5 minutes)', 'Pull out both alignment sticks. One parallel to the target line (foot line), one perpendicular at the ball (ball position). Hit 10 balls with the sticks on the ground. No swing thoughts — just alignment verification. What you see: (1) where your feet naturally point, (2) where the ball position falls in your stance, (3) whether the divot direction confirms or contradicts your aim. This is the entire pre-round diagnostic.'],
+      ['Step 4: Club Check (3 minutes)', 'Final 3 balls: hit one wedge, one 7-iron, and one 3-wood. These three clubs calibrate the day\'s tempo, swing width, and contact. Not for perfection — for calibration. The golfer who warms up with only their driver and then is surprised when the approach shots are off skipped the middle of the bag.'],
+      ['The Gear That Makes the Routine Work', 'Alignment sticks ($24) make Step 3 possible — without them, aim is just an estimate. A fresh glove ($11/glove in a 3-pack) makes grip consistent from ball 1. A charged GPS watch or rangefinder makes Step 2 faster. A full tee supply in the zipper pocket means the Step 1 check always passes. Browse all pre-round essentials at wyxgolfsupply.com. Use WYX10 for 10% off.']
+    ]
+  },
+  {
     slug: 'bachelor-party-golf-trip-planning',
     title: 'How to Plan a Bachelor Party Golf Trip — The Gear and Gift Checklist',
     seo: 'Bachelor Party Golf Trip Planning | Golf Bachelor Weekend | WYX Golf Supply Co.',
