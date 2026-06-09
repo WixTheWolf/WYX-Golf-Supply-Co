@@ -304,6 +304,39 @@ export const extraPosts = [
     ]
   },
   {
+    slug: 'best-golf-accessories-under-50',
+    title: 'Best Golf Accessories Under $50 — 9 Picks That Actually Get Used',
+    seo: 'Best Golf Accessories Under $50 | WYX Golf Supply Co.',
+    description: 'Nine golf accessories under $50 that earn a permanent spot in the bag — no gimmicks, no novelty gear, just the practical picks that improve every round.',
+    image: imageMap.bag,
+    sections: [
+      ['Microfiber Clip-On Towel ($18)', 'A good clip-on towel attaches to the bag ring, hangs on the left side for right-handed players, and cleans club faces before every shot. A microfiber towel with a carabiner clip that actually opens wide enough to hook to a bag ring is worth $18. Cheap towels slide off. Good ones stay all season.'],
+      ['Groove Sharpener ($22)', 'Worn grooves cost 1-2 shots on any chip or pitch from rough or sand. A carbide-tip groove sharpener resharpens wedge and iron grooves at home in 5 minutes. After 6 months of play, wedge grooves wear enough that spin control degrades measurably. Most golfers do not own this.'],
+      ['Alignment Sticks ($24)', 'Two fiberglass sticks do more for a golf swing than 10 lessons if used consistently. They fix club path, stance alignment, ball position, and hip rotation — the four most common swing errors. Used on the range before every round, they build the setup consistency that translates to better ball-striking.'],
+      ['Ball Marker Set ($28)', 'A milled metal ball marker set — one large, one small, one magnetic clip — replaces the coin-flipping routine and stops the ball from moving on the green. A quality marker set lives in the pocket every round and never gets left behind. One of the most-used accessories per dollar in golf.'],
+      ['Golf Glove 3-Pack ($32)', 'One glove never lasts a full season. A cabretta leather glove 3-pack means never playing with a dried, cracked glove again. Buy a pack in early April, finish the season in October with the last one just breaking in. The math is obvious — one fresh glove per 8 rounds at $10 each.'],
+      ['Scorecard Holder ($22)', 'A leather scorecard holder keeps the card dry in light rain and the pencil in place. It also stores 3-4 tees, a ball marker, and a repair tool. A small quality holder that snaps shut replaces the folded-wet-card routine that every golfer recognizes.'],
+      ['Divot Repair Tool + Brush ($18)', 'A 2-in-1 divot repair tool with a groove brush and ball marker attached covers the three tasks that happen on every green. One clip on the bag pocket replaces three separate tools. The best version has a magnetic ball marker that releases with a thumb press.'],
+      ['Golf Umbrella ($44)', 'A double-canopy wind-vent umbrella does not invert in a cart path gust. A 62-inch arc covers player and bag. The difference between a $12 umbrella and a $44 one is whether it survives one round in real wind or ends up inverted and trashed by the 9th hole.'],
+      ['WYX10 Note', 'Use WYX10 at checkout for 10% off your first WYX order. All nine picks above are available at wyxgolfsupply.com — add the ones that fill the gap in your current bag setup.']
+    ]
+  },
+  {
+    slug: 'golf-warm-weather-gear-guide',
+    title: 'Golf Warm Weather Gear Guide — What to Pack for Summer Rounds',
+    seo: 'Summer Golf Gear Guide | Hot Weather Golf Accessories | WYX Golf Supply Co.',
+    description: 'The complete gear setup for summer golf rounds — sun protection, hydration, sweat management, and the accessories that hold up in heat and humidity.',
+    image: imageMap.walk,
+    sections: [
+      ['The Summer Bag Setup', 'Summer golf is 4+ hours in direct sun with cart and walking mix. Gear that works in cool April weather fails in July heat: leather grips get slippery with sweat, cotton gloves dry out fast, and bags without ventilation trap heat against the back. The summer setup requires specific gear swaps.'],
+      ['Sun Protection Priority', 'UPF 50+ neck gaiter + golf-specific sunscreen SPF 50 + a structured hat with a full brim is the non-negotiable summer combination. A sun gaiter pulls up over the nose on exposed par-5 walks and drops down when back under tree cover. SPF 50 reapplied at the turn means no sunburn from a 7AM tee time to the clubhouse lunch.'],
+      ['Glove Rotation in Heat', 'One glove lasts 4-6 holes in heat before sweat saturates the leather and grip degrades. Carry 3 gloves and rotate them through a round, letting each dry on the bag for 12 holes before using again. A dry glove is a gripping glove. This is why a 3-pack is worth it in summer specifically.'],
+      ['Hydration Gear', 'An insulated 32oz tumbler on the cart keeps ice for 6+ hours in July heat. Golfers who are mildly dehydrated lose 1+ shot per round on average — not from loss of skill but from reduced focus and decision quality on approach shots. The tumbler is performance equipment.'],
+      ['Grip Performance in Humidity', 'Rubber and cord grips outperform leather in humidity. If your current grips feel slippery at the 12th hole in July, the grip material is the problem. Midsize cord-wrapped grips add tack in wet conditions. A grip kit replacement takes 1 hour and costs $30 in tape and solvent.'],
+      ['The Summer Bag Checklist', 'UPF gaiter · SPF 50 sunscreen · 3-glove rotation · insulated tumbler · towel for face/hands · second shirt in the bag · sunglasses with UV400 blocking · groove sharpener (summer rough destroys grooves fastest). Add what is missing. WYX10 for 10% off at wyxgolfsupply.com.']
+    ]
+  },
+  {
     slug: 'last-minute-fathers-day-golf-gifts',
     title: "Last-Minute Father's Day Golf Gifts That Still Feel Thoughtful",
     seo: "Last Minute Father's Day Golf Gifts | Golf Gifts for Dad Fast | WYX Golf Supply Co.",
