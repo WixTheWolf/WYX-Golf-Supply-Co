@@ -99,9 +99,17 @@ export default async function Home() {
 
   return (
     <>
-      <div className="urgency-strip" role="banner" aria-label="Father's Day shopping deadline">
-        🎁 <strong>Father&apos;s Day is June 21</strong> — 13 days to shop. <Link href="/fathers-day-golf-gifts">See golf gifts for dad →</Link>
-      </div>
+      {(() => {
+        const fathersDay = new Date('2026-06-21T00:00:00');
+        const now = new Date();
+        const daysLeft = Math.ceil((fathersDay.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+        if (daysLeft <= 0 || daysLeft > 21) return null;
+        return (
+          <div className="urgency-strip" role="banner" aria-label="Father's Day shopping deadline">
+            🎁 <strong>Father&apos;s Day is June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} to shop. <Link href="/fathers-day-golf-gifts">See golf gifts for dad →</Link>
+          </div>
+        );
+      })()}
       <section className="hero launch-hero">
         <Image src={imageMap.hero} alt="Golf friends walking a course at golden hour" fill priority sizes="100vw" />
         <div className="hero-copy launch-hero-copy">

@@ -271,5 +271,51 @@ export const extraPosts = [
       ['First Tee Protocol', 'Identify your ball (stamp or mark it now). Confirm which rules apply — scramble? net scoring? stroke play? Who is keeping score? Start the GPS watch or rangefinder. Take two practice swings with a mid-iron to feel the tempo.'],
       ['WYX Bag Kit', 'The WYX Bag Essentials Kit covers: a clip-on towel, a club brush, a ball marker, and a divot tool — the four items most often forgotten at the first tee. Under $50 for the full kit.']
     ]
+  },
+  {
+    slug: 'fathers-day-golf-gifts-guide',
+    title: "Father's Day Golf Gifts: The Non-Cheesy Gift Guide for 2026",
+    seo: "Father's Day Golf Gifts 2026 | Best Golf Gifts for Dad | WYX Golf Supply Co.",
+    description: "A practical Father's Day golf gift guide for 2026 — what actually works, what to skip, and how to pick a gift that earns a permanent spot in the bag without guessing his handicap.",
+    image: imageMap.care,
+    sections: [
+      ['The Two Rules', "Rule one: buy something he uses every round. Rule two: avoid anything that requires knowing his handicap, club setup, or shirt size. These two rules eliminate 80% of bad golf gifts before you start. A golf glove, a quality towel, and a milled ball marker satisfy both rules and work for every golfer from 5 to 25 handicap."],
+      ['Under $30: The Easy Win', "The WYX Cabretta Glove 3-Pack ($32) is the most practical Father's Day golf gift in this range — he always runs out, he appreciates a good glove, and it gets used immediately. A microfiber clip-on towel ($18) is the runner-up. Both are consumables that replenish something he genuinely needs rather than adding to the pile of things he has to find a home for."],
+      ['$30–$75: The Thoughtful Upgrade', "The WYX Milled Ball Marker Set ($42) is the gift most golfers want but would never buy themselves — it is the definition of a great gift. A leather scorecard holder ($54) lands in the same category: elegant, universally functional, and something he will use every round for years. If he is a data player, the WYX Polarized Sunglasses ($44) improve every sunny morning tee time."],
+      ['$75–$150: The Memorable Gift', "A GPS watch ($149) is the gift that shows you understood his game. It removes the phone from the round, gives precise yardage on 40,000+ courses, and has an 18-hole battery. For golfers who care about their equipment, a full grip service kit ($26) plus groove sharpener ($22) plus club care set covers every off-season maintenance job he has been putting off. Under $75 for the full care kit — more impressive than it looks."],
+      ['What to Skip', "Novelty ball sets, joke tees, themed cocktail shakers, branded polo shirts, and any gift labeled specifically as a 'golfer gift' in the description. These are the gifts designed for people shopping for golfers, not for golfers. The best golf gifts look like the real thing because they are."],
+      ['WYX Father\'s Day Pick', "The WYX Dad Gift Kit covers four categories: a fresh glove, a quality towel, useful accessories, and a practice tool — the four things most golfers need and most people never think to buy as a bundle. Use WYX10 for 10% off and it ships together in one order."]
+    ]
+  },
+  {
+    slug: 'golf-gifts-that-actually-get-used',
+    title: 'Golf Gifts That Actually Get Used (And the Ones That Get Re-Gifted)',
+    seo: 'Golf Gifts That Get Used | Practical Golf Gift Ideas | WYX Golf Supply Co.',
+    description: 'An honest breakdown of the golf gifts that earn a permanent spot in the bag versus the ones that get left in the car and eventually re-gifted at the office holiday exchange.',
+    image: imageMap.bag,
+    sections: [
+      ['The Bag Test', "The simplest filter for any golf gift: will it live in the bag permanently? A clip-on towel passes. A themed divot tool passes. A novelty prank golf ball does not pass. Golf bags are functional objects that golfers know intimately — if it does not have a specific use and a specific home in the bag, it will not stay."],
+      ['Gets Used: Gloves', "A 3-pack of cabretta gloves is used within 3 rounds — sometimes within 1. Golfers go through gloves faster than they buy them, meaning they are always playing with a glove slightly past its prime. A fresh 3-pack lands immediately and earns goodwill every time the next one comes out of the packaging."],
+      ['Gets Used: Towels', "A quality clip-on microfiber towel hangs on the bag for every round of the season. It removes mud from club faces, cleans ball covers before putts, and dries grips in light rain. A towel that clips well stays in rotation for 2–3 seasons. One of the longest-lasting golf gifts per dollar spent."],
+      ['Gets Used: Milled Ball Markers', "A milled ball marker set sits on a keychain or in the pocket for every round. Unlike plastic markers, a heavy milled marker gets noticed by every playing partner and gets commented on. Golfers who have one use it every round and would not go back. The gift most golfers want and most would not buy for themselves."],
+      ['Gets Re-Gifted: Novelty Balls', "Three-pack of exploding golf balls. Three-pack of extra-long tees with a joke on the packaging. Oversized marshmallow balls for backyard putting. These get used once for a laugh and then re-gifted to the next person on the list who golfs. Not a compliment to the recipient."],
+      ['Gets Re-Gifted: Generic Branded Apparel', "A polo shirt with a course logo or a generic brand the recipient does not wear is the classic re-gift. Golf apparel requires knowing the brand, the fit, and the style — three things most gift-givers do not know. Stick to accessories and consumables where fit does not matter."],
+      ['The Formula', "Useful every round + no sizing or handicap knowledge required + something he would not buy himself = the formula for a golf gift that actually gets used. A towel, markers, a glove set, alignment sticks, or a GPS watch all satisfy the formula. A novelty putting cup with cartoon graphics does not."]
+    ]
+  },
+  {
+    slug: 'last-minute-fathers-day-golf-gifts',
+    title: "Last-Minute Father's Day Golf Gifts That Still Feel Thoughtful",
+    seo: "Last Minute Father's Day Golf Gifts | Golf Gifts for Dad Fast | WYX Golf Supply Co.",
+    description: "Running out of time before Father's Day? The golf gifts that ship fast, look intentional, and actually get used — no panic buying required.",
+    image: imageMap.marker,
+    sections: [
+      ['The Late Buyer Reality', "Father's Day catches most people two days before. The instinct is to panic-buy whatever is available with same-day shipping from a big retailer. The result: a generic gift set in a box that looks like what it is — a panic purchase. A better approach: a single well-chosen accessory from a curated source still reads as thoughtful even when it arrives on time."],
+      ['Under $25 That Ships Fast', "Alignment sticks ($24), a ball marker set, or a bamboo tee set all ship quickly from WYX and look intentional when they arrive. Alignment sticks are a legitimately useful training aid that most weekend golfers do not own — the gift looks researched because it requires knowing something about what actually improves a golf game."],
+      ['Under $60 That Looks Considered', "A microfiber club towel with a clip ($18) paired with a groove sharpener ($22) is the two-item gift that looks like it was assembled by someone who actually plays golf. Total: $40 before the WYX10 code. Ships together. Looks like a kit. A fresh cabretta glove 3-pack ($32) on its own also works — practical, immediately needed, used within one round."],
+      ['The $149 Play', "If budget is not the constraint, a GPS watch ($149) is the Father's Day golf gift that lands regardless of when it arrives. It is the kind of gift that gets used on the first round after unwrapping and mentioned to every playing partner for the next month. Use WYX10 for $14.90 off the first order."],
+      ['What To Say', "The copy matters as much as the gift. 'I know you always run out of gloves — here are three of the good ones.' 'I noticed your towel was falling apart — here is one that clips better.' Framing a practical gift as observed and intentional turns a $25 gift into a memorable one. The gift does not need to be expensive. The framing does."],
+      ['WYX Ships Fast', "WYX Golf Supply Co. ships via Shopify-connected fulfillment. Use WYX10 for 10% off your first order. Shop the Father's Day gift guide at wyxgolfsupply.com/fathers-day-golf-gifts for the picks most likely to arrive before June 21."]
+    ]
   }
 ];
