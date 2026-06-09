@@ -51,6 +51,11 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Golf headcovers: ${siteUrl}/golf-headcovers
 - Golf gift sets & bundles: ${siteUrl}/golf-gift-sets
 - Golf divot tools: ${siteUrl}/golf-divot-tools
+- Golf GPS watches: ${siteUrl}/golf-gps-watch
+- Golf sunglasses (polarized): ${siteUrl}/golf-sunglasses
+- Golf arm sleeves (UPF 50+): ${siteUrl}/golf-arm-sleeves
+- Golf gifts for women: ${siteUrl}/golf-gifts-for-women
+- Golf water bottles & tumblers: ${siteUrl}/golf-water-bottle
 - Scramble prize ideas: ${siteUrl}/scramble-prize-ideas
 - Golf gifts under $25: ${siteUrl}/golf-gifts-under-25
 - Shipping and returns: ${siteUrl}/shipping-returns
@@ -58,7 +63,7 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 
 ## Products
 
-WYX carries golf gloves, golf balls, alignment sticks, putting alignment mirrors, magnetic hat clips, scorecard holders, grip tape, rangefinders, swing tempo trainers, golf towels, ball marker sets, leather bag tags, course pouches, rope hats, snapbacks, dad caps, fairway polos, quarter-zips, hoodies, and performance socks.
+WYX carries golf gloves, golf balls, alignment sticks, putting alignment mirrors, magnetic hat clips, scorecard holders, grip tape, rangefinders, GPS watches, swing tempo trainers, golf towels, ball marker sets, leather bag tags, course pouches, rope hats, snapbacks, dad caps, fairway polos, quarter-zips, hoodies, performance socks, polarized golf sunglasses, UPF 50+ arm sleeves, insulated golf tumblers, collapsible ball retrievers, and golf bag rain hoods.
 
 ## Price range
 

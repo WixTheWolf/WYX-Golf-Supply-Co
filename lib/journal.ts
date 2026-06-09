@@ -277,7 +277,7 @@ export const posts = [
       ['The Zone System', 'Think of your bag in three zones: top (rarely used clubs), middle (irons and wedges), bottom (putter and extra putter grips). Organize for easy access, not aesthetic.'],
       ['What Goes In The Side Pockets', 'Balls in one pocket, tees in the side slot, glove in the small pocket at the top. Keep the caddie or small organizer in the front pocket for markers, divot tools, and small accessories.'],
       ['The Towel Rule', 'One wet towel on the ring, one dry towel in a side pocket. Wash both weekly. A clean bag is part of a calm round.'],
-      ['What To Cut', 'Old scorecards, broken tees, dead balls, protein bar wrappers. Empty the bag once a month. If you haven't touched it in two rounds, it doesn't earn a spot.'],
+      ['What To Cut', 'Old scorecards, broken tees, dead balls, protein bar wrappers. Empty the bag once a month. If you have not touched it in two rounds, it does not earn a spot.'],
       ['Small Upgrades That Change Feel', 'A leather bag tag, a milled ball marker, a scorecard holder, and a fresh set of grips make the bag feel intentional without a full rebuild.']
     ]
   },
@@ -610,6 +610,84 @@ export const posts = [
       ['Late Light', 'Twilight golf removes the excess. Fewer voices. Longer shadows.'],
       ['Quiet Fairways', 'You stop chasing the perfect round and start noticing the one in front of you.'],
       ['The Long Game', 'Golf lasts because it keeps giving you another version of yourself to meet.']
+    ]
+  },
+  {
+    slug: 'best-golf-gps-watch-2026',
+    title: 'Best Golf GPS Watch 2026: What To Look For',
+    seo: 'Best Golf GPS Watch 2026 | WYX Golf Supply Co.',
+    description: 'What to look for in a golf GPS watch — course coverage, battery life, yardage accuracy, and whether it replaces a rangefinder.',
+    image: imageMap.strategy,
+    sections: [
+      ['GPS Watch vs Rangefinder', 'A rangefinder gives precise point-and-shoot yardage to the flag. A GPS watch gives you front, middle, and back without lifting the device — faster for casual rounds.'],
+      ['What Matters', 'Course coverage (40,000+ is the standard), battery that covers 18 holes without charging, auto-advance hole detection, and hazard yardages. Everything else is bonus.'],
+      ['What Doesn\'t', 'Smartwatch features (notifications, sleep tracking) add bulk and drain battery. A dedicated golf watch does one thing well.'],
+      ['WYX Pick', 'The WYX GPS Watch loads 40,000+ courses, shows front/middle/back, auto-advances holes, and charges via USB-C. No subscription, no phone needed.']
+    ]
+  },
+  {
+    slug: 'golf-sunglasses-guide',
+    title: 'Golf Sunglasses: Why Polarized Matters for Ball Tracking',
+    seo: 'Golf Sunglasses Guide | Polarized for Ball Tracking | WYX Golf Supply Co.',
+    description: 'Why golfers need polarized sunglasses, what lens tint works best on the course, and how to pick a pair that tracks the ball without losing it in the sky.',
+    image: imageMap.walk,
+    sections: [
+      ['The Ball Tracking Problem', 'Dark lenses work against you. They flatten contrast and make a white ball against blue sky nearly invisible off the tee. You need contrast, not just glare protection.'],
+      ['Polarized vs Standard', 'Polarized lenses eliminate horizontal glare off fairways and water, but the key is tint — amber and brown lenses improve contrast. Grey lenses reduce brightness without helping ball visibility.'],
+      ['Wraparound Fit', 'A wraparound frame blocks peripheral glare and stays put through the swing. Fashion frames are fine for the 19th hole.'],
+      ['WYX Pick', 'The WYX Polarized Golf Sunglasses use a high-contrast amber-tinted TAC polarized lens and a TR90 wraparound frame that doesn\'t shift through the swing. Under $50.']
+    ]
+  },
+  {
+    slug: 'golf-arm-sleeves-guide',
+    title: 'Golf Arm Sleeves: UV Protection for Summer Rounds',
+    seo: 'Golf Arm Sleeves | UPF 50 Sun Protection | WYX Golf Supply Co.',
+    description: 'Why golf arm sleeves are the most overlooked summer essential, how UPF 50+ protection works, and when to wear them vs. sunscreen.',
+    image: imageMap.polo,
+    sections: [
+      ['Better Than Sunscreen', 'Sunscreen sweats off after 9 holes. A UPF 50+ compression sleeve blocks 98% of UV rays for 18 holes without reapplication — and adds compression for arm fatigue on long rounds.'],
+      ['Who They\'re For', 'Any golfer playing in direct sun past 10am. They slip on over any shirt in 10 seconds and pack flat into a back pocket.'],
+      ['What UPF 50+ Means', 'UPF 50+ allows just 1/50th of UV radiation through the fabric — the equivalent of SPF 50+ sunscreen, but without the mess, cost, or reapplication.'],
+      ['WYX Pick', 'Lightweight 88% polyester / 12% spandex compression fabric. One size fits most. Machine washable. The best $18 golf decision of the summer.']
+    ]
+  },
+  {
+    slug: 'golf-gifts-for-women',
+    title: 'Golf Gifts for Women Golfers That Are Actually Good',
+    seo: 'Golf Gifts for Women Golfers | WYX Golf Supply Co.',
+    description: 'Useful golf gifts for women golfers — gloves, towels, arm sleeves, alignment tools, and accessories that are actually designed to be used, not just given.',
+    image: imageMap.walk,
+    sections: [
+      ['Skip the Pink Version', 'The best gifts for women golfers are the same as the best gifts for any golfer: useful, well-made, and sized correctly. A women\'s cabretta glove, a quality towel, alignment sticks.'],
+      ['Sizing Notes', 'Gloves are the one size-sensitive item — women\'s gloves run S/M/L and most women golfers are M. For everything else (towels, markers, training aids, sleeves), sizing is universal.'],
+      ['High-Value Options', 'A polarized sunglass set, UV arm sleeves, a putting mirror, and a leather ball marker set are all under $60 and easy wins for any occasion.'],
+      ['WYX Pick', 'Start with the Women\'s Cabretta Glove, add a microfiber towel and alignment sticks, and use WYX10 at checkout.']
+    ]
+  },
+  {
+    slug: 'golf-water-bottle-guide',
+    title: 'Golf Water Bottle Guide: What Actually Fits a Cart Cup Holder',
+    seo: 'Golf Water Bottle Guide | Cart Cup Holder Fit | WYX Golf Supply Co.',
+    description: 'Why most water bottles fail on the golf course, what size fits standard cart cup holders, and what to look for in an insulated golf tumbler.',
+    image: imageMap.hero,
+    sections: [
+      ['The Cart Cup Problem', 'Standard cart cup holders are designed for 16–20 oz cans and cups. Most 32 oz bottles won\'t fit. Most 12 oz cans fall over. The sweet spot is a 20 oz tumbler with a flat base.'],
+      ['Insulation Math', 'On a 90°F summer round, you need ice to survive 18 holes — roughly 4 hours. Double-wall vacuum insulation keeps ice for 12+ hours. Single-wall and plastic bottles lose it by the 6th hole.'],
+      ['No Sweat', 'A sweat-free exterior matters on a golf cart. Condensation rings on scorecards and phone cases are avoidable with proper insulation.'],
+      ['WYX Pick', 'The WYX 20oz Insulated Tumbler is engineered to fit every standard cart cup holder, keeps ice for 12 hours, and has a sweat-proof powder coat. Under $35.']
+    ]
+  },
+  {
+    slug: 'golf-push-cart-guide',
+    title: 'Golf Push Cart Guide: Carry vs. Push for Weekend Golfers',
+    seo: 'Golf Push Cart Guide | Carry vs Push Cart | WYX Golf Supply Co.',
+    description: 'Whether a golf push cart is worth it, how to equip one properly, and what accessories make walking rounds significantly better.',
+    image: imageMap.walk,
+    sections: [
+      ['The Case for Walking', 'Walking 18 holes is 4–5 miles. A quality push cart removes the carry fatigue while keeping you on foot — better pace of play, better focus, lower scores for most players.'],
+      ['Push Cart vs Carry Bag', 'A push cart turns any bag into a walkable bag. You don\'t need a dedicated carry bag — a regular cart bag works fine with a 3-wheel push cart.'],
+      ['Essential Push Cart Accessories', 'A cup holder attachment, a phone or GPS mount, a bag rain hood, and an insulated tumbler make a push cart round as comfortable as a riding cart.'],
+      ['WYX Pick', 'Outfit any push cart with a WYX Insulated Tumbler, GPS Watch, and Rain Hood for under $210 total. Use WYX10 at checkout.']
     ]
   }
 ];

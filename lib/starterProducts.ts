@@ -641,5 +641,138 @@ export const starterProducts: StarterProduct[] = [
     seoTitle: 'Golf Groove Sharpener | WYX Golf Supply Co.',
     metaDescription: 'A precision golf groove sharpener with 6 widths that restores spin to worn wedges and irons. Legal for recreational play. Under $25.',
     tags: ['club care', 'groove sharpener', 'wedge maintenance', 'golf accessories', 'bag upgrade', 'golf gifts for dad', 'stocking stuffer', 'under $25']
+  },
+  {
+    title: 'Golf GPS Watch — 40,000 Courses',
+    handle: 'golf-gps-watch-40k-courses',
+    price: '149.00',
+    badge: 'Best Seller',
+    image: imageMap.strategy,
+    productType: 'Golf Tech',
+    collectionHandle: 'golf-tech',
+    description: 'A dedicated golf GPS watch with 40,000+ preloaded courses, auto-advance hole, front/middle/back yardages, and a battery that lasts a full round — no phone required.',
+    details: [
+      '40,000+ worldwide courses preloaded — no download fees',
+      'Front, middle, and back yardage on every hole',
+      'Auto-advance hole detection',
+      'Shot distance and hazard yardages',
+      'Waterproof to 5ATM — safe in rain and water traps',
+      'Full-round battery life (18+ holes), charges via USB-C'
+    ],
+    materials: 'Silicone sport band with reinforced plastic case.',
+    care: 'Rinse with fresh water after wet rounds. Charge via included USB-C cable.',
+    seoTitle: 'Golf GPS Watch | 40,000 Courses | WYX Golf Supply Co.',
+    metaDescription: 'A golf GPS watch with 40,000+ preloaded courses, front/middle/back yardage, and 18-hole battery life. No phone needed. Under $150.',
+    tags: ['golf gps watch', 'golf tech', 'gps watch', 'golf technology', 'golf gifts for dad', 'golf gifts for him', 'rangefinder alternative', 'under $150']
+  },
+  {
+    title: 'Collapsible Ball Retriever — 12 Ft',
+    handle: 'collapsible-ball-retriever-12ft',
+    price: '22.00',
+    badge: 'Bag Essential',
+    image: imageMap.walk,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'A 12-foot telescoping golf ball retriever that collapses to 18 inches and fits in any bag side pocket. Grab balls from water hazards, deep rough, and under shrubs without sacrificing a sleeve.',
+    details: [
+      'Extends to 12 feet, collapses to 18 inches',
+      'Fits in any bag side or water bottle pocket',
+      'Ergonomic rubber grip handle',
+      'Compatible with all standard golf ball sizes',
+      'Aluminum shaft — rust-resistant and lightweight'
+    ],
+    materials: 'Anodized aluminum telescoping shaft with ABS plastic scoop head.',
+    care: 'Rinse scoop after water-hazard use. Dry before collapsing for storage.',
+    seoTitle: 'Golf Ball Retriever 12 Ft Collapsible | WYX Golf Supply Co.',
+    metaDescription: 'A 12-foot telescoping golf ball retriever that collapses to 18 inches and fits in any bag pocket. Stops the water-hazard sacrifice. Under $25.',
+    tags: ['golf ball retriever', 'collapsible ball retriever', 'golf accessories', 'golf bag essentials', 'water hazard', 'stocking stuffer', 'golf gifts under $25']
+  },
+  {
+    title: 'UPF 50+ Golf Arm Sleeves',
+    handle: 'upf50-golf-arm-sleeves',
+    price: '18.00',
+    badge: 'Summer Essential',
+    image: imageMap.polo,
+    productType: 'Apparel',
+    collectionHandle: 'apparel',
+    description: 'Lightweight UPF 50+ compression arm sleeves that block 98% of UV rays, cool via moisture-wicking fabric, and slip on in seconds over any shirt — the summer round essential no golfer packs until they need them.',
+    details: [
+      'UPF 50+ blocks 98% of UV-A and UV-B rays',
+      'Moisture-wicking compression fabric stays cool all round',
+      'Slip-on fit — no buttons or closures',
+      'One size fits most with 4-way stretch',
+      'Machine washable; holds shape after 50+ washes'
+    ],
+    materials: '88% polyester / 12% spandex UV-block fabric.',
+    care: 'Machine wash cold, hang dry. Avoid fabric softener.',
+    seoTitle: 'Golf Arm Sleeves UPF 50+ | Sun Protection | WYX Golf Supply Co.',
+    metaDescription: 'UPF 50+ golf arm sleeves that block 98% of UV rays and cool via moisture-wicking compression. Lightweight, slip-on, machine washable. Under $20.',
+    tags: ['golf arm sleeves', 'upf 50', 'sun protection golf', 'golf apparel', 'summer golf', 'golf accessories', 'under $20', 'golf gifts']
+  },
+  {
+    title: 'Insulated Golf Tumbler — 20 oz',
+    handle: 'insulated-golf-tumbler-20oz',
+    price: '34.00',
+    badge: 'Course Ready',
+    image: imageMap.hero,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'A 20 oz stainless steel insulated tumbler sized to fit every cart cup holder, keep ice for 12 hours on the course, and take a logo without looking like a promotional freebie.',
+    details: [
+      '20 oz capacity — fits every standard cart cup holder',
+      'Double-wall vacuum insulation keeps ice 12+ hours',
+      '304 stainless steel — no plastic taste',
+      'Sweat-proof exterior, no condensation rings on scorecards',
+      'Spill-resistant slide lid, dishwasher safe body'
+    ],
+    materials: 'Powder-coated 304 stainless steel with BPA-free slide lid.',
+    care: 'Dishwasher safe (body). Hand-wash lid. Dry inverted to prevent odor.',
+    seoTitle: 'Golf Tumbler Insulated 20 oz | Cart Cup Holder | WYX Golf Supply Co.',
+    metaDescription: 'A 20oz insulated golf tumbler that fits every cart cup holder, keeps ice 12 hours, and looks great on the course. Under $35.',
+    tags: ['golf tumbler', 'insulated golf cup', 'golf water bottle', 'golf accessories', 'golf gifts for dad', 'golf gifts for him', 'cart cup holder', 'under $35']
+  },
+  {
+    title: 'Polarized Golf Sunglasses',
+    handle: 'polarized-golf-sunglasses',
+    price: '44.00',
+    badge: 'Track Every Ball',
+    image: imageMap.walk,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'Wraparound polarized sunglasses built for ball tracking — high-contrast lenses cut glare off fairways and greens without darkening the sky or losing a ball in flight.',
+    details: [
+      'TAC polarized lenses — eliminates glare from fairways and water',
+      'High-contrast tint enhances ball visibility against blue sky',
+      'Lightweight TR90 frame, wraparound fit stays put through the swing',
+      'UV400 protection blocks all UV-A and UV-B',
+      'Includes microfiber pouch and hard case'
+    ],
+    materials: 'TR90 nylon frame with TAC polarized polycarbonate lenses.',
+    care: 'Clean with included microfiber cloth. Store in hard case to prevent scratching.',
+    seoTitle: 'Golf Sunglasses Polarized | Ball Tracking | WYX Golf Supply Co.',
+    metaDescription: 'Polarized golf sunglasses with high-contrast lenses for ball tracking. Wraparound TR90 frame, UV400 protection. Under $50.',
+    tags: ['golf sunglasses', 'polarized sunglasses', 'golf accessories', 'golf gifts for him', 'golf gifts for dad', 'summer golf', 'under $50', 'golf eyewear']
+  },
+  {
+    title: 'Golf Bag Rain Hood — Universal Fit',
+    handle: 'golf-bag-rain-hood-universal',
+    price: '26.00',
+    badge: 'Weather Ready',
+    image: imageMap.towel,
+    productType: 'Accessories',
+    collectionHandle: 'accessories',
+    description: 'A waterproof bag rain hood that fits over any stand, cart, or carry bag in seconds — clips down with bungee cord loops and keeps clubs, grips, and gear dry when the forecast lies.',
+    details: [
+      'Universal fit — covers stand, cart, and carry bags up to 10-inch tops',
+      'Waterproof 200D polyester shell, heat-sealed seams',
+      'Bungee cord loops lock it over the bag in wind',
+      'Packs into a palm-sized pouch for the side pocket',
+      'Includes drawstring storage pouch'
+    ],
+    materials: '200D waterproof polyester with heat-sealed seams and bungee loops.',
+    care: 'Shake dry after use. Store in included pouch. Do not machine wash.',
+    seoTitle: 'Golf Bag Rain Hood | Waterproof Bag Cover | WYX Golf Supply Co.',
+    metaDescription: 'A universal waterproof golf bag rain hood that fits any stand, cart, or carry bag. Bungee lock, packs into a palm-sized pouch. Under $30.',
+    tags: ['golf bag rain hood', 'golf bag cover', 'waterproof golf bag', 'golf accessories', 'golf trip', 'golf gifts', 'weather golf', 'under $30']
   }
 ];

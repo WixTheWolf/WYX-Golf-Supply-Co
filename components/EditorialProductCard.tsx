@@ -29,6 +29,12 @@ export function EditorialProductCard({ product, featured = false }: { product: P
 
 function shortReason(product: Product) {
   const text = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
+  if (text.includes('gps watch') || (text.includes('gps') && text.includes('watch'))) return 'Front, middle, back — no phone needed. 40,000 courses loaded and ready at the wrist.';
+  if (text.includes('ball retriever') && text.includes('collapsible')) return 'Extends to 12 feet, collapses to 18 inches. Stops the water-hazard sacrifice without slowing down the group.';
+  if (text.includes('arm sleeve') || text.includes('upf')) return 'Blocks 98% of UV rays, cools via moisture-wicking compression. Slip on in seconds before the round starts.';
+  if (text.includes('golf tumbler') || text.includes('insulated') && text.includes('tumbler')) return 'Cart cup holder fit, ice for 12 hours, no sweat rings on the scorecard. The one cart accessory worth carrying.';
+  if (text.includes('golf sunglasses') || text.includes('polarized') && text.includes('golf')) return 'High-contrast polarized lenses cut glare and track the ball against blue sky. Wraparound fit stays put through the swing.';
+  if (text.includes('rain hood') || text.includes('bag cover') || text.includes('bag rain')) return 'Clips over any bag in seconds and packs into a palm-sized pouch. The one item that saves the whole bag when the forecast lies.';
   if (text.includes('rangefinder')) return 'Know your yardage every time. The upgrade that changes how you think about every approach.';
   if (text.includes('yardage book') || text.includes('scorecard holder') || text.includes('scorecard')) return 'Full-grain leather, pencil loop, tee pocket, and snap closure. One of the best golf gifts under $60.';
   if (text.includes('umbrella')) return 'Double-canopy, wind-vented, fits over you and the bag. The round-saver for early tee times in bad weather.';

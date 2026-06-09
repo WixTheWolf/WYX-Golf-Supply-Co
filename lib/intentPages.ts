@@ -568,6 +568,78 @@ export const intentPages: Record<string, IntentPageConfig> = {
     ],
     match: (product) => under(product, 60) && categoryIn(product, ['Accessories', 'Towels', 'Gloves', 'Headwear'])
   },
+  'golf-gps-watch': {
+    slug: 'golf-gps-watch',
+    title: 'Golf GPS Watch — No Phone. No Fumbling. Just Yardage.',
+    eyebrow: 'Golf Tech',
+    description: 'A dedicated golf GPS watch with 40,000+ preloaded courses, front/middle/back yardages, and a full-round battery. No phone needed, no subscription, no excuses.',
+    metaTitle: 'Golf GPS Watch | 40,000 Courses Preloaded | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf GPS watches at WYX Golf Supply Co. — 40,000+ courses, front/middle/back yardage, no phone required. Under $150 with free shipping.',
+    primaryCta: 'Shop GPS Watches',
+    secondaryCta: 'See All Golf Tech',
+    secondaryHref: '/collections/golf-tech',
+    proof: ['40,000+ courses loaded', 'No subscription fee', '18-hole battery life', 'WYX10 launch code'],
+    faq: [
+      ['Do golf GPS watches work without a phone?', 'Yes — a dedicated golf GPS watch has courses preloaded in internal memory. You don\'t need a phone, a signal, or an app. Turn it on at the first tee and it finds the course automatically.'],
+      ['Is a GPS watch better than a rangefinder?', 'Rangefinders give more precise point-to-flag yardage. GPS watches are faster for front/middle/back distances and don\'t require aiming. Most casual golfers find GPS watches more practical for pace of play.'],
+      ['How many courses are on a golf GPS watch?', 'The WYX GPS Watch includes 40,000+ worldwide courses preloaded — no download fees or subscriptions required. Most major US courses are included.']
+    ],
+    match: (product) => /gps watch|golf watch|golf gps|golf tech/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-sunglasses': {
+    slug: 'golf-sunglasses',
+    title: 'Golf Sunglasses That Actually Help You Track the Ball.',
+    eyebrow: 'On-Course Gear',
+    description: 'Polarized golf sunglasses with high-contrast lenses that cut glare off fairways and track the ball against blue sky. Wraparound fit. Under $50.',
+    metaTitle: 'Golf Sunglasses Polarized | Ball Tracking | WYX Golf Supply Co.',
+    metaDescription: 'Shop polarized golf sunglasses at WYX Golf Supply Co. — high-contrast lenses for ball tracking, UV400 protection, wraparound TR90 frame. Under $50.',
+    primaryCta: 'Shop Golf Sunglasses',
+    secondaryCta: 'See All Accessories',
+    secondaryHref: '/collections/accessories',
+    proof: ['High-contrast polarized lens', 'UV400 protection', 'Wraparound fit stays put', 'WYX10 launch code'],
+    faq: [
+      ['Are polarized sunglasses good for golf?', 'Yes — polarized lenses eliminate horizontal glare off fairways and water hazards. Choose a high-contrast tint like amber or brown rather than grey, which can reduce ball visibility against bright sky.'],
+      ['What lens color is best for golf?', 'Amber and brown tints improve contrast and help you track a white ball against blue sky. Grey lenses reduce brightness but can make ball tracking harder.'],
+      ['Can you wear regular sunglasses golfing?', 'You can, but a wraparound fit helps prevent wind and peripheral glare during the swing. Standard fashion frames often shift or create blind spots at the impact zone.']
+    ],
+    match: (product) => /sunglasses|golf eyewear|polarized/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-arm-sleeves': {
+    slug: 'golf-arm-sleeves',
+    title: 'Golf Arm Sleeves — UPF 50+ Sun Protection for Any Round.',
+    eyebrow: 'Summer Essential',
+    description: 'Lightweight UPF 50+ compression arm sleeves that block 98% of UV rays and stay cool via moisture-wicking fabric. Slip on in 10 seconds, skip the sunscreen reapplication.',
+    metaTitle: 'Golf Arm Sleeves UPF 50+ | Sun Protection | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf arm sleeves with UPF 50+ sun protection at WYX Golf Supply Co. — moisture-wicking, 4-way stretch, machine washable. Under $20.',
+    primaryCta: 'Shop Arm Sleeves',
+    secondaryCta: 'See All Apparel',
+    secondaryHref: '/collections/apparel',
+    proof: ['UPF 50+ blocks 98% of UV', 'No reapplication needed', 'Machine washable', 'WYX10 launch code'],
+    faq: [
+      ['Do golf arm sleeves really block UV?', 'Yes — UPF 50+ fabric blocks 98% of UV-A and UV-B radiation for the entire round without reapplication. Sunscreen typically wears off after 80 minutes of sweating.'],
+      ['Are golf arm sleeves hot?', 'Quality arm sleeves use moisture-wicking compression fabric that actually feels cooler than exposed skin in direct sun, because the fabric prevents solar heat from hitting skin directly.'],
+      ['Can you wear arm sleeves under a golf glove?', 'Yes — most golf arm sleeves are designed to layer under a golf glove on the lead hand. The compression fabric is thin enough not to affect grip feel.']
+    ],
+    match: (product) => /arm sleeve|upf|sun protection/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-water-bottle': {
+    slug: 'golf-water-bottle',
+    title: 'Golf Water Bottle — Insulated, Cart-Holder Fit, 12 Hours Cold.',
+    eyebrow: 'Course Essential',
+    description: 'A 20 oz insulated tumbler designed to fit every cart cup holder, keep ice cold for 18 holes, and not sweat on your scorecard. The course accessory most golfers forget until they need it.',
+    metaTitle: 'Golf Water Bottle Insulated | Cart Cup Holder Fit | WYX Golf Supply Co.',
+    metaDescription: 'Shop insulated golf tumblers at WYX Golf Supply Co. — 20oz, fits all cart cup holders, ice-cold for 12+ hours, sweat-free exterior. Under $35.',
+    primaryCta: 'Shop Golf Tumblers',
+    secondaryCta: 'See All Accessories',
+    secondaryHref: '/collections/accessories',
+    proof: ['Fits all cart cup holders', 'Ice cold 12+ hours', 'Sweat-free exterior', 'WYX10 launch code'],
+    faq: [
+      ['What size water bottle fits a golf cart cup holder?', 'Standard golf cart cup holders fit containers up to 3.5 inches in diameter at the base. A 20 oz tumbler with a flat base is the most reliable fit — wide-mouth 32 oz bottles often don\'t fit.'],
+      ['How do you keep drinks cold on the golf course?', 'Double-wall vacuum insulation is the only reliable method. Foam coolers, soft-sided coolers, and thin-wall bottles lose ice within a few holes on a hot day.'],
+      ['Are insulated tumblers dishwasher safe?', 'The body is typically dishwasher safe, but the lid should be hand-washed to preserve the seal. Always check the manufacturer\'s care guide.']
+    ],
+    match: (product) => /tumbler|water bottle|insulated|cooler/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
   'scramble-prize-ideas': {
     slug: 'scramble-prize-ideas',
     title: 'Scramble Prize Ideas That Players Actually Want.',
