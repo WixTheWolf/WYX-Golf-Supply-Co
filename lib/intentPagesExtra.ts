@@ -149,5 +149,77 @@ export const extraIntentPages: Record<string, IntentPageConfig> = {
       ['Is a GPS watch a romantic anniversary gift?', 'For a golfer, yes — it is a premium, daily-use item that improves every round. The WYX GPS Watch at $149 is a thoughtful high-use gift that shows you paid attention to their game. Pair it with a leather bag tag for the complete package.']
     ],
     match: (product: Product) => under(product, 175) || categoryIn(product, ['Golf Tech', 'Accessories'])
+  },
+  'golf-rain-gear': {
+    slug: 'golf-rain-gear',
+    title: 'Golf Rain Gear — Stay Dry, Keep Playing.',
+    eyebrow: 'Weather Ready',
+    description: 'The three rain-round essentials: a waterproof stretch jacket that moves on the backswing, a rain glove that grips harder wet, and a 62-inch double-canopy umbrella that will not invert.',
+    metaTitle: 'Golf Rain Gear | Waterproof Golf Jacket | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf rain gear at WYX — waterproof golf jacket, rain gloves, 62-inch umbrella, and microfiber towels for wet rounds. Free shipping over $50.',
+    primaryCta: 'Shop Rain Gear',
+    secondaryCta: 'See Summer Gear',
+    secondaryHref: '/golf-summer-gear',
+    proof: ['Taped-seam waterproof jacket', '62-inch wind-vent umbrella', 'Rain gloves grip better wet', 'WYX10 launch code'],
+    faq: [
+      ['What golf gear do I need for rain?', 'Three items handle most rain rounds: (1) a waterproof jacket with fully taped seams and a stretch panel for swing freedom, (2) a rain glove or pair of rain gloves — they grip harder when wet unlike standard cabretta, (3) a 62-inch double-canopy umbrella that covers you and the bag and will not invert in gusts.'],
+      ['Do golf rain gloves actually work?', 'Yes — properly. Rain gloves use a synthetic material that increases grip coefficient when wet, the inverse of how standard cabretta leather behaves. Many players find they hit crisper shots with rain gloves in light rain than they do with dry-condition gloves in humidity.'],
+      ['What is the best waterproof golf jacket?', 'Look for fully taped seams (not just critically taped), a stretch panel across the upper back or underarm gusset, and a hem that covers the waistband at full rotation. The WYX Rain Jacket ($88) hits all three — taped seams, stretch back panel, and a cut long enough to stay tucked in your swing.']
+    ],
+    match: (product: Product) => /rain|waterproof|jacket|umbrella/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`) || categoryIn(product, ['Apparel', 'Accessories'])
+  },
+  'golf-corporate-gifts': {
+    slug: 'golf-corporate-gifts',
+    title: 'Golf Corporate Gifts — Useful Enough to Earn a Spot in the Bag.',
+    eyebrow: 'Gift Guide',
+    description: 'Corporate golf gifts that land with clients and colleagues — useful accessories under $100, leather pieces that ship gift-ready, and nothing that looks like a bulk catalog order.',
+    metaTitle: 'Golf Corporate Gifts | Golf Gifts for Clients | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf corporate gifts at WYX Golf Supply Co. — ball markers, yardage holders, GPS watches, and bag accessories that earn a permanent spot in the bag. Free shipping over $50.',
+    primaryCta: 'Shop Corporate Golf Gifts',
+    secondaryCta: 'See Premium Picks',
+    secondaryHref: '/golf-gifts-under-150',
+    proof: ['Ships gift-ready', 'Under $100 most picks', 'No sizing guesswork', 'WYX10 launch code'],
+    faq: [
+      ['What are good golf gifts for corporate clients?', 'The best corporate golf gifts work across handicaps without requiring sizing: a leather ball marker set ($42), a leather yardage book holder ($54), or a polarized sunglass set ($44). The milled marker set is particularly strong — it is something most golfers want but do not buy for themselves.'],
+      ['How much should I spend on a corporate golf gift?', 'Thank-you/appreciation: $25–$50 (ball markers, towel, microfiber set). Client gifts: $50–$100 (yardage holder, sunglasses, rangefinder accessories). High-value client: $100–$200 (GPS watch, full bag care kit). WYX10 saves 10% for first-time orders — useful for group purchases across a client list.'],
+      ['Do golf gifts need to be personalized for corporate use?', 'Engraving adds a personal touch but is not required. A high-quality unbranded leather bag tag or ball marker set signals taste without the branding cost. If you want logos, start with the bag tag — it is the most visible real estate without disrupting the gift.']
+    ],
+    match: (product: Product) => under(product, 150) || categoryIn(product, ['Accessories', 'Golf Tech', 'Towels'])
+  },
+  'golf-gifts-for-women': {
+    slug: 'golf-gifts-for-women',
+    title: 'Golf Gifts for Women — Useful Gear, Not Novelty.',
+    eyebrow: 'Gift Guide',
+    description: 'Golf gifts for women who play seriously — quality gloves, sun protection, bag essentials, and accessories sized and designed for performance, not just appearance.',
+    metaTitle: 'Golf Gifts for Women | Women Golfer Accessories | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts for women at WYX Golf Supply Co. — UPF arm sleeves, gloves, ball markers, and accessories designed for serious women golfers. Free shipping over $50.',
+    primaryCta: 'Shop Women Golf Gifts',
+    secondaryCta: 'See Summer Gear',
+    secondaryHref: '/golf-summer-gear',
+    proof: ['UPF 50+ sun protection', 'AAA cabretta gloves', 'No novelty filler', 'WYX10 launch code'],
+    faq: [
+      ['What are good golf gifts for women?', 'The gifts women golfers actually use: (1) UPF 50+ arm sleeves ($18) for sun protection without sunscreen reapplication, (2) a quality cabretta glove 3-pack in the right size, (3) a milled ball marker set ($42) — something most golfers want but skip buying. Avoid novelty items with generic golf-themed patterns.'],
+      ['What golf accessories do women actually use?', 'The daily-use accessories: a clip-on microfiber towel, a compact ball marker, UV arm sleeves for hot rounds, and polarized sunglasses. A leather yardage book holder is a gift that gets used every round for years. The GPS watch ($149) is the premium daily-use gift for the serious woman golfer.'],
+      ['Is a GPS watch a good gift for a woman golfer?', 'Yes — it is one of the highest-utility golf gifts for any golfer who plays frequently. It removes the phone from the round, which improves focus and pace of play. The WYX GPS Watch loads 40,000+ courses, has an 18-hole battery, and fits smaller wrists comfortably.']
+    ],
+    match: (product: Product) => under(product, 150) || categoryIn(product, ['Accessories', 'Apparel', 'Golf Tech', 'Gloves'])
+  },
+  'golf-club-care-kit': {
+    slug: 'golf-club-care-kit',
+    title: 'Golf Club Care Kit — Clean Grooves, Fresh Grips, Sharp Wedges.',
+    eyebrow: 'Club Care',
+    description: 'The three-part club care routine: clean grooves before every round, regrip every season, and sharpen wedge grooves when spin starts dropping. Everything needed ships under $100.',
+    metaTitle: 'Golf Club Care Kit | Clean Grooves Regrip | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf club care at WYX Golf Supply Co. — groove sharpener, grip solvent kit, club brushes, and iron polish. Under $100 for a complete season care kit.',
+    primaryCta: 'Shop Club Care',
+    secondaryCta: 'See All Accessories',
+    secondaryHref: '/collections/accessories',
+    proof: ['Groove sharpener $22', 'Grip solvent kit $26', 'Club brush combo', 'WYX10 launch code'],
+    faq: [
+      ['How do I clean golf club grooves?', 'Use a stiff-bristle club brush with warm soapy water after every round. For packed dirt, a groove pick (or the pick end of a dual-sided brush) clears compacted debris. Clean grooves spin the ball consistently — packed grooves do not. A 2-minute clean after each round takes 45 seconds per club.'],
+      ['How do I know if I need to regrip my clubs?', 'The tests: (1) does the grip feel smooth or shiny rather than tacky? (2) are you gripping tighter in pressure situations to avoid slipping? (3) did you play more than 40 rounds this season? Any single yes is a regrip indicator. Worn grips are the cheapest swing problem to fix.'],
+      ['How does a groove sharpener work?', 'A groove sharpener is a hardened-steel pick that re-cuts the flat face of each groove to restore its sharp edge. Wedge grooves dull after 40-50 rounds of hitting real grass and real sand — a dull groove loses 20-30% of spin generation. The WYX Groove Sharpener restores factory-spec grooves in 3 minutes per wedge.']
+    ],
+    match: (product: Product) => categoryIn(product, ['Club Care', 'Accessories']) || /groove|grip|brush|cleaner|polish/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
   }
 };

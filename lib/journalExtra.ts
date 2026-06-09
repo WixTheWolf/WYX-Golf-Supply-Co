@@ -182,5 +182,94 @@ export const extraPosts = [
       ['Temperature Rules', 'Never store clubs in a car trunk long-term — temperature swings dry out grips and can crack graphite shafts over time. A climate-controlled garage or indoor storage area is ideal.'],
       ['WYX Winter Prep', 'The WYX Grip Solvent & Tape Kit ($26) and Groove Sharpener ($22) cover the two off-season maintenance moves that most impact first-round performance. Start the season with sharp grooves and fresh grips.']
     ]
+  },
+  {
+    slug: 'golf-glove-guide',
+    title: 'How to Choose the Right Golf Glove (and When to Replace It)',
+    seo: 'Golf Glove Guide | How to Choose a Golf Glove | WYX Golf Supply Co.',
+    description: 'A practical guide to selecting, fitting, and replacing golf gloves — how to read the wear patterns, when cabretta beats synthetic, and why a fresh glove is the cheapest swing improvement you will make.',
+    image: imageMap.glove,
+    sections: [
+      ['Fit Is Everything', 'A glove should fit like a second skin — snug across the knuckles and palm with no bunching at the fingers. Loose gloves allow the club to move in your hand under pressure, costing you face control. The simplest test: put the glove on and make a fist. If the leather wrinkles at the fingers, size down.'],
+      ['Cabretta vs. Synthetic', 'Cabretta leather (AAA grade sheepskin) delivers the best feel and breathability in dry conditions — the choice for scratch players and anyone who prioritizes grip feedback. Synthetic gloves hold up longer in humid and wet conditions and cost less. The best round setup: cabretta in fair weather, synthetic as your rain backup.'],
+      ['Reading the Wear Pattern', 'Where a glove wears fastest tells you what your swing is doing. Heel pad wear: you are holding the club too far in the fingers. Finger pad wear at the top of the glove: death grip under pressure. Consistent wear in one spot: check your grip pressure and takeaway path.'],
+      ['When to Replace', 'A glove should be replaced when the palm or finger pads wear through to the liner, when the velcro tab stops holding, or when the leather stiffens. Most recreational golfers replace too late — a deteriorated glove actively hurts your grip, especially in heat and humidity. Buying a 3-pack means you never have to play with a dead glove.'],
+      ['WYX Glove Pick', 'The WYX Cabretta Glove 3-Pack gives you AAA-grade sheepskin at a price that makes rotating gloves every few rounds practical — the habit every low-handicap golfer has already adopted.']
+    ]
+  },
+  {
+    slug: 'golf-rain-gear-guide',
+    title: 'Golf Rain Gear: What to Wear, What to Carry, and How to Stay Dry',
+    seo: 'Golf Rain Gear Guide | What to Wear Golfing in Rain | WYX Golf Supply Co.',
+    description: 'A practical look at golf rain gear — what actually keeps you dry, what just gets you wet more slowly, and the three items that change how you play in rain.',
+    image: imageMap.rain,
+    sections: [
+      ['The Three Rain Essentials', 'A good rain round requires three things: (1) a waterproof jacket with taped seams that moves freely on the backswing, (2) a rain glove or pair of rain gloves that actually grip better when wet, and (3) a 62-inch double-canopy umbrella that will not invert in a gust. Everything else is secondary.'],
+      ['What Makes a Good Rain Jacket', 'Look for fully taped seams (not just critically taped), a stretch panel across the back or underarm gusset for backswing freedom, and a hem long enough to cover the waistband when rotating. Budget jackets have water-resistant finishes that wash out — a real waterproof membrane is worth the extra $30.'],
+      ['Rain Gloves Are Different', 'Standard cabretta leather loses grip when wet. Rain gloves are made from a different synthetic that grips harder when wet — the reverse of standard gloves. The technique: keep one in your bag for when standard leather becomes slippery. Some players switch to a rain glove in the left hand only; others use a pair.'],
+      ['The 62-Inch Umbrella', 'A 62-inch arc covers you and your bag simultaneously. A double-canopy wind-vent releases pressure gusts instead of inverting — the difference between a $44 umbrella and a $12 umbrella that turns inside out on the third hole. Fiberglass ribs flex instead of bend permanently under wind load.'],
+      ['Keeping Grips Dry', 'A microfiber towel clipped inside the umbrella canopy keeps grip surfaces dry between shots. Dry grips in the rain matter more than dry grips in the sun — wet leather or rubber under wet gloves slips. Every serious rain-round golfer carries two towels: one for hands, one for clubs.'],
+      ['WYX Rain Kit', 'The WYX Rain Jacket ($88), Microfiber Towel ($18), and Golf Umbrella ($44) are the three items that change the math on a rainy tee time. Under $150 for a round that stays playable.']
+    ]
+  },
+  {
+    slug: 'golf-corporate-gift-guide',
+    title: 'Golf Corporate Gift Guide: What to Give the Client Who Already Has Everything',
+    seo: 'Golf Corporate Gift Guide | Golf Gifts for Clients | WYX Golf Supply Co.',
+    description: 'A thoughtful guide to corporate golf gifts — useful accessories that land without guessing a handicap or clothing size, price ranges for every budget, and the gifts that get used, not re-gifted.',
+    image: imageMap.marker,
+    sections: [
+      ['The Corporate Gift Problem', 'Most corporate golf gifts miss for the same reason: they are generic. Branded ball markers, novelty headcovers, and logo tee sets look like what they are — bulk orders from a catalog. A gift that earns a permanent spot in the bag says more than one that gets left at the hotel.'],
+      ['Under $30: Daily-Use Accessories', 'A milled ball marker set ($42), a full-grain leather bag tag ($34), or a quality microfiber towel ($18) all work across handicaps and do not require knowing their bag, clubs, or clothing size. The ball marker set is particularly strong — it is something most golfers want but would not buy for themselves.'],
+      ['$50-$100: The Practical Upgrade', 'A leather yardage book holder ($54) or a polarized golf-specific sunglass set ($44) sit in this range. The yardage book holder is especially safe — it works in every bag, for every handicap, at any course. Polarized sunglasses reduce glare on dew-covered greens and are universally appreciated.'],
+      ['$100-$200: The Statement Gift', 'A GPS watch ($149) is the gift that gets used every round for years. It is the gift for a client you are investing in — one that improves their game and connects your name to that improvement every time they play. At this budget, a full bag care kit (grip tape, groove sharpener, club cleaner) is also strong.'],
+      ['What to Avoid', 'Avoid clothing without knowing their size, novelty headcovers (unless you know their sense of humor), ball sets personalized with generic logos, and anything requiring setup, calibration, or instruction. The best corporate gift gets used immediately, without explanation.'],
+      ['WYX Corporate Picks', 'WYX ships gift-ready packaging. WYX10 saves 10% on first orders — useful for bulk purchases across a team or client list. Everything is curated for golfers who play regularly, not novelty collections.']
+    ]
+  },
+  {
+    slug: 'how-to-regrip-golf-clubs',
+    title: 'How to Regrip Golf Clubs at Home (The 20-Minute Method)',
+    seo: 'How to Regrip Golf Clubs | Regrip at Home | WYX Golf Supply Co.',
+    description: 'A step-by-step guide to regripping golf clubs at home — what you need, what to watch for, and how to go from first cut to dry grip in under 20 minutes per club.',
+    image: imageMap.iron,
+    sections: [
+      ['What You Need', 'Grip tape (double-sided, 2" width), grip solvent or paint thinner, a hook blade or utility knife, a vice with a rubber jaw clamp, and the replacement grips. The WYX Grip Solvent & Tape Kit ($26) includes all consumables. Most hardware stores carry vices, or a bench vice works.'],
+      ['Step 1: Remove the Old Grip', 'Secure the shaft in the vice. Cut from the butt end toward the hosel with the hook blade, keeping the blade angled away from the shaft. Do not cut straight down — the blade can nick graphite. Peel the grip off. Use solvent on a cloth to dissolve adhesive residue on the shaft.'],
+      ['Step 2: Apply the Tape', 'Apply double-sided grip tape spiraling from 1 inch above the bottom of the grip area to the butt end. No gaps and no air bubbles — gaps create soft spots that move under pressure. Cover the butt end cap as well.'],
+      ['Step 3: Activate and Slide', 'Pour solvent into the new grip, cover both ends, and shake to coat the inside. Pour the excess onto the taped shaft. This gives you 20-30 seconds of working time. Slide the grip on in one motion — align the reminder rib or logo while it is still wet. Do not stop mid-slide.'],
+      ['Step 4: Align and Wait', 'Align the grip immediately while solvent is still active. Clubs need 6-8 hours to cure before hitting. Stand them butt-down to let solvent drain away from the club head. Full cure takes 24 hours — do not rush to the range.'],
+      ['How Often to Regrip', 'Every 40 rounds or once per season for regular players. Grip firmness drops before visible wear appears — if a grip feels shiny or smooth, it is already affecting control. The WYX Grip Solvent & Tape Kit re-grips a full 14-club bag at home for the cost of a single shop installation.']
+    ]
+  },
+  {
+    slug: 'golf-accessories-for-women',
+    title: 'Golf Accessories for Women: What Is Actually Worth Carrying',
+    seo: 'Golf Accessories for Women | Best Golf Gifts for Women | WYX Golf Supply Co.',
+    description: 'A practical look at golf accessories designed for women who play seriously — quality gloves, sun protection, bag essentials, and the accessories that improve a round without adding weight.',
+    image: imageMap.hat,
+    sections: [
+      ['The Glove Problem', 'Women\'s golf gloves are often sized smaller but made to the same standard as men\'s cabretta. The most common mistake: buying a glove that fits snugly in the store but loosens after one hole of sweating. For women\'s hands, AAA cabretta in a fitted size beats thicker, looser synthetic every round.'],
+      ['Sun Protection That Does Not Slow You Down', 'UPF 50+ arm sleeves are the most practical sun protection for a full round — they cover more area than sunscreen without reapplication, they breathe better than a long-sleeve shirt, and they come off in 10 seconds when the sun drops. A sun gaiter adds face and neck coverage for exposed courses or tournament days.'],
+      ['Bag Essentials That Actually Fit', 'A clip-on towel (not a full-length bag towel), a compact ball marker set, and a lightweight bag organizer are the three bag additions most women golfers find immediately useful. Avoid adding weight above what you already carry — the best accessories do more with less.'],
+      ['The GPS Watch Argument', 'A GPS watch solves the biggest pace-of-play problem for any golfer: walking to a yardage marker on a tight schedule. For women who play in leagues or events, a golf GPS watch removes the pace friction entirely without requiring a phone on the course.'],
+      ['What to Skip', 'Novelty divot tools, themed ball markers that feel like costume jewelry, and oversized bag accessories sized for cart bags on a walking set. The golf accessories market overserves the novelty end of the spectrum for women. Stick to the same quality tier you would use for any serious golfer.'],
+      ['WYX Women\'s Picks', 'The WYX UPF Arm Sleeves ($18), Milled Ball Marker Set ($42), and Polarized Sunglasses ($44) are the core three for women\'s sun protection and on-course utility. Free shipping over $50 — the arm sleeves and sunglasses together ship free.']
+    ]
+  },
+  {
+    slug: 'golf-pre-round-checklist',
+    title: 'The Golf Pre-Round Checklist: What to Verify Before the First Tee',
+    seo: 'Golf Pre-Round Checklist | What to Bring Golf | WYX Golf Supply Co.',
+    description: 'The 14-item pre-round checklist for recreational golfers — what to verify, pack, and check before the first tee, from tee time to first drive.',
+    image: imageMap.bag,
+    sections: [
+      ['The Night Before', 'Check the weather forecast and pack accordingly — rain gear if there is a 30%+ chance. Charge your GPS watch or rangefinder. Confirm your tee time and the course GPS is loaded. Clean any dirty clubs from last round. Replace worn tees and restock ball markers.'],
+      ['Bag Checklist (Morning Of)', 'Count balls — minimum of 6, 9 is comfortable. Gloves: at least one fresh glove, two if it is hot. Tees: 20+ minimum. Ball markers: 2 in your pocket before the round, not just in the bag. Divot tool, towel (clipped and accessible), and your scorecard holder.'],
+      ['Tech Check', 'GPS watch: charged and the course is loaded? Rangefinder: battery good, lens clean? Phone: notifications off or Do Not Disturb on for the round. If you use a phone mount on the cart, clip it on before the tee — not after the third hole.'],
+      ['Physical Prep', 'Arrive 20 minutes before tee time to hit 10-15 practice putts and chip a few times. Two things to calibrate: pace (how far is a medium-firm putt rolling?) and feel (do the clubs feel heavy or light today?). The range is optional; the putting green is not.'],
+      ['First Tee Protocol', 'Identify your ball (stamp or mark it now). Confirm which rules apply — scramble? net scoring? stroke play? Who is keeping score? Start the GPS watch or rangefinder. Take two practice swings with a mid-iron to feel the tempo.'],
+      ['WYX Bag Kit', 'The WYX Bag Essentials Kit covers: a clip-on towel, a club brush, a ball marker, and a divot tool — the four items most often forgotten at the first tee. Under $50 for the full kit.']
+    ]
   }
 ];
