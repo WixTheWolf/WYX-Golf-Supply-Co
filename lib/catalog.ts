@@ -64,7 +64,10 @@ export function saleReadyProducts(products: Product[]) {
 
 /** Only show WYX-curated products — blocks old dropship catalog contamination */
 function isCuratedProduct(product: Product) {
-  const tags = product.tags || [];
+  // Primary: vendor name set on all seeded products (most reliable signal)
+  if (product.vendor === 'WYX Golf Supply Co.') return true;
+  // Fallback: tag check (case-insensitive in case Shopify normalizes casing)
+  const tags = (product.tags || []).map((t) => t.toLowerCase());
   return tags.some((t) => t === 'wyx-curated' || t === 'direct-catalog');
 }
 
