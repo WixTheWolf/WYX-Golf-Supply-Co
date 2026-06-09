@@ -77,5 +77,77 @@ export const extraIntentPages: Record<string, IntentPageConfig> = {
       ['Is a GPS watch a good gift for a teenage golfer?', 'Yes — for a teen who plays competition golf or plays frequently. A dedicated golf GPS watch removes the phone from the round, which improves focus and pace of play. The WYX GPS Watch loads 40,000+ courses and has an 18-hole battery.']
     ],
     match: (product: Product) => categoryIn(product, ['Training Aids', 'Golf Tech', 'Gloves', 'Golf Balls']) || under(product, 50)
+  },
+  'golf-scorecard-holder': {
+    slug: 'golf-scorecard-holder',
+    title: 'Golf Scorecard Holder — Leather, Slim, Ships Gift-Ready.',
+    eyebrow: 'Bag Accessory',
+    description: 'A full-grain leather golf scorecard holder with yardage book pocket, pencil loop, and tee slot — the one bag accessory that makes a round feel intentional.',
+    metaTitle: 'Golf Scorecard Holder | Leather Yardage Book Cover | WYX Golf Supply Co.',
+    metaDescription: 'Shop leather golf scorecard holders at WYX Golf Supply Co. — full-grain leather, pencil loop, tee slot, ships gift-ready. Under $60. Free shipping over $50.',
+    primaryCta: 'Shop Scorecard Holders',
+    secondaryCta: 'See All Accessories',
+    secondaryHref: '/collections/accessories',
+    proof: ['Full-grain leather', 'Pencil loop + tee slot', 'Ships gift-ready', 'WYX10 launch code'],
+    faq: [
+      ['What is a golf scorecard holder?', 'A golf scorecard holder is a protective cover for your scorecard and yardage book. A good one includes a pencil loop so you are not hunting for a pencil between holes, and a tee slot so your pocket is not full of sharp broken tees.'],
+      ['Is a leather scorecard holder a good golf gift?', 'Yes — it is one of the most universally useful golf gifts because it works for any handicap and does not require sizing. A leather scorecard holder is something most golfers would use every round but would not buy for themselves.'],
+      ['How does a yardage book holder work?', 'A yardage book holder is a cover sized to hold a standard course yardage book (4" x 3") alongside the scorecard. The WYX version has a full-grain leather flap, pencil loop, snap closure, and a tee slot on the spine.']
+    ],
+    match: (product: Product) => /scorecard|yardage book|yardage holder/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-summer-gear': {
+    slug: 'golf-summer-gear',
+    title: 'Golf Summer Gear — Sun, Hydration, and Grip in One Haul.',
+    eyebrow: 'Summer Ready',
+    description: 'The three summer golf essentials: UPF 50+ arm sleeves for sun coverage, an insulated tumbler that fits the cart cup holder, and a microfiber towel to keep grips dry in the heat.',
+    metaTitle: 'Golf Summer Gear | Sun Protection Hydration | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf summer gear at WYX — UPF 50+ arm sleeves, insulated 20oz tumbler, and microfiber towels for hot-weather rounds. Under $100 for the complete summer set.',
+    primaryCta: 'Shop Summer Gear',
+    secondaryCta: 'See Arm Sleeves',
+    secondaryHref: '/golf-arm-sleeves',
+    proof: ['UPF 50+ sun blocking', 'Ice cold for 18 holes', 'Grip stays dry', 'WYX10 launch code'],
+    faq: [
+      ['What gear do you need for summer golf?', 'Three essentials: (1) sun protection — UPF 50+ arm sleeves cover more area than sunscreen without reapplication, (2) hydration — an insulated tumbler keeps drinks cold for 18 holes, (3) grip maintenance — a microfiber towel keeps the grip and glove dry in heat.'],
+      ['Do golf arm sleeves keep you cool?', 'Yes — UPF 50+ compression fabric blocks solar heat from hitting skin directly, which often makes the arm feel cooler than bare skin in direct sunlight. Moisture-wicking properties pull sweat away to accelerate evaporation cooling.'],
+      ['What size water bottle fits in a golf cart?', 'A 20 oz tumbler with a flat base fits every standard cart cup holder. Wide-mouth 32 oz bottles often do not fit. The WYX 20oz Insulated Tumbler is designed specifically for cart holder compatibility.']
+    ],
+    match: (product: Product) => /arm sleeve|tumbler|towel|sun protection|upf/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`) || categoryIn(product, ['Towels', 'Apparel'])
+  },
+  'golf-ball-retriever': {
+    slug: 'golf-ball-retriever',
+    title: 'Golf Ball Retriever — 12 Feet, Collapses to Pocket Size.',
+    eyebrow: 'Bag Essential',
+    description: 'A 12-foot telescoping golf ball retriever that collapses to 18 inches and fits in any bag side pocket. Stop sacrificing a sleeve every time a shot finds the hazard.',
+    metaTitle: 'Golf Ball Retriever 12 Ft | Telescoping Pocket Size | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf ball retrievers at WYX Golf Supply Co. — 12-foot telescoping, collapses to 18 inches, fits any bag pocket. Under $25. Free shipping over $50.',
+    primaryCta: 'Shop Ball Retrievers',
+    secondaryCta: 'See All Accessories',
+    secondaryHref: '/collections/accessories',
+    proof: ['12-foot reach', 'Collapses to 18 inches', 'Fits any bag pocket', 'WYX10 launch code'],
+    faq: [
+      ['What is the longest telescoping golf ball retriever?', 'Most telescoping ball retrievers extend to 12–15 feet. The WYX Ball Retriever extends to 12 feet — enough to reach most water hazard edges without getting your feet wet — and collapses to 18 inches to fit in any bag side pocket.'],
+      ['Do ball retrievers work in water?', 'Yes — a ball retriever is designed specifically for water hazard recovery. The scoop head closes around a submerged ball and holds it through the retrieval motion. The WYX model works in up to 12 feet of depth.'],
+      ['Is a ball retriever worth carrying?', 'At $22, a ball retriever pays for itself the first time it saves a sleeve of premium balls from a water hazard. It adds negligible weight to the bag and collapses small enough to fit in a water bottle pocket.']
+    ],
+    match: (product: Product) => /ball retriever|retriever/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-gifts-for-anniversary': {
+    slug: 'golf-gifts-for-anniversary',
+    title: 'Golf Anniversary Gifts — For the Golfer Who Is Also Your Partner.',
+    eyebrow: 'Gift Guide',
+    description: 'Anniversary golf gifts that feel personal and intentional — leather accessories, premium gear bundles, and meaningful upgrades for the golfer who shares your life.',
+    metaTitle: 'Golf Anniversary Gifts | Golf Gifts for Partner | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf anniversary gifts at WYX Golf Supply Co. — leather scorecard holders, GPS watches, premium bundles, and accessories that feel meaningful. Free shipping over $50.',
+    primaryCta: 'Shop Anniversary Gifts',
+    secondaryCta: 'See Premium Golf Gifts',
+    secondaryHref: '/golf-gifts-under-150',
+    proof: ['Leather gifts ship gift-ready', 'GPS watch $149', 'Meaningful, not generic', 'WYX10 launch code'],
+    faq: [
+      ['What is a good golf anniversary gift?', 'Anniversary gifts for golfers work best when they feel personal and premium. A leather scorecard holder ($54) or leather yardage book holder engraved with initials, a GPS watch ($149), or a full bag upgrade kit all hit the right tone — personal, useful, and beyond what they would buy themselves.'],
+      ['What do you get a golfer as a gift from a spouse?', 'The most appreciated golf gifts from a spouse are the ones that show you understood what they needed — a GPS watch if they always struggle with yardage, a new glove 3-pack if they always run out, or a premium tumbler if they mention hydration on the course.'],
+      ['Is a GPS watch a romantic anniversary gift?', 'For a golfer, yes — it is a premium, daily-use item that improves every round. The WYX GPS Watch at $149 is a thoughtful high-use gift that shows you paid attention to their game. Pair it with a leather bag tag for the complete package.']
+    ],
+    match: (product: Product) => under(product, 175) || categoryIn(product, ['Golf Tech', 'Accessories'])
   }
 };

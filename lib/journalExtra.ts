@@ -2,6 +2,84 @@ import { imageMap } from './demo';
 
 export const extraPosts = [
   {
+    slug: 'how-to-read-greens',
+    title: 'How To Read Greens: A Simple System for Weekend Golfers',
+    seo: 'How To Read Greens | Golf Green Reading Tips | WYX Golf Supply Co.',
+    description: 'A practical green reading system for amateur golfers — how to walk the putt, identify slope, factor for speed, and stop guessing at the break.',
+    image: imageMap.iron,
+    sections: [
+      ['Walk the Low Side', 'Read putts from the low side of the hole, not behind the ball. From the low side, you see the full slope between your ball and the cup. From directly behind, the ground is misleading. Most amateur golfers read from the wrong position.'],
+      ['AimPoint Basics', 'Stand at the midpoint of your putt and feel the slope with your feet. Lean slightly — that lean tells you the percentage of break. On a 2% slope, aim 2 ball-widths outside the edge. It takes 30 minutes to learn and stays with you.'],
+      ['Speed Governs Break', 'A hard-hit putt breaks less than a dying putt. Every read you have is relative to a specific speed. Pick your speed first — die at the hole or roll past it 12 inches — then read the break for that speed. Changing speed after the read changes everything.'],
+      ['WYX Practice Pick', 'The WYX Putting Alignment Mirror builds consistent eye position and path — the setup prerequisites for any green-reading system to work. Fix the setup first, then the read.']
+    ]
+  },
+  {
+    slug: 'golf-bunker-tips',
+    title: 'Golf Bunker Tips: How to Get Out of a Sand Trap Every Time',
+    seo: 'Golf Bunker Tips | Sand Trap Escape | WYX Golf Supply Co.',
+    description: 'The mechanics of the basic greenside bunker shot — club setup, ball position, entry point, and the one swing key that gets the ball out every time.',
+    image: imageMap.strategy,
+    sections: [
+      ['Open the Face First', 'Before you grip the club, open the clubface so it points slightly right of target (for a right-handed player). Then take your normal grip. This adds bounce to the sole and prevents the club from digging.'],
+      ['Hit 2 Inches Behind the Ball', 'Pick a spot 2 inches behind the ball in the sand — that is your target, not the ball itself. Let the club slide through the sand under the ball. You are displacing sand, not hitting the ball. The sand carries the ball out.'],
+      ['Commit and Accelerate', 'The most common bunker mistake is decelerating at impact — a fear-based response that buries the club. Commit to a full follow-through. The longer and more committed the finish, the more reliable the exit.'],
+      ['WYX Groove Note', 'Sharp grooves matter in bunkers for control and spin on wet sand. The WYX Groove Sharpener ($22) keeps wedge grooves sharp enough to perform in all conditions.']
+    ]
+  },
+  {
+    slug: 'golf-fitness-for-distance',
+    title: 'Golf Fitness for Distance: What Actually Builds Swing Speed',
+    seo: 'Golf Fitness for Distance | Swing Speed Training | WYX Golf Supply Co.',
+    description: 'The physical qualities that actually build swing speed for golfers — hip mobility, rotational strength, and what most golfers are missing that a gym membership cannot fix.',
+    image: imageMap.walk,
+    sections: [
+      ['Rotation Over Strength', 'Swing speed comes from rotational velocity, not raw strength. A golfer who can rotate 90 degrees in the backswing with a stable lower body generates more speed than a stronger golfer with restricted hip mobility.'],
+      ['The Hip Mobility Priority', 'Most amateur golfers lose distance after 40 because hip mobility declines, forcing compensations in the swing. Hip 90-90 stretches done daily for 6 weeks visibly increase turn and carry distance for most players over 35.'],
+      ['Resistance Band Training', 'Band-resisted rotational exercises train the exact movement patterns of the golf swing. External rotation, hip hinges, and anti-rotation work build the specific strength golf needs. Three sets of each, three times per week.'],
+      ['WYX Fitness Note', 'Golf fitness resistance bands under $30 target the hip and core rotation the golf swing demands. Add them to bag maintenance and alignment work — the full off-course practice setup.']
+    ]
+  },
+  {
+    slug: 'golf-on-a-budget',
+    title: 'Golf on a Budget: Where to Save and Where Not To',
+    seo: 'Golf on a Budget | Budget Golf Tips | WYX Golf Supply Co.',
+    description: 'How to play and equip golf without overspending — which gear is worth the investment, where the cheap option works fine, and how to build a functional bag for under $500.',
+    image: imageMap.hero,
+    sections: [
+      ['Where the Cheap Option Works', 'Tees, ball markers, divot tools: buy the cheap version. These items do not affect ball flight or scoring. Bamboo tees at $8 for 100 perform identically to premium tees at $15 for 30.'],
+      ['Where to Spend Properly', 'Gloves and grips affect your direct contact with the club — do not cheap out. A $16 cabretta glove performs much better than a $8 synthetic after 5 rounds. Fresh grips cost $6–$12 each installed and are worth every dollar.'],
+      ['The One Tech Item Worth Buying Early', 'A rangefinder or GPS watch pays for itself in course management confidence. Even a basic GPS watch removes the guessing that costs 2–4 strokes per round for most casual players.'],
+      ['WYX Budget Pick', 'WYX10 saves 10% on the first order. Start with the bamboo tees ($8), cabretta glove ($32), and club brush ($16) — the three highest-frequency use items. Under $60 and a full round ready.']
+    ]
+  },
+  {
+    slug: 'golf-cart-vs-walking',
+    title: 'Golf Cart vs Walking: Why More Golfers Are Choosing to Walk',
+    seo: 'Golf Cart vs Walking | Benefits of Walking Golf | WYX Golf Supply Co.',
+    description: 'The case for walking golf — better pace of play, better focus, lower scores for most casual players, and why push carts are changing the math for walking golfers.',
+    image: imageMap.walk,
+    sections: [
+      ['The Score Argument', 'Multiple studies show handicaps are lower when golfers walk vs ride, for recreational players. Walking provides a natural rhythm and recovery time between shots. Cart golfers arrive at the ball with less physical and mental reset time.'],
+      ['The Pace Argument', 'Walking golfers who are ready to play when it is their turn are almost never slower than riding golfers. The delay in cart golf comes from cart traffic patterns, not walking speed.'],
+      ['The Push Cart Case', 'A push cart eliminates the carry fatigue while keeping the walking benefit. You cover 4–5 miles, burn 700–1,000 calories, and maintain the walking rhythm. With a GPS watch, insulated tumbler, and phone mount, a push cart round is fully equipped.'],
+      ['WYX Push Cart Setup', 'The WYX GPS Watch ($149) + Insulated Tumbler ($34) + Rain Hood ($26) turns any push cart into a fully outfitted walking setup. Under $210 combined. Use WYX10 at checkout.']
+    ]
+  },
+  {
+    slug: 'golf-warm-weather-gear',
+    title: 'Golf Warm Weather Gear: What to Wear and Carry in Summer',
+    seo: 'Golf Warm Weather Gear | Summer Golf Essentials | WYX Golf Supply Co.',
+    description: 'The gear checklist for summer golf rounds — sun protection, hydration, cooling, and what actually makes an 85-degree round comfortable from the first tee to the 18th green.',
+    image: imageMap.polo,
+    sections: [
+      ['Sun Protection Stack', 'UPF 50+ arm sleeves, a wide-brim hat, and SPF 50+ sunscreen on the face and neck. The arm sleeves cover more area without reapplication. The hat reduces squinting and ball tracking difficulty on sunny days.'],
+      ['Hydration Math', 'A 4-hour summer round burns 500–800 calories and 32–64 oz of sweat depending on temperature. An insulated 20 oz tumbler refilled at the turn covers minimum hydration. Bring an extra 16 oz bottle in the bag pocket for the back nine.'],
+      ['Grip Sweat Management', 'A dry microfiber towel attached to the bag ring keeps grip surfaces dry between shots. Players who dry the grip, dry the glove, and dry the club handle before each shot maintain consistent grip pressure through 18 holes in heat.'],
+      ['WYX Summer Setup', 'UPF 50+ Arm Sleeves ($18) + Insulated Tumbler ($34) + Microfiber Towel ($42) covers sun, hydration, and grip — the three summer performance factors. Under $95 combined. WYX10 for 10% off.']
+    ]
+  },
+  {
     slug: 'best-golf-gifts-for-husband',
     title: 'Best Golf Gifts for Your Husband: Useful, Not Generic',
     seo: 'Best Golf Gifts for Husband | WYX Golf Supply Co.',

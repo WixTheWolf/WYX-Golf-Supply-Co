@@ -304,3 +304,41 @@
 .proof-numbers > div{background:var(--paper);padding:clamp(.75rem,2vw,1.25rem);text-align:center;display:flex;flex-direction:column;gap:.2rem}
 .proof-numbers strong{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:-.05em;color:var(--forest)}
 .proof-numbers span{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* ── summer callout strip ── */
+.summer-strip{background:linear-gradient(135deg,var(--forest) 0%,oklch(30% 0.12 160) 100%);color:var(--paper);padding:clamp(1.5rem,3vw,2.5rem);display:grid;gap:1rem;margin:clamp(2rem,5vw,4rem) 0}
+@media(min-width:768px){.summer-strip{grid-template-columns:1fr auto;align-items:center}}
+.summer-strip h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:-.04em;margin:0;line-height:1.05}
+.summer-strip h2 em{color:var(--lime);font-style:normal}
+.summer-strip p{font-size:.9rem;color:oklch(90% 0 0);margin:.35rem 0 0;line-height:1.5}
+.summer-strip-ctas{display:flex;gap:.75rem;flex-wrap:wrap}
+/* ── editorial section — offset card layout ── */
+.editorial-offset{display:grid;gap:2rem}
+@media(min-width:900px){.editorial-offset{grid-template-columns:1fr 1fr;align-items:start}}
+.editorial-offset .offset-text{display:flex;flex-direction:column;gap:1rem;padding:clamp(1.5rem,4vw,3rem) 0}
+.editorial-offset .offset-text h2{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.05em;line-height:1;margin:0}
+.editorial-offset .offset-text p{font-size:.95rem;line-height:1.6;color:var(--ink);margin:0}
+/* ── product card — badge variants ── */
+.product-badge-new{background:var(--lime);color:var(--forest);font-size:.6rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:.18em .5em;display:inline-block;vertical-align:middle;margin-left:.4rem}
+.product-badge-summer{background:oklch(72% 0.2 60);color:var(--forest)}
+.product-badge-trip{background:oklch(60% 0.18 200);color:var(--paper)}
+/* ── intent page — product grid with sidebar summary ── */
+.intent-layout-split{display:grid;gap:2rem}
+@media(min-width:900px){.intent-layout-split{grid-template-columns:280px 1fr;align-items:start}}
+.intent-summary-sidebar{position:sticky;top:1rem;display:flex;flex-direction:column;gap:1rem}
+.intent-sidebar-box{padding:1.25rem;border:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column;gap:.5rem}
+.intent-sidebar-box h3{font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
+.intent-sidebar-box ul{margin:0;padding:0 0 0 1rem;font-size:.88rem;line-height:1.6;color:var(--ink)}
+/* ── homepage — kit highlight cards ── */
+.kit-highlight-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1.5rem 0}
+.kit-highlight-card{border:1px solid var(--line);padding:1.25rem;background:var(--paper);display:flex;flex-direction:column;gap:.5rem;transition:border-color var(--duration-fast)}
+.kit-highlight-card:hover{border-color:var(--forest)}
+.kit-highlight-card .eyebrow{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--lime);background:var(--forest);padding:.2em .55em;display:inline-block;width:fit-content}
+.kit-highlight-card h3{font-family:var(--font-display),Georgia,serif;font-size:1.4rem;letter-spacing:-.04em;margin:0;line-height:1.1}
+.kit-highlight-card p{font-size:.85rem;color:var(--muted);margin:0;line-height:1.5;flex:1}
+.kit-highlight-card a{align-self:flex-start;margin-top:auto}
+/* ── article — pull quote ── */
+.pull-quote{border-left:3px solid var(--lime);padding:.75rem 1.25rem;margin:1.5rem 0;background:oklch(98% 0.005 150)}
+.pull-quote p{font-family:var(--font-display),Georgia,serif;font-size:clamp(1.1rem,2.5vw,1.4rem);letter-spacing:-.03em;line-height:1.3;color:var(--forest);margin:0;font-style:italic}
+/* ── llms.txt / robots feedback strip ── */
+.seo-signal-strip{display:flex;gap:1rem;flex-wrap:wrap;padding:1rem;background:var(--paper);border:1px solid var(--line);font-size:.78rem;color:var(--muted);margin-top:1.5rem}
+.seo-signal-strip span::before{content:'✓ ';color:var(--forest);font-weight:700}
