@@ -562,5 +562,51 @@ export const directProducts: DirectProduct[] = [
     tags: ['night golf', 'glow golf balls', 'light up golf balls', 'golf balls', 'golf gifts', 'golf bachelor party', 'golf trip', 'fun golf gifts', 'under $45', 'direct-catalog', 'wyx-curated'],
     imageUrl: 'https://images.unsplash.com/photo-1632926565162-2a9e4c31e63f?w=1200&h=900&fit=crop&q=80',
     imageAlt: 'Glowing golf balls on a night golf course'
+  },
+  {
+    title: 'Golf Putting Mat — 9-Foot Velvet Surface with Alignment Lines',
+    handle: 'golf-putting-mat-9-foot-alignment',
+    price: '54.00',
+    productType: 'Training Aids',
+    collectionHandle: 'golf-training-aids',
+    description: 'A 9-foot velvet putting mat with dual alignment channels, an auto-return ball mechanism, and a regulation-diameter cup — the home putting practice tool that fits any room and rolls up in 30 seconds.',
+    details: [
+      '9-foot length — enough distance to practice lags and medium-length putts',
+      'Dual alignment channels guide the ball down the target line — visual feedback on every stroke',
+      'Auto-return mechanism sends the ball back after sinking — no bending over between putts',
+      'Regulation-diameter cup (4.25 inches) — same size as a course hole',
+      'Velvet surface rolls consistently at ~10 Stimpmeter — faster than most recreational greens',
+      'Rolls up and stores in included cloth bag — no dedicated space needed'
+    ],
+    materials: 'Velvet surface over foam backing. Injection-molded ABS cup and return channel.',
+    care: 'Roll with the grain for storage. Vacuum lightly to remove debris from velvet surface.',
+    seoTitle: 'Golf Putting Mat 9-Foot | Alignment Lines | Auto-Return | WYX Golf Supply Co.',
+    metaDescription: 'A 9-foot golf putting mat with alignment channels, auto-return ball mechanism, and regulation cup. Velvet surface, rolls up in 30 seconds. Under $55. WYX10 saves 10%.',
+    tags: ['putting mat', 'golf training aid', 'home putting', 'golf practice', 'golf gifts for dad', 'golf gifts', 'under $60', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1562742937-1e36b6516b6b?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf putting mat on living room floor with alignment lines'
+  },
+  {
+    title: 'Golf Ball Retriever — 15-Foot Telescoping Stainless',
+    handle: 'golf-ball-retriever-15-foot-telescoping',
+    price: '24.00',
+    productType: 'Accessories',
+    collectionHandle: 'golf-accessories',
+    description: 'A 15-foot telescoping golf ball retriever with a stainless steel shaft, a universal ball-grabbing cup that works for all standard golf ball sizes, and a twist-lock mechanism that holds at any length.',
+    details: [
+      '15-foot extended reach — retrieves from ponds, thick rough, and steep hazards',
+      'Collapses to 26 inches — fits inside any golf bag pocket without hanging out',
+      'Stainless steel shaft — does not corrode after repeated water hazard use',
+      'Universal scoop cup grabs any standard 1.68-inch golf ball in one smooth motion',
+      'Twist-lock at any length — no ratchet clicks, no slipping during reach',
+      'Foam grip handle stays secure with a wet glove'
+    ],
+    materials: 'Stainless steel telescoping shaft. ABS scoop cup. EVA foam grip handle.',
+    care: 'Rinse stainless shaft after water hazard use. Extend fully to dry before collapsing.',
+    seoTitle: 'Golf Ball Retriever 15-Foot | Telescoping Stainless | WYX Golf Supply Co.',
+    metaDescription: 'A 15-foot telescoping golf ball retriever with stainless steel shaft and universal scoop cup. Collapses to 26 inches for bag storage. Under $25. WYX10 saves 10%.',
+    tags: ['golf ball retriever', 'golf accessories', 'golf bag accessory', 'golf gifts', 'stocking stuffers', 'under $25', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf ball retriever extended over water hazard'
   }
 ];

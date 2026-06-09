@@ -649,5 +649,35 @@ export const extraPosts = [
       ['7. Backyard Chipping Net ($44)', 'Even a serious golfer who plays regularly rarely has a backyard chipping net. It is the gap between range sessions: 20 minutes of chipping in the backyard before dinner, every weeknight, without driving anywhere. Four-target folding frame, stores behind a door.'],
       ['8. Golf Shoe Travel Bag ($28)', 'This gift is almost never owned — golfers travel with their shoes loose in the trunk or stuffed in a regular bag. The ventilated golf shoe travel bag with a center divider is the practical gift that immediately solves a problem they did not know they needed solved. Under $30.']
     ]
+  },
+  {
+    slug: 'how-to-clean-golf-clubs',
+    title: 'How to Clean Golf Clubs at Home: The 10-Minute Routine That Actually Works',
+    seo: 'How to Clean Golf Clubs | Club Cleaning Guide | WYX Golf Supply Co.',
+    description: 'How to clean golf clubs at home — the 10-minute routine for irons, wedges, woods, and putters. What products work, what to avoid, and how often to do it.',
+    image: imageMap.care,
+    sections: [
+      ['Why Clean Clubs Matter', 'Clean grooves are the difference between a wedge that spins and a wedge that skids. Dirt and grass in the grooves acts as a cushion between the clubface and ball at impact, reducing spin and contact consistency. A pro-shop study of amateur golfers found that dirty grooves reduced spin by up to 30% compared to clean grooves on the same shot. The 10-minute cleaning routine below restores groove function and extends club life.'],
+      ['What You Need', 'The minimum: a bucket with warm (not hot) water, a few drops of dish soap, a stiff-bristle brush, and a microfiber towel. The optimal: the WYX Dual-Sided Golf Club Brush ($16) with a wire side for grooves and a nylon side for faces and sole plates, plus a clip that attaches to the bag carabiner for on-course cleaning. Avoid steel wool, abrasive scrubbers, or household cleaners with bleach — they strip chrome and finish.'],
+      ['Irons and Wedges', 'Submerge the iron heads in warm soapy water for 2-3 minutes to loosen debris. Scrub grooves firmly with the wire brush side — work across the groove, not along it. Flip to the nylon side to clean the face, sole, and back. Rinse under running water. Dry with a microfiber towel, paying attention to the hosel where water pools. Never submerge graphite-shafted clubs — water wicks into the shaft at the hosel.'],
+      ['Woods and Hybrids', 'Do not submerge woods — a damp microfiber towel wipes the face and crown. Use the nylon brush side lightly on the face grooves. For the crown, wipe with the grain of the finish to avoid micro-scratches that accumulate into dullness. Dry thoroughly and let air dry face-up. Never store damp clubs in a bag cover — moisture trapped against metal causes oxidation in as little as 48 hours.'],
+      ['Putters', 'Putters collect ball residue on the face that affects impact feel. Wipe with a damp cloth between holes on the course. Full cleaning: warm soapy water on a cloth, wipe the face, groove out any alignment aids with the brush tip. Dry fully. Polish the face lightly with a microfiber — residue on putter faces is the most overlooked variable in putting consistency.'],
+      ['The On-Course Routine', 'The on-course cleaning habit is the difference between clean grooves on hole 1 and hole 18. After every iron and wedge shot: use the WYX Club Brush ($16) carabiner-clipped to the bag to brush the face immediately. Wet the brush in your towel water bag. 5 seconds per shot. No bucket needed. This is the routine every scratch golfer uses and every 20-handicapper skips — and the difference shows in wedge spin by the back nine.']
+    ]
+  },
+  {
+    slug: 'golf-putting-practice-at-home',
+    title: 'Golf Putting Practice at Home: 4 Drills That Actually Translate to the Course',
+    seo: 'Golf Putting Practice at Home | Putting Drills | Putting Mat | WYX Golf Supply Co.',
+    description: 'Four home putting drills that build the mechanics that translate to real greens — gate drill, clock drill, lag practice, and mirror check. What equipment you need and how to run each.',
+    image: imageMap.strategy,
+    sections: [
+      ['Why Home Putting Practice Works', 'Putting is 40-43% of total strokes for the average recreational golfer. It is also the only part of the game that can be practiced at full performance intensity indoors. A driver swing in the living room is a shadow swing — a putting stroke on a mat is the actual stroke. The mat provides real feedback (the ball goes where it goes), real distance calibration, and real pace judgment. 15 minutes of focused putting practice per day produces measurable handicap improvement faster than any other single activity.'],
+      ['Equipment Needed', 'A putting mat ($54 — WYX 9-foot velvet mat with alignment channels) and a putting alignment mirror ($32 — for setup check). The mat provides the surface and auto-return; the mirror provides objective setup feedback. Both together cost under $90 before WYX10. The gate drill below requires two tee holders or two coins placed 6 inches apart — included cost: $0.'],
+      ['Drill 1: The Gate Drill', 'Set two coins 6 inches apart, 6 inches in front of the ball. The putter must pass between them at impact. This drill checks putter path and face angle simultaneously: an open face or outside-in path clips a coin. Start at 4 feet, gate at 6 inches. When you can make 10 consecutive putts through the gate at 4 feet, move to 6 feet. The gate drill is used by every tour coach in short game instruction because it provides instant, binary feedback.'],
+      ['Drill 2: The Clock Drill', 'Place 4 balls at 3 feet around the cup — at 12, 3, 6, and 9 o\'clock positions. The goal: sink all 4 in a row. When you succeed, move to 4 feet and repeat. The clock drill builds confidence from every angle and trains the mental pattern of expecting to make putts rather than hoping to. Research shows that golfers who practice the clock drill at 3-4 feet reduce their 3-putt frequency more than any other single drill.'],
+      ['Drill 3: Lag Putting', 'From 9 feet (the full mat), putt with the goal of stopping the ball within 12 inches of the far end, short or long. No cup target — just proximity. Lag putting practice calibrates pace judgment: the most common 3-putt is a first putt that leaves 6+ feet. Five lag putts before every practice session builds the feel for distance that is impossible to develop exclusively at the cup.'],
+      ['The WYX Putting Setup', 'The WYX Golf Putting Mat ($54) and Putting Alignment Mirror ($32) are both available at wyxgolfsupply.com. Together they create a complete home putting studio for under $90 before WYX10. Use WYX10 at checkout for 10% off the whole order. The mat rolls up and stores behind a door; the mirror fits in any bag pocket.']
+    ]
   }
 ];
