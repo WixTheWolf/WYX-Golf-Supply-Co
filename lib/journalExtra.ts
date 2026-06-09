@@ -574,5 +574,48 @@ export const extraPosts = [
       ['The 3-Pack Rotation Strategy', 'Buy gloves in 3-packs. In summer heat, rotate 3 gloves through a round — one glove per 6 holes, letting each dry on the bag for 12 holes. In normal conditions, keep one glove in rotation and store the other two sealed until needed. A fresh cabretta glove out of the package on a key round (competition, client outing, trip opener) is a small luxury that matters.'],
       ['WYX Glove Note', 'The WYX Cabretta Glove 3-Pack ($32) includes three genuine cabretta leather gloves sized S, M, ML, and L/XL. Use WYX10 for 10% off at wyxgolfsupply.com. Buy before the season, not mid-season when you are down to one cracked glove.']
     ]
+  },
+  {
+    slug: 'golf-rangefinder-vs-gps-watch',
+    title: 'Rangefinder vs GPS Watch: Which Is Right for Your Game?',
+    seo: 'Golf Rangefinder vs GPS Watch | Which Should You Buy? | WYX Golf Supply Co.',
+    description: 'Rangefinder vs GPS watch — the two tools that replace course-guide guessing with real yardage. Here is when to choose each, who each suits, and whether you can justify owning both.',
+    image: imageMap.strategy,
+    sections: [
+      ['The Core Difference', 'A laser rangefinder gives you precise distance to whatever you point at — flag, bunker face, front edge, tree. Point and shoot in under a second. A GPS watch preloads every hole and shows front/middle/back yardages automatically as you walk. The rangefinder requires you to aim at something. The GPS watch is always on. Both measure distance. The difference is how you interact with them.'],
+      ['When a Rangefinder Wins', 'A rangefinder is the right choice when you play a variety of courses (unfamiliar layouts benefit from exact flag distance), when you need layup precision (exact distance to a bunker carry or water line), or when you want a dedicated tool you hand to your partner while they hit. Rangefinders also travel well — no wrist band, slips in the cart bag pocket with the neoprene case. The WYX Laser Rangefinder ($119) reads to 800 yards, slope-compensates, and vibrates on pin-lock.'],
+      ['When a GPS Watch Wins', 'A GPS watch wins when you play home courses repeatedly and want yardages without stopping to aim. It also wins on walking rounds where you do not want to retrieve a device from the bag every shot. The watch is always on your wrist. By the time you reach your ball, you already know the yardage. No aim, no press, no retrieve. The WYX GPS Watch ($149) has 40,000+ courses preloaded — you select the course and play.'],
+      ['Can You Have Both?', 'The combination is common at the mid-handicap and better level: GPS watch for approximate yardage walking up, rangefinder for the precise flag distance when you are in the decision window. If budget requires one, the rangefinder is the higher-precision tool. If convenience matters more than precision, the GPS watch. If you play 30+ rounds per year on familiar courses, the GPS watch. If you travel or play tournaments, the rangefinder.'],
+      ['WYX Golf Tech Note', 'The WYX Laser Rangefinder ($119) and GPS Golf Watch ($149) are both available at wyxgolfsupply.com. Use WYX10 at checkout for 10% off either. The rangefinder-and-gloves combination is the most common double-add at WYX — the two tools most golfers delay buying for themselves.']
+    ]
+  },
+  {
+    slug: 'best-golf-gifts-for-dad-2026',
+    title: 'The Best Golf Gifts for Dad in 2026 — Practical Picks He Will Actually Use',
+    seo: 'Best Golf Gifts for Dad 2026 | Practical Picks | WYX Golf Supply Co.',
+    description: 'The best golf gifts for Dad in 2026 — practical, used every round, and not already in his bag. Cabretta gloves, leather holders, rangefinders, and training tools that earn a permanent spot.',
+    image: imageMap.leather,
+    sections: [
+      ['The Rule for Golf Gifts for Dad', 'A good golf gift for Dad has to pass two tests: (1) he uses it within 2 rounds of receiving it, (2) it earns a permanent bag spot. Most golf gifts fail test 2 — they get used once and sit in the spare bedroom. The picks below pass both tests. They are practical enough to be used immediately and good enough to stay in the bag all season.'],
+      ['Best Under $35: Cabretta Glove 3-Pack', 'The gift that never misses: a 3-pack of cabretta leather gloves. Dad goes through 8-15 gloves per season. He almost never buys them in bulk. A 3-pack ($32) means starting the next three rounds with a fresh glove — not the cracked one from last week. Zero sizing risk (gloves have standard sizing). Zero style mismatch. Used within one round.'],
+      ['Best Under $40: Leather Scorecard Holder', 'The leather scorecard holder ($38) is the elegant practical gift. Full-grain vegetable-tanned leather with a pencil loop and ball marker pocket. Fits any USGA scorecard. Dad keeps it in the side pocket for 10 years. Not something he would buy for himself. Exactly what makes a golf gift work.'],
+      ['Best Under $50: Alignment Sticks + Ball Marker Set', 'Alignment sticks ($24) and a milled ball marker set ($28) together come to $52 — or $46.80 with WYX10. Two products used every round. Alignment sticks for the warm-up range session. Ball markers for the green. Neither overlaps with anything he already owns. Zero sizing risk on both.'],
+      ['Best Under $120: Laser Rangefinder', 'If Dad does not already own a rangefinder, this is the gift. The WYX Laser Rangefinder ($119) is the single most impactful technology upgrade a golfer can make. Slope compensation, pin-lock vibration, 6x magnification. He will use it on the first tee of the first round after Father\'s Day and on every approach shot after that. Use WYX10 for $11.90 off.'],
+      ['WYX Dad Gift Kit', 'The WYX Dad Gift Kit at wyxgolfsupply.com bundles four of these picks — fresh gloves, a towel, a leather scorecard holder, and a practice tool — in one order. Use WYX10 for 10% off. Ships in time for Father\'s Day June 21 with standard shipping.']
+    ]
+  },
+  {
+    slug: 'best-golf-training-aids-for-home-practice',
+    title: 'The Best Golf Training Aids for Home Practice (That Actually Work)',
+    seo: 'Best Golf Training Aids for Home Practice | Alignment Sticks, Chipping Nets | WYX Golf Supply Co.',
+    description: 'The best golf training aids for home and backyard practice — alignment sticks, chipping nets, putting mirrors, and timing trainers that build repeatable mechanics without a trip to the range.',
+    image: imageMap.iron,
+    sections: [
+      ['Why Most Training Aids Fail', 'Most golf training aids fail because they teach one feel and collect dust after three sessions. The tools that work share a trait: they give immediate, objective feedback without needing a coach present. When the alignment sticks show your feet open, you see it. When the putting mirror shows your eyes off the ball, you see it. When the chipping net catches the ball in the right target pocket, you feel it. Feedback beats repetition without feedback every time.'],
+      ['Alignment Sticks — the one required tool', 'Alignment sticks are the most underused professional tool in amateur golf. Tour players never warm up without them. Every instructor uses them. The concept: one stick on the target line, one on the body line. Five minutes confirms whether everything is aimed where the player thinks it is — which, for most amateurs, it is not. At $24 for a 2-pack, alignment sticks are the best ROI in golf training. Use before every range session, not just when struggling.'],
+      ['Putting Alignment Mirror — the fastest improvement', 'A putting alignment mirror ($32) shows three things simultaneously: eye position over the ball, shoulder line, and putter path. Most putting problems trace back to one of these. The mirror turns a feeling into a visible fact. Eyes inside the line? You see it immediately. Shoulders open? The mirror shows the gap. Tour coaches use this tool specifically because it gives immediate visual feedback without needing video setup. Works on any putting surface.'],
+      ['Chipping Net — the backyard range', 'A 4-target chipping net ($44) turns the backyard into a short-game range. Four color-coded target pockets from 6 inches to 24 inches give progressively harder targets. The narrow targets force trajectory control rather than just getting the ball airborne. Fold it flat in 60 seconds when done. This is the tool for golfers who cannot get to the course but have 20 minutes before dinner.'],
+      ['The Full Practice Setup', 'The ideal home practice setup costs under $100: alignment sticks ($24) + putting alignment mirror ($32) + chipping net ($44) = $100 before WYX10. That three-tool setup covers the full shot spectrum — alignment and aim, putting mechanics, and short game trajectory. All available at wyxgolfsupply.com. Use WYX10 at checkout for 10% off.']
+    ]
   }
 ];
