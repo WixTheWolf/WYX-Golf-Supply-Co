@@ -608,5 +608,97 @@ export const directProducts: DirectProduct[] = [
     tags: ['golf ball retriever', 'golf accessories', 'golf bag accessory', 'golf gifts', 'stocking stuffers', 'under $25', 'direct-catalog', 'wyx-curated'],
     imageUrl: 'https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=1200&h=900&fit=crop&q=80',
     imageAlt: 'Golf ball retriever extended over water hazard'
+  },
+  {
+    title: 'Golf Arm Sleeve UV Protection — Pair',
+    handle: 'golf-arm-sleeve-uv-protection-pair',
+    price: '22.00',
+    productType: 'Accessories',
+    collectionHandle: 'golf-accessories',
+    description: 'A pair of golf arm sleeves with UPF 50+ UV protection, moisture-wicking fabric, and compression support. Slip on for sun protection during a round without reapplying sunscreen every two hours.',
+    details: [
+      'UPF 50+ rated fabric blocks 98% of UV-A and UV-B rays',
+      'Moisture-wicking polyester-spandex blend stays cool all round',
+      'Compression support reduces arm fatigue over 18 holes',
+      'One-size-fits-most with elastic bands that grip without cutting',
+      'Folds into a shirt pocket — on for back nine sun, off when clouds roll in',
+      'Machine washable, holds UPF rating through 50+ washes'
+    ],
+    materials: '88% polyester, 12% spandex. UPF 50+ rated outer layer.',
+    care: 'Machine wash cold, tumble dry low. Do not bleach.',
+    seoTitle: 'Golf Arm Sleeves UPF 50+ | Sun Protection Pair | WYX Golf Supply Co.',
+    metaDescription: 'Golf arm sleeves with UPF 50+ sun protection and moisture-wicking compression fabric. One-size-fits-most pair, machine washable. Under $25. WYX10 saves 10%.',
+    tags: ['golf arm sleeve', 'golf sun protection', 'golf accessories', 'golf gifts', 'under $25', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf arm sleeves with UV protection worn during a round'
+  },
+  {
+    title: 'Golf Hat Clip Ball Marker Set — 3 Markers',
+    handle: 'golf-hat-clip-ball-marker-set-3-markers',
+    price: '16.00',
+    productType: 'Accessories',
+    collectionHandle: 'golf-accessories',
+    description: 'A set of 3 magnetic golf ball markers with a magnetic hat clip. Mark your ball on the green, return the marker to the hat clip with one hand, and never dig in your pocket mid-round again.',
+    details: [
+      '3 markers included — two standard rounds plus a backup in the bag',
+      'Magnetic hat clip holds markers securely until pulled off with one hand',
+      'Coin-sized markers meet USGA marking requirements',
+      'Works with any hat brim — curved or flat, structured or unstructured',
+      'Brushed aluminum markers do not scratch or corrode from moisture',
+      'Fits in any bag side pocket when not on the hat'
+    ],
+    materials: 'Brushed aluminum markers. Stainless steel magnetic clip.',
+    care: 'Wipe clean with a dry cloth. Keep magnets away from phone card readers.',
+    seoTitle: 'Golf Hat Clip Ball Marker Set 3-Pack | Magnetic Hat Clip | WYX Golf Supply Co.',
+    metaDescription: 'A 3-pack of magnetic golf ball markers with a magnetic hat clip. One-hand retrieval, USGA-compliant, brushed aluminum. Under $20. WYX10 saves 10%.',
+    tags: ['golf ball marker', 'hat clip ball marker', 'golf accessories', 'golf gifts', 'stocking stuffers', 'under $20', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1622517658789-cfc0ab4ad893?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf hat clip with ball markers on a golf cap'
+  },
+  {
+    title: 'Golf Rain Glove Pair — Wet Weather Grip',
+    handle: 'golf-rain-glove-pair-wet-weather-grip',
+    price: '34.00',
+    productType: 'Gloves',
+    collectionHandle: 'golf-gloves',
+    description: 'A pair of golf rain gloves — worn both hands simultaneously — that grip better wet than dry. FiberSoft synthetic fabric activates with moisture. The only glove where rain makes your grip more secure.',
+    details: [
+      'Worn both hands — left and right included',
+      'FiberSoft synthetic material grips better as it gets wetter',
+      'No more layering over a standard glove — wear alone in rain',
+      'Machine washable and reusable through a full wet season',
+      'Overlapping cuff design seals rain from running into the palm',
+      'Available in M/L — fits most male and female hand sizes'
+    ],
+    materials: 'FiberSoft microfiber synthetic. Elasticized cuff.',
+    care: 'Hand wash or machine wash cold. Air dry. Do not use heat.',
+    seoTitle: 'Golf Rain Gloves Pair | Wet Weather Grip | WYX Golf Supply Co.',
+    metaDescription: 'A pair of golf rain gloves that grip better wet than dry. FiberSoft fabric activates with moisture. Machine washable. Both hands included. WYX10 saves 10%.',
+    tags: ['golf rain glove', 'wet weather golf', 'golf gloves', 'golf accessories', 'golf gifts', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1600186279038-1cbfe2e7b9e3?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf rain gloves on both hands in wet conditions'
+  },
+  {
+    title: 'Golf Sunglasses Polarized Sport Wrap',
+    handle: 'golf-sunglasses-polarized-sport-wrap',
+    price: '42.00',
+    productType: 'Accessories',
+    collectionHandle: 'golf-accessories',
+    description: 'Sport wrap polarized golf sunglasses with a lens tint optimized for contrast on the fairway, a rubberized nose bridge that holds through a full swing, and a semi-frameless design that does not obstruct address view.',
+    details: [
+      'Category 3 polarized lens — reduces glare on water hazards and fairways',
+      'Amber/brown lens tint enhances contrast of ball against sky and fairway',
+      'Sport wrap stays on through a full driver swing without sliding',
+      'Rubberized nose bridge and temple tips grip without pressure points',
+      'Semi-frameless lower edge does not interfere with address posture view',
+      'UV400 rated — blocks 100% of UV-A and UV-B below 400nm'
+    ],
+    materials: 'TR90 nylon frame. Polycarbonate polarized lens. Silicone grip inserts.',
+    care: 'Rinse with clean water. Wipe lens with microfiber cloth only.',
+    seoTitle: 'Golf Sunglasses Polarized | Sport Wrap Amber Lens | WYX Golf Supply Co.',
+    metaDescription: 'Polarized golf sunglasses with amber lens for fairway contrast and a sport wrap frame that stays through a full swing. UV400. Under $45. WYX10 saves 10%.',
+    tags: ['golf sunglasses', 'polarized golf sunglasses', 'golf accessories', 'golf gifts', 'golf tech', 'under $50', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Polarized sport wrap golf sunglasses on a player'
   }
 ];
