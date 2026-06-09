@@ -382,6 +382,40 @@ export const extraPosts = [
     ]
   },
   {
+    slug: 'golf-bag-accessories-guide',
+    title: 'Golf Bag Accessories: The 8 Items Every Bag Should Have',
+    seo: 'Golf Bag Accessories Guide | What Goes In a Golf Bag | WYX Golf Supply Co.',
+    description: 'The 8 golf bag accessories every golfer actually needs — what goes on the D-ring, what goes in the front pocket, and what gets used every round versus what collects dust.',
+    image: imageMap.walk,
+    sections: [
+      ['D-Ring: Clip-On Towel ($18)', 'The D-ring on the front panel of the bag is for the towel, not for a bag tag or a rangefinder strap. A microfiber clip-on towel hangs there all season, dries between holes in moving air, and is accessible by either hand while walking. If the towel is stuffed in a pocket, it stays wet and the pocket is unavailable. The D-ring is purpose-built.'],
+      ['Secondary Ring: Club Brush ($16)', 'A dual-sided club brush with a carabiner clip goes on the secondary bag ring (lower front or side panel). After every iron shot: nylon bristle across the face (3 seconds), groove pick for packed clay (5 seconds). A round with 36 iron shots requires 36 clean groove checks. This is the 10-second routine that separates consistent ball-strikers from frustrated ones.'],
+      ['Hat Brim: Magnetic Ball Marker ($28)', 'A magnetic hat-clip marker eliminates the mid-green pocket fumble. One-click remove when you mark your ball, one-click return. The coins live in the ball pocket as backup. A milled ball marker set costs $28 — the same amount as 2 sleeves of range balls — and gets used 18 times per round.'],
+      ['Front Zipper Pocket: Tees + Divot Tool ($14-$22)', 'The small front zipper pocket: 15 bamboo tees, a divot tool, and a pencil stub. Accessible by either hand without opening anything large. Refill tees after every round. A divot tool goes in here because you use it on every green you damage — that is course etiquette, not optional.'],
+      ['Apparel Pocket: Golf Gloves ($32 for 3-pack)', 'The lined apparel pocket protects cabretta leather from bag abrasion. Keep spare gloves sealed in their original packaging until needed. The active glove goes in loose when resting. In summer heat, a 3-glove rotation (6 holes each) requires all three gloves in the bag — sealed, dry, ready.'],
+      ['Ball Pocket: Golf Balls + Spare Markers ($34)', 'The large ball pocket: 6-12 balls of one model plus 2-3 spare coin markers. Do not mix ball models within a round. A urethane-cover tour ball and a ionomer-cover distance ball have different launch and spin profiles — switching mid-round introduces an uncontrolled variable.'],
+      ['Side Pocket: Scorecard Holder + Rangefinder ($38-$149)', 'The side pockets balance the bag weight — heavy items on both sides, not stacked on one. A leather scorecard holder goes flat in one side pocket. A rangefinder or GPS watch charger on the other. Keep the bag balanced on slopes.'],
+      ['Club Tube: Alignment Sticks ($24)', 'Two alignment sticks slide alongside the club shafts in the tube — they fit in any bag. Pull them for every range warm-up, return before the first tee. This is the routine that makes a 15-minute warm-up actually productive. Alignment sticks cost $24 and fix aim, stance, ball position, and swing path simultaneously.'],
+      ['The Complete Setup Cost', 'Full bag setup: towel ($18) + club brush ($16) + ball markers ($28) + tees ($14) + glove 3-pack ($32) + balls 12-pack ($34) + scorecard holder ($38) + alignment sticks ($24) = $204 before WYX10. Use WYX10 at wyxgolfsupply.com for 10% off.']
+    ]
+  },
+  {
+    slug: 'golf-grip-size-guide',
+    title: 'Golf Grip Size Guide — Standard vs Midsize vs Oversize',
+    seo: 'Golf Grip Size Guide | Standard vs Midsize Golf Grips | WYX Golf Supply Co.',
+    description: 'How to choose the right golf grip size: the hand measurement test, how grip size affects ball flight, and when to go midsize versus standard.',
+    image: imageMap.iron,
+    sections: [
+      ['Why Grip Size Matters', 'Grip size affects how much the hands release through impact. A grip that is too large reduces hand action, which pushes shots right for right-handers (and often fixes hooks). A grip that is too small increases hand action, which can produce hooks or inconsistent release. Most golfers play the grip that came on their clubs — which is often wrong for their hand size.'],
+      ['The Finger Test', 'With the lead hand (left hand for right-handers) on the grip in playing position: the middle two fingers should lightly brush the palm. If they dig into the palm — the grip is too small. If there is a gap between fingertips and palm — the grip is too large. This is the universal grip size test. Do it with a club in hand, not a measuring tape.'],
+      ['Standard Grip: For Most Golfers', 'Standard grip size (60R core diameter) works for golfers with medium hands — roughly glove size M or ML. It allows full hand release through impact, which produces the most speed and the most natural draw/fade shape for an on-plane swing. Start here if you have never consciously selected a grip size.'],
+      ['Midsize Grip: For Hooks and Larger Hands', 'Midsize grips (+1/16" diameter) reduce hand action through the impact zone. They help golfers who hook — whose hands rotate too aggressively. They also work for players with glove size L or XL who find standard grips pinch. Downside: midsize grips reduce feel and feedback slightly. Do not go midsize to solve a hook if the hook comes from swing path — fix the path.'],
+      ['Oversize Grip: For Arthritis and Grip Tension', 'Oversize grips (+1/8" diameter or larger) reduce grip pressure for players with arthritis or hand pain. They are also used by players who grip the club too tight under pressure — a fatter grip mechanically prevents the death grip. The tradeoff is reduced feel and slower release. Most golfers should not use oversize unless there is a specific medical or grip-pressure reason.'],
+      ['Choosing Cord vs Rubber', 'Standard rubber grips: tacky in normal conditions, comfortable, affordable. Cord grips (rubber + cord fibers): better traction in heat and humidity, more durable, slightly harder feel. Weekend golfers in hot climates benefit from cord grips. Players who sweat through standard grips mid-round should move to cord. The WYX Cord Regrip Kit ($48) includes 13 cord grips — enough for a full bag.'],
+      ['When to Regrip', 'Regrip once per season (or every 30-40 rounds). Signs you are overdue: grip feels smooth rather than tacky in the palm, you grip tighter under pressure to prevent slipping, the grip surface looks shiny or worn. A fresh regrip in the spring is the most overlooked performance upgrade available to any golfer for under $50.']
+    ]
+  },
+  {
     slug: 'last-minute-fathers-day-golf-gifts-2026',
     title: "Last-Minute Father's Day Golf Gifts 2026 — Under $35, Ships in Time",
     seo: "Last Minute Father's Day Golf Gifts 2026 | Golf Dad Gifts June 2026 | WYX Golf Supply Co.",
