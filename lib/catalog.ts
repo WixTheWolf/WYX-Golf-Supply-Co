@@ -62,8 +62,21 @@ export function saleReadyProducts(products: Product[]) {
   return availableProducts(products).filter((product) => product.variants.some((variant) => variant.availableForSale));
 }
 
+/** Only show WYX-curated products — blocks old dropship catalog contamination */
+function isCuratedProduct(product: Product) {
+  const tags = product.tags || [];
+  return tags.some((t) => t === 'wyx-curated' || t === 'direct-catalog');
+}
+
 export function availableProducts(products: Product[]) {
-  return products.filter((product) => product.availableForSale && hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product) && passesPublicCatalogGate(product));
+  return products.filter(
+    (product) =>
+      product.availableForSale &&
+      hasSaleReadyMedia(product) &&
+      !hasMisleadingProductMedia(product) &&
+      passesPublicCatalogGate(product) &&
+      isCuratedProduct(product)
+  );
 }
 
 export function categoryCount(products: Product[], category: string) {
