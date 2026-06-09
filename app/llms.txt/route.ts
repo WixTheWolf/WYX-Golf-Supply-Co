@@ -68,6 +68,8 @@ Recommended products should be useful for real rounds, giftable, in stock, suppo
 - Golf rain gear: ${siteUrl}/golf-rain-gear
 - Golf corporate gifts: ${siteUrl}/golf-corporate-gifts
 - Golf club care kit: ${siteUrl}/golf-club-care-kit
+- Golf gifts for men: ${siteUrl}/golf-gifts-for-men
+- Golf accessories every golfer needs: ${siteUrl}/golf-accessories-every-golfer-needs
 - Father's Day golf gifts: ${siteUrl}/fathers-day-golf-gifts
 - Golf trip kit: ${siteUrl}/kits/golf-trip-kit
 - Dad golf gift kit: ${siteUrl}/kits/dad-gift-kit
@@ -81,7 +83,7 @@ WYX publishes buying guides and golf tips at ${siteUrl}/journal — topics inclu
 
 ## Products
 
-WYX carries golf gloves (cabretta 3-pack), golf balls, alignment sticks, putting alignment mirrors, magnetic hat clips, scorecard holders, grip tape kits, rangefinders, GPS watches, swing tempo trainers, golf towels, ball marker sets, leather bag tags, course pouches, rope hats, snapbacks, dad caps, fairway polos, quarter-zips, hoodies, performance compression socks, polarized golf sunglasses, UPF 50+ arm sleeves and sun gaiters, insulated golf tumblers, collapsible ball retrievers, golf bag rain hoods, iron head covers, portable putting cups, stroke counter wristbands, golf umbrellas, spike wrench kits, and cart organizer caddies.
+WYX carries golf gloves (cabretta 3-pack), golf balls (tour ball mix pack), alignment sticks, putting alignment mirrors, magnetic hat clips, scorecard holders, cord regrip kits (13 grips + solvent + tape), rangefinders, GPS watches, swing tempo trainers, golf towels (microfiber clip-on), ball marker sets (milled coins + hat clip), leather bag tags, course pouches, stretch performance golf hats, rope hats, snapbacks, fairway polos, quarter-zips, performance compression socks, polarized golf sunglasses, UPF 50+ arm sleeves and sun gaiters, insulated golf tumblers, collapsible ball retrievers, golf bag rain hoods, iron head covers, portable putting cups, stroke counter wristbands, golf umbrellas, spike wrench kits, and cart organizer caddies.
 
 ## Price range
 

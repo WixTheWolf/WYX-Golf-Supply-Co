@@ -382,6 +382,39 @@ export const extraPosts = [
     ]
   },
   {
+    slug: 'fathers-day-golf-gifts-under-50',
+    title: "Father's Day Golf Gifts Under $50 — 8 Picks That Actually Get Used",
+    seo: "Father's Day Golf Gifts Under $50 | Golf Dad Gifts 2026 | WYX Golf Supply Co.",
+    description: "The best Father's Day golf gifts under $50 — picked for how often they get used, not how good they look in a box. Eight picks, June 21 deadline.",
+    image: imageMap.strategy,
+    sections: [
+      ['The $50 Budget Reality Check', "Most Father's Day golf gift lists are filled with gadgets that land in a junk drawer by August. The problem: people optimize for what looks impressive when unwrapped, not what the golfer reaches for every round. The best golf gifts under $50 are consumables, everyday-carry items, and practical training tools — things the golfer keeps meaning to buy and never does."],
+      ['1. Cabretta Glove 3-Pack — $32', 'The highest ROI golf gift at this price. A glove 3-pack means Dad never finishes a round with a cracked, dried-out glove. Cabretta leather. Sizes S through L/XL. Used the first round after unwrapping.'],
+      ['2. Microfiber Clip-On Towel — $18', 'Lives on the bag ring all season. Cleans club faces between iron shots, grips in light rain, and the ball before putting. The most-reached-for bag accessory after the glove.'],
+      ['3. Alignment Sticks (2-pack) — $24', 'Two fiberglass rods that fix stance, aim, and ball position. Tour players warm up with alignment sticks. Your dad should too. Fits in the bag tube beside the clubs.'],
+      ['4. Milled Ball Marker Set — $28', 'Three precision-milled coins plus a magnetic hat clip. Something every golfer wants and almost none buy for themselves. The definition of a good golf gift.'],
+      ['5. Dual-Sided Club Brush — $16', 'Nylon bristle side, brass wire side, retractable groove pick, carabiner clip. Attaches to the bag permanently. The 10-second groove clean after every iron shot that most golfers skip.'],
+      ['6. Bamboo Tee Pack (500-count) — $14', '500 bamboo tees for $14. The only tee gift that makes mathematical sense. Golfers always run out mid-round.'],
+      ['7. Ball Stamp Set — $22', 'Custom-stamp his golf balls with a personal mark. A satisfying ritual before every round, and the only way to ID a ball confidently in rough.'],
+      ['8. Scorecard Holder — $38', 'Full-grain leather. Holds scorecard, pencil, and 6-10 balls worth of sleeves. The bag accessory that upgrades the whole setup and lasts 10 years.'],
+      ['June 21 Deadline', "Father's Day is June 21. Order with enough lead time for shipping — WYX ships standard 5-7 business days. Expedited options at checkout if you are cutting it close. Use WYX10 for 10% off your first order."]
+    ]
+  },
+  {
+    slug: 'when-to-regrip-golf-clubs',
+    title: 'When To Regrip Golf Clubs (And What To Use)',
+    seo: 'When to Regrip Golf Clubs | Golf Grip Guide | WYX Golf Supply Co.',
+    description: 'The signs your grips are done, what grips to choose, and how to regrip a full set at home for under $50 in one afternoon.',
+    image: imageMap.iron,
+    sections: [
+      ['The Three Signs Your Grips Are Done', '(1) The grip feels smooth or shiny in the palm area — new grips are tacky, worn grips are slick. (2) You grip tighter under pressure to avoid slipping. (3) You played more than 40 rounds this season, or bought the clubs more than a year ago with original grips. Any single yes is a regrip. Worn grips cause grip-pressure compensations that produce swing flaws — they are the cheapest swing problem to fix.'],
+      ['Grip Types: What to Know', 'Cord grips: rubber wrapped with cord fibers — best for humid climates and sweaty hands. More feedback, slightly firmer feel. Rubber/synthetic: the universal choice — tacky in dry conditions, good in mild heat. Midsize vs standard: most golfers should use standard. Midsize reduces hand action through impact — useful for players who hook, but it reduces feel for most. If you are buying grips for the first time, start with standard.'],
+      ['Standard vs Oversize vs Undersize', 'Standard is correct for most hands. The field test: with the left hand (for right-handers) on the grip, the middle two fingers should barely touch the palm. If they dig in hard — oversize. If there is a gap — undersize. Wrong grip size contributes to tension, inconsistent release, and missed shots right (oversize) or left (undersize).'],
+      ['How to Regrip at Home', 'Tools needed: double-sided grip tape, grip solvent (or water-based solvent), a rubber vice clamp, and the new grips. Process: (1) remove old grip with a hooked blade — cut down the grip and peel off. (2) Remove old tape. (3) Apply new double-sided tape — single wrap for standard size. (4) pour solvent into new grip, shake to coat inside, pour excess onto tape. (5) slide grip on in one smooth motion. (6) align grip logo. (7) let cure 2-3 hours before hitting. Total time: 8-10 minutes per club.'],
+      ['The WYX Regrip Kit', 'The WYX Cord Golf Grip Regrip Kit ($48) includes 13 grips, 8 oz of solvent, grip tape, and a vice clamp insert — everything to regrip a full set at home in an afternoon for under $50. Use WYX10 for 10% off at wyxgolfsupply.com.']
+    ]
+  },
+  {
     slug: 'how-to-choose-a-golf-glove',
     title: 'How To Choose a Golf Glove: Fit, Material, and When to Replace',
     seo: 'How to Choose a Golf Glove | Golf Glove Buying Guide | WYX Golf Supply Co.',

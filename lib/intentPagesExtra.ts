@@ -311,5 +311,41 @@ export const extraIntentPages: Record<string, IntentPageConfig> = {
       ['How does a groove sharpener work?', 'A groove sharpener is a hardened-steel pick that re-cuts the flat face of each groove to restore its sharp edge. Wedge grooves dull after 40-50 rounds of hitting real grass and real sand — a dull groove loses 20-30% of spin generation. The WYX Groove Sharpener restores factory-spec grooves in 3 minutes per wedge.']
     ],
     match: (product: Product) => categoryIn(product, ['Club Care', 'Accessories']) || /groove|grip|brush|cleaner|polish/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-gifts-for-men': {
+    slug: 'golf-gifts-for-men',
+    title: 'Golf Gifts for Men',
+    eyebrow: 'The Short List',
+    description: "Golf gifts for men that actually get used — gloves, towels, alignment sticks, ball markers, and tech picks in every price range. No sizing guesswork, no novelty gear.",
+    metaTitle: 'Golf Gifts for Men — Practical Picks Every Golfer Uses | WYX Golf Supply Co.',
+    metaDescription: "The best golf gifts for men: cabretta gloves, clip-on towels, milled ball markers, GPS watches. Practical gifts in every price range. WYX10 for 10% off.",
+    primaryCta: 'Shop Golf Gifts for Men',
+    secondaryCta: "See Father's Day Picks",
+    secondaryHref: '/fathers-day-golf-gifts',
+    proof: ['Under $25 picks', 'Under $60 picks', 'Under $150 picks', 'WYX10 launch code'],
+    faq: [
+      ["What are the best golf gifts for men under $50?", "Best golf gifts for men under $50: cabretta glove 3-pack ($32 — used every round), clip-on microfiber towel ($18), alignment sticks ($24), milled ball marker set ($28), dual-sided club brush ($16). Use WYX10 for 10% off at WYX Golf Supply Co."],
+      ["What do you get a man who has everything golf related?", "For a golfer who has everything: a GPS watch ($149) for yardage on every course, a full regrip kit ($48) to refresh a full bag, a leather scorecard holder ($38), or a milled ball marker set ($28) — the one accessory golfers want but never buy for themselves."],
+      ["What golf gifts work for any skill level?", "Skill-agnostic golf gifts: a glove 3-pack (all golfers use gloves), a quality clip-on towel (used every round regardless of skill), a ball marker set (used on every green), and alignment sticks (tour pros and beginners both use them). Avoid swing aids that require a specific skill level."]
+    ],
+    match: (product: Product) => categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Training Aids', 'Golf Tech', 'Golf Balls', 'Club Care']) || /glove|towel|marker|alignment|gps|brush|grip/i.test(`${product.title} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-accessories-every-golfer-needs': {
+    slug: 'golf-accessories-every-golfer-needs',
+    title: 'Golf Accessories Every Golfer Needs',
+    eyebrow: 'The Essentials',
+    description: "The short list of golf accessories that every golfer actually reaches for — not the optional stuff, the non-negotiables. Build the bag right from the start.",
+    metaTitle: 'Golf Accessories Every Golfer Needs | Essential Golf Bag Setup | WYX Golf Supply Co.',
+    metaDescription: "The golf accessories every golfer needs: gloves, towel, ball marker, club brush, tees, and a bag tag. The essentials in one place. WYX10 for 10% off.",
+    primaryCta: 'Shop Essential Accessories',
+    secondaryCta: 'See Bag Upgrades',
+    secondaryHref: '/bag-upgrades',
+    proof: ['Curated essentials list', 'Under $90 for full setup', 'No novelty gear', 'WYX10 launch code'],
+    faq: [
+      ["What golf accessories does every golfer need?", "Every golfer needs: (1) a golf glove — used every round for grip and feel, (2) a clip-on towel — cleans club faces and grips between holes, (3) a ball marker — used on every green, (4) a club brush — keeps grooves performing, (5) tees — always running out. These five items are the core bag setup. Add alignment sticks for range sessions."],
+      ["What golf accessories make a good gift?", "The best golf gift accessories: a cabretta glove 3-pack ($32), a microfiber clip-on towel ($18), a milled ball marker set ($28), and a dual-sided club brush ($16). These four items together = a complete bag essentials gift set under $100 before WYX10."],
+      ["What golf accessories fit in a golf bag?", "Every golf bag has side pockets for accessories. Essential fits: tees in the front zipper pocket, gloves in the apparel pocket, towel on the D-ring (clip-on), ball marker in the ball pocket, club brush on the bag ring. A scorecard holder goes in the front panel pocket. An alignment stick tube goes beside the clubs."]
+    ],
+    match: (product: Product) => categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Club Care']) || /glove|towel|marker|brush|tee|alignment/i.test(`${product.title} ${(product.tags || []).join(' ')}`)
   }
 };

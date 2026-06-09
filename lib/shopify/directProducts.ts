@@ -334,5 +334,49 @@ export const directProducts: DirectProduct[] = [
     tags: ['golf club brush', 'groove pick', 'club care', 'golf accessories', 'golf bag accessories', 'golf gifts', 'under $20', 'direct-catalog', 'wyx-curated'],
     imageUrl: 'https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?w=1200&h=900&fit=crop&q=80',
     imageAlt: 'Golf club brush and grove cleaning tools'
+  },
+  {
+    title: 'Cord Golf Grip Regrip Kit — 13 Grips + Solvent + Tape',
+    handle: 'cord-golf-grip-regrip-kit-13-grips',
+    price: '48.00',
+    productType: 'Grips',
+    collectionHandle: 'accessories',
+    description: 'A complete regrip kit for a full 13-club set — 13 cord-wrapped all-weather grips, grip solvent, double-sided tape, and a rubber vice clamp insert. Everything to regrip a bag at home in an afternoon for under $50.',
+    details: [
+      '13 cord-wrapped grips — standard size, 60R core, all-weather performance',
+      '8 oz grip solvent bottle — enough for a full bag plus 4-5 touch-ups',
+      '1" double-sided grip tape roll (36") — pre-cut marks for single wraps',
+      'Rubber vice clamp insert — protects shaft during install without a full vice',
+      'Compatible with all steel and graphite shafts in standard diameter'
+    ],
+    materials: 'Rubber-cord composite grip, standard-weight. Solvent: naphtha-based, evaporates clean.',
+    care: 'Clean grips monthly with warm water and mild soap. Replace when tacky feel is gone (typically 40+ rounds or 1 full season).',
+    seoTitle: 'Golf Grip Regrip Kit 13 Grips | Cord Golf Grips | WYX Golf Supply Co.',
+    metaDescription: 'Complete golf grip regrip kit — 13 cord all-weather grips, grip solvent, tape, and vice clamp insert. Regrip a full set at home for under $50. WYX10 saves 10%.',
+    tags: ['golf grips', 'regrip kit', 'cord grips', 'golf bag upgrade', 'golf accessories', 'golf gifts', 'under $50', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Golf club grips and regripping kit'
+  },
+  {
+    title: 'Stretch Performance Golf Hat — Low Crown, Structured Fit',
+    handle: 'stretch-performance-golf-hat-low-crown',
+    price: '34.00',
+    productType: 'Headwear',
+    collectionHandle: 'hats',
+    description: 'A low-crown structured golf hat with a stretch-fit band, moisture-wicking sweatband, UPF 30+ fabric, and a flat pre-curved brim. The hat that stays on through 18 holes without a readjust.',
+    details: [
+      'Low crown structured cap — profile sits flat on the head, not puffed',
+      'Stretch-fit inner band — one size fits most without a strapback gap',
+      'Moisture-wicking sweatband liner — absorbs and releases sweat between holes',
+      'UPF 30+ performance fabric — face and ear protection in summer sun',
+      'Pre-curved brim — holds shape from round 1 through the full season'
+    ],
+    materials: '88% polyester, 12% spandex. Sweatband: 100% cotton terry.',
+    care: 'Hand wash cold, air dry. Do not machine dry — pre-curved brim holds shape with air dry only.',
+    seoTitle: 'Performance Golf Hat | Stretch Fit Low Crown | WYX Golf Supply Co.',
+    metaDescription: 'A low-crown stretch-fit performance golf hat with moisture-wicking sweatband and UPF 30+ fabric. Holds shape all 18. Under $35. WYX10 saves 10%.',
+    tags: ['golf hat', 'golf cap', 'performance golf hat', 'stretch fit golf hat', 'headwear', 'golf gifts', 'under $35', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Performance golf hat on a sunny course'
   }
 ];
