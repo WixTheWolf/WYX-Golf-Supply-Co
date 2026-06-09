@@ -350,5 +350,49 @@ export const extraPosts = [
       ['What To Say', "The copy matters as much as the gift. 'I know you always run out of gloves — here are three of the good ones.' 'I noticed your towel was falling apart — here is one that clips better.' Framing a practical gift as observed and intentional turns a $25 gift into a memorable one. The gift does not need to be expensive. The framing does."],
       ['WYX Ships Fast', "WYX Golf Supply Co. ships via Shopify-connected fulfillment. Use WYX10 for 10% off your first order. Shop the Father's Day gift guide at wyxgolfsupply.com/fathers-day-golf-gifts for the picks most likely to arrive before June 21."]
     ]
+  },
+  {
+    slug: 'golf-gifts-for-beginners-guide',
+    title: 'Golf Gifts for Beginners: The 6 Items That Make The First Season Better',
+    seo: 'Golf Gifts for Beginners | Starter Golf Gear Guide | WYX Golf Supply Co.',
+    description: 'The six beginner golf gear picks that make the most immediate difference — and the common gifts that look good but do not help a beginner play better.',
+    image: imageMap.strategy,
+    sections: [
+      ['Why Most Beginner Golf Gifts Miss', 'Most beginner golf gifts fall into two failure modes: too generic (novelty tees, branded balls, themed accessories that do not improve play) or too advanced (premium tour balls, high-end rangefinders for someone who cannot yet read a yardage). The best beginner gifts are inexpensive, practical, and specifically improve the learning process.'],
+      ['1. Alignment Sticks ($24)', 'Two fiberglass sticks are the highest-leverage beginner gift in golf. A beginner golfer aims 10-20 yards offline without knowing it. Alignment sticks placed on the ground before every range session build the correct setup habit before bad alignment becomes ingrained. Tour players use them at every practice session — they work equally well for beginners.'],
+      ['2. Cabretta Glove 3-Pack ($32)', 'A beginner goes through gloves faster than an experienced player because their grip technique is rougher on the leather. A single glove wears out in 10-15 rounds. A 3-pack means a fresh glove available for the next 30-45 rounds — enough to last through learning the grip. Cabretta leather beats synthetic for feel and grip quality.'],
+      ['3. Range Balls (Not Premium Tour Balls)', 'Give a beginner range-grade or mid-range golf balls — not the $50/dozen tour balls. A beginner loses 3-5 balls per round at minimum. Premium balls belong in the bag after the swing is repeatable. A box of decent mid-range balls ($24/dozen) removes the anxiety of losing an expensive ball on every wayward shot.'],
+      ['4. Club Brush ($16)', 'A club brush builds the cleaning habit early — clean grooves on every iron before every shot, clean the club face after sand shots. Most beginners never clean their clubs. A dual-sided brush (stiff bristle + groove pick) that clips to the bag is a 5-second habit that improves ball-striking immediately.'],
+      ['5. Putting Alignment Mirror ($32)', 'A putting mirror fixes eye position and face angle at setup — the two most common beginner putting errors. It shows whether your eyes are over the ball and whether the face is truly square at address. Used at home on carpet for 10 minutes per session, it corrects putting problems faster than any lesson on the practice green.'],
+      ['6. GPS Watch ($149)', 'Optional for the first 5 rounds, essential after that. Knowing yardages removes the single biggest source of indecision for beginner golfers on approach shots. A GPS watch that shows front, middle, and back yardages on 40,000+ courses makes decision-making on every par 3 and approach immediate and confident. Use WYX10 for 10% off at wyxgolfsupply.com.']
+    ]
+  },
+  {
+    slug: 'golf-trip-packing-list-guide',
+    title: 'The Complete Golf Trip Packing List (What You Always Forget)',
+    seo: 'Golf Trip Packing List | What to Pack for a Golf Trip | WYX Golf Supply Co.',
+    description: 'A complete golf trip packing checklist — bag gear, apparel, travel protection, and the five items most golfers forget until they are already at the first tee.',
+    image: imageMap.walk,
+    sections: [
+      ['The Bag Gear List', 'What goes in and on the bag: 3 gloves (one per round), 2 dozen balls (more for water-heavy courses), 100 bamboo tees, divot repair tool, ball marker set, groove brush, microfiber towel (clips to bag), rain hood (bag cover), 4 head covers (driver, 3W, hybrid, putter). Most forgotten: the rain hood. Courses do not loan them. A downpour without one soaks bag pockets and dampens every remaining round.'],
+      ['The Apparel List', 'Trip apparel math: 4 polos (one per round + one backup), 2 golf pants, 2 shorts, 4 pairs golf socks, 1 rain jacket (waterproof, packable), 1 wind shirt, 1 hat, 1 visor. Shoes: wear one pair, pack a second. A post-round downpour in non-waterproof shoes sets up the next morning poorly. Rain jacket weight: under 12oz for the best packable golf rain jackets.'],
+      ['The Tech List', 'Rangefinder or GPS watch (a new course means unfamiliar yardages — this is where a rangefinder pays for itself fastest), spare phone charging cable, charging block for the GPS watch, extra batteries for the rangefinder. Forgotten tech item: the rangefinder battery. A dead rangefinder battery on the first hole of a new course is a frustrating start. Pack two CR2s.'],
+      ['The 5 Things Most Golfers Forget', '1. Spike wrench — one round in soft turf and soft spikes loosen. 2. Rain glove — a cabretta glove is useless in heavy rain; a rain glove grips better the wetter it gets. 3. Extra ball markers — they fall off the hat clip and are gone. 4. Sunscreen — pro shops charge $22 for SPF 30. Pack your own. 5. A small first aid kit — blisters are common on trips with 4 consecutive rounds. Pack moleskin.'],
+      ['The WYX Pre-Trip Gear Check', 'Use WYX10 for 10% off the pre-trip gear haul at wyxgolfsupply.com. Priority order: rain hood ($24) → fresh gloves ($32 for 3-pack) → bamboo tees ($8) → groove brush ($16) → ball markers ($28). Under $110 for the complete missing-gear fix before any golf trip.']
+    ]
+  },
+  {
+    slug: 'how-to-choose-a-golf-glove',
+    title: 'How To Choose a Golf Glove: Fit, Material, and When to Replace',
+    seo: 'How to Choose a Golf Glove | Golf Glove Buying Guide | WYX Golf Supply Co.',
+    description: 'The complete golf glove buying guide — cabretta vs synthetic, how to get the right fit, how many rounds a glove lasts, and the signs it is time to replace.',
+    image: imageMap.leather,
+    sections: [
+      ['Cabretta Leather vs Synthetic', 'Cabretta leather gloves offer better feel and grip, especially in the first 10-15 rounds while the leather is fresh and supple. They wear out faster — 10-20 rounds depending on grip technique and weather. Synthetic gloves last longer and perform better in rain, but sacrifice the tactile feedback that makes cabretta the choice for serious golfers. The WYX Glove 3-Pack uses cabretta leather — three fresh gloves means never playing on a dried-out, cracked glove again.'],
+      ['How to Get the Right Fit', 'A properly fitted golf glove fits like a second skin. Pull the glove on and check three things: (1) no bunching at the palm — the glove should lie flat against the hand, (2) the velcro tab closes without the glove stretching, (3) fingertips reach the end of the finger pockets — not past them and not leaving gaps. A glove that is too large slips during the swing. A glove that is too tight fatigues the grip muscles over 18 holes.'],
+      ['How Long Does a Golf Glove Last?', 'A cabretta glove lasts 10-20 rounds depending on: grip tightness (death grip wears leather faster), weather (wet rounds are hard on leather), and care (letting the glove dry completely between rounds extends life). Signs it is done: the leather is stiff and no longer supple, the palm area is thin or wearing through, the Velcro tab is not closing snugly. When any of these appear, replace immediately — a worn glove affects grip and creates shot inconsistency.'],
+      ['The 3-Pack Rotation Strategy', 'Buy gloves in 3-packs. In summer heat, rotate 3 gloves through a round — one glove per 6 holes, letting each dry on the bag for 12 holes. In normal conditions, keep one glove in rotation and store the other two sealed until needed. A fresh cabretta glove out of the package on a key round (competition, client outing, trip opener) is a small luxury that matters.'],
+      ['WYX Glove Note', 'The WYX Cabretta Glove 3-Pack ($32) includes three genuine cabretta leather gloves sized S, M, ML, and L/XL. Use WYX10 for 10% off at wyxgolfsupply.com. Buy before the season, not mid-season when you are down to one cracked glove.']
+    ]
   }
 ];

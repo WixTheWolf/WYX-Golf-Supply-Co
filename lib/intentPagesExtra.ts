@@ -6,6 +6,78 @@ const under = (product: Product, amount: number) => Number(product.priceRange.mi
 const categoryIn = (product: Product, categories: string[]) => categories.includes(categoryFor(product));
 
 export const extraIntentPages: Record<string, IntentPageConfig> = {
+  'golf-gifts-for-beginners': {
+    slug: 'golf-gifts-for-beginners',
+    title: 'Golf Gifts for Beginners — Start Strong, Skip the Learning Tax.',
+    eyebrow: 'Beginner Golf',
+    description: 'The four gear categories that matter most when starting golf: gloves (grip control), alignment sticks (instant feedback), balls (stop losing the good ones), and a bag brush (club care from day one).',
+    metaTitle: 'Golf Gifts for Beginners 2026 | Best Starter Golf Gear | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts for beginners at WYX — alignment sticks, cabretta gloves, golf balls, and club care starter kits. Use WYX10 for 10% off your first beginner golf order.',
+    primaryCta: 'Shop Beginner Golf Gear',
+    secondaryCta: 'See Training Aids',
+    secondaryHref: '/golf-training-aids',
+    proof: ['Alignment sticks $24', 'Glove 3-pack $32', 'Range balls under $30', 'WYX10 saves 10%'],
+    faq: [
+      ['What golf gear does a beginner actually need?', 'Four things that make an immediate difference: (1) a cabretta glove — gives grip control before their grip technique is solid, (2) alignment sticks — corrects the #1 beginner error (poor aim) before bad habits form, (3) a half-dozen range balls — beginners lose balls, do not give them premium tour balls, (4) a club brush — builds the maintenance habit early. Everything else is optional in the first season.'],
+      ['What is the best first golf gift under $30?', 'Alignment sticks ($24) are the best first golf gift under $30. Two fiberglass sticks placed on the ground fix stance alignment, ball position, and swing path simultaneously. Most beginner golfers aim 15-20 yards offline without knowing it — sticks fix this in one session.'],
+      ['Is a GPS watch good for a beginner golfer?', 'Yes — a golf GPS watch removes the anxiety of not knowing yardages, which helps beginners make cleaner decisions and enjoy the round more. It also removes the phone from the round. The WYX GPS Watch loads 40,000+ courses and is straightforward to use. Worth it after the first 5 rounds.']
+    ],
+    match: (product: Product) => under(product, 75) && (categoryIn(product, ['Training Aids', 'Gloves', 'Golf Balls', 'Accessories']) || /alignment|stick|glove|ball|brush/i.test(`${product.title} ${product.productType}`))
+  },
+  'golf-birthday-gifts': {
+    slug: 'golf-birthday-gifts',
+    title: 'Golf Birthday Gifts — The Picks He Actually Puts In The Bag.',
+    eyebrow: 'Birthday Golf Gifts',
+    description: 'Golf birthday gifts that earn a permanent bag spot: the consumables he always runs out of, the accessories he keeps meaning to buy, and the one tech item that improves every round.',
+    metaTitle: 'Golf Birthday Gifts 2026 | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf birthday gifts at WYX Golf Supply Co. — gloves, ball markers, towels, GPS watch, and alignment sticks. Useful gifts under $150. Use WYX10 for 10% off.',
+    primaryCta: 'Shop Birthday Golf Gifts',
+    secondaryCta: 'See Golf Gift Sets',
+    secondaryHref: '/golf-gift-sets',
+    proof: ['Gifts under $60', 'WYX10 saves 10%', 'Ships via Shopify', 'No guesswork required'],
+    faq: [
+      ['What are the best golf birthday gifts?', 'The best golf birthday gifts are: (1) a cabretta glove 3-pack ($32) — used within two rounds, (2) a milled ball marker set — something every golfer wants but skips buying, (3) a quality clip-on towel ($18) — gets used every round, (4) a GPS watch ($149) — the premium birthday gift that changes every round. All useful every single round.'],
+      ['What golf gift should I get a golfer who has everything?', 'Get them the consumables they always run out of — a premium glove 3-pack, a box of the exact ball they play, or a fresh set of grips. Or go premium: a GPS watch, a laser rangefinder, or a leather scorecard holder. These are the gifts every golfer wants but would not buy themselves.'],
+      ['What is a good golf birthday gift under $50?', 'Under $50: a microfiber clip-on towel ($18) + groove sharpener ($22) = $40 and looks like a considered gift set. A bamboo tee set ($8) + ball marker ($28) = $36 for the bag-staple gift. Or a single cabretta glove 3-pack ($32) — practical, immediately needed, used within one round.']
+    ],
+    match: (product: Product) => under(product, 150) || categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Golf Tech', 'Golf Balls'])
+  },
+  'golf-trip-packing-list': {
+    slug: 'golf-trip-packing-list',
+    title: 'Golf Trip Packing List — Everything You Need, Nothing You Don\'t.',
+    eyebrow: 'Trip Prep',
+    description: 'The complete golf trip packing list: bag gear, travel protection, round essentials, and the accessories most golfers forget until they\'re already at the course.',
+    metaTitle: 'Golf Trip Packing List | What to Pack for a Golf Trip | WYX Golf Supply Co.',
+    metaDescription: 'The complete golf trip packing list — travel bag, rain hood, gloves, balls, alignment sticks, and gear. Shop WYX for trip-ready golf accessories. Use WYX10 for 10% off.',
+    primaryCta: 'Shop Golf Trip Gear',
+    secondaryCta: 'Build a Trip Kit',
+    secondaryHref: '/kits/golf-trip-kit',
+    proof: ['Complete trip checklist', 'Under $200 starter kit', 'WYX10 saves 10%', 'Ships before your tee time'],
+    faq: [
+      ['What should I pack for a golf trip?', 'The complete golf trip packing list: Bag gear — 3 gloves, 2 dozen balls, 100 tees, divot tool, ball markers, groove brush, towel. Apparel — 4 polos, 2 pairs pants, 2 pairs shorts, 3 pairs golf socks, rain jacket. Tech — rangefinder or GPS watch, phone charging cable. Travel protection — travel bag or hard case, rain hood, club head covers. Shoes — one pair on, one pair in the bag. Forgotten most often: rain hood, spare gloves, divot tool.'],
+      ['What golf gear should I buy before a golf trip?', 'The pre-trip priority list: (1) fresh gloves if current ones are dried out — a 3-pack means a fresh glove each day, (2) rain gear if the destination is wet or the season is unpredictable, (3) a rangefinder or GPS watch if you are playing unfamiliar courses, (4) a rain hood if your bag does not have one. Buy these before the trip, not at the pro shop where prices are 30-40% higher.'],
+      ['How many golf balls should I bring on a golf trip?', 'Two dozen minimum for a 3-4 day trip playing unfamiliar courses. A new course means more lost balls in the rough and water until you learn the layout. If you play tour-grade balls at $50/dozen, bring the budget for replacements or drop to a slightly less expensive ball for the trip.']
+    ],
+    match: (product: Product) => /towel|glove|rain|ball|tee|alignment|rangefinder|gps|headcover|umbrella/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`) || categoryIn(product, ['Accessories', 'Gloves', 'Golf Tech', 'Golf Balls'])
+  },
+  'golf-stocking-stuffers': {
+    slug: 'golf-stocking-stuffers',
+    title: 'Golf Stocking Stuffers — Under $25 Picks That Get Used Every Round.',
+    eyebrow: 'Golf Gifts Under $25',
+    description: 'Golf stocking stuffers that earn a bag spot instead of a junk drawer: bamboo tee sets, milled ball markers, groove brushes, and alignment sticks — all under $25, all used every round.',
+    metaTitle: 'Golf Stocking Stuffers Under $25 | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf stocking stuffers under $25 at WYX — bamboo tees, ball markers, groove brushes, and alignment sticks. Every round useful. Use WYX10 for 10% off.',
+    primaryCta: 'Shop Golf Stocking Stuffers',
+    secondaryCta: 'See Gifts Under $25',
+    secondaryHref: '/golf-gifts-under-25',
+    proof: ['All picks under $25', 'Every-round useful', 'WYX10 saves 10%', 'Ships fast'],
+    faq: [
+      ['What are good golf stocking stuffers under $25?', 'The best golf stocking stuffers under $25: bamboo tee set ($8, 100 tees) — biodegradable and used every single shot, ball marker set ($18) — magnetic clip style that attaches to the hat, groove brush ($16) — used every round for clean contact, alignment sticks ($24) — the training aid used at every range session. All practical, all immediately used.'],
+      ['What golf gifts are under $20?', 'Under $20 golf gifts: bamboo tees ($8), golf ball stamps/identification kit ($18), divot tool with magnetic ball marker ($14), groove brush ($16), scorecard holder ($18), visor clip for tees and markers ($12). All items that get used every round and take up zero bag space. The best low-dollar golf gifts are always consumable or bag-pocket practical.'],
+      ['Is a ball marker a good golf gift?', 'Yes — a quality ball marker is one of the best golf stocking stuffers or small gifts because every golfer uses one every single round, most golfers are using a random coin or worn plastic marker, and a quality milled magnetic marker costs $18-28 and gets noticed by every playing partner. It is the gift that gets commented on during every round.']
+    ],
+    match: (product: Product) => under(product, 25) || /tee|marker|brush|alignment|divot/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
+  },
   'golf-gifts-for-husband': {
     slug: 'golf-gifts-for-husband',
     title: 'Golf Gifts for Your Husband — Useful, Not Generic.',
