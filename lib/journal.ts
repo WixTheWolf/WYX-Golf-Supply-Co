@@ -2,6 +2,7 @@ import { imageMap } from './demo';
 import { extraPosts } from './journalExtra';
 import { phase3Posts } from './journalPhase3';
 import { phase4Posts } from './journalPhase4';
+import { phase5Posts } from './journalPhase5';
 
 export const posts = [
   {
@@ -786,7 +787,7 @@ export const posts = [
   }
 ];
 
-export const allPosts = [...posts, ...extraPosts, ...phase3Posts, ...phase4Posts];
+export const allPosts = [...posts, ...extraPosts, ...phase3Posts, ...phase4Posts, ...phase5Posts];
 
 export function getPost(slug: string) {
   return allPosts.find((post) => post.slug === slug);
