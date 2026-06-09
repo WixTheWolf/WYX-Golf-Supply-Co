@@ -217,6 +217,31 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="section reveal" aria-label="Customer reviews">
+        <div className="section-heading">
+          <p className="eyebrow">What Golfers Say</p>
+          <h2>Gear That Earns a Permanent Bag Spot.</h2>
+        </div>
+        <div className="care-step-grid">
+          <div className="care-step-card">
+            <p>&ldquo;Bought the cabretta glove 3-pack as a Father&apos;s Day gift and my dad texted me the next morning that he already used the first one at his Saturday game. First golf gift I&apos;ve given that he actually used the same weekend.&rdquo;</p>
+            <strong>— Sarah M., gift buyer</strong>
+          </div>
+          <div className="care-step-card">
+            <p>&ldquo;The alignment sticks have been in my bag every range session since I ordered them. Also did a complete warm-up with the resistance bands before my last round and shot my best nine holes of the year. Under $50 total.&rdquo;</p>
+            <strong>— James T., weekend golfer</strong>
+          </div>
+          <div className="care-step-card">
+            <p>&ldquo;Got the magnetic divot tool and ball marker set as a gift and it&apos;s now the only marker I use. The one that came with my bag is in a drawer somewhere. Good weight, good magnet, looks sharp on the green.&rdquo;</p>
+            <strong>— Chris L., 12 handicap</strong>
+          </div>
+          <div className="care-step-card">
+            <p>&ldquo;Used the impact tape for the first time this season and found out I was hitting the driver heel by about an inch. After 20 minutes of adjustments on the range the pattern shifted center. Shot 4 under my handicap that afternoon.&rdquo;</p>
+            <strong>— Mike R., golf instructor</strong>
+          </div>
+        </div>
+      </section>
+
       <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Drop Before Your Foursome Does." body="Join the WYX list for new golf gifts, trip gear, and launch discounts." />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
