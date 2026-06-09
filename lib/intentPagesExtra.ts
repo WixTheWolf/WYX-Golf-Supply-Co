@@ -365,5 +365,41 @@ export const extraIntentPages: Record<string, IntentPageConfig> = {
       ['What is a unique golf gift for a boyfriend?', 'For a unique golf gift: a milled ball marker set (not the $8 plastic version — a proper precision-milled set in a gift box), a leather scorecard holder (an accessory most golfers think about but never buy), or a GPS watch (yardage on 40,000+ courses from the wrist). These are the picks he wants but skips buying for himself.']
     ],
     match: (product: Product) => categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Golf Tech', 'Training Aids', 'Golf Balls']) || /glove|towel|marker|gps|alignment|brush/i.test(`${product.title} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-gifts-for-girlfriend': {
+    slug: 'golf-gifts-for-girlfriend',
+    title: 'Golf Gifts for Your Girlfriend',
+    eyebrow: 'Gift Guide',
+    description: "Golf gifts for a girlfriend who golfs — practical accessories, training tools, and bag upgrades that earn a permanent spot in the bag. No sizing guesswork, no novelty gear.",
+    metaTitle: 'Golf Gifts for Girlfriend — Practical Picks She Will Actually Use | WYX Golf Supply Co.',
+    metaDescription: 'The best golf gifts for your girlfriend: cabretta gloves, clip-on towels, milled ball markers, GPS watches. Practical picks in every price range. WYX10 for 10% off.',
+    primaryCta: 'Shop Golf Gifts for Her',
+    secondaryCta: 'See Golf Gifts for Women',
+    secondaryHref: '/golf-gifts-for-women',
+    proof: ['Under $30 picks', 'Under $60 picks', 'Premium picks', 'WYX10 launch code'],
+    faq: [
+      ['What are the best golf gifts for a girlfriend?', 'The best golf gifts for a girlfriend who golfs: a cabretta glove 3-pack ($32 — used every round), a milled ball marker set ($28), a microfiber clip-on towel ($18), or a GPS watch ($149). These are size-free, practical, and used every round — unlike apparel gifts that require knowing her style and size.'],
+      ['What golf accessories do female golfers use?', 'Female golfers use the same accessories as male golfers: golf gloves (cabretta leather for feel and grip), a clip-on towel (used between every iron shot), a ball marker (used on every green), alignment sticks (training aid for range sessions), and a club brush (clean grooves for consistent spin). All of these are skill-agnostic and size-free.'],
+      ['What is a thoughtful golf gift for a girlfriend?', 'The most thoughtful golf gifts: a milled ball marker set (something she wants but would never buy herself), a leather scorecard holder (an accessory most golfers think about but skip), or a 3-pack of cabretta gloves (consumable she will always need and use within 2 rounds). These signal you paid attention to what she actually plays with.']
+    ],
+    match: (product: Product) => categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Golf Tech', 'Training Aids', 'Golf Balls']) || /glove|towel|marker|gps|alignment|brush/i.test(`${product.title} ${(product.tags || []).join(' ')}`)
+  },
+  'golf-gifts-for-wife': {
+    slug: 'golf-gifts-for-wife',
+    title: 'Golf Gifts for Your Wife',
+    eyebrow: 'Gift Guide',
+    description: "Golf gifts for a wife who plays golf — practical accessories and bag upgrades that earn a permanent spot in the bag. The picks she actually wants, not the ones that look nice in a box.",
+    metaTitle: 'Golf Gifts for Wife — Practical Picks She Will Use Every Round | WYX Golf Supply Co.',
+    metaDescription: "Golf gifts for your wife who golfs: gloves, towels, ball markers, GPS watches. The practical picks she'll use every round. WYX10 for 10% off at WYX Golf Supply Co.",
+    primaryCta: 'Shop Golf Gifts for Her',
+    secondaryCta: "See Father's Day Picks",
+    secondaryHref: '/fathers-day-golf-gifts',
+    proof: ['Anniversary gifts', 'Birthday gifts', 'Holiday picks', 'WYX10 launch code'],
+    faq: [
+      ["What are good golf gifts for a wife who golfs?", "The best golf gifts for a wife who golfs: a cabretta glove 3-pack ($32 — always needed, used within 2 rounds), a milled ball marker set ($28 — the golf gift she wants but would never buy for herself), a clip-on microfiber towel ($18 — used every round), or a GPS watch ($149 — the premium gift that changes every round). All size-free."],
+      ["What golf anniversary gifts work for a golfer?", "Golf anniversary gift ideas: a leather scorecard holder ($38 — an elegant practical gift), a milled ball marker gift box set ($28 — something she treasures), a GPS watch ($149 — the gift that comes up in conversation for years), or a premium cabretta glove 3-pack ($32 — high-quality, always useful). These are the picks that get used, not displayed."],
+      ["What do you buy a woman who loves golf?", "For a woman who loves golf: skip the apparel (too many sizing variables) and go for accessories. The self-buy paradox applies equally: a milled ball marker set, a leather scorecard holder, a GPS watch, and fresh cabretta gloves are all things she wants and skips buying for herself. These are the gifts that land."]
+    ],
+    match: (product: Product) => categoryIn(product, ['Accessories', 'Gloves', 'Towels', 'Golf Tech', 'Training Aids', 'Golf Balls']) || /glove|towel|marker|gps|alignment|brush|scorecard/i.test(`${product.title} ${(product.tags || []).join(' ')}`)
   }
 };
