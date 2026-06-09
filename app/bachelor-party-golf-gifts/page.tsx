@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const groomPicks = [
   { label: 'GPS Watch', price: '$149', why: 'The premium groom gift. 40,000+ courses, 18-hole battery, wrist yardage on every approach. The one that gets mentioned the whole trip.', href: '/golf-gps-watch' },
   { label: 'Leather Scorecard Holder', price: '$38', why: 'Full-grain leather with his initials spot for a marker. Elegant, practical, used every round of the trip and every round after.', href: '/golf-scorecard-holder' },
-  { label: 'Milled Ball Marker Gift Set', price: '$28', why: 'Precision-milled coins in a gift box. The "groom's round" marker. Something he will pull out every time and remember.', href: '/golf-ball-markers' }
+  { label: 'Milled Ball Marker Gift Set', price: '$28', why: "Precision-milled coins in a gift box. The \"groom's round\" marker. Something he will pull out every time and remember.", href: '/golf-ball-markers' }
 ];
 
 const squadPicks = [
