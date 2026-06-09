@@ -39,6 +39,7 @@ const trustSignals = [
 
 const quickPaths = [
   ["Dad Gifts 🎁", '/fathers-day-golf-gifts'],
+  ["Last Minute ⏰", '/last-minute-fathers-day-golf-gifts'],
   ['Golf Gifts', '/golf-gifts'],
   ['Gloves', '/golf-gloves'],
   ['Ball Markers', '/golf-ball-markers'],
@@ -106,7 +107,7 @@ export default async function Home() {
         if (daysLeft <= 0 || daysLeft > 21) return null;
         return (
           <div className="urgency-strip" role="banner" aria-label="Father's Day shopping deadline">
-            🎁 <strong>Father&apos;s Day is June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} to shop. <Link href="/fathers-day-golf-gifts">See golf gifts for dad →</Link>
+            ⏰ <strong>Father&apos;s Day is June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} left. {daysLeft <= 5 ? <Link href="/last-minute-fathers-day-golf-gifts">Last minute picks →</Link> : <Link href="/fathers-day-golf-gifts">See golf gifts for dad →</Link>}
           </div>
         );
       })()}
