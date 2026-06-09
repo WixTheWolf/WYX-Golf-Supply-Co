@@ -28,7 +28,7 @@ const products = [
   ['WYX Golf Ball Set', 'wyx-golf-ball-set', '$36', 'New', images.iron, 'Golf ball and iron at impact in warm golden hour light', 'Modern golf goods tuned for disciplined practice, clean feel, and confident course preparation.'],
 ].map(([title, slug, price, badge, image, alt, description]) => ({ title, slug, price, badge, image, alt, description }));
 
-const featuredSlugs = ['long-game-rope-hat', 'fairway-polo', 'waffle-golf-towel'];
+const featuredSlugs = products.map((product) => product.slug);
 const productBySlug = Object.fromEntries(products.map((p) => [p.slug, p]));
 
 function resetDir(dir) { fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir, { recursive: true }); }

@@ -276,6 +276,26 @@
 .tech-compare-strip strong{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .tech-compare-strip p{font-size:.88rem;margin:0;line-height:1.5}
 .tech-compare-strip .winner{color:var(--forest);font-weight:700}
+/* ── kit page — footer add CTA block ── */
+.kit-add-footer{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.kit-add-note{font-size:.8rem;color:var(--muted);margin:0;line-height:1.5}
+/* ── kit categories strip ── */
+.kit-categories{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0 1.25rem}
+.kit-cat-chip{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25em .65em;border:1px solid oklch(68% 0.21 250 / 0.4);color:var(--forest);background:oklch(68% 0.21 250 / 0.06)}
+/* ── Father's Day countdown badge ── */
+.fathers-day-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--forest);color:var(--paper);font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.35em .8em;margin-bottom:1rem}
+.fathers-day-badge strong{color:var(--lime)}
+/* ── club care intent page — maintenance grid ── */
+.care-step-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin:1.5rem 0}
+.care-step{padding:1rem;border:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column;gap:.35rem}
+.care-step .step-num{font-family:var(--font-display),Georgia,serif;font-size:2rem;letter-spacing:-.06em;color:var(--lime);line-height:1}
+.care-step p{font-size:.85rem;margin:0;line-height:1.5;color:var(--ink)}
+/* ── gifts under $150 price strip ── */
+.price-tier-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.price-tier-tab{font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.35em .9em;border:1.5px solid var(--forest);color:var(--forest);text-decoration:none;transition:background var(--duration-fast)}
+.price-tier-tab:hover,.price-tier-tab.active{background:var(--forest);color:var(--paper)}
+/* ── product grid — empty state ── */
+.product-grid-empty{padding:2rem;border:1px dashed var(--line);text-align:center;color:var(--muted);font-size:.9rem}
 /* ── journal card grid — responsive 2-col ── */
 @media(min-width:768px){.journal-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.journal-grid{grid-template-columns:repeat(3,1fr)}}

@@ -747,5 +747,41 @@ export const intentPages: Record<string, IntentPageConfig> = {
       ['What is a good high-end golf gift?', 'A leather scorecard holder + milled ball marker set in gift packaging makes a premium impression under $100. A GPS watch or rangefinder hits the $130–$150 range. A full grip kit or groove restoration set is a working gift under $50.']
     ],
     match: (product) => categoryIn(product, ['Golf Tech', 'Club Care', 'Accessories']) || under(product, 150)
+  },
+  'golf-gifts-under-150': {
+    slug: 'golf-gifts-under-150',
+    title: 'Golf Gifts Under $150 — Tech, Gear, and Upgrades Worth Giving.',
+    eyebrow: 'Gift Guide',
+    description: 'The best golf gifts in the $75–$150 range — GPS watches, rangefinders, leather accessories, and bag upgrades that feel premium without going overboard.',
+    metaTitle: 'Golf Gifts Under $150 | Premium Golf Gifts | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf gifts under $150 at WYX Golf Supply Co. — GPS watches, rangefinders, leather scorecard holders, and bag upgrades. Free shipping over $50.',
+    primaryCta: 'Shop Gifts Under $150',
+    secondaryCta: 'See Gifts Under $60',
+    secondaryHref: '/golf-gifts-under-60',
+    proof: ['GPS watch $149', 'Rangefinder $129', 'Leather gifts $42–$68', 'WYX10 launch code'],
+    faq: [
+      ['What are good golf gifts in the $75–$150 range?', 'The sweet spot for premium golf gifts: a dedicated GPS watch ($149), a laser rangefinder with slope ($129), a leather scorecard holder set ($54–$68), or a full grip regrip kit bundled with a groove sharpener. All are products avid golfers know they want but rarely buy themselves.'],
+      ['Is a $150 golf GPS watch worth it?', 'Yes — a dedicated golf GPS watch with 40,000+ preloaded courses is one of the highest-use golf purchases. Avid golfers use it every round. Unlike a phone GPS app, it does not require a signal, drain a phone battery, or require aiming.'],
+      ['What golf gift impresses a serious golfer?', 'Tech and maintenance gear impress serious golfers because they signal understanding of the game. A rangefinder, groove sharpener, or grip kit says you know what actually makes golf better — not just what looks golf-branded.']
+    ],
+    match: (product) => under(product, 150) && !under(product, 40)
+  },
+  'golf-club-care': {
+    slug: 'golf-club-care',
+    title: 'Golf Club Care — Maintain Your Clubs Between Rounds.',
+    eyebrow: 'Club Maintenance',
+    description: 'The club care products that extend equipment life and restore performance — groove sharpeners, club brushes, grip kits, and what to do between every round.',
+    metaTitle: 'Golf Club Care | Groove Sharpener Club Brush | WYX Golf Supply Co.',
+    metaDescription: 'Shop golf club care at WYX Golf Supply Co. — groove sharpeners, club brushes, grip tape, and regrip kits that restore spin and control. Under $30 most picks.',
+    primaryCta: 'Shop Club Care',
+    secondaryCta: 'See Bag Upgrades',
+    secondaryHref: '/bag-upgrades',
+    proof: ['Restore wedge spin $22', 'Regrip full set $26', 'Club brush under $15', 'WYX10 launch code'],
+    faq: [
+      ['How often should you clean golf clubs?', 'Ideally after every round — dirt and grass in grooves reduces spin immediately. A clip-on club brush takes 5 seconds per club. A full soak-and-scrub with warm soapy water once a month for irons and wedges.'],
+      ['How often should golf grips be replaced?', 'Most teaching professionals recommend regripping once a year for golfers playing 30+ rounds, or every 40 rounds. Grips that feel slick or shiny under the rain have lost their texture and are affecting your stroke.'],
+      ['Does sharpening golf grooves really help?', 'Yes — for wedges and short irons used around the green. A groove sharpener restores the sharp edge that creates backspin. It is legal for recreational play and extends wedge life 2–3 seasons before replacement is necessary.']
+    ],
+    match: (product) => categoryIn(product, ['Club Care']) || /brush|groove|grip tape|solvent|regrip/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
   }
 };

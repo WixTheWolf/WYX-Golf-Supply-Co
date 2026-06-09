@@ -679,6 +679,19 @@ export const posts = [
     ]
   },
   {
+    slug: 'how-to-lower-your-golf-handicap',
+    title: 'How To Lower Your Golf Handicap: The Gear and Practice Changes That Actually Work',
+    seo: 'How To Lower Your Golf Handicap | Golf Improvement Gear | WYX Golf Supply Co.',
+    description: 'The practice habits and gear upgrades that actually move the handicap needle for weekend golfers — putting drills, alignment tools, grip maintenance, and what to stop wasting money on.',
+    image: imageMap.iron,
+    sections: [
+      ['Fix Putting First', 'Putting is 40% of strokes for most amateur golfers. A 20-minute putting practice session with an alignment mirror three times a week will drop more strokes than any full swing change. Start there.'],
+      ['Grooves and Grip Condition Matter', 'Worn grooves kill spin around the greens. Worn grips cause grip pressure spikes that wreck timing. Resharpening wedge grooves ($22) and regripping at home ($26) are the two highest-ROI equipment maintenance moves.'],
+      ['Know Your Yardage Every Time', 'Guessing yardage adds 2–4 strokes per round for most players. A rangefinder or GPS watch removes one of the biggest mental errors in club selection. The handicap drop shows up within 5 rounds.'],
+      ['WYX Handicap Kit', 'Putting mirror + groove sharpener + grip kit + rangefinder covers practice, maintenance, and course management — the four biggest levers for the 15–25 handicap player. Under $200 with WYX10.']
+    ]
+  },
+  {
     slug: 'twilight-golf',
     title: 'Twilight Golf and the Long Game',
     seo: 'Twilight Golf and the Long Game | WYX Golf Supply Co.',
