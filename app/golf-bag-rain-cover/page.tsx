@@ -117,7 +117,7 @@ export default async function GolfBagRainCoverPage() {
         </dl>
       </section>
 
-      <EmailCapture />
+      <EmailCapture source="golf-bag-rain-cover" campaign="rain-gear" />
     </>
   );
 }

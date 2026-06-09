@@ -116,7 +116,7 @@ export default async function GolfPutterHeadcoversPage() {
         </dl>
       </section>
 
-      <EmailCapture />
+      <EmailCapture source="golf-putter-headcovers" campaign="headcovers" />
     </>
   );
 }

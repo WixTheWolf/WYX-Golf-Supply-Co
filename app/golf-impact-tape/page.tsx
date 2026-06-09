@@ -118,7 +118,7 @@ export default async function GolfImpactTapePage() {
         </dl>
       </section>
 
-      <EmailCapture />
+      <EmailCapture source="golf-impact-tape" campaign="training-aids" />
     </>
   );
 }
