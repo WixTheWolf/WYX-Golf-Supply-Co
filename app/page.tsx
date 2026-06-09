@@ -154,9 +154,10 @@ export default async function Home() {
       </section>
 
       <div className="proof-numbers reveal" aria-label="WYX by the numbers">
-        <div><strong>43</strong><span>Products in catalog</span></div>
-        <div><strong>$18</strong><span>Lowest priced pick</span></div>
+        <div><strong>50+</strong><span>Products in catalog</span></div>
+        <div><strong>$14</strong><span>Lowest priced pick</span></div>
         <div><strong>WYX10</strong><span>10% off first order</span></div>
+        <div><strong>June 21</strong><span>Father&apos;s Day deadline</span></div>
       </div>
 
       <section id="kits" className="section kit-visual-section reveal">
@@ -190,10 +191,28 @@ export default async function Home() {
         </div>
       </section>}
 
-      <section className="section why-wyx reveal">
-        <div>
+      <section className="section why-wyx reveal" aria-labelledby="why-wyx-heading">
+        <div className="section-heading">
           <p className="eyebrow">Why WYX?</p>
-          <h2>No Random Golf Junk.</h2>
+          <h2 id="why-wyx-heading">No Random Golf Junk.</h2>
+        </div>
+        <div className="care-step-grid">
+          <div className="care-step-card">
+            <strong>Curated for Weekend Golfers</strong>
+            <p>Every product passes the bag test — if it does not earn a permanent spot in the bag, it does not make the catalog. No novelty gear, no branded tchotchkes, no items that get used once and re-gifted.</p>
+          </div>
+          <div className="care-step-card">
+            <strong>Practical Over Flashy</strong>
+            <p>The golfer who uses a quality microfiber towel, a milled ball marker, and fresh cabretta gloves every round plays better than one with a premium bag full of gear they never use. WYX stocks the former.</p>
+          </div>
+          <div className="care-step-card">
+            <strong>Real Prices, No Markup Theater</strong>
+            <p>Transparent pricing across the catalog. Use WYX10 for 10% off your first order. Everything ships via secure Shopify checkout — no account required, shipping shown before payment.</p>
+          </div>
+          <div className="care-step-card">
+            <strong>Built for Gifts That Land</strong>
+            <p>Every item in the WYX catalog is chosen because it is the thing the golfer in your life wants but would not buy for themselves. If it fails the &quot;will he actually use this&quot; test, it does not ship from WYX.</p>
+          </div>
         </div>
       </section>
 
