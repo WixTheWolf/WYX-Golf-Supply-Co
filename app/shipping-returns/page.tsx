@@ -3,7 +3,7 @@ import { supportEmail } from '@/lib/support';
 
 export const metadata: Metadata = { title: 'Shipping & Returns', description: 'Shipping and returns guidance for WYX Golf Supply Co.' };
 const policies = [
-  ['Order Handling', 'Most items ship through trusted golf product partners. Timing may vary by item and destination, and the latest estimate is shown at checkout.'],
+  ['Order Handling', 'Timing can vary by item and destination, and the latest estimate is shown at checkout before you place your order.'],
   ['Shipping', 'Shipping options, rates, and delivery estimates are calculated before you place your order.'],
   ['Returns', "Return eligibility can vary by item, especially for personalized or final-sale products. If you need help, contact WYX support with your order number and we'll point you in the right direction."],
   ['Damaged or Incorrect Items', 'If your order arrives damaged or incorrect, contact us promptly with your order number and clear photos of the product and packaging.'],

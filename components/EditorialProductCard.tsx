@@ -41,8 +41,8 @@ function shortReason(product: Product) {
   if (text.includes('shoe bag') || text.includes('shoe bag')) return 'Mesh-vented nylon. Keeps spikes separate from clothes on every trip.';
   if (text.includes('bamboo tee') || text.includes('golf tee')) return 'Fifty bamboo tees, biodegradable, stronger than wood. The consumable that always needs restocking.';
   if (text.includes('hat case') || text.includes('hat carrying')) return 'Rigid-shell protection for your favorite round hat. Packs in a carry-on without crushing the brim.';
-  if (text.includes('groove sharpener') || text.includes('wedge tool')) return 'Restores spin to worn wedges in 10 minutes. Six groove widths, carbide head, extends wedge life by 2–3 seasons.';
-  if (text.includes('grip solvent') || text.includes('regrip kit') || text.includes('solvent')) return 'Everything to regrip 14 clubs at home. Saves $50–$80 over shop rates in one afternoon.';
+  if (text.includes('groove sharpener') || text.includes('wedge tool')) return 'A simple 10-minute job that helps keep grooves clean between deeper club-care visits. Six groove widths, carbide head.';
+  if (text.includes('grip solvent') || text.includes('regrip kit') || text.includes('solvent')) return 'Everything to regrip 14 clubs at home in one afternoon.';
   if (text.includes('bag organizer') || text.includes('organizer insert')) return 'Drops into any 14-way bag pocket and creates 6 separated compartments. Stops the bottom-pocket search.';
   if (text.includes('cooler tube') || text.includes('bag cooler')) return 'Holds 6 cans cold for 18 holes and clips to any bag D-ring. The trip accessory you did not know you needed.';
   if (text.includes('rain jacket') || text.includes('packable')) return 'Stuffs into its own chest pocket. Wind and water-resistant, clean enough for the clubhouse, essential for any trip.';

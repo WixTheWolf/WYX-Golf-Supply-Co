@@ -14,54 +14,77 @@ import { getProducts } from '@/lib/shopify/products';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Golf Gifts, Father's Day Golf Gifts, Hats & Bag Upgrades | WYX Golf Supply Co.",
-  description: "Shop WYX Golf Supply Co. for Father's Day golf gifts, golf gloves, balls, alignment sticks, hats, apparel, and bag upgrades for weekend golfers. Use WYX10 for 10% off.",
+  title: 'Golf Gifts He Will Actually Keep In The Bag | WYX Golf Supply Co.',
+  description: "Practical golf gifts, trip kits, and bag upgrades for weekend golfers. Every product passes The Bag Test before it makes the catalog. Use WYX10 for 10% off your first order.",
   alternates: { canonical: '/' },
   openGraph: {
-    title: "Golf Gifts & Father's Day Golf Gifts | WYX Golf Supply Co.",
-    description: "Father's Day golf gifts, training aids, gloves, balls, and bag upgrades. Curated for weekend golfers. Use WYX10 for 10% off your first order.",
+    title: 'Golf Gifts He Will Actually Keep In The Bag | WYX Golf Supply Co.',
+    description: "Practical golf gear for weekend golfers, built around The Weekend Golfer's Bag Upgrade Kit. Use WYX10 for 10% off your first order.",
     url: 'https://wyxgolfsupply.com'
   }
 };
 
-const kits = [
-  { title: 'Trip Kit', href: '/kits/golf-trip-kit', image: imageMap.walk, copy: 'Packable gear for the boys weekend.' },
-  { title: 'Dad Kit', href: '/kits/dad-gift-kit', image: imageMap.care, copy: 'Useful gifts he will actually use.' },
-  { title: 'Bag Kit', href: '/kits/bag-upgrade-kit', image: imageMap.leather, copy: 'Small upgrades. Better setup.' }
-];
-
 const trustSignals = [
   'Secure Shopify checkout',
   'Shipping shown before payment',
-  'Real supplier product photos',
+  'The Bag Test Promise: 30 days',
   'Support by email'
 ];
 
-const quickPaths = [
-  ["Dad Gifts 🎁", '/fathers-day-golf-gifts'],
-  ["Last Minute ⏰", '/last-minute-fathers-day-golf-gifts'],
-  ['Golf Gifts', '/golf-gifts'],
-  ['Gloves', '/golf-gloves'],
-  ['Ball Markers', '/golf-ball-markers'],
-  ['Towels', '/golf-towels'],
-  ['Hats', '/golf-hats'],
-  ['Training', '/golf-practice-gear'],
-  ['Under $25', '/golf-gifts-under-25'],
-  ['Under $60', '/golf-gifts-under-60'],
-  ['Bag Upgrades', '/bag-upgrades'],
-  ['Belts', '/golf-belts'],
-  ['Headcovers', '/golf-headcovers'],
-  ['GPS Watch', '/golf-gps-watch'],
-  ['Sunglasses', '/golf-sunglasses'],
-  ['Arm Sleeves', '/golf-arm-sleeves'],
-  ['Trip Gear', '/golf-trip-gear']
+const mechanismSteps = [
+  {
+    title: '1. We Pull It Apart',
+    body: 'Every product on WYX gets pulled apart and used the way a weekend golfer would actually use it — in a cart, in a pocket, in the rain.'
+  },
+  {
+    title: '2. We Ask One Question',
+    body: 'Would this earn a permanent spot in a real bag, or would it end up in a drawer after one round? If the answer is "drawer," it does not get listed.'
+  },
+  {
+    title: '3. We Skip The Filler',
+    body: 'No novelty gear, no branded tchotchkes, no "as seen on TV" gimmicks. If it does not solve a real problem on the course, it does not make the catalog.'
+  },
+  {
+    title: '4. We Keep It Honest',
+    body: 'Real prices, real photos, real stock. Use WYX10 for 10% off your first order, and every order ships through secure Shopify checkout.'
+  }
 ];
 
-const cartBoosts = [
-  'WYX10 saves 10% on your first order',
-  'Low-risk gifts under $60',
-  'Checkout is live and secured by Shopify',
-  'Curated for weekend golfers'
+const situations = [
+  { title: 'Golf Gifts', copy: 'Practical picks for any golfer on your list.', href: '/golf-gifts' },
+  { title: 'Dad Gifts', copy: "Things he'll actually use, not display.", href: '/golf-gifts-for-dad' },
+  { title: 'Golf Trip Gear', copy: 'Pack light. Forget nothing that matters.', href: '/golf-trip-gear' },
+  { title: 'Bachelor Party Gifts', copy: 'Group gear and gag-free favors.', href: '/bachelor-party-golf-gifts' },
+  { title: 'Scramble Prizes', copy: 'Prize-table picks people actually want.', href: '/scramble-prizes' },
+  { title: 'Bag Upgrades', copy: 'Small swaps that fix real annoyances.', href: '/bag-upgrades' }
+];
+
+const bonusTools = [
+  {
+    title: "The Gift-Giver's Cheat Sheet",
+    body: "A short guide to picking a golf gift when you don't golf — what matters, what doesn't, and what to skip entirely."
+  },
+  {
+    title: 'The Bag Audit Checklist',
+    body: 'A 2-minute checklist for what should be in a weekend bag right now, and what is probably expired, broken, or missing.'
+  },
+  {
+    title: 'Optional Gift Reminder',
+    body: "Add your details at checkout and we'll send a quiet reminder before the next gifting date — Father's Day, birthdays, holidays. Skip it if you don't need it."
+  }
+];
+
+const proofStats = [
+  { stat: 'WYX10', label: '10% off your first order' },
+  { stat: '4', label: 'Items in The Bag Upgrade Kit' },
+  { stat: '30 Days', label: 'The Bag Test Promise window' },
+  { stat: '$60', label: 'Most gifts ship under this price' }
+];
+
+const kits = [
+  { title: 'Trip Kit', href: '/kits/golf-trip-kit', image: imageMap.walk, copy: 'Packable gear for the golf trip.' },
+  { title: 'Dad Kit', href: '/kits/dad-gift-kit', image: imageMap.care, copy: 'Useful gifts he will actually use.' },
+  { title: 'Bag Kit', href: '/kits/bag-upgrade-kit', image: imageMap.leather, copy: 'Small upgrades. Better setup.' }
 ];
 
 export default async function Home() {
@@ -111,15 +134,16 @@ export default async function Home() {
           </div>
         );
       })()}
+
       <section className="hero launch-hero">
         <Image src={imageMap.hero} alt="Golf friends walking a course at golden hour" fill priority sizes="100vw" />
         <div className="hero-copy launch-hero-copy">
           <p className="eyebrow">WYX Golf Supply Co.</p>
-          <h1>Gear For The Boys Weekend.</h1>
-          <p>Golf gifts, trip kits, hats, apparel, and bag upgrades built for real rounds.</p>
+          <h1>Golf Gifts He&apos;ll Actually Keep In The Bag.</h1>
+          <p>WYX picks practical gear for weekend golfers — gifts, trip kits, and bag upgrades that earn a permanent spot in the bag. If it does not pass The Bag Test, it does not make the catalog.</p>
           <div className="actions">
-            <Link className="button primary" href="/fathers-day-golf-gifts">Father&apos;s Day Gifts</Link>
-            <Link className="button secondary" href="#short-list">Shop Best Picks</Link>
+            <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit">Shop The Bag Upgrade Kit</Link>
+            <Link className="button secondary" href="/the-bag-test">Take The Bag Test</Link>
           </div>
           <div className="hero-proof compact-proof">
             {trustSignals.map((item) => <span key={item}>{item}</span>)}
@@ -140,32 +164,79 @@ export default async function Home() {
         </div>
       </section>}
 
-      <section className="conversion-strip reveal" aria-label="Shop WYX categories">
+      <section className="section reveal" aria-labelledby="bag-test-heading">
+        <div className="section-heading">
+          <p className="eyebrow">The Mechanism</p>
+          <h2 id="bag-test-heading">If It Doesn&apos;t Pass The Bag Test, It Doesn&apos;t Belong Here.</h2>
+        </div>
+        <div className="care-step-grid">
+          {mechanismSteps.map((step) => (
+            <div className="care-step" key={step.title}>
+              <strong>{step.title}</strong>
+              <p>{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="dark-section reveal" aria-labelledby="kit-offer-heading">
         <div>
-          <p className="eyebrow">Quick Shop</p>
+          <p className="eyebrow">The Core Offer</p>
+          <h2 id="kit-offer-heading">The Weekend Golfer&apos;s Bag Upgrade Kit.</h2>
+          <div className="actions">
+            <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit">Get The Kit</Link>
+            <Link className="button secondary dark" href="/bag-upgrades">Shop Bag Upgrades</Link>
+          </div>
+        </div>
+        <p>Practical pieces that fix the small annoyances every weekend bag has — a clean towel, a marker that does not get lost, an at-home grip refresh, and a place for the small stuff that always ends up loose in the bottom pocket. Built only from gear that is in stock right now. Use WYX10 for 10% off.</p>
+      </section>
+
+      <section className="dark-section reveal" aria-labelledby="not-a-golfer-heading">
+        <div>
+          <p className="eyebrow">For Gift Buyers</p>
+          <h2 id="not-a-golfer-heading">Not A Golfer? Good. We Made This Easier.</h2>
+          <div className="actions">
+            <Link className="button primary" href="/golf-gifts">Shop Golf Gifts</Link>
+            <Link className="button secondary dark" href="/golf-gifts-for-dad">Gifts For Dad</Link>
+          </div>
+        </div>
+        <p>You don&apos;t need to know what a 56° wedge is. Every product on WYX is picked because it is useful to almost any golfer, regardless of skill level — and every gift ships with a clear reason why it belongs in the bag. If you&apos;re not sure, start with the Bag Upgrade Kit or anything under $60.</p>
+      </section>
+
+      <section className="section reveal" aria-label="Shop by situation">
+        <div className="section-heading">
+          <p className="eyebrow">Shop By Situation</p>
           <h2>Find The Right Gift Fast.</h2>
         </div>
-        <nav className="quick-paths" aria-label="Popular shopping paths">
-          {quickPaths.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-        </nav>
+        <div className="category-grid">
+          {situations.map((item) => (
+            <Link key={item.href} href={item.href}>
+              <span>{item.copy}</span>
+              <strong>{item.title}</strong>
+              <small>Shop Now</small>
+            </Link>
+          ))}
+        </div>
       </section>
 
-      <section className="trust-badge-section reveal" aria-label="Shopping trust signals">
-        {cartBoosts.map((item) => <span key={item}>{item}</span>)}
-      </section>
-
-      <div className="proof-numbers reveal" aria-label="WYX by the numbers">
-        <div><strong>74+</strong><span>Products in catalog</span></div>
-        <div><strong>$10</strong><span>Lowest priced pick</span></div>
-        <div><strong>WYX10</strong><span>10% off first order</span></div>
-        <div><strong>June 21</strong><span>Father&apos;s Day deadline</span></div>
-      </div>
+      {under60.length > 0 && <section className="section reveal">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Under $60</p>
+            <h2>Practical Golf Gifts Under $60.</h2>
+          </div>
+          <Link className="text-link" href="/golf-gifts-under-60">Shop Gifts Under $60</Link>
+        </div>
+        <div className="product-grid">
+          {under60.map((product) => <EditorialProductCard key={product.id} product={product} />)}
+        </div>
+      </section>}
 
       <section id="kits" className="section kit-visual-section reveal">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">Bundles</p>
-            <h2>Start With A Kit.</h2>
+            <p className="eyebrow">More Kits</p>
+            <h2>Other Ways To Bundle Up.</h2>
           </div>
           <Link className="text-link" href="/kits/golf-trip-kit">Build A Trip Kit</Link>
         </div>
@@ -179,68 +250,62 @@ export default async function Home() {
         </div>
       </section>
 
-      {under60.length > 0 && <section className="section reveal">
-        <div className="section-heading split">
-          <div>
-            <p className="eyebrow">Under $60</p>
-            <h2>Easy Golf Gifts.</h2>
-          </div>
-          <Link className="text-link" href="/golf-gifts-under-60">Shop Gifts Under $60</Link>
-        </div>
-        <div className="product-grid">
-          {under60.map((product) => <EditorialProductCard key={product.id} product={product} />)}
-        </div>
-      </section>}
-
-      <section className="section why-wyx reveal" aria-labelledby="why-wyx-heading">
+      <section className="section reveal" aria-labelledby="bonus-tools-heading">
         <div className="section-heading">
-          <p className="eyebrow">Why WYX?</p>
-          <h2 id="why-wyx-heading">No Random Golf Junk.</h2>
+          <p className="eyebrow">Free With Every Order</p>
+          <h2 id="bonus-tools-heading">A Few Free Tools That Make Gift-Giving Easier.</h2>
+        </div>
+        <div className="care-step-grid">
+          {bonusTools.map((tool) => (
+            <div className="care-step" key={tool.title}>
+              <strong>{tool.title}</strong>
+              <p>{tool.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section reveal" aria-label="How WYX builds trust">
+        <div className="section-heading">
+          <p className="eyebrow">No Fake Reviews</p>
+          <h2>Built For First Orders, Not Fake Hype.</h2>
         </div>
         <div className="care-step-grid">
           <div className="care-step">
-            <strong>Curated for Weekend Golfers</strong>
-            <p>Every product passes the bag test — if it does not earn a permanent spot in the bag, it does not make the catalog. No novelty gear, no branded tchotchkes, no items that get used once and re-gifted.</p>
+            <strong>We&apos;re Early — We&apos;re Not Hiding It</strong>
+            <p>WYX is a new store. We are not going to invent reviews or testimonials to look bigger than we are. What you see is the real catalog, real prices, and real stock.</p>
           </div>
           <div className="care-step">
-            <strong>Practical Over Flashy</strong>
-            <p>The golfer who uses a quality microfiber towel, a milled ball marker, and fresh cabretta gloves every round plays better than one with a premium bag full of gear they never use. WYX stocks the former.</p>
+            <strong>The Bag Test Standard</strong>
+            <p>Every product listed has been checked against one question: would a weekend golfer keep this in the bag after the first round? If we are not confident, it stays off the site.</p>
           </div>
           <div className="care-step">
-            <strong>Real Prices, No Markup Theater</strong>
-            <p>Transparent pricing across the catalog. Use WYX10 for 10% off your first order. Everything ships via secure Shopify checkout — no account required, shipping shown before payment.</p>
+            <strong>Secure, Familiar Checkout</strong>
+            <p>Every order runs through Shopify&apos;s standard checkout — the same system used by thousands of stores. Your payment details never touch our servers.</p>
           </div>
           <div className="care-step">
-            <strong>Built for Gifts That Land</strong>
-            <p>Every item in the WYX catalog is chosen because it is the thing the golfer in your life wants but would not buy for themselves. If it fails the &quot;will he actually use this&quot; test, it does not ship from WYX.</p>
+            <strong>WYX10 For Your First Order</strong>
+            <p>Use code WYX10 at checkout for 10% off. Shipping is shown before you pay, and there are no surprise charges between cart and confirmation.</p>
           </div>
         </div>
       </section>
 
-      <section className="section reveal" aria-label="Customer reviews">
-        <div className="section-heading">
-          <p className="eyebrow">What Golfers Say</p>
-          <h2>Gear That Earns a Permanent Bag Spot.</h2>
-        </div>
-        <div className="care-step-grid">
-          <div className="care-step">
-            <p>&ldquo;Bought the cabretta glove 3-pack as a Father&apos;s Day gift and my dad texted me the next morning that he already used the first one at his Saturday game. First golf gift I&apos;ve given that he actually used the same weekend.&rdquo;</p>
-            <strong>— Sarah M., gift buyer</strong>
-          </div>
-          <div className="care-step">
-            <p>&ldquo;The alignment sticks have been in my bag every range session since I ordered them. Also did a complete warm-up with the resistance bands before my last round and shot my best nine holes of the year. Under $50 total.&rdquo;</p>
-            <strong>— James T., weekend golfer</strong>
-          </div>
-          <div className="care-step">
-            <p>&ldquo;Got the magnetic divot tool and ball marker set as a gift and it&apos;s now the only marker I use. The one that came with my bag is in a drawer somewhere. Good weight, good magnet, looks sharp on the green.&rdquo;</p>
-            <strong>— Chris L., 12 handicap</strong>
-          </div>
-          <div className="care-step">
-            <p>&ldquo;Used the impact tape for the first time this season and found out I was hitting the driver heel by about an inch. After 20 minutes of adjustments on the range the pattern shifted center. Shot 4 under my handicap that afternoon.&rdquo;</p>
-            <strong>— Mike R., golf instructor</strong>
+      <section className="dark-section reveal" aria-labelledby="bag-test-promise-heading">
+        <div>
+          <p className="eyebrow">The Bag Test Promise</p>
+          <h2 id="bag-test-promise-heading">If It&apos;s Wrong, We&apos;ll Make It Right.</h2>
+          <div className="actions">
+            <Link className="button primary" href="/the-bag-test">Read The Bag Test</Link>
           </div>
         </div>
+        <p>We build kits and gift picks around gear golfers actually use. If your order arrives damaged, incorrect, or does not match what you expected, contact us within 30 days and we&apos;ll help make it right.</p>
       </section>
+
+      <div className="proof-numbers reveal" aria-label="WYX at a glance">
+        {proofStats.map((item) => (
+          <div key={item.label}><strong>{item.stat}</strong><span>{item.label}</span></div>
+        ))}
+      </div>
 
       <EmailCapture source="home" campaign="home_launch_list" title="Get The Next Drop Before Your Foursome Does." body="Join the WYX list for new golf gifts, trip gear, and launch discounts." />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -260,16 +325,16 @@ export default async function Home() {
         name: 'WYX Golf Supply Co.',
         url: 'https://wyxgolfsupply.com',
         logo: 'https://wyxgolfsupply.com/images/hero-coastal-fairway.png',
-        description: 'Curated golf gifts, hats, apparel, training aids, and bag upgrades for weekend golfers.',
+        description: 'Practical golf gifts, trip kits, and bag upgrades for weekend golfers, picked using The Bag Test.',
         sameAs: []
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         mainEntity: [
-          { '@type': 'Question', name: 'What are the best golf gifts under $60?', acceptedAnswer: { '@type': 'Answer', text: 'The best golf gifts under $60 include golf gloves, golf balls, alignment sticks, ball markers, golf towels, scorecard holders, and magnetic hat clips. WYX Golf Supply Co. carries all of these with free shipping thresholds and a 10% launch discount with code WYX10.' } },
-          { '@type': 'Question', name: 'What golf training aids actually work?', acceptedAnswer: { '@type': 'Answer', text: 'Alignment sticks and putting mirrors are the two training aids proven to improve most golfers fastest. Alignment sticks fix stance and swing path; a putting mirror fixes eye position and face angle at setup. Both are under $40.' } },
-          { '@type': 'Question', name: 'What should I put in a golf gift bag?', acceptedAnswer: { '@type': 'Answer', text: 'A good golf gift bag starts with a glove, a sleeve of balls, a ball marker, and a towel. Add a scorecard holder or alignment sticks for golfers who practice. WYX Golf Supply Co. has all of these and ships together.' } }
+          { '@type': 'Question', name: 'What is The Bag Test?', acceptedAnswer: { '@type': 'Answer', text: 'The Bag Test is the standard WYX uses to decide what makes the catalog: would a weekend golfer keep this item in their bag after the first round? If the answer is no, the product is not listed.' } },
+          { '@type': 'Question', name: 'What are the best golf gifts under $60?', acceptedAnswer: { '@type': 'Answer', text: 'The best golf gifts under $60 include golf gloves, golf balls, alignment sticks, ball markers, golf towels, scorecard holders, and magnetic hat clips. WYX Golf Supply Co. carries all of these with a 10% first-order discount with code WYX10.' } },
+          { '@type': 'Question', name: 'What is in the Weekend Golfer’s Bag Upgrade Kit?', acceptedAnswer: { '@type': 'Answer', text: 'The Weekend Golfer’s Bag Upgrade Kit is built from currently in-stock gear that solves common bag annoyances: a microfiber towel, a ball marker, a grip refresh, and a small accessory caddie. Items are confirmed in stock before they are included. A tee supply is being sourced and will be added once it is confirmed.' } }
         ]
       }) }} />
     </>

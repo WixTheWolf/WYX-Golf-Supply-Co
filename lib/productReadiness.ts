@@ -42,3 +42,17 @@ export function hasMisleadingProductMedia(product: Product) {
   const flags = productReadinessFlags(product);
   return flags.includes('possibly-fake-wyx-image') || flags.includes('variant-color-image-mismatch');
 }
+
+/**
+ * Manually confirmed image/product mismatches that automated checks miss
+ * (e.g. a WYX-vendor product whose featured image shows an unrelated item).
+ * Reviewed via direct CDN image inspection.
+ */
+const knownImageMismatchHandles = new Set([
+  'bamboo-performance-golf-tees-50-pack'
+]);
+
+export function hasKnownImageMismatch(product: Product) {
+  if (knownImageMismatchHandles.has(product.handle)) return true;
+  return (product.tags || []).some((tag) => tag.toLowerCase().includes('placeholder-image'));
+}

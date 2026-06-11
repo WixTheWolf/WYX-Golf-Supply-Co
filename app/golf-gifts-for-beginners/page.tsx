@@ -32,7 +32,7 @@ const picks = [
 const faqs: [string, string][] = [
   ['What are the best golf gifts for a beginner?', 'Best picks: glove 3-pack ($32 — every beginner needs fresh gloves), alignment sticks ($24 — the fastest way to fix poor aim), microfiber towel ($18 — clean contact on every shot), ball retriever ($24 — pays for itself in recovered balls). Use WYX10 for 10% off at wyxgolfsupply.com.'],
   ['What should I NOT buy a beginner golfer?', 'Avoid new clubs (they need to learn the basics first and may need a fitting), expensive balls (beginners lose 3-5 per round), novelty items, and anything that requires the beginner to already have a developed swing. Stick to accessories that improve the learning process — gloves, alignment tools, practice aids.'],
-  ['What golf gift helps a beginner improve fastest?', 'Alignment sticks ($24) improve every range session immediately by showing the beginner whether they are aiming at the target — the most common beginner flaw that has nothing to do with swing technique. Second: a putting alignment mirror ($32) — putting improvement from correct fundamentals is the fastest handicap improvement available at any skill level.']
+  ['What golf gift helps a beginner the most?', 'Alignment sticks ($24) make every range session more useful by showing the beginner whether they are aiming at the target — a common beginner issue that has nothing to do with swing technique. A putting alignment mirror ($32) does something similar for the green, helping build correct putting fundamentals from the start.']
 ];
 
 const jsonLd = {

@@ -1,5 +1,5 @@
 import type { Product } from '@/types/shopify';
-import { hasMisleadingProductMedia } from '@/lib/productReadiness';
+import { hasMisleadingProductMedia, hasKnownImageMismatch } from '@/lib/productReadiness';
 
 export const catalogCategories = ['All', 'Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Golf Tech', 'Club Care', 'Headwear', 'Apparel', 'Accessories'] as const;
 
@@ -75,7 +75,9 @@ export function availableProducts(products: Product[]) {
   return products.filter((product) => {
     if (!product.availableForSale) return false;
     if (!passesPublicCatalogGate(product)) return false;
-    // WYX-curated products bypass media quality gates — they are our own catalog
+    // Manually confirmed image/product mismatches are excluded regardless of vendor
+    if (hasKnownImageMismatch(product)) return false;
+    // WYX-curated products bypass automated media quality gates — they are our own catalog
     if (isCuratedProduct(product)) return true;
     // Non-curated products must pass image checks to prevent bad dropship media
     return hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product);

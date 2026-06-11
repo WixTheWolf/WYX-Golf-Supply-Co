@@ -34,7 +34,7 @@ export default function TheRoo() {
           <p className="eyebrow">Why It Exists</p>
           <h2>The Little Stuff Needs A Home.</h2>
         </div>
-        <p>The Roo is being sourced as a compact valuables pouch for golf trips, bachelor party weekends, league nights, and anyone tired of digging for keys under loose tees and receipts. It will stay waitlist-only until supplier terms, photos, margin, shipping, and returns are confirmed.</p>
+        <p>The Roo is being developed as a compact valuables pouch for golf trips, bachelor party weekends, league nights, and anyone tired of digging for keys under loose tees and receipts. It will stay waitlist-only until photos, pricing, shipping, and returns are confirmed and it passes the Bag Test.</p>
       </section>
 
       <section id="roo-waitlist">

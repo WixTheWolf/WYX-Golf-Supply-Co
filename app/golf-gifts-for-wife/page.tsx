@@ -24,7 +24,7 @@ const picks = [
   { label: 'Clip-On Microfiber Towel', price: '$18', href: '/golf-towels', tag: 'Under $20', why: 'Used every hole. Carabiner clip attaches to any bag D-ring. The gift that earns a bag spot in round 1 — and stays there for years.' },
   { label: 'Alignment Sticks 2-Pack', price: '$24', href: '/golf-training-aids', tag: 'Under $25', why: 'The training tool every instructor uses and almost no golfer owns. Two sticks, 10 minutes at the range — aim and alignment confirmed, not guessed.' },
   { label: 'Cabretta Glove 3-Pack', price: '$32', href: '/golf-gloves', tag: 'Under $35', why: 'Three fresh cabretta gloves — the consumable gift she uses every round and almost never restocks. Pick S for smaller hands, M/ML for average.' },
-  { label: 'Leather Scorecard Holder', price: '$38', href: '/golf-scorecard-holder', tag: 'Under $40', why: 'Full-grain leather, pencil loop, ball marker pocket, engraving-ready front panel. A round-1 compliment from playing partners is essentially guaranteed.' },
+  { label: 'Leather Scorecard Holder', price: '$38', href: '/golf-scorecard-holder', tag: 'Under $40', why: 'Full-grain leather, pencil loop, ball marker pocket, engraving-ready front panel. The kind of small detail that gets noticed in the group.' },
   { label: 'Putting Alignment Mirror', price: '$32', href: '/golf-training-aids', tag: 'Practice Gift', why: 'Eye position, shoulder line, and putter path simultaneously — the same feedback a coach charges $100/hour for. Fits in any bag pocket.' },
   { label: 'GPS Golf Watch', price: '$149', href: '/golf-gps-watch', tag: 'Premium Gift', why: '40,000+ courses, front/middle/back on every hole, shot tracking. The wearable golf gift — no aiming, no carrying a device. Worn every round.' }
 ];

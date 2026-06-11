@@ -11,11 +11,11 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Golf Club Care — Clean Clubs, Better Contact, Longer Lasting Irons | WYX Golf Supply Co.",
-  description: "Golf club care tools that take 10 minutes and extend the life of your clubs by years. Dual-sided brush, microfiber towel, groove cleaner. WYX10 saves 10%.",
+  description: "Golf club care tools that take 10 minutes — a dual-sided brush, microfiber towel, and groove cleaner to keep clubs in good shape. WYX10 saves 10%.",
   alternates: { canonical: '/golf-club-care' },
   openGraph: {
     title: "Golf Club Care | WYX Golf Supply Co.",
-    description: "Clean grooves = clean contact = the spin you paid for. The 10-minute club care routine that extends club life and recovers lost performance.",
+    description: "Clean grooves mean cleaner contact. The 10-minute club care routine for keeping clubs in good shape between rounds.",
     url: '/golf-club-care'
   }
 };
@@ -68,7 +68,7 @@ const whyGrooves = [
   },
   {
     head: 'New Clubs Ship Clean — They Do Not Stay That Way',
-    body: 'After 50-75 rounds without cleaning, groove edges erode with compacted material and normal wear. Regular cleaning extends the performance life of a set of irons by 2-4 seasons.'
+    body: 'After 50-75 rounds without cleaning, groove edges accumulate compacted material and normal wear. Regular cleaning helps keep grooves doing their job for longer.'
   }
 ];
 
@@ -76,7 +76,7 @@ const faqs: [string, string][] = [
   ['How often should I clean my golf clubs?', 'After every round, minimum. During a round — after every iron or wedge shot using a wet towel clipped to the bag. The 10-minute post-round routine (brush, groove cleaner, dry) keeps clubs in new condition indefinitely. Skipping routine cleaning for a full season deposits material that requires soaking and aggressive brushing to remove.'],
   ['Can I use dish soap to clean clubs?', 'Yes — a small amount of mild dish soap in warm water is the standard cleaning solution. Avoid abrasive soaps or anything with bleach. Never use a wire brush on chrome or nickel finishes — it scratches the face. The dual-sided club brush has the correct bristle hardness for both scrubbing (stiff side) and polishing (soft side).'],
   ['Is the club care kit a good gift?', 'The best golf gifts are things a golfer uses but would never buy for themselves. Most golfers own a towel — very few own a dedicated groove cleaning brush and a separate groove tool. The club care kit is the gift that noticeably improves their game without asking them to change their swing.'],
-  ['Does club care extend the life of clubs?', 'Dramatically. Groove corrosion is the primary cause of performance degradation in irons. Carbon steel wedges can lose meaningful groove sharpness in 2-3 seasons without cleaning. Chrome-plated irons are more forgiving but still accumulate residue that affects spin. Regular cleaning with the correct tools is the highest-ROI maintenance action for any set of clubs.']
+  ['Does club care extend the life of clubs?', 'It helps. Groove corrosion and built-up residue are common causes of reduced performance in irons over time, especially on carbon steel wedges. Chrome-plated irons are more forgiving but still accumulate residue. Regular cleaning with the right tools is a simple, low-cost way to keep a set of clubs performing closer to new for longer.']
 ];
 
 const jsonLd = {
@@ -134,8 +134,8 @@ export default async function GolfClubCarePage() {
       <section className="deal-hero">
         <div>
           <p className="eyebrow">Club Care &amp; Maintenance</p>
-          <h1>Golf Club Care. 10 Minutes. Cleaner Grooves. More Spin.</h1>
-          <p>Dirty grooves cost you spin, distance control, and stopping power — not swing flaws. The dual-sided club brush, groove cleaner, and microfiber towel cover every part of the 10-minute post-round routine that extends club life by years.</p>
+          <h1>Golf Club Care. 10 Minutes. Cleaner Grooves.</h1>
+          <p>Dirt and grass packed into the grooves can affect spin, distance control, and stopping power. The dual-sided club brush, groove cleaner, and microfiber towel cover the 10-minute post-round routine for keeping clubs in good shape.</p>
           <div className="actions">
             <Link className="button primary" href="#care-grid">Shop Club Care Tools</Link>
             <Link className="button secondary dark" href="/journal/how-to-clean-golf-clubs">Read the Cleaning Guide &rarr;</Link>
@@ -156,13 +156,13 @@ export default async function GolfClubCarePage() {
         <span>10-minute post-round routine</span>
         <span>Dual-sided stiff + soft brush</span>
         <span>Groove cleaner tool included</span>
-        <span>Extends club life 2-4 seasons</span>
+        <span>Use WYX10 for 10% off</span>
       </section>
 
       <section className="section reveal" aria-labelledby="why-heading">
         <div className="section-heading">
           <p className="eyebrow">Why It Matters</p>
-          <h2 id="why-heading">Why Clean Grooves Change Your Game.</h2>
+          <h2 id="why-heading">Why Clean Grooves Matter.</h2>
         </div>
         <div className="care-step-grid">
           {whyGrooves.map((item) => (
