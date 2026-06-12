@@ -16,7 +16,7 @@ export const posts = [
       ['The Non-Negotiables', 'A clip-on microfiber towel (your rental cart will not have one), a tee holder loaded before you fly, a ball marker that lives on a hat clip so it cannot get lost in someone else’s cart, and one extra glove. These four cover most mid-round annoyances and all of them pack flat.'],
       ['The Trip-Saver Tier', 'Rain gloves weigh nothing and turn the one wet round from miserable to playable. A ball retriever collapses to fit a travel bag side pocket and pays for itself on the first water-lined course. A groove brush keeps your irons honest on day two when nobody is wiping faces between shots.'],
       ['Keep The Valuables In One Place', 'Wallet, phone, watch, room key, and cash for side bets end up loose in a cart cubby unless they have a dedicated pouch. One zippered valuables pouch in the bag means nothing gets left in the cart at the turn.'],
-      ['The One-Order Version', 'If you want the whole list handled at once, the Weekend Golfer’s Bag Upgrade Kit covers the towel, marker, tee holder, groove brush, and accessory caddie in a single order — and WYX10 takes 10% off the first one. Browse the golf trip gear page for the rain and retriever add-ons.'],
+      ['The One-Order Version', 'If you want the whole list handled at once, the Weekend Golfer’s Bag Upgrade Kit covers the towel, marker, grip refresh, groove sharpener, and accessory caddie in a single order — and WYX10 takes 10% off the first one. Browse the golf trip gear page for the rain and retriever add-ons.'],
       ['What To Leave Home', 'Training aids, the backup putter, and anything that needs explaining at TSA. A buddies trip rewards light bags and fast mornings.']
     ]
   },
@@ -24,7 +24,7 @@ export const posts = [
     slug: 'bag-upgrade-kit-guide',
     title: 'The 5-Piece Bag Upgrade: The Golf Gift That Always Fits',
     seo: 'The 5-Piece Golf Bag Upgrade Kit — A Gift Guide | WYX Golf Supply Co.',
-    description: 'Why a 5-piece bag upgrade kit (towel, marker, tee holder, groove brush, caddie) is the safest golf gift for dads, husbands, and golf buddies — no sizes, no guessing.',
+    description: 'Why a 5-piece bag upgrade kit (towel, marker, grip refresh, groove sharpener, caddie) is the safest golf gift for dads, husbands, and golf buddies — no sizes, no guessing.',
     image: imageMap.care,
     sections: [
       ['The Problem With Golf Gifts', 'Most golf gifts fail one of two ways: they need a size (apparel, gloves, shoes) or they need a skill level (clubs, training aids, balls he may not play). The drawer full of novelty headcovers exists because buying for a golfer feels like guessing.'],

@@ -56,7 +56,7 @@ export default async function KitsHubPage() {
             <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit">Get The Kit</Link>
           </div>
         </div>
-        <p>Five practical pieces that fix the small annoyances every weekend bag has — towel, marker, tee holder, groove brush, and accessory caddie. All confirmed in stock, all under one order, WYX10 takes 10% off.</p>
+        <p>Five practical pieces that fix the small annoyances every weekend bag has — towel, marker, grip refresh, groove sharpener, and accessory caddie. All confirmed in stock, all under one order, WYX10 takes 10% off.</p>
       </section>
 
       {kits.map(({ kit, products }) => (

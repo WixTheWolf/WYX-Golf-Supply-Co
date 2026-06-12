@@ -11,7 +11,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
-  description: "In-stock pieces that fix the small annoyances every weekend golf bag has — a towel, a marker, a grip refresh, a groove brush, and an accessory caddie. Use WYX10 for 10% off.",
+  description: "In-stock pieces that fix the small annoyances every weekend golf bag has — a towel, a marker, a grip refresh, a groove sharpener, and an accessory caddie. Use WYX10 for 10% off.",
   alternates: { canonical: '/weekend-golfer-bag-upgrade-kit' },
   openGraph: {
     title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
@@ -24,7 +24,7 @@ const KIT_HANDLES = [
   'tri-fold-microfiber-golf-towel',
   'three-rail-ball-marker',
   'pulse-golf-overgrip-tape',
-  'dual-sided-golf-club-brush-groove-pick',
+  'groove-sharpener-cleaner-tool',
   'glove-accessory-caddie-gray'
 ];
 
@@ -32,7 +32,7 @@ const itemNotes: Record<string, string> = {
   'tri-fold-microfiber-golf-towel': 'Clips to the bag and handles club faces, balls, and grips between shots.',
   'three-rail-ball-marker': "A marker that's easy to find in a pocket and easy to set down on the green.",
   'pulse-golf-overgrip-tape': 'An easy at-home grip refresh for clubs that have gone slick since last season.',
-  'dual-sided-golf-club-brush-groove-pick': 'A brush on one side, a groove pick on the other. Clean faces between shots without damaging the club.',
+  'groove-sharpener-cleaner-tool': 'Restores clean grooves on wedges and irons so the face grips the ball the way it should.',
   'glove-accessory-caddie-gray': 'A dedicated spot for gloves, tees, and the small stuff that usually ends up loose in the bottom pocket.'
 };
 
@@ -152,7 +152,7 @@ export default async function BagUpgradeKitPage() {
       <section className="page-hero compact">
         <p className="eyebrow">The Core Offer</p>
         <h1>The Weekend Golfer&apos;s Bag Upgrade Kit</h1>
-        <p>A practical golf gift kit built around gear he&apos;ll actually keep in the bag — a clean towel, a marker that doesn&apos;t get lost, an at-home grip refresh, a groove brush, and a place for the small stuff that always ends up loose in the bottom pocket.</p>
+        <p>A practical golf gift kit built around gear he&apos;ll actually keep in the bag — a clean towel, a marker that doesn&apos;t get lost, an at-home grip refresh, a groove sharpener, and a place for the small stuff that always ends up loose in the bottom pocket.</p>
         <div className="intent-proof-grid" aria-label="Kit benefits">
           <span>{products.length} of {KIT_HANDLES.length} items confirmed in stock</span>
           <span>WYX10 saves 10%</span>
