@@ -706,3 +706,154 @@ p { margin: 0.45rem 0 1rem; color: var(--muted); }
   .site-footer { flex-direction: column; }
   .site-footer nav { justify-content: flex-start; }
 }
+
+/* ============================================================
+   Cinematic motion layer
+   ============================================================ */
+
+/* --- Hero intro: Ken Burns drift + staged copy rise --- */
+
+.hero img {
+  animation: hero-drift 11s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform;
+}
+
+@keyframes hero-drift {
+  from { transform: scale(1.12) translateY(-1.5%); }
+  to { transform: scale(1.02) translateY(0); }
+}
+
+.hero-copy > * {
+  animation: rise-in 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-copy > *:nth-child(1) { animation-delay: 0.15s; }
+.hero-copy > *:nth-child(2) { animation-delay: 0.3s; }
+.hero-copy > *:nth-child(3) { animation-delay: 0.45s; }
+.hero-copy > *:nth-child(4) { animation-delay: 0.6s; }
+.hero-copy > *:nth-child(5) { animation-delay: 0.78s; }
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(26px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* --- 3D tilt + gold glare on product cards (vars set by motion engine) --- */
+
+.product-grid,
+.editorial-product-grid,
+.store-grid { perspective: 1100px; }
+
+.product-card,
+.editorial-product-card {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+  transform-style: preserve-3d;
+  transition:
+    transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.34s ease;
+}
+
+.product-card:hover,
+.editorial-product-card:hover { --lift: -5px; }
+
+.product-image-link::after,
+.editorial-image-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(220, 191, 114, 0.22), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.product-card:hover .product-image-link::after,
+.editorial-product-card:hover .editorial-image-link::after { opacity: 1; }
+
+/* --- Staggered cascade when a revealed section contains a grid --- */
+
+.reveal .product-card,
+.reveal .editorial-product-card,
+.reveal .category-grid > a,
+.reveal .care-step {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.reveal.is-revealed .product-card,
+.reveal.is-revealed .editorial-product-card,
+.reveal.is-revealed .category-grid > a,
+.reveal.is-revealed .care-step {
+  animation: card-rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal.is-revealed :is(.product-card, .editorial-product-card, .category-grid > a, .care-step):nth-child(2) { animation-delay: 0.07s; }
+.reveal.is-revealed :is(.product-card, .editorial-product-card, .category-grid > a, .care-step):nth-child(3) { animation-delay: 0.14s; }
+.reveal.is-revealed :is(.product-card, .editorial-product-card, .category-grid > a, .care-step):nth-child(4) { animation-delay: 0.21s; }
+.reveal.is-revealed :is(.product-card, .editorial-product-card, .category-grid > a, .care-step):nth-child(5) { animation-delay: 0.28s; }
+.reveal.is-revealed :is(.product-card, .editorial-product-card, .category-grid > a, .care-step):nth-child(6) { animation-delay: 0.35s; }
+
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Gold sheen sweep across primary CTAs --- */
+
+.button.primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.button.primary::after {
+  content: "";
+  position: absolute;
+  inset: -40% auto;
+  left: -70%;
+  width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(255, 252, 242, 0.55), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.button.primary:hover::after { left: 135%; }
+
+/* --- Proof chips: gentle float on the hero --- */
+
+.hero-proof span {
+  animation: rise-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-proof span:nth-child(1) { animation-delay: 0.85s; }
+.hero-proof span:nth-child(2) { animation-delay: 0.95s; }
+.hero-proof span:nth-child(3) { animation-delay: 1.05s; }
+.hero-proof span:nth-child(4) { animation-delay: 1.15s; }
+
+/* --- Motion safety: everything above collapses to static --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero img,
+  .hero-copy > *,
+  .hero-proof span { animation: none; }
+
+  .product-card,
+  .editorial-product-card {
+    transform: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .reveal .product-card,
+  .reveal .editorial-product-card,
+  .reveal .category-grid > a,
+  .reveal .care-step {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .reveal.is-revealed :is(.product-card, .editorial-product-card, .category-grid > a, .care-step) { animation: none; }
+
+  .button.primary::after { display: none; }
+}
