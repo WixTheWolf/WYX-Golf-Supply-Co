@@ -182,14 +182,17 @@ const collectionPlans = [
 ];
 
 function reshape(product: any): AdminProduct {
+  const variants = (product.variants?.edges || []).map((edge: any) => ({
+    ...edge.node,
+    price: { amount: edge.node.price, currencyCode: product.priceRange.minVariantPrice.currencyCode }
+  }));
   return {
     ...product,
-    availableForSale: product.status === 'ACTIVE' && product.totalInventory > 0,
+    // Variant availableForSale respects the CONTINUE selling policy — dropship
+    // SKUs legitimately sit at totalInventory 0 while remaining sellable.
+    availableForSale: product.status === 'ACTIVE' && variants.some((variant: { availableForSale: boolean }) => variant.availableForSale),
     images: (product.images?.edges || []).map((edge: any) => edge.node),
-    variants: (product.variants?.edges || []).map((edge: any) => ({
-      ...edge.node,
-      price: { amount: edge.node.price, currencyCode: product.priceRange.minVariantPrice.currencyCode }
-    }))
+    variants
   };
 }
 
@@ -224,6 +227,41 @@ function labelsFor(product: AdminProduct) {
   };
 }
 
+const KIT_ELIGIBLE_TERMS = /towel|ball marker|tee holder|tee pack|groove|brush|caddie|pouch|divot/i;
+const TRIP_GEAR_TERMS = /travel|trip|rain|retriever|arm sleeve|sunglasses|organizer|shoe bag/i;
+const SCRAMBLE_TERMS = /marker|towel|flask|balls|tee|divot|prize|koozie|drink/i;
+const DAD_GIFT_TERMS = /dad|father|towel|marker|glove|grip|ball|headcover|brush|caddie/i;
+const BACHELOR_TERMS = /flask|prank|funny|camo|party|beer|drink|koozie|balls/i;
+const BAG_UPGRADE_CATEGORIES = ['Accessories', 'Grips', 'Towels', 'Club Care'];
+
+/**
+ * Merchandising taxonomy (Phase 12). Each entry returns [tag, reason] when it
+ * applies — reasons surface in the dry-run output so changes are reviewable.
+ */
+function merchandisingTags(product: AdminProduct): Array<[tag: string, reason: string]> {
+  const price = minPrice(product);
+  const category = categoryFor(product);
+  const text = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`;
+  const out: Array<[string, string]> = [];
+
+  const hasRealMedia = Boolean(product.featuredImage?.url || product.images?.length);
+  const inStock = product.status === 'ACTIVE' && (product.totalInventory == null || product.totalInventory > 0);
+
+  if (hasRealMedia && inStock && price > 0 && price <= 150) out.push(['bag-test-approved', 'active, real media, sane price — passes the Bag Test gates']);
+  if (price > 0 && price <= 60) out.push(['under-60', `min price $${price.toFixed(2)} is at or under $60`], ['giftable', 'gift-flow price point']);
+  if (price > 60) out.push(['premium', `min price $${price.toFixed(2)} exceeds the $60 gift ceiling`]);
+  if (DAD_GIFT_TERMS.test(text) && price <= 100) out.push(['dad-gift', 'matches dad-gift terms within price band']);
+  if (TRIP_GEAR_TERMS.test(text)) out.push(['trip-gear', 'matches travel/trip term set']);
+  if (BACHELOR_TERMS.test(text) && price <= 75) out.push(['bachelor-party', 'matches group/party term set under $75']);
+  if (SCRAMBLE_TERMS.test(text) && price <= 75) out.push(['scramble-prize', 'prize-table fit under $75']);
+  if (BAG_UPGRADE_CATEGORIES.includes(category)) out.push(['bag-upgrade', `category ${category} is a bag-upgrade lane`]);
+  if (KIT_ELIGIBLE_TERMS.test(text) && price <= 30) out.push(['kit-eligible', 'kit-component term match at kit price point']);
+  if (!hasRealMedia) out.push(['needs-review', 'no product media'], ['hide-from-featured', 'cannot feature without real images']);
+  if (price > 250) out.push(['hide-from-featured', `min price $${price.toFixed(2)} exceeds $250 featured ceiling`]);
+
+  return out;
+}
+
 function tagsFor(product: AdminProduct) {
   const labels = labelsFor(product);
   return Array.from(new Set([
@@ -233,7 +271,8 @@ function tagsFor(product: AdminProduct) {
     'wyx-buy-today',
     `wyx-category:${labels.category.toLowerCase().replaceAll(' ', '-')}`,
     `wyx-price:${labels.priceTier}`,
-    `wyx-conversion:${labels.conversionType}`
+    `wyx-conversion:${labels.conversionType}`,
+    ...merchandisingTags(product).map(([tag]) => tag)
   ]));
 }
 
@@ -242,14 +281,23 @@ function missingTags(product: AdminProduct) {
   return tagsFor(product).filter((tag) => !existing.has(tag));
 }
 
+/** Tag adds are additive and reversible; visibility-affecting tags get flagged for review. */
+function riskFor(tagsToAdd: string[]) {
+  if (tagsToAdd.some((tag) => tag === 'hide-from-featured' || tag === 'needs-review')) return 'review' as const;
+  return 'safe' as const;
+}
+
 async function updateProductMarketing(product: AdminProduct, apply: boolean) {
   const tagsToAdd = missingTags(product);
+  const reasons = Object.fromEntries(merchandisingTags(product).filter(([tag]) => tagsToAdd.includes(tag)));
   if (!apply) {
     return {
       title: product.title,
       handle: product.handle,
       action: tagsToAdd.length ? 'would-update-product-seo-tags' : 'would-refresh-product-seo',
       tagsToAdd,
+      reasons,
+      risk: riskFor(tagsToAdd),
       seo: seoFor(product)
     };
   }
