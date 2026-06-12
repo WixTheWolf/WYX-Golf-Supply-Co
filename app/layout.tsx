@@ -1,40 +1,71 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Fraunces, DM_Sans } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { ScrollRevealInit } from '@/components/ScrollRevealInit';
 import './globals.css';
-import './promo.css';
-import './kits.css';
-import './seo-commerce.css';
-import './seo-commerce-2.css';
+import './store.css';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
 import { TrackingScripts } from '@/components/TrackingScripts';
 import { supportEmail } from '@/lib/support';
 
-const displayFont = Fraunces({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
-const sansFont = DM_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
   applicationName: 'WYX Golf Supply Co.',
-  title: { default: 'WYX Golf Supply Co. | Golf Gifts, Hats, Apparel & Bag Gear', template: '%s | WYX Golf Supply Co.' },
-  description: 'Shop curated golf gifts, hats, apparel, trip gear, golf accessories, and bag upgrades for weekend golfers, dads, bachelor parties, scramble teams, and golf trips.',
-  keywords: ['golf gifts', 'golf trip gear', 'golf hats', 'golf apparel', 'golf gifts under 60', 'golf dad gifts', 'bachelor party golf gifts', 'golf bag upgrades', 'golf towels', 'golf ball markers', 'golf accessories'],
+  title: { default: 'WYX Golf Supply Co. | Golf Hats, Apparel, Tech & Practice Gear', template: '%s | WYX Golf Supply Co.' },
+  description: 'Curated golf hats, apparel, tech, practice gear, and swing correction tools for weekend players.',
+  keywords: ['golf hats', 'golf apparel', 'golf tech', 'golf training aids', 'swing correction', 'golf gifts', 'golf accessories'],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   openGraph: {
     siteName: 'WYX Golf Supply Co.',
     type: 'website',
     url: 'https://wyxgolfsupply.com',
-    title: 'WYX Golf Supply Co. | Golf Gifts, Hats, Apparel & Bag Gear',
-    description: 'Useful, gift-ready golf gear for the boys, the trip, and the bag.',
-    images: [{ url: '/images/hero-coastal-fairway.png', width: 1200, height: 630, alt: 'WYX Golf Supply Co. curated golf gear' }]
+    title: 'WYX Golf Supply Co.',
+    description: 'Golf hats, apparel, tech, practice gear, and swing correction — curated and organized.',
+    images: [{ url: '/images/hero-coastal-fairway.png', width: 1200, height: 630, alt: 'WYX Golf Supply Co.' }]
   },
-  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co.', description: 'Curated golf gifts, trip gear, hats, apparel, and bag upgrades.', images: ['/images/hero-coastal-fairway.png'] }
+  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co.', description: 'Curated golf hats, apparel, tech, and practice gear.', images: ['/images/hero-coastal-fairway.png'] }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en" className={`${displayFont.variable} ${sansFont.variable}`}><body><a className="skip-link" href="#main-content">Skip to main content</a><ScrollRevealInit /><SeoJsonLd /><TrackingScripts /><CartProvider><Header /><main id="main-content">{children}</main><footer className="site-footer"><div><Link className="footer-brand" href="/">WYX <span>Golf Co.</span></Link><p>Golf gifts, hats, apparel, trip kits, and bag gear with personality.</p><p className="footer-note">Use <strong>WYX10</strong> at checkout for 10% off your first order.</p><p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p></div><nav aria-label="Footer navigation"><Link href="/hidden-gems">Hidden Gems</Link><Link href="/golf-gifts">Golf Gifts</Link><Link href="/golf-trip-gear">Trip Gear</Link><Link href="/products?category=Headwear">Hats</Link><Link href="/products?category=Apparel">Apparel</Link><Link href="/bag-upgrades">Bag Upgrades</Link><Link href="/kits/dad-gift-kit">Dad Kit</Link><Link href="/kits/golf-trip-kit">Trip Kit</Link><Link href="/golf-gifts-for-dad">Dad Gifts</Link></nav><nav aria-label="Company navigation"><Link href="/about">About</Link><Link href="/story">Our Story</Link><Link href="/journal">Journal</Link><Link href="/faq">FAQ</Link><Link href="/shipping-returns">Shipping &amp; Returns</Link><Link href="/contact">Contact</Link><Link href="/privacy">Privacy</Link></nav></footer></CartProvider></body></html>;
+  return (
+    <html lang="en" className={sansFont.variable}>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to main content</a>
+        <ScrollRevealInit />
+        <SeoJsonLd />
+        <TrackingScripts />
+        <CartProvider>
+          <Header />
+          <main id="main-content">{children}</main>
+          <footer className="site-footer">
+            <div>
+              <Link className="footer-brand" href="/">WYX <span>Golf Co.</span></Link>
+              <p>Curated golf hats, apparel, tech, practice gear, and swing correction.</p>
+              <p className="footer-note">Use <strong>WYX10</strong> for 10% off your first order.</p>
+              <p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>
+            </div>
+            <nav aria-label="Footer navigation">
+              <Link href="/golf-hats">Hats</Link>
+              <Link href="/golf-apparel">Apparel</Link>
+              <Link href="/golf-tech">Tech</Link>
+              <Link href="/golf-training-aids">Practice</Link>
+              <Link href="/swing-correction">Swing</Link>
+              <Link href="/products">Shop</Link>
+            </nav>
+            <nav aria-label="Company navigation">
+              <Link href="/shipping-returns">Shipping</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/contact">Contact</Link>
+              <Link href="/privacy">Privacy</Link>
+            </nav>
+          </footer>
+        </CartProvider>
+      </body>
+    </html>
+  );
 }

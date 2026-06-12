@@ -700,5 +700,115 @@ export const directProducts: DirectProduct[] = [
     tags: ['golf sunglasses', 'polarized golf sunglasses', 'golf accessories', 'golf gifts', 'golf tech', 'under $50', 'direct-catalog', 'wyx-curated'],
     imageUrl: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1200&h=900&fit=crop&q=80',
     imageAlt: 'Polarized sport wrap golf sunglasses on a player'
+  },
+  {
+    title: 'Wide Brim Golf Sun Hat — UPF 50+',
+    handle: 'wide-brim-golf-sun-hat-upf50',
+    price: '36.00',
+    productType: 'Headwear',
+    collectionHandle: 'hats',
+    description: 'A lightweight wide-brim golf sun hat with UPF 50+ coverage, breathable nylon shell, and an adjustable chin cord for windy tee boxes.',
+    details: [
+      'UPF 50+ brim coverage for ears, neck, and face',
+      'Lightweight nylon shell with mesh sweatband',
+      'Adjustable chin cord keeps the hat stable in cart wind',
+      'Packable crown folds without losing shape',
+      'Neutral course-ready colors for any dress code'
+    ],
+    materials: 'Nylon shell with mesh sweatband and adjustable cord.',
+    care: 'Hand wash cold, air dry. Do not machine dry.',
+    seoTitle: 'Wide Brim Golf Sun Hat UPF 50+ | WYX Golf Supply Co.',
+    metaDescription: 'Wide-brim golf sun hat with UPF 50+ protection, breathable shell, and adjustable chin cord. Maximum sun coverage for summer rounds. Under $40.',
+    tags: ['golf hat', 'wide brim hat', 'sun hat', 'headwear', 'wyx-category:headwear', 'golf gifts', 'under $40', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Wide brim golf sun hat on course'
+  },
+  {
+    title: 'Classic Rope Golf Hat — Coastal Trim',
+    handle: 'classic-rope-golf-hat-coastal',
+    price: '32.00',
+    productType: 'Headwear',
+    collectionHandle: 'hats',
+    description: 'A structured rope-trim golf hat with a mid-crown profile, moisture-wicking sweatband, and adjustable back closure.',
+    details: [
+      'Contrast rope brim detail with clean course-ready profile',
+      'Moisture-wicking sweatband for warm-weather rounds',
+      'Adjustable closure fits most head sizes',
+      'Structured crown holds shape through a full season',
+      'Pairs with polos, quarter-zips, and weekend trip gear'
+    ],
+    materials: 'Cotton-poly blend crown with rope brim trim.',
+    care: 'Hand wash cold, air dry.',
+    seoTitle: 'Classic Rope Golf Hat | Coastal Trim | WYX Golf Supply Co.',
+    metaDescription: 'Classic rope-trim golf hat with moisture-wicking sweatband and adjustable fit. Course-ready style under $35.',
+    tags: ['golf hat', 'rope hat', 'golf cap', 'headwear', 'wyx-category:headwear', 'golf gifts', 'under $35', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Classic rope trim golf hat'
+  },
+  {
+    title: 'Unstructured Dad Golf Cap — Soft Crown',
+    handle: 'unstructured-dad-golf-cap-soft-crown',
+    price: '28.00',
+    productType: 'Headwear',
+    collectionHandle: 'hats',
+    description: 'An unstructured dad cap with a soft crown, pre-curved brim, and low-profile fit for everyday rounds and post-round errands.',
+    details: [
+      'Soft unstructured crown for a relaxed everyday fit',
+      'Pre-curved brim with clean minimal front panel',
+      'Adjustable strapback closure',
+      'Lightweight cotton twill for all-day comfort',
+      'Easy gift with low sizing risk'
+    ],
+    materials: 'Cotton twill crown with adjustable strap.',
+    care: 'Hand wash cold, air dry.',
+    seoTitle: 'Unstructured Dad Golf Cap | Soft Crown | WYX Golf Supply Co.',
+    metaDescription: 'Unstructured dad golf cap with soft crown, pre-curved brim, and adjustable strapback. Easy everyday course style under $30.',
+    tags: ['golf hat', 'dad cap', 'unstructured cap', 'headwear', 'wyx-category:headwear', 'golf gifts', 'under $30', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1575428652377-a8d9c1ca0d57?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Unstructured dad golf cap'
+  },
+  {
+    title: 'Performance Snapback Golf Hat — Clean Mark',
+    handle: 'performance-snapback-golf-hat-clean-mark',
+    price: '30.00',
+    productType: 'Headwear',
+    collectionHandle: 'hats',
+    description: 'A performance snapback golf hat with a flat brim option, breathable panels, and a structured profile for players who want a sharper course look.',
+    details: [
+      'Structured 6-panel crown with breathable eyelets',
+      'Snapback closure for quick fit adjustments',
+      'Moisture-wicking inner band',
+      'Clean front panel with minimal branding',
+      'Works for range sessions, trips, and weekend rounds'
+    ],
+    materials: 'Polyester performance fabric with cotton sweatband.',
+    care: 'Spot clean or hand wash cold, air dry.',
+    seoTitle: 'Performance Snapback Golf Hat | WYX Golf Supply Co.',
+    metaDescription: 'Performance snapback golf hat with breathable panels, moisture-wicking band, and structured fit. Under $35.',
+    tags: ['golf hat', 'snapback', 'golf cap', 'headwear', 'wyx-category:headwear', 'golf gifts', 'under $35', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&h=900&fit=crop&q=80',
+    imageAlt: 'Performance snapback golf hat'
+  },
+  {
+    title: 'Golf Alignment Sticks — 2-Pack Fiberglass',
+    handle: 'golf-alignment-sticks-2-pack-fiberglass',
+    price: '24.00',
+    productType: 'Training Aids',
+    collectionHandle: 'golf-training-aids',
+    description: 'A pair of 48-inch fiberglass alignment sticks for stance, ball position, and target-line setup at the range or in the backyard.',
+    details: [
+      'Two 48-inch sticks for target line and ball position',
+      'Fiberglass shaft with protective end caps',
+      'Fits in most bag pockets or clips to the bag exterior',
+      'Works for full swing, chip, and putting alignment',
+      'The fastest training upgrade for weekend players'
+    ],
+    materials: 'Fiberglass shafts with rubber end caps.',
+    care: 'Wipe clean and store flat or clipped to the bag.',
+    seoTitle: 'Golf Alignment Sticks 2-Pack | Fiberglass | WYX Golf Supply Co.',
+    metaDescription: 'Fiberglass golf alignment sticks for stance, ball position, and target-line practice. 2-pack under $25.',
+    tags: ['alignment sticks', 'swing correction', 'training aid', 'wyx-category:training aids', 'golf practice', 'under $25', 'direct-catalog', 'wyx-curated'],
+    imageUrl: 'https://ae-pic-a1.aliexpress-media.com/kf/S27437703cbdb40b7835f06b957d7578eI.jpg_480x480q75.jpg',
+    imageAlt: 'Golf alignment sticks on practice range'
   }
 ];

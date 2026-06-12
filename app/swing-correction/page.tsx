@@ -10,21 +10,21 @@ import { getProducts } from '@/lib/shopify/products';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Practice Gear',
-  description: 'Putting mats, chipping nets, and backyard practice tools. WYX10 saves 10%.',
-  alternates: { canonical: '/golf-training-aids' }
+  title: 'Swing Correction | Alignment, Tempo & Path Training',
+  description: 'Swing correction tools for weekend golfers — divot boards, alignment mirrors, tempo trainers, and alignment sticks. WYX10 saves 10%.',
+  alternates: { canonical: '/swing-correction' }
 };
 
-export default async function GolfTrainingAidsPage() {
+export default async function SwingCorrectionPage() {
   const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
-  const products = departmentProducts(catalog, 'Practice Gear');
+  const products = departmentProducts(catalog, 'Swing Correction');
 
   return (
     <>
       <section className="page-hero compact">
-        <p className="eyebrow">Practice Gear</p>
-        <h1>Repetition that sticks.</h1>
-        <p>Putting mats, chipping nets, portable cups, and backyard tools for real at-home practice.</p>
+        <p className="eyebrow">Swing Correction</p>
+        <h1>Train the pattern, not the guess.</h1>
+        <p>Alignment mirrors, divot boards, tempo trainers, and setup tools that give you immediate feedback between range sessions.</p>
       </section>
 
       <section className="section product-section">
@@ -35,11 +35,11 @@ export default async function GolfTrainingAidsPage() {
             ))}
           </div>
         ) : (
-          <p>Practice gear is publishing now. Check back for putting mats, chipping nets, and portable trainers.</p>
+          <p>No swing correction products are live yet. Check back after the next catalog drop.</p>
         )}
         <div className="actions">
-          <Link className="button secondary" href="/swing-correction">Swing correction</Link>
-          <Link className="button primary" href="/products?category=Training%20Aids">All training aids</Link>
+          <Link className="button secondary" href="/golf-training-aids">Practice gear</Link>
+          <Link className="button primary" href="/products">Shop all</Link>
         </div>
       </section>
     </>

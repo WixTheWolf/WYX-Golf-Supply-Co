@@ -18,8 +18,47 @@ const rules: Array<[Exclude<(typeof catalogCategories)[number], 'All'>, string[]
 
 type ClassifiableProduct = Pick<Product, 'title' | 'productType' | 'vendor' | 'tags'>;
 
+const productTypeCategoryMap: Record<string, Exclude<(typeof catalogCategories)[number], 'All'>> = {
+  headwear: 'Headwear',
+  hats: 'Headwear',
+  hat: 'Headwear',
+  cap: 'Headwear',
+  apparel: 'Apparel',
+  'golf belt': 'Apparel',
+  belt: 'Apparel',
+  gloves: 'Gloves',
+  glove: 'Gloves',
+  grips: 'Grips',
+  grip: 'Grips',
+  towels: 'Towels',
+  towel: 'Towels',
+  'training aids': 'Training Aids',
+  'training aid': 'Training Aids',
+  'golf tech': 'Golf Tech',
+  'club care': 'Club Care',
+  accessories: 'Accessories',
+  accessory: 'Accessories',
+  'golf balls': 'Golf Balls',
+  'golf ball': 'Golf Balls'
+};
+
 function searchable(product: ClassifiableProduct) {
   return [product.title, product.productType, product.vendor, ...(product.tags || [])].filter(Boolean).join(' ').toLowerCase();
+}
+
+function tagCategory(product: ClassifiableProduct) {
+  const tags = (product.tags || []).map((tag) => tag.toLowerCase());
+  const mapped = tags
+    .map((tag) => tag.replace(/^wyx-category:/, '').trim())
+    .map((tag) => productTypeCategoryMap[tag])
+    .find(Boolean);
+  return mapped;
+}
+
+function typeCategory(product: ClassifiableProduct) {
+  const type = product.productType?.trim().toLowerCase();
+  if (!type) return undefined;
+  return productTypeCategoryMap[type];
 }
 
 const blockedPublicVendors = new Set([
@@ -49,9 +88,23 @@ function passesPublicCatalogGate(product: Product) {
 }
 
 export function categoryFor(product: ClassifiableProduct) {
+  const fromTag = tagCategory(product);
+  if (fromTag) return fromTag;
+
+  const fromType = typeCategory(product);
+  if (fromType) return fromType;
+
   const content = searchable(product);
-  if (content.includes('ball retriever') || content.includes('ball marker') || content.includes('accessory caddie') || content.includes('divot') || content.includes('headcover')) return 'Accessories';
-  return rules.find(([, words]) => words.some((word) => content.includes(word)))?.[0] || 'Accessories';
+
+  if (content.includes('ball retriever')) return 'Accessories';
+  if (content.includes('ball marker') || content.includes('hat clip ball marker')) return 'Accessories';
+  if (content.includes('accessory caddie') || content.includes('headcover')) return 'Accessories';
+  if (content.includes('divot tool') || (content.includes('divot') && !content.includes('divot board'))) return 'Accessories';
+
+  if (/hat clip/i.test(content) && !/hat|cap|headwear/i.test(content)) return 'Accessories';
+
+  const matched = rules.find(([, words]) => words.some((word) => content.includes(word)));
+  return matched?.[0] || 'Accessories';
 }
 
 export function matchesCategory(product: ClassifiableProduct, category?: string) {
