@@ -200,7 +200,7 @@ export default async function Home() {
             <Link className="button secondary dark" href="/bag-upgrades">Shop Bag Upgrades</Link>
           </div>
         </div>
-        <p>Five practical pieces that fix the small annoyances every weekend bag has — a clean towel, a marker that does not get lost, a tee holder that clips on, a groove brush, and a place for the small stuff that always ends up loose in the bottom pocket. Built only from gear that is in stock right now. Use WYX10 for 10% off.</p>
+        <p>Five practical pieces that fix the small annoyances every weekend bag has — a clean towel, a marker that does not get lost, an at-home grip refresh, a groove brush, and a place for the small stuff that always ends up loose in the bottom pocket. Built only from gear that is in stock right now. Use WYX10 for 10% off.</p>
       </section>
 
       <section className="dark-section reveal" aria-labelledby="not-a-golfer-heading">
@@ -346,7 +346,7 @@ export default async function Home() {
         mainEntity: [
           { '@type': 'Question', name: 'What is The Bag Test?', acceptedAnswer: { '@type': 'Answer', text: 'The Bag Test is the standard WYX uses to decide what makes the catalog: would a weekend golfer keep this item in their bag after the first round? If the answer is no, the product is not listed.' } },
           { '@type': 'Question', name: 'What are the best golf gifts under $60?', acceptedAnswer: { '@type': 'Answer', text: 'The best golf gifts under $60 include golf gloves, golf balls, alignment sticks, ball markers, golf towels, scorecard holders, and magnetic hat clips. WYX Golf Supply Co. carries all of these with a 10% first-order discount with code WYX10.' } },
-          { '@type': 'Question', name: 'What is in the Weekend Golfer’s Bag Upgrade Kit?', acceptedAnswer: { '@type': 'Answer', text: 'The Weekend Golfer’s Bag Upgrade Kit is built from currently in-stock gear that solves common bag annoyances: a microfiber towel, a ball marker, a clip-on tee holder, a club groove brush, and a small accessory caddie. Every item is confirmed in stock before it is included.' } }
+          { '@type': 'Question', name: 'What is in the Weekend Golfer’s Bag Upgrade Kit?', acceptedAnswer: { '@type': 'Answer', text: 'The Weekend Golfer’s Bag Upgrade Kit is built from currently in-stock gear that solves common bag annoyances: a microfiber towel, a ball marker, an at-home grip refresh, a club groove brush, and a small accessory caddie. Every item is confirmed in stock before it is included.' } }
         ]
       }) }} />
     </>

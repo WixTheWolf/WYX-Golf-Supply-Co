@@ -934,3 +934,24 @@ p { margin: 0.45rem 0 1rem; color: var(--muted); }
 .urgency-strip strong { color: var(--gold-bright); letter-spacing: 0.08em; text-transform: uppercase; }
 .urgency-strip a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 3px; }
 .urgency-strip a:hover { color: var(--paper); }
+
+/* --- Benefit chips (kit/intent pages; styles previously lived in a
+       per-page stylesheet and rendered as a run-on line elsewhere) --- */
+.intent-proof-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.intent-proof-grid span {
+  padding: 0.45rem 0.75rem;
+  background: var(--paper);
+  border: 1px solid rgba(200, 168, 87, 0.4);
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pine);
+}

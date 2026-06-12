@@ -48,7 +48,13 @@ export function hasMisleadingProductMedia(product: Product) {
  * (e.g. a WYX-vendor product whose featured image shows an unrelated item).
  * Reviewed via direct CDN image inspection.
  */
-const knownImageMismatchHandles = new Set<string>();
+const knownImageMismatchHandles = new Set<string>([
+  // Both tee products carry the same supplier photo of ALIGNMENT STICKS
+  // (verified by direct CDN inspection 2026-06-12). Hidden until a correct
+  // product image is attached in Shopify.
+  'golf-tee-holder-bag-clip-10-tee',
+  'golf-tee-dispenser-holder-50-tees'
+]);
 
 export function hasKnownImageMismatch(product: Product) {
   if (knownImageMismatchHandles.has(product.handle)) return true;
