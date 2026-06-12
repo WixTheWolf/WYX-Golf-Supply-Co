@@ -92,8 +92,22 @@ function dadGiftScore(product: Awaited<ReturnType<typeof getProducts>>[number]) 
 
 export default async function GolfGiftsForDadPage() {
   const allProducts = availableProducts(await getProducts());
+  // Cap near-duplicates (e.g. three towels in the top row) so the page reads
+  // like a curated gift table, not a category dump.
+  const seenKinds = new Map<string, number>();
+  const kindOf = (title: string) => {
+    const match = /towel|glove|marker|caddie|retriever|hat|brush|tee/i.exec(title);
+    return match ? match[0].toLowerCase() : title.slice(0, 12);
+  };
   const products = allProducts
     .sort((a, b) => dadGiftScore(b) - dadGiftScore(a))
+    .filter((product) => {
+      const kind = kindOf(product.title);
+      const count = seenKinds.get(kind) || 0;
+      if (count >= 2) return false;
+      seenKinds.set(kind, count + 1);
+      return true;
+    })
     .slice(0, 10);
 
   return (
