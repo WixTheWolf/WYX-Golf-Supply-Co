@@ -12,6 +12,57 @@ WYX can scout products outside Shopify, but Shopify remains the commerce source 
 
 ## Supplier Shortlist
 
+### J&M Golf (priority)
+
+- URL: https://jandmgolf.com/
+- Apply: https://jandmgolf.com/create-an-account/
+- Fit: 6,000+ legitimate golf accessories — grips (Golf Pride, SuperStroke), markers, divot tools, towels, tees, brushes, bag tags. Same-day shipping claim.
+- Status: wholesale priority lead.
+- Contact: 800-821-0282.
+- WYX action: apply for wholesale account; confirm dropship/blind-ship terms. See `docs/supplier-outreach-pack.md` §1.
+
+### Faire (boutique discovery)
+
+- URL: https://www.faire.com/discover/golf-equipment
+- Fit: premium small-batch goods — valuables pouches, bag tags, scorecard holders, boutique markers.
+- Status: retailer account lead. Net-60 terms; you hold inventory.
+- WYX action: open retailer account; shortlist 3 pouch/marker brands. Faire Shopify app for sync.
+
+### TopDawg (curated backfill)
+
+- URL: https://topdawg.com/dropshipping/wholesale-products/sports-outdoor-recreation-products
+- Fit: US-warehouse dropship for cart gear, training aids, trip accessories.
+- Status: Shopify app integration available.
+- WYX action: free account + golf subcatalog audit. Filter hard — not bulk import.
+
+### Stroke & Distance
+
+- URL: https://strokeanddistance.com/pages/wholesale-golf-accessories
+- Fit: wholesale custom cap tees, beverage caddies, promotional gift packs.
+- Status: wholesale lead.
+- WYX action: inquiry for trip/event gift bundles and scramble add-ons.
+
+### PRG Golf
+
+- URL: https://prg-golf.com/
+- Fit: premium/custom golf accessories trusted by courses and resorts.
+- Status: B2B custom lead — park until sales justify MOQ.
+- WYX action: request stock catalog + MOQ sheet for future WYX-branded items.
+
+### Hireko Golf
+
+- URL: https://www.hirekogolf.com/become-reseller
+- Fit: grips, shafts, components, regrip kits.
+- Status: dealer program lead. Less gift-focused, more utility.
+- WYX action: dealer account if grip/club-care lane stays in assortment.
+
+### Divots / OMNIXGOLF (parked)
+
+- URL: https://www.divots.com/
+- Fit: private-label golf apparel and bags.
+- Status: parked — better for branded merch later, not immediate dropship.
+- WYX action: revisit after POD capsule and first sales.
+
 ### JP Lann Golf
 
 - URL: https://jplann.com/pages/wholesale-acct
@@ -61,9 +112,9 @@ Top product targets:
 ### Cullinan Golf
 
 - URL: https://www.cullinan-golf.com/dropshipping-golf-products
-- Fit: custom golf apparel dropshipping.
-- Status: dropship partner lead.
-- WYX action: apply as dropshipping partner, confirm shipping geography, production timing, wholesale/dropship pricing, branding options, and Shopify order workflow before activating.
+- Fit: golf dropshipping products and custom golf manufacturing (apparel, accessories).
+- Status: dropship partner lead — worth contacting.
+- WYX action: apply as dropshipping partner, confirm U.S. shipping geography, production timing, wholesale/dropship pricing, branding options, and Shopify order workflow before activating.
 
 Top product targets:
 
@@ -74,9 +125,13 @@ Top product targets:
 
 ## Next Import Strategy
 
-1. Create Shopify drafts for the best JP Lann accessory candidates tagged `supplier-review`, `jp-lann`, and `under-75`.
-2. Add internal source URLs to product notes/metafields, not buyer-facing descriptions.
-3. Request/apply for JP Lann and GT Golf Supply wholesale accounts.
-4. Set up a POD supplier for WYX-branded hats/polos once artwork is ready.
-5. Only flip products to active when fulfillment terms, margin, shipping timing, and returns are known.
+1. Apply to **J&M Golf** and **GT Golf Supply** wholesale (credibility + scramble prize SKUs).
+2. Open **Faire** retailer account; shortlist valuables-pouch and premium-marker brands.
+3. Create Shopify drafts for the best JP Lann accessory candidates tagged `supplier-review`, `jp-lann`, and `under-75`.
+4. Add internal source URLs to product notes/metafields, not buyer-facing descriptions.
+5. Audit **TopDawg** golf subcatalog with heavy curation (Shopify app backfill).
+6. Set up a POD supplier for WYX-branded hats/polos once artwork is ready.
+7. Only flip products to active when fulfillment terms, margin, shipping timing, and returns are known.
+
+Full vendor matrix: `docs/vendor-sourcing-hit-list.md`
 

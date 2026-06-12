@@ -1,5 +1,5 @@
 import type { Product } from '@/types/shopify';
-import { hasMisleadingProductMedia } from '@/lib/productReadiness';
+import { hasMisleadingProductMedia, hasKnownImageMismatch } from '@/lib/productReadiness';
 
 export const catalogCategories = ['All', 'Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Golf Tech', 'Club Care', 'Headwear', 'Apparel', 'Accessories'] as const;
 
@@ -8,18 +8,57 @@ const rules: Array<[Exclude<(typeof catalogCategories)[number], 'All'>, string[]
   ['Gloves', ['glove']],
   ['Grips', ['grip', 'overgrip']],
   ['Towels', ['towel']],
-  ['Training Aids', ['training aid', 'training aids', 'putting mirror', 'alignment mirror', 'putting gate', 'putting mat', 'alignment stick', 'swing trainer', 'swing tempo', 'tempo trainer', 'chipping net', 'short game', 'range gear']],
+  ['Training Aids', ['training aid', 'training aids', 'putting mirror', 'alignment mirror', 'putting gate', 'putting mat', 'putting arc', 'alignment stick', 'swing trainer', 'swing tempo', 'tempo trainer', 'chipping net', 'divot board', 'short game', 'range gear', 'impact bag']],
   ['Golf Tech', ['golf tech', 'rangefinder', 'laser rangefinder', 'gps speaker', 'golf gps', 'launch monitor', 'phone mount', 'gps watch', 'golf watch']],
   ['Club Care', ['club care', 'club brush', 'brush cleaner', 'groove cleaner', 'groove sharpener', 'wedge tool', 'grip solvent']],
   ['Headwear', ['hat', 'cap', 'headwear']],
   ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel', 'sock', 'socks', 'quarter zip', 'pullover', 'belt']],
-  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter', 'retriever', 'pouch', 'organizer', 'shoe bag', 'tumbler', 'rain hood', 'sunglasses', 'arm sleeve']]
+  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter', 'retriever', 'ball retriever', 'pouch', 'organizer', 'shoe bag', 'tumbler', 'rain hood', 'sunglasses', 'arm sleeve', 'cup holder', 'umbrella holder', 'cart mount']]
 ];
 
 type ClassifiableProduct = Pick<Product, 'title' | 'productType' | 'vendor' | 'tags'>;
 
+const productTypeCategoryMap: Record<string, Exclude<(typeof catalogCategories)[number], 'All'>> = {
+  headwear: 'Headwear',
+  hats: 'Headwear',
+  hat: 'Headwear',
+  cap: 'Headwear',
+  apparel: 'Apparel',
+  'golf belt': 'Apparel',
+  belt: 'Apparel',
+  gloves: 'Gloves',
+  glove: 'Gloves',
+  grips: 'Grips',
+  grip: 'Grips',
+  towels: 'Towels',
+  towel: 'Towels',
+  'training aids': 'Training Aids',
+  'training aid': 'Training Aids',
+  'golf tech': 'Golf Tech',
+  'club care': 'Club Care',
+  accessories: 'Accessories',
+  accessory: 'Accessories',
+  'golf balls': 'Golf Balls',
+  'golf ball': 'Golf Balls'
+};
+
 function searchable(product: ClassifiableProduct) {
   return [product.title, product.productType, product.vendor, ...(product.tags || [])].filter(Boolean).join(' ').toLowerCase();
+}
+
+function tagCategory(product: ClassifiableProduct) {
+  const tags = (product.tags || []).map((tag) => tag.toLowerCase());
+  const mapped = tags
+    .map((tag) => tag.replace(/^wyx-category:/, '').trim())
+    .map((tag) => productTypeCategoryMap[tag])
+    .find(Boolean);
+  return mapped;
+}
+
+function typeCategory(product: ClassifiableProduct) {
+  const type = product.productType?.trim().toLowerCase();
+  if (!type) return undefined;
+  return productTypeCategoryMap[type];
 }
 
 const blockedPublicVendors = new Set([
@@ -49,9 +88,26 @@ function passesPublicCatalogGate(product: Product) {
 }
 
 export function categoryFor(product: ClassifiableProduct) {
+  const fromTag = tagCategory(product);
+  if (fromTag) return fromTag;
+
   const content = searchable(product);
-  if (content.includes('ball retriever') || content.includes('ball marker') || content.includes('accessory caddie') || content.includes('divot') || content.includes('headcover')) return 'Accessories';
-  return rules.find(([, words]) => words.some((word) => content.includes(word)))?.[0] || 'Accessories';
+
+  // Specific content overrides run before the generic productType map so a
+  // catch-all productType like "Accessories" doesn't mask a more useful category.
+  if (content.includes('groove sharpener') || content.includes('club face pick') || content.includes('club maintenance') || content.includes('spike wrench')) return 'Club Care';
+  if (content.includes('ball retriever')) return 'Accessories';
+  if (content.includes('ball marker') || content.includes('hat clip ball marker')) return 'Accessories';
+  if (content.includes('accessory caddie') || content.includes('headcover')) return 'Accessories';
+  if (content.includes('divot tool') || (content.includes('divot') && !content.includes('divot board'))) return 'Accessories';
+
+  if (/hat clip/i.test(content) && !/hat|cap|headwear/i.test(content)) return 'Accessories';
+
+  const fromType = typeCategory(product);
+  if (fromType) return fromType;
+
+  const matched = rules.find(([, words]) => words.some((word) => content.includes(word)));
+  return matched?.[0] || 'Accessories';
 }
 
 export function matchesCategory(product: ClassifiableProduct, category?: string) {
@@ -75,7 +131,9 @@ export function availableProducts(products: Product[]) {
   return products.filter((product) => {
     if (!product.availableForSale) return false;
     if (!passesPublicCatalogGate(product)) return false;
-    // WYX-curated products bypass media quality gates — they are our own catalog
+    // Manually confirmed image/product mismatches are excluded regardless of vendor
+    if (hasKnownImageMismatch(product)) return false;
+    // WYX-curated products bypass automated media quality gates — they are our own catalog
     if (isCuratedProduct(product)) return true;
     // Non-curated products must pass image checks to prevent bad dropship media
     return hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product);

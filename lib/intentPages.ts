@@ -771,17 +771,17 @@ export const intentPages: Record<string, IntentPageConfig> = {
     slug: 'golf-club-care',
     title: 'Golf Club Care — Maintain Your Clubs Between Rounds.',
     eyebrow: 'Club Maintenance',
-    description: 'The club care products that extend equipment life and restore performance — groove sharpeners, club brushes, grip kits, and what to do between every round.',
+    description: 'The club care products that help keep clubs in good shape — groove sharpeners, club brushes, grip kits, and what to do between every round.',
     metaTitle: 'Golf Club Care | Groove Sharpener Club Brush | WYX Golf Supply Co.',
-    metaDescription: 'Shop golf club care at WYX Golf Supply Co. — groove sharpeners, club brushes, grip tape, and regrip kits that restore spin and control. Under $30 most picks.',
+    metaDescription: 'Shop golf club care at WYX Golf Supply Co. — groove sharpeners, club brushes, grip tape, and regrip kits for keeping clubs in good shape. Under $30 most picks.',
     primaryCta: 'Shop Club Care',
     secondaryCta: 'See Bag Upgrades',
     secondaryHref: '/bag-upgrades',
-    proof: ['Restore wedge spin $22', 'Regrip full set $26', 'Club brush under $15', 'WYX10 launch code'],
+    proof: ['Groove sharpener $22', 'Regrip full set $26', 'Club brush under $15', 'WYX10 launch code'],
     faq: [
-      ['How often should you clean golf clubs?', 'Ideally after every round — dirt and grass in grooves reduces spin immediately. A clip-on club brush takes 5 seconds per club. A full soak-and-scrub with warm soapy water once a month for irons and wedges.'],
+      ['How often should you clean golf clubs?', 'Ideally after every round — dirt and grass in grooves can affect spin and contact. A clip-on club brush takes 5 seconds per club. A full soak-and-scrub with warm soapy water once a month for irons and wedges.'],
       ['How often should golf grips be replaced?', 'Most teaching professionals recommend regripping once a year for golfers playing 30+ rounds, or every 40 rounds. Grips that feel slick or shiny under the rain have lost their texture and are affecting your stroke.'],
-      ['Does sharpening golf grooves really help?', 'Yes — for wedges and short irons used around the green. A groove sharpener restores the sharp edge that creates backspin. It is legal for recreational play and extends wedge life 2–3 seasons before replacement is necessary.']
+      ['Does sharpening golf grooves really help?', 'A groove sharpener can refresh the edges on wedges and short irons used around the green. It is legal for recreational play — check your local rules before using it on clubs intended for tournament play.']
     ],
     match: (product) => categoryIn(product, ['Club Care']) || /brush|groove|grip tape|solvent|regrip/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`)
   },

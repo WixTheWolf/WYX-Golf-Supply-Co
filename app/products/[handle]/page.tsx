@@ -3,12 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { EmailCapture } from '@/components/EmailCapture';
+import { KitAddButton } from '@/components/KitAddButton';
 import { ProductCard } from '@/components/ProductCard';
+import { ProductBadge } from '@/components/ProductBadge';
 import { ProductPurchaseControls } from '@/components/ProductPurchaseControls';
 import { ProductViewTracker } from '@/components/ProductViewTracker';
 import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
-import { productDescription, siteUrl } from '@/lib/feed';
+import { productDescription, productPrice, siteUrl } from '@/lib/feed';
 import { productBestFor, productBuyerPromise, productFaq, productValueBullets } from '@/lib/merchandising';
 import { coreMerchProducts, isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { getProduct, getProducts } from '@/lib/shopify/products';
@@ -38,6 +40,15 @@ export default async function ProductPage({ params }: { params: { handle: string
     .sort((a, b) => Number(categoryFor(b) === productCategory) - Number(categoryFor(a) === productCategory))
     .slice(0, 3);
   const variant = product.variants.find((item) => item.availableForSale);
+  // One-tap pair bundle: cheapest strong complement from a DIFFERENT category, under $25,
+  // so the add feels like rounding out the bag rather than doubling the order.
+  const pairProduct = allProducts
+    .filter((item) => item.handle !== product.handle && item.availableForSale && categoryFor(item) !== productCategory)
+    .filter((item) => Number(productPrice(item).amount) <= 25)
+    .sort((a, b) => Number(productPrice(a).amount) - Number(productPrice(b).amount))
+    .find((item) => item.variants.some((v) => v.availableForSale));
+  const pairVariant = pairProduct?.variants.find((v) => v.availableForSale);
+  const pairTotal = pairProduct ? Number(productPrice(product).amount) + Number(productPrice(pairProduct).amount) : 0;
   const images = product.images.length ? product.images.slice(0, 4) : product.featuredImage ? [product.featuredImage] : [];
   const bullets = productValueBullets(product);
   const bestFor = productBestFor(product);
@@ -95,6 +106,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </div>
         <div className="purchase-panel">
           <p className="eyebrow">{productCategory}</p>
+          <ProductBadge product={product} />
           <h1>{title}</h1>
           <p className="price large">{money(product.priceRange.minVariantPrice)}</p>
           <p>{description}</p>
@@ -116,6 +128,18 @@ export default async function ProductPage({ params }: { params: { handle: string
             <span>Use WYX10 for 10% off</span>
           </div>
           <ProductPurchaseControls variants={product.variants} productTitle={title} />
+          {pairProduct && variant && pairVariant && (
+            <div className="conversion-panel" aria-label="Complete the pair bundle">
+              <strong>Complete The Pair</strong>
+              <p>
+                Add the <Link href={`/products/${pairProduct.handle}`}>{cleanText(pairProduct.title)}</Link> ({money(productPrice(pairProduct))}) and round out the bag in one order — {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(pairTotal)} total before WYX10.
+              </p>
+              <KitAddButton
+                lines={[{ merchandiseId: variant.id, quantity: 1 }, { merchandiseId: pairVariant.id, quantity: 1 }]}
+                label="Add Both To Bag"
+              />
+            </div>
+          )}
           <div className="detail-list">
             <section><h2>Best For</h2><ul>{bestFor.map((item) => <li key={item}>{item}</li>)}</ul></section>
             <section><h2>Gift Note</h2><p>{giftNoteFor(product.handle, productCategory)}</p></section>

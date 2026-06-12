@@ -6,6 +6,36 @@ import { phase5Posts } from './journalPhase5';
 
 export const posts = [
   {
+    slug: 'golf-trip-essentials-2026',
+    title: 'Golf Trip Essentials: What Actually Earns A Spot In The Travel Bag',
+    seo: 'Golf Trip Essentials 2026 — The Weekend Trip Packing List | WYX Golf Supply Co.',
+    description: 'The golf trip essentials weekend players actually use: towel, rain backup, tee supply, valuables organizer, and the small gear that survives a buddies trip.',
+    image: imageMap.walk,
+    sections: [
+      ['Pack For The Round You Will Actually Play', 'Most golf trip packing lists are written for tour pros. A weekend buddies trip needs the opposite: gear that handles two rounds a day, a cart that is never yours, weather you did not check, and a bag that gets thrown in three different trunks. Everything below earns its spot by solving one of those problems.'],
+      ['The Non-Negotiables', 'A clip-on microfiber towel (your rental cart will not have one), a tee holder loaded before you fly, a ball marker that lives on a hat clip so it cannot get lost in someone else’s cart, and one extra glove. These four cover most mid-round annoyances and all of them pack flat.'],
+      ['The Trip-Saver Tier', 'Rain gloves weigh nothing and turn the one wet round from miserable to playable. A ball retriever collapses to fit a travel bag side pocket and pays for itself on the first water-lined course. A groove brush keeps your irons honest on day two when nobody is wiping faces between shots.'],
+      ['Keep The Valuables In One Place', 'Wallet, phone, watch, room key, and cash for side bets end up loose in a cart cubby unless they have a dedicated pouch. One zippered valuables pouch in the bag means nothing gets left in the cart at the turn.'],
+      ['The One-Order Version', 'If you want the whole list handled at once, the Weekend Golfer’s Bag Upgrade Kit covers the towel, marker, tee holder, groove brush, and accessory caddie in a single order — and WYX10 takes 10% off the first one. Browse the golf trip gear page for the rain and retriever add-ons.'],
+      ['What To Leave Home', 'Training aids, the backup putter, and anything that needs explaining at TSA. A buddies trip rewards light bags and fast mornings.']
+    ]
+  },
+  {
+    slug: 'bag-upgrade-kit-guide',
+    title: 'The 5-Piece Bag Upgrade: The Golf Gift That Always Fits',
+    seo: 'The 5-Piece Golf Bag Upgrade Kit — A Gift Guide | WYX Golf Supply Co.',
+    description: 'Why a 5-piece bag upgrade kit (towel, marker, tee holder, groove brush, caddie) is the safest golf gift for dads, husbands, and golf buddies — no sizes, no guessing.',
+    image: imageMap.care,
+    sections: [
+      ['The Problem With Golf Gifts', 'Most golf gifts fail one of two ways: they need a size (apparel, gloves, shoes) or they need a skill level (clubs, training aids, balls he may not play). The drawer full of novelty headcovers exists because buying for a golfer feels like guessing.'],
+      ['Why Small Gear Wins', 'Every golfer — 12 handicap or 30 — loses ball markers, plays with a dirty towel, digs for tees, and has a bottom pocket full of loose stuff. Gear that fixes those problems gets used the next round, regardless of how he plays. That is the whole test: would it earn a permanent spot in the bag?'],
+      ['What The Five Pieces Do', 'A clip-on microfiber towel handles wet grips and dirty faces. A three-rail marker is easy to find and easy to set down. A 10-tee holder clips to the bag so the tee box stops being a pocket search. A dual-sided groove brush keeps club faces honest. A glove-and-accessory caddie gives the small stuff one home.'],
+      ['The Math For Gift Buyers', 'The full kit lands under $90 before the WYX10 first-order discount — less than one premium club headcover, and five separate moments of “oh, I needed this.” Each item ships as its own product, so you can drop anything that does not fit and stay under any budget.'],
+      ['When To Choose It', 'Father’s Day, birthdays, bachelor party favors bought in multiples, scramble prize tables, and the golf buddy who claims he has everything. If you know he golfs and nothing else, this is the safe pick.'],
+      ['Where To Start', 'The Weekend Golfer’s Bag Upgrade Kit page has all five with one-tap add. If you would rather build your own, start with the golf gifts under $60 page and pick three.']
+    ]
+  },
+  {
     slug: 'best-golf-gifts-for-dad',
     title: 'Best Golf Gifts For Dad That Actually Get Used',
     seo: 'Best Golf Gifts For Dad | WYX Golf Supply Co.',
@@ -368,8 +398,8 @@ export const posts = [
     image: imageMap.iron,
     sections: [
       ['Start With The Fundamentals', 'A beginning golfer needs a few things: a glove, tees, a ball supply, and alignment sticks. These four items cover the basic gear gap without trying to optimize swing weight or shaft flex — things that don\'t matter until the fundamentals are in.'],
-      ['Best Gift Under $25: Alignment Sticks', 'Alignment sticks are the single highest-return practice tool for a beginning golfer. They are used at every lesson, cost $22, and address the two most common beginner problems: bad alignment and ball position. Every golf teacher recommends them.'],
-      ['Best Gift Under $50: Glove + Alignment Sticks', 'A cabretta leather glove ($28) plus alignment sticks ($22) = $50 and covers grip and alignment — the two most impactful fundamentals for a new golfer. This is the most useful beginner golf gift set you can build.'],
+      ['Best Gift Under $25: Alignment Sticks', 'Alignment sticks are one of the simplest practice tools for a beginning golfer. They show up at lessons constantly, cost $22, and address two of the most common beginner problems: bad alignment and ball position.'],
+      ['Best Gift Under $50: Glove + Alignment Sticks', 'A cabretta leather glove ($28) plus alignment sticks ($22) = $50 and covers grip and alignment — two of the most useful fundamentals for a new golfer to have on hand.'],
       ['What To Skip', 'Club fitting aids, launch monitors, and swing analyzer tech are for mid-handicap golfers who already have consistent ball contact. A beginner does not have the swing repeatability to extract value from data tools yet.'],
       ['The One Splurge That Pays Off', 'A putting mirror ($32–$38) is the one tech-adjacent training aid that helps beginners immediately. It shows eye position and putter face angle at setup — two things every beginner gets wrong and every teacher fixes first.'],
       ['WYX10 For Beginners', 'Use code WYX10 for 10% off your first order. A glove + alignment sticks + ball marker is a complete beginner gift set under $70 with the discount.']
@@ -493,7 +523,7 @@ export const posts = [
       ['The Right Budget For Golf Accessories', 'Under $100 is where most of the best golf accessories live. Gloves, towels, alignment sticks, scorecard holders, rangefinders — you can build a complete bag upgrade kit for under $100 and use everything in it every round.'],
       ['$15–$25: The Non-Negotiables', 'Bamboo tees (50-pack, biodegradable), a magnetic hat clip with ball marker, and a grip tape roll. These consumables replenish themselves in cart value — buy them every season.'],
       ['$25–$50: The Bag Upgrades', 'A golf towel with a clip loop, a leather scorecard holder, and alignment sticks. Every serious bag has all three. None require sizing. All ship immediately.'],
-      ['$50–$75: The Skill Builders', 'A putting alignment mirror and a swing tempo trainer. Highest ROI practice tools for the weekend golfer who cannot get to lessons every week. Both fix real problems between rounds.'],
+      ['$50–$75: The Skill Builders', 'A putting alignment mirror and a swing tempo trainer. Practical practice tools for the weekend golfer who cannot get to lessons every week. Both fix real problems between rounds.'],
       ['$75–$100: The High-Visibility Win', 'A laser rangefinder in the $75–$100 range changes how you think about every approach shot. Knowing your exact yardage removes one variable from a game full of them.'],
       ['One Cart. One Code.', 'WYX10 takes 10% off your first order. A towel + alignment sticks + scorecard holder + marker = under $100 shipped. Practical, gift-ready, and everything goes straight in the bag.']
     ]
@@ -627,7 +657,7 @@ export const posts = [
       ['Eye Position First', 'Most inconsistent putting starts with eyes not directly over the ball at address. A putting alignment mirror fixes this in one session — you see the reflection and immediately know if you are set up correctly.'],
       ['The Gate Drill', 'Place two tees just wider than the putter head at the equator. If you miss the gate, the path is the problem, not the face. Do this 20 times before every range session for two weeks.'],
       ['Distance Control Over Accuracy', 'Three-putts come from distance, not direction. Hit 10 putts from 30 feet and try to leave every one within 18 inches. Track misses short vs long, then adjust your stroke length, not your aim.'],
-      ['WYX Pick', 'The WYX Putting Alignment Mirror shows eye line, ball position, and putter path simultaneously. The highest ROI training aid for casual golfers who want to stop three-putting.']
+      ['WYX Pick', 'The WYX Putting Alignment Mirror shows eye line, ball position, and putter path simultaneously. A simple, inexpensive training aid for casual golfers who want to stop three-putting.']
     ]
   },
   {
@@ -689,8 +719,8 @@ export const posts = [
     description: 'The practice habits and gear upgrades that actually move the handicap needle for weekend golfers — putting drills, alignment tools, grip maintenance, and what to stop wasting money on.',
     image: imageMap.iron,
     sections: [
-      ['Fix Putting First', 'Putting is 40% of strokes for most amateur golfers. A 20-minute putting practice session with an alignment mirror three times a week will drop more strokes than any full swing change. Start there.'],
-      ['Grooves and Grip Condition Matter', 'Worn grooves kill spin around the greens. Worn grips cause grip pressure spikes that wreck timing. Resharpening wedge grooves ($22) and regripping at home ($26) are the two highest-ROI equipment maintenance moves.'],
+      ['Fix Putting First', 'Putting is 40% of strokes for most amateur golfers. A 20-minute putting practice session with an alignment mirror three times a week targets the part of the game with the most room to improve. Start there.'],
+      ['Grooves and Grip Condition Matter', 'Worn grooves kill spin around the greens. Worn grips cause grip pressure spikes that wreck timing. Resharpening wedge grooves ($22) and regripping at home ($26) are two of the cheapest equipment fixes that change how the club actually feels.'],
       ['Know Your Yardage Every Time', 'Guessing yardage adds 2–4 strokes per round for most players. A rangefinder or GPS watch removes one of the biggest mental errors in club selection. The handicap drop shows up within 5 rounds.'],
       ['WYX Handicap Kit', 'Putting mirror + groove sharpener + grip kit + rangefinder covers practice, maintenance, and course management — the four biggest levers for the 15–25 handicap player. Under $200 with WYX10.']
     ]

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { CartPromoSummary } from '@/components/CartPromoSummary';
 import { trackEvent } from '@/lib/analytics';
 import { money } from '@/lib/demo';
 import { useCart } from './CartProvider';
@@ -15,7 +16,7 @@ export function CartPage() {
     <section className="page-hero">
       <p className="eyebrow">Your Bag</p>
       <h1>Ready For The Round?</h1>
-      <p className="promo-note">Use <strong>{launchCode}</strong> at checkout for 10% off your first order.</p>
+      <CartPromoSummary cart={cart} />
       {error && <p className="error">{error}</p>}
       {!cart?.lines.length ? (
         <p>Your bag is empty. Let's fix that before the next tee time. <Link className="text-link" href="/golf-gifts">Shop golf gifts</Link>.</p>

@@ -64,7 +64,7 @@ export function EmailCapture({
           <span>I agree to receive marketing emails from WYX Golf Supply Co.</span>
         </label>
         <button className="button primary" disabled={status === 'loading'} type="submit">{status === 'loading' ? 'Joining...' : 'Join The List'}</button>
-        {message && <p className={status === 'error' ? 'error' : 'muted'}>{message}</p>}
+        {message && <p className={status === 'error' ? 'error' : 'muted'} role="status" aria-live="polite">{message}</p>}
       </form>
     </section>
   );

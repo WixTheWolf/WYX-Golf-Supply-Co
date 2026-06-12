@@ -1,0 +1,59 @@
+{
+  "createdAt": "2026-06-12T05:29:42.495Z",
+  "status": "shopify-connected",
+  "dashboardUrl": "https://topdawg.com/reseller/dashboard",
+  "shipTo": "mwixted1@gmail.com / WYX sample address",
+  "instructions": [
+    "Log in to TopDawg dashboard after free account approval",
+    "Place manual sample order for the 3 SKUs below (do NOT publish Shopify drafts until QA passes)",
+    "Confirm: ship time ≤5 days, photo matches TopDawg CDN image, packaging acceptable",
+    "Record tracking + delivery date in this file before activating drafts"
+  ],
+  "wholesaleDeferral": "Ball markers and divot tools on TopDawg are interim backfill only. Migrate to J&M Golf or GT Golf Supply once wholesale accounts approve.",
+  "lineItems": [
+    {
+      "supplierSku": "1077-STBM-SLBL",
+      "title": "SelfieTotem Ball Marker",
+      "dropshipCost": 18,
+      "retailPrice": "29.99",
+      "shopifyDraftHandle": "selfie-totem-ball-marker-topdawg",
+      "qaChecklist": [
+        "Hero image matches live product",
+        "No damage / cheap packaging feel",
+        "Shipped from US warehouse",
+        "Delivered within 5 business days"
+      ],
+      "qaPassed": false
+    },
+    {
+      "supplierSku": "1077-STBM-GDBK",
+      "title": "SelfieTotem Classic Ball Markers",
+      "dropshipCost": 15,
+      "retailPrice": "24.99",
+      "shopifyDraftHandle": "selfie-totem-classic-ball-markers-topdawg",
+      "qaChecklist": [
+        "Hero image matches live product",
+        "No damage / cheap packaging feel",
+        "Shipped from US warehouse",
+        "Delivered within 5 business days"
+      ],
+      "qaPassed": false
+    },
+    {
+      "supplierSku": "3239-SP_GolfClubCleaner_GPCT5419",
+      "title": "3-in-1 Golf Club Cleaning Kit",
+      "dropshipCost": 20.6,
+      "retailPrice": "40.59",
+      "shopifyDraftHandle": "golf-club-cleaning-kit-3-in-1-topdawg",
+      "qaChecklist": [
+        "Hero image matches live product",
+        "No damage / cheap packaging feel",
+        "Shipped from US warehouse",
+        "Delivered within 5 business days"
+      ],
+      "qaPassed": false
+    }
+  ],
+  "estimatedSampleCost": 53.6,
+  "activateDraftsWhenAllQaPassed": true
+}

@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const products = await getProducts();
+    const products = await getProducts({ fresh: true });
     const available = availableProducts(products);
     return NextResponse.json({
       ok: true,

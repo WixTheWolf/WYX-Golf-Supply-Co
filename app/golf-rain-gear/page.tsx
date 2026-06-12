@@ -169,6 +169,17 @@ export default async function GolfRainGearPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading"><p className="eyebrow">More Wet Weather Gear</p><h2 id="links-heading">Stay Dry From Bag to Grip.</h2></div>
+        <div className="care-step-grid">
+          <Link href="/golf-bag-rain-cover" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Bag Rain Cover</strong><p>Universal waterproof hood, packs into its own pocket</p></Link>
+          <Link href="/golf-rain-gloves" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Rain Gloves</strong><p>Moisture-activated grip in wet conditions</p></Link>
+          <Link href="/golf-umbrella" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Umbrella</strong><p>62-inch double canopy, covers you and the bag</p></Link>
+          <Link href="/golf-headcovers" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Headcovers</strong><p>Driver, fairway, and iron protection</p></Link>
+          <Link href="/golf-club-care-kit" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Club Care Kit</strong><p>Clean grooves and grips after a wet round</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-rain-gear"
         campaign="golf_rain_gear"

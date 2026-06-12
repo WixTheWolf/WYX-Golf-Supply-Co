@@ -624,22 +624,22 @@ export const starterProducts: StarterProduct[] = [
     title: 'Groove Sharpener & Wedge Tool',
     handle: 'groove-sharpener-wedge-tool',
     price: '22.00',
-    badge: 'Spin Saver',
+    badge: 'Groove Tool',
     image: imageMap.care,
     productType: 'Club Care',
     collectionHandle: 'accessories',
-    description: 'A precision groove sharpener with 6 groove widths that restores spin to worn wedges and irons — legal for recreational play and tour use.',
+    description: 'A precision groove sharpener with 6 groove widths for refreshing the grooves on worn wedges and irons — legal for recreational play and tour use.',
     details: [
       '6 groove widths from U to V-groove profiles',
       'Carbide cutting head — lasts 100+ sharpening sessions',
       'Built-in depth stop prevents over-cutting',
       'Legal for recreational and amateur tournament play',
-      'Extends wedge life by 2–3 seasons'
+      'A simple way to refresh groove edges between regrips'
     ],
     materials: 'Aerospace aluminum body with carbide cutting inserts.',
     care: 'Brush grooves clean before sharpening. Store in the included pouch.',
     seoTitle: 'Golf Groove Sharpener | WYX Golf Supply Co.',
-    metaDescription: 'A precision golf groove sharpener with 6 widths that restores spin to worn wedges and irons. Legal for recreational play. Under $25.',
+    metaDescription: 'A precision golf groove sharpener with 6 widths for refreshing the grooves on worn wedges and irons. Legal for recreational play. Under $25.',
     tags: ['club care', 'groove sharpener', 'wedge maintenance', 'golf accessories', 'bag upgrade', 'golf gifts for dad', 'stocking stuffer', 'under $25']
   },
   {

@@ -60,6 +60,44 @@ export default async function GolfGiftsUnder60() {
         </div>
         <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div>
       </section>
+      <section className="section reveal" aria-labelledby="tiers-heading">
+        <div className="section-heading">
+          <p className="eyebrow">Other Budgets</p>
+          <h2 id="tiers-heading">All Price Ranges.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-under-25" className="care-step-card" style={{ textDecoration: 'none' }}>
+            <strong>Under $25</strong>
+            <p>Stocking-stuffer accessories that earn a permanent bag spot.</p>
+          </Link>
+          <Link href="/golf-gifts-under-35" className="care-step-card" style={{ textDecoration: 'none' }}>
+            <strong>Under $35</strong>
+            <p>The sweet spot for practical everyday-use picks.</p>
+          </Link>
+          <Link href="/golf-gifts-under-50" className="care-step-card" style={{ textDecoration: 'none' }}>
+            <strong>Under $50</strong>
+            <p>Glove 3-packs, markers, alignment sticks, and the complete bag tier.</p>
+          </Link>
+          <Link href="/golf-gifts-under-75" className="care-step-card" style={{ textDecoration: 'none' }}>
+            <strong>Under $75</strong>
+            <p>Leather accessories and training aids that earn a bag spot.</p>
+          </Link>
+        </div>
+      </section>
+
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading">
+          <p className="eyebrow">More Gift Ideas</p>
+          <h2 id="links-heading">Golf Gifts by Recipient.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-husband" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Husband</strong><p>Practical picks for the husband who golfs</p></Link>
+          <Link href="/golf-gifts-for-wife" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Wife</strong><p>Engraving-ready leather and GPS watch picks</p></Link>
+          <Link href="/golf-gifts-for-mom" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Mom</strong><p>Six picks under $50 — practical and thoughtful</p></Link>
+          <Link href="/golf-birthday-gifts" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Birthday Gifts</strong><p>Budget-tiered picks for any birthday budget</p></Link>
+        </div>
+      </section>
+
       <EmailCapture source="golf-gifts-under-60" campaign="golf_gifts_launch_list" title="Need Golf Gift Ideas Later?" body="Join the WYX list for under-$60 gift picks, useful bag upgrades, and launch offers." />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org',

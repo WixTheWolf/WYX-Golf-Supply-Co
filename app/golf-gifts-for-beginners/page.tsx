@@ -32,7 +32,7 @@ const picks = [
 const faqs: [string, string][] = [
   ['What are the best golf gifts for a beginner?', 'Best picks: glove 3-pack ($32 — every beginner needs fresh gloves), alignment sticks ($24 — the fastest way to fix poor aim), microfiber towel ($18 — clean contact on every shot), ball retriever ($24 — pays for itself in recovered balls). Use WYX10 for 10% off at wyxgolfsupply.com.'],
   ['What should I NOT buy a beginner golfer?', 'Avoid new clubs (they need to learn the basics first and may need a fitting), expensive balls (beginners lose 3-5 per round), novelty items, and anything that requires the beginner to already have a developed swing. Stick to accessories that improve the learning process — gloves, alignment tools, practice aids.'],
-  ['What golf gift helps a beginner improve fastest?', 'Alignment sticks ($24) improve every range session immediately by showing the beginner whether they are aiming at the target — the most common beginner flaw that has nothing to do with swing technique. Second: a putting alignment mirror ($32) — putting improvement from correct fundamentals is the fastest handicap improvement available at any skill level.']
+  ['What golf gift helps a beginner the most?', 'Alignment sticks ($24) make every range session more useful by showing the beginner whether they are aiming at the target — a common beginner issue that has nothing to do with swing technique. A putting alignment mirror ($32) does something similar for the green, helping build correct putting fundamentals from the start.']
 ];
 
 const jsonLd = {
@@ -151,6 +151,17 @@ export default async function GolfGiftsForBeginnersPage() {
               <p>{a}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading"><p className="eyebrow">More Gift Ideas</p><h2 id="links-heading">Golf Gifts to Build Their Game.</h2></div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-teenage-golfer" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Teen Golfers</strong><p>Picks that actually get used</p></Link>
+          <Link href="/golf-training-aids-for-beginners" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Training Aids</strong><p>Tools that help them improve faster</p></Link>
+          <Link href="/golf-accessories-every-golfer-needs" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Accessories Every Golfer Needs</strong><p>The essentials for any new golfer</p></Link>
+          <Link href="/golf-starter-kit" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Starter Kit</strong><p>Everything to get them started right</p></Link>
+          <Link href="/golf-gift-sets" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gift Sets</strong><p>Curated bundles by budget</p></Link>
         </div>
       </section>
 

@@ -72,7 +72,11 @@ export function firstBuyProducts(products: Product[]) {
     'park-paisley-womens-gold-golf-glove',
     // Hats
     'augusta-bear-hat',
-    'desert-storm-tan',
+    'stretch-performance-golf-hat-low-crown',
+    'wide-brim-golf-sun-hat-upf50',
+    'classic-rope-golf-hat-coastal',
+    'unstructured-dad-golf-cap-soft-crown',
+    'performance-snapback-golf-hat-clean-mark',
     // Markers & accessories
     'pimento-drip-blade',
     'the-bolt-ball-marker',
@@ -87,6 +91,11 @@ export function firstBuyProducts(products: Product[]) {
     'hack-daniels-golf-towel',
     'tri-fold-microfiber-golf-towel',
     'waffle-golf-towel',
+    'magnetic-cart-phone-mount',
+    'divot-board-swing-trainer',
+    'pop-up-chipping-net-3-target',
+    'stance-alignment-towel',
+    'extendable-ball-retriever-15ft',
     // Apparel
     'stretch-golf-belt-supplier-review',
     'coastal-rope-hat',

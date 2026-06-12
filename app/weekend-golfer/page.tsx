@@ -223,6 +223,19 @@ export default async function WeekendGolfer() {
         </div>
       </section>
 
+      {/* Core Offer Cross-Link */}
+      <section className="section reveal" aria-labelledby="kit-heading">
+        <div className="section-heading">
+          <p className="eyebrow">The Core Offer</p>
+          <h2 id="kit-heading">Skip The Picks. Get The Kit.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/weekend-golfer-bag-upgrade-kit" className="care-step-card" style={{ textDecoration: 'none' }}><strong>The Weekend Golfer&apos;s Bag Upgrade Kit</strong><p>Towel, marker, grip refresh, and accessory caddie — bundled into one order</p></Link>
+          <Link href="/the-bag-test" className="care-step-card" style={{ textDecoration: 'none' }}><strong>The Bag Test Promise</strong><p>Every product earns a permanent spot in the bag, or we make it right</p></Link>
+          <Link href="/golf-gift-sets" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gift Sets</strong><p>Curated bundles by budget</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="weekend-golfer"
         campaign="weekend_golfer_2026"

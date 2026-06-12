@@ -23,14 +23,14 @@ export const metadata: Metadata = {
 const items = [
   { step: '01', label: 'Clip-On Microfiber Towel', price: '$18', href: '/golf-towels', why: 'The on-course care tool used every hole. One side for groove scrubbing, one side for face drying. The baseline club care item — without it, dirt and grass compound in the grooves across 18 holes.' },
   { step: '02', label: 'Groove Brush with Pick', price: '$12', href: '/golf-club-care-kit', why: 'A stiff-bristle brush with a groove pick for deep cleaning after rounds. Removes compacted mud and grass from irons that a towel alone cannot reach. Used once per round at the bag. Keeps iron launch conditions consistent.' },
-  { step: '03', label: 'Iron Regrip Kit — Full Set', price: '$38', href: '/golf-grips', why: 'A full iron regrip kit with new grip tape and 9 replacement grips. Grips worn past 2 seasons cause grip pressure increases, tension in the forearms, and off-center strikes. A full set regrip costs $38 DIY vs. $80-150 at a shop. 45 minutes of work, 2-3 seasons of fresh grip confidence.' },
+  { step: '03', label: 'Iron Regrip Kit — Full Set', price: '$38', href: '/golf-grips', why: 'A full iron regrip kit with new grip tape and 9 replacement grips. Worn grips lose tackiness over time, which can affect feel and grip pressure. A full set regrip costs $38 DIY vs. $80-150 at a shop — about 45 minutes of work for a fresh set of grips.' },
   { step: '04', label: 'Shaft Polish — Stainless & Chrome', price: '$14', href: '/golf-club-care-kit', why: 'Polish removes oxidation and micro-scratches from steel shafts and club heads that accumulate over a season. A polished iron set makes any bag look well-maintained — the visible care that signals a golfer who respects their equipment.' }
 ];
 
 const faqs: [string, string][] = [
-  ['What do I need to clean my golf clubs?', 'Four items: clip-on towel ($18 — on-course groove care), groove brush ($12 — post-round deep clean), regrip kit ($38 — restores grip every 2 seasons), shaft polish ($14 — removes seasonal oxidation). Total: $82 before WYX10. All at wyxgolfsupply.com with WYX10 for 10% off.'],
-  ['How often should I regrip my golf clubs?', 'Every 2 seasons for regular golfers, every season for golfers playing 40+ rounds. Grips past their useful life cause players to grip harder unconsciously — this creates forearm tension that contributes to off-center strikes and inconsistent ball-striking. A full regrip kit ($38) addresses this for the cost of one lesson.'],
-  ['Does cleaning golf clubs improve performance?', 'Yes — specifically groove cleaning. Clean grooves produce consistent backspin on approach shots. Packed grooves create unpredictable launch and spin variation. A towel ($18) with a groove brush ($12) is the club care combination that maintains consistent iron performance from hole 1 to hole 18.']
+  ['What do I need to clean my golf clubs?', 'Four items: clip-on towel ($18 — on-course groove care), groove brush ($12 — post-round deep clean), regrip kit ($38 — for regripping at home), shaft polish ($14 — removes seasonal oxidation). Total: $82 before WYX10. All at wyxgolfsupply.com with WYX10 for 10% off.'],
+  ['How often should I regrip my golf clubs?', 'Most teaching professionals recommend regripping once a year for regular golfers, or more often for golfers playing 40+ rounds. Worn grips can feel slick and may affect grip pressure and feel. A full regrip kit ($38) is a low-cost way to refresh a set at home.'],
+  ['Does cleaning golf clubs help during a round?', 'Clean grooves can help produce more consistent contact on approach shots, while packed grooves can lead to unpredictable launch and spin. A towel ($18) and a groove brush ($12) make it easy to wipe clubs down between shots.']
 ];
 
 const jsonLd = {
@@ -62,8 +62,8 @@ export default async function GolfClubCareKitPage() {
       <section className="deal-hero">
         <div>
           <p className="eyebrow">Club Care &amp; Maintenance</p>
-          <h1>Golf Club Care Kit. Four Tools. All Season Performance.</h1>
-          <p>A clip-on towel for on-course groove care, a groove brush for post-round deep cleaning, an iron regrip kit for restoring grip every two seasons, and shaft polish for protecting the steel. Complete club care for $82 before WYX10. WYX10 saves 10%.</p>
+          <h1>Golf Club Care Kit. Four Tools For Keeping Clubs In Shape.</h1>
+          <p>A clip-on towel for on-course groove care, a groove brush for post-round deep cleaning, an iron regrip kit for regripping at home, and shaft polish for protecting the steel. Complete club care for $82 before WYX10. WYX10 saves 10%.</p>
           <div className="actions">
             <Link className="button primary" href="#care-grid">Shop Club Care</Link>
             <Link className="button secondary dark" href="/golf-grips">Golf Grips &rarr;</Link>
@@ -73,7 +73,7 @@ export default async function GolfClubCareKitPage() {
         <aside className="share-card">
           <p className="eyebrow">Best Value Care Item — $38</p>
           <h2>Iron Regrip Kit</h2>
-          <p>Full set of 9 replacement grips + grip tape. Shop regrip: $80-150. DIY: $38. Grips past 2 seasons cause grip pressure problems that create off-center strikes. The highest-value club care item most golfers delay too long.</p>
+          <p>Full set of 9 replacement grips + grip tape. Shop regrip: $80-150. DIY: $38. Worn grips can feel slick and affect grip pressure over time — an easy fix most golfers put off longer than they should.</p>
           <Link className="button primary" href="/golf-grips" style={{ marginTop: '1rem', display: 'inline-block' }}>See Grip Kits &rarr;</Link>
         </aside>
       </section>

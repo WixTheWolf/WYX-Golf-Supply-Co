@@ -154,6 +154,18 @@ export default async function GolfGiftsForGirlfriendPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading">
+          <p className="eyebrow">More Gift Ideas</p>
+          <h2 id="links-heading">Golf Gifts by Recipient.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-wife" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Wife</strong><p>Engraving-ready leather and GPS watch picks</p></Link>
+          <Link href="/golf-gifts-for-mom" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Mom</strong><p>Six picks under $50 — practical and thoughtful</p></Link>
+          <Link href="/golf-gifts-for-anniversary" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Anniversary Gifts</strong><p>Elevated picks for a milestone occasion</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-girlfriend"
         campaign="girlfriend_golf_gifts"

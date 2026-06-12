@@ -5,7 +5,8 @@ import type { CuratedPick } from '@/types/curated';
 
 export const metadata: Metadata = {
   title: 'The Short List',
-  description: 'A manually curated WYX Golf Co. watchlist of golf gifts, trip gear, and bag upgrades worth reviewing.'
+  description: 'A manually curated WYX Golf Co. watchlist of golf gifts, trip gear, and bag upgrades worth reviewing.',
+  robots: { index: false, follow: true }
 };
 
 export default function ShortListPage() {

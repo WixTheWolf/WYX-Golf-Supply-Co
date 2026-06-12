@@ -8,6 +8,8 @@ export type KitDefinition = {
   eyebrow: string;
   description: string;
   cta: string;
+  /** When set, kit uses these handles in order (hidden-gem / hero bundles). */
+  fixedHandles?: string[];
   // Ordered list of category priorities — picks one product from each, in order
   categoryPriority: string[];
   // Secondary keyword match for fallback if category is empty
@@ -18,6 +20,13 @@ export type KitDefinition = {
 // Walks categoryPriority in order, picks the BEST-scored product from each category
 // (not seen yet), stops when limit is reached. No category repeats.
 export function kitProducts(products: Product[], kit: KitDefinition, limit = 4): Product[] {
+  if (kit.fixedHandles?.length) {
+    return kit.fixedHandles
+      .map((handle) => products.find((p) => p.handle === handle && p.availableForSale))
+      .filter((p): p is Product => Boolean(p))
+      .slice(0, limit);
+  }
+
   const usedHandles = new Set<string>();
   const usedCategories = new Set<string>();
   const result: Product[] = [];
@@ -123,6 +132,21 @@ export const kitDefinitions: KitDefinition[] = [
       const text = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
       return price <= 80 && /glove|scorecard|towel|alignment|putting|training|hat|cap/i.test(text);
     }
+  },
+  {
+    slug: 'hidden-gem-starter-kit',
+    title: 'Hidden Gem Starter Kit',
+    eyebrow: 'Cart + Practice',
+    description: 'Four upgrades golfers copy after one round: magnetic phone mount, silicone cup holders, extendable ball retriever, and divot board swing trainer. Under $130 before WYX10.',
+    cta: 'Add Hidden Gem Kit',
+    fixedHandles: [
+      'magnetic-cart-phone-mount',
+      'silicone-cart-beverage-holder-2pack',
+      'extendable-ball-retriever-15ft',
+      'divot-board-swing-trainer'
+    ],
+    categoryPriority: ['Golf Tech', 'Accessories', 'Training Aids'],
+    fallbackMatch: (product) => (product.tags || []).some((t) => t.toLowerCase() === 'hidden-gem')
   },
   {
     slug: 'bag-upgrade-kit',

@@ -6,10 +6,22 @@ Scoring categories: visual appeal, margin potential, giftability, bundle fit, sh
 
 ## Supplier Leads Reviewed
 
-- JP Lann Golf: ecommerce wholesale candidate for accessories, tees, markers, retrievers, novelty balls, umbrellas. Apply before activating.
-- GT Golf Supply: wholesale/pro-shop supply lead for grips, towels, tees, divot tools, ball retrievers, umbrellas, training accessories. Request account pricing before activating.
-- Bear Grips Pro Shops: POD lead for WYX-branded hats, polos, quarter-zips, and performance tees. Best for brand merch after artwork is ready.
-- Cullinan Golf: golf apparel dropshipping lead. Confirm shipping geography, production timing, branding, returns, and Shopify order workflow before activating.
+| Vendor | Why it matters | Status |
+| --- | --- | --- |
+| **J&M Golf** | 6,000+ SKUs, same-day ship claim, legitimate golf brands (Golf Pride, SuperStroke). Credibility layer. | **Priority** — apply now |
+| **GT Golf Supply** | Wholesale grips, pro shop supplies, custom tournament items. Strong scramble/prize-table angle. | Apply for account pricing |
+| **JP Lann Golf** | Under-$75 accessories — retrievers, divot tools, markers, novelty balls, umbrellas. | Apply before activating |
+| **Faire** | Boutique/giftable wholesale discovery — pouches, bag tags, premium markers. Net-60 terms. | Open retailer account |
+| **TopDawg** | US dropship + Shopify app; large sports/outdoor catalog. Useful with heavy filtering. | Free account + golf audit |
+| **Stroke & Distance** | Wholesale cap tees, beverage caddies, promo gift packs. Trip/event fit. | Wholesale inquiry |
+| **Cullinan Golf** | Dropship + custom manufacturing. Worth contacting for apparel/accessories. | Partner application |
+| **PRG Golf** | Premium/custom accessories trusted by courses/resorts. Inspiration + future private label. | Park until sales |
+| **Hireko Golf** | Reseller program for grips, shafts, components. Utility, less gift-focused. | Dealer account if grips stay |
+| **Bear Grips Pro Shops** | POD for WYX-branded hats, polos, quarter-zips, performance tees. | After artwork ready |
+| **Golf4Her** | Women's dropship program. Future collection — not core WYX now. | Parked |
+| **Divots / OMNIXGOLF** | Private-label apparel/bags. Later lane, not immediate dropship. | Parked |
+
+Full detail: `docs/vendor-sourcing-hit-list.md`
 
 ## Candidate Matrix
 
@@ -48,10 +60,14 @@ Scoring categories: visual appeal, margin potential, giftability, bundle fit, sh
 
 ## First Supplier Actions
 
-1. Apply to JP Lann Golf wholesale for divot tools, markers, retrievers, tee packs, and novelty golf balls.
-2. Request GT Golf Supply account pricing for towels, tees, retail accessories, grips, ball retrievers, and club-care tools.
-3. Open Bear Grips Pro Shops test account for WYX hat/polo/quarter-zip mockups after artwork is final.
-4. Review Cullinan Golf only after confirming dropship workflow and realistic U.S. delivery expectations.
+1. Apply to **J&M Golf** wholesale — grips, markers, towels, tees, brushes (priority credibility SKUs).
+2. Request **GT Golf Supply** account pricing for scramble prizes, divot tools, towels, tees, and tournament gifts.
+3. Open **Faire** retailer account; shortlist 3 valuables-pouch and premium-marker brands.
+4. Apply to **JP Lann Golf** wholesale for divot tools, markers, retrievers, tee packs, and novelty golf balls.
+5. Create **TopDawg** free account; audit golf/sports subcatalog against scorecard rubric (curate hard).
+6. Email **Stroke & Distance** for wholesale cap tees and beverage caddies.
+7. Apply to **Cullinan Golf** dropship partner program; confirm U.S. ship times.
+8. Open Bear Grips Pro Shops test account for WYX hat/polo/quarter-zip mockups after artwork is final.
 
 ## Publishing Safety
 

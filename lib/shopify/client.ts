@@ -13,13 +13,13 @@ function normalizeShopifyDomain(value?: string) {
   return clean;
 }
 
-export async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}): Promise<T> {
+export async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}, init: RequestInit = { cache: 'no-store' }): Promise<T> {
   if (!hasShopify) throw new Error('Shopify env vars missing. Demo data is active.');
   const res = await fetch(`https://${domain}/api/${version}/graphql.json`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': token! },
     body: JSON.stringify({ query, variables }),
-    cache: 'no-store'
+    ...init
   });
   const json = await res.json();
   if (json.errors) throw new Error(json.errors.map((e: { message: string }) => e.message).join(', '));

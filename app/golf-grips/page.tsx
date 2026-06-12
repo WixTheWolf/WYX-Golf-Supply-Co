@@ -47,7 +47,7 @@ const picks = [
 const faqs: [string, string][] = [
   ['How often should golf grips be replaced?', 'Every 40 rounds or once per season — whichever comes first. Worn grips lose tackiness, which leads to grip pressure increases, which leads to tension in the forearms, which destroys ball-striking consistency. A new grip set ($64 for 13 grips) is the most overlooked equipment upgrade in golf.'],
   ['What is the best golf putter grip?', 'A pistol-style putter grip ($28) — the profile locks the wrist angle and eliminates excess rotation through impact. The best putter grip is also the freshest one: worn putter rubber loses the tacky feedback that enables light-pressure putting. Replace annually for consistent results.'],
-  ['Is regripping golf clubs worth it?', 'Yes — it is the highest-ROI equipment upgrade available per dollar spent. A full iron set regrip ($64) restores the contact confidence that worn grips slowly remove over a season. Most golfers who have never regripped are playing on grips 2-3 seasons past replacement — the improvement in grip feel is immediate and significant.']
+  ['Is regripping golf clubs worth it?', 'Many golfers find it worthwhile. A full iron set regrip ($64) gives clubs a fresh, tackier surface — useful if your current grips feel slick or worn. Most teaching professionals recommend regripping at least once a year for golfers playing regularly.']
 ];
 
 const jsonLd = {

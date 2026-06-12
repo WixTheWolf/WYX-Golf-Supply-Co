@@ -227,8 +227,8 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
 
   // ── CLUB CARE & ACCESSORIES ───────────────────────────────────────────────────
   'magnetic-golf-club-brush-cleaner': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S01963d7fc0e9480faeb35e4dc3144145A.jpg_480x480q75.jpg',
-    alt: 'Golf club brush cleaner magnetic groove cleaning tool',
+    url: 'https://stripebird.com/cdn/shop/files/old_Main_6.jpg?v=1726710052',
+    alt: 'Magnetic golf club brush cleaner with carabiner and nylon bristles',
   },
   'groove-sharpener-cleaner-tool': {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/S33580eefb0304986a21c329cdf36e4fab.jpg_480x480q75.jpg',
@@ -297,21 +297,33 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
 
   // ── HATS & HEADWEAR ───────────────────────────────────────────────────────────
   'stretch-performance-golf-hat-low-crown': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S52c568a8afdd471dbaa71255068f83efj.jpg_480x480q75.jpg',
-    alt: 'Stretch performance golf hat low crown moisture wicking',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf0c365d5b34e4daba8286e596e916e4cb.jpg_480x480q75.jpg',
+    alt: 'Black low-crown stretch fit performance golf cap',
   },
   'wide-brim-golf-sun-hat-upf50': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S3a1c5b8ccbd84fbfa8f7a0647a853422Z.jpg_480x480q75.jpg',
-    alt: 'Wide brim golf sun hat UPF 50+ protection',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S03da182f90f1487c96ea0ee8d6e110b3I.jpg_480x480q75.jpg',
+    alt: 'Wide brim golf sun hat UPF 50+ protection with chin cord',
   },
   'golf-visor-performance-stretch-fit': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S52c568a8afdd471dbaa71255068f83efj.jpg_480x480q75.jpg',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf2ef867dd9284cc6b3acd7459ab95354x.jpg_480x480q75.jpg',
     alt: 'Performance golf visor stretch fit moisture wicking',
+  },
+  'unstructured-dad-golf-cap-soft-crown': {
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S08b73d99d7a6484994b216a98bbea76dS.jpg_480x480q75.jpg',
+    alt: 'Unstructured black mesh-back dad golf cap soft crown',
+  },
+  'classic-rope-golf-hat-coastal': {
+    url: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&h=900&fit=crop&q=80',
+    alt: 'Classic rope trim golf hat coastal style',
+  },
+  'performance-snapback-golf-hat-clean-mark': {
+    url: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&h=900&fit=crop&q=80',
+    alt: 'Performance snapback golf hat clean mark',
   },
 
   // ── HEADCOVERS ────────────────────────────────────────────────────────────────
   'coastal-green-driver-headcover': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S97c157c4a7934a27bddc3ba196f5d677o.jpg_480x480q75.jpg',
+    url: 'https://www.modestvintageplayer.com/cdn/shop/files/wool-knit-golf-covers-set-cream-green-715558_1800x1800.jpg?v=1738303847',
     alt: 'Golf driver headcover coastal green knit style',
   },
   'driver-head-cover-knit-pom-pom-vintage': {
@@ -333,8 +345,8 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
     alt: 'Polarized sport wrap golf sunglasses UV400',
   },
   'stroke-counter-wristband': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S52c568a8afdd471dbaa71255068f83efj.jpg_480x480q75.jpg',
-    alt: 'Golf stroke counter wristband digital',
+    url: 'https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?w=1200&h=900&fit=crop&q=80',
+    alt: 'Silicone golf stroke counter wristband on wrist',
   },
   'stainless-golf-flask-8oz-ball-marker-lid': {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/S98eca60f4bbf42f79f95b127aa0aba5fw.jpg_480x480q75.jpg',
@@ -343,7 +355,7 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
 
   // ── TRAINING AIDS ─────────────────────────────────────────────────────────────
   'alignment-putting-mirror': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S265f9c25c116492685907e876ff30d5bq.jpg_480x480q75.jpg',
+    url: 'https://cdn.shopify.com/s/files/1/0163/3424/products/IMG_3254.jpg',
     alt: 'Golf putting alignment mirror for eye position and stroke training',
   },
   'golf-alignment-board-foot-trainer': {
@@ -377,7 +389,7 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
     alt: 'Night golf glow ball set 12 LED core glowing balls',
   },
   'bamboo-performance-golf-tees-50-pack': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S265f9c25c116492685907e876ff30d5bq.jpg_480x480q75.jpg',
+    url: 'https://www.modestvintageplayer.com/cdn/shop/files/bamboo-golf-tees-50pcs-839888_1800x1800.jpg?v=1738303849',
     alt: 'Bamboo performance golf tees 50-pack',
   },
   'golf-scorecard-pencil-set-12-erasers': {
@@ -430,9 +442,20 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
   },
 };
 
+// AliExpress CDN hashes that were recycled across unrelated products (watch, hats, etc.)
+const KNOWN_MISMATCHED_SOURCE_IDS = [
+  'S52c568a8afdd471dbaa71255068f83efj', // GPS sports watch — wrongly used on hats/visor
+  'S3a1c5b8ccbd84fbfa8f7a0647a853422Z', // GPS sports watch — wrongly used on wide-brim hat
+];
+
+function hasKnownMismatchedSource(url: string): boolean {
+  return KNOWN_MISMATCHED_SOURCE_IDS.some((id) => url.includes(id));
+}
+
 // Check if an image URL is a wrong/Unsplash image that needs replacing
 function isWrongImage(url: string | null | undefined): boolean {
   if (!url) return true;
+  if (hasKnownMismatchedSource(url)) return true;
   return url.includes('unsplash.com') || url.includes('images.unsplash');
 }
 
@@ -517,15 +540,25 @@ async function main() {
       continue;
     }
 
-    const hasWrongImage = isWrongImage(product.featuredImage?.url);
-    if (!hasWrongImage) {
-      // Check if the current image is already a real supplier image
-      const currentUrl = product.featuredImage?.url ?? '';
-      if (currentUrl.includes('ae-pic-a1.aliexpress-media.com')) {
-        console.log(`  ✓ Already has real supplier image: ${product.handle}`);
-        skipped++;
-        continue;
-      }
+    const currentUrl = product.featuredImage?.url ?? '';
+    const mappedSource = imageData.url;
+    const alreadyCorrect =
+      currentUrl.length > 0 &&
+      !isWrongImage(currentUrl) &&
+      (currentUrl.includes(mappedSource.split('/').pop()?.split('?')[0] ?? '___no_match___') ||
+        mappedSource.includes(currentUrl.split('/').pop()?.split('?')[0]?.replace(/\.webp$/, '') ?? '___no_match___'));
+
+    if (alreadyCorrect) {
+      console.log(`  ✓ Already has correct image: ${product.handle}`);
+      skipped++;
+      continue;
+    }
+
+    const hasWrongImage = isWrongImage(currentUrl);
+    if (!hasWrongImage && currentUrl.includes('ae-pic-a1.aliexpress-media.com')) {
+      console.log(`  ✓ Already has real supplier image: ${product.handle}`);
+      skipped++;
+      continue;
     }
 
     console.log(`→ Fixing: ${product.handle} (${product.title})`);

@@ -190,6 +190,17 @@ export default async function GolfGiftsForBossPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading"><p className="eyebrow">More Gift Ideas</p><h2 id="links-heading">Golf Gifts for Every Workplace Occasion.</h2></div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-coworkers" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Coworkers</strong><p>Group-friendly picks under $35</p></Link>
+          <Link href="/golf-tournament-prizes" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Tournament Prizes</strong><p>Six-tier prize structure for any event</p></Link>
+          <Link href="/golf-gift-sets" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gift Sets</strong><p>Curated bundles by budget</p></Link>
+          <Link href="/golf-gifts-under-150" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts Under $150</strong><p>Serious gifts for serious golfers</p></Link>
+          <Link href="/golf-gifts-for-dad" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Dad</strong><p>Practical picks at every budget</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-boss"
         campaign="boss_golf_gifts"

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
@@ -11,7 +12,13 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Golf Deals Under $60',
-  description: 'Shop WYX Golf Supply Co. golf deals, bag upgrades, ball markers, grips, gloves, and accessories under $60.'
+  description: 'Shop WYX Golf Supply Co. golf deals, bag upgrades, ball markers, grips, gloves, and accessories under $60.',
+  alternates: { canonical: '/deals' },
+  openGraph: {
+    title: 'Golf Deals Under $60 | WYX Golf Supply Co.',
+    description: 'Bag upgrades, ball markers, grips, gloves, and accessories under $60. Use WYX10 for 10% off.',
+    url: '/deals'
+  }
 };
 
 export default async function Deals() {
@@ -34,7 +41,7 @@ export default async function Deals() {
         <div className="deal-card-stack" aria-label="Featured launch deal picks">
           {topPicks.map((product) => (
             <Link className="deal-pick" href={`/products/${product.handle}`} key={product.id}>
-              {product.featuredImage && <img src={product.featuredImage.url} alt={product.featuredImage.altText || product.title} />}
+              {product.featuredImage && <Image src={product.featuredImage.url} alt={product.featuredImage.altText || product.title} width={110} height={110} />}
               <span>{product.title}</span>
               <strong>{productPriceLabel(product)}</strong>
             </Link>

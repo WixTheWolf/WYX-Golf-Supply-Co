@@ -212,6 +212,18 @@ export default async function GolfGiftsForMomPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading">
+          <p className="eyebrow">More Gift Ideas</p>
+          <h2 id="links-heading">Golf Gifts by Recipient.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-wife" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Wife</strong><p>Engraving-ready leather and GPS watch picks</p></Link>
+          <Link href="/golf-gifts-for-girlfriend" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Girlfriend</strong><p>Budget tiers from $18 to $149</p></Link>
+          <Link href="/golf-gifts-for-anniversary" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Anniversary Gifts</strong><p>Elevated picks for a milestone occasion</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-mom"
         campaign="mom_golf_gifts"
