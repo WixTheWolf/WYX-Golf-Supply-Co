@@ -52,6 +52,8 @@ export function isConfirmedSupplierProduct(product: Product) {
 export function isCoreMerchProduct(product: Product) {
   // Open catalog: any product that passes quality + availability gates shows.
   // Confirmed suppliers get bonus rank in sortByQuality but are no longer required.
+  const tags = product.tags || [];
+  if (tags.includes('supplier-review')) return false;
   return !isHiddenFromCoreStorefront(product) && !isPremiumGolfBag(product) && isBuyTodayProduct(product);
 }
 
