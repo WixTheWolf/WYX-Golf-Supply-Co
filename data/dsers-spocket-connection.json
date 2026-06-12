@@ -2,7 +2,11 @@
   "dsersInstalled": true,
   "spocketInstalled": true,
   "shopifyCollectiveEnabled": true,
-  "dsersMappedCount": 0,
+  "dsersMappedCount": 2,
+  "dsersLinkedProducts": [
+    "bamboo-performance-golf-tees-50-pack",
+    "tri-fold-microfiber-golf-towel"
+  ],
   "spocketMappedCount": 1,
   "dsersTargetCount": 21,
   "spocketTargetCount": 1,
@@ -11,9 +15,7 @@
   "spocketAppUrl": "https://apps.shopify.com/spocket",
   "collectiveUrl": "https://admin.shopify.com/store/wyxgolfsupply/collective",
   "catalogSyncedAt": "2026-06-12T06:10:00.000Z",
-  "notes": "Order #H0KFGQ9ZD not in DSers — product was not linked in DSers Import List. SKUs aligned to AE-* 2026-06-12. Manual map required.",
-  "dsersSkusAligned": 21,
-  "dsersSkusAlignedAt": "2026-06-12T06:45:00.000Z",
+  "notes": "DSers My Products: 2 linked (bamboo tees + tri-fold towel). Open Orders: 2 unmapped — map + Place Order for #H0KFGQ9ZD. Import List: 8 remaining.",
   "testOrder": {
     "confirmation": "H0KFGQ9ZD",
     "placedAt": "2026-06-12T06:36:00.000Z",
@@ -22,8 +24,11 @@
     "total": "16.73",
     "discount": "WYX10",
     "payment": "Apple Pay Visa 7907",
-    "shipTo": "Anaheim CA 92807"
+    "shipTo": "Anaheim CA 92807",
+    "dsersStatus": "unmapped-in-open-orders"
   },
+  "dsersSkusAligned": 21,
+  "dsersSkusAlignedAt": "2026-06-12T06:45:00.000Z",
   "dsersInstalledAt": "2026-06-12T06:08:57.501Z",
   "spocketInstalledAt": "2026-06-12T06:08:57.502Z",
   "dsersMappedAt": "2026-06-12T06:11:51.637Z",
