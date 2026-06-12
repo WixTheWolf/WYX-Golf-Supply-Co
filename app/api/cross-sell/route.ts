@@ -26,6 +26,19 @@ export async function GET(request: NextRequest) {
     );
 
     const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
+    // Don't pitch the same KIND of thing already in the cart (marker → marker).
+    // A title can carry several kind words; exclusion is set-intersection.
+    // "ball marker" normalizes to "marker" so it doesn't block actual golf balls.
+    const KIND_WORDS = ['marker', 'towel', 'glove', 'brush', 'tee', 'retriever', 'headcover', 'grip', 'hat', 'ball'];
+    const kindsOf = (title: string) => {
+      const text = title.toLowerCase().replace(/ball markers?/g, 'marker');
+      return new Set(KIND_WORDS.filter((kind) => text.includes(kind)));
+    };
+    const cartKinds = new Set<string>();
+    for (const handle of exclude) {
+      const product = catalog.find((item) => item.handle === handle);
+      if (product) kindsOf(product.title).forEach((kind) => cartKinds.add(kind));
+    }
     const seenCategories = new Set<string>();
     const picks: Array<{
       handle: string;
@@ -38,6 +51,7 @@ export async function GET(request: NextRequest) {
     for (const product of catalog) {
       if (picks.length >= MAX_ITEMS) break;
       if (exclude.has(product.handle)) continue;
+      if ([...kindsOf(product.title)].some((kind) => cartKinds.has(kind))) continue;
       if (Number(productPrice(product).amount) > MAX_PRICE) continue;
       const category = categoryFor(product);
       if (seenCategories.has(category)) continue;
