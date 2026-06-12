@@ -154,6 +154,17 @@ export default async function GolfGiftsForBeginnersPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading"><p className="eyebrow">More Gift Ideas</p><h2 id="links-heading">Golf Gifts to Build Their Game.</h2></div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-teenage-golfer" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Teen Golfers</strong><p>Picks that actually get used</p></Link>
+          <Link href="/golf-training-aids-for-beginners" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Training Aids</strong><p>Tools that help them improve faster</p></Link>
+          <Link href="/golf-accessories-every-golfer-needs" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Accessories Every Golfer Needs</strong><p>The essentials for any new golfer</p></Link>
+          <Link href="/golf-starter-kit" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Starter Kit</strong><p>Everything to get them started right</p></Link>
+          <Link href="/golf-gift-sets" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gift Sets</strong><p>Curated bundles by budget</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-beginners"
         campaign="beginner_golf_gifts"

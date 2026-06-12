@@ -51,6 +51,7 @@ const mechanismSteps = [
 ];
 
 const situations = [
+  { title: 'Hidden Gems', copy: 'Cart upgrades & training aids you didn\'t know you needed.', href: '/hidden-gems' },
   { title: 'Golf Gifts', copy: 'Practical picks for any golfer on your list.', href: '/golf-gifts' },
   { title: 'Dad Gifts', copy: "Things he'll actually use, not display.", href: '/golf-gifts-for-dad' },
   { title: 'Golf Trip Gear', copy: 'Pack light. Forget nothing that matters.', href: '/golf-trip-gear' },
@@ -82,6 +83,7 @@ const proofStats = [
 ];
 
 const kits = [
+  { title: 'Hidden Gem Kit', href: '/kits/hidden-gem-starter-kit', image: imageMap.walk, copy: 'Cart + practice upgrades golfers copy.' },
   { title: 'Trip Kit', href: '/kits/golf-trip-kit', image: imageMap.walk, copy: 'Packable gear for the golf trip.' },
   { title: 'Dad Kit', href: '/kits/dad-gift-kit', image: imageMap.care, copy: 'Useful gifts he will actually use.' },
   { title: 'Bag Kit', href: '/kits/bag-upgrade-kit', image: imageMap.leather, copy: 'Small upgrades. Better setup.' }
@@ -118,6 +120,11 @@ export default async function Home() {
   const under60 = giftableProducts(homepageCatalog, 12)
     .filter(isHomepageProduct)
     .filter((product) => Number(productPrice(product).amount) < 60)
+    .filter((product) => !shortListHandles.has(product.handle))
+    .slice(0, 4);
+
+  const hiddenGems = homepageCatalog
+    .filter((product) => (product.tags || []).some((tag) => tag.toLowerCase() === 'hidden-gem'))
     .filter((product) => !shortListHandles.has(product.handle))
     .slice(0, 4);
 
@@ -229,6 +236,20 @@ export default async function Home() {
         </div>
         <div className="product-grid">
           {under60.map((product) => <EditorialProductCard key={product.id} product={product} />)}
+        </div>
+      </section>}
+
+      {hiddenGems.length > 0 && <section className="section reveal">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">Hidden Gems</p>
+            <h2>Gear You Didn&apos;t Know You Needed.</h2>
+            <p style={{ marginTop: '0.5rem', maxWidth: '42rem' }}>Cart mounts, divot boards, and backyard training aids that sell themselves once golfers see them in action.</p>
+          </div>
+          <Link className="text-link" href="/hidden-gems">All Hidden Gems</Link>
+        </div>
+        <div className="editorial-product-grid">
+          {hiddenGems.map((product, index) => <EditorialProductCard key={product.id} product={product} featured={index === 0} />)}
         </div>
       </section>}
 

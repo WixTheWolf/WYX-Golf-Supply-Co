@@ -20,16 +20,11 @@ export const metadata: Metadata = {
   }
 };
 
-const picks = [
-  { label: 'Blade Putter Headcover — Quilted Magnetic Closure', price: '$24', href: '/products/blade-putter-headcover-quilted', tag: 'Blade', why: 'Fits all standard blade putters with a magnetic closure that opens with one hand on the green. Quilted PU exterior, microfiber inner lining, and a neck loop keeps it from being left behind.' },
-  { label: 'Mallet Putter Headcover — Tour Knit', price: '$26', href: '/products/mallet-putter-headcover-tour-knit', tag: 'Mallet', why: 'Fits all large mallet heads — Spider, Odyssey, Two-Ball, Cleveland. Stretch-knit outer, soft fleece inner, removable foam insert for different shaft lengths. Magnetic snap at the cuff.' }
-];
-
 const faqs: [string, string][] = [
-  ['Do I need a putter headcover?', 'Yes — the putter is the most-used club in the bag and its face is the most precision-machined. A single bag drop or club-on-club impact during transport can ding a milled putter face and affect roll quality. A headcover ($24-26) prevents this entirely. Most tours require a headcover on putters for this reason.'],
-  ['What is the difference between a blade and mallet putter cover?', 'Blade covers are narrow (standard putter head width, ~350mm long) and fit traditional heel-toe balanced putters. Mallet covers are wider and deeper, designed for large-head spider or two-ball style putters. The WYX blade cover fits all standard blade profiles; the mallet cover fits heads up to 6 inches wide.'],
-  ['What size putter headcover do I need?', 'Check your putter head style. Blade putters (traditional, anser, mid-mallet): use a blade cover. Large mallet putters (Spider, Odyssey Two-Ball, Cleveland Frontline): use a mallet cover. Both WYX covers include a removable foam insert for shaft length adjustment.'],
-  ['Do putter headcovers fit all putters?', 'The WYX blade cover fits any standard blade putter. The WYX mallet cover fits mallet heads up to 6 inches wide, covering Spider, Two-Ball, and most major mallet profiles. The removable foam insert handles shaft hosel length variations across brands.']
+  ['Do I need a putter headcover?', 'Yes — the putter is the most-used club in the bag and its face is the most precision-machined. A single bag drop or club-on-club impact during transport can ding a milled putter face and affect roll quality. A headcover prevents this entirely. Most tours require a headcover on putters for this reason.'],
+  ['What is the difference between a blade and mallet putter cover?', 'Blade covers are narrow (standard putter head width, ~350mm long) and fit traditional heel-toe balanced putters. Mallet covers are wider and deeper, designed for large-head spider or two-ball style putters. Check your putter head profile before buying so the cover seats snugly over the face.'],
+  ['What size putter headcover do I need?', 'Check your putter head style. Blade putters (traditional, anser, mid-mallet) need a narrower cover. Large mallet putters (Spider, Odyssey Two-Ball, Cleveland Frontline) need a wider, deeper cover. Look for a removable foam insert if your shaft length varies.'],
+  ['Do headcovers fit all clubs?', 'Most headcovers are sized for a specific club type — driver, fairway wood, hybrid, or putter — so match the cover to the club you are protecting. A snug fit keeps the cover from sliding off in the bag during transport.']
 ];
 
 const jsonLd = {
@@ -72,27 +67,11 @@ export default async function GolfPutterHeadcoversPage() {
       </section>
 
       <div className="deal-strip">
-        <span>🏌️ Blade cover: $24</span>
-        <span>⛳ Mallet cover: $26</span>
-        <span>🔒 Magnetic closure</span>
+        <span>🏌️ Blade &amp; mallet sizing</span>
+        <span>🔒 Magnetic closures</span>
+        <span>🧵 Soft fleece lining</span>
         <span>🎁 Use WYX10 for 10% off</span>
       </div>
-
-      <section className="section reveal">
-        <div className="section-heading">
-          <p className="eyebrow">Blade or Mallet</p>
-          <h2>Pick Your Putter Style.</h2>
-        </div>
-        <div className="care-step-grid">
-          {picks.map((pick) => (
-            <div key={pick.href} className="care-step">
-              <strong>{pick.tag}</strong>
-              <p><Link href={pick.href}>{pick.label}</Link> — {pick.price}</p>
-              <p>{pick.why}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section id="products" className="section reveal">
         <div className="section-heading">

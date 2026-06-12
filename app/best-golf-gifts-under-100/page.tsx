@@ -163,6 +163,7 @@ export default async function BestGolfGiftsUnder100Page() {
         <div className="care-step-grid">
           <Link href="/golf-gifts-under-25" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $25</strong><p>Alignment sticks and towels — the functional gifts that earn a bag spot immediately</p></Link>
           <Link href="/golf-gifts-under-50" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $50</strong><p>Glove 3-packs, leather scorecard holders — the practical gift sweet spot</p></Link>
+          <Link href="/golf-gifts-under-60" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $60</strong><p>Easy gift picks and useful bag upgrades</p></Link>
           <Link href="/golf-gifts-under-75" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $75</strong><p>Putting mat, chipping net, regrip kit — the generous-but-not-excessive tier</p></Link>
           <Link href="/golf-gifts-under-150" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $150</strong><p>Rangefinder and GPS watch — the premium gift that changes how they play</p></Link>
         </div>

@@ -181,6 +181,19 @@ export default async function GolfAccessoriesEveryGolferNeedsPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="more-accessories-heading">
+        <div className="section-heading"><p className="eyebrow">More Accessories</p><h2 id="more-accessories-heading">The Niche Picks That Round Out the Bag.</h2></div>
+        <div className="care-step-grid">
+          <Link href="/golf-compression-socks" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Compression Socks</strong><p>Back nine feels like the front nine</p></Link>
+          <Link href="/golf-impact-tape" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Impact Tape</strong><p>See exactly where you're hitting it</p></Link>
+          <Link href="/golf-putter-headcovers" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Putter Headcovers</strong><p>Protect the club you use most</p></Link>
+          <Link href="/golf-water-bottle" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Water Bottle &amp; Flask</strong><p>Stay sharp through 18</p></Link>
+          <Link href="/golf-belts" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Belts</strong><p>Stretch ratchet and leather, stays through the swing</p></Link>
+          <Link href="/golf-travel-bag" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Travel Bag</strong><p>Eight accessories for any golf trip</p></Link>
+          <Link href="/golf-tech" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Tech</strong><p>Reduces the mental load of every round</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-accessories-every-golfer-needs"
         campaign="golf_essentials"

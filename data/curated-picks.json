@@ -36,6 +36,33 @@
     "description": "Bachelor-party and prize-table candidate; confirm margins before publishing."
   },
   {
+    "title": "J&M Golf — Wholesale Account",
+    "price": "Wholesale",
+    "image": "",
+    "url": "https://jandmgolf.com/create-an-account/",
+    "label": "Priority Supplier",
+    "source": "J&M Golf",
+    "description": "US grips & branded accessories. Apply first — see docs/supplier-outreach-pack.md"
+  },
+  {
+    "title": "TopDawg — US Warehouse Sports",
+    "price": "Dropship",
+    "image": "",
+    "url": "https://topdawg.com/",
+    "label": "Shopify App",
+    "source": "TopDawg",
+    "description": "Cart gear, training aids. Shopify app + API sync."
+  },
+  {
+    "title": "Magnetic Cart Phone Mount (live)",
+    "price": "$34",
+    "image": "",
+    "url": "https://wyxgolfsupply.com/products/magnetic-cart-phone-mount",
+    "label": "Hidden Gem",
+    "source": "WYX",
+    "description": "Live on storefront — Meta ad hero SKU."
+  },
+  {
     "title": "Swing Tempo Trainer",
     "price": "$34–$55",
     "image": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=600&q=80",

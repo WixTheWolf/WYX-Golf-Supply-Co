@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { useCart } from './CartProvider';
 import type { ProductVariant } from '@/types/shopify';
@@ -39,12 +40,12 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
         <div className="variant-option-grid">
           {availableVariants.map((variant) => <label className={selectedVariantId === variant.id ? 'selected' : ''} key={variant.id}>
             <input type="radio" name={`variant-${productTitle}`} value={variant.id} checked={selectedVariantId === variant.id} onChange={() => setSelectedVariantId(variant.id)} />
-            {variant.image?.url && <img src={variant.image.url} alt={variant.image.altText || variantLabel(variant)} loading="lazy" />}
+            {variant.image?.url && <Image src={variant.image.url} alt={variant.image.altText || variantLabel(variant)} width={36} height={36} loading="lazy" />}
             <span>{variantLabel(variant)}</span>
           </label>)}
         </div>
       </fieldset>}
-      {selectedVariant?.image?.url && !compact && <div className="selected-variant-image"><img src={selectedVariant.image.url} alt={selectedVariant.image.altText || variantLabel(selectedVariant)} loading="lazy" /></div>}
+      {selectedVariant?.image?.url && !compact && <div className="selected-variant-image"><Image src={selectedVariant.image.url} alt={selectedVariant.image.altText || variantLabel(selectedVariant)} width={96} height={96} loading="lazy" /></div>}
       {selectedVariant && <p className="selected-variant-note">Selected: <strong>{variantLabel(selectedVariant)}</strong></p>}
       {!selectedVariant && requiresChoice && <p className="selected-variant-note">Choose a color or option before checkout.</p>}
       <button className="button primary full" disabled={disabled} onClick={addSelected}>{loading ? 'Adding...' : disabled ? 'Choose Option' : 'Add To Bag'}</button>

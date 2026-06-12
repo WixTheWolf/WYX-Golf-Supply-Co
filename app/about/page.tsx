@@ -3,7 +3,13 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'About WYX Golf Supply Co.',
-  description: 'WYX Golf Supply Co. curates useful golf gear, gift-ready picks, and better bag essentials for weekend golfers.'
+  description: 'WYX Golf Supply Co. curates useful golf gear, gift-ready picks, and better bag essentials for weekend golfers.',
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About WYX Golf Supply Co.',
+    description: 'WYX Golf Supply Co. curates useful golf gear, gift-ready picks, and better bag essentials for weekend golfers.',
+    url: '/about'
+  }
 };
 
 export default function About() {

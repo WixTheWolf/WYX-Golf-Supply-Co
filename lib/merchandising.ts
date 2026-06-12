@@ -3,9 +3,21 @@ import type { Product } from '@/types/shopify';
 
 const productText = (product: Product) => `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
 
+const hiddenGemCopy: Record<string, string> = {
+  'magnetic-cart-phone-mount': 'A magnetic cart phone mount that stops the every-hole bag dig — yardages and videos without the wobble.',
+  'divot-board-swing-trainer': 'Instant swing-path feedback on the range, garage, or carpet — the training aid golfers buy after seeing one stripe.',
+  'pop-up-chipping-net-3-target': 'Backyard short-game reps in 30 seconds — pop-up net with scoring targets, no range trip required.',
+  'stance-alignment-towel': 'Alignment lines for practice, microfiber for the round — two tools in one towel.',
+  'silicone-cart-beverage-holder-2pack': 'Two flexible cup holders that stop tumbler wobble on every cart frame.',
+  'extendable-ball-retriever-15ft': 'Pond insurance that pays for itself on the first Pro V1 save.',
+  'portable-putting-arc-trainer': 'Stroke-path guide for the living room carpet — putting feedback without a $300 lab.',
+  'windproof-cart-umbrella-holder': 'Hands-free umbrella lock when the front nine turns into a monsoon.'
+};
+
 export function productBuyerPromise(product: Product) {
   const category = categoryFor(product);
   const text = productText(product);
+  if (hiddenGemCopy[product.handle]) return hiddenGemCopy[product.handle];
   if (product.handle === 'tri-fold-microfiber-golf-towel') return 'A compact microfiber towel built for wet grips, clean club faces, and everyday bag carry.';
   if (/golf bag/i.test(text)) return 'A full-bag upgrade for golfers ready to carry their gear with more order and personality.';
   if (category === 'Headwear' || /hat|cap/.test(text)) return 'A course-ready golf hat that works for the range, the trip, and the weekend rotation.';

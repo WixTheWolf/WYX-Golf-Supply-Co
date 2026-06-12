@@ -195,6 +195,7 @@ export default async function GolfGiftsUnder150Page() {
         </div>
         <div className="care-step-grid">
           <Link href="/golf-gifts-under-25" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $25</strong><p>Five practical picks all used every round</p></Link>
+          <Link href="/golf-gifts-under-60" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $60</strong><p>Easy gift picks and useful bag upgrades</p></Link>
           <Link href="/best-golf-gifts-under-100" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $100</strong><p>The sweet-spot gift budget for any golfer</p></Link>
           <Link href="/golf-corporate-gifts" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Corporate Golf Gifts</strong><p>Client gifts, tournament prizes, group orders</p></Link>
           <Link href="/golf-tournament-prizes" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Tournament Prizes</strong><p>Six-tier prize structure for any event</p></Link>

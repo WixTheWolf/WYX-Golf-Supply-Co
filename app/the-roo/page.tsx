@@ -5,7 +5,12 @@ import { EmailCapture } from '@/components/EmailCapture';
 export const metadata: Metadata = {
   title: 'The Roo Valuables Pouch',
   description: 'Join the waitlist for The Roo, a WYX valuables pouch concept for keys, wallet, tees, markers, cash, and small golf-bag essentials.',
-  alternates: { canonical: '/the-roo' }
+  alternates: { canonical: '/the-roo' },
+  openGraph: {
+    title: 'The Roo Valuables Pouch | WYX Golf Supply Co.',
+    description: 'Join the waitlist for The Roo, a valuables pouch concept for keys, wallet, tees, markers, and small bag essentials.',
+    url: '/the-roo'
+  }
 };
 
 export default function TheRoo() {

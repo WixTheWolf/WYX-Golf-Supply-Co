@@ -203,6 +203,19 @@ export default async function GolfGiftsForGolfersWhoHaveEverythingPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading">
+          <p className="eyebrow">More Gift Ideas</p>
+          <h2 id="links-heading">Golf Gifts by Recipient.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-husband" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Husband</strong><p>Practical picks for the husband who golfs</p></Link>
+          <Link href="/golf-gifts-for-men" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Men</strong><p>Practical picks at every budget</p></Link>
+          <Link href="/golf-gifts-for-boyfriend" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Boyfriend</strong><p>Picks that feel personal, not generic</p></Link>
+          <Link href="/golf-gifts-under-150" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $150</strong><p>The premium tier for the golfer who has it all</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-golfers-who-have-everything"
         campaign="golfer_who_has_everything"

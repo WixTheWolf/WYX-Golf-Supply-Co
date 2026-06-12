@@ -180,6 +180,19 @@ export default async function GolfGiftsForHusbandPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading">
+          <p className="eyebrow">More Gift Ideas</p>
+          <h2 id="links-heading">Golf Gifts by Recipient.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-men" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Men</strong><p>Practical picks at every budget</p></Link>
+          <Link href="/golf-gifts-for-golfers-who-have-everything" className="care-step-card" style={{ textDecoration: 'none' }}><strong>For the Golfer Who Has Everything</strong><p>Creative picks beyond the obvious gifts</p></Link>
+          <Link href="/golf-gifts-for-anniversary" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Anniversary Gifts</strong><p>Elevated picks for a milestone occasion</p></Link>
+          <Link href="/best-golf-gifts-under-100" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $100</strong><p>Rangefinders, regrip kits, and full bag upgrades</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-husband"
         campaign="husband_golf_gifts"

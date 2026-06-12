@@ -162,6 +162,7 @@ export default async function GolfGiftsUnder25Page() {
         <div className="care-step-grid">
           <Link href="/golf-stocking-stuffers" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Stocking Stuffers</strong><p>All the picks that fit in a stocking — $16 to $32</p></Link>
           <Link href="/golf-gifts-under-50" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $50</strong><p>Glove 3-packs, leather scorecard holders, and more</p></Link>
+          <Link href="/golf-gifts-under-60" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $60</strong><p>Easy gift picks and useful bag upgrades</p></Link>
           <Link href="/golf-gifts-under-75" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $75</strong><p>The generous-but-practical budget tier</p></Link>
           <Link href="/best-golf-gifts-under-100" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $100</strong><p>The sweet-spot gift budget for any golfer</p></Link>
         </div>

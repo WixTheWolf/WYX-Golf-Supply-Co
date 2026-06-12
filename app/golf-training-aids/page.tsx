@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { EditorialProductCard } from '@/components/EditorialProductCard';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { siteUrl } from '@/lib/feed';
+import { hiddenGemProducts, trainingAidProducts } from '@/lib/landingHelpers';
+import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { productQualityScore } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -75,8 +78,9 @@ function trainingScore(product: Awaited<ReturnType<typeof getProducts>>[number])
 }
 
 export default async function GolfTrainingAidsPage() {
-  const allProducts = availableProducts(await getProducts());
-  const products = allProducts
+  const catalog = coreMerchProducts(availableProducts(await getProducts()));
+  const gems = hiddenGemProducts(catalog, 4);
+  const products = trainingAidProducts(catalog, 10)
     .sort((a, b) => trainingScore(b) - trainingScore(a))
     .slice(0, 10);
 
@@ -161,6 +165,21 @@ export default async function GolfTrainingAidsPage() {
           )
         }
       </section>
+
+      {gems.length > 0 && (
+        <section className="section reveal">
+          <div className="section-heading split">
+            <div>
+              <p className="eyebrow">Hidden Gems</p>
+              <h2>Training Aids You Didn&apos;t Know You Needed.</h2>
+            </div>
+            <Link className="text-link" href="/kits/hidden-gem-starter-kit">Get The Kit</Link>
+          </div>
+          <div className="editorial-product-grid">
+            {gems.map((product, index) => <EditorialProductCard key={product.id} product={product} featured={index === 0} />)}
+          </div>
+        </section>
+      )}
 
       <section className="section reveal" aria-labelledby="faq-heading">
         <div className="section-heading">

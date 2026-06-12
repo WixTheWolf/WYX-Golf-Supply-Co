@@ -12,7 +12,12 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: 'Shop Golf Gifts, Hats, Apparel, Trip Gear & Bag Upgrades',
   description: 'Shop WYX Golf Supply Co. for golf gifts, hats, apparel, towels, ball markers, gloves, golf balls, trip gear, and bag upgrades for weekend golfers.',
-  alternates: { canonical: '/products' }
+  alternates: { canonical: '/products' },
+  openGraph: {
+    title: 'Shop Golf Gifts, Hats, Apparel & Bag Gear | WYX Golf Supply Co.',
+    description: 'Golf gifts, hats, apparel, trip gear, and bag upgrades for weekend golfers — all in one shop.',
+    url: '/products'
+  }
 };
 
 const intentFilters = [

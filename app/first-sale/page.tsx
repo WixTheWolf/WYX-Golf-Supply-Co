@@ -11,7 +11,13 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'First Sale Launch Offer',
-  description: 'A focused WYX Golf Supply Co. launch offer for giftable golf gear, bag upgrades, and under-$60 golf essentials.'
+  description: 'A focused WYX Golf Supply Co. launch offer for giftable golf gear, bag upgrades, and under-$60 golf essentials.',
+  alternates: { canonical: '/first-sale' },
+  openGraph: {
+    title: 'First Sale Launch Offer | WYX Golf Supply Co.',
+    description: 'A focused launch offer for giftable golf gear, bag upgrades, and under-$60 golf essentials. Use WYX10 for 10% off.',
+    url: '/first-sale'
+  }
 };
 
 const preferredHandles = [

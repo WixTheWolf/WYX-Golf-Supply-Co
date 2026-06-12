@@ -87,6 +87,11 @@ export function firstBuyProducts(products: Product[]) {
     'hack-daniels-golf-towel',
     'tri-fold-microfiber-golf-towel',
     'waffle-golf-towel',
+    'magnetic-cart-phone-mount',
+    'divot-board-swing-trainer',
+    'pop-up-chipping-net-3-target',
+    'stance-alignment-towel',
+    'extendable-ball-retriever-15ft',
     // Apparel
     'stretch-golf-belt-supplier-review',
     'coastal-rope-hat',

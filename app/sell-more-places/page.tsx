@@ -13,7 +13,12 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: 'Shop WYX Everywhere | Golf Gifts, Hats, Apparel & Trip Gear',
   description: 'Shop WYX Golf Supply Co. by gift, trip, hat, apparel, deal, and bag-upgrade pages.',
-  alternates: { canonical: '/sell-more-places' }
+  alternates: { canonical: '/sell-more-places' },
+  openGraph: {
+    title: 'Shop WYX Everywhere | WYX Golf Supply Co.',
+    description: 'Shop WYX Golf Supply Co. by gift, trip, hat, apparel, deal, and bag-upgrade pages.',
+    url: '/sell-more-places'
+  }
 };
 
 const quickLinks = [

@@ -27,6 +27,7 @@ export function Header() {
         <Link className="brand" href="/"><strong>WYX</strong><span>Golf Co.</span></Link>
         <nav className="nav-links" aria-label="Primary navigation">
           <Link href="/products">Shop</Link>
+          <Link href="/hidden-gems">Hidden Gems</Link>
           <Link href="/golf-gifts">Gifts</Link>
           <Link href="/golf-hats">Hats</Link>
           <Link href="/golf-apparel">Apparel</Link>

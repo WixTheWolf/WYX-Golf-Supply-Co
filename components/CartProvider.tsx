@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { CartPromoSummary } from '@/components/CartPromoSummary';
 import { trackEvent } from '@/lib/analytics';
 import { money } from '@/lib/demo';
 import type { Cart } from '@/types/shopify';
@@ -189,10 +190,10 @@ function CartDrawer() {
   }
 
   return (
-    <aside className={`cart-drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
+    <aside className={`cart-drawer ${open ? 'open' : ''}`} aria-hidden={!open} {...(!open ? { inert: true } : {})}>
       <div className="cart-head"><h2>Your Bag</h2><button onClick={() => setOpen(false)} aria-label="Close cart">Close</button></div>
-      <p className="promo-note">Use <strong>{launchCode}</strong> at checkout for 10% off your first order.</p>
-      {error && <p className="error">{error}</p>}
+      <CartPromoSummary cart={cart} />
+      {error && <p className="error" role="alert">{error}</p>}
       {!cart?.lines.length ? <p className="muted">Your bag is empty. Let's fix that before the next tee time.</p> : (
         <div className="cart-lines">
           {cart.lines.map((line) => (

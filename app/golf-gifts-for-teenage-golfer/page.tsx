@@ -154,6 +154,17 @@ export default async function GolfGiftsForTeenagerPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading"><p className="eyebrow">More Gift Ideas</p><h2 id="links-heading">Golf Gifts for Every Stage of the Game.</h2></div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-beginners" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Beginners</strong><p>Picks for the new golfer in your life</p></Link>
+          <Link href="/golf-training-aids-for-beginners" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Training Aids</strong><p>Tools that help them improve faster</p></Link>
+          <Link href="/night-golf" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Night Golf Gear</strong><p>Glow balls and lights for after-dark rounds</p></Link>
+          <Link href="/golf-gifts-for-boyfriend" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Boyfriend</strong><p>Practical picks for the golfer in your life</p></Link>
+          <Link href="/golf-gifts-under-50" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts Under $50</strong><p>The practical gift sweet spot</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-teenage-golfer"
         campaign="teen_golf_gifts"

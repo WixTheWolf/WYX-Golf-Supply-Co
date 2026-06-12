@@ -156,6 +156,20 @@ export default async function GolfGiftsForCoworkersPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading">
+          <p className="eyebrow">More Gift Ideas</p>
+          <h2 id="links-heading">Golf Gifts for Group Gifting and Beyond.</h2>
+        </div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-for-boss" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Boss</strong><p>Professional, practical picks that land right</p></Link>
+          <Link href="/golf-corporate-gifts" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Corporate Golf Gifts</strong><p>Client gifts, tournament prizes, group orders</p></Link>
+          <Link href="/golf-gift-sets" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gift Sets</strong><p>Curated bundles by budget</p></Link>
+          <Link href="/golf-birthday-gifts" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Birthday Gifts</strong><p>Budget-tiered picks for any birthday</p></Link>
+          <Link href="/golf-gifts-under-25" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts Under $25</strong><p>Five practical picks all used every round</p></Link>
+        </div>
+      </section>
+
       <EmailCapture
         source="golf-gifts-for-coworkers"
         campaign="coworker_golf_gifts"

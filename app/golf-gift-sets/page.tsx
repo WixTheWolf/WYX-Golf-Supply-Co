@@ -116,6 +116,17 @@ export default async function GolfGiftSetsPage() {
         </div>
       </section>
 
+      <section className="section reveal" aria-labelledby="links-heading">
+        <div className="section-heading"><p className="eyebrow">More Gift Ideas</p><h2 id="links-heading">Golf Gifts by Recipient and Budget.</h2></div>
+        <div className="care-step-grid">
+          <Link href="/golf-gifts-under-25" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts Under $25</strong><p>Five practical picks all used every round</p></Link>
+          <Link href="/golf-gifts-for-dad" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Dad</strong><p>Practical picks at every budget</p></Link>
+          <Link href="/golf-gifts-for-men" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Men</strong><p>Practical picks at every budget</p></Link>
+          <Link href="/golf-stocking-stuffers" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Stocking Stuffers</strong><p>All the picks that fit in a stocking</p></Link>
+          <Link href="/golf-corporate-gifts" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Corporate Golf Gifts</strong><p>Client gifts, tournament prizes, group orders</p></Link>
+        </div>
+      </section>
+
       <EmailCapture source="golf-gift-sets" campaign="golf_gift_sets" title="Golf Gift Sets. Used Every Round." body="Join the WYX list for gift guides and 10% off your first order with WYX10." />
     </>
   );

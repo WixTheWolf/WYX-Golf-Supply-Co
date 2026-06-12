@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
+import { ProductBadge } from '@/components/ProductBadge';
 import { ProductPurchaseControls } from '@/components/ProductPurchaseControls';
 import { ProductViewTracker } from '@/components/ProductViewTracker';
 import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from '@/lib/catalog';
@@ -95,6 +96,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </div>
         <div className="purchase-panel">
           <p className="eyebrow">{productCategory}</p>
+          <ProductBadge product={product} />
           <h1>{title}</h1>
           <p className="price large">{money(product.priceRange.minVariantPrice)}</p>
           <p>{description}</p>

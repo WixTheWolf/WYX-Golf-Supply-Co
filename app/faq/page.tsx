@@ -4,7 +4,12 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Golf FAQ — Products, Shipping, Returns & WYX10 | WYX Golf Supply Co.',
   description: 'Answers to the most common questions about WYX Golf Supply Co. — products, shipping timing, returns, the WYX10 discount code, and what makes a good golf gift.',
-  alternates: { canonical: '/faq' }
+  alternates: { canonical: '/faq' },
+  openGraph: {
+    title: 'Golf FAQ | WYX Golf Supply Co.',
+    description: 'Answers on products, shipping, returns, and the WYX10 discount code.',
+    url: '/faq'
+  }
 };
 
 const faqGroups: Array<{ heading: string; items: Array<[string, string]> }> = [

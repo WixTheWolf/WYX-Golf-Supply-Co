@@ -163,6 +163,7 @@ export default async function GolfGiftsForWifePage() {
           <Link href="/golf-gifts-for-mom" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Mom</strong><p>All under $50 — practical bag essentials</p></Link>
           <Link href="/golf-gifts-for-anniversary" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Anniversary Gifts</strong><p>Engraved and elevated for a milestone occasion</p></Link>
           <Link href="/golf-gifts-for-women" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Women</strong><p>Full range of picks for any woman who golfs</p></Link>
+          <Link href="/golf-gifts-for-girlfriend" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Golf Gifts for Girlfriend</strong><p>Budget tiers from $18 to $149</p></Link>
           <Link href="/golf-gifts-under-50" className="care-step-card" style={{ textDecoration: 'none' }}><strong>Under $50</strong><p>The practical budget that works for every occasion</p></Link>
         </div>
       </section>
