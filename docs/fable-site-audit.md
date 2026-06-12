@@ -44,3 +44,25 @@ regression is now fixed (see below).
 These changes exist only on `feat/growth-pass-2-hidden-gems`. **Production will keep serving
 the old broad-catalog site until this branch is merged to `main`** (Vercel deploys main).
 That merge/push is the single highest-leverage remaining action.
+
+## Addendum — Image integrity audit (June 12, 2026)
+
+A catalog-wide duplicate-image sweep found 17 supplier images shared across ~45
+unrelated products (fallout from an automated image-fix run). All 36 affected
+handles with provably wrong photos are hidden via `knownImageMismatchHandles`
+in `lib/productReadiness.ts` (each with the verified reason inline).
+
+**Restore-from-seed was evaluated and rejected:** spot-verification showed the
+original seed images were Unsplash keyword guesses that frequently do not
+depict the product at all (the polo's "original" is a cat-graphic t-shirt; the
+iron headcover set's is a landscape photo). The verified-dropship catalog
+covers only 1 of the 36 handles. 
+
+**The only honest recovery path is real product photos** — upload via Shopify
+admin (or attach from actual supplier listings) for any handle in
+`knownImageMismatchHandles`, then remove that handle from the list to un-hide.
+Until then the storefront serves 91 products whose featured images were each
+visually verified against their titles.
+
+Categories temporarily below the 3-item bar as a result: Apparel (1),
+Club Care (2), Grips (2).
