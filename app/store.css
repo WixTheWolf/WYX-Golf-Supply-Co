@@ -478,3 +478,25 @@ p {
     justify-content: flex-start;
   }
 }
+/* Cart cross-sell — "Round Out The Bag" */
+.cart-cross-sell{border-top:1px solid var(--line);padding:1rem 0;margin-top:.5rem}
+.cart-cross-sell-head{margin:0 0 .6rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cart-cross-sell-item{display:flex;align-items:center;gap:.7rem;padding:.45rem 0}
+.cart-cross-sell-item img{flex:none;object-fit:cover;border:1px solid var(--line)}
+.cart-cross-sell-item div{flex:1;min-width:0;display:grid;gap:.1rem}
+.cart-cross-sell-item div a{font-size:.84rem;font-weight:700;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cart-cross-sell-item div span{font-size:.8rem;color:var(--muted)}
+.cart-cross-sell-item button{flex:none;min-height:34px;padding:.4rem .85rem;border:1px solid var(--forest);border-radius:999px;background:transparent;color:var(--forest);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.cart-cross-sell-item button:hover{background:var(--lime);border-color:var(--lime)}
+.cart-cross-sell-item button:disabled{opacity:.56;cursor:not-allowed}
+
+/* Deferred email slide-in */
+.email-slidein{position:fixed;right:1rem;bottom:1rem;z-index:45;width:min(400px,calc(100vw - 2rem));background:var(--paper);border:1px solid var(--line);box-shadow:0 18px 48px rgba(16,39,30,.22);animation:slidein-up .35s ease}
+.email-slidein .email-capture{display:block;width:auto;margin:0;padding:1.3rem 1.2rem 1.1rem}
+.email-slidein .email-capture h2{font-size:1.5rem}
+.email-slidein .email-capture p{font-size:.88rem}
+.email-slidein-close{position:absolute;top:.5rem;right:.6rem;z-index:1;border:0;background:transparent;color:var(--muted);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.email-slidein-close:hover{color:var(--forest)}
+@keyframes slidein-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.email-slidein{animation:none}}
+@media(max-width:650px){.email-slidein{bottom:0;right:0;width:100vw;border-left:0;border-right:0;border-bottom:0}}

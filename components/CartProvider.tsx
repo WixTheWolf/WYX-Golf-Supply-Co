@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { CartCrossSell } from '@/components/CartCrossSell';
 import { CartPromoSummary } from '@/components/CartPromoSummary';
 import { trackEvent } from '@/lib/analytics';
 import { money } from '@/lib/demo';
@@ -214,6 +215,7 @@ function CartDrawer() {
           ))}
         </div>
       )}
+      <CartCrossSell />
       <div className="cart-foot">
         {cart && <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />}
         <p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p>

@@ -49,11 +49,29 @@ npm run apply:verified-catalog    # sync tags + images from JSON
 | **Syncee / Kandy Golf** | Syncee app | Women's apparel, gloves, towels — Canada origin |
 | **CJ Dropshipping** | CJ app | Backup catalog for training aids |
 | **JP Lann Golf** | Wholesale account | Apply at jplann.com — real brand photos, US ship |
+| **TopDawg** | Shopify app | US-warehouse backfill — **filter hard**; sports/outdoor catalog is broad |
+
+### Tier B — wholesale & curated backfill
+
+Parallel lane for legitimate golf inventory and better margins. Full matrix: `docs/vendor-sourcing-hit-list.md`
+
+| Vendor | Role | Integration |
+| --- | --- | --- |
+| **J&M Golf** | Credibility SKUs — grips, markers, towels, tees | Wholesale (priority) |
+| **GT Golf Supply** | Scramble prizes, pro shop accessories | Wholesale |
+| **Faire** | Boutique pouches, bag tags, premium markers | Faire Shopify app |
+| **Stroke & Distance** | Cap tees, beverage caddies, promo packs | Wholesale |
+| **Cullinan Golf** | Dropship apparel + custom mfg | Partner application |
+| **Hireko Golf** | Grips, shafts, components | Dealer program |
+| **PRG Golf** | Premium custom — future private label | B2B (park until sales) |
+| **Golf4Her** | Women's dropship | Parked — future collection |
+| **Divots / OMNIXGOLF** | Private-label apparel/bags | Parked — after POD capsule |
+
+Outreach templates: `docs/supplier-outreach-pack.md`
 
 ### Skip for now
 
 - **Zendrop** — no golf depth
-- **TopDawg** — thin golf assortment, margin complaints
 - **JP Lann without account** — wholesale only, no API
 
 ---

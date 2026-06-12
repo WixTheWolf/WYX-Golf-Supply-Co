@@ -30,7 +30,7 @@ export default function Article({params}:{params:{slug:string}}){
       <p>{p.description}</p>
       <Image src={p.image} alt={p.title} width={1200} height={800}/>
       {p.sections.map(([h,body])=><section key={h}><h2>{h}</h2><p>{body}</p></section>)}
-      <p>Continue with <Link href="/products">WYX golf essentials</Link> or read <Link href="/story">The Long Game</Link>.</p>
+      <p>Shop <Link href="/weekend-golfer-bag-upgrade-kit">The Bag Upgrade Kit</Link>, browse <Link href="/golf-gifts">golf gifts</Link>, or read <Link href="/story">The Long Game</Link>.</p>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}}/>
     </article>
   );

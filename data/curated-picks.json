@@ -51,7 +51,34 @@
     "url": "https://topdawg.com/",
     "label": "Shopify App",
     "source": "TopDawg",
-    "description": "Cart gear, training aids. Shopify app + API sync."
+    "description": "Cart gear, training aids. Shopify app — filter hard before importing."
+  },
+  {
+    "title": "GT Golf Supply — Wholesale Account",
+    "price": "Wholesale",
+    "image": "",
+    "url": "https://www.ggolf.com/",
+    "label": "Priority Supplier",
+    "source": "GT Golf Supply",
+    "description": "Pro shop + scramble prizes. Grips, markers, tournament gifts."
+  },
+  {
+    "title": "Faire — Boutique Golf Discovery",
+    "price": "Wholesale",
+    "image": "",
+    "url": "https://www.faire.com/discover/golf-equipment",
+    "label": "Priority Supplier",
+    "source": "Faire",
+    "description": "Valuables pouches, premium markers, bag tags. Net-60 + Faire Shopify app."
+  },
+  {
+    "title": "Stroke & Distance — Wholesale Tees & Caddies",
+    "price": "Wholesale",
+    "image": "",
+    "url": "https://strokeanddistance.com/pages/wholesale-golf-accessories",
+    "label": "Trip Gifts",
+    "source": "Stroke & Distance",
+    "description": "Custom cap tees and beverage caddies for trip/event gift packs."
   },
   {
     "title": "Magnetic Cart Phone Mount (live)",

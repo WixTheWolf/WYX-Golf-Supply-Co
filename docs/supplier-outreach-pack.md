@@ -6,6 +6,8 @@ Ready-to-send wholesale and dropship applications. Replace `[YOUR NAME]` if need
 **Shopify:** wyxgolfsupply.myshopify.com  
 **Positioning:** Curated weekend-golfer accessories & gifts ($22–$75 AOV), not clubs.
 
+**Vendor matrix:** `docs/vendor-sourcing-hit-list.md` — priority order: J&M → Faire → GT Golf → TopDawg → Stroke & Distance → Cullinan. Parked: Golf4Her, Divots, PRG (until sales).
+
 ---
 
 ## 1. J&M Golf (Priority — credibility SKUs)
@@ -133,7 +135,150 @@ mwixted1@gmail.com
 
 ---
 
-## 6. Printful (WYX-branded POD capsule)
+## 6. GT Golf Supply (Pro shop + scramble prizes)
+
+**Site:** https://www.ggolf.com/  
+**Phone:** 800-757-7453
+
+**Subject:** Wholesale account request — WYX Golf Supply Co.
+
+Hi GT Golf Supply team,
+
+I'm Matthew Wixted, founder of **WYX Golf Supply Co.** (wyxgolfsupply.com) — a curated golf accessories shop for weekend golfers, gift buyers, and scramble organizers.
+
+I'd like to open a wholesale account for:
+
+- Divot tools and ball markers  
+- Wet/dry towels and tee packs  
+- Scramble/prize-table accessories  
+- Pro shop replenishment items (grips, club-care tools)
+
+We sell through Shopify with US customers. Initial plan: sample order + 10–15 SKU test, scaling winners only.
+
+Please send account application steps, pricing tiers, and minimum order terms.
+
+Thank you,  
+Matthew Wixted  
+mwixted1@gmail.com | wyxgolfsupply.com
+
+---
+
+## 7. Faire (Boutique giftable discovery)
+
+**Sign up:** https://www.faire.com/  
+**Golf category:** https://www.faire.com/discover/golf-equipment  
+**Integration:** Faire Shopify app
+
+**Subject:** New retailer account — golf gift accessories for WYX Golf Supply Co.
+
+Hi Faire team,
+
+I'm opening a retailer account for **WYX Golf Supply Co.** (wyxgolfsupply.com) — a curated golf gift shop focused on practical accessories under $75.
+
+We're looking for boutique wholesale brands in:
+
+- Leather valuables pouches / small zip bags  
+- Premium ball markers and divot tool sets  
+- Bag tags and scorecard holders  
+
+We'll start with a focused net-60 test order (3–5 brands, 8–12 SKUs) and sync winners to Shopify via the Faire app.
+
+Store: Shopify | Audience: US | AOV target: $45–$75
+
+Please confirm retailer onboarding steps and any category recommendations for golf gift buyers.
+
+Matthew Wixted  
+mwixted1@gmail.com
+
+---
+
+## 8. PRG Golf (Premium custom — park until sales)
+
+**Site:** https://prg-golf.com/
+
+**Subject:** Stock catalog + MOQ inquiry — WYX Golf Supply Co.
+
+Hi PRG Golf team,
+
+I'm Matthew Wixted from **WYX Golf Supply Co.** (wyxgolfsupply.com). We curate practical golf accessories for weekend golfers and gift buyers.
+
+We're exploring premium suppliers for future WYX-branded markers, towels, and divot tools. Before committing to custom runs, could you share:
+
+1. Stock/blank catalog with wholesale pricing  
+2. MOQ and lead times for small custom orders  
+3. Dropship or blind-ship options for retailers
+
+We're early-stage (80+ live SKUs) and want to sample stock items before scaling custom.
+
+Thank you,  
+Matthew Wixted  
+mwixted1@gmail.com
+
+---
+
+## 9. Stroke & Distance (Cap tees + beverage caddies)
+
+**Wholesale:** https://strokeanddistance.com/pages/wholesale-golf-accessories
+
+**Subject:** Wholesale inquiry — golf trip gift packs for WYX Golf Supply Co.
+
+Hi Stroke & Distance team,
+
+I'm building **WYX Golf Supply Co.** (wyxgolfsupply.com) — a golf gift shop for weekend trips, bachelor outings, and scramble events.
+
+Your custom cap tees and beverage caddies look like a strong fit for our trip-accessory and promotional gift packs. I'd like to learn about:
+
+- Wholesale pricing and MOQ for cap tees and drink caddies  
+- Customization options (logo, colorways)  
+- Ship times to US customers and fulfillment workflow  
+
+We sell through Shopify and plan a 10–15 SKU test before scaling.
+
+Best,  
+Matthew Wixted  
+mwixted1@gmail.com
+
+---
+
+## 10. Cullinan Golf (Dropship + custom manufacturing)
+
+**Apply:** https://www.cullinan-golf.com/dropshipping-golf-products
+
+**Subject:** Dropship partner application — WYX Golf Supply Co.
+
+Hi Cullinan Golf team,
+
+WYX Golf Supply Co. (wyxgolfsupply.com) is a curated golf accessories shop on Shopify. We're interested in your dropshipping and custom manufacturing program for:
+
+- Performance polos and quarter-zips  
+- Small leather accessories  
+- Tournament/teamwear capsules  
+
+Please share partner application requirements, typical US ship times, return policy, and Shopify order workflow.
+
+Matthew Wixted  
+mwixted1@gmail.com
+
+---
+
+## 11. Hireko Golf (Grips + components)
+
+**Apply:** https://www.hirekogolf.com/become-reseller
+
+**Subject:** Dealer/reseller application — WYX Golf Supply Co.
+
+Hi Hireko Golf team,
+
+WYX Golf Supply Co. (wyxgolfsupply.com) carries practical golf accessories for weekend golfers. We're evaluating grip and club-care items for our catalog.
+
+I'd like to apply for your reseller program. Please send dealer terms, pricing tiers, and ship times for grips, regrip kits, and accessory components.
+
+Matthew Wixted  
+mwixted1@gmail.com
+
+---
+
+## 12. Printful (WYX-branded POD capsule)
 
 **Start:** https://www.printful.com/integrations/shopify
 

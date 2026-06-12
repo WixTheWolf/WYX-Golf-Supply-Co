@@ -6,6 +6,36 @@ import { phase5Posts } from './journalPhase5';
 
 export const posts = [
   {
+    slug: 'golf-trip-essentials-2026',
+    title: 'Golf Trip Essentials: What Actually Earns A Spot In The Travel Bag',
+    seo: 'Golf Trip Essentials 2026 — The Weekend Trip Packing List | WYX Golf Supply Co.',
+    description: 'The golf trip essentials weekend players actually use: towel, rain backup, tee supply, valuables organizer, and the small gear that survives a buddies trip.',
+    image: imageMap.walk,
+    sections: [
+      ['Pack For The Round You Will Actually Play', 'Most golf trip packing lists are written for tour pros. A weekend buddies trip needs the opposite: gear that handles two rounds a day, a cart that is never yours, weather you did not check, and a bag that gets thrown in three different trunks. Everything below earns its spot by solving one of those problems.'],
+      ['The Non-Negotiables', 'A clip-on microfiber towel (your rental cart will not have one), a tee holder loaded before you fly, a ball marker that lives on a hat clip so it cannot get lost in someone else’s cart, and one extra glove. These four cover most mid-round annoyances and all of them pack flat.'],
+      ['The Trip-Saver Tier', 'Rain gloves weigh nothing and turn the one wet round from miserable to playable. A ball retriever collapses to fit a travel bag side pocket and pays for itself on the first water-lined course. A groove brush keeps your irons honest on day two when nobody is wiping faces between shots.'],
+      ['Keep The Valuables In One Place', 'Wallet, phone, watch, room key, and cash for side bets end up loose in a cart cubby unless they have a dedicated pouch. One zippered valuables pouch in the bag means nothing gets left in the cart at the turn.'],
+      ['The One-Order Version', 'If you want the whole list handled at once, the Weekend Golfer’s Bag Upgrade Kit covers the towel, marker, tee holder, groove brush, and accessory caddie in a single order — and WYX10 takes 10% off the first one. Browse the golf trip gear page for the rain and retriever add-ons.'],
+      ['What To Leave Home', 'Training aids, the backup putter, and anything that needs explaining at TSA. A buddies trip rewards light bags and fast mornings.']
+    ]
+  },
+  {
+    slug: 'bag-upgrade-kit-guide',
+    title: 'The 5-Piece Bag Upgrade: The Golf Gift That Always Fits',
+    seo: 'The 5-Piece Golf Bag Upgrade Kit — A Gift Guide | WYX Golf Supply Co.',
+    description: 'Why a 5-piece bag upgrade kit (towel, marker, tee holder, groove brush, caddie) is the safest golf gift for dads, husbands, and golf buddies — no sizes, no guessing.',
+    image: imageMap.care,
+    sections: [
+      ['The Problem With Golf Gifts', 'Most golf gifts fail one of two ways: they need a size (apparel, gloves, shoes) or they need a skill level (clubs, training aids, balls he may not play). The drawer full of novelty headcovers exists because buying for a golfer feels like guessing.'],
+      ['Why Small Gear Wins', 'Every golfer — 12 handicap or 30 — loses ball markers, plays with a dirty towel, digs for tees, and has a bottom pocket full of loose stuff. Gear that fixes those problems gets used the next round, regardless of how he plays. That is the whole test: would it earn a permanent spot in the bag?'],
+      ['What The Five Pieces Do', 'A clip-on microfiber towel handles wet grips and dirty faces. A three-rail marker is easy to find and easy to set down. A 10-tee holder clips to the bag so the tee box stops being a pocket search. A dual-sided groove brush keeps club faces honest. A glove-and-accessory caddie gives the small stuff one home.'],
+      ['The Math For Gift Buyers', 'The full kit lands under $90 before the WYX10 first-order discount — less than one premium club headcover, and five separate moments of “oh, I needed this.” Each item ships as its own product, so you can drop anything that does not fit and stay under any budget.'],
+      ['When To Choose It', 'Father’s Day, birthdays, bachelor party favors bought in multiples, scramble prize tables, and the golf buddy who claims he has everything. If you know he golfs and nothing else, this is the safe pick.'],
+      ['Where To Start', 'The Weekend Golfer’s Bag Upgrade Kit page has all five with one-tap add. If you would rather build your own, start with the golf gifts under $60 page and pick three.']
+    ]
+  },
+  {
     slug: 'best-golf-gifts-for-dad',
     title: 'Best Golf Gifts For Dad That Actually Get Used',
     seo: 'Best Golf Gifts For Dad | WYX Golf Supply Co.',
