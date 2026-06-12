@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
-import { Inter } from 'next/font/google';
+import { Fraunces, Inter } from 'next/font/google';
 import { ScrollRevealInit } from '@/components/ScrollRevealInit';
 import './globals.css';
 import './store.css';
@@ -12,6 +12,7 @@ import { TrackingScripts } from '@/components/TrackingScripts';
 import { supportEmail } from '@/lib/support';
 
 const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const displayFont = Fraunces({ subsets: ['latin'], variable: '--font-display', display: 'swap', weight: ['500', '600'], style: ['normal', 'italic'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
@@ -38,7 +39,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={sansFont.variable}>
+    <html lang="en" className={`${sansFont.variable} ${displayFont.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <ScrollRevealInit />
