@@ -1,11 +1,11 @@
 {
   "shopifyConnected": true,
-  "connectedAt": "2026-06-12T05:31:26.026Z",
+  "connectedAt": "2026-06-12T05:52:41.505Z",
   "dashboardUrl": "https://topdawg.com/reseller/dashboard",
   "shopifyAdminUrl": "https://admin.shopify.com/store/wyxgolfsupply/products",
   "importListMapped": false,
   "sampleOrderPlaced": false,
   "headlessPublished": false,
   "variantSkusSet": 8,
-  "notes": "ACTIVE in Shopify admin; not on Headless until sample QA passes."
+  "notes": "8 ACTIVE drafts with TD-* SKUs + CONTINUE policy. Not on Headless until sample QA passes. Run topdawg:playbook for Import List + sample order steps."
 }

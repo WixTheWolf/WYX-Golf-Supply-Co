@@ -118,7 +118,7 @@ async function main() {
     console.log('\n📋 Next from TopDawg dashboard:');
     console.log('   1. Add 8 SKUs to Import List (npm run topdawg:playbook for list)');
     console.log('   2. Place 3-unit sample order (~$53.60)');
-    console.log('   3. After QA → npm run publish:headless for winners only');
+    console.log('   3. After QA → npm run publish:topdawg-headless');
   }
 }
 

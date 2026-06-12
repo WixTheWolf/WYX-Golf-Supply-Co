@@ -1,8 +1,13 @@
 /**
- * Sends priority supplier wholesale outreach emails from mwixted1@gmail.com.
+ * Supplier wholesale outreach — writes Gmail-ready drafts and optionally opens Mail.app.
+ *
+ * Usage:
+ *   npm run send:supplier-outreach              # write drafts (skip already-sent)
+ *   npm run send:supplier-outreach -- --open    # open each draft in Mail.app
+ *   npm run send:supplier-outreach -- --force   # regenerate all drafts
  */
 import { execSync } from 'node:child_process';
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 type OutreachMessage = {
@@ -10,7 +15,11 @@ type OutreachMessage = {
   to: string;
   subject: string;
   body: string;
+  skip?: boolean;
+  skipReason?: string;
 };
+
+const FROM = 'mwixted1@gmail.com';
 
 const messages: OutreachMessage[] = [
   {
@@ -27,14 +36,14 @@ Why J&M: You stock real golf brands (Golf Pride, SuperStroke, OnCourse) with sam
 
 What we'd start with: 15–25 SKUs — grips, tees, divot tools, ball retrievers, training accessories. We'll sample before scaling.
 
-Our stack: Shopify + Headless storefront, US customers, growing catalog (80+ live SKUs).
+Our stack: Shopify + Headless storefront, US customers, growing catalog (95+ live SKUs).
 
 Happy to provide EIN, resale certificate, and store URL. What do you need to approve the account?
 
 Best,
 Matthew Wixted
 WYX Golf Supply Co.
-mwixted1@gmail.com | wyxgolfsupply.com`
+mwixted1@gmail.com | wyxgolfsupply.com`,
   },
   {
     id: 'jp-lann',
@@ -52,25 +61,15 @@ Please send account application steps and minimum order terms.
 
 Thank you,
 Matthew Wixted
-mwixted1@gmail.com`
+mwixted1@gmail.com`,
   },
   {
     id: 'topdawg',
     to: 'partnerships@topdawg.com',
     subject: 'New Shopify store partnership — golf accessories category',
-    body: `Hi TopDawg partnerships,
-
-I'm launching WYX Golf Supply Co. on Shopify (wyxgolfsupply.com) in the golf accessories niche — cart gear, training aids, outdoor accessories.
-
-We're looking for US-warehouse SKUs with reliable tracking (2–5 day ship) for cart phone mounts, chipping nets, ball retrievers, and rain gear.
-
-We'll curate heavily (not bulk import). Plan: sample 8–12 products, list 20–30 after QA.
-
-Please confirm Shopify app sync, MAP policy, and return handling for golf category suppliers.
-
-Best,
-Matthew Wixted
-mwixted1@gmail.com`
+    skip: true,
+    skipReason: 'Shopify already connected — see data/topdawg-connection.json',
+    body: '',
   },
   {
     id: 'gt-golf-supply',
@@ -88,7 +87,7 @@ Please send account application steps, pricing tiers, and minimum order terms.
 
 Thank you,
 Matthew Wixted
-mwixted1@gmail.com | wyxgolfsupply.com`
+mwixted1@gmail.com | wyxgolfsupply.com`,
   },
   {
     id: 'stroke-and-distance',
@@ -104,7 +103,7 @@ We sell through Shopify and plan a 10–15 SKU test before scaling.
 
 Best,
 Matthew Wixted
-mwixted1@gmail.com`
+mwixted1@gmail.com`,
   },
   {
     id: 'faire',
@@ -123,7 +122,7 @@ Store: Shopify | Audience: US | AOV target: $45–$75
 Please confirm retailer onboarding steps and any category recommendations for golf gift buyers.
 
 Matthew Wixted
-mwixted1@gmail.com`
+mwixted1@gmail.com`,
   },
   {
     id: 'cullinan-golf',
@@ -136,7 +135,7 @@ WYX Golf Supply Co. (wyxgolfsupply.com) is a curated golf accessories shop on Sh
 Please share partner application requirements, typical US ship times, return policy, and Shopify order workflow.
 
 Matthew Wixted
-mwixted1@gmail.com`
+mwixted1@gmail.com`,
   },
   {
     id: 'hireko-golf',
@@ -149,37 +148,103 @@ WYX Golf Supply Co. (wyxgolfsupply.com) carries practical golf accessories for w
 I'd like to apply for your reseller program. Please send dealer terms, pricing tiers, and ship times for grips, regrip kits, and accessory components.
 
 Matthew Wixted
-mwixted1@gmail.com`
-  }
+mwixted1@gmail.com`,
+  },
 ];
 
-function sendMail(message: OutreachMessage) {
-  const payload = `To: ${message.to}
-Subject: ${message.subject}
-Reply-To: mwixted1@gmail.com
+function writeDraft(message: OutreachMessage, draftDir: string): string {
+  const path = join(draftDir, `${message.id}.txt`);
+  const content = [
+    `To: ${message.to}`,
+    `From: ${FROM}`,
+    `Subject: ${message.subject}`,
+    `Reply-To: ${FROM}`,
+    '',
+    message.body,
+  ].join('\n');
+  writeFileSync(path, content);
+  return path;
+}
 
-${message.body}`;
-  execSync(`/usr/bin/mail -s ${JSON.stringify(message.subject)} ${message.to}`, { input: payload, stdio: ['pipe', 'pipe', 'pipe'] });
+function openInMail(message: OutreachMessage): boolean {
+  const escapedBody = message.body.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
+  const escapedSubject = message.subject.replace(/"/g, '\\"');
+  const script = `
+    tell application "Mail"
+      set newMessage to make new outgoing message with properties {subject:"${escapedSubject}", content:"${escapedBody}", visible:true}
+      tell newMessage
+        make new to recipient at end of to recipients with properties {address:"${message.to}"}
+        set sender to "${FROM}"
+      end tell
+      activate
+    end tell`;
+  try {
+    execSync(`osascript -e '${script.replace(/'/g, "'\\''")}'`, { stdio: 'pipe' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function loadLog(logPath: string): Array<{ id: string; status: string }> {
+  if (!existsSync(logPath)) return [];
+  try {
+    return JSON.parse(readFileSync(logPath, 'utf8'));
+  } catch {
+    return [];
+  }
 }
 
 function main() {
+  const openMail = process.argv.includes('--open');
+  const force = process.argv.includes('--force');
   const logDir = join(process.cwd(), 'data');
-  if (!existsSync(logDir)) mkdirSync(logDir, { recursive: true });
+  const draftDir = join(logDir, 'supplier-outreach-drafts');
   const logPath = join(logDir, 'supplier-outreach-log.json');
+  const prior = loadLog(logPath);
   const sentAt = new Date().toISOString();
+
+  mkdirSync(draftDir, { recursive: true });
+
   const results = messages.map((message) => {
-    try {
-      sendMail(message);
-      return { ...message, status: 'queued', sentAt };
-    } catch (error) {
-      return { ...message, status: 'failed', sentAt, error: error instanceof Error ? error.message : String(error) };
+    if (message.skip) {
+      return { ...message, status: 'skipped', sentAt, note: message.skipReason };
     }
+
+    const alreadySent = prior.find((p) => p.id === message.id && p.status === 'sent');
+    if (alreadySent && !force) {
+      return { ...alreadySent, ...message, status: 'sent', sentAt: alreadySent.sentAt || sentAt };
+    }
+
+    const draftPath = writeDraft(message, draftDir);
+    let status = 'draft-ready';
+    let note = `Draft: ${draftPath}`;
+
+    if (openMail) {
+      const opened = openInMail(message);
+      status = opened ? 'opened-in-mail' : 'draft-ready';
+      note = opened ? 'Opened in Mail.app — review and send' : `Mail.app unavailable — use ${draftPath}`;
+    }
+
+    return { ...message, status, sentAt, draftPath, note };
   });
+
   writeFileSync(logPath, JSON.stringify(results, null, 2));
-  const queued = results.filter((r) => r.status === 'queued').length;
-  console.log(`✅ Supplier outreach queued: ${queued}/${results.length}`);
-  console.log(`   log: ${logPath}`);
-  if (results.some((r) => r.status === 'failed')) process.exit(1);
+
+  const actionable = results.filter((r) => r.status !== 'skipped');
+  const drafts = results.filter((r) => r.status === 'draft-ready' || r.status === 'opened-in-mail');
+  const skipped = results.filter((r) => r.status === 'skipped');
+
+  console.log(`\n📧 Supplier outreach — ${drafts.length} drafts ready, ${skipped.length} skipped\n`);
+  for (const r of results) {
+    const icon = r.status === 'skipped' ? '⏭' : r.status === 'sent' ? '✅' : '📝';
+    console.log(`  ${icon} ${r.id} → ${r.to}`);
+    if (r.note) console.log(`     ${r.note}`);
+  }
+  console.log(`\n   Drafts: ${draftDir}`);
+  console.log(`   Log:    ${logPath}`);
+  console.log('\n   Send from Gmail: open each .txt, copy body, send to To address');
+  console.log('   Or: npm run send:supplier-outreach -- --open\n');
 }
 
 main();

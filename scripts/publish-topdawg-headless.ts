@@ -14,6 +14,10 @@ type SampleOrder = {
   lineItems: Array<{ shopifyDraftHandle: string; qaPassed: boolean; title: string }>;
 };
 
+type PublicationsResult = { publications: { nodes: Array<{ id: string; name: string }> } };
+type ProductFindResult = { products: { nodes: Array<{ id: string; handle: string; title: string; tags: string[] }> } };
+type PublishResult = { publishablePublish: { userErrors: Array<{ message: string }> } };
+
 const PUBLICATIONS = `query { publications(first: 20) { nodes { id name } } }`;
 const FIND = `query($q: String!) { products(first: 1, query: $q) { nodes { id handle title tags } } }`;
 const PUBLISH = `mutation($id: ID!, $input: [PublicationInput!]!) {
@@ -41,7 +45,7 @@ async function main() {
     process.exit(0);
   }
 
-  const pubs = await shopifyAdminFetch<{ publications: { nodes: Array<{ id: string; name: string }> } }>(PUBLICATIONS);
+  const pubs = await shopifyAdminFetch<PublicationsResult>(PUBLICATIONS);
   const headless = pubs.publications.nodes.find((p) => /headless/i.test(p.name));
   if (!headless) throw new Error('Headless publication not found');
 
@@ -49,7 +53,7 @@ async function main() {
 
   let published = 0;
   for (const handle of handles) {
-    const found = await shopifyAdminFetch<{ products: { nodes: Array<{ id: string; handle: string; title: string; tags: string[] }> } }>(FIND, {
+    const found = await shopifyAdminFetch<ProductFindResult>(FIND, {
       q: `handle:${handle}`,
     });
     const product = found.products.nodes[0];
@@ -58,7 +62,7 @@ async function main() {
       continue;
     }
 
-    const result = await shopifyAdminFetch<{ publishablePublish: { userErrors: Array<{ message: string }> } }>(PUBLISH, {
+    const result = await shopifyAdminFetch<PublishResult>(PUBLISH, {
       id: product.id,
       input: [{ publicationId: headless.id }],
     });
