@@ -9,24 +9,28 @@ import { getAdminAccessToken } from '../lib/shopify/adminToken';
 
 const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
   'classic-rope-golf-hat-coastal': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S52c568a8afdd471dbaa71255068f83efj.jpg_480x480q75.jpg',
+    url: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&h=900&fit=crop&q=80',
     alt: 'Classic rope trim golf hat'
   },
   'unstructured-dad-golf-cap-soft-crown': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S52c568a8afdd471dbaa71255068f83efj.jpg_480x480q75.jpg',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S08b73d99d7a6484994b216a98bbea76dS.jpg_480x480q75.jpg',
     alt: 'Unstructured dad golf cap soft crown'
   },
   'performance-snapback-golf-hat-clean-mark': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S52c568a8afdd471dbaa71255068f83efj.jpg_480x480q75.jpg',
+    url: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&h=900&fit=crop&q=80',
     alt: 'Performance snapback golf hat'
   },
   'stretch-performance-golf-hat-low-crown': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S52c568a8afdd471dbaa71255068f83efj.jpg_480x480q75.jpg',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf0c365d5b34e4daba8286e596e916e4cb.jpg_480x480q75.jpg',
     alt: 'Stretch performance golf hat low crown'
   },
   'wide-brim-golf-sun-hat-upf50': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S3a1c5b8ccbd84fbfa8f7a0647a853422Z.jpg_480x480q75.jpg',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S03da182f90f1487c96ea0ee8d6e110b3I.jpg_480x480q75.jpg',
     alt: 'Wide brim golf sun hat UPF 50+'
+  },
+  'golf-visor-performance-stretch-fit': {
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf2ef867dd9284cc6b3acd7459ab95354x.jpg_480x480q75.jpg',
+    alt: 'Performance golf visor stretch fit'
   },
   'putting-alignment-mirror-folding-tour': {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/S27437703cbdb40b7835f06b957d7578eI.jpg_480x480q75.jpg',

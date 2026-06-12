@@ -36,17 +36,26 @@ async function adminFetch<T>(query: string, variables: Record<string, unknown> =
 }
 
 const FIXED_IMAGES: Record<string, { url: string; alt: string }> = {
-  'golf-hat-clip-ball-marker-set-3-markers': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sc773ee5fc5ef422bbb3c48d0dc97122br.jpg_480x480q75.jpg',
-    alt: 'Magnetic golf hat clip with ball marker attached to a cap brim',
+  // ── HEADWEAR (watch image was wrongly applied to visor, dad cap, stretch hat) ──
+  'golf-visor-performance-stretch-fit': {
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf2ef867dd9284cc6b3acd7459ab95354x.jpg_480x480q75.jpg',
+    alt: 'Adjustable empty-top performance golf visor in multiple colors',
+  },
+  'unstructured-dad-golf-cap-soft-crown': {
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S08b73d99d7a6484994b216a98bbea76dS.jpg_480x480q75.jpg',
+    alt: 'Unstructured black mesh-back dad golf cap with curved brim',
   },
   'stretch-performance-golf-hat-low-crown': {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf0c365d5b34e4daba8286e596e916e4cb.jpg_480x480q75.jpg',
     alt: 'Black low-crown stretch fit performance golf cap, front and back view',
   },
-  'golf-visor-performance-stretch-fit': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf2ef867dd9284cc6b3acd7459ab95354x.jpg_480x480q75.jpg',
-    alt: 'Adjustable empty-top performance golf visor in multiple colors',
+  'wide-brim-golf-sun-hat-upf50': {
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S03da182f90f1487c96ea0ee8d6e110b3I.jpg_480x480q75.jpg',
+    alt: 'Wide brim UPF 50+ golf sun hat with adjustable chin cord',
+  },
+  'golf-hat-clip-ball-marker-set-3-markers': {
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sc773ee5fc5ef422bbb3c48d0dc97122br.jpg_480x480q75.jpg',
+    alt: 'Magnetic golf hat clip with ball marker attached to a cap brim',
   },
   '12-foot-golf-ball-retriever': {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sd59f84c9fa4a4c97bcb0db32b3621594h.jpg_480x480q75.jpg',
