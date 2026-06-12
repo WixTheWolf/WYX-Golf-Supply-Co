@@ -11,7 +11,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
-  description: "In-stock pieces that fix the small annoyances every weekend golf bag has — a towel, a marker, a grip refresh, and an accessory caddie. Use WYX10 for 10% off.",
+  description: "In-stock pieces that fix the small annoyances every weekend golf bag has — a towel, a marker, a tee holder, a groove brush, and an accessory caddie. Use WYX10 for 10% off.",
   alternates: { canonical: '/weekend-golfer-bag-upgrade-kit' },
   openGraph: {
     title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
@@ -23,21 +23,17 @@ export const metadata: Metadata = {
 const KIT_HANDLES = [
   'tri-fold-microfiber-golf-towel',
   'three-rail-ball-marker',
-  'pulse-golf-overgrip-tape',
+  'golf-tee-holder-bag-clip-10-tee',
+  'dual-sided-golf-club-brush-groove-pick',
   'glove-accessory-caddie-gray'
 ];
 
 const itemNotes: Record<string, string> = {
   'tri-fold-microfiber-golf-towel': 'Clips to the bag and handles club faces, balls, and grips between shots.',
   'three-rail-ball-marker': "A marker that's easy to find in a pocket and easy to set down on the green.",
-  'pulse-golf-overgrip-tape': 'An easy at-home grip refresh for clubs that have gone slick.',
+  'golf-tee-holder-bag-clip-10-tee': 'Clips to the bag and keeps ten tees within reach — no more digging through the bottom pocket on the tee box.',
+  'dual-sided-golf-club-brush-groove-pick': 'A brush on one side, a groove pick on the other. Clean faces between shots without damaging the club.',
   'glove-accessory-caddie-gray': 'A dedicated spot for gloves, tees, and the small stuff that usually ends up loose in the bottom pocket.'
-};
-
-const sourcingNote = {
-  title: 'Tee Supply',
-  body: 'Being sourced now. We will not list it until photos, shipping, margin, and fulfillment are confirmed.',
-  cta: 'Join The List'
 };
 
 const whoItsFor = [
@@ -156,7 +152,7 @@ export default async function BagUpgradeKitPage() {
       <section className="page-hero compact">
         <p className="eyebrow">The Core Offer</p>
         <h1>The Weekend Golfer&apos;s Bag Upgrade Kit</h1>
-        <p>Practical pieces that fix the small annoyances every weekend bag has — a clean towel, a marker that doesn&apos;t get lost, an at-home grip refresh, and a place for the small stuff that always ends up loose in the bottom pocket.</p>
+        <p>A practical golf gift kit built around gear he&apos;ll actually keep in the bag — a clean towel, a marker that doesn&apos;t get lost, a clip-on tee holder, a groove brush, and a place for the small stuff that always ends up loose in the bottom pocket.</p>
         <div className="intent-proof-grid" aria-label="Kit benefits">
           <span>{products.length} of {KIT_HANDLES.length} items confirmed in stock</span>
           <span>WYX10 saves 10%</span>
@@ -170,7 +166,7 @@ export default async function BagUpgradeKitPage() {
           <p className="eyebrow">The Problem</p>
           <h2 id="problem-heading">Every Bag Has The Same Few Gaps.</h2>
         </div>
-        <p>No towel, a marker that walked off after the third round, grips that have gone slick since last season, and a bottom pocket full of loose tees, ball markers, and a glove that is somehow always damp. None of these are expensive problems. They just never get fixed on their own — so this kit fixes them at once. A reliable tee supply is on the way too — see the sourcing note below.</p>
+        <p>No towel, a marker that walked off after the third round, tees scattered through every pocket, club faces caked from the last range session, and a glove that is somehow always damp. None of these are expensive problems. They just never get fixed on their own — so this kit fixes all five at once.</p>
       </section>
 
       <section className="section product-section">
@@ -190,11 +186,6 @@ export default async function BagUpgradeKitPage() {
                   {itemNotes[product.handle] && <p className="buy-reason" style={{ marginTop: '0.5rem' }}>{itemNotes[product.handle]}</p>}
                 </div>
               ))}
-              <div className="care-step">
-                <strong>{sourcingNote.title}</strong>
-                <p>{sourcingNote.body}</p>
-                <Link className="text-link" href="#bag-upgrade-kit-waitlist">{sourcingNote.cta}</Link>
-              </div>
             </div>
           : <p>The kit is being restocked — join the list below and we will email you the moment it is ready.</p>}
         {products.length > 0 && (
@@ -265,10 +256,10 @@ export default async function BagUpgradeKitPage() {
         <EmailCapture
           source="bag-upgrade-kit"
           campaign="bag_upgrade_kit_waitlist"
-          title={products.length < KIT_HANDLES.length ? 'Join The Kit Drop.' : 'Get Notified When Tee Supply Is Added.'}
+          title={products.length < KIT_HANDLES.length ? 'Join The Kit Drop.' : 'Get The Next Bag Test Drop First.'}
           body={products.length < KIT_HANDLES.length
             ? "We'll email you the moment the full Bag Upgrade Kit is back in stock."
-            : "We're sourcing a tee supply to round out this kit. Join the list and we'll email you when it's confirmed and added."}
+            : 'Join the WYX list for new kit drops, trip gear, and launch discounts — before your foursome hears about them.'}
         />
       </section>
 

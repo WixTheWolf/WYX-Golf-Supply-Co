@@ -38,7 +38,7 @@ const lastMinuteTips = [
 
 const faqs: [string, string][] = [
   ["What are the best last minute Father's Day golf gifts?", "The best last-minute Father's Day golf gifts are small, practical accessories that ship fast: a cabretta glove 3-pack ($32), a clip-on microfiber towel ($18), a magnetic divot tool and ball marker set ($18), and alignment sticks ($24). All ship in lightweight packaging and are the practical picks golfers actually want."],
-  ["What Father's Day golf gifts ship the fastest?", "Lightweight flat items ship fastest: ball markers, tee sets, alignment sticks, scorecard pencils, and divot tools. These move through standard fulfillment without dimensional weight surcharges and arrive in 2-4 days with standard shipping from most suppliers."],
+  ["What Father's Day golf gifts ship the fastest?", "Lightweight flat items ship fastest: ball markers, tee sets, alignment sticks, scorecard pencils, and divot tools. Small, lightweight items like these typically arrive within 2-4 days with standard shipping."],
   ["Is a golf glove a good last minute Father's Day gift?", "Yes — a cabretta leather glove 3-pack ($32) is one of the best last-minute golf gifts because it is practical, used every round, and ships flat. It also avoids the sizing problem of apparel gifts. A single glove can feel thin; a 3-pack reads as a complete, considered gift."]
 ];
 
