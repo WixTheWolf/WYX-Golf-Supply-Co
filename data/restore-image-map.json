@@ -1,0 +1,138 @@
+{
+ "performance-golf-polo-moisture-wicking": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-quarter-zip-pullover-thermal": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-swing-speed-trainer-weighted-stick": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=1200&h=900&fit=crop&q=80"
+ },
+ "switchblade-fork-divot-tool-one-click": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1593111774240-d529f12cf4bb?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-tee-dispenser-holder-50-tees": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1589739900243-4b52cd9b104e?w=1200&h=900&fit=crop&q=80"
+ },
+ "driver-head-cover-knit-pom-pom-vintage": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-scorecard-pencil-set-12-erasers": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-putting-gate-set-2-precision-gates": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1574352245494-d9d4a645e73c?w=1200&h=900&fit=crop&q=80"
+ },
+ "putter-grip-pistol-jumbo-oversize": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-practice-ball-set-12-foam-airflow": {
+  "file": "lib/shopify/phase2Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1579723985163-26b6de5e1ab8?w=1200&h=900&fit=crop&q=80"
+ },
+ "divot-board-swing-trainer": {
+  "file": "lib/shopify/hiddenGemProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1535131749006-b7d99cdbe3f7?w=1200&h=900&fit=crop&q=80"
+ },
+ "extendable-ball-retriever-15ft": {
+  "file": "lib/shopify/hiddenGemProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1587174486283-e5bcec776b6f?w=1200&h=900&fit=crop&q=80"
+ },
+ "windproof-cart-umbrella-holder": {
+  "file": "lib/shopify/hiddenGemProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1423666639041-f56000c27a9e?w=1200&h=900&fit=crop&q=80"
+ },
+ "yardage-book-holder-clip-on-scorecard": {
+  "file": "lib/shopify/phase3Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-shoe-cleaning-kit-brush-spray": {
+  "file": "lib/shopify/phase3Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-glove-holder-dryer-clip": {
+  "file": "lib/shopify/phase3Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1598965402089-897ce52e8355?w=1200&h=900&fit=crop&q=80"
+ },
+ "mallet-putter-headcover-tour-knit": {
+  "file": "lib/shopify/phase3Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1611676028867-89893e54c25c?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-rangefinder-case-magnetic-clip": {
+  "file": "lib/shopify/phase3Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=1200&h=900&fit=crop&q=80"
+ },
+ "iron-head-cover-set-4-piece": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1592919505780-303950717480?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-compression-sock-set-3-pair": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&h=900&fit=crop&q=80"
+ },
+ "uv-sun-gaiter-golf-upf50": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-spike-wrench-cleat-kit-20": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-cart-organizer-caddie-6-pocket": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1598965402089-897ce52e8355?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-alignment-board-foot-trainer": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&h=900&fit=crop&q=80"
+ },
+ "dual-sided-golf-club-brush-groove-pick": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?w=1200&h=900&fit=crop&q=80"
+ },
+ "cord-golf-grip-regrip-kit-13-grips": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-shoe-travel-bag-ventilated-divider": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&h=900&fit=crop&q=80"
+ },
+ "putting-alignment-mirror-folding-tour": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1574352245494-d9d4a645e73c?w=1200&h=900&fit=crop&q=80"
+ },
+ "stainless-golf-flask-8oz-ball-marker-lid": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&h=900&fit=crop&q=80"
+ },
+ "night-golf-glow-ball-set-12-led-core": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1632926565162-2a9e4c31e63f?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-arm-sleeve-uv-protection-pair": {
+  "file": "lib/shopify/directProducts.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-tee-holder-bag-clip-10-tee": {
+  "file": "lib/shopify/phase4Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1576504792073-5c5ce9e9df5e?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-ball-personalized-stamp-initial": {
+  "file": "lib/shopify/phase4Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&h=900&fit=crop&q=80"
+ },
+ "golf-cart-organizer-bag-6-pocket-panel": {
+  "file": "lib/shopify/phase4Products.ts",
+  "imageUrl": "https://images.unsplash.com/photo-1567473030492-533b30c5494c?w=1200&h=900&fit=crop&q=80"
+ }
+}
