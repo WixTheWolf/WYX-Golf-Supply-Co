@@ -42,8 +42,12 @@ const tripEssentials = [
 function bachelorScore(product: Awaited<ReturnType<typeof getProducts>>[number]) {
   const price = Number(productPrice(product).amount);
   let score = productQualityScore(product);
+  const text = `${product.title} ${(product.tags || []).join(' ')}`;
+  // Group-buy energy first: flasks, prank balls, camo, drink gear, matching favors.
+  if (/flask|prank|funny|camo|drink|koozie|beer|party/i.test(text)) score += 28;
+  if (/golf balls|ball set|marker|tee/i.test(text) && price <= 30) score += 14;
+  if (/hat|cap|sunglasses|towel/i.test(text)) score += 8;
   if (price <= 50) score += 5;
-  if (/towel|marker|glove|gps|scorecard|hat|alignment|brush|ball/i.test(product.title)) score += 5;
   return score;
 }
 

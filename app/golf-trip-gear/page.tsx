@@ -83,7 +83,12 @@ const jsonLd = {
 
 function tripGearScore(product: Awaited<ReturnType<typeof getProducts>>[number]) {
   let score = productQualityScore(product);
-  if (/arm sleeve|rain glove|sunglasses|towel|retriever|marker/i.test(product.title)) score += 8;
+  const text = `${product.title} ${(product.tags || []).join(' ')}`;
+  // True travel gear outranks generic accessories on this page.
+  if (/travel bag|shoe bag|rain hood|rain cover|organizer|trip|luggage|packing/i.test(text)) score += 30;
+  if (/rain glove|arm sleeve|sunglasses|retriever|rangefinder case|valuables|pouch/i.test(text)) score += 22;
+  if (/towel|umbrella|tee holder|tee dispenser/i.test(text)) score += 12;
+  if (/marker/i.test(text)) score += 4;
   return score;
 }
 
