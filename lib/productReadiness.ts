@@ -48,9 +48,7 @@ export function hasMisleadingProductMedia(product: Product) {
  * (e.g. a WYX-vendor product whose featured image shows an unrelated item).
  * Reviewed via direct CDN image inspection.
  */
-const knownImageMismatchHandles = new Set([
-  'bamboo-performance-golf-tees-50-pack'
-]);
+const knownImageMismatchHandles = new Set<string>();
 
 export function hasKnownImageMismatch(product: Product) {
   if (knownImageMismatchHandles.has(product.handle)) return true;
