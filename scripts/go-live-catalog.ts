@@ -41,7 +41,7 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
     alt: 'Golf alignment sticks 2-pack fiberglass'
   },
   'groove-sharpener-cleaner-tool': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Se7c3933deb3743e18e51f39ba7362b32r.jpg_480x480q75.jpg',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S33580eefb0304986a21c329cdf36e4fab.jpg_480x480q75.jpg',
     alt: 'Golf groove sharpener and cleaner tool'
   },
   '12-foot-golf-ball-retriever': {
@@ -49,27 +49,27 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
     alt: '12-foot golf ball retriever telescoping'
   },
   'alignment-putting-mirror': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S27437703cbdb40b7835f06b957d7578eI.jpg_480x480q75.jpg',
+    url: 'https://cdn.shopify.com/s/files/1/0163/3424/products/IMG_3254.jpg',
     alt: 'Golf putting alignment mirror'
   },
   'coastal-green-driver-headcover': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S97c157c4a7934a27bddc3ba196f5d677o.jpg_480x480q75.jpg',
+    url: 'https://www.modestvintageplayer.com/cdn/shop/files/wool-knit-golf-covers-set-cream-green-715558_1800x1800.jpg?v=1738303847',
     alt: 'Coastal green driver headcover'
   },
   'premium-cabretta-leather-golf-glove': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Sf3757e7fe59a445baee05448801473af6.jpg_480x480q75.jpg',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S97c157c4a7934a27bddc3ba196f5d677o.jpg_480x480q75.jpg',
     alt: 'Premium cabretta leather golf glove'
   },
   'bamboo-performance-golf-tees-50-pack': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S265f9c25c116492685907e876ff30d5bq.jpg_480x480q75.jpg',
+    url: 'https://www.modestvintageplayer.com/cdn/shop/files/bamboo-golf-tees-50pcs-839888_1800x1800.jpg?v=1738303849',
     alt: 'Bamboo performance golf tees 50 pack'
   },
   'magnetic-golf-club-brush-cleaner': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/Se7c3933deb3743e18e51f39ba7362b32r.jpg_480x480q75.jpg',
+    url: 'https://stripebird.com/cdn/shop/files/old_Main_6.jpg?v=1726710052',
     alt: 'Magnetic golf club brush cleaner'
   },
   'tri-fold-microfiber-golf-towel': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S42ca4b5289fd4420bbd09a061bdc344d6.jpg_480x480q75.jpg',
+    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S63921b3fade64a968430e1399dc2462d2.jpg_480x480q75.jpg',
     alt: 'Tri-fold microfiber golf towel'
   },
   'golf-laser-rangefinder-800-yard-slope': {

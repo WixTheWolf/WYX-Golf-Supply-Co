@@ -227,8 +227,8 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
 
   // ── CLUB CARE & ACCESSORIES ───────────────────────────────────────────────────
   'magnetic-golf-club-brush-cleaner': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S01963d7fc0e9480faeb35e4dc3144145A.jpg_480x480q75.jpg',
-    alt: 'Golf club brush cleaner magnetic groove cleaning tool',
+    url: 'https://stripebird.com/cdn/shop/files/old_Main_6.jpg?v=1726710052',
+    alt: 'Magnetic golf club brush cleaner with carabiner and nylon bristles',
   },
   'groove-sharpener-cleaner-tool': {
     url: 'https://ae-pic-a1.aliexpress-media.com/kf/S33580eefb0304986a21c329cdf36e4fab.jpg_480x480q75.jpg',
@@ -323,7 +323,7 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
 
   // ── HEADCOVERS ────────────────────────────────────────────────────────────────
   'coastal-green-driver-headcover': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S97c157c4a7934a27bddc3ba196f5d677o.jpg_480x480q75.jpg',
+    url: 'https://www.modestvintageplayer.com/cdn/shop/files/wool-knit-golf-covers-set-cream-green-715558_1800x1800.jpg?v=1738303847',
     alt: 'Golf driver headcover coastal green knit style',
   },
   'driver-head-cover-knit-pom-pom-vintage': {
@@ -355,7 +355,7 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
 
   // ── TRAINING AIDS ─────────────────────────────────────────────────────────────
   'alignment-putting-mirror': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S265f9c25c116492685907e876ff30d5bq.jpg_480x480q75.jpg',
+    url: 'https://cdn.shopify.com/s/files/1/0163/3424/products/IMG_3254.jpg',
     alt: 'Golf putting alignment mirror for eye position and stroke training',
   },
   'golf-alignment-board-foot-trainer': {
@@ -389,7 +389,7 @@ const REAL_PRODUCT_IMAGES: Record<string, { url: string; alt: string }> = {
     alt: 'Night golf glow ball set 12 LED core glowing balls',
   },
   'bamboo-performance-golf-tees-50-pack': {
-    url: 'https://ae-pic-a1.aliexpress-media.com/kf/S265f9c25c116492685907e876ff30d5bq.jpg_480x480q75.jpg',
+    url: 'https://www.modestvintageplayer.com/cdn/shop/files/bamboo-golf-tees-50pcs-839888_1800x1800.jpg?v=1738303849',
     alt: 'Bamboo performance golf tees 50-pack',
   },
   'golf-scorecard-pencil-set-12-erasers': {
