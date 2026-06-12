@@ -3,64 +3,81 @@
     "id": "j-and-m-golf",
     "to": "orders@jandmgolf.com",
     "subject": "Wholesale / dropship application — WYX Golf Supply Co. (Shopify storefront)",
-    "body": "Hi J&M Golf team,\n\nI'm Matthew Wixted, founder of WYX Golf Supply Co. — a curated golf accessories shop at wyxgolfsupply.com built for weekend golfers and gift buyers.\n\nWe're not a big-box retailer. We carry practical cart gear, training aids, towels, markers, and bag upgrades in the $22–$75 range. I'm applying for a wholesale account to source grips, branded accessories, and replenishable items with dropship or low-MOQ fulfillment to our Shopify store.\n\nWhy J&M: You stock real golf brands (Golf Pride, SuperStroke, OnCourse) with same-day ship — that's the credibility layer our customers expect.\n\nWhat we'd start with: 15–25 SKUs — grips, tees, divot tools, ball retrievers, training accessories. We'll sample before scaling.\n\nOur stack: Shopify + Headless storefront, US customers, growing catalog (80+ live SKUs).\n\nHappy to provide EIN, resale certificate, and store URL. What do you need to approve the account?\n\nBest,\nMatthew Wixted\nWYX Golf Supply Co.\nmwixted1@gmail.com | wyxgolfsupply.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "body": "Hi J&M Golf team,\n\nI'm Matthew Wixted, founder of WYX Golf Supply Co. — a curated golf accessories shop at wyxgolfsupply.com built for weekend golfers and gift buyers.\n\nWe're not a big-box retailer. We carry practical cart gear, training aids, towels, markers, and bag upgrades in the $22–$75 range. I'm applying for a wholesale account to source grips, branded accessories, and replenishable items with dropship or low-MOQ fulfillment to our Shopify store.\n\nWhy J&M: You stock real golf brands (Golf Pride, SuperStroke, OnCourse) with same-day ship — that's the credibility layer our customers expect.\n\nWhat we'd start with: 15–25 SKUs — grips, tees, divot tools, ball retrievers, training accessories. We'll sample before scaling.\n\nOur stack: Shopify + Headless storefront, US customers, growing catalog (95+ live SKUs).\n\nHappy to provide EIN, resale certificate, and store URL. What do you need to approve the account?\n\nBest,\nMatthew Wixted\nWYX Golf Supply Co.\nmwixted1@gmail.com | wyxgolfsupply.com",
+    "status": "draft-ready",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "draftPath": "/Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/j-and-m-golf.txt",
+    "note": "Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/j-and-m-golf.txt"
   },
   {
     "id": "jp-lann",
     "to": "info@jplann.com",
     "subject": "Wholesale account request — WYX Golf Supply Co.",
     "body": "Hi JP Lann team,\n\nI'm building WYX Golf Supply Co. (wyxgolfsupply.com) — a curated golf gift and accessories brand focused on useful gear under $75.\n\nI'd like to open a wholesale account for compact ball retrievers, divot tools with removable markers, umbrella/retriever combos, and novelty ball packs (gift tier).\n\nWe sell through Shopify with US shipping. Initial test order + 10–15 SKU launch, scaling winners only.\n\nPlease send account application steps and minimum order terms.\n\nThank you,\nMatthew Wixted\nmwixted1@gmail.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "status": "draft-ready",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "draftPath": "/Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/jp-lann.txt",
+    "note": "Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/jp-lann.txt"
   },
   {
     "id": "topdawg",
     "to": "partnerships@topdawg.com",
     "subject": "New Shopify store partnership — golf accessories category",
-    "body": "Hi TopDawg partnerships,\n\nI'm launching WYX Golf Supply Co. on Shopify (wyxgolfsupply.com) in the golf accessories niche — cart gear, training aids, outdoor accessories.\n\nWe're looking for US-warehouse SKUs with reliable tracking (2–5 day ship) for cart phone mounts, chipping nets, ball retrievers, and rain gear.\n\nWe'll curate heavily (not bulk import). Plan: sample 8–12 products, list 20–30 after QA.\n\nPlease confirm Shopify app sync, MAP policy, and return handling for golf category suppliers.\n\nBest,\nMatthew Wixted\nmwixted1@gmail.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "skip": true,
+    "skipReason": "Shopify already connected — see data/topdawg-connection.json",
+    "body": "",
+    "status": "skipped",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "note": "Shopify already connected — see data/topdawg-connection.json"
   },
   {
     "id": "gt-golf-supply",
     "to": "sales@ggolf.com",
     "subject": "Wholesale account request — WYX Golf Supply Co.",
     "body": "Hi GT Golf Supply team,\n\nI'm Matthew Wixted, founder of WYX Golf Supply Co. (wyxgolfsupply.com) — a curated golf accessories shop for weekend golfers, gift buyers, and scramble organizers.\n\nI'd like to open a wholesale account for divot tools and ball markers, wet/dry towels and tee packs, scramble/prize-table accessories, and pro shop replenishment items (grips, club-care tools).\n\nWe sell through Shopify with US customers. Initial plan: sample order + 10–15 SKU test, scaling winners only.\n\nPlease send account application steps, pricing tiers, and minimum order terms.\n\nThank you,\nMatthew Wixted\nmwixted1@gmail.com | wyxgolfsupply.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "status": "draft-ready",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "draftPath": "/Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/gt-golf-supply.txt",
+    "note": "Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/gt-golf-supply.txt"
   },
   {
     "id": "stroke-and-distance",
     "to": "hello@strokeanddistance.com",
     "subject": "Wholesale inquiry — golf trip gift packs for WYX Golf Supply Co.",
     "body": "Hi Stroke & Distance team,\n\nI'm building WYX Golf Supply Co. (wyxgolfsupply.com) — a golf gift shop for weekend trips, bachelor outings, and scramble events.\n\nYour custom cap tees and beverage caddies look like a strong fit for our trip-accessory and promotional gift packs. I'd like to learn about wholesale pricing and MOQ, customization options, and ship times to US customers.\n\nWe sell through Shopify and plan a 10–15 SKU test before scaling.\n\nBest,\nMatthew Wixted\nmwixted1@gmail.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "status": "draft-ready",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "draftPath": "/Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/stroke-and-distance.txt",
+    "note": "Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/stroke-and-distance.txt"
   },
   {
     "id": "faire",
     "to": "retailers@faire.com",
     "subject": "New retailer account — golf gift accessories for WYX Golf Supply Co.",
     "body": "Hi Faire team,\n\nI'm opening a retailer account for WYX Golf Supply Co. (wyxgolfsupply.com) — a curated golf gift shop focused on practical accessories under $75.\n\nWe're looking for boutique wholesale brands in leather valuables pouches, premium ball markers and divot tool sets, and bag tags/scorecard holders.\n\nWe'll start with a focused net-60 test order (3–5 brands, 8–12 SKUs) and sync winners to Shopify via the Faire app.\n\nStore: Shopify | Audience: US | AOV target: $45–$75\n\nPlease confirm retailer onboarding steps and any category recommendations for golf gift buyers.\n\nMatthew Wixted\nmwixted1@gmail.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "status": "draft-ready",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "draftPath": "/Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/faire.txt",
+    "note": "Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/faire.txt"
   },
   {
     "id": "cullinan-golf",
     "to": "info@cullinan-golf.com",
     "subject": "Dropship partner application — WYX Golf Supply Co.",
     "body": "Hi Cullinan Golf team,\n\nWYX Golf Supply Co. (wyxgolfsupply.com) is a curated golf accessories shop on Shopify. We're interested in your dropshipping and custom manufacturing program for performance polos, quarter-zips, small leather accessories, and tournament/teamwear capsules.\n\nPlease share partner application requirements, typical US ship times, return policy, and Shopify order workflow.\n\nMatthew Wixted\nmwixted1@gmail.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "status": "draft-ready",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "draftPath": "/Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/cullinan-golf.txt",
+    "note": "Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/cullinan-golf.txt"
   },
   {
     "id": "hireko-golf",
     "to": "reseller@hirekogolf.com",
     "subject": "Dealer/reseller application — WYX Golf Supply Co.",
     "body": "Hi Hireko Golf team,\n\nWYX Golf Supply Co. (wyxgolfsupply.com) carries practical golf accessories for weekend golfers. We're evaluating grip and club-care items for our catalog.\n\nI'd like to apply for your reseller program. Please send dealer terms, pricing tiers, and ship times for grips, regrip kits, and accessory components.\n\nMatthew Wixted\nmwixted1@gmail.com",
-    "status": "queued",
-    "sentAt": "2026-06-12T05:05:26.382Z"
+    "status": "draft-ready",
+    "sentAt": "2026-06-12T06:07:21.389Z",
+    "draftPath": "/Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/hireko-golf.txt",
+    "note": "Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/hireko-golf.txt"
   }
 ]

@@ -857,3 +857,58 @@ p { margin: 0.45rem 0 1rem; color: var(--muted); }
 
   .button.primary::after { display: none; }
 }
+
+/* --- Global honeypot (slide-in renders on every page; the per-page
+       stylesheet that used to hide it does not) --- */
+.honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* --- Compact mobile chrome: header was a full-screen wall --- */
+@media (max-width: 650px) {
+  .announcement {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .site-header {
+    padding: 0.6rem 1rem;
+    gap: 0.6rem;
+  }
+
+  .brand strong { font-size: 1.15rem; }
+  .brand span { font-size: 0.52rem; letter-spacing: 0.16em; }
+
+  .header-cta {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.62rem;
+  }
+
+  .nav-links {
+    gap: 0.35rem 0.9rem;
+    justify-content: flex-start;
+  }
+
+  .nav-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0;
+  }
+
+  /* Compact email slide-in: bottom sheet, never a takeover */
+  .email-slidein {
+    max-height: 60vh;
+    overflow: auto;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .email-slidein .email-capture { padding: 1rem 1rem 0.9rem; }
+  .email-slidein .email-capture h2 { font-size: 1.2rem; }
+  .email-slidein .email-capture p { font-size: 0.8rem; margin-bottom: 0.6rem; }
+}

@@ -60,8 +60,14 @@ async function main() {
 
   const qaDone = sample.lineItems.every((i: { qaPassed: boolean }) => i.qaPassed);
   console.log('\nNext:');
-  if (!conn.importListMapped) console.log('  → Map 8 SKUs in TopDawg Import List (npm run topdawg:playbook)');
-  if (!conn.sampleOrderPlaced) console.log('  → Place sample order in TopDawg dashboard');
+  if (!conn.importListMapped) {
+    console.log('  → Map 8 SKUs in TopDawg Import List (npm run topdawg:playbook)');
+    console.log('  → Then: npm run mark:topdawg -- --import-list');
+  }
+  if (!conn.sampleOrderPlaced) {
+    console.log('  → Place sample order in TopDawg dashboard');
+    console.log('  → Then: npm run mark:topdawg -- --sample-order [--tracking TRACK123]');
+  }
   if (qaDone) console.log('  → npm run publish:topdawg-headless');
   else if (sample.lineItems.some((i: { qaPassed: boolean }) => i.qaPassed))
     console.log('  → npm run publish:topdawg-headless (partial QA passed)');
