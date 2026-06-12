@@ -1,9 +1,27 @@
 /**
  * Ensures WYX10 (10% off first order) exists as an active Shopify discount code.
+ * Falls back to Storefront cart verification when Admin discount scopes are missing.
  */
 import { shopifyAdminFetch } from '../lib/shopify/adminClient';
+import { shopifyFetch } from '../lib/shopify/client';
+import { CART_CREATE } from '../lib/shopify/queries';
 
 const CODE = 'WYX10';
+
+async function verifyOnStorefront() {
+  const products = await shopifyFetch<any>(`
+    query { products(first: 5, query: "available_for_sale:true") { edges { node { variants(first: 1) { edges { node { id } } } } } } }
+  `);
+  const variant = products.products.edges.map((edge: any) => edge.node.variants.edges[0]?.node).find(Boolean);
+  if (!variant) throw new Error('No sale-ready variant found for WYX10 cart test.');
+  const created = await shopifyFetch<any>(CART_CREATE, {
+    lines: [{ merchandiseId: variant.id, quantity: 1 }],
+    discountCodes: [CODE]
+  });
+  const discount = created.cartCreate?.cart?.discountCodes?.find((d: { code: string; applicable: boolean }) => d.code.toUpperCase() === CODE);
+  if (!discount?.applicable) throw new Error(`${CODE} is not applicable on storefront cart.`);
+  console.log(`✅ ${CODE} verified on storefront cart (Admin discount scopes unavailable)`);
+}
 
 const FIND = `
   query FindDiscount($query: String!) {
@@ -66,7 +84,15 @@ async function main() {
   console.log(`✅ Created ${CODE} discount successfully`);
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
+  if (/read_discounts|write_discounts|discountCode/i.test(err.message)) {
+    try {
+      await verifyOnStorefront();
+      return;
+    } catch (verifyErr) {
+      console.error('Storefront verify failed:', verifyErr instanceof Error ? verifyErr.message : verifyErr);
+    }
+  }
   console.error('Error:', err.message);
   process.exit(1);
 });

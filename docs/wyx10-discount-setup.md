@@ -1,6 +1,8 @@
-# WYX10 Discount — Manual Setup (5 minutes)
+# WYX10 Discount
 
-The Wyx Seed Script app does not have `read_discounts` / `write_discounts` scopes, so create **WYX10** in Shopify Admin:
+**Status:** Verified live on the Storefront cart (`npm run verify:wyx10` → 10% off, `applicable: true`).
+
+The Wyx Seed Script app does not have `read_discounts` / `write_discounts` scopes, so Admin API automation cannot create the code. If you ever need to recreate it manually in Shopify Admin:
 
 1. **Shopify Admin** → **Discounts** → **Create discount** → **Discount code**
 2. **Method:** Code  
