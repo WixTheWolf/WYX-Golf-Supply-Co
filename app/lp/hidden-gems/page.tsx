@@ -21,7 +21,7 @@ const proof = [
   'WYX10 — 10% off first order',
   'Secure Shopify checkout',
   '30-day Bag Test Promise',
-  'Ships in 1–3 business days'
+  'US shipping shown at checkout'
 ];
 
 export default async function MetaHiddenGemsLandingPage() {

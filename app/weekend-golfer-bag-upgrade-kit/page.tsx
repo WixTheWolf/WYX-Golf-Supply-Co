@@ -78,6 +78,10 @@ const faq = [
   {
     q: 'Does WYX10 work on this kit?',
     a: 'Yes. Use WYX10 at checkout for 10% off your first order, including every item in this kit.'
+  },
+  {
+    q: 'How long does shipping take?',
+    a: 'Most kit items ship within 7–12 business days to US addresses. Exact rates and delivery estimates are shown at Shopify checkout before you pay.'
   }
 ];
 

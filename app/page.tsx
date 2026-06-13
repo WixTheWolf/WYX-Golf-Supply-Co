@@ -284,8 +284,8 @@ export default async function Home() {
         </div>
         <div className="care-step-grid">
           <div className="care-step">
-            <strong>We&apos;re Early — We&apos;re Not Hiding It</strong>
-            <p>WYX is a new store. We are not going to invent reviews or testimonials to look bigger than we are. What you see is the real catalog, real prices, and real stock.</p>
+            <strong>Real Gear, Real Checkout</strong>
+            <p>Every product ships from a verified supplier. No fake reviews, no inflated stock counts — just practical golf gear with secure Shopify checkout and WYX10 on your first order.</p>
           </div>
           <div className="care-step">
             <strong>The Bag Test Standard</strong>

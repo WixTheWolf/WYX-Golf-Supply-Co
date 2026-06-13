@@ -15,7 +15,7 @@
   "spocketAppUrl": "https://apps.shopify.com/spocket",
   "collectiveUrl": "https://admin.shopify.com/store/wyxgolfsupply/collective",
   "catalogSyncedAt": "2026-06-12T06:10:00.000Z",
-  "notes": "DSers My Products: 2 linked (bamboo tees + tri-fold towel). Open Orders: 2 unmapped — map + Place Order for #H0KFGQ9ZD. Import List: 8 remaining.",
+  "notes": "DSers operational — app permissions granted. 2/21 linked. Continue Import List batch via npm run dsers:import-queue.",
   "testOrder": {
     "confirmation": "H0KFGQ9ZD",
     "placedAt": "2026-06-12T06:36:00.000Z",
@@ -25,7 +25,7 @@
     "discount": "WYX10",
     "payment": "Apple Pay Visa 7907",
     "shipTo": "Anaheim CA 92807",
-    "dsersStatus": "unmapped-in-open-orders"
+    "dsersStatus": "operational-pending-fulfillment"
   },
   "dsersSkusAligned": 21,
   "dsersSkusAlignedAt": "2026-06-12T06:45:00.000Z",

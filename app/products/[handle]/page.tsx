@@ -10,6 +10,7 @@ import { ProductPurchaseControls } from '@/components/ProductPurchaseControls';
 import { ProductViewTracker } from '@/components/ProductViewTracker';
 import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
+import { fulfillmentTrustLabel } from '@/lib/fulfillment';
 import { productDescription, productPrice, siteUrl } from '@/lib/feed';
 import { productBestFor, productBuyerPromise, productFaq, productValueBullets } from '@/lib/merchandising';
 import { coreMerchProducts, isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
@@ -56,6 +57,7 @@ export default async function ProductPage({ params }: { params: { handle: string
   const title = cleanText(product.title);
   const description = productBuyerPromise(product);
   const kitFit = kitFitFor(product.handle, productCategory);
+  const shipEstimate = fulfillmentTrustLabel(product);
   const productUrl = `${siteUrl}/products/${product.handle}`;
 
   return (
@@ -120,6 +122,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             <ul>{bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
           </div>
           <div className="trust-list" aria-label="Purchase confidence">
+            {shipEstimate && <span>{shipEstimate}</span>}
             <span>Shipping shown before payment</span>
             <span>Returns help from WYX</span>
             <span>Secure Shopify checkout</span>
