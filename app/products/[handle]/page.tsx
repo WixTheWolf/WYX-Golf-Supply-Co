@@ -14,6 +14,7 @@ import { fulfillmentTrustLabel } from '@/lib/fulfillment';
 import { productDescription, productPrice, siteUrl } from '@/lib/feed';
 import { productBestFor, productBuyerPromise, productFaq, productValueBullets } from '@/lib/merchandising';
 import { coreMerchProducts, isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
+import { hasKnownImageMismatch } from '@/lib/productReadiness';
 import { getProduct, getProducts } from '@/lib/shopify/products';
 import { supportEmail } from '@/lib/support';
 import { cleanText } from '@/lib/text';
@@ -33,7 +34,9 @@ export async function generateMetadata({ params }: { params: { handle: string } 
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const product = await getProduct(params.handle);
-  if (!product || !product.availableForSale || !hasSaleReadyMedia(product) || isHiddenFromCoreStorefront(product)) notFound();
+  // hasKnownImageMismatch: a product whose featured image shows the wrong item
+  // must not render even via direct/legacy link — it would display the bad photo.
+  if (!product || !product.availableForSale || !hasSaleReadyMedia(product) || isHiddenFromCoreStorefront(product) || hasKnownImageMismatch(product)) notFound();
   const productCategory = categoryFor(product);
   const allProducts = coreMerchProducts(availableProducts(await getProducts()));
   const related = allProducts
