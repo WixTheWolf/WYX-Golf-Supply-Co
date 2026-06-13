@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
 import { catalogCategories, categoryCount, matchesCategory, saleReadyProducts } from '@/lib/catalog';
+import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 import type { Product } from '@/types/shopify';
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Products({ searchParams }: { searchParams: { category?: string; filter?: string } }) {
-  const catalog = sortByQuality(saleReadyProducts(await getProducts()));
+  const catalog = sortByQuality(coreMerchProducts(saleReadyProducts(await getProducts())));
   const category = searchParams.category;
   const visibleCategories = catalogCategories.filter((item) => item === 'All' || categoryCount(catalog, item) > 0);
   const products = catalog.filter((product) => matchesCategory(product, category));

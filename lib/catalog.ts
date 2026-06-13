@@ -1,4 +1,5 @@
 import type { Product } from '@/types/shopify';
+import { isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasMisleadingProductMedia, hasKnownImageMismatch } from '@/lib/productReadiness';
 
 export const catalogCategories = ['All', 'Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Golf Tech', 'Club Care', 'Headwear', 'Apparel', 'Accessories'] as const;
@@ -130,6 +131,8 @@ function isCuratedProduct(product: Product) {
 export function availableProducts(products: Product[]) {
   return products.filter((product) => {
     if (!product.availableForSale) return false;
+    if (isHiddenFromCoreStorefront(product)) return false;
+    if ((product.tags || []).includes('supplier-review')) return false;
     if (!passesPublicCatalogGate(product)) return false;
     // Manually confirmed image/product mismatches are excluded regardless of vendor
     if (hasKnownImageMismatch(product)) return false;
