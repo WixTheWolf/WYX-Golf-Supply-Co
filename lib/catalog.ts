@@ -89,6 +89,12 @@ function passesPublicCatalogGate(product: Product) {
 }
 
 export function categoryFor(product: ClassifiableProduct) {
+  // A golf belt is unambiguously apparel — trust productType over auto-applied
+  // category tags, which can carry a duplicate/stale 'accessories' tag that
+  // would otherwise misfile every belt (the Dartee belt line) into Accessories.
+  const productTypeLower = product.productType?.trim().toLowerCase();
+  if (productTypeLower === 'golf belt' || productTypeLower === 'belt') return 'Apparel';
+
   const fromTag = tagCategory(product);
   if (fromTag) return fromTag;
 
