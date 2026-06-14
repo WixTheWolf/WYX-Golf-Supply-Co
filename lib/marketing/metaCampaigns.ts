@@ -47,6 +47,17 @@ export const metaCampaigns: MetaAdCreative[] = [
     angle: 'Bundle AOV + gift buyer'
   },
   {
+    id: 'scramble-prizes',
+    name: 'Scramble Prizes — Tournament',
+    primaryText: 'Running a scramble? Skip junk drawer prizes. Markers, towels, gloves — gear players use the next round. Bulk quotes for 4+ players. WYX10 saves 10%.',
+    headline: 'Scramble Prizes Under $50',
+    description: 'Tournament prize ideas + bulk kits.',
+    cta: 'Shop Now',
+    landingPath: '/lp/scramble',
+    utmCampaign: 'meta_scramble_prizes',
+    angle: 'B2B tournament organizer'
+  },
+  {
     id: 'fathers-day-2026',
     name: 'Father\'s Day 2026 — Gift Buyer',
     primaryText: 'Father\'s Day is June 21. Skip the novelty polo — give him bag upgrades he\'ll use every round. Bag Upgrade Kit: towel, marker, grip tape, groove tool, caddie. WYX10 saves 10%.',

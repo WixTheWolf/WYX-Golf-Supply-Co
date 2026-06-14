@@ -45,6 +45,7 @@ async function main() {
     ['Daily content queue', 'npm run content:daily'],
     ['Survival outreach refresh', 'npm run survival:outreach'],
     ['Sales blitz pack', 'npm run blitz:outreach'],
+    ['Channel outreach pack', 'npm run channel:outreach'],
     ['Pipeline status snapshot', 'npm run pipeline:status'],
     ['Empire status snapshot', 'npm run empire:status'],
   ];

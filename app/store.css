@@ -1123,3 +1123,74 @@ p { margin: 0.45rem 0 1rem; color: var(--muted); }
   font-size: 0.72rem;
   white-space: nowrap;
 }
+
+/* --- Share buttons + return offer + bulk inquiry --- */
+.share-buttons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.return-offer {
+  position: fixed;
+  right: 1rem;
+  bottom: 4.5rem;
+  z-index: 44;
+  max-width: 280px;
+  padding: 1rem 1.1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--lime);
+  border-radius: var(--radius, 8px);
+  box-shadow: 0 12px 32px rgba(16, 39, 30, 0.18);
+}
+
+.return-offer-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.45rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.return-offer strong { display: block; margin: 0.25rem 0; }
+.return-offer p { margin: 0.35rem 0 0.75rem; font-size: 0.82rem; color: var(--muted); }
+.return-offer .actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+.bulk-inquiry-form {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.bulk-inquiry-form label {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bulk-inquiry-form input,
+.bulk-inquiry-form textarea {
+  font: inherit;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+@media (max-width: 899px) {
+  .return-offer {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 3.75rem;
+    max-width: none;
+  }
+}

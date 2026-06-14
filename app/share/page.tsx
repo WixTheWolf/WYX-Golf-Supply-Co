@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { ShareButtons } from '@/components/ShareButtons';
 import { ShareWyx } from '@/components/ShareWyx';
 import { fathersDayDaysLeft } from '@/lib/fathersDay';
 
@@ -50,7 +51,15 @@ export default function SharePage() {
       </section>
 
       <section className="section reveal">
-        <ShareWyx label="One-tap copy messages" />
+        <div className="section-heading">
+          <p className="eyebrow">One tap</p>
+          <h2>Share Via App.</h2>
+        </div>
+        <ShareButtons />
+      </section>
+
+      <section className="section reveal">
+        <ShareWyx label="Copy-paste messages" />
       </section>
 
       <section className="section reveal">
@@ -58,7 +67,7 @@ export default function SharePage() {
           <p className="eyebrow">Full playbook</p>
           <h2>More Templates.</h2>
         </div>
-        <p>Open <code>data/blitz-outreach/COPY-PASTE.txt</code> locally for 5 texts, Facebook, LinkedIn, Instagram, and email — or run <code>npm run blitz:outreach</code>.</p>
+        <p>More templates: <code>data/blitz-outreach/COPY-PASTE.txt</code> (texts/social) · <code>data/channel-outreach/COPY-PASTE.txt</code> (Reddit, Nextdoor, PH, creators)</p>
         <div className="actions" style={{ marginTop: '1rem' }}>
           <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Test The Kit Yourself</Link>
           <Link className="button secondary dark" href="/marketing/meta">Meta Ad Copy</Link>
