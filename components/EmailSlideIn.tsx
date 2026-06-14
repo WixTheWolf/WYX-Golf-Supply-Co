@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { EmailCapture } from './EmailCapture';
 
 const STORAGE_KEY = 'wyx_email_slidein_dismissed_at';
-const SHOW_AFTER_MS = 14000;
-const SCROLL_TRIGGER = 0.35;
+const SHOW_AFTER_MS = 8000;
+const SCROLL_TRIGGER = 0.25;
 const COOLDOWN_DAYS = 7;
 
 /**
@@ -55,8 +55,8 @@ export function EmailSlideIn() {
       <EmailCapture
         source="slidein"
         campaign="bag_audit_checklist"
-        title="Free: The Bag Audit Checklist."
-        body="A 2-minute checklist for what belongs in a weekend bag — plus WYX10 for 10% off your first order. No spam, just the next drop."
+        title="Father's Day is June 21 — get WYX10."
+        body="10% off your first order + our Bag Audit Checklist. Practical golf gifts that stay in the bag — not novelty junk."
       />
     </div>
   );

@@ -7,6 +7,7 @@ import './store.css';
 import { CartProvider } from '@/components/CartProvider';
 import { EmailSlideIn } from '@/components/EmailSlideIn';
 import { Header } from '@/components/Header';
+import { StickySalesBar } from '@/components/StickySalesBar';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
 import { TrackingScripts } from '@/components/TrackingScripts';
 import { supportEmail } from '@/lib/support';
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main id="main-content">{children}</main>
           <EmailSlideIn />
+          <StickySalesBar />
           <footer className="site-footer">
             <div>
               <Link className="footer-brand" href="/">WYX <span>Golf Co.</span></Link>

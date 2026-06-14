@@ -44,6 +44,7 @@ async function main() {
     ['Outreach draft refresh', 'npm run send:supplier-outreach'],
     ['Daily content queue', 'npm run content:daily'],
     ['Survival outreach refresh', 'npm run survival:outreach'],
+    ['Sales blitz pack', 'npm run blitz:outreach'],
     ['Pipeline status snapshot', 'npm run pipeline:status'],
     ['Empire status snapshot', 'npm run empire:status'],
   ];

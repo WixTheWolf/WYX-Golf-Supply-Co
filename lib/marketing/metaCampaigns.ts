@@ -38,13 +38,24 @@ export const metaCampaigns: MetaAdCreative[] = [
   {
     id: 'bag-upgrade-kit',
     name: 'Bag Upgrade Kit — Hero Offer',
-    primaryText: 'The Weekend Golfer\'s Bag Upgrade Kit: four practical pieces that fix the annoyances in every bag. Real stock. Secure Shopify checkout. WYX10 takes 10% off your first order.',
-    headline: 'The Bag Upgrade Kit — $79',
-    description: 'Towel, marker, grip refresh, organizer — one kit.',
+    primaryText: 'The Weekend Golfer\'s Bag Upgrade Kit: five practical pieces that fix the annoyances in every bag. Real stock. Secure Shopify checkout. WYX10 takes 10% off your first order.',
+    headline: 'The Bag Upgrade Kit — Under $80',
+    description: 'Towel, marker, grip refresh, groove tool, caddie — one kit.',
     cta: 'Shop Now',
-    landingPath: '/weekend-golfer-bag-upgrade-kit',
+    landingPath: '/lp/bag-kit',
     utmCampaign: 'meta_bag_upgrade_kit',
     angle: 'Bundle AOV + gift buyer'
+  },
+  {
+    id: 'fathers-day-2026',
+    name: 'Father\'s Day 2026 — Gift Buyer',
+    primaryText: 'Father\'s Day is June 21. Skip the novelty polo — give him bag upgrades he\'ll use every round. Bag Upgrade Kit: towel, marker, grip tape, groove tool, caddie. WYX10 saves 10%.',
+    headline: 'Golf Gifts Dad Will Actually Use',
+    description: 'Father\'s Day picks under $75. WYX10 at checkout.',
+    cta: 'Shop Now',
+    landingPath: '/lp/fathers-day',
+    utmCampaign: 'meta_fathers_day_2026',
+    angle: 'Deadline urgency + gift buyer'
   },
   {
     id: 'gifts-under-60',

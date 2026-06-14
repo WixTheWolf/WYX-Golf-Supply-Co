@@ -157,8 +157,8 @@ export default async function Home() {
           <h1>Golf Gifts He&apos;ll Actually Keep In The Bag.</h1>
           <p>Practical golf gear for weekend players, dads, golf trips, bachelor parties, scrambles, and anyone tired of novelty gifts that end up in a drawer.</p>
           <div className="actions">
-            <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit">Shop The Bag Upgrade Kit</Link>
-            <Link className="button secondary" href="/the-bag-test">Take The Bag Test</Link>
+            <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Shop The Bag Upgrade Kit</Link>
+            <Link className="button secondary" href="/fathers-day-golf-gifts">Father&apos;s Day Gifts</Link>
           </div>
           <div className="hero-proof compact-proof">
             {trustSignals.map((item) => <span key={item}>{item}</span>)}
