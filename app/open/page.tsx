@@ -7,6 +7,7 @@ import { ShareWyx } from '@/components/ShareWyx';
 import { availableProducts } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
 import { campaignUrl } from '@/lib/marketing';
+import { fathersDayDaysLeft, isFathersDayWindow } from '@/lib/fathersDay';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
@@ -36,9 +37,16 @@ export default async function OpenPage() {
   const heroes = catalog.filter((p) => /hidden-gem|cart|marker|towel|kit/i.test(`${p.title} ${p.handle} ${(p.tags || []).join(' ')}`)).slice(0, 4);
   const picks = heroes.length >= 3 ? heroes : catalog.slice(0, 4);
   const kitUrl = campaignUrl('/weekend-golfer-bag-upgrade-kit', 'grand_opening', 'wyx', 'open');
+  const daysLeft = fathersDayDaysLeft();
+  const fathersDay = isFathersDayWindow();
 
   return (
     <>
+      {fathersDay && (
+        <div className="urgency-strip" role="banner">
+          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} days left · <Link href="/fathers-day-golf-gifts">Shop dad gifts</Link>
+        </div>
+      )}
       <section className="hero launch-hero">
         <Image src={imageMap.hero} alt="Golfers on course at golden hour" fill priority sizes="100vw" />
         <div className="hero-copy launch-hero-copy">
@@ -46,8 +54,8 @@ export default async function OpenPage() {
           <h1>WYX Golf Supply Is Live.</h1>
           <p>We built the golf gift shop we wished existed — practical gear for weekend players, trip groups, and anyone tired of novelty junk.</p>
           <div className="actions">
-            <Link className="button primary" href={kitUrl}>Shop The Bag Upgrade Kit</Link>
-            <Link className="button secondary" href="/golf-gifts">Browse Golf Gifts</Link>
+            <Link className="button primary" href={`${kitUrl}&discount=WYX10`}>Shop The Bag Upgrade Kit — WYX10</Link>
+            <Link className="button secondary" href="/fathers-day-golf-gifts">Father&apos;s Day Gifts</Link>
           </div>
           <div className="hero-proof compact-proof">
             <span>WYX10 — 10% off first order</span>

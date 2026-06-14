@@ -1,8 +1,8 @@
 {
-  "startedAt": "2026-06-14T00:13:45.007Z",
-  "completedAt": "2026-06-14T00:15:28.120Z",
-  "passed": 12,
-  "total": 12,
+  "startedAt": "2026-06-14T01:02:28.903Z",
+  "completedAt": "2026-06-14T01:04:14.586Z",
+  "passed": 13,
+  "total": 13,
   "results": [
     {
       "step": "WYX10 discount",
@@ -53,6 +53,11 @@
       "step": "Survival outreach refresh",
       "ok": true,
       "output": "\n> wyx-golf-supply-co@1.0.0 survival:outreach\n> tsx scripts/survival-outreach.ts\n\n\n╔══════════════════════════════════════════════════════╗\n║  WYX Survival Outreach — First 10 Sales Playbook     ║\n╚══════════════════════════════════════════════════════╝\n\nZero sales = zero traffic. Ads need pixels. Personal network converts NOW.\n\n── Do today (2 hours) ──\n\n  1. Text 20 golfers you actually know (template: golfer-friend)\n  2. Text 10 non-golfers who buy gifts (template: gift-buyer)\n  3. Post once on Facebook/LinkedIn (template: facebook-post)\n  4. Email everyone in your contacts who has bought you a gift before\n  5. Set GA4 + Meta pixel in Vercel → redeploy (see docs/tracking-setup.md)\n  6. Launch $10/day Meta → Bag Upgrade Kit only\n\n── Kit link (highest convert) ──\n  https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit?discount=WYX10\n\n📝 golfer-friend → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/golfer-friend.txt\n📝 gift-buyer → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/gift-buyer.txt\n📝 facebook-post → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/facebook-post.txt\n📝 email-blast → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/email-blast.txt\n📝 reddit-soft → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/reddit-soft.txt\n\n✅ Templates saved to data/survival-outreach/\n\n"
+    },
+    {
+      "step": "Sales blitz pack",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 blitz:outreach\n> tsx scripts/blitz-outreach.ts\n\n\n🚀 Sales blitz pack ready\n   /Users/matthewwixted/WYX-Golf-Supply-Co/data/blitz-outreach/COPY-PASTE.txt\n   Father's Day: 8 days left\n   Send 30 texts/posts today for first sales\n\n"
     },
     {
       "step": "Pipeline status snapshot",
