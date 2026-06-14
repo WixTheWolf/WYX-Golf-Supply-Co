@@ -57,8 +57,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>
             </div>
             <nav aria-label="Footer navigation">
+              <Link href="/open">We&apos;re Open</Link>
               <Link href="/weekend-golfer-bag-upgrade-kit">The Kit</Link>
               <Link href="/golf-gifts">Golf Gifts</Link>
+              <Link href="/creators">Creators</Link>
               <Link href="/golf-gifts-for-dad">Dad Gifts</Link>
               <Link href="/golf-trip-gear">Trip Gear</Link>
               <Link href="/the-bag-test">The Bag Test</Link>

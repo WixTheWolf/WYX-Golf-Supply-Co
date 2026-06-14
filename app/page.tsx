@@ -135,6 +135,9 @@ export default async function Home() {
 
   return (
     <>
+      <div className="urgency-strip" role="banner" aria-label="WYX is open">
+        <strong>WYX is open.</strong> Shop the Bag Upgrade Kit or share <Link href="/open">our launch page</Link> with your foursome — <strong>WYX10</strong> saves 10%.
+      </div>
       {(() => {
         const fathersDay = new Date('2026-06-21T00:00:00');
         const now = new Date();

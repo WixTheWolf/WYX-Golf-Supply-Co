@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-14T00:10:54.662Z",
+  "summary": "Overnight ops: 10/10 steps passed.",
+  "storefront": "https://wyxgolfsupply.com",
+  "topPriority": [
+    "Add GA4 + Meta pixel in Vercel (npm run empire:activate)",
+    "Send 30 personal texts (data/survival-outreach/)",
+    "DSers import queue (npm run dsers:import-queue)",
+    "Post today's content from data/daily-content/latest/"
+  ],
+  "failedSteps": []
+}

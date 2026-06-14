@@ -1,11 +1,12 @@
 import { availableProducts } from '@/lib/catalog';
+import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { escapeXml, productFeedItem, siteUrl } from '@/lib/feed';
 import { getProducts } from '@/lib/shopify/products';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const products = availableProducts(await getProducts()).map(productFeedItem).filter((product) => product.image);
+  const products = coreMerchProducts(availableProducts(await getProducts())).map(productFeedItem).filter((product) => product.image);
   const updated = new Date().toISOString();
   const items = products.map((product) => `
     <item>

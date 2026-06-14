@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { EmailCapture } from '@/components/EmailCapture';
 import { KitAddButton } from '@/components/KitAddButton';
+import { ShareWyx } from '@/components/ShareWyx';
 import { ProductCard } from '@/components/ProductCard';
 import { productPrice, siteUrl } from '@/lib/feed';
 import { getProduct } from '@/lib/shopify/products';
@@ -213,6 +214,10 @@ export default async function BagUpgradeKitPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="section reveal">
+        <ShareWyx path="/weekend-golfer-bag-upgrade-kit" />
       </section>
 
       <section className="section reveal" aria-labelledby="free-tools-heading">
