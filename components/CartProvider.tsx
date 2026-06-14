@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { CartAbandonGuard } from '@/components/CartAbandonGuard';
 import { CartCrossSell } from '@/components/CartCrossSell';
 import { CartPromoSummary } from '@/components/CartPromoSummary';
+import { KitUpsellBanner } from '@/components/KitUpsellBanner';
 import { trackEvent } from '@/lib/analytics';
 import { money } from '@/lib/demo';
 import type { Cart } from '@/types/shopify';
@@ -197,7 +199,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     [cart, open, loading, error, add, buyNow, addMany, buyNowMany, refresh, update, remove]
   );
 
-  return <CartContext.Provider value={value}>{children}<CartDrawer /></CartContext.Provider>;
+  return <CartContext.Provider value={value}>{children}<CartAbandonGuard /><CartDrawer /></CartContext.Provider>;
 }
 
 function CartDrawer() {
@@ -241,10 +243,11 @@ function CartDrawer() {
         </div>
       )}
       <CartCrossSell />
+      {cart && <KitUpsellBanner subtotal={Number(cart.cost.subtotalAmount.amount)} compact />}
       <div className="cart-foot">
         {cart && <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />}
         <p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p>
-        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>Checkout</button>
+        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>Checkout — WYX10 Applied</button>
         <Link href="/cart">View Bag</Link>
       </div>
     </aside>

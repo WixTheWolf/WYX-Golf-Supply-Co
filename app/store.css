@@ -1047,3 +1047,79 @@ p { margin: 0.45rem 0 1rem; color: var(--muted); }
 @media (max-width: 899px) {
   body { padding-bottom: 56px; }
 }
+
+/* --- Product price with WYX10 --- */
+.product-price-display {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.product-price-display.large .product-price-sale {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+}
+
+.product-price-sale { color: var(--forest); font-weight: 700; }
+.product-price-was { color: var(--muted); text-decoration: line-through; font-size: 0.95rem; }
+.product-price-code {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  background: color-mix(in oklab, var(--lime) 30%, var(--paper) 70%);
+  border-radius: 4px;
+}
+
+.product-price-savings {
+  flex: 1 0 100%;
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--pine);
+  font-weight: 600;
+}
+
+/* --- Kit upsell in cart --- */
+.kit-upsell {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin: 0.75rem 0;
+  background: color-mix(in oklab, var(--forest) 8%, var(--paper) 92%);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--lime);
+  border-radius: var(--radius, 8px);
+}
+
+.kit-upsell.compact {
+  padding: 0.75rem;
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+
+.kit-upsell strong { display: block; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.kit-upsell p { margin: 0.25rem 0 0; font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+
+.kit-upsell .button.compact {
+  justify-self: start;
+  min-height: 34px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.68rem;
+}
+
+/* --- Mobile sticky buy bar --- */
+.mobile-sticky-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.mobile-sticky-atc .button.compact {
+  min-height: 40px;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}

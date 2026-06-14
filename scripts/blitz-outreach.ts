@@ -10,6 +10,7 @@ import { fathersDayDaysLeft } from '../lib/fathersDay';
 
 const KIT = 'https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit?discount=WYX10';
 const SHORT = 'https://wyxgolfsupply.com/go?ref=personal';
+const GIFT = 'https://wyxgolfsupply.com/gift?ref=personal';
 const FATHERS = 'https://wyxgolfsupply.com/fathers-day-golf-gifts?discount=WYX10';
 const OPEN = 'https://wyxgolfsupply.com/open?ref=personal';
 
@@ -30,7 +31,7 @@ const texts = [
   },
   {
     audience: 'Dad / husband angle',
-    message: `Father's Day golf gift idea: five bag upgrades in one kit (towel, marker, grip, groove tool, organizer). Under $80 with WYX10. ${FATHERS}`,
+    message: `Father's Day golf gift idea: five bag upgrades in one kit (towel, marker, grip, groove tool, organizer). Under $80 with WYX10. ${GIFT}`,
   },
   {
     audience: 'Group chat / foursome',

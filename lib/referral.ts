@@ -15,10 +15,12 @@ export function referralLink(path: string, ref = 'friend', medium: ReferralChann
 
 export function shareMessages(path = '/weekend-golfer-bag-upgrade-kit') {
   const link = referralLink(path);
+  const shortLink = `${siteUrl}/go?ref=share`;
+  const giftLink = `${siteUrl}/gift?ref=share`;
   return {
-    short: `I found a golf gift shop that only lists gear weekend players keep in the bag. ${link} — code WYX10 for 10% off.`,
-    golfer: `If you golf, check out WYX Golf Supply — practical bag upgrades, not novelty junk. Bag Upgrade Kit: ${link} (WYX10 = 10% off first order).`,
-    gift: `Need a golf gift? WYX curates useful stuff under $75. ${link} — WYX10 saves 10% on first order.`,
+    short: `Practical golf gifts that stay in the bag — not novelty junk. ${shortLink} (WYX10 = 10% off)`,
+    golfer: `If you golf, check out WYX — bag upgrades that pass "would you keep it after round one?" ${shortLink} — WYX10 for 10% off.`,
+    gift: `Need a Father's Day golf gift? Useful bag stuff under $75. ${giftLink} — code WYX10 saves 10%.`,
   };
 }
 

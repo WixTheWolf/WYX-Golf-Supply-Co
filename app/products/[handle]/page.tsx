@@ -6,8 +6,12 @@ import { EmailCapture } from '@/components/EmailCapture';
 import { KitAddButton } from '@/components/KitAddButton';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductBadge } from '@/components/ProductBadge';
+import { MobileProductStickyBar } from '@/components/MobileProductStickyBar';
+import { ProductPriceDisplay } from '@/components/ProductPriceDisplay';
 import { ProductPurchaseControls } from '@/components/ProductPurchaseControls';
 import { ProductViewTracker } from '@/components/ProductViewTracker';
+import { ShareWyx } from '@/components/ShareWyx';
+import { fathersDayDaysLeft, isFathersDayWindow } from '@/lib/fathersDay';
 import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from '@/lib/catalog';
 import { money } from '@/lib/demo';
 import { fulfillmentTrustLabel } from '@/lib/fulfillment';
@@ -62,10 +66,18 @@ export default async function ProductPage({ params }: { params: { handle: string
   const kitFit = kitFitFor(product.handle, productCategory);
   const shipEstimate = fulfillmentTrustLabel(product);
   const productUrl = `${siteUrl}/products/${product.handle}`;
+  const daysLeft = fathersDayDaysLeft();
+  const fathersDay = isFathersDayWindow();
+  const giftable = /gift|dad|towel|marker|glove|grip|headcover|ball|tee|towel/i.test(`${title} ${productCategory}`);
 
   return (
     <>
       <ProductViewTracker productId={product.id} variantId={variant?.id} title={title} handle={product.handle} price={product.priceRange.minVariantPrice} category={productCategory} />
+      {fathersDay && giftable && (
+        <div className="urgency-strip" role="banner">
+          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} left · Solid golf gift pick
+        </div>
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
         {
           '@context': 'https://schema.org',
@@ -113,9 +125,8 @@ export default async function ProductPage({ params }: { params: { handle: string
           <p className="eyebrow">{productCategory}</p>
           <ProductBadge product={product} />
           <h1>{title}</h1>
-          <p className="price large">{money(product.priceRange.minVariantPrice)}</p>
+          <ProductPriceDisplay price={product.priceRange.minVariantPrice} />
           <p>{description}</p>
-          <p className="promo-note">Use <strong>WYX10</strong> for 10% off your first order.</p>
           <div className="ai-answer-box">
             <strong>Quick take</strong>
             <p>{quickTakeFor(product.handle, productCategory, title)}</p>
@@ -156,11 +167,11 @@ export default async function ProductPage({ params }: { params: { handle: string
           </div>
         </div>
       </section>
-      <div className="mobile-sticky-atc" aria-label="Sticky mobile purchase bar">
-        <div><strong>{money(product.priceRange.minVariantPrice)}</strong><span>{title}</span></div>
-        <ProductPurchaseControls variants={product.variants} productTitle={title} compact />
-      </div>
+      <MobileProductStickyBar title={title} variants={product.variants} />
       {related.length > 0 && <section className="section"><p className="eyebrow">Pair It With</p><h2>Build The Bag Around It.</h2><div className="product-grid">{related.map((item) => <ProductCard key={item.id} product={item} />)}</div></section>}
+      <section className="section reveal">
+        <ShareWyx path={`/products/${product.handle}`} label="Know a golfer who needs this?" />
+      </section>
       <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="Save This Drop For Later." body="Join the launch list for WYX10 reminders, golf gift picks, and useful bag upgrades." />
     </>
   );

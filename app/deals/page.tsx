@@ -6,6 +6,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
 import { isImpulseProduct, productPriceLabel, siteUrl } from '@/lib/feed';
+import { fathersDayDaysLeft, isFathersDayWindow } from '@/lib/fathersDay';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -25,9 +26,16 @@ export default async function Deals() {
   const catalog = availableProducts(await getProducts());
   const deals = catalog.filter(isImpulseProduct).slice(0, 12);
   const topPicks = deals.slice(0, 3);
+  const daysLeft = fathersDayDaysLeft();
+  const fathersDay = isFathersDayWindow();
 
   return (
     <>
+      {fathersDay && (
+        <div className="urgency-strip" role="banner">
+          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} days left · <Link href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Bag Upgrade Kit</Link>
+        </div>
+      )}
       <section className="deal-hero">
         <div>
           <p className="eyebrow">WYX Launch Deals</p>
