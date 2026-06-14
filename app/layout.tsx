@@ -63,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/weekend-golfer-bag-upgrade-kit">The Kit</Link>
               <Link href="/golf-gifts">Golf Gifts</Link>
               <Link href="/creators">Creators</Link>
+              <Link href="/share">Share</Link>
               <Link href="/golf-gifts-for-dad">Dad Gifts</Link>
               <Link href="/golf-trip-gear">Trip Gear</Link>
               <Link href="/the-bag-test">The Bag Test</Link>
