@@ -1,8 +1,8 @@
 {
-  "startedAt": "2026-06-14T00:09:16.700Z",
-  "completedAt": "2026-06-14T00:10:54.662Z",
-  "passed": 10,
-  "total": 10,
+  "startedAt": "2026-06-14T00:13:45.007Z",
+  "completedAt": "2026-06-14T00:15:28.120Z",
+  "passed": 12,
+  "total": 12,
   "results": [
     {
       "step": "WYX10 discount",
@@ -48,6 +48,16 @@
       "step": "Daily content queue",
       "ok": true,
       "output": "\n> wyx-golf-supply-co@1.0.0 content:daily\n> tsx scripts/generate-daily-content.ts\n\n\n📱 Daily content queued: 5 posts\n   /Users/matthewwixted/WYX-Golf-Supply-Co/data/daily-content/2026-06-14\n\n"
+    },
+    {
+      "step": "Survival outreach refresh",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 survival:outreach\n> tsx scripts/survival-outreach.ts\n\n\n╔══════════════════════════════════════════════════════╗\n║  WYX Survival Outreach — First 10 Sales Playbook     ║\n╚══════════════════════════════════════════════════════╝\n\nZero sales = zero traffic. Ads need pixels. Personal network converts NOW.\n\n── Do today (2 hours) ──\n\n  1. Text 20 golfers you actually know (template: golfer-friend)\n  2. Text 10 non-golfers who buy gifts (template: gift-buyer)\n  3. Post once on Facebook/LinkedIn (template: facebook-post)\n  4. Email everyone in your contacts who has bought you a gift before\n  5. Set GA4 + Meta pixel in Vercel → redeploy (see docs/tracking-setup.md)\n  6. Launch $10/day Meta → Bag Upgrade Kit only\n\n── Kit link (highest convert) ──\n  https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit?discount=WYX10\n\n📝 golfer-friend → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/golfer-friend.txt\n📝 gift-buyer → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/gift-buyer.txt\n📝 facebook-post → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/facebook-post.txt\n📝 email-blast → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/email-blast.txt\n📝 reddit-soft → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/reddit-soft.txt\n\n✅ Templates saved to data/survival-outreach/\n\n"
+    },
+    {
+      "step": "Pipeline status snapshot",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 pipeline:status\n> tsx scripts/pipeline-status.ts\n\n\n╔══════════════════════════════════════════════════════╗\n║           WYX Pipeline Status                        ║\n╚══════════════════════════════════════════════════════╝\n\n── TopDawg (US warehouse) ──\n  Shopify connected:    ✅\n  Import list:          ⏳ 8 SKUs\n  Sample order:         ⏳ ~$53.60\n  Headless published:   0/8\n\n── DSers / Spocket ──\n  DSers installed:      ✅\n  Spocket installed:    ✅\n  DSers linked:         2/21\n  Spocket linked:       1/1\n  SKUs aligned (AE-*):  0\n  Test order:           #H0KFGQ9ZD (operational-pending-fulfillment)\n\n── Supplier outreach ──\n  Drafts ready:         7\n  Skipped (TopDawg):    1\n\n── Next actions ──\n  • TopDawg Import List → npm run topdawg:playbook\n  • DSers Import List → npm run dsers:import-queue (19 remaining)\n  • Send wholesale emails → data/supplier-outreach-drafts/\n\n"
     },
     {
       "step": "Empire status snapshot",
