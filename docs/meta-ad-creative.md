@@ -1,6 +1,7 @@
 # Meta Ad Creative Playbook — WYX Golf Supply Co.
 
 **Account:** `mwixted1`  
+**Facebook Page:** `1574437179899364`  
 **Ad account:** `act_47116609` → [Ads Manager](https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=47116609)  
 **Pixel:** `2129816234251975` → [Events Manager](https://business.facebook.com/events_manager2/list/pixel/2129816234251975)  
 **Landing pages:** `/lp/hidden-gems` (paid traffic, noindex) → canonical `/hidden-gems`  
