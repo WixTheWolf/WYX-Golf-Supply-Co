@@ -43,12 +43,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sansFont.variable} ${displayFont.variable}`}>
+      <head>
+        <TrackingScripts />
+        <JudgeMeScripts />
+      </head>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <ScrollRevealInit />
         <SeoJsonLd />
-        <TrackingScripts />
-        <JudgeMeScripts />
         <CartProvider>
           <Header />
           <main id="main-content">{children}</main>
