@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { EditorialProductCard } from '@/components/EditorialProductCard';
 import { KitAddButton } from '@/components/KitAddButton';
@@ -8,6 +9,7 @@ import { productPrice } from '@/lib/feed';
 import { fathersDayDaysLeft } from '@/lib/fathersDay';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
+import { imageMap } from '@/lib/demo';
 import { getProduct, getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -50,6 +52,10 @@ export default async function FathersDayMetaLandingPage() {
       <div className="urgency-strip" role="banner">
         <strong>Father&apos;s Day · June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} left · WYX10 saves 10%
       </div>
+
+      <section className="meta-lp-banner">
+        <Image src={imageMap.hero} alt="Weekend golfers on course" width={1200} height={800} priority sizes="100vw" />
+      </section>
 
       <section className="deal-hero">
         <div>
