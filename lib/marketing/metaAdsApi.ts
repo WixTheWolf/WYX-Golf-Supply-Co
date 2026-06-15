@@ -53,19 +53,45 @@ export async function verifyMetaAdsAccess() {
   return json as { id: string; name: string; account_status: number; currency: string };
 }
 
+export type MetaPageAccount = { id: string; name: string; category?: string };
+
+export async function fetchMetaMe() {
+  const url = `${GRAPH}/me?fields=id,name&access_token=${token()}`;
+  const res = await fetch(url);
+  const json = await res.json();
+  if (!res.ok || json.error) throw new Error(json.error?.message || 'Cannot fetch /me');
+  return json as { id: string; name: string };
+}
+
+/** GET /{app-scoped-user-id}/accounts — lists Facebook Pages the token can manage. */
+export async function fetchUserPageAccounts(userId?: string) {
+  const me = userId ? { id: userId } : await fetchMetaMe();
+  const url = `${GRAPH}/${me.id}/accounts?fields=id,name,category,tasks&limit=25&access_token=${token()}`;
+  const res = await fetch(url);
+  const json = await res.json();
+  if (!res.ok || json.error) throw new Error(json.error?.message || 'Cannot fetch user accounts');
+  return {
+    userId: me.id,
+    pages: (json.data || []) as MetaPageAccount[],
+  };
+}
+
 export async function discoverMetaPageId(): Promise<string> {
   if (process.env.META_PAGE_ID) return process.env.META_PAGE_ID;
+
+  const { pages } = await fetchUserPageAccounts();
+  const saved = pages.find((p) => p.id === '1574437179899364');
+  const wyx = pages.find((p) => /wyx|golf/i.test(p.name));
+  const page = saved || wyx || pages[0];
+  if (page?.id) return String(page.id);
+
   const account = adAccount();
-  const urls = [
-    `${GRAPH}/${account}/promote_pages?fields=id,name&limit=5&access_token=${token()}`,
-    `${GRAPH}/me/accounts?fields=id,name&limit=5&access_token=${token()}`,
-  ];
-  for (const url of urls) {
-    const res = await fetch(url);
-    const json = await res.json();
-    const page = json.data?.[0];
-    if (page?.id) return String(page.id);
-  }
+  const promoteUrl = `${GRAPH}/${account}/promote_pages?fields=id,name&limit=5&access_token=${token()}`;
+  const promoteRes = await fetch(promoteUrl);
+  const promoteJson = await promoteRes.json();
+  const promoted = promoteJson.data?.[0];
+  if (promoted?.id) return String(promoted.id);
+
   throw new Error('META_PAGE_ID missing — no Facebook Page found on this token/ad account.');
 }
 

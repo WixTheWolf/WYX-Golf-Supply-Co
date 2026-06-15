@@ -20,7 +20,9 @@ Steps (long-lived token — recommended):
   4. Copy short-lived token (EAA...)
   5. Run:
        META_APP_ID=<id> META_APP_SECRET=<secret> META_SHORT_LIVED_TOKEN=EAA... npm run meta:exchange-token
-     → exchanges for 60-day token, saves to Vercel, launches campaign
+     → exchanges for 60-day token
+     → GET /{user-id}/accounts (discovers Page ID)
+     → saves to Vercel + launches campaign
 
 Quick path (short-lived, ~1 hour):
   META_SHORT_LIVED_TOKEN=EAA... npm run meta:launch

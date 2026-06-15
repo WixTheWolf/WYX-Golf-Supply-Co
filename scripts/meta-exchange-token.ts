@@ -80,9 +80,16 @@ async function exchangeToken() {
 }
 
 async function main() {
-  await exchangeToken();
+  const longLived = await exchangeToken();
+  process.env.META_ACCESS_TOKEN = longLived;
+  console.log('\n📋 Discovering Facebook Pages (/me → /accounts)...\n');
+  try {
+    execSync('npm run meta:discover-accounts', { stdio: 'inherit', env: { ...process.env, META_ACCESS_TOKEN: longLived } });
+  } catch {
+    console.log('ℹ️  Page discovery skipped — set META_PAGE_ID manually if launch fails.\n');
+  }
   console.log('\n🚀 Launching Father\'s Day campaign...\n');
-  execSync('npm run meta:launch', { stdio: 'inherit', env: { ...process.env } });
+  execSync('npm run meta:launch', { stdio: 'inherit', env: { ...process.env, META_ACCESS_TOKEN: longLived } });
 }
 
 main().catch((err) => {
