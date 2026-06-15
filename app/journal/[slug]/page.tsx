@@ -1,5 +1,8 @@
 import type {Metadata} from 'next';import Image from 'next/image';import Link from 'next/link';import {notFound} from 'next/navigation';import {getPost,allPosts as posts} from '@/lib/journal';
-export function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}export async function generateMetadata({params}:{params:{slug:string}}):Promise<Metadata>{const p=getPost(params.slug);return p?{title:p.seo,description:p.description,openGraph:{images:[p.image]}}:{title:'Journal'}}
+export function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}export async function generateMetadata({params}:{params:{slug:string}}):Promise<Metadata>{const p=getPost(params.slug);if(!p)return{title:'Journal'};
+// The root layout applies a `%s | WYX Golf Supply Co.` title template, but each post's
+// `seo` already ends with that brand suffix — strip it so the tag isn't doubled.
+const title=p.seo.replace(/\s*\|\s*WYX Golf Supply Co\.?\s*$/i,'');return{title,description:p.description,openGraph:{images:[p.image]}}}
 const siteUrl = 'https://wyxgolfsupply.com';
 
 export default function Article({params}:{params:{slug:string}}){
@@ -30,6 +33,15 @@ export default function Article({params}:{params:{slug:string}}){
       <p>{p.description}</p>
       <Image src={p.image} alt={p.title} width={1200} height={800}/>
       {p.sections.map(([h,body])=><section key={h}><h2>{h}</h2><p>{body}</p></section>)}
+      {(() => {
+        const links = (p as { links?: [string, string][] }).links;
+        return links && links.length ? (
+          <section>
+            <h2>Shop This Guide</h2>
+            <ul>{links.map(([label, href]) => <li key={href}><Link href={href}>{label}</Link></li>)}</ul>
+          </section>
+        ) : null;
+      })()}
       <p>Shop <Link href="/weekend-golfer-bag-upgrade-kit">The Bag Upgrade Kit</Link>, browse <Link href="/golf-gifts">golf gifts</Link>, or read <Link href="/story">The Long Game</Link>.</p>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}}/>
     </article>

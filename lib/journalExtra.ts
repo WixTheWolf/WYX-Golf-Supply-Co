@@ -2,6 +2,29 @@ import { imageMap } from './demo';
 
 export const extraPosts = [
   {
+    slug: 'golf-in-hot-weather-sun-protection-guide',
+    title: 'How To Play Golf In Hot Weather: A Sun Protection & Heat Guide',
+    seo: 'Golf In Hot Weather — Sun Protection & Heat Gear Guide | WYX Golf Supply Co.',
+    description: 'How to stay cool, protected, and sharp playing golf in hot weather: UPF sun gear, the right hat, hydration, and the summer setup that keeps the back nine from falling apart.',
+    image: imageMap.hero,
+    links: [
+      ['Wide Brim UPF 50+ Sun Hat', '/products/wide-brim-golf-sun-hat-upf50'],
+      ['Performance Stretch Visor', '/products/golf-visor-performance-stretch-fit'],
+      ['UPF Golf Arm Sleeves', '/golf-arm-sleeves'],
+      ['Golf Compression Socks', '/golf-compression-socks'],
+      ['Insulated Water Bottle', '/golf-water-bottle'],
+      ['All Summer Golf Gear', '/golf-summer-gear']
+    ],
+    sections: [
+      ['Heat Is A Scoring Problem, Not Just A Comfort One', 'By the back nine of a hot round, the wheels come off for a reason: dehydration and sun exposure quietly drain focus, grip, and decision-making long before you feel "heat exhaustion." Protecting yourself in summer is not about comfort — it is about playing the last six holes as well as the first six. The gear below is ordered the way it actually matters on a hot day.'],
+      ['Cover Skin Before You Reach For Lotion', 'Sunscreen sweats off by the turn, and nobody reapplies to their own back mid-round. UPF-rated clothing does not wash off, does not sting your eyes, and does not need topping up. A UPF 50+ layer blocks the large majority of UV across your covered skin for the whole round — start there, then use sunscreen only on the gaps (face, ears, the back of the hands).'],
+      ['The Head And Neck Are The Priority', 'More sun lands on your head, ears, and neck than anywhere else on the course. A wide-brim UPF sun hat shades all three and is the single highest-value summer piece; a visor keeps your forehead and eyes clear and breathes better if you run hot but leaves the scalp and ears exposed — pair it with sunscreen there. Pick based on how much coverage versus airflow you want, not on looks alone.'],
+      ['Manage Forearms, Feet, And Core Temperature', 'UPF arm sleeves shield the forearms — one of the most-exposed, most-forgotten areas — while wicking sweat off the skin. Light compression socks help circulation and reduce the leg fatigue of walking 18 in heat, and they keep feet drier than thick cotton. The theme is the same: light, breathable, moisture-moving fabric beats heavy cotton that soaks and stays wet.'],
+      ['Hydration Starts The Night Before', 'You cannot out-drink a hot round that you started dehydrated. Drink water steadily the evening before and the morning of, then keep an insulated bottle on the cart or bag and sip every couple of holes rather than chugging at the turn. Cold water you actually carry beats the perfect electrolyte plan you left in the car.'],
+      ['The One-Cart Summer Setup', 'If you want it handled in a single order: a UPF sun hat or visor, a pair of arm sleeves, compression socks, and an insulated bottle cover the four things that decide a hot round. Browse the summer golf gear page to build it, and WYX10 takes 10% off the first order. The links below jump straight to each piece.']
+    ]
+  },
+  {
     slug: 'how-to-read-greens',
     title: 'How To Read Greens: A Simple System for Weekend Golfers',
     seo: 'How To Read Greens | Golf Green Reading Tips | WYX Golf Supply Co.',
