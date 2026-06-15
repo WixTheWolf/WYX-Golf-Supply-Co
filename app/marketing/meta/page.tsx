@@ -19,6 +19,7 @@ export default function MetaMarketingReferencePage() {
         <p><strong>Commerce account:</strong> {metaAdsConfig.commerceAccountId}</p>
         <p><strong>Product catalog:</strong> {metaAdsConfig.catalogId} (Shopify sync)</p>
         <p><strong>Pixel:</strong> {metaAdsConfig.pixelId} — <a href={metaAdsConfig.eventsManagerUrl}>Events Manager</a></p>
+        <p><strong>CAPIG (Stape):</strong> {metaAdsConfig.capigUrl} · {metaAdsConfig.capigIdentifier}</p>
         <p><strong>Launch first:</strong> Father&apos;s Day 2026 → <a href={metaLandingUrl('/lp/fathers-day', 'meta_fathers_day_2026')}>LP URL</a></p>
       </div>
       <div style={{ display: 'grid', gap: '1.5rem', marginTop: '2rem' }}>

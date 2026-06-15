@@ -10,6 +10,8 @@ export const metaAdsConfig = {
   adsManagerUrl: 'https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=47116609',
   eventsManagerUrl: 'https://business.facebook.com/events_manager2/list/pixel/2129816234251975',
   commerceManagerUrl: 'https://business.facebook.com/commerce',
+  capigUrl: process.env.META_CAPIG_URL || 'https://capig.stape.do',
+  capigIdentifier: process.env.META_CAPIG_IDENTIFIER || 'tkduzrwn',
 } as const;
 
 export type MetaAdCreative = {

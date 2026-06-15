@@ -33,6 +33,28 @@ Fired from:
 
 - `KLAVIYO_PRIVATE_API_KEY`, `KLAVIYO_LIST_ID`, `KLAVIYO_API_REVISION` (in `.env.example`) enable the Klaviyo dual-write in `/api/marketing/subscribe`. Without these set, subscribers still land as Shopify customers with marketing consent and source/campaign tags — not lost, just not in Klaviyo.
 
+## Stape CAPIG (Conversions API Gateway)
+
+Server-side Meta events via Stape — improves match quality and deduplication.
+
+| Setting | Value |
+|---------|-------|
+| Pixel | `2129816234251975` |
+| CAPIG URL | `https://capig.stape.do` |
+| Identifier | `tkduzrwn` |
+| Admin | `mwixted1@gmail.com` |
+
+**How it works:** Browser pixel on wyxgolfsupply.com fires normally. When the pixel is linked in the Stape CAPIG hub, each browser event is also forwarded server-side to Meta Conversions API (dedup is automatic).
+
+**No storefront code change required** — keep `TrackingScripts.tsx` as-is.
+
+**Verify (30 min after connect):**
+1. Stape CAPIG hub → pixel `2129816234251975` → event count > 0
+2. Meta Events Manager → pixel → Overview → browser + server events
+3. Optional upgrade: Stape → Data Routing → custom domain `capig.wyxgolfsupply.com` (DNS CNAME)
+
+Secrets in Vercel only: `META_CAPIG_URL`, `META_CAPIG_IDENTIFIER`, `META_CAPIG_API_KEY`.
+
 ## Manual Setup Still Needed
 
 - Add the real GA4 measurement ID, Meta Pixel ID, and TikTok Pixel ID in Vercel Production env vars.
