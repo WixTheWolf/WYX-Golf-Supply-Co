@@ -1194,3 +1194,125 @@ p { margin: 0.45rem 0 1rem; color: var(--muted); }
     max-width: none;
   }
 }
+
+/* --- Phase 1 CRO: trust bar, carousel, cinematic hero --- */
+.trust-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.85rem clamp(1rem, 4vw, 3.5rem);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.trust-bar.compact { grid-template-columns: repeat(2, 1fr); padding: 0.65rem 1rem; }
+
+.trust-bar-item {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.trust-bar-item strong {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.trust-bar-item span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.cinematic-hero::after {
+  background:
+    radial-gradient(130% 100% at 12% 90%, rgba(8, 24, 18, 0.94) 0%, rgba(8, 24, 18, 0.5) 45%, rgba(8, 24, 18, 0.15) 75%),
+    linear-gradient(180deg, rgba(8, 24, 18, 0.25), rgba(8, 24, 18, 0.05) 40%, rgba(8, 24, 18, 0.65) 100%);
+}
+
+.kit-spotlight-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.kit-spotlight-image {
+  border-radius: 12px;
+  border: 1px solid rgba(220, 191, 114, 0.25);
+  width: 100%;
+  height: auto;
+}
+
+.product-carousel { position: relative; }
+
+.product-carousel-controls {
+  position: absolute;
+  right: 0;
+  top: -2.6rem;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.carousel-btn {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.product-carousel-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.product-carousel-track::-webkit-scrollbar { display: none; }
+
+.carousel-slide {
+  flex: 0 0 min(88vw, 320px);
+  scroll-snap-align: start;
+}
+
+.section-lead {
+  max-width: 52ch;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.trust-review-section { padding-top: 0.5rem; }
+
+.sizing-guide ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.sizing-guide li { margin: 0.3rem 0; font-size: 0.88rem; }
+.sizing-tip { margin: 0.65rem 0 0; font-size: 0.8rem; color: var(--muted); }
+
+.judge-me-placeholder p { margin: 0.35rem 0 0; font-size: 0.85rem; color: var(--muted); }
+
+.product-card-footer .price small {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .trust-bar { grid-template-columns: repeat(2, 1fr); }
+  .kit-spotlight-grid { grid-template-columns: 1fr; }
+}

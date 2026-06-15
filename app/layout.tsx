@@ -10,6 +10,7 @@ import { Header } from '@/components/Header';
 import { ReturningVisitorOffer } from '@/components/ReturningVisitorOffer';
 import { StickySalesBar } from '@/components/StickySalesBar';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
+import { JudgeMeScripts } from '@/components/JudgeMe';
 import { TrackingScripts } from '@/components/TrackingScripts';
 import { supportEmail } from '@/lib/support';
 
@@ -30,9 +31,9 @@ export const metadata: Metadata = {
     url: 'https://wyxgolfsupply.com',
     title: 'WYX Golf Supply Co.',
     description: 'Practical golf gifts, trip gear, and bag upgrades for weekend golfers — picked using The Bag Test.',
-    images: [{ url: '/images/hero-coastal-fairway.png', width: 1200, height: 630, alt: 'WYX Golf Supply Co.' }]
+    images: [{ url: '/images/boys-weekend-hero.png', width: 1536, height: 1024, alt: 'WYX Golf Supply Co.' }]
   },
-  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co.', description: 'Practical golf gifts and bag upgrades that pass The Bag Test.', images: ['/images/hero-coastal-fairway.png'] }
+  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co.', description: 'Practical golf gifts and bag upgrades that pass The Bag Test.', images: ['/images/boys-weekend-hero.png'] }
 };
 
 export const viewport: Viewport = {
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollRevealInit />
         <SeoJsonLd />
         <TrackingScripts />
+        <JudgeMeScripts />
         <CartProvider>
           <Header />
           <main id="main-content">{children}</main>

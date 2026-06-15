@@ -16,11 +16,13 @@ export type StarterProduct = {
 };
 
 export const imageMap = {
-  hero: '/images/hero-coastal-fairway.png',
+  hero: '/images/boys-weekend-hero.png',
+  heroCoastal: '/images/hero-coastal-fairway.png',
+  boysWeekend: '/images/boys-weekend-hero.png',
   ropeHat: '/images/rope-hat-product.png',
   polo: '/images/forest-polo-product.png',
   towel: '/images/golf-towel-product.png',
-  walk: '/images/walking-golfer-lifestyle..png',
+  walk: '/images/boys-weekend-hero.png',
   leather: '/images/leather-bag-detail.png',
   iron: '/images/journal-iron-practice.png',
   care: '/images/journal-club-care.png',
