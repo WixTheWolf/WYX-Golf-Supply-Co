@@ -14,6 +14,8 @@ const keys = [
   'META_CAPIG_URL',
   'META_CAPIG_IDENTIFIER',
   'META_CAPIG_API_KEY',
+  'META_APP_ID',
+  'META_APP_SECRET',
   'META_ACCESS_TOKEN',
   'META_ADMIN_EMAIL',
 ] as const;
