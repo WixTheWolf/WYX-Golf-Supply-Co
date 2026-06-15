@@ -16,6 +16,8 @@ export default function MetaMarketingReferencePage() {
         <p><strong>Account:</strong> {metaAdsConfig.accountName}</p>
         <p><strong>Ad account:</strong> act_{metaAdsConfig.adAccountId} — <a href={metaAdsConfig.adsManagerUrl}>Open Ads Manager</a></p>
         <p><strong>Facebook Page:</strong> {metaAdsConfig.pageId}</p>
+        <p><strong>Commerce account:</strong> {metaAdsConfig.commerceAccountId}</p>
+        <p><strong>Product catalog:</strong> {metaAdsConfig.catalogId} (Shopify sync)</p>
         <p><strong>Pixel:</strong> {metaAdsConfig.pixelId} — <a href={metaAdsConfig.eventsManagerUrl}>Events Manager</a></p>
         <p><strong>Launch first:</strong> Father&apos;s Day 2026 → <a href={metaLandingUrl('/lp/fathers-day', 'meta_fathers_day_2026')}>LP URL</a></p>
       </div>

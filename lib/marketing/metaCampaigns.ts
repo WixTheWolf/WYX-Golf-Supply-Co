@@ -5,8 +5,11 @@ export const metaAdsConfig = {
   adAccountId: process.env.META_AD_ACCOUNT_ID || '47116609',
   pixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || '2129816234251975',
   pageId: process.env.META_PAGE_ID || '1574437179899364',
+  commerceAccountId: process.env.META_COMMERCE_ACCOUNT_ID || '1624887621902913',
+  catalogId: process.env.META_CATALOG_ID || '1494259261731675',
   adsManagerUrl: 'https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=47116609',
   eventsManagerUrl: 'https://business.facebook.com/events_manager2/list/pixel/2129816234251975',
+  commerceManagerUrl: 'https://business.facebook.com/commerce',
 } as const;
 
 export type MetaAdCreative = {
