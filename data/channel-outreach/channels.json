@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-06-14T16:02:25.241Z",
+  "daysLeft": 7,
+  "channels": {
+    "reddit_golf": {
+      "subs": [
+        "r/golf",
+        "r/GolfGear"
+      ],
+      "title": "Built a small curated golf gift shop — looking for honest feedback on the Bag Upgrade Kit",
+      "body": "I got tired of golf gift sites selling novelty junk, so I launched WYX with one rule: would a weekend golfer keep it in the bag after round one?\n\nHero product is a 5-piece Bag Upgrade Kit (towel, marker, grip tape, groove tool, caddie). Father's Day is in 7 days.\n\nhttps://wyxgolfsupply.com/go?ref=outreach — code WYX10 for 10% off.\n\nNot affiliate spam — genuinely want feedback from real golfers. What would you add or cut?",
+      "rules": "Read sub rules first. Value-first, no link drops in title on some subs."
+    },
+    "reddit_gift": {
+      "subs": [
+        "r/Gifts",
+        "r/GiftIdeas"
+      ],
+      "title": "Father's Day golf gift under $80 — bag upgrade kit (7 days left)",
+      "body": "Shopping for a golfer who has everything? I built a kit of five practical bag upgrades (towel, marker, grip refresh, groove tool, organizer) instead of another polo.\n\nhttps://wyxgolfsupply.com/gift?ref=outreach — WYX10 saves 10% at checkout. Secure Shopify."
+    },
+    "nextdoor": {
+      "title": "Local golfer? New golf gift shop — Father's Day picks",
+      "body": "Launched WYX Golf Supply — curated accessories for weekend golfers (not Amazon novelty junk). Bag Upgrade Kit is the easy Father's Day pick. https://wyxgolfsupply.com/go?ref=outreach — WYX10 for 10% off. Based locally, ships US."
+    },
+    "facebook_groups": {
+      "title": "Father's Day golf gift idea",
+      "body": "If anyone in the group is shopping for a golfer before June 21 — I launched a curated shop (WYX) focused on useful bag upgrades.\n\nBest pick: Bag Upgrade Kit — towel, marker, grip tape, groove tool, caddie.\nhttps://wyxgolfsupply.com/go?ref=outreach\n\nWYX10 = 10% off. Would appreciate shares to golfers you know.",
+      "targets": "Search: \"golf\" + your city, alumni groups, dad groups, local buy/sell"
+    },
+    "product_hunt": {
+      "tagline": "Golf gifts that pass The Bag Test — practical bag upgrades, not novelty junk",
+      "description": "WYX Golf Supply curates ~93 golf accessories for weekend players and gift buyers. Every product passes one test: would you keep it in the bag after round one?\n\nLaunch offer: Bag Upgrade Kit + WYX10 (10% off first order).\nhttps://wyxgolfsupply.com/go?ref=outreach"
+    },
+    "indie_hackers": {
+      "title": "Launched a curated golf ecommerce shop — 0 → first 10 orders",
+      "body": "Building WYX Golf Supply in public. Shopify headless on Vercel, curated catalog (not 10k SKU dropship dump), hero bundle is the Weekend Golfer Bag Upgrade Kit.\n\nFather's Day in 7 days. Driving first sales via personal network + Meta ads.\n\nWould love IH feedback: https://wyxgolfsupply.com/share"
+    },
+    "creator_dm": {
+      "subject": "Bag Test kit for creators — free review?",
+      "body": "Hey [NAME] — Matthew from WYX Golf Supply. We curate golf gear weekend players actually keep in the bag.\n\nWould you try our Bag Upgrade Kit on camera? Happy to send one for an honest Bag Test review — no script required.\n\nStore: wyxgolfsupply.com/creators\nKit: https://wyxgolfsupply.com/go?ref=outreach"
+    },
+    "golf_course_pro": {
+      "subject": "Wholesale / pro shop inquiry — curated golf accessories",
+      "body": "Hi — Matthew from WYX Golf Supply Co. We stock curated golf accessories (towels, markers, gloves, training aids) that pass a simple retail test: weekend players keep them in the bag.\n\nInterested in a small pro-shop test rack or tournament prize bundles? Reply with your shop name and we'll send a wholesale sheet.\n\nhttps://wyxgolfsupply.com/go?ref=outreach"
+    }
+  }
+}

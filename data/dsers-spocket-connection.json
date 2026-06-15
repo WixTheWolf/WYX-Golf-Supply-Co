@@ -27,8 +27,8 @@
     "shipTo": "Anaheim CA 92807",
     "dsersStatus": "operational-pending-fulfillment"
   },
-  "dsersSkusAligned": 21,
-  "dsersSkusAlignedAt": "2026-06-12T06:45:00.000Z",
+  "dsersSkusAligned": 0,
+  "dsersSkusAlignedAt": "2026-06-14T01:03:46.198Z",
   "dsersInstalledAt": "2026-06-12T06:08:57.501Z",
   "spocketInstalledAt": "2026-06-12T06:08:57.502Z",
   "dsersMappedAt": "2026-06-12T06:11:51.637Z",

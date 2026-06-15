@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ProductBadge } from '@/components/ProductBadge';
 import { categoryFor } from '@/lib/catalog';
 import { money } from '@/lib/demo';
+import { priceWithWyx10 } from '@/lib/pricing';
 import { cleanText } from '@/lib/text';
 import type { Product } from '@/types/shopify';
 
@@ -21,8 +22,11 @@ export function EditorialProductCard({ product, featured = false }: { product: P
         <h3><Link href={`/products/${product.handle}`}>{title}</Link></h3>
         <p>{shortReason(product)}</p>
         <div className="product-card-footer">
-          <span className="price">{money(product.priceRange.minVariantPrice)}</span>
-          <Link className="text-link" href={`/products/${product.handle}`}>Shop This</Link>
+          <span className="price">
+            {priceWithWyx10(product.priceRange.minVariantPrice).formattedSale}
+            <small> with WYX10</small>
+          </span>
+          <Link className="text-link" href={`/products/${product.handle}`}>Shop →</Link>
         </div>
       </div>
     </article>

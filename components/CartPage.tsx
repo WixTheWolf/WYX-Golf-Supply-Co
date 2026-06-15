@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CartPromoSummary } from '@/components/CartPromoSummary';
+import { KitUpsellBanner } from '@/components/KitUpsellBanner';
+import { ShareWyx } from '@/components/ShareWyx';
 import { trackEvent } from '@/lib/analytics';
 import { money } from '@/lib/demo';
 import { useCart } from './CartProvider';
@@ -19,7 +21,13 @@ export function CartPage() {
       <CartPromoSummary cart={cart} />
       {error && <p className="error">{error}</p>}
       {!cart?.lines.length ? (
-        <p>Your bag is empty. Let's fix that before the next tee time. <Link className="text-link" href="/golf-gifts">Shop golf gifts</Link>.</p>
+        <>
+          <p>Your bag is empty. Start with the Bag Upgrade Kit — five fixes every weekend bag needs.</p>
+          <div className="actions" style={{ marginTop: '1rem' }}>
+            <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Shop The Kit</Link>
+            <Link className="button secondary dark" href="/fathers-day-golf-gifts">Father&apos;s Day Gifts</Link>
+          </div>
+        </>
       ) : (
         <div className="cart-page-lines">
           {cart.lines.map((line) => (
@@ -38,6 +46,7 @@ export function CartPage() {
               </div>
             </div>
           ))}
+          <KitUpsellBanner subtotal={Number(cart.cost.subtotalAmount.amount)} />
           <div className="cart-summary">
             <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />
             <p><span>Subtotal</span><strong>{money(cart.cost.subtotalAmount)}</strong></p>
@@ -49,8 +58,9 @@ export function CartPage() {
                 content_ids: cart.lines.map((line) => line.merchandise.id)
               });
               window.location.href = cart.checkoutUrl;
-            }}>Checkout</button>
+            }}>Checkout — WYX10 Applied</button>
           </div>
+          <ShareWyx label="Almost done? Share WYX while you checkout" />
         </div>
       )}
     </section>

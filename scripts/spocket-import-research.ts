@@ -1,0 +1,44 @@
+/**
+ * Phase 2 product research — Spocket/CJ winners to import (50%+ margin, US ship).
+ *
+ * Usage:
+ *   npm run spocket:research
+ */
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { join } from 'node:path';
+
+/** Target: retail = cost * 2.0 minimum (50% margin). US shipping < 7 days preferred. */
+const candidates = [
+  { category: 'Training Aids', name: 'Alignment sticks 2-pack', cost: 12, retail: 28, supplier: 'Spocket', trend: '2026 home practice boom' },
+  { category: 'Training Aids', name: 'Putting mirror alignment', cost: 14, retail: 32, supplier: 'Spocket', trend: 'Indoor putting mats trending' },
+  { category: 'Golf Tech', name: 'Laser rangefinder slope', cost: 45, retail: 99, supplier: 'CJ/Spocket', trend: 'Budget rangefinder gift season' },
+  { category: 'Golf Tech', name: 'Magnetic GPS speaker', cost: 22, retail: 48, supplier: 'Spocket', trend: 'Cart audio + yardage' },
+  { category: 'Club Care', name: 'Groove sharpener v2', cost: 6, retail: 16, supplier: 'DSers', trend: 'Already in catalog — expand variants' },
+  { category: 'Apparel', name: 'Performance quarter-zip', cost: 18, retail: 42, supplier: 'Spocket US', trend: 'Layering for trip golf' },
+  { category: 'Headwear', name: 'Rope cap 2-pack', cost: 14, retail: 34, supplier: 'Spocket', trend: 'Malbon-adjacent aesthetic' },
+  { category: 'Accessories', name: 'Cart phone mount Pro', cost: 11, retail: 28, supplier: 'Spocket', trend: 'Hidden gem hero SKU' },
+  { category: 'Bundles', name: 'Trip survival kit (6 SKU)', cost: 38, retail: 79, supplier: 'Bundle', trend: 'Boys weekend AOV play' },
+  { category: 'Bundles', name: 'Practice starter kit', cost: 35, retail: 72, supplier: 'Bundle', trend: 'Home range crossover' },
+];
+
+async function main() {
+  const dir = join(process.cwd(), 'data');
+  const payload = {
+    generatedAt: new Date().toISOString(),
+    marginRule: 'Retail >= 2x landed cost (50%+ gross margin)',
+    shippingRule: 'US warehouse preferred, < 7 business days',
+    importSteps: [
+      'Spocket app → Search category → Filter US shipping → Import to Shopify',
+      'DSers → Map to Store Product for each AE-* SKU',
+      'npm run finalize:dsers && npm run clear:dsers-review',
+      'npm run apply:verified-catalog',
+      'QA lifestyle photo per SKU before ads',
+    ],
+    candidates,
+  };
+  writeFileSync(join(dir, 'spocket-import-research.json'), JSON.stringify(payload, null, 2));
+  console.log('\n📦 Spocket/CJ research saved: data/spocket-import-research.json');
+  console.log(`   ${candidates.length} candidates · 50%+ margin target\n`);
+}
+
+main();

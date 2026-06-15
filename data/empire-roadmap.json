@@ -1,0 +1,60 @@
+{
+  "vision": "WYX becomes the default golf gift brand for weekend players — curated, fast-shipping, Bag Test standard.",
+  "phases": [
+    {
+      "id": "ignite",
+      "name": "Phase 1 — Ignite (Week 1)",
+      "goal": "First 10 orders from people who are not you",
+      "milestones": [
+        { "task": "Send 30+ personal messages", "command": "npm run survival:outreach", "owner": "Matthew", "done": false },
+        { "task": "Set GA4 + Meta pixel in Vercel", "command": "npm run empire:activate", "owner": "Matthew", "done": false },
+        { "task": "Wire Klaviyo welcome flow", "doc": "docs/email-and-launch-flows.md", "owner": "Matthew", "done": false },
+        { "task": "Launch $10/day Meta → Bag Kit", "doc": "docs/meta-ad-creative.md", "owner": "Matthew", "done": false },
+        { "task": "Share /open page", "url": "https://wyxgolfsupply.com/open", "owner": "Matthew", "done": false }
+      ]
+    },
+    {
+      "id": "convert",
+      "name": "Phase 2 — Convert (Weeks 2–4)",
+      "goal": "50 orders, 500 email subs, 2% checkout rate",
+      "milestones": [
+        { "task": "Google Merchant Center feed live", "url": "https://wyxgolfsupply.com/feeds/google-products.xml", "done": false },
+        { "task": "Abandoned cart flow (Klaviyo or Shopify Email)", "done": false },
+        { "task": "Judge.me reviews after 10 orders", "done": false },
+        { "task": "DSers 21/21 mapped", "command": "npm run dsers:import-queue", "done": false },
+        { "task": "TopDawg 8 SKUs live after QA", "command": "npm run topdawg:playbook", "done": false }
+      ]
+    },
+    {
+      "id": "scale",
+      "name": "Phase 3 — Scale (Months 2–3)",
+      "goal": "$5k/mo revenue, 150 vetted SKUs",
+      "milestones": [
+        { "task": "5 golf creators seeded (Bag Test kits)", "url": "/creators", "done": false },
+        { "task": "Meta dynamic product ads + catalog", "done": false },
+        { "task": "Wholesale live: J&M or GT Golf", "doc": "data/supplier-outreach-drafts/", "done": false },
+        { "task": "TikTok Bag Test content 2x/week", "done": false },
+        { "task": "Referral program: FOURSOME rewards", "done": false }
+      ]
+    },
+    {
+      "id": "empire",
+      "name": "Phase 4 — Empire (Month 6+)",
+      "goal": "Category leader in golf gifts under $75",
+      "milestones": [
+        { "task": "Corporate/scramble bulk ordering", "url": "/golf-corporate-gifts", "done": false },
+        { "task": "Private-label capsule (markers, towels)", "done": false },
+        { "task": "US 2-day ship lane (Spocket + TopDawg + wholesale)", "done": false },
+        { "task": "Loyalty + replenishment subscriptions", "done": false },
+        { "task": "Course pro shop partnerships (10 locations)", "done": false }
+      ]
+    }
+  ],
+  "northStarMetrics": {
+    "weeklyOrders": 10,
+    "emailList": 500,
+    "aov": 55,
+    "returnCustomerRate": 0.15,
+    "catalogSkus": 150
+  }
+}

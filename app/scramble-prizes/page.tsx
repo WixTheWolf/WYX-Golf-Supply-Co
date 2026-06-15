@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BulkOrderInquiry } from '@/components/BulkOrderInquiry';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
@@ -205,6 +206,14 @@ export default async function ScramblePrizes() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="section reveal">
+        <BulkOrderInquiry
+          source="scramble-prizes"
+          title="Ordering 4+ scramble prizes?"
+          body="Tell us headcount, budget per player, and event date — we reply within 24 hours with bundle options."
+        />
       </section>
 
       <EmailCapture

@@ -5,6 +5,7 @@ import { KitAddButton } from '@/components/KitAddButton';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { productPrice, siteUrl } from '@/lib/feed';
+import { formatPrice, wyx10Price } from '@/lib/pricing';
 import { kitBySlug, kitDefinitions, kitProducts } from '@/lib/kits';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
@@ -38,6 +39,8 @@ export default async function KitPage({ params }: { params: { slug: string } }) 
     .filter(Boolean)
     .map((variant) => ({ merchandiseId: variant!.id, quantity: 1 }));
   const total = products.reduce((sum, product) => sum + Number(productPrice(product).amount), 0);
+  const formattedTotal = formatPrice(total);
+  const formattedSale = formatPrice(wyx10Price(total));
   const kitUrl = `${siteUrl}/kits/${kit.slug}`;
   const categories = [...new Set(products.map((p) => categoryFor(p)))];
 
@@ -103,17 +106,21 @@ export default async function KitPage({ params }: { params: { slug: string } }) 
         <div className="section-heading split">
           <div>
             <p className="eyebrow">Kit Total — {products.length} Items</p>
-            <h2>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total)}</h2>
+            <div className="lp-price-block">
+              <span className="lp-price-sale">{formattedSale}</span>
+              <span className="lp-price-was">{formattedTotal}</span>
+              <span className="lp-price-code">with WYX10</span>
+            </div>
             <p>Each item is added separately so you can remove, swap, or adjust quantities before paying.</p>
           </div>
-          {products.length > 0 && <KitAddButton lines={lines} label={kit.cta} />}
+          {products.length > 0 && <KitAddButton lines={lines} label={kit.cta} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />}
         </div>
         {products.length
           ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div>
           : <p>Kit products are being prepared — check back shortly or <Link href="/products">browse the full shop</Link>.</p>}
         {products.length > 0 && (
           <div className="kit-add-footer">
-            <KitAddButton lines={lines} label={`Add All ${products.length} to Cart`} />
+            <KitAddButton lines={lines} label={`Add All ${products.length} to Cart`} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />
             <p className="kit-add-note">Items land in the cart individually — remove anything that does not fit before checkout.</p>
           </div>
         )}

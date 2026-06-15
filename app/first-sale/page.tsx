@@ -4,6 +4,7 @@ import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
 import { productPrice, siteUrl } from '@/lib/feed';
+import { fathersDayDaysLeft, isFathersDayWindow } from '@/lib/fathersDay';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -38,18 +39,25 @@ export default async function FirstSale() {
   const picks = preferredHandles.flatMap((handle) => products.find((product) => product.handle === handle) ?? []).slice(0, 6);
   const fallback = products.filter((product) => Number(productPrice(product).amount) <= 60).slice(0, 6);
   const featured = picks.length >= 3 ? picks : fallback;
-  const shareUrl = `${siteUrl}/first-sale`;
+  const shareUrl = `${siteUrl}/go?ref=first-sale`;
+  const daysLeft = fathersDayDaysLeft();
+  const fathersDay = isFathersDayWindow();
 
   return (
     <>
+      {fathersDay && (
+        <div className="urgency-strip" role="banner">
+          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} days left · Help us hit our first 10 orders
+        </div>
+      )}
       <section className="first-sale-hero">
         <div>
           <p className="eyebrow">WYX Launch</p>
           <h1>Help Launch WYX Golf Supply Co.</h1>
           <p>We're building a golf shop around useful bag upgrades, gift-ready picks, and small accessories golfers actually use. Use <strong>WYX10</strong> for 10% off your first order.</p>
           <div className="actions">
-            <Link className="button primary" href="#first-sale-products">Shop The Launch Picks</Link>
-            <Link className="button secondary dark" href="/deals">See All Deals</Link>
+            <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Shop The Bag Upgrade Kit</Link>
+            <Link className="button secondary dark" href="#first-sale-products">Launch Picks</Link>
           </div>
         </div>
         <aside className="share-card">

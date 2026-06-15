@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { EmailCapture } from '@/components/EmailCapture';
 import { KitAddButton } from '@/components/KitAddButton';
+import { ShareWyx } from '@/components/ShareWyx';
 import { ProductCard } from '@/components/ProductCard';
 import { productPrice, siteUrl } from '@/lib/feed';
 import { getProduct } from '@/lib/shopify/products';
+import { fathersDayDaysLeft, isFathersDayWindow } from '@/lib/fathersDay';
 import { cleanText } from '@/lib/text';
 
 export const revalidate = 300;
@@ -96,6 +98,9 @@ export default async function BagUpgradeKitPage() {
 
   const total = products.reduce((sum, product) => sum + Number(productPrice(product).amount), 0);
   const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total);
+  const formattedSale = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total * 0.9);
+  const daysLeft = fathersDayDaysLeft();
+  const fathersDay = isFathersDayWindow();
 
   const ctaLabel = products.length === KIT_HANDLES.length
     ? 'Get The Kit'
@@ -153,13 +158,31 @@ export default async function BagUpgradeKitPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
+      {fathersDay && (
+        <div className="urgency-strip" role="banner">
+          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} left · Best golf gift under $80
+        </div>
+      )}
+
       <section className="page-hero compact">
-        <p className="eyebrow">The Core Offer</p>
+        <p className="eyebrow">{fathersDay ? 'Father\'s Day #1 Pick' : 'The Core Offer'}</p>
         <h1>The Weekend Golfer&apos;s Bag Upgrade Kit</h1>
         <p>A practical golf gift kit built around gear he&apos;ll actually keep in the bag — a clean towel, a marker that doesn&apos;t get lost, an at-home grip refresh, a groove sharpener, and a place for the small stuff that always ends up loose in the bottom pocket.</p>
+        {products.length > 0 && (
+          <div className="lp-price-block" style={{ marginTop: '1rem' }}>
+            <span className="lp-price-sale">{formattedSale}</span>
+            <span className="lp-price-was">{formattedTotal}</span>
+            <span className="lp-price-code">with WYX10</span>
+          </div>
+        )}
+        {lines.length > 0 && (
+          <div style={{ marginTop: '1.25rem', maxWidth: '420px' }}>
+            <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />
+          </div>
+        )}
         <div className="intent-proof-grid" aria-label="Kit benefits">
           <span>{products.length} of {KIT_HANDLES.length} items confirmed in stock</span>
-          <span>WYX10 saves 10%</span>
+          <span>WYX10 auto-applied</span>
           <span>Swap or remove items before checkout</span>
           <span>Ships via Shopify checkout</span>
         </div>
@@ -180,7 +203,7 @@ export default async function BagUpgradeKitPage() {
             <h2>{formattedTotal}</h2>
             <p>Each item ships separately and lands in your cart on its own — review quantities and remove anything that does not fit before checkout.</p>
           </div>
-          {products.length > 0 && <KitAddButton lines={lines} label={ctaLabel} />}
+          {products.length > 0 && <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />}
         </div>
         {products.length > 0
           ? <div className="product-grid">
@@ -194,7 +217,7 @@ export default async function BagUpgradeKitPage() {
           : <p>The kit is being restocked — join the list below and we will email you the moment it is ready.</p>}
         {products.length > 0 && (
           <div className="kit-add-footer">
-            <KitAddButton lines={lines} label={`Add All ${products.length} to Cart`} />
+            <KitAddButton lines={lines} label={`Add All ${products.length} to Cart`} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />
             <p className="kit-add-note">Items land in the cart individually — remove anything that does not fit before checkout. Use WYX10 at checkout for 10% off.</p>
           </div>
         )}
@@ -213,6 +236,10 @@ export default async function BagUpgradeKitPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="section reveal">
+        <ShareWyx path="/weekend-golfer-bag-upgrade-kit" />
       </section>
 
       <section className="section reveal" aria-labelledby="free-tools-heading">

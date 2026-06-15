@@ -7,8 +7,8 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const KIT_URL = 'https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit';
-const GIFTS_URL = 'https://wyxgolfsupply.com/fathers-day-golf-gifts';
+const KIT_URL = 'https://wyxgolfsupply.com/go?ref=survival';
+const GIFTS_URL = 'https://wyxgolfsupply.com/gift?ref=survival';
 const CODE = 'WYX10';
 
 const texts = [

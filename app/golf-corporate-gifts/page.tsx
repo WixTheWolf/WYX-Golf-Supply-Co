@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BulkOrderInquiry } from '@/components/BulkOrderInquiry';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
@@ -199,6 +200,14 @@ export default async function GolfCorporateGiftsPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="section reveal">
+        <BulkOrderInquiry
+          source="corporate-gifts"
+          title="Corporate outing or client gifts (4+)?"
+          body="Share headcount, budget tier, and event date — we'll reply with bundle pricing and engraving options."
+        />
       </section>
 
       <EmailCapture

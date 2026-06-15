@@ -1,0 +1,86 @@
+{
+  "startedAt": "2026-06-14T01:02:28.903Z",
+  "completedAt": "2026-06-14T01:04:14.586Z",
+  "passed": 13,
+  "total": 13,
+  "results": [
+    {
+      "step": "WYX10 discount",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 ensure:wyx10\n> tsx --env-file .env.local scripts/ensure-wyx10-discount.ts\n\n✅ WYX10 verified on storefront cart (Admin discount scopes unavailable)\n"
+    },
+    {
+      "step": "Verified catalog sync",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 apply:verified-catalog\n> tsx --env-file .env.local scripts/apply-verified-dropship-catalog.ts\n\n📦 WYX Verified Dropship Catalog Apply\n\nCatalog version: 2026-06-11\nProducts in catalog: 25\n\n  ✓ Synced: golf-visor-performance-stretch-fit\n  ✓ Synced: unstructured-dad-golf-cap-soft-crown\n  ✓ Synced: stretch-performance-golf-hat-low-crown\n  ✓ Synced: wide-brim-golf-sun-hat-upf50\n  ✓ Synced: golf-hat-clip-ball-marker-set-3-markers\n  ✓ Synced: 12-foot-golf-ball-retriever\n  ✓ Synced: golf-ball-identification-stamp-set\n  ✓ Synced: premium-golf-ball-mix-pack-12\n  ✓ Synced: golf-ball-line-marker-stencil-kit\n  ✓ Synced: golf-swing-arm-posture-corrector\n  ✓ Synced: golf-auto-return-putting-mat\n  ✓ Synced: golf-arm-connection-swing-trainer\n  ✓ Synced: leadbetter-boomerang-alignment-aid\n  ✓ Synced: sure-speed-swing-trainer (image replaced)\n  ✓ Synced: jp-lann-divot-tool-ball-marker\n  ✓ Synced: golf-gps-watch-40000-courses (image replaced)\n  ✓ Synced: stroke-counter-wristband\n  ✓ Synced: spocket-golf-rope-cap\n  ✓ Synced: magnetic-golf-club-brush-cleaner\n  ✓ Synced: bamboo-performance-golf-tees-50-pack (image replaced)\n  ✓ Synced: tri-fold-microfiber-golf-towel\n  ✓ Synced: premium-cabretta-leather-golf-glove\n  ✓ Synced: coastal-green-driver-headcover (image replaced)\n  ✓ Synced: alignment-putting-mirror\n  ✓ Synced: groove-sharpener-cleaner-tool\n\n==================================================\nSynced:       25\nImages fixed: 4\nSeeded:       0\nSkipped:      0\n"
+    },
+    {
+      "step": "DSers SKU alignment",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 finalize:dsers\n> tsx --env-file .env.local scripts/finalize-dsers-connection.ts\n\n\n🔗 Finalizing 21 DSers ↔ Shopify links\n\n  ✓  golf-visor-performance-stretch-fit already AE-visor-multi-color-grid\n  ✓  unstructured-dad-golf-cap-soft-crown already AE-mesh-back-dad-cap-black\n  ✓  stretch-performance-golf-hat-low-crown already AE-black-stretch-fit-cap\n  ✓  wide-brim-golf-sun-hat-upf50 already AE-wide-brim-sun-visor-cord\n  ✓  golf-hat-clip-ball-marker-set-3-markers already AE-1005008040094980\n  ✓  12-foot-golf-ball-retriever already AE-12ft-telescoping-retriever\n  ✓  golf-ball-identification-stamp-set already AE-ball-id-stamper-kit\n  ✓  premium-golf-ball-mix-pack-12 already AE-mixed-tour-balls-12\n  ✓  golf-ball-line-marker-stencil-kit already AE-line-marker-stencil-pens\n  ✓  golf-swing-arm-posture-corrector already AE-1005005466366451\n  ✓  golf-auto-return-putting-mat already AE-1005008144910399\n  ✓  golf-arm-connection-swing-trainer already AE-1005009121324304\n  ✓  golf-gps-watch-40000-courses already AE-gps-sports-watch-amoled\n  ✓  stroke-counter-wristband already AE-silicone-stroke-counter-band\n  ✓  magnetic-golf-club-brush-cleaner already AE-1005008082448166\n  ✓  bamboo-performance-golf-tees-50-pack already AE-1005007171156526\n  ✓  tri-fold-microfiber-golf-towel already AE-kaiersn-tri-fold-towel\n  ✓  premium-cabretta-leather-golf-glove already AE-cabretta-leather-glove\n  ✓  coastal-green-driver-headcover already AE-1005006077528325\n  ✓  alignment-putting-mirror already AE-1005006232918678\n  ✓  groove-sharpener-cleaner-tool already AE-1005008932750846\n\n✅ 0 SKUs set to AE-* | 0 supplier notes added\n   DSers still requires in-app \"Map to Store Product\" per SKU.\n   Recovery: npm run dsers:recover-order\n\n"
+    },
+    {
+      "step": "Clear DSers review gates",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 clear:dsers-review\n> tsx --env-file .env.local scripts/clear-dsers-review-gate.ts\n\n\n🏷  Clearing supplier-review on 7 DSers-ready SKUs\n\n  ✅ bamboo-performance-golf-tees-50-pack: supplier-review removed\n  ✓  tri-fold-microfiber-golf-towel: already clear\n  ✓  groove-sharpener-cleaner-tool: already clear\n  ✅ magnetic-golf-club-brush-cleaner: supplier-review removed\n  ✓  golf-hat-clip-ball-marker-set-3-markers: already clear\n  ✓  stroke-counter-wristband: already clear\n  ✓  premium-cabretta-leather-golf-glove: already clear\n\nDone. Re-run: npm run shopify:check-storefront\n\n"
+    },
+    {
+      "step": "Inventory CONTINUE",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 enable:wyx-inventory\n> tsx --env-file .env.local scripts/enable-wyx-inventory.ts\n\n\nInventory enable summary\nVariant policies set to CONTINUE: 0\nInventory quantities set to 100: 0\nProducts published: 21\n"
+    },
+    {
+      "step": "Product image audit",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 audit:product-images\n> tsx --env-file .env.local scripts/audit-product-images.ts\n\n\n🔍 WYX Product Image Audit — 95 products\n\nIssues found: 0\n\n\n==================================================\nClean:  95\nIssues: 0\nTotal:  95\n"
+    },
+    {
+      "step": "Archive non-golf SKUs",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 archive:non-golf\n> tsx --env-file .env.local scripts/archive-non-golf-products.ts\n\n\n🗄  Archiving off-brand products\n\n\n✅ Archived 0 products\n\n"
+    },
+    {
+      "step": "Outreach draft refresh",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 send:supplier-outreach\n> tsx scripts/send-supplier-outreach.ts\n\n\n📧 Supplier outreach — 7 drafts ready, 1 skipped\n\n  📝 j-and-m-golf → orders@jandmgolf.com\n     Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/j-and-m-golf.txt\n  📝 jp-lann → info@jplann.com\n     Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/jp-lann.txt\n  ⏭ topdawg → partnerships@topdawg.com\n     Shopify already connected — see data/topdawg-connection.json\n  📝 gt-golf-supply → sales@ggolf.com\n     Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/gt-golf-supply.txt\n  📝 stroke-and-distance → hello@strokeanddistance.com\n     Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/stroke-and-distance.txt\n  📝 faire → retailers@faire.com\n     Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/faire.txt\n  📝 cullinan-golf → info@cullinan-golf.com\n     Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/cullinan-golf.txt\n  📝 hireko-golf → reseller@hirekogolf.com\n     Draft: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts/hireko-golf.txt\n\n   Drafts: /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-drafts\n   Log:    /Users/matthewwixted/WYX-Golf-Supply-Co/data/supplier-outreach-log.json\n\n   Send from Gmail: open each .txt, copy body, send to To address\n   Or: npm run send:supplier-outreach -- --open\n\n"
+    },
+    {
+      "step": "Daily content queue",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 content:daily\n> tsx scripts/generate-daily-content.ts\n\n\n📱 Daily content queued: 5 posts\n   /Users/matthewwixted/WYX-Golf-Supply-Co/data/daily-content/2026-06-14\n\n"
+    },
+    {
+      "step": "Survival outreach refresh",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 survival:outreach\n> tsx scripts/survival-outreach.ts\n\n\n╔══════════════════════════════════════════════════════╗\n║  WYX Survival Outreach — First 10 Sales Playbook     ║\n╚══════════════════════════════════════════════════════╝\n\nZero sales = zero traffic. Ads need pixels. Personal network converts NOW.\n\n── Do today (2 hours) ──\n\n  1. Text 20 golfers you actually know (template: golfer-friend)\n  2. Text 10 non-golfers who buy gifts (template: gift-buyer)\n  3. Post once on Facebook/LinkedIn (template: facebook-post)\n  4. Email everyone in your contacts who has bought you a gift before\n  5. Set GA4 + Meta pixel in Vercel → redeploy (see docs/tracking-setup.md)\n  6. Launch $10/day Meta → Bag Upgrade Kit only\n\n── Kit link (highest convert) ──\n  https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit?discount=WYX10\n\n📝 golfer-friend → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/golfer-friend.txt\n📝 gift-buyer → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/gift-buyer.txt\n📝 facebook-post → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/facebook-post.txt\n📝 email-blast → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/email-blast.txt\n📝 reddit-soft → /Users/matthewwixted/WYX-Golf-Supply-Co/data/survival-outreach/reddit-soft.txt\n\n✅ Templates saved to data/survival-outreach/\n\n"
+    },
+    {
+      "step": "Sales blitz pack",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 blitz:outreach\n> tsx scripts/blitz-outreach.ts\n\n\n🚀 Sales blitz pack ready\n   /Users/matthewwixted/WYX-Golf-Supply-Co/data/blitz-outreach/COPY-PASTE.txt\n   Father's Day: 8 days left\n   Send 30 texts/posts today for first sales\n\n"
+    },
+    {
+      "step": "Pipeline status snapshot",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 pipeline:status\n> tsx scripts/pipeline-status.ts\n\n\n╔══════════════════════════════════════════════════════╗\n║           WYX Pipeline Status                        ║\n╚══════════════════════════════════════════════════════╝\n\n── TopDawg (US warehouse) ──\n  Shopify connected:    ✅\n  Import list:          ⏳ 8 SKUs\n  Sample order:         ⏳ ~$53.60\n  Headless published:   0/8\n\n── DSers / Spocket ──\n  DSers installed:      ✅\n  Spocket installed:    ✅\n  DSers linked:         2/21\n  Spocket linked:       1/1\n  SKUs aligned (AE-*):  0\n  Test order:           #H0KFGQ9ZD (operational-pending-fulfillment)\n\n── Supplier outreach ──\n  Drafts ready:         7\n  Skipped (TopDawg):    1\n\n── Next actions ──\n  • TopDawg Import List → npm run topdawg:playbook\n  • DSers Import List → npm run dsers:import-queue (19 remaining)\n  • Send wholesale emails → data/supplier-outreach-drafts/\n\n"
+    },
+    {
+      "step": "Empire status snapshot",
+      "ok": true,
+      "output": "\n> wyx-golf-supply-co@1.0.0 empire:status\n> tsx scripts/empire-status.ts\n\n\n╔══════════════════════════════════════════════════════════╗\n║  WYX EMPIRE COMMAND CENTER                               ║\n╚══════════════════════════════════════════════════════════╝\n\nVision: WYX becomes the default golf gift brand for weekend players — curated, fast-shipping, Bag Test standard.\n\n▶ Phase 1 — Ignite (Week 1)\n  Goal: First 10 orders from people who are not you\n\n  ⬜ Send 30+ personal messages → npm run survival:outreach\n  ⬜ Set GA4 + Meta pixel in Vercel → npm run empire:activate\n  ⬜ Wire Klaviyo welcome flow\n  ⬜ Launch $10/day Meta → Bag Kit\n  ⬜ Share /open page → https://wyxgolfsupply.com/open\n\n── Live systems ──\n  Storefront:     https://wyxgolfsupply.com\n  Grand opening:  https://wyxgolfsupply.com/open\n  Hero kit:       https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit\n  Creators:       https://wyxgolfsupply.com/creators\n  DSers linked:   2/21\n  TopDawg live:   0/8\n\n── North star (Phase 4) ──\n  Weekly orders: 10 | Email list: 500 | AOV: $55 | SKUs: 150\n\n── Commands ──\n  npm run empire:activate   # growth activation checklist\n  npm run survival:outreach # first 10 sales templates\n  npm run pipeline:status   # supplier ops\n\n"
+    }
+  ],
+  "links": {
+    "storefront": "https://wyxgolfsupply.com",
+    "open": "https://wyxgolfsupply.com/open",
+    "kit": "https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit",
+    "googleFeed": "https://wyxgolfsupply.com/feeds/google-products.xml",
+    "health": "https://wyxgolfsupply.com/api/health/catalog"
+  },
+  "manualWhenBack": [
+    "Add GA4 + Meta pixel in Vercel (npm run empire:activate)",
+    "Send 30 personal texts (data/survival-outreach/)",
+    "DSers import queue (npm run dsers:import-queue)",
+    "Post today's content from data/daily-content/latest/"
+  ]
+}
