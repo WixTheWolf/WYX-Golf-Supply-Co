@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { carouselCardCopy, metaCampaigns, metaLandingUrl } from '@/lib/marketing/metaCampaigns';
+import { carouselCardCopy, metaAdsConfig, metaCampaigns, metaLandingUrl } from '@/lib/marketing/metaCampaigns';
 
 export const metadata: Metadata = {
   title: 'Meta Campaign Copy — Internal',
@@ -12,6 +12,11 @@ export default function MetaMarketingReferencePage() {
       <p className="eyebrow">Internal — Meta Ads</p>
       <h1>Campaign Copy Board</h1>
       <p>Copy/paste into Meta Ads Manager. Full playbook: <code>docs/meta-ad-creative.md</code></p>
+      <div className="care-step-card" style={{ marginTop: '1rem', textAlign: 'left' }}>
+        <p><strong>Ad account:</strong> act_{metaAdsConfig.adAccountId} — <a href={metaAdsConfig.adsManagerUrl}>Open Ads Manager</a></p>
+        <p><strong>Pixel:</strong> {metaAdsConfig.pixelId} — <a href={metaAdsConfig.eventsManagerUrl}>Events Manager</a></p>
+        <p><strong>Launch first:</strong> Father&apos;s Day 2026 → <a href={metaLandingUrl('/lp/fathers-day', 'meta_fathers_day_2026')}>LP URL</a></p>
+      </div>
       <div style={{ display: 'grid', gap: '1.5rem', marginTop: '2rem' }}>
         {metaCampaigns.map((creative) => {
           const card = carouselCardCopy(creative);
