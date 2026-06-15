@@ -13,6 +13,7 @@ export default function MetaMarketingReferencePage() {
       <h1>Campaign Copy Board</h1>
       <p>Copy/paste into Meta Ads Manager. Full playbook: <code>docs/meta-ad-creative.md</code></p>
       <div className="care-step-card" style={{ marginTop: '1rem', textAlign: 'left' }}>
+        <p><strong>Account:</strong> {metaAdsConfig.accountName}</p>
         <p><strong>Ad account:</strong> act_{metaAdsConfig.adAccountId} — <a href={metaAdsConfig.adsManagerUrl}>Open Ads Manager</a></p>
         <p><strong>Pixel:</strong> {metaAdsConfig.pixelId} — <a href={metaAdsConfig.eventsManagerUrl}>Events Manager</a></p>
         <p><strong>Launch first:</strong> Father&apos;s Day 2026 → <a href={metaLandingUrl('/lp/fathers-day', 'meta_fathers_day_2026')}>LP URL</a></p>

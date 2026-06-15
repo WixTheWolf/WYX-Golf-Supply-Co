@@ -1,6 +1,7 @@
 /** Meta (Facebook/Instagram) ad creative — copy + UTM defaults for WYX campaigns. */
 
 export const metaAdsConfig = {
+  accountName: process.env.META_ACCOUNT_NAME || 'mwixted1',
   adAccountId: process.env.META_AD_ACCOUNT_ID || '47116609',
   pixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || '2129816234251975',
   adsManagerUrl: 'https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=47116609',
