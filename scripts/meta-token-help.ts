@@ -12,7 +12,14 @@ Account:     ${metaAdsConfig.accountName}
 Ad account:  act_${metaAdsConfig.adAccountId}
 Pixel:       ${metaAdsConfig.pixelId}
 
-Steps (long-lived token — recommended):
+Easiest (browser OAuth — no copy/paste):
+  1. Meta App → Facebook Login → add redirect URI:
+       https://wyxgolfsupply.com/api/meta/oauth/callback
+  2. Vercel: META_APP_ID + META_APP_SECRET (+ optional VERCEL_ACCESS_TOKEN)
+  3. Open: https://wyxgolfsupply.com/api/meta/oauth/start
+  4. Log in as mwixted1 → authorize → token saved → run meta:launch
+
+Steps (long-lived token — CLI):
   1. developers.facebook.com → Create App (Business) or use existing
   2. App → Settings → Basic → copy App ID + App Secret
   3. Graph API Explorer → select your app → Generate Token:
