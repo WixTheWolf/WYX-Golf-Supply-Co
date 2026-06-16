@@ -22,6 +22,7 @@ export default function MetaMarketingReferencePage() {
         <p><strong>CAPIG (Stape):</strong> {metaAdsConfig.capigUrl} · {metaAdsConfig.capigIdentifier}</p>
         <p><strong>Launch first:</strong> Father&apos;s Day 2026 → <a href={metaLandingUrl('/lp/fathers-day', 'meta_fathers_day_2026')}>LP URL</a></p>
         <p><strong>Go live:</strong> <a href="/marketing/meta/launch">Paste token &amp; activate campaign</a></p>
+        <p><strong>Errors?</strong> <a href="/marketing/meta/fix">Fix ad creation blockers</a></p>
       </div>
       <div style={{ display: 'grid', gap: '1.5rem', marginTop: '2rem' }}>
         {metaCampaigns.map((creative) => {
