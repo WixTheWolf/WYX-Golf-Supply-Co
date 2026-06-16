@@ -81,8 +81,30 @@ export default function MetaFixPage() {
         </li>
       </ul>
 
+      <h2 style={{ marginTop: '2rem' }}>Error: asset feed creative</h2>
+      <div className="care-step-card" style={{ textAlign: 'left' }}>
+        <p>
+          <code>cannot get non assetfeed value for an asset feed creative</code>
+        </p>
+        <p>
+          Meta bug/mismatch: an old draft uses <strong>Advantage+ / dynamic asset feed</strong> creative, but the
+          editor expects a simple single-image ad. Duplicating &quot;New Sales Campaign&quot; or OUTCOME_SALES rows
+          triggers this.
+        </p>
+        <p>
+          <strong>Fix:</strong>
+        </p>
+        <ol>
+          <li>Delete (trash) every old campaign — do not duplicate or edit them.</li>
+          <li>Create a <strong>new campaign → Sales → Manual sales campaign</strong>.</li>
+          <li>At ad level: turn <strong>OFF</strong> Advantage+ creative and Dynamic formats.</li>
+          <li>Use <strong>one image</strong> + one headline + one URL (Fathers Day LP).</li>
+          <li>Publish. If it still errors, try Safari/incognito as mwixted1.</li>
+        </ol>
+      </div>
+
       <p style={{ marginTop: '1.5rem' }}>
-        Paste the <strong>exact red error text</strong> from the create flow and I will map it to the fix.
+        Paste any other <strong>exact red error text</strong> and I will map it to the fix.
       </p>
     </section>
   );
