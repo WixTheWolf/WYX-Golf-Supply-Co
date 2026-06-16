@@ -27,10 +27,10 @@ function adAccount() {
   return `act_${id.replace(/^act_/, '')}`;
 }
 
-async function graphPost<T>(path: string, body: Record<string, unknown>): Promise<T> {
+async function graphPost<T>(path: string, body: Record<string, unknown>, accessToken?: string): Promise<T> {
   const url = `${GRAPH}${path}`;
   const form = new URLSearchParams();
-  form.set('access_token', token());
+  form.set('access_token', accessToken || token());
   for (const [key, value] of Object.entries(body)) {
     if (value === undefined || value === null) continue;
     form.set(key, typeof value === 'object' ? JSON.stringify(value) : String(value));
@@ -93,6 +93,66 @@ export async function discoverMetaPageId(): Promise<string> {
   if (promoted?.id) return String(promoted.id);
 
   throw new Error('META_PAGE_ID missing — no Facebook Page found on this token/ad account.');
+}
+
+async function graphGet<T>(path: string, accessToken?: string): Promise<T> {
+  const url = `${GRAPH}${path}${path.includes('?') ? '&' : '?'}access_token=${accessToken || token()}`;
+  const res = await fetch(url);
+  const json = (await res.json()) as T & GraphError;
+  if (!res.ok || (json as GraphError).error) {
+    const msg = (json as GraphError).error?.message || `Meta API ${res.status}`;
+    throw new Error(msg);
+  }
+  return json;
+}
+
+export type MetaEntityStatus = {
+  id: string;
+  name?: string;
+  status?: string;
+  effective_status?: string;
+  adset_id?: string;
+  campaign_id?: string;
+};
+
+export async function activateExistingCampaign(opts: {
+  campaignId: string;
+  adId?: string;
+  accessToken?: string;
+}) {
+  const accessToken = opts.accessToken || token();
+  const post = (path: string, body: Record<string, unknown>) =>
+    graphPost(path, body, accessToken).then(() => undefined);
+
+  const ad = opts.adId
+    ? await graphGet<MetaEntityStatus>(
+        `/${opts.adId}?fields=id,name,status,effective_status,adset_id,campaign_id`,
+        accessToken,
+      )
+    : null;
+
+  const campaignId = ad?.campaign_id || opts.campaignId;
+  const adSetId = ad?.adset_id;
+
+  const campaign = await graphGet<MetaEntityStatus>(
+    `/${campaignId}?fields=id,name,status,effective_status`,
+    accessToken,
+  );
+
+  if (adSetId) await post(`/${adSetId}`, { status: 'ACTIVE' });
+  await post(`/${campaignId}`, { status: 'ACTIVE' });
+  if (opts.adId) await post(`/${opts.adId}`, { status: 'ACTIVE' });
+
+  return {
+    campaignId,
+    adSetId,
+    adId: opts.adId,
+    before: {
+      campaign: campaign.effective_status || campaign.status,
+      ad: ad?.effective_status || ad?.status,
+    },
+    after: 'ACTIVE',
+  };
 }
 
 export async function launchFathersDayCampaign(opts?: { dailyBudgetUsd?: number; activate?: boolean }) {

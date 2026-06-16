@@ -5,9 +5,16 @@ export const metaAdsConfig = {
   adAccountId: process.env.META_AD_ACCOUNT_ID || '47116609',
   pixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || '2129816234251975',
   pageId: process.env.META_PAGE_ID || '1574437179899364',
+  businessId: process.env.META_BUSINESS_ID || '1498356465371052',
+  existingCampaignId: process.env.META_EXISTING_CAMPAIGN_ID || '120248293688290675',
+  existingAdId: process.env.META_EXISTING_AD_ID || '120248293688280675',
   commerceAccountId: process.env.META_COMMERCE_ACCOUNT_ID || '1624887621902913',
   catalogId: process.env.META_CATALOG_ID || '1494259261731675',
-  adsManagerUrl: 'https://adsmanager.facebook.com/adsmanager/manage/campaigns?act=47116609',
+  adsManagerUrl:
+    process.env.META_ADS_MANAGER_URL ||
+    'https://adsmanager.facebook.com/adsmanager/manage/ads?act=1574437179899364&business_id=1498356465371052&selected_campaign_ids=120248293688290675&selected_ad_ids=120248293688280675',
+  graphExplorerUrl:
+    'https://developers.facebook.com/tools/explorer/?permissions=ads_management,business_management,pages_read_engagement,pages_show_list',
   eventsManagerUrl: 'https://business.facebook.com/events_manager2/list/pixel/2129816234251975',
   commerceManagerUrl: 'https://business.facebook.com/commerce',
   capigUrl: process.env.META_CAPIG_URL || 'https://capig.stape.do',
