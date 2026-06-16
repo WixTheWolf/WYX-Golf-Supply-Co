@@ -71,17 +71,45 @@ export default function MetaLaunchPage() {
           {status}
         </p>
       ) : null}
-      <ol style={{ marginTop: '1.5rem', textAlign: 'left', lineHeight: 1.6 }}>
-        <li>
-          Open{' '}
-          <a href={metaAdsConfig.graphExplorerUrl} target="_blank" rel="noreferrer">
-            Graph API Explorer
-          </a>
-        </li>
-        <li>Select your Meta app (or create one — Business type)</li>
-        <li>Get User Access Token → allow ads_management + business_management</li>
-        <li>Paste token above → Activate</li>
-      </ol>
+      <div className="care-step-card" style={{ marginTop: '1.5rem', textAlign: 'left' }}>
+        <p>
+          <strong>No token? Skip API entirely.</strong>
+        </p>
+        <p>
+          Your campaign already exists in Ads Manager. Open it, click <strong>Publish</strong> (or toggle
+          campaign/ad to <strong>On</strong>). No developer app or token required.
+        </p>
+        <p>
+          <a href={metaAdsConfig.adsManagerUrl}>Open your campaign in Ads Manager →</a>
+        </p>
+      </div>
+      <details style={{ marginTop: '1.5rem', textAlign: 'left' }}>
+        <summary>
+          <strong>Token troubleshooting</strong> (Access Token Tool page often shows nothing)
+        </summary>
+        <ol style={{ lineHeight: 1.6, marginTop: '0.75rem' }}>
+          <li>
+            <code>developers.facebook.com/tools/accesstoken</code> only lists tokens for apps you own — if you
+            have zero apps, the page is empty. Create one first:{' '}
+            <a href="https://developers.facebook.com/apps/create/" target="_blank" rel="noreferrer">
+              Create Meta App
+            </a>{' '}
+            (type: <strong>Business</strong>).
+          </li>
+          <li>
+            Use <strong>Graph API Explorer</strong>, not Access Token Tool:{' '}
+            <a href={metaAdsConfig.graphExplorerUrl} target="_blank" rel="noreferrer">
+              Graph API Explorer
+            </a>
+          </li>
+          <li>Top-right: Meta App dropdown → pick your new app</li>
+          <li>
+            Click <strong>Generate Access Token</strong> → check{' '}
+            <code>ads_management</code> + <code>business_management</code> → Continue as mwixted1
+          </li>
+          <li>Copy the <code>EAA…</code> string → paste above</li>
+        </ol>
+      </details>
     </section>
   );
 }
