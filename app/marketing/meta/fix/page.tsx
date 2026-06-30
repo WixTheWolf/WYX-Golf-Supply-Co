@@ -103,6 +103,34 @@ export default function MetaFixPage() {
         </ol>
       </div>
 
+      <h2 style={{ marginTop: '2rem' }}>Ad set has errors but no ads</h2>
+      <div className="care-step-card" style={{ textAlign: 'left' }}>
+        <p>
+          If Ads view says <strong>&quot;You haven&apos;t created any ads yet&quot;</strong>, the ad set exists but the{' '}
+          <strong>ad never saved</strong>. Fix:
+        </p>
+        <ol>
+          <li>
+            <strong>Discard drafts (10)</strong> first — top toolbar.
+          </li>
+          <li>Select ad set <code>120248293688300675</code> → click green <strong>Create ad</strong>.</li>
+          <li>Upload <code>boys-weekend-hero.png</code> · manual placements · FB + IG Feed only.</li>
+          <li>Publish ad, then publish ad set/campaign.</li>
+        </ol>
+      </div>
+
+      <h2 style={{ marginTop: '2rem' }}>Publish pending drafts (one click)</h2>
+      <div className="care-step-card" style={{ textAlign: 'left' }}>
+        <p>
+          With Ads Manager open and logged in as <strong>mwixted1</strong>, open DevTools → Console and paste the
+          contents of <code>scripts/meta-click-publish.js</code>. It clicks <strong>Review and publish</strong>,
+          then <strong>Confirm</strong> after 2.5s.
+        </p>
+        <p>
+          Or run <code>osascript scripts/meta-publish-ui.applescript</code> for a reminder dialog in Chrome.
+        </p>
+      </div>
+
       <p style={{ marginTop: '1.5rem' }}>
         Paste any other <strong>exact red error text</strong> and I will map it to the fix.
       </p>
