@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { availableProducts, catalogCategories, categoryCount, hasSaleReadyMedia } from '@/lib/catalog';
+import { availableProducts, catalogCategories, categoryCount, categoryFor, hasSaleReadyMedia } from '@/lib/catalog';
 import { getProducts } from '@/lib/shopify/products';
 
 export const dynamic = 'force-dynamic';
@@ -8,6 +8,8 @@ export async function GET() {
   try {
     const products = await getProducts({ fresh: true });
     const available = availableProducts(products);
+    const availableHandles = new Set(available.map((product) => product.handle));
+
     return NextResponse.json({
       ok: true,
       source: 'shopify',
@@ -19,6 +21,8 @@ export async function GET() {
         return {
           handle: product.handle,
           title: product.title,
+          category: categoryFor(product),
+          publicCatalog: availableHandles.has(product.handle),
           shopifyProductId: product.id,
           activeOnStorefront: product.availableForSale,
           saleReadyMedia: hasSaleReadyMedia(product),
@@ -27,7 +31,7 @@ export async function GET() {
           checkoutVariantId: activeVariant?.id || null,
           price: product.priceRange.minVariantPrice.amount,
           currency: product.priceRange.minVariantPrice.currencyCode,
-          readyForVercelStorefront: product.availableForSale && hasSaleReadyMedia(product) && Boolean(activeVariant?.id)
+          readyForVercelStorefront: availableHandles.has(product.handle) && Boolean(activeVariant?.id)
         };
       })
     });
