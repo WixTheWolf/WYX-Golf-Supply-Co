@@ -6,12 +6,17 @@ import { getProducts } from '@/lib/shopify/products';
 
 export const dynamic = 'force-dynamic';
 
+function tagSet(product: Awaited<ReturnType<typeof getProducts>>[number]) {
+  return new Set((product.tags || []).map((tag) => tag.toLowerCase()));
+}
+
 function blockers(product: Awaited<ReturnType<typeof getProducts>>[number], publicCatalog: boolean) {
   if (publicCatalog) return [];
+  const tags = tagSet(product);
   const reasons: string[] = [];
   if (!product.availableForSale) reasons.push('not-available-for-sale');
   if (isHiddenFromCoreStorefront(product)) reasons.push('hidden-or-blocked-vendor');
-  if ((product.tags || []).some((tag) => tag.toLowerCase() === 'supplier-review')) reasons.push('supplier-review');
+  if (tags.has('supplier-review')) reasons.push('supplier-review');
   if (hasKnownImageMismatch(product)) reasons.push('known-image-mismatch');
   if (hasMisleadingProductMedia(product)) reasons.push('misleading-media');
   if (!hasSaleReadyMedia(product)) reasons.push('media-not-sale-ready');
@@ -34,6 +39,7 @@ export async function GET() {
       productChecks: products.map((product) => {
         const activeVariant = product.variants.find((variant) => variant.availableForSale);
         const publicCatalog = availableHandles.has(product.handle);
+        const tags = tagSet(product);
         return {
           handle: product.handle,
           title: product.title,
@@ -41,6 +47,13 @@ export async function GET() {
           category: categoryFor(product),
           publicCatalog,
           blockers: blockers(product, publicCatalog),
+          fulfillment: {
+            dsers: tags.has('supplier-dsers') || tags.has('fulfillment-aliexpress'),
+            spocket: tags.has('supplier-spocket') || tags.has('fulfillment-spocket'),
+            topdawg: tags.has('supplier-topdawg') || tags.has('fulfillment-topdawg'),
+            collective: tags.has('supplier-collective') || tags.has('fulfillment-shopify-collective'),
+            supplierReview: tags.has('supplier-review')
+          },
           shopifyProductId: product.id,
           activeOnStorefront: product.availableForSale,
           saleReadyMedia: hasSaleReadyMedia(product),
