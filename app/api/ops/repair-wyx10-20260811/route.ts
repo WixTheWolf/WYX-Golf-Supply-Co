@@ -41,7 +41,7 @@ const UPDATE = `#graphql
   }
 `;
 
-export async function POST() {
+async function repair() {
   try {
     const found = await shopifyAdminFetch<any>(FIND, { code: 'WYX10' });
     const node = found?.codeDiscountNodeByCode;
@@ -71,4 +71,8 @@ export async function POST() {
   } catch (error) {
     return NextResponse.json({ ok: false, error: error instanceof Error ? error.message : 'WYX10 repair failed.' }, { status: 500 });
   }
+}
+
+export async function GET() {
+  return repair();
 }
