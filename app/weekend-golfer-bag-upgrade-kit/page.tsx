@@ -6,18 +6,17 @@ import { ShareWyx } from '@/components/ShareWyx';
 import { ProductCard } from '@/components/ProductCard';
 import { productPrice, siteUrl } from '@/lib/feed';
 import { getProduct } from '@/lib/shopify/products';
-import { fathersDayDaysLeft, isFathersDayWindow } from '@/lib/fathersDay';
 import { cleanText } from '@/lib/text';
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
-  description: "In-stock pieces that fix the small annoyances every weekend golf bag has — a towel, a marker, a grip refresh, a groove sharpener, and an accessory caddie. Use WYX10 for 10% off.",
+  description: 'Five practical golf bag upgrades in one cart: towel, marker, grip refresh, club-care tool, and accessory caddie. Live Shopify availability and editable checkout.',
   alternates: { canonical: '/weekend-golfer-bag-upgrade-kit' },
   openGraph: {
     title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
-    description: "Practical, in-stock bag upgrades bundled into one kit. Use WYX10 for 10% off your first order.",
+    description: 'Five useful bag upgrades, one easier order. Review every item before secure Shopify checkout.',
     url: '/weekend-golfer-bag-upgrade-kit'
   }
 };
@@ -31,59 +30,59 @@ const KIT_HANDLES = [
 ];
 
 const itemNotes: Record<string, string> = {
-  'tri-fold-microfiber-golf-towel': 'Clips to the bag and handles club faces, balls, and grips between shots.',
-  'three-rail-ball-marker': "A marker that's easy to find in a pocket and easy to set down on the green.",
-  'pulse-golf-overgrip-tape': 'An easy at-home grip refresh for clubs that have gone slick since last season.',
-  'groove-sharpener-cleaner-tool': 'Restores clean grooves on wedges and irons so the face grips the ball the way it should.',
-  'glove-accessory-caddie-gray': 'A dedicated spot for gloves, tees, and the small stuff that usually ends up loose in the bottom pocket.'
+  'tri-fold-microfiber-golf-towel': 'A bag-ready towel for club faces, golf balls, and grips during the round.',
+  'three-rail-ball-marker': 'A simple green-side essential that is easy to carry and easy to gift.',
+  'pulse-golf-overgrip-tape': 'A practical option for golfers who like refreshing grip feel without replacing the entire setup.',
+  'groove-sharpener-cleaner-tool': 'A compact club-care tool for clearing debris and maintaining groove edges between deeper servicing.',
+  'glove-accessory-caddie-gray': 'A dedicated place for gloves and the small items that otherwise disappear into a bag pocket.'
 };
 
 const whoItsFor = [
   {
     title: 'Weekend Golfers',
-    body: 'You play 12-30 rounds a year and your bag has slowly filled with stuff that does not work, is missing, or is the wrong size. This kit fixes the five most common gaps in one order.'
+    body: 'For the golfer whose bag works fine but has a few obvious weak spots: worn accessories, loose small items, and club-care gear that never made it into the setup.'
   },
   {
     title: 'Gift Buyers',
-    body: "Don't know what he needs? This is the safe pick — five small, practical items almost every golfer can use, instead of one big item that might miss."
+    body: 'Five understandable golf items are easier to get right than guessing a club, shaft, putter shape, or other highly personal equipment choice.'
   },
   {
-    title: 'New Golfers',
-    body: 'If you just started playing, this kit covers the basics nobody tells you to buy until you are standing on the first tee without them.'
+    title: 'Newer Golfers',
+    body: 'A straightforward way to cover several bag basics without trying to learn the entire golf-accessory aisle first.'
   }
 ];
 
-const freeTools = [
+const whyItWorks = [
   {
-    title: "The Gift-Giver's Cheat Sheet",
-    body: "A short guide to picking a golf gift when you don't golf — what matters, what doesn't, and what to skip entirely."
+    title: 'One Add, Five Separate Items',
+    body: 'The kit adds each available product to the cart individually. Nothing is hidden inside a mystery bundle.'
   },
   {
-    title: 'The Bag Audit Checklist',
-    body: 'A 2-minute checklist for what should be in a weekend bag right now, and what is probably expired, broken, or missing.'
+    title: 'Edit Before You Pay',
+    body: 'Change quantities or remove anything that does not fit. The cart stays transparent all the way to Shopify checkout.'
   },
   {
-    title: 'Optional Gift Reminder',
-    body: "Add your details at checkout and we'll send a quiet reminder before the next gifting date. Skip it if you don't need it."
+    title: 'Live Availability',
+    body: 'The page is built from the current Shopify catalog. If an item is not available for sale, it is not included in the kit cart.'
   }
 ];
 
 const faq = [
   {
     q: 'Is this a real bundle or separate items?',
-    a: "Each item ships as a separate product, added to your cart together. You can remove or adjust quantities before checkout — nothing is hidden or bundled into one mystery box."
+    a: 'The kit is a one-click way to add separate products together. You can review, remove, or change quantities before checkout.'
   },
   {
-    q: 'What if an item runs out of stock?',
-    a: 'We only show items that are confirmed in stock. If something sells out, it drops off this page until it is back — we will not swap in a different product without telling you.'
+    q: 'What happens if one of the five items is unavailable?',
+    a: 'The page only adds products Shopify currently marks available for sale. If one is unavailable, the page shows the remaining available picks instead of silently substituting something else.'
   },
   {
-    q: 'Does WYX10 work on this kit?',
-    a: 'Yes. Use WYX10 at checkout for 10% off your first order, including every item in this kit.'
+    q: 'How does WYX10 work on the kit?',
+    a: 'The WYX cart requests WYX10 automatically. Shopify shows whether the code applied, and the final price is confirmed before payment.'
   },
   {
     q: 'How long does shipping take?',
-    a: 'Most kit items ship within 7–12 business days to US addresses. Exact rates and delivery estimates are shown at Shopify checkout before you pay.'
+    a: 'Timing can vary by product and destination. Shopify shows the available shipping options and current delivery estimate before you place the order.'
   }
 ];
 
@@ -99,13 +98,11 @@ export default async function BagUpgradeKitPage() {
   const total = products.reduce((sum, product) => sum + Number(productPrice(product).amount), 0);
   const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total);
   const formattedSale = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total * 0.9);
-  const daysLeft = fathersDayDaysLeft();
-  const fathersDay = isFathersDayWindow();
 
   const ctaLabel = products.length === KIT_HANDLES.length
-    ? 'Get The Kit'
+    ? 'Add The Full Kit'
     : products.length > 0
-      ? 'Build From Available Picks'
+      ? 'Add Available Kit Picks'
       : 'Join The Kit Drop';
 
   const jsonLd = [
@@ -113,7 +110,7 @@ export default async function BagUpgradeKitPage() {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       name: "The Weekend Golfer's Bag Upgrade Kit",
-      description: 'Practical, in-stock golf bag upgrades bundled into one order.',
+      description: 'Five practical golf bag upgrades grouped into one editable cart.',
       url: `${siteUrl}/weekend-golfer-bag-upgrade-kit`,
       numberOfItems: products.length,
       itemListElement: products.map((product, index) => ({
@@ -158,52 +155,46 @@ export default async function BagUpgradeKitPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {fathersDay && (
-        <div className="urgency-strip" role="banner">
-          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} left · Best golf gift under $80
-        </div>
-      )}
-
       <section className="page-hero compact">
-        <p className="eyebrow">{fathersDay ? 'Father\'s Day #1 Pick' : 'The Core Offer'}</p>
+        <p className="eyebrow">Start Here</p>
         <h1>The Weekend Golfer&apos;s Bag Upgrade Kit</h1>
-        <p>A practical golf gift kit built around gear he&apos;ll actually keep in the bag — a clean towel, a marker that doesn&apos;t get lost, an at-home grip refresh, a groove sharpener, and a place for the small stuff that always ends up loose in the bottom pocket.</p>
+        <p>Five small upgrades with five obvious jobs: clean the gear, mark the ball, refresh grip feel, maintain the clubs, and organize the loose stuff. One cart, no mystery bundle.</p>
         {products.length > 0 && (
           <div className="lp-price-block" style={{ marginTop: '1rem' }}>
             <span className="lp-price-sale">{formattedSale}</span>
             <span className="lp-price-was">{formattedTotal}</span>
-            <span className="lp-price-code">with WYX10</span>
+            <span className="lp-price-code">with WYX10 when eligible</span>
           </div>
         )}
         {lines.length > 0 && (
           <div style={{ marginTop: '1.25rem', maxWidth: '420px' }}>
-            <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />
+            <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Available Kit — ${formattedSale}`} showBuyNow />
           </div>
         )}
         <div className="intent-proof-grid" aria-label="Kit benefits">
-          <span>{products.length} of {KIT_HANDLES.length} items confirmed in stock</span>
-          <span>WYX10 auto-applied</span>
-          <span>Swap or remove items before checkout</span>
-          <span>Ships via Shopify checkout</span>
+          <span>{products.length} of {KIT_HANDLES.length} picks available now</span>
+          <span>WYX10 requested automatically</span>
+          <span>Edit every item before payment</span>
+          <span>Secure Shopify checkout</span>
         </div>
       </section>
 
       <section className="section reveal" aria-labelledby="problem-heading">
         <div className="section-heading">
-          <p className="eyebrow">The Problem</p>
-          <h2 id="problem-heading">Every Bag Has The Same Few Gaps.</h2>
+          <p className="eyebrow">The Idea</p>
+          <h2 id="problem-heading">Fix The Small Stuff First.</h2>
         </div>
-        <p>No towel, a marker that walked off after the third round, grips that have gone slick since last season, club faces caked from the last range session, and a glove that is somehow always damp. None of these are expensive problems. They just never get fixed on their own — so this kit fixes all five at once.</p>
+        <p>You do not need another giant golf purchase to make the bag better. A few practical accessories can remove the annoyances you deal with every round — and they are much easier to buy for yourself or give as a gift.</p>
       </section>
 
       <section className="section product-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">What&apos;s Inside — {products.length} Items</p>
+            <p className="eyebrow">What&apos;s Available — {products.length} Items</p>
             <h2>{formattedTotal}</h2>
-            <p>Each item ships separately and lands in your cart on its own — review quantities and remove anything that does not fit before checkout.</p>
+            <p>Each item lands in the cart separately. Review the products, variants, quantities, discount, shipping options, and final price before payment.</p>
           </div>
-          {products.length > 0 && <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />}
+          {products.length > 0 && <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Available Kit — ${formattedSale}`} showBuyNow />}
         </div>
         {products.length > 0
           ? <div className="product-grid">
@@ -214,11 +205,11 @@ export default async function BagUpgradeKitPage() {
                 </div>
               ))}
             </div>
-          : <p>The kit is being restocked — join the list below and we will email you the moment it is ready.</p>}
+          : <p>The current five-piece kit is unavailable. Join the list below and keep browsing the live bag-upgrade catalog.</p>}
         {products.length > 0 && (
           <div className="kit-add-footer">
-            <KitAddButton lines={lines} label={`Add All ${products.length} to Cart`} buyNowLabel={`Buy Kit Now — ${formattedSale}`} showBuyNow />
-            <p className="kit-add-note">Items land in the cart individually — remove anything that does not fit before checkout. Use WYX10 at checkout for 10% off.</p>
+            <KitAddButton lines={lines} label={`Add ${products.length} Available Picks`} buyNowLabel={`Buy Available Kit — ${formattedSale}`} showBuyNow />
+            <p className="kit-add-note">Products are added individually. WYX requests WYX10 automatically; Shopify confirms the discount and shipping before payment.</p>
           </div>
         )}
       </section>
@@ -226,10 +217,25 @@ export default async function BagUpgradeKitPage() {
       <section className="section reveal" aria-labelledby="who-its-for-heading">
         <div className="section-heading">
           <p className="eyebrow">Who It&apos;s For</p>
-          <h2 id="who-its-for-heading">Built For Three Kinds Of Buyers.</h2>
+          <h2 id="who-its-for-heading">An Easier First WYX Order.</h2>
         </div>
         <div className="care-step-grid">
           {whoItsFor.map((item) => (
+            <div className="care-step" key={item.title}>
+              <strong>{item.title}</strong>
+              <p>{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section reveal" aria-labelledby="why-kit-heading">
+        <div className="section-heading">
+          <p className="eyebrow">No Bundle Games</p>
+          <h2 id="why-kit-heading">You Can See Exactly What You&apos;re Buying.</h2>
+        </div>
+        <div className="care-step-grid">
+          {whyItWorks.map((item) => (
             <div className="care-step" key={item.title}>
               <strong>{item.title}</strong>
               <p>{item.body}</p>
@@ -242,30 +248,16 @@ export default async function BagUpgradeKitPage() {
         <ShareWyx path="/weekend-golfer-bag-upgrade-kit" />
       </section>
 
-      <section className="section reveal" aria-labelledby="free-tools-heading">
-        <div className="section-heading">
-          <p className="eyebrow">Free With This Kit</p>
-          <h2 id="free-tools-heading">A Few Free Tools That Make Gift-Giving Easier.</h2>
-        </div>
-        <div className="care-step-grid">
-          {freeTools.map((tool) => (
-            <div className="care-step" key={tool.title}>
-              <strong>{tool.title}</strong>
-              <p>{tool.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="dark-section reveal" aria-labelledby="kit-promise-heading">
         <div>
           <p className="eyebrow">The Bag Test Promise</p>
-          <h2 id="kit-promise-heading">If It&apos;s Wrong, We&apos;ll Make It Right.</h2>
+          <h2 id="kit-promise-heading">If The Order Is Wrong, We&apos;ll Help Make It Right.</h2>
           <div className="actions">
             <Link className="button primary" href="/the-bag-test">Read The Bag Test</Link>
+            <Link className="button secondary dark" href="/shipping-returns">Shipping &amp; Returns</Link>
           </div>
         </div>
-        <p>We build kits around gear golfers actually use. If your order arrives damaged, incorrect, or does not match what you expected, contact us within 30 days and we&apos;ll help make it right.</p>
+        <p>WYX is built around gear with a clear reason to be in the bag. If something arrives damaged or incorrect, use the support path in our shipping and returns policy so we can help.</p>
       </section>
 
       <section className="section reveal" aria-labelledby="kit-faq-heading">
@@ -287,16 +279,16 @@ export default async function BagUpgradeKitPage() {
         <EmailCapture
           source="bag-upgrade-kit"
           campaign="bag_upgrade_kit_waitlist"
-          title={products.length < KIT_HANDLES.length ? 'Join The Kit Drop.' : 'Get The Next Bag Test Drop First.'}
+          title={products.length < KIT_HANDLES.length ? 'Get The Full Kit Restock Note.' : 'Get The Next Bag Test Drop First.'}
           body={products.length < KIT_HANDLES.length
-            ? "We'll email you the moment the full Bag Upgrade Kit is back in stock."
-            : 'Join the WYX list for new kit drops, trip gear, and launch discounts — before your foursome hears about them.'}
+            ? 'Join the WYX list and we will send product and kit updates when the assortment changes.'
+            : 'Join the WYX list for new kit drops, trip gear, and Bag Test picks.'}
         />
       </section>
 
       <section className="section reveal" aria-label="More ways to shop">
         <div className="section-heading">
-          <p className="eyebrow">Not Quite Right?</p>
+          <p className="eyebrow">Want To Build Your Own?</p>
           <h2>Shop Bag Upgrades Individually.</h2>
         </div>
         <div className="actions">
