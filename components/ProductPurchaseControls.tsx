@@ -27,7 +27,6 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
     : availableVariants.find((variant) => variant.id === fallbackVariantId);
   const selectedVariantId = selectedVariant?.id || '';
   const { add, buyNow, loading, error } = useCart();
-  const disabled = !selectedVariantId || loading;
 
   async function addSelected() {
     if (!selectedVariantId) return;
@@ -91,10 +90,18 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
         </fieldset>
       )}
 
-      {selectedVariant && <p className="selected-variant-note">Selected: <strong>{variantLabel(selectedVariant)}</strong></p>}
-      {!selectedVariant && requiresChoice && !compact && <p className="selected-variant-note">Choose your options before checkout.</p>}
-      <button className="button primary full" disabled={disabled} onClick={addSelected}>{loading ? 'Adding...' : disabled ? 'Choose Options' : 'Add To Bag'}</button>
-      <button className="button secondary dark full" disabled={disabled} onClick={buySelected}>{loading ? 'Opening Checkout...' : disabled ? 'Choose Options' : 'Buy Now'}</button>
+      {selectedVariant ? (
+        <>
+          <p className="selected-variant-note">Selected: <strong>{variantLabel(selectedVariant)}</strong></p>
+          <button className="button primary full" disabled={loading} onClick={addSelected}>{loading ? 'Adding...' : 'Add To Bag'}</button>
+          <button className="button secondary dark full" disabled={loading} onClick={buySelected}>{loading ? 'Opening Checkout...' : 'Buy Now'}</button>
+        </>
+      ) : requiresChoice ? (
+        <>
+          {!compact && <p className="selected-variant-note">Choose your options to continue.</p>}
+          <button className="button primary full" disabled>Select Options</button>
+        </>
+      ) : null}
       {error && <p className="error">{error}</p>}
     </div>
   );
