@@ -8,6 +8,7 @@ import { CartCrossSell } from '@/components/CartCrossSell';
 import { CartPromoSummary } from '@/components/CartPromoSummary';
 import { KitUpsellBanner } from '@/components/KitUpsellBanner';
 import { trackEvent } from '@/lib/analytics';
+import { cartPromoState } from '@/lib/cartPromo';
 import { money } from '@/lib/demo';
 import type { Cart } from '@/types/shopify';
 
@@ -30,7 +31,6 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 const cartStorageKey = 'wyx_cart_id';
-const launchCode = 'WYX10';
 const freeShippingThreshold = 75;
 
 export function useCart() {
@@ -204,6 +204,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
 function CartDrawer() {
   const { cart, open, setOpen, loading, error, update, remove } = useCart();
+  const promo = cartPromoState(cart);
 
   function checkout() {
     if (!cart?.checkoutUrl) return;
@@ -247,7 +248,7 @@ function CartDrawer() {
       <div className="cart-foot">
         {cart && <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />}
         <p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p>
-        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>Checkout — WYX10 Applied</button>
+        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>{promo.applied ? 'Checkout — WYX10 Applied' : 'Secure Checkout'}</button>
         <Link href="/cart">View Bag</Link>
       </div>
     </aside>
