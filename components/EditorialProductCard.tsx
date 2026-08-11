@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ProductBadge } from '@/components/ProductBadge';
 import { categoryFor } from '@/lib/catalog';
 import { priceWithWyx10 } from '@/lib/pricing';
 import { cleanText } from '@/lib/text';
@@ -13,8 +12,6 @@ export function EditorialProductCard({ product, featured = false }: { product: P
     <article className={`editorial-product-card ${featured ? 'featured' : ''}`}>
       <Link href={`/products/${product.handle}`} className="editorial-image-link" aria-label={`View ${title}`}>
         {image && <Image src={image.url} alt={cleanText(image.altText) || title} width={1200} height={900} sizes="(max-width: 650px) 100vw, (max-width: 900px) 50vw, 33vw" />}
-        <span>{categoryFor(product)}</span>
-        <ProductBadge product={product} />
       </Link>
       <div>
         <p className="eyebrow">{product.tags?.some((t) => t.toLowerCase() === 'hidden-gem') ? 'Hidden Gem' : 'Short List'}</p>
