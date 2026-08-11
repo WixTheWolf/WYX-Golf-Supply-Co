@@ -29,15 +29,24 @@ export async function GET() {
   const adminClientCredentials = present(['SHOPIFY_CLIENT_ID']) && present(['SHOPIFY_CLIENT_SECRET']);
   const adminLive = adminDomain && (adminToken || adminClientCredentials) ? await adminConnectionIsLive() : false;
 
+  const tracking = {
+    googleAnalytics: present(['NEXT_PUBLIC_GA_MEASUREMENT_ID']),
+    metaPixel: present(['NEXT_PUBLIC_META_PIXEL_ID']),
+    tiktokPixel: present(['NEXT_PUBLIC_TIKTOK_PIXEL_ID']),
+    clarity: present(['NEXT_PUBLIC_CLARITY_ID']),
+    judgeMe: present(['NEXT_PUBLIC_JUDGE_ME_PUBLIC_TOKEN'])
+  };
+
   return NextResponse.json({
     ok: storefrontDomain && storefrontToken,
     storefront: { domain: storefrontDomain, token: storefrontToken },
     admin: { domain: adminDomain, token: adminToken, clientCredentials: adminClientCredentials, live: adminLive },
+    tracking,
     aliasesChecked: {
       storefrontToken: ['NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_ACCESS_TOKEN', 'SHOPIFY_STOREFRONT_API_TOKEN', 'PUBLIC_STOREFRONT_API_TOKEN', 'STOREFRONT_ACCESS_TOKEN'],
       adminToken: ['SHOPIFY_ADMIN_ACCESS_TOKEN', 'ADMIN_API_ACCESS_TOKEN', 'SHOPIFY_ACCESS_TOKEN']
     },
     mode: storefrontDomain && storefrontToken ? 'shopify' : 'demo',
-    note: 'Connectivity check only. No secret values or Shopify Admin data are exposed.'
+    note: 'Presence/connectivity checks only. No secret values or Shopify Admin data are exposed.'
   });
 }
