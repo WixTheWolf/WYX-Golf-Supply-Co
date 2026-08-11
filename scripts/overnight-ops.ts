@@ -1,8 +1,9 @@
 /**
- * Unattended nightly ops — catalog, inventory, audits, briefing.
+ * WYX unattended operations.
  *
- * Usage:
- *   npm run overnight:ops
+ * Principle: repair only things we can prove are safe to repair automatically.
+ * Supplier mapping, publishing, inventory policy and destructive catalog changes
+ * stay gated for human or verified-rule approval.
  */
 import { execSync } from 'node:child_process';
 import { writeFileSync, mkdirSync } from 'node:fs';
@@ -31,52 +32,53 @@ function run(step: string, command: string): StepResult {
 
 async function main() {
   const started = new Date().toISOString();
-  console.log('\n🌙 WYX Overnight Ops — unattended build\n');
+  console.log('\nWYX SYSTEM CHECK / unattended ops\n');
 
   const steps: Array<[string, string]> = [
-    ['WYX10 discount', 'npm run ensure:wyx10'],
-    ['Verified catalog sync', 'npm run apply:verified-catalog'],
-    ['DSers SKU alignment', 'npm run finalize:dsers'],
-    ['Clear DSers review gates', 'npm run clear:dsers-review'],
-    ['Inventory CONTINUE', 'npm run enable:wyx-inventory'],
+    // Safe self-heal: WYX10 is a known first-order promotion with a fixed rule.
+    ['WYX10 self-heal', 'npm run ensure:wyx10'],
+    ['WYX10 verification', 'npm run verify:wyx10'],
+
+    // Read-only / audit-oriented checks. These can fail loudly without changing supplier state.
+    ['Shopify Admin catalog check', 'npm run shopify:check-admin'],
+    ['Shopify Storefront check', 'npm run shopify:check-storefront'],
+    ['DSers mapping status', 'npm run dsers:status'],
     ['Product image audit', 'npm run audit:product-images'],
-    ['Archive non-golf SKUs', 'npm run archive:non-golf'],
-    ['Outreach draft refresh', 'npm run send:supplier-outreach'],
-    ['Daily content queue', 'npm run content:daily'],
-    ['Survival outreach refresh', 'npm run survival:outreach'],
-    ['Sales blitz pack', 'npm run blitz:outreach'],
-    ['Channel outreach pack', 'npm run channel:outreach'],
     ['Pipeline status snapshot', 'npm run pipeline:status'],
-    ['Empire status snapshot', 'npm run empire:status'],
+    ['Business system snapshot', 'npm run empire:status'],
+
+    // Generates drafts/data only; does not publish marketing without review.
+    ['Daily content queue', 'npm run content:daily'],
   ];
 
   const results: StepResult[] = [];
   for (const [name, cmd] of steps) {
-    console.log(`▶ ${name}...`);
+    console.log(`> ${name}`);
     const result = run(name, cmd);
     results.push(result);
-    console.log(result.ok ? '  ✅' : '  ⚠️');
+    console.log(result.ok ? '  OK' : '  ATTENTION');
   }
 
-  const passed = results.filter((r) => r.ok).length;
+  const passed = results.filter((result) => result.ok).length;
+  const failedSteps = results.filter((result) => !result.ok).map((result) => result.step);
   const report = {
     startedAt: started,
     completedAt: new Date().toISOString(),
     passed,
     total: results.length,
+    health: failedSteps.length ? 'attention' : 'green',
     results,
     links: {
       storefront: 'https://wyxgolfsupply.com',
-      open: 'https://wyxgolfsupply.com/open',
+      drop: 'https://wyxgolfsupply.com/products',
       kit: 'https://wyxgolfsupply.com/weekend-golfer-bag-upgrade-kit',
-      googleFeed: 'https://wyxgolfsupply.com/feeds/google-products.xml',
       health: 'https://wyxgolfsupply.com/api/health/catalog',
     },
-    manualWhenBack: [
-      'Add GA4 + Meta pixel in Vercel (npm run empire:activate)',
-      'Send 30 personal texts (data/survival-outreach/)',
-      'DSers import queue (npm run dsers:import-queue)',
-      'Post today\'s content from data/daily-content/latest/',
+    protectedManualActions: [
+      'Approve or map new DSers products before they enter the public assortment.',
+      'Review any supplier-review tag before removal.',
+      'Approve destructive catalog/archive changes.',
+      'Connect GA4 and lifecycle email tooling when account credentials are available.',
     ],
   };
 
@@ -85,15 +87,15 @@ async function main() {
   writeFileSync(join(dataDir, 'overnight-report.json'), JSON.stringify(report, null, 2));
   writeFileSync(join(dataDir, 'morning-briefing.json'), JSON.stringify({
     generatedAt: report.completedAt,
-    summary: `Overnight ops: ${passed}/${results.length} steps passed.`,
+    status: report.health,
+    summary: `WYX system check: ${passed}/${results.length} checks passed.`,
     storefront: report.links.storefront,
-    topPriority: report.manualWhenBack,
-    failedSteps: results.filter((r) => !r.ok).map((r) => r.step),
+    failedSteps,
+    protectedManualActions: report.protectedManualActions,
   }, null, 2));
 
-  console.log(`\n✅ Overnight ops complete: ${passed}/${results.length}`);
-  console.log('   Report: data/overnight-report.json');
-  console.log('   Briefing: data/morning-briefing.json\n');
+  console.log(`\nWYX system check complete: ${passed}/${results.length}`);
+  if (failedSteps.length) console.log(`Attention: ${failedSteps.join(', ')}`);
 
   if (passed < results.length) process.exit(1);
 }
