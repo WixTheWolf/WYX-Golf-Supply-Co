@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { availableProducts, catalogCategories, categoryCount, categoryFor, hasSaleReadyMedia } from '@/lib/catalog';
+import { fulfillmentBlocker } from '@/lib/fulfillmentReadiness';
 import { isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasKnownImageMismatch, hasMisleadingProductMedia } from '@/lib/productReadiness';
 import { getProducts } from '@/lib/shopify/products';
@@ -15,6 +16,8 @@ function blockers(product: Awaited<ReturnType<typeof getProducts>>[number], publ
   const tags = tagSet(product);
   const reasons: string[] = [];
   if (!product.availableForSale) reasons.push('not-available-for-sale');
+  const fulfillmentReason = fulfillmentBlocker(product);
+  if (fulfillmentReason) reasons.push(fulfillmentReason);
   if (isHiddenFromCoreStorefront(product)) reasons.push('hidden-or-blocked-vendor');
   if (tags.has('supplier-review')) reasons.push('supplier-review');
   if (hasKnownImageMismatch(product)) reasons.push('known-image-mismatch');
