@@ -130,7 +130,7 @@ export default async function Home() {
           <div>
             <p className="eyebrow">Start here</p>
             <h2 id="kit-offer-heading">The Bag Upgrade Kit.</h2>
-            <p>Towel, marker, grip refresh, club-care tool, accessory caddie — five small annoyances fixed in one cart. Use WYX10 for 10% off your first order.</p>
+            <p>Towel, marker, grip refresh, tee restock, accessory caddie — five small annoyances fixed in one cart. Use WYX10 for 10% off your first order.</p>
             <div className="actions">
               <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Get The Kit — 10% Off</Link>
             </div>
