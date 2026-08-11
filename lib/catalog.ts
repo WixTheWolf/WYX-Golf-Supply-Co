@@ -50,7 +50,7 @@ function searchable(product: ClassifiableProduct) {
 function tagCategory(product: ClassifiableProduct) {
   const tags = (product.tags || []).map((tag) => tag.toLowerCase());
   const mapped = tags
-    .map((tag) => tag.replace(/^wyx-category:/, '').trim())
+    .map((tag) => tag.replace(/^wyx-category:/, '').trim().replaceAll('-', ' '))
     .map((tag) => productTypeCategoryMap[tag])
     .find(Boolean);
   return mapped;
@@ -100,8 +100,8 @@ export function categoryFor(product: ClassifiableProduct) {
 
   const content = searchable(product);
 
-  // Specific content overrides run before the generic productType map so a
-  // catch-all productType like "Accessories" doesn't mask a more useful category.
+  // High-confidence content overrides run before the generic productType map so
+  // a catch-all Shopify type like "Accessories" cannot mask a useful category.
   if (content.includes('groove sharpener') || content.includes('club face pick') || content.includes('club maintenance') || content.includes('spike wrench')) return 'Club Care';
   if (content.includes('ball retriever')) return 'Accessories';
   if (content.includes('ball marker') || content.includes('hat clip ball marker')) return 'Accessories';
@@ -110,11 +110,13 @@ export function categoryFor(product: ClassifiableProduct) {
 
   if (/hat clip/i.test(content) && !/hat|cap|headwear/i.test(content)) return 'Accessories';
 
+  const matched = rules.find(([, words]) => words.some((word) => content.includes(word)));
+  if (matched) return matched[0];
+
   const fromType = typeCategory(product);
   if (fromType) return fromType;
 
-  const matched = rules.find(([, words]) => words.some((word) => content.includes(word)));
-  return matched?.[0] || 'Accessories';
+  return 'Accessories';
 }
 
 export function matchesCategory(product: ClassifiableProduct, category?: string) {
