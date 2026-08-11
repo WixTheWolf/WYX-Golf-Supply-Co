@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ProductBadge } from '@/components/ProductBadge';
 import { categoryFor } from '@/lib/catalog';
-import { money } from '@/lib/demo';
 import { priceWithWyx10 } from '@/lib/pricing';
 import { cleanText } from '@/lib/text';
 import type { Product } from '@/types/shopify';
@@ -35,16 +34,18 @@ export function EditorialProductCard({ product, featured = false }: { product: P
 
 function shortReason(product: Product) {
   const text = `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
+  if (text.includes('identification stamp') || text.includes('golf ball stamp')) return 'Quickly marks your golf balls so there is no first-tee identity crisis. Small, useful, and easy to keep in the bag.';
+  if (text.includes('blue ridge') && text.includes('ball marker')) return 'A compact two-marker set that is easy to gift, easy to carry, and useful every round.';
   if (text.includes('gps watch') || (text.includes('gps') && text.includes('watch'))) return 'Front, middle, back — no phone needed. 40,000 courses loaded and ready at the wrist.';
   if (text.includes('ball retriever') && text.includes('collapsible')) return 'Extends to 12 feet, collapses to 18 inches. Stops the water-hazard sacrifice without slowing down the group.';
   if (text.includes('arm sleeve') || text.includes('upf')) return 'Blocks 98% of UV rays, cools via moisture-wicking compression. Slip on in seconds before the round starts.';
-  if (text.includes('golf tumbler') || text.includes('insulated') && text.includes('tumbler')) return 'Cart cup holder fit, ice for 12 hours, no sweat rings on the scorecard. The one cart accessory worth carrying.';
-  if (text.includes('golf sunglasses') || text.includes('polarized') && text.includes('golf')) return 'High-contrast polarized lenses cut glare and track the ball against blue sky. Wraparound fit stays put through the swing.';
+  if (text.includes('golf tumbler') || (text.includes('insulated') && text.includes('tumbler'))) return 'Cart cup holder fit, ice for 12 hours, no sweat rings on the scorecard. The one cart accessory worth carrying.';
+  if (text.includes('golf sunglasses') || (text.includes('polarized') && text.includes('golf'))) return 'High-contrast polarized lenses cut glare and track the ball against blue sky. Wraparound fit stays put through the swing.';
   if (text.includes('rain hood') || text.includes('bag cover') || text.includes('bag rain')) return 'Clips over any bag in seconds and packs into a palm-sized pouch. The one item that saves the whole bag when the forecast lies.';
   if (text.includes('rangefinder')) return 'Know your yardage every time. The upgrade that changes how you think about every approach.';
   if (text.includes('yardage book') || text.includes('scorecard holder') || text.includes('scorecard')) return 'Full-grain leather, pencil loop, tee pocket, and snap closure. One of the best golf gifts under $60.';
   if (text.includes('umbrella')) return 'Double-canopy, wind-vented, fits over you and the bag. The round-saver for early tee times in bad weather.';
-  if (text.includes('shoe bag') || text.includes('shoe bag')) return 'Mesh-vented nylon. Keeps spikes separate from clothes on every trip.';
+  if (text.includes('shoe bag')) return 'Mesh-vented nylon. Keeps spikes separate from clothes on every trip.';
   if (text.includes('bamboo tee') || text.includes('golf tee')) return 'Fifty bamboo tees, biodegradable, stronger than wood. The consumable that always needs restocking.';
   if (text.includes('hat case') || text.includes('hat carrying')) return 'Rigid-shell protection for your favorite round hat. Packs in a carry-on without crushing the brim.';
   if (text.includes('groove sharpener') || text.includes('wedge tool')) return 'A simple 10-minute job that helps keep grooves clean between deeper club-care visits. Six groove widths, carbide head.';
@@ -53,7 +54,7 @@ function shortReason(product: Product) {
   if (text.includes('cooler tube') || text.includes('bag cooler')) return 'Holds 6 cans cold for 18 holes and clips to any bag D-ring. The trip accessory you did not know you needed.';
   if (text.includes('rain jacket') || text.includes('packable')) return 'Stuffs into its own chest pocket. Wind and water-resistant, clean enough for the clubhouse, essential for any trip.';
   if (text.includes('phone mount') || text.includes('cart mount')) return 'Clamps to any cart bar, holds in rain, 360° rotation, MagSafe compatible. One mounting, every round.';
-  if (text.includes('milled ball marker set') || (text.includes('ball marker') && text.includes('set'))) return 'Three milled aluminum markers in gold, silver, and gunmetal. Ships gift-ready in a kraft box.';
+  if (text.includes('milled ball marker set') || (text.includes('ball marker') && text.includes('set'))) return 'A clean marker set that adds a little personality without adding clutter to the bag.';
   if (text.includes('club brush') || text.includes('groove cleaner')) return 'Dual-sided with a groove pick and nylon bristles. Clips to the bag ring and cleans between every shot.';
   if (text.includes('putting mirror') || text.includes('alignment mirror')) return 'Fix your eye position in 5 minutes on any surface. The putting practice tool that actually works.';
   if (text.includes('hat clip') || text.includes('magnetic')) return 'Stick it on your brim and never pat your pocket for a marker again. The easiest upgrade in the bag.';
@@ -76,4 +77,3 @@ function shortReason(product: Product) {
   if (text.includes('caddie')) return 'Keeps the little stuff from turning into a bottom-pocket search party.';
   return 'A useful WYX pick for weekend players and gift shoppers.';
 }
-
