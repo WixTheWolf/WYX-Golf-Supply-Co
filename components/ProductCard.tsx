@@ -16,7 +16,6 @@ export function ProductCard({ product }: { product: Product }) {
     <article className="product-card">
       <Link href={`/products/${product.handle}`} className="product-image-link" aria-label={`View ${title}`}>
         {image ? <Image src={image.url} alt={alt} width={900} height={675} sizes="(max-width: 900px) 100vw, (max-width: 1200px) 33vw, 25vw" /> : <span className="image-placeholder">Image coming soon</span>}
-        <span className="product-status">{categoryFor(product)}</span>
       </Link>
       <div className="product-card-body">
         <p className="product-meta">{categoryFor(product)}</p>
