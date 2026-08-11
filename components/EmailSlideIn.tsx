@@ -4,20 +4,22 @@ import { useEffect, useState } from 'react';
 import { EmailCapture } from './EmailCapture';
 
 const STORAGE_KEY = 'wyx_email_slidein_dismissed_at';
-const SHOW_AFTER_MS = 8000;
-const SCROLL_TRIGGER = 0.25;
-const COOLDOWN_DAYS = 7;
+const SHOW_AFTER_MS = 20000;
+const SCROLL_TRIGGER = 0.5;
+const COOLDOWN_DAYS = 14;
 
 /**
- * Deferred email slide-in: appears after 14s on page or 35% scroll depth,
- * whichever comes first. Dismissal (or signup view) snoozes it for 7 days.
- * Never shows on cart/checkout-adjacent pages to avoid purchase interference.
+ * Low-pressure email slide-in: appears after meaningful engagement rather than
+ * interrupting a first impression. Dismissal snoozes it for two weeks.
+ * Never shows on cart or kit pages where the shopper already has a clear next step.
  */
 export function EmailSlideIn() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (window.location.pathname.startsWith('/cart')) return;
+    const path = window.location.pathname;
+    if (path.startsWith('/cart') || path.startsWith('/weekend-golfer-bag-upgrade-kit')) return;
+
     const dismissedAt = Number(localStorage.getItem(STORAGE_KEY) || 0);
     if (Date.now() - dismissedAt < COOLDOWN_DAYS * 24 * 60 * 60 * 1000) return;
 
@@ -48,15 +50,15 @@ export function EmailSlideIn() {
   if (!visible) return null;
 
   return (
-    <div className="email-slidein" role="dialog" aria-label="Free Bag Audit Checklist offer">
+    <div className="email-slidein" role="dialog" aria-label="WYX email offer">
       <button className="email-slidein-close" onClick={dismiss} aria-label="Close email offer">
         Close
       </button>
       <EmailCapture
         source="slidein"
-        campaign="bag_audit_checklist"
-        title="Father's Day is June 21 — get WYX10."
-        body="10% off your first order + our Bag Audit Checklist. Practical golf gifts that stay in the bag — not novelty junk."
+        campaign="evergreen_wyx10"
+        title="Take 10% off your first bag upgrade."
+        body="Get WYX10 plus occasional golf-trip picks, useful gifts, and Bag Test winners. No daily junk mail."
       />
     </div>
   );
