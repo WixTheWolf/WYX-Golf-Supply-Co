@@ -6,7 +6,7 @@ import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 import { cleanText } from '@/lib/text';
 
-export const revalidate = 300;
+export const dynamic = 'force-dynamic';
 
 const MAX_PRICE = 25;
 const MAX_ITEMS = 3;
@@ -26,9 +26,6 @@ export async function GET(request: NextRequest) {
     );
 
     const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
-    // Don't pitch the same KIND of thing already in the cart (marker → marker).
-    // A title can carry several kind words; exclusion is set-intersection.
-    // "ball marker" normalizes to "marker" so it doesn't block actual golf balls.
     const KIND_WORDS = ['marker', 'towel', 'glove', 'brush', 'tee', 'retriever', 'headcover', 'grip', 'hat', 'ball'];
     const kindsOf = (title: string) => {
       const text = title.toLowerCase().replace(/ball markers?/g, 'marker');
