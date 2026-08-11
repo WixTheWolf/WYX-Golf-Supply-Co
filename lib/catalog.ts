@@ -1,4 +1,5 @@
 import type { Product } from '@/types/shopify';
+import { hasVerifiedFulfillment } from '@/lib/fulfillmentReadiness';
 import { isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasMisleadingProductMedia, hasKnownImageMismatch } from '@/lib/productReadiness';
 
@@ -89,17 +90,11 @@ function passesPublicCatalogGate(product: Product) {
 }
 
 export function categoryFor(product: ClassifiableProduct) {
-  // A golf belt is unambiguously apparel — trust productType over auto-applied
-  // category tags, which can carry a duplicate/stale 'accessories' tag that
-  // would otherwise misfile every belt (the Dartee belt line) into Accessories.
   const productTypeLower = product.productType?.trim().toLowerCase();
   if (productTypeLower === 'golf belt' || productTypeLower === 'belt') return 'Apparel';
 
   const content = searchable(product);
 
-  // Specific product meaning wins over stale/generic Shopify category tags.
-  // This is especially important for imported products whose type/tag is simply
-  // "Accessories" even when the title clearly identifies a training aid or tool.
   if (content.includes('groove sharpener') || content.includes('club face pick') || content.includes('club maintenance') || content.includes('spike wrench')) return 'Club Care';
   if (content.includes('ball retriever')) return 'Accessories';
   if (content.includes('ball marker') || content.includes('hat clip ball marker')) return 'Accessories';
@@ -127,11 +122,8 @@ export function saleReadyProducts(products: Product[]) {
   return availableProducts(products).filter((product) => product.variants.some((variant) => variant.availableForSale));
 }
 
-/** Only show WYX-curated products — blocks old dropship catalog contamination */
 function isCuratedProduct(product: Product) {
-  // Primary: vendor name set on all seeded products (most reliable signal)
   if (product.vendor === 'WYX Golf Supply Co.') return true;
-  // Fallback: tag check (case-insensitive in case Shopify normalizes casing)
   const tags = (product.tags || []).map((t) => t.toLowerCase());
   return tags.some((t) => t === 'wyx-curated' || t === 'direct-catalog');
 }
@@ -139,14 +131,12 @@ function isCuratedProduct(product: Product) {
 export function availableProducts(products: Product[]) {
   return products.filter((product) => {
     if (!product.availableForSale) return false;
+    if (!hasVerifiedFulfillment(product)) return false;
     if (isHiddenFromCoreStorefront(product)) return false;
-    if ((product.tags || []).includes('supplier-review')) return false;
+    if ((product.tags || []).some((tag) => tag.toLowerCase() === 'supplier-review')) return false;
     if (!passesPublicCatalogGate(product)) return false;
-    // Manually confirmed image/product mismatches are excluded regardless of vendor
     if (hasKnownImageMismatch(product)) return false;
-    // WYX-curated products bypass automated media quality gates — they are our own catalog
     if (isCuratedProduct(product)) return true;
-    // Non-curated products must pass image checks to prevent bad dropship media
     return hasSaleReadyMedia(product) && !hasMisleadingProductMedia(product);
   });
 }
