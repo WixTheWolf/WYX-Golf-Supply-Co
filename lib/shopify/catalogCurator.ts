@@ -18,8 +18,9 @@ type Decision = {
   category?: string;
 };
 
-const allowedTerms = ['golf', 'ball', 'glove', 'grip', 'overgrip', 'towel', 'tee', 'divot', 'marker', 'hat', 'cap', 'polo', 'club', 'bag tag', 'cooler', 'flask'];
-const blockedTerms = ['disc golf', 'rv', 'atv', 'storage box', 'driving cage', 'enclosure', 'screen', 'renew protect', 'simulator'];
+const golfTerms = ['golf', 'ball', 'glove', 'grip', 'overgrip', 'towel', 'tee', 'divot', 'marker', 'hat', 'cap', 'polo', 'club', 'bag tag', 'cooler', 'flask'];
+const strongMerchTerms = ['headcover', 'putter cover', 'driver cover', 'golf game', 'ball marker', 'marker set', 'grip', 'overgrip', 'golf glove', 'golf towel', 'golf tee', 'caddie', 'golf hat', 'golf cap', 'golf shirt', 't-shirt'];
+const blockedTerms = ['disc golf', 'rv', 'atv', 'storage box', 'driving cage', 'enclosure', 'impact screen', 'renew protect', 'simulator', 'pelmet'];
 const managedTag = 'wyx-auto-approved';
 const pausedTag = 'wyx-auto-paused:no-inventory';
 const publicationTerms = ['online store', 'headless'];
@@ -53,6 +54,11 @@ function content(product: AdminProduct) {
   return [product.title, product.description, product.vendor, product.productType, ...(product.tags || [])].filter(Boolean).join(' ').toLowerCase();
 }
 
+function hasManualMerchApproval(product: AdminProduct) {
+  const tags = (product.tags || []).map((tag) => tag.toLowerCase());
+  return tags.includes('wyx-core') || tags.includes('wyx-featured');
+}
+
 function qualify(product: AdminProduct) {
   const text = content(product);
   const reasons: string[] = [];
@@ -60,7 +66,8 @@ function qualify(product: AdminProduct) {
   if (product.totalInventory <= 0) reasons.push('no supplier inventory');
   if (!product.featuredImage?.url) reasons.push('missing image');
   if (!product.vendor) reasons.push('missing supplier');
-  if (!allowedTerms.some((term) => text.includes(term))) reasons.push('no approved golf keyword');
+  if (!golfTerms.some((term) => text.includes(term))) reasons.push('no approved golf keyword');
+  if (!hasManualMerchApproval(product) && !strongMerchTerms.some((term) => text.includes(term))) reasons.push('not in the current WYX merchandising lanes');
   const blocked = blockedTerms.find((term) => text.includes(term));
   if (blocked) reasons.push(`blocked keyword: ${blocked}`);
   const prices = product.variants.edges.map((edge) => Number(edge.node.price)).filter(Number.isFinite);
@@ -94,7 +101,9 @@ async function publishProduct(product: AdminProduct, publicationIds: string[]) {
 export async function curateCatalog(apply = false) {
   const data = await shopifyAdminFetch<any>(PRODUCTS);
   const products = data.products.nodes as AdminProduct[];
-  const publicationIds = data.publications.nodes.filter((publication: { name: string }) => publicationTerms.some((term) => publication.name.toLowerCase().includes(term))).map((publication: { id: string }) => publication.id);
+  const publicationIds = data.publications.nodes
+    .filter((publication: { name: string }) => publicationTerms.some((term) => publication.name.toLowerCase().includes(term)))
+    .map((publication: { id: string }) => publication.id);
   const decisions: Decision[] = [];
 
   for (const product of products) {
@@ -130,6 +139,7 @@ export async function curateCatalog(apply = false) {
   return {
     ok: true,
     apply,
+    mode: 'selective-2026',
     publications: publicationIds.length,
     scanned: products.length,
     approved: decisions.filter((decision) => decision.action === 'approved').length,
