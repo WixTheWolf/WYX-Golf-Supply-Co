@@ -31,7 +31,6 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 const cartStorageKey = 'wyx_cart_id';
-const freeShippingThreshold = 75;
 
 export function useCart() {
   const context = useContext(CartContext);
@@ -126,7 +125,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       if (next?.checkoutUrl) {
         localStorage.setItem(cartStorageKey, next.id);
         setCart(next);
-        trackCartAdd(next, lines.map((line) => line.merchandiseId), 'product_group');
+        trackCartAdd(next, lines.map((line) => line.merandiseId), 'product_group');
         trackEvent('InitiateCheckout', {
           value: Number(next.cost.subtotalAmount.amount),
           currency: next.cost.subtotalAmount.currencyCode,
@@ -246,22 +245,11 @@ function CartDrawer() {
       <CartCrossSell />
       {cart && <KitUpsellBanner subtotal={Number(cart.cost.subtotalAmount.amount)} compact />}
       <div className="cart-foot">
-        {cart && <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />}
+        {cart && <p className="promo-note">Shipping options, rates, and delivery estimates are confirmed before payment.</p>}
         <p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p>
         <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>{promo.applied ? 'Checkout — WYX10 Applied' : 'Secure Checkout'}</button>
         <Link href="/cart">View Bag</Link>
       </div>
     </aside>
-  );
-}
-
-function CartProgress({ amount, currency }: { amount: number; currency: string }) {
-  const remaining = Math.max(0, freeShippingThreshold - amount);
-  const percent = Math.min(100, Math.round((amount / freeShippingThreshold) * 100));
-  return (
-    <div className="cart-progress" aria-label="Free shipping progress">
-      <div><span style={{ width: `${percent}%` }} /></div>
-      <p>{remaining > 0 ? `${new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(remaining)} away from the $75 free-shipping goal.` : 'Free-shipping goal reached. Shipping options confirm at checkout.'}</p>
-    </div>
   );
 }
