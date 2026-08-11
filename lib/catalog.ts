@@ -95,23 +95,23 @@ export function categoryFor(product: ClassifiableProduct) {
   const productTypeLower = product.productType?.trim().toLowerCase();
   if (productTypeLower === 'golf belt' || productTypeLower === 'belt') return 'Apparel';
 
-  const fromTag = tagCategory(product);
-  if (fromTag) return fromTag;
-
   const content = searchable(product);
 
-  // High-confidence content overrides run before the generic productType map so
-  // a catch-all Shopify type like "Accessories" cannot mask a useful category.
+  // Specific product meaning wins over stale/generic Shopify category tags.
+  // This is especially important for imported products whose type/tag is simply
+  // "Accessories" even when the title clearly identifies a training aid or tool.
   if (content.includes('groove sharpener') || content.includes('club face pick') || content.includes('club maintenance') || content.includes('spike wrench')) return 'Club Care';
   if (content.includes('ball retriever')) return 'Accessories';
   if (content.includes('ball marker') || content.includes('hat clip ball marker')) return 'Accessories';
   if (content.includes('accessory caddie') || content.includes('headcover')) return 'Accessories';
   if (content.includes('divot tool') || (content.includes('divot') && !content.includes('divot board'))) return 'Accessories';
-
   if (/hat clip/i.test(content) && !/hat|cap|headwear/i.test(content)) return 'Accessories';
 
   const matched = rules.find(([, words]) => words.some((word) => content.includes(word)));
   if (matched) return matched[0];
+
+  const fromTag = tagCategory(product);
+  if (fromTag) return fromTag;
 
   const fromType = typeCategory(product);
   if (fromType) return fromType;
