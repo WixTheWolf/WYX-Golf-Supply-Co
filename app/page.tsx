@@ -3,216 +3,164 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { EditorialProductCard } from '@/components/EditorialProductCard';
 import { EmailCapture } from '@/components/EmailCapture';
-import { JudgeMeStoreBadge } from '@/components/JudgeMe';
-import { ProductCarousel } from '@/components/ProductCarousel';
-import { TrustBar } from '@/components/TrustBar';
-import { availableProducts, categoryFor } from '@/lib/catalog';
-import { imageMap } from '@/lib/demo';
+import { availableProducts } from '@/lib/catalog';
+import { money } from '@/lib/demo';
 import { productPrice } from '@/lib/feed';
-import { createProductAllocator } from '@/lib/homeMerchandising';
-import { coreMerchProducts, firstBuyProducts, giftableProducts, isHomepageProduct } from '@/lib/merchandisingFilters';
+import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Weekend Golf Gifts & Bag Upgrades | WYX Golf Supply Co.',
-  description: 'Practical golf gear for trips, weekend rounds, gifts, and better bags. Start with the Bag Upgrade Kit and save 10% on your first order with WYX10.',
+  title: 'Future Golf Gear',
+  description: 'The WYX current drop: a hard edit of modern headcovers, grips, gloves, trip gear and bag upgrades. No filler. Secure Shopify checkout.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Weekend Golf Gifts & Bag Upgrades | WYX Golf Supply Co.',
-    description: 'Golf gear that stays in the bag — not the drawer. Curated trip gear, gifts, and the Bag Upgrade Kit. WYX10 saves 10%.',
+    title: 'WYX Golf Supply Co. | Future Golf Gear',
+    description: 'Less golf shop. More gear drop. A hard edit of modern golf gear for real rounds.',
     url: 'https://wyxgolfsupply.com',
-    images: [{ url: '/images/boys-weekend-hero.png', width: 1536, height: 1024, alt: 'Weekend golfers on course' }],
   },
 };
 
-const kits = [
-  { title: 'Trip Kit', href: '/kits/golf-trip-kit', image: imageMap.walk, copy: 'Packable gear for the golf trip.' },
-  { title: 'Dad Kit', href: '/kits/dad-gift-kit', image: imageMap.care, copy: 'Useful gifts he will actually use.' },
-  { title: 'Bag Kit', href: '/kits/bag-upgrade-kit', image: imageMap.leather, copy: 'Small upgrades. Better setup.' },
-];
-
 export default async function Home() {
   const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
-  const allocator = createProductAllocator();
-  const homepageCatalog = catalog
-    .filter(isHomepageProduct)
-    .filter((product) => Number(productPrice(product).amount) <= 250);
+  const preferred = firstBuyProducts(catalog);
+  const drop = [...preferred, ...catalog.filter((product) => !preferred.some((pick) => pick.handle === product.handle))].slice(0, 8);
+  const feature = drop.find((product) => product.handle === 'evil-ape') || drop[0];
 
-  function uniqueByHandle(products: typeof homepageCatalog) {
-    const seen = new Set<string>();
-    return products.filter((product) => {
-      if (seen.has(product.handle)) return false;
-      seen.add(product.handle);
-      return true;
-    });
-  }
-
-  const heroProducts = uniqueByHandle([
-    ...firstBuyProducts(homepageCatalog),
-    ...giftableProducts(homepageCatalog, 20),
-  ].filter(Boolean) as typeof homepageCatalog);
-
-  function diversifyByCategory(products: typeof homepageCatalog, maxPerCategory: number) {
-    const categoryCounts = new Map<string, number>();
-    return products.filter((product) => {
-      const category = categoryFor(product);
-      const count = categoryCounts.get(category) || 0;
-      if (count >= maxPerCategory) return false;
-      categoryCounts.set(category, count + 1);
-      return true;
-    });
-  }
-
-  const shortList = allocator.take(diversifyByCategory(heroProducts, 2), 8);
-  const shortListHandles = new Set(shortList.map((product) => product.handle));
-  const under60 = giftableProducts(homepageCatalog, 12)
-    .filter(isHomepageProduct)
-    .filter((product) => Number(productPrice(product).amount) < 60)
-    .filter((product) => !shortListHandles.has(product.handle))
-    .slice(0, 8);
-
-  const situations = [
-    { title: 'Golf Trip Gear', copy: 'Pack for the boys weekend', href: '/golf-trip-gear' },
-    { title: 'Bag Upgrade Kit', copy: 'Five fixes. One order.', href: '/weekend-golfer-bag-upgrade-kit?discount=WYX10' },
-    { title: 'Gifts Under $60', copy: 'Easy yes gifts', href: '/golf-gifts-under-60' },
-    { title: 'Scramble Prizes', copy: 'Prizes they keep', href: '/scramble-prizes' },
-    { title: 'The Bag Test', copy: 'Only gear worth keeping', href: '/the-bag-test' },
-    { title: 'Shop All', copy: `${homepageCatalog.length} curated picks`, href: '/products' },
+  const modes = [
+    {
+      index: '01 / BAG',
+      title: 'Upgrade Mode',
+      copy: 'Fix the small stuff that makes a bag feel dialed: towel, marker, grip, tees and organization.',
+      href: '/weekend-golfer-bag-upgrade-kit?discount=WYX10',
+      action: 'Build the bag',
+    },
+    {
+      index: '02 / TRIP',
+      title: 'Trip Mode',
+      copy: 'Gear that survives airports, rental carts, 36-hole days and the group-chat expectations.',
+      href: '/golf-trip-gear',
+      action: 'Pack the trip',
+    },
+    {
+      index: '03 / GIFT',
+      title: 'Gift Mode',
+      copy: 'Headcovers, games, markers and useful golf gear with enough personality to not feel generic.',
+      href: '/golf-gifts',
+      action: 'Find a gift',
+    },
   ];
 
+  const ticker = ['CURATED / NOT CROWDED', 'LIVE SHOPIFY INVENTORY', 'FULFILLMENT GATED', 'WYX10 / FIRST ORDER', 'BUILT FOR REAL ROUNDS'];
+
   return (
-    <>
-      <section className="hero launch-hero cinematic-hero">
-        <Image src={imageMap.hero} alt="Weekend golfers walking the fairway at golden hour" fill priority sizes="100vw" />
-        <div className="hero-copy launch-hero-copy">
-          <p className="eyebrow">Built for the weekend</p>
-          <h1>Golf Gear For Trips, Real Rounds &amp; Better Bags.</h1>
-          <p>Useful golf gear without the junk-drawer filler. Start with the Bag Upgrade Kit, then build out the trip, gift, or bag from there. WYX10 saves 10% on your first order.</p>
-          <div className="actions">
-            <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Shop The Bag Upgrade Kit</Link>
-            <Link className="button secondary" href="/golf-trip-gear">Shop Trip Gear</Link>
+    <div className="future-home">
+      <section className="future-hero">
+        <div className="future-hero-copy">
+          <p className="eyebrow">WYX // GOLF SYSTEM 2026</p>
+          <h1>LESS GOLF SHOP. <em>MORE GEAR DROP.</em></h1>
+          <p className="future-hero-lede">
+            A hard edit of headcovers, grips, gloves, trip gear and bag upgrades that are actually worth carrying. No endless supplier wall. No mystery fulfillment. Just the stuff that makes golf look and feel better.
+          </p>
+          <div className="future-actions">
+            <Link className="button primary" href="/products">SHOP THE DROP</Link>
+            <Link className="button secondary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">BUILD THE KIT</Link>
           </div>
-          <div className="hero-proof compact-proof">
-            <span>Secure Shopify checkout</span>
-            <span>WYX10 — 10% off</span>
-            <span>Bag Test curated</span>
-            <span>Shipping shown before payment</span>
+          <div className="future-telemetry" aria-label="WYX store status">
+            <span>{catalog.length} product edit</span>
+            <span>Shopify checkout</span>
+            <span>Fulfillment gated</span>
+            <span>Live price sync</span>
           </div>
         </div>
+
+        {feature?.featuredImage && (
+          <div className="future-feature">
+            <Link className="future-feature-card" href={`/products/${feature.handle}`}>
+              <Image
+                src={feature.featuredImage.url}
+                alt={feature.featuredImage.altText || feature.title}
+                fill
+                priority
+                sizes="(max-width: 1050px) 92vw, 38vw"
+              />
+              <div className="future-feature-info">
+                <small>CURRENT SIGNAL / 001</small>
+                <strong>{feature.title}</strong>
+                <span>{money(productPrice(feature))} · VIEW PRODUCT →</span>
+              </div>
+            </Link>
+          </div>
+        )}
       </section>
 
-      <TrustBar />
+      <div className="future-marquee" aria-hidden="true">
+        <div className="future-marquee-track">
+          {[...ticker, ...ticker].map((item, index) => <span key={`${item}-${index}`}><b>●</b> {item}</span>)}
+        </div>
+      </div>
 
-      {shortList.length > 0 && (
-        <section id="short-list" className="section short-list-section reveal">
-          <div className="section-heading split">
+      {drop.length > 0 && (
+        <section className="future-section" id="drop">
+          <div className="future-section-head">
             <div>
-              <p className="eyebrow">Weekend picks</p>
-              <h2>Shop The Short List.</h2>
+              <p className="eyebrow">THE CURRENT DROP</p>
+              <h2>{drop.length} THINGS WORTH WANTING.</h2>
             </div>
-            <Link className="text-link" href="/products">All products</Link>
+            <p>Personality first. Utility required. Everything below is live, purchasable, and inside the WYX curated storefront gate.</p>
           </div>
-          <ProductCarousel label="Weekend product picks">
-            {shortList.map((product, index) => (
-              <div className="carousel-slide" key={product.id}>
-                <EditorialProductCard product={product} featured={index === 0} />
-              </div>
-            ))}
-          </ProductCarousel>
+          <div className="drop-grid">
+            {drop.map((product, index) => <EditorialProductCard key={product.id} product={product} featured={index === 0} />)}
+          </div>
+          <div className="future-actions">
+            <Link className="button primary" href="/products">SEE THE FULL EDIT</Link>
+            <Link className="button secondary" href="/the-bag-test">HOW WE CUT PRODUCTS</Link>
+          </div>
         </section>
       )}
 
-      <section className="dark-section reveal kit-spotlight" aria-labelledby="kit-offer-heading">
-        <div className="kit-spotlight-grid">
+      <section className="future-section">
+        <div className="future-section-head">
           <div>
-            <p className="eyebrow">Start here</p>
-            <h2 id="kit-offer-heading">The Bag Upgrade Kit.</h2>
-            <p>Towel, marker, grip refresh, tee restock, accessory caddie — five small annoyances fixed in one cart. Use WYX10 for 10% off your first order.</p>
-            <div className="actions">
-              <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Get The Kit — 10% Off</Link>
-            </div>
+            <p className="eyebrow">SELECT A MODE</p>
+            <h2>SHOP LIKE A GOLFER.</h2>
           </div>
-          <Image src={imageMap.towel} alt="Golf towel and bag accessories flat lay" width={900} height={675} className="kit-spotlight-image" />
+          <p>Skip the department-store maze. Start with what you are actually doing next.</p>
         </div>
-      </section>
-
-      <section className="section reveal" aria-label="Shop by situation">
-        <div className="section-heading">
-          <p className="eyebrow">Shop fast</p>
-          <h2>Find Your Lane.</h2>
-        </div>
-        <div className="category-grid">
-          {situations.map((item) => (
-            <Link key={item.href} href={item.href}>
-              <span>{item.copy}</span>
-              <strong>{item.title}</strong>
-              <small>Shop →</small>
+        <div className="future-mode-grid">
+          {modes.map((mode) => (
+            <Link href={mode.href} className="future-mode" key={mode.title}>
+              <span className="future-mode-index">{mode.index}</span>
+              <div>
+                <h3>{mode.title}</h3>
+                <p>{mode.copy}</p>
+              </div>
+              <strong>{mode.action} →</strong>
             </Link>
           ))}
         </div>
       </section>
 
-      {under60.length > 0 && (
-        <section className="section reveal">
-          <div className="section-heading split">
-            <div>
-              <p className="eyebrow">Under $60</p>
-              <h2>Easy Gift Yes.</h2>
-            </div>
-            <Link className="text-link" href="/golf-gifts-under-60">See all</Link>
-          </div>
-          <ProductCarousel label="Gifts under sixty dollars">
-            {under60.map((product) => (
-              <div className="carousel-slide" key={product.id}>
-                <EditorialProductCard product={product} />
-              </div>
-            ))}
-          </ProductCarousel>
-        </section>
-      )}
-
-      <section id="kits" className="section kit-visual-section reveal">
-        <div className="section-heading split">
-          <div>
-            <p className="eyebrow">Bundles</p>
-            <h2>Pre-Built Kits.</h2>
-          </div>
-          <Link className="text-link" href="/kits/golf-trip-kit">Trip kit</Link>
-        </div>
-        <div className="kit-visual-grid">
-          {kits.map((kit) => (
-            <Link className="kit-visual-card" key={kit.href} href={kit.href}>
-              <Image src={kit.image} alt={`${kit.title} golf bundle`} width={900} height={675} loading="lazy" sizes="(max-width: 650px) 92vw, (max-width: 900px) 46vw, 31vw" />
-              <span><strong>{kit.title}</strong><small>{kit.copy}</small><em>Build Kit</em></span>
-            </Link>
-          ))}
+      <section className="future-system-band">
+        <p className="eyebrow">THE STORE RUNS LIKE A SYSTEM</p>
+        <h2>COOL IS USELESS IF THE ORDER BREAKS.</h2>
+        <p>WYX is built to stay lean: live Shopify inventory and prices, a hard fulfillment gate, automated catalog checks and scheduled operations reviews. The storefront gets the fun part. The system handles the boring part.</p>
+        <div className="future-system-grid">
+          <div><span>01 / INVENTORY</span><strong>Live Shopify data</strong></div>
+          <div><span>02 / FULFILLMENT</span><strong>Unsafe SKUs blocked</strong></div>
+          <div><span>03 / CURATION</span><strong>Tight public assortment</strong></div>
+          <div><span>04 / OPERATIONS</span><strong>Scheduled health checks</strong></div>
         </div>
       </section>
 
-      <section className="section reveal trust-review-section">
-        <div className="section-heading">
-          <p className="eyebrow">Trust</p>
-          <h2>New Shop. Real Standards.</h2>
-        </div>
-        <p className="section-lead">No fake reviews. Every SKU has to pass The Bag Test: useful, giftable, or good enough to earn a permanent spot in the bag. Secure Shopify checkout, shipping shown before you pay.</p>
-        <JudgeMeStoreBadge />
-      </section>
-
-      <section className="dark-section reveal" aria-labelledby="bag-test-promise-heading">
-        <div>
-          <p className="eyebrow">The Bag Test Promise</p>
-          <h2 id="bag-test-promise-heading">Wrong order? We make it right.</h2>
-          <div className="actions">
-            <Link className="button primary" href="/the-bag-test">The Bag Test</Link>
-            <Link className="button secondary dark" href="/shipping-returns">Shipping &amp; returns</Link>
-          </div>
-        </div>
-      </section>
-
-      <EmailCapture source="home" campaign="home_evergreen_list" title="Next drop before your foursome." body="Trip gear, gift picks, and Bag Test winners — one useful email at a time." />
-    </>
+      <EmailCapture
+        source="home"
+        campaign="drop_signal"
+        title="GET THE NEXT SIGNAL."
+        body="New drops, golf-trip gear and the rare product that earns a place in the WYX edit. No inbox landfill."
+      />
+    </div>
   );
 }
