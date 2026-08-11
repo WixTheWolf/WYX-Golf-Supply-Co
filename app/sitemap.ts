@@ -1,7 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { availableProducts } from '@/lib/catalog';
 import { landingCollections } from '@/lib/collections';
-import { allPosts as posts } from '@/lib/journal';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -31,15 +30,12 @@ const evergreenPages = [
   '/the-bag-test',
   '/kits/golf-trip-kit',
   '/kits/bag-upgrade-kit',
-  '/hidden-gems',
   '/about',
   '/story',
-  '/journal',
   '/faq',
   '/shipping-returns',
   '/contact',
-  '/privacy',
-  '/llms.txt'
+  '/privacy'
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -48,8 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = [
     ...evergreenPages,
     ...landingCollections.map((collection) => `/collections/${collection.slug}`),
-    ...products.map((product) => `/products/${product.handle}`),
-    ...posts.map((post) => `/journal/${post.slug}`)
+    ...products.map((product) => `/products/${product.handle}`)
   ];
 
   return Array.from(new Set(paths)).map((path) => ({
