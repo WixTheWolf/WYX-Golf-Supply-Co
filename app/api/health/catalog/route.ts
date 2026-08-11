@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { availableProducts, catalogCategories, categoryCount, categoryFor, hasSaleReadyMedia } from '@/lib/catalog';
 import { fulfillmentBlocker } from '@/lib/fulfillmentReadiness';
-import { isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
+import { coreMerchProducts, isFutureAssortmentProduct, isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasKnownImageMismatch, hasMisleadingProductMedia } from '@/lib/productReadiness';
 import { getProducts } from '@/lib/shopify/products';
 
@@ -31,14 +31,18 @@ export async function GET() {
   try {
     const products = await getProducts({ fresh: true });
     const available = availableProducts(products);
+    const currentDrop = coreMerchProducts(available);
     const availableHandles = new Set(available.map((product) => product.handle));
+    const currentDropHandles = new Set(currentDrop.map((product) => product.handle));
 
     return NextResponse.json({
       ok: true,
       source: 'shopify',
       products: products.length,
       availableForSale: available.length,
+      currentDrop: currentDrop.length,
       categories: Object.fromEntries(catalogCategories.slice(1).map((category) => [category, categoryCount(available, category)])),
+      currentDropCategories: Object.fromEntries(catalogCategories.slice(1).map((category) => [category, categoryCount(currentDrop, category)])),
       productChecks: products.map((product) => {
         const activeVariant = product.variants.find((variant) => variant.availableForSale);
         const publicCatalog = availableHandles.has(product.handle);
@@ -49,6 +53,8 @@ export async function GET() {
           vendor: product.vendor || null,
           category: categoryFor(product),
           publicCatalog,
+          inCurrentDrop: currentDropHandles.has(product.handle),
+          selectedForFutureAssortment: isFutureAssortmentProduct(product),
           blockers: blockers(product, publicCatalog),
           fulfillment: {
             dsers: tags.has('supplier-dsers') || tags.has('fulfillment-aliexpress'),
