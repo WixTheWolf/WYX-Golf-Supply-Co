@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { availableProducts } from '@/lib/catalog';
+import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { addLine, addLines, createCart, createCartWithLines, getCart, removeLine, updateLine } from '@/lib/shopify/cart';
 import { getProducts } from '@/lib/shopify/products';
 
 type CartLineInput = { merchandiseId: string; quantity: number };
 
 async function allowedVariantIds() {
-  const products = availableProducts(await getProducts());
+  const products = coreMerchProducts(availableProducts(await getProducts()));
   return new Set(
     products.flatMap((product) => product.variants.filter((variant) => variant.availableForSale).map((variant) => variant.id))
   );
@@ -16,7 +17,7 @@ async function assertAllowedMerchandise(ids: string[]) {
   if (!ids.length || ids.some((id) => !id)) throw new Error('No purchasable product was selected.');
   const allowed = await allowedVariantIds();
   const blocked = ids.filter((id) => !allowed.has(id));
-  if (blocked.length) throw new Error('One or more products are not currently available through WYX checkout.');
+  if (blocked.length) throw new Error('One or more products are not currently part of the WYX drop.');
 }
 
 async function sanitizeCart(cart: any) {
