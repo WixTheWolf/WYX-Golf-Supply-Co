@@ -125,7 +125,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       if (next?.checkoutUrl) {
         localStorage.setItem(cartStorageKey, next.id);
         setCart(next);
-        trackCartAdd(next, lines.map((line) => line.merandiseId), 'product_group');
+        trackCartAdd(next, lines.map((line) => line.merchandiseId), 'product_group');
         trackEvent('InitiateCheckout', {
           value: Number(next.cost.subtotalAmount.amount),
           currency: next.cost.subtotalAmount.currencyCode,
