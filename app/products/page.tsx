@@ -5,19 +5,13 @@ import { catalogCategories, categoryCount, matchesCategory, saleReadyProducts } 
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
-import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
-
-// A category chip only earns a spot once it has enough depth to feel like a
-// real section — below this, clicking it lands on a near-empty page that reads
-// as broken. Thin-category products still appear under "All" and on their
-// keyword-matched landing pages; they just don't get a promoted filter chip.
-const MIN_CATEGORY_CHIP_COUNT = 3;
+const MIN_CATEGORY_CHIP_COUNT = 2;
 
 export const metadata: Metadata = {
-  title: 'Shop',
-  description: 'Shop practical golf gifts, trip gear, bag upgrades, and accessories — every product passes The Bag Test.',
+  title: 'The Current Drop',
+  description: 'Shop the WYX current drop — a tight edit of modern headcovers, grips, gloves, trip gear, markers and bag upgrades.',
   alternates: { canonical: '/products' }
 };
 
@@ -32,9 +26,9 @@ export default async function Products({ searchParams }: { searchParams: { categ
   return (
     <>
       <section className="page-hero compact">
-        <p className="eyebrow">Shop</p>
-        <h1>Everything in one place.</h1>
-        <p>Practical golf gifts, trip gear, and bag upgrades — filtered by category, sorted by what is worth adding to the bag.</p>
+        <p className="eyebrow">WYX // CURRENT DROP</p>
+        <h1>{catalog.length} PRODUCTS. THAT&apos;S THE POINT.</h1>
+        <p>We cut the endless-scroll catalog. What is left has a clear golf use case, enough personality to deserve a click, and a safe path to checkout.</p>
       </section>
 
       <nav className="filter-row" aria-label="Product categories">
@@ -52,13 +46,14 @@ export default async function Products({ searchParams }: { searchParams: { categ
 
       <section className="section product-section">
         <div className="results-heading">
-          <h2>{category && category !== 'All' ? category : 'All products'}</h2>
-          <p>{products.length} items</p>
+          <div>
+            <p className="eyebrow">LIVE / SHOPIFY SYNCED</p>
+            <h2>{category && category !== 'All' ? category : 'The full edit'}</h2>
+          </div>
+          <p>{products.length} live products</p>
         </div>
         <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {products.map((product) => <ProductCard key={product.id} product={product} />)}
         </div>
       </section>
     </>
