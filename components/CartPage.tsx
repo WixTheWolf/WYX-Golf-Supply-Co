@@ -6,14 +6,14 @@ import { CartPromoSummary } from '@/components/CartPromoSummary';
 import { KitUpsellBanner } from '@/components/KitUpsellBanner';
 import { ShareWyx } from '@/components/ShareWyx';
 import { trackEvent } from '@/lib/analytics';
+import { cartPromoState } from '@/lib/cartPromo';
 import { money } from '@/lib/demo';
 import { useCart } from './CartProvider';
 
-const launchCode = 'WYX10';
-const freeShippingThreshold = 75;
-
 export function CartPage() {
   const { cart, loading, error, update, remove } = useCart();
+  const promo = cartPromoState(cart);
+
   return (
     <section className="page-hero">
       <p className="eyebrow">Your Bag</p>
@@ -22,10 +22,10 @@ export function CartPage() {
       {error && <p className="error">{error}</p>}
       {!cart?.lines.length ? (
         <>
-          <p>Your bag is empty. Start with the Bag Upgrade Kit — five fixes every weekend bag needs.</p>
+          <p>Your bag is empty. Start with the Bag Upgrade Kit or browse the current Short List.</p>
           <div className="actions" style={{ marginTop: '1rem' }}>
             <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Shop The Kit</Link>
-            <Link className="button secondary dark" href="/fathers-day-golf-gifts">Father&apos;s Day Gifts</Link>
+            <Link className="button secondary dark" href="/products">Shop The Short List</Link>
           </div>
         </>
       ) : (
@@ -48,7 +48,7 @@ export function CartPage() {
           ))}
           <KitUpsellBanner subtotal={Number(cart.cost.subtotalAmount.amount)} />
           <div className="cart-summary">
-            <CartProgress amount={Number(cart.cost.subtotalAmount.amount)} currency={cart.cost.subtotalAmount.currencyCode} />
+            <p className="promo-note">Shipping options, rates, and delivery estimates are confirmed before payment.</p>
             <p><span>Subtotal</span><strong>{money(cart.cost.subtotalAmount)}</strong></p>
             <button className="button primary" disabled={loading || !cart.checkoutUrl} onClick={() => {
               trackEvent('InitiateCheckout', {
@@ -58,22 +58,11 @@ export function CartPage() {
                 content_ids: cart.lines.map((line) => line.merchandise.id)
               });
               window.location.href = cart.checkoutUrl;
-            }}>Checkout — WYX10 Applied</button>
+            }}>{promo.applied ? 'Checkout — WYX10 Applied' : 'Secure Checkout'}</button>
           </div>
           <ShareWyx label="Almost done? Share WYX while you checkout" />
         </div>
       )}
     </section>
-  );
-}
-
-function CartProgress({ amount, currency }: { amount: number; currency: string }) {
-  const remaining = Math.max(0, freeShippingThreshold - amount);
-  const percent = Math.min(100, Math.round((amount / freeShippingThreshold) * 100));
-  return (
-    <div className="cart-progress" aria-label="Free shipping progress">
-      <div><span style={{ width: `${percent}%` }} /></div>
-      <p>{remaining > 0 ? `${new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(remaining)} away from the $75 free-shipping goal.` : 'Free-shipping goal reached. Shipping options confirm at checkout.'}</p>
-    </div>
   );
 }
