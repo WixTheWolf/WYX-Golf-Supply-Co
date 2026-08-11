@@ -1,8 +1,10 @@
 /**
- * Remove supplier-review tag from DSers-linked products ready to sell.
+ * Remove supplier-review only from products recorded as actually mapped in DSers.
  *
  * Usage:
  *   npm run clear:dsers-review
+ *
+ * Important: do not hard-code "ready" handles here. Mapping in DSers is the gate.
  */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -15,24 +17,18 @@ const UPDATE = `mutation($id: ID!, $tags: [String!]!) {
   productUpdate(product: { id: $id, tags: $tags }) { userErrors { message } }
 }`;
 
-const READY_HANDLES = [
-  'bamboo-performance-golf-tees-50-pack',
-  'tri-fold-microfiber-golf-towel',
-  'groove-sharpener-cleaner-tool',
-  'magnetic-golf-club-brush-cleaner',
-  'golf-hat-clip-ball-marker-set-3-markers',
-  'stroke-counter-wristband',
-  'premium-cabretta-leather-golf-glove',
-];
-
 async function main() {
   const conn = JSON.parse(readFileSync(join(process.cwd(), 'data', 'dsers-spocket-connection.json'), 'utf8'));
   const linked: string[] = conn.dsersLinkedProducts ?? [];
-  const handles = Array.from(new Set([...READY_HANDLES, ...linked]));
 
-  console.log(`\n🏷  Clearing supplier-review on ${handles.length} DSers-ready SKUs\n`);
+  console.log(`\n🏷  Clearing supplier-review on ${linked.length} products recorded as DSers-mapped\n`);
 
-  for (const handle of handles) {
+  if (!linked.length) {
+    console.log('No DSers mappings recorded. Nothing changed.\n');
+    return;
+  }
+
+  for (const handle of linked) {
     const found = await shopifyAdminFetch<{ products: { nodes: Array<{ id: string; handle: string; tags: string[] }> } }>(FIND, { q: `handle:${handle}` });
     const product = found.products.nodes[0];
     if (!product) {
@@ -43,16 +39,21 @@ async function main() {
       console.log(`  ✓  ${handle}: already clear`);
       continue;
     }
-    const tags = product.tags.filter((t) => t !== 'supplier-review');
-    await shopifyAdminFetch(UPDATE, { id: product.id, tags });
+    const tags = product.tags.filter((tag) => tag !== 'supplier-review');
+    const result = await shopifyAdminFetch<any>(UPDATE, { id: product.id, tags });
+    const errors = result?.productUpdate?.userErrors || [];
+    if (errors.length) {
+      console.log(`  ❌ ${handle}: ${errors.map((error: any) => error.message).join(', ')}`);
+      continue;
+    }
     console.log(`  ✅ ${handle}: supplier-review removed`);
-    await new Promise((r) => setTimeout(r, 300));
+    await new Promise((resolve) => setTimeout(resolve, 300));
   }
 
   console.log('\nDone. Re-run: npm run shopify:check-storefront\n');
 }
 
-main().catch((e) => {
-  console.error(e);
+main().catch((error) => {
+  console.error(error);
   process.exit(1);
 });
