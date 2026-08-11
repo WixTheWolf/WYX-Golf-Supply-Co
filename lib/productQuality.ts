@@ -58,19 +58,22 @@ export function qualityReason(product: Product) {
   const price = Number(productPrice(product).amount);
   const category = categoryFor(product);
   const title = product.title.toLowerCase();
-  if (isPremiumGolfBag(product)) return 'Only here if it feels like a real full-bag upgrade.';
-  if (/towel|brush|groove|clean/i.test(title)) return 'Solves the dirty-club problem every golfer has.';
-  if (/marker|divot|tee/i.test(title)) return 'Small, useful, giftable, and easy to keep in the bag.';
-  if (/glove|grip/i.test(title)) return 'A practical feel upgrade golfers notice right away.';
-  if (/ball|bundle/i.test(title)) return 'Easy restock for the next round, trip, or prize table.';
-  if (/hat|cap/i.test(title) || category === 'Headwear') return 'Easy golf style for the course, range, and weekend rotation.';
-  if (/shirt|polo|hoodie|belt/i.test(title) || category === 'Apparel') return 'Wearable golf gear that works as a gift or everyday round upgrade.';
-  if (/rangefinder|gps|golf tech/i.test(title) || category === 'Golf Tech') return 'Useful golf tech with a clear round-to-round job.';
-  if (/training|trainer|putting|alignment|swing|tempo|chipping/i.test(title) || category === 'Training Aids') return 'Compact practice gear for golfers trying to score better.';
-  if (/headcover|putter cover|game/i.test(title)) return 'Personality-driven gift with enough golf utility to justify the cart.';
-  if (price <= 35 && dailyUseCategories.includes(category)) return 'Low-friction add-on golfers actually use.';
-  if (price <= 60) return 'Giftable under-$60 golf pick with a clear use case.';
-  return 'Useful golf gear selected for real rounds, not filler.';
+  if (isPremiumGolfBag(product)) return 'A larger bag upgrade for golfers ready to replace or reorganize the full setup.';
+  if (/towel/.test(title)) return 'A practical bag staple for clubs, golf balls, grips, and wet rounds.';
+  if (/brush|groove|clean/i.test(title)) return 'Compact club-care gear for keeping equipment cleaner between shots and rounds.';
+  if (/marker|divot|tee/i.test(title)) return 'Small, useful golf gear that is easy to carry, restock, or give.';
+  if (/glove/.test(title)) return 'A practical golf essential; confirm hand and size before ordering.';
+  if (/grip/.test(title)) return 'A straightforward grip-related upgrade; check compatibility and product options first.';
+  if (/ball|bundle/i.test(title)) return 'A simple restock or gift option for the next round, trip, or prize table.';
+  if (/hat|cap/i.test(title) || category === 'Headwear') return 'Course-ready headwear that can stay in the weekend rotation off the course too.';
+  if (/shirt|polo|hoodie|belt/i.test(title) || category === 'Apparel') return 'Golf-oriented apparel for rounds, travel days, and casual wear.';
+  if (/rangefinder|gps|golf tech/i.test(title) || category === 'Golf Tech') return 'Golf technology with a clear on-course or practice use case.';
+  if (/training|trainer|putting|alignment|swing|tempo|chipping/i.test(title) || category === 'Training Aids') return 'A practice tool for giving a range, putting, or at-home session a specific focus.';
+  if (/headcover|putter cover/i.test(title)) return 'A bag-personality upgrade with a simple job: protect the club and make the setup yours.';
+  if (/game/i.test(title)) return 'A golf-group add for trips, scrambles, and the hours around the round.';
+  if (price <= 35 && dailyUseCategories.includes(category)) return 'An accessible add-on with a clear place in a normal golf setup.';
+  if (price <= 60) return 'A giftable golf pick under $60 with a clear use case.';
+  return 'Useful golf gear selected for real rounds, trips, and better-organized bags.';
 }
 
 export function sortByQuality<T extends Product>(products: T[]) {
