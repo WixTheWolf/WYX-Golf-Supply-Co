@@ -11,7 +11,7 @@ import { cleanText } from '@/lib/text';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
+  title: "The Weekend Golfer's Bag Upgrade Kit",
   description: 'Five practical golf bag upgrades in one cart: towel, marker, grip refresh, tee restock, and accessory caddie. Live Shopify availability and editable checkout.',
   alternates: { canonical: '/weekend-golfer-bag-upgrade-kit' },
   openGraph: {
