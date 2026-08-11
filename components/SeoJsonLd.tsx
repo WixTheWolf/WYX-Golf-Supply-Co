@@ -4,6 +4,9 @@ const storeName = 'WYX Golf Supply Co.';
 const description = 'A curated online golf shop for useful golf gifts, trip gear, hats, apparel, and bag upgrades for weekend golfers.';
 
 export function SeoJsonLd() {
+  const logo = `${siteUrl}/icon.svg`;
+  const image = `${siteUrl}/images/boys-weekend-hero.png`;
+
   const data = [
     {
       '@context': 'https://schema.org',
@@ -11,8 +14,8 @@ export function SeoJsonLd() {
       '@id': `${siteUrl}/#store`,
       name: storeName,
       url: siteUrl,
-      logo: `${siteUrl}/images/hero-coastal-fairway.png`,
-      image: `${siteUrl}/images/hero-coastal-fairway.png`,
+      logo,
+      image,
       description,
       email: 'support@wyxgolfsupply.com',
       priceRange: '$$'
@@ -23,9 +26,8 @@ export function SeoJsonLd() {
       '@id': `${siteUrl}/#organization`,
       name: storeName,
       url: siteUrl,
-      logo: `${siteUrl}/images/hero-coastal-fairway.png`,
-      description,
-      sameAs: []
+      logo,
+      description
     },
     {
       '@context': 'https://schema.org',
@@ -33,12 +35,7 @@ export function SeoJsonLd() {
       '@id': `${siteUrl}/#website`,
       name: storeName,
       url: siteUrl,
-      publisher: { '@id': `${siteUrl}/#organization` },
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: `${siteUrl}/products?category={search_term_string}`,
-        'query-input': 'required name=search_term_string'
-      }
+      publisher: { '@id': `${siteUrl}/#organization` }
     },
     {
       '@context': 'https://schema.org',
