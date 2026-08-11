@@ -12,7 +12,7 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
-  description: 'Five practical golf bag upgrades in one cart: towel, marker, grip refresh, club-care tool, and accessory caddie. Live Shopify availability and editable checkout.',
+  description: 'Five practical golf bag upgrades in one cart: towel, marker, grip refresh, tee restock, and accessory caddie. Live Shopify availability and editable checkout.',
   alternates: { canonical: '/weekend-golfer-bag-upgrade-kit' },
   openGraph: {
     title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
@@ -25,7 +25,7 @@ const KIT_HANDLES = [
   'tri-fold-microfiber-golf-towel',
   'three-rail-ball-marker',
   'pulse-golf-overgrip-tape',
-  'groove-sharpener-cleaner-tool',
+  'bamboo-performance-golf-tees-50-pack',
   'glove-accessory-caddie-gray'
 ];
 
@@ -33,14 +33,14 @@ const itemNotes: Record<string, string> = {
   'tri-fold-microfiber-golf-towel': 'A bag-ready towel for club faces, golf balls, and grips during the round.',
   'three-rail-ball-marker': 'A simple green-side essential that is easy to carry and easy to gift.',
   'pulse-golf-overgrip-tape': 'A practical option for golfers who like refreshing grip feel without replacing the entire setup.',
-  'groove-sharpener-cleaner-tool': 'A compact club-care tool for clearing debris and maintaining groove edges between deeper servicing.',
+  'bamboo-performance-golf-tees-50-pack': 'A straightforward tee restock so the everyday bag starts the next round ready.',
   'glove-accessory-caddie-gray': 'A dedicated place for gloves and the small items that otherwise disappear into a bag pocket.'
 };
 
 const whoItsFor = [
   {
     title: 'Weekend Golfers',
-    body: 'For the golfer whose bag works fine but has a few obvious weak spots: worn accessories, loose small items, and club-care gear that never made it into the setup.'
+    body: 'For the golfer whose bag works fine but has a few obvious weak spots: worn accessories, loose small items, and basics that need a refresh.'
   },
   {
     title: 'Gift Buyers',
@@ -158,7 +158,7 @@ export default async function BagUpgradeKitPage() {
       <section className="page-hero compact">
         <p className="eyebrow">Start Here</p>
         <h1>The Weekend Golfer&apos;s Bag Upgrade Kit</h1>
-        <p>Five small upgrades with five obvious jobs: clean the gear, mark the ball, refresh grip feel, maintain the clubs, and organize the loose stuff. One cart, no mystery bundle.</p>
+        <p>Five small upgrades with five obvious jobs: clean the gear, mark the ball, refresh grip feel, restock the tees, and organize the loose stuff. One cart, no mystery bundle.</p>
         {products.length > 0 && (
           <div className="lp-price-block" style={{ marginTop: '1rem' }}>
             <span className="lp-price-sale">{formattedSale}</span>
