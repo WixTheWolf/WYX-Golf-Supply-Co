@@ -8,7 +8,6 @@ import { ProductCarousel } from '@/components/ProductCarousel';
 import { TrustBar } from '@/components/TrustBar';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { imageMap } from '@/lib/demo';
-import { fathersDayDaysLeft, isFathersDayUrgent, isFathersDayWindow } from '@/lib/fathersDay';
 import { productPrice } from '@/lib/feed';
 import { createProductAllocator } from '@/lib/homeMerchandising';
 import { coreMerchProducts, firstBuyProducts, giftableProducts, isHomepageProduct } from '@/lib/merchandisingFilters';
@@ -19,11 +18,11 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Weekend Golf Gifts & Bag Upgrades | WYX Golf Supply Co.',
-  description: 'Practical golf gifts for boys weekends, dads, and trip groups. The Bag Upgrade Kit ships in one order. WYX10 saves 10% on your first cart.',
+  description: 'Practical golf gear for trips, weekend rounds, gifts, and better bags. Start with the Bag Upgrade Kit and save 10% on your first order with WYX10.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Weekend Golf Gifts & Bag Upgrades | WYX Golf Supply Co.',
-    description: 'Golf gear that stays in the bag — not the drawer. Bag Upgrade Kit + curated gifts. WYX10 for 10% off.',
+    description: 'Golf gear that stays in the bag — not the drawer. Curated trip gear, gifts, and the Bag Upgrade Kit. WYX10 saves 10%.',
     url: 'https://wyxgolfsupply.com',
     images: [{ url: '/images/boys-weekend-hero.png', width: 1536, height: 1024, alt: 'Weekend golfers on course' }],
   },
@@ -75,38 +74,26 @@ export default async function Home() {
     .filter((product) => !shortListHandles.has(product.handle))
     .slice(0, 8);
 
-  const fathersDay = isFathersDayWindow();
-  const urgent = isFathersDayUrgent();
-  const daysLeft = fathersDayDaysLeft();
-
   const situations = [
-    { title: 'Father\'s Day', copy: `${daysLeft} days left`, href: '/fathers-day-golf-gifts' },
+    { title: 'Golf Trip Gear', copy: 'Pack for the boys weekend', href: '/golf-trip-gear' },
     { title: 'Bag Upgrade Kit', copy: 'Five fixes. One order.', href: '/weekend-golfer-bag-upgrade-kit?discount=WYX10' },
     { title: 'Gifts Under $60', copy: 'Easy yes gifts', href: '/golf-gifts-under-60' },
-    { title: 'Trip Gear', copy: 'Pack for the boys weekend', href: '/golf-trip-gear' },
     { title: 'Scramble Prizes', copy: 'Prizes they keep', href: '/scramble-prizes' },
-    { title: 'Shop All', copy: '93 Bag Test picks', href: '/products' },
+    { title: 'The Bag Test', copy: 'Only gear worth keeping', href: '/the-bag-test' },
+    { title: 'Shop All', copy: `${homepageCatalog.length} curated picks`, href: '/products' },
   ];
 
   return (
     <>
-      {fathersDay && (
-        <div className="urgency-strip" role="banner">
-          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} day{daysLeft !== 1 ? 's' : ''} left.
-          {urgent ? ' Order the Bag Upgrade Kit now.' : ''}
-          {' '}<Link href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Shop kit →</Link>
-        </div>
-      )}
-
       <section className="hero launch-hero cinematic-hero">
         <Image src={imageMap.hero} alt="Weekend golfers walking the fairway at golden hour" fill priority sizes="100vw" />
         <div className="hero-copy launch-hero-copy">
           <p className="eyebrow">Built for the weekend</p>
-          <h1>Golf Gear For Boys Weekends &amp; Real Rounds.</h1>
-          <p>Curated bag upgrades and gifts that pass one test: would you keep it after round one? Start with the Bag Upgrade Kit — WYX10 saves 10%.</p>
+          <h1>Golf Gear For Trips, Real Rounds &amp; Better Bags.</h1>
+          <p>Useful golf gear without the junk-drawer filler. Start with the Bag Upgrade Kit, then build out the trip, gift, or bag from there. WYX10 saves 10% on your first order.</p>
           <div className="actions">
             <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Shop The Bag Upgrade Kit</Link>
-            <Link className="button secondary" href="/golf-gifts-under-60">Gifts Under $60</Link>
+            <Link className="button secondary" href="/golf-trip-gear">Shop Trip Gear</Link>
           </div>
           <div className="hero-proof compact-proof">
             <span>Secure Shopify checkout</span>
@@ -141,9 +128,9 @@ export default async function Home() {
       <section className="dark-section reveal kit-spotlight" aria-labelledby="kit-offer-heading">
         <div className="kit-spotlight-grid">
           <div>
-            <p className="eyebrow">Hero offer</p>
+            <p className="eyebrow">Start here</p>
             <h2 id="kit-offer-heading">The Bag Upgrade Kit.</h2>
-            <p>Towel, marker, grip refresh, groove tool, accessory caddie — five annoyances fixed in one cart. Best Father&apos;s Day pick under $80 with WYX10.</p>
+            <p>Towel, marker, grip refresh, groove tool, accessory caddie — five small annoyances fixed in one cart. Use WYX10 for 10% off your first order.</p>
             <div className="actions">
               <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Get The Kit — 10% Off</Link>
             </div>
@@ -210,7 +197,7 @@ export default async function Home() {
           <p className="eyebrow">Trust</p>
           <h2>New Shop. Real Standards.</h2>
         </div>
-        <p className="section-lead">No fake reviews — we publish honest Judge.me feedback after first orders. Every SKU passes The Bag Test. Secure Shopify checkout, shipping shown before you pay.</p>
+        <p className="section-lead">No fake reviews. Every SKU has to pass The Bag Test: useful, giftable, or good enough to earn a permanent spot in the bag. Secure Shopify checkout, shipping shown before you pay.</p>
         <JudgeMeStoreBadge />
       </section>
 
@@ -225,7 +212,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <EmailCapture source="home" campaign="home_launch_list" title="Next drop before your foursome." body="Launch deals, gift guides, and Bag Test winners — one email, no spam." />
+      <EmailCapture source="home" campaign="home_evergreen_list" title="Next drop before your foursome." body="Trip gear, gift picks, and Bag Test winners — one useful email at a time." />
     </>
   );
 }
