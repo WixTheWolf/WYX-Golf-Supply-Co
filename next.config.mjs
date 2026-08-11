@@ -7,6 +7,13 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'ae-pic-a1.aliexpress-media.com' }
     ]
+  },
+  async redirects() {
+    return [
+      { source: '/fathers-day-golf-gifts', destination: '/golf-gifts-for-dad', permanent: true },
+      { source: '/last-minute-fathers-day-golf-gifts', destination: '/golf-gifts-for-dad', permanent: true },
+      { source: '/lp/fathers-day', destination: '/golf-gifts-for-dad', permanent: true }
+    ];
   }
 };
 export default nextConfig;
