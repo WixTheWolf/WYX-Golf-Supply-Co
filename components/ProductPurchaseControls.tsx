@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { useCart } from './CartProvider';
 import type { ProductVariant } from '@/types/shopify';
@@ -35,19 +34,37 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
 
   return (
     <div className={compact ? 'variant-purchase compact' : 'variant-purchase'}>
-      {requiresChoice && <fieldset className="variant-selector">
-        <legend>Choose option</legend>
-        <div className="variant-option-grid">
-          {availableVariants.map((variant) => <label className={selectedVariantId === variant.id ? 'selected' : ''} key={variant.id}>
-            <input type="radio" name={`variant-${productTitle}`} value={variant.id} checked={selectedVariantId === variant.id} onChange={() => setSelectedVariantId(variant.id)} />
-            {variant.image?.url && <Image src={variant.image.url} alt={variant.image.altText || variantLabel(variant)} width={36} height={36} loading="lazy" />}
-            <span>{variantLabel(variant)}</span>
-          </label>)}
-        </div>
-      </fieldset>}
-      {selectedVariant?.image?.url && !compact && <div className="selected-variant-image"><Image src={selectedVariant.image.url} alt={selectedVariant.image.altText || variantLabel(selectedVariant)} width={96} height={96} loading="lazy" /></div>}
+      {requiresChoice && (
+        <fieldset className="variant-selector">
+          <legend>Choose option</legend>
+          <select
+            aria-label={`Choose an option for ${productTitle}`}
+            value={selectedVariantId}
+            onChange={(event) => setSelectedVariantId(event.target.value)}
+            style={{
+              width: '100%',
+              minHeight: compact ? 42 : 50,
+              padding: compact ? '0.55rem 0.7rem' : '0.75rem 0.9rem',
+              border: '1px solid rgba(230,255,225,.18)',
+              borderRadius: 3,
+              background: '#0c110d',
+              color: '#f2f6ef',
+              font: 'inherit',
+              fontSize: compact ? '.72rem' : '.86rem',
+              fontWeight: 700,
+              letterSpacing: '.03em',
+              cursor: 'pointer'
+            }}
+          >
+            <option value="">Select an option</option>
+            {availableVariants.map((variant) => (
+              <option value={variant.id} key={variant.id}>{variantLabel(variant)}</option>
+            ))}
+          </select>
+        </fieldset>
+      )}
       {selectedVariant && <p className="selected-variant-note">Selected: <strong>{variantLabel(selectedVariant)}</strong></p>}
-      {!selectedVariant && requiresChoice && <p className="selected-variant-note">Choose a color or option before checkout.</p>}
+      {!selectedVariant && requiresChoice && !compact && <p className="selected-variant-note">Choose an option before checkout.</p>}
       <button className="button primary full" disabled={disabled} onClick={addSelected}>{loading ? 'Adding...' : disabled ? 'Choose Option' : 'Add To Bag'}</button>
       <button className="button secondary dark full" disabled={disabled} onClick={buySelected}>{loading ? 'Opening Checkout...' : disabled ? 'Choose Option' : 'Buy Now'}</button>
       {error && <p className="error">{error}</p>}
