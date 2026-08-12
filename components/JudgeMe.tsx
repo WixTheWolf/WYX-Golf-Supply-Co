@@ -22,14 +22,7 @@ type JudgeMeReviewsProps = {
 };
 
 export function JudgeMeProductReviews({ productId, productTitle }: JudgeMeReviewsProps) {
-  if (!publicToken) {
-    return (
-      <div className="judge-me-placeholder conversion-panel">
-        <strong>Reviews coming soon</strong>
-        <p>We&apos;re a new shop — honest reviews publish after our first customer orders. Every product passes The Bag Test before it lists.</p>
-      </div>
-    );
-  }
+  if (!publicToken) return null;
   return (
     <div
       className="jdgm-widget jdgm-review-widget"
