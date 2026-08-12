@@ -9,7 +9,9 @@ import type { Product } from '@/types/shopify';
 
 export function ProductCard({ product }: { product: Product }) {
   const image = product.featuredImage;
-  const variant = product.variants.find((item) => item.availableForSale);
+  const availableVariants = product.variants.filter((item) => item.availableForSale && !item.id.startsWith('demo-'));
+  const variant = availableVariants[0];
+  const requiresChoice = availableVariants.length > 1;
   const title = cleanText(product.title);
   const alt = cleanText(image?.altText) || title;
   return (
@@ -25,7 +27,11 @@ export function ProductCard({ product }: { product: Product }) {
           <span className="price">{money(product.priceRange.minVariantPrice)}</span>
           <Link className="text-link" href={`/products/${product.handle}`}>View Details</Link>
         </div>
-        <AddToCartButton variantId={variant?.id} />
+        {requiresChoice ? (
+          <Link className="button primary full" href={`/products/${product.handle}`}>Choose Options</Link>
+        ) : (
+          <AddToCartButton variantId={variant?.id} />
+        )}
       </div>
     </article>
   );
