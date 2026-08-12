@@ -17,6 +17,7 @@ function run(step: string, command: string): StepResult {
       cwd: process.cwd(),
       encoding: 'utf8',
       stdio: ['pipe', 'pipe', 'pipe'],
+      timeout: 120_000,
       env: { ...process.env, FORCE_COLOR: '0' },
     });
     return { step, ok: true, output: output.slice(-2000) };
@@ -34,21 +35,18 @@ async function main() {
   const started = new Date().toISOString();
   console.log('\nWYX SYSTEM CHECK / unattended ops\n');
 
+  // These commands intentionally use the runtime process environment directly.
+  // Vercel injects production secrets into process.env; .env.local is a local-only convenience.
   const steps: Array<[string, string]> = [
-    // Safe self-heal: WYX10 is a known first-order promotion with a fixed rule.
-    ['WYX10 self-heal', 'npm run ensure:wyx10'],
-    ['WYX10 verification', 'npm run verify:wyx10'],
-
-    // Read-only / audit-oriented checks. These can fail loudly without changing supplier state.
-    ['Shopify Admin catalog check', 'npm run shopify:check-admin'],
-    ['Shopify Storefront check', 'npm run shopify:check-storefront'],
-    ['DSers mapping status', 'npm run dsers:status'],
-    ['Product image audit', 'npm run audit:product-images'],
-    ['Pipeline status snapshot', 'npm run pipeline:status'],
-    ['Business system snapshot', 'npm run empire:status'],
-
-    // Generates drafts/data only; does not publish marketing without review.
-    ['Daily content queue', 'npm run content:daily'],
+    ['WYX10 self-heal', 'npx tsx scripts/ensure-wyx10-discount.ts'],
+    ['WYX10 verification', 'npx tsx scripts/verify-wyx10-discount.ts'],
+    ['Shopify Admin catalog check', 'npx tsx scripts/check-admin-products.ts'],
+    ['Shopify Storefront check', 'npx tsx scripts/check-storefront-products.ts'],
+    ['DSers mapping status', 'npx tsx scripts/dsers-spocket-status.ts'],
+    ['Product image audit', 'npx tsx scripts/audit-product-images.ts'],
+    ['Pipeline status snapshot', 'npx tsx scripts/pipeline-status.ts'],
+    ['Business system snapshot', 'npx tsx scripts/empire-status.ts'],
+    ['Daily content queue', 'npx tsx scripts/generate-daily-content.ts'],
   ];
 
   const results: StepResult[] = [];
@@ -82,18 +80,25 @@ async function main() {
     ],
   };
 
-  const dataDir = join(process.cwd(), 'data');
-  mkdirSync(dataDir, { recursive: true });
-  writeFileSync(join(dataDir, 'overnight-report.json'), JSON.stringify(report, null, 2));
-  writeFileSync(join(dataDir, 'morning-briefing.json'), JSON.stringify({
+  const briefing = {
     generatedAt: report.completedAt,
     status: report.health,
     summary: `WYX system check: ${passed}/${results.length} checks passed.`,
     storefront: report.links.storefront,
     failedSteps,
     protectedManualActions: report.protectedManualActions,
-  }, null, 2));
+  };
 
+  // Local runs keep the convenient files. Vercel's deployed filesystem should be treated as immutable.
+  if (!process.env.VERCEL) {
+    const dataDir = join(process.cwd(), 'data');
+    mkdirSync(dataDir, { recursive: true });
+    writeFileSync(join(dataDir, 'overnight-report.json'), JSON.stringify(report, null, 2));
+    writeFileSync(join(dataDir, 'morning-briefing.json'), JSON.stringify(briefing, null, 2));
+  }
+
+  // The cron route reads this marker from stdout, so production needs no writable report file.
+  console.log(`WYX_BRIEFING_JSON=${JSON.stringify(briefing)}`);
   console.log(`\nWYX system check complete: ${passed}/${results.length}`);
   if (failedSteps.length) console.log(`Attention: ${failedSteps.join(', ')}`);
 
