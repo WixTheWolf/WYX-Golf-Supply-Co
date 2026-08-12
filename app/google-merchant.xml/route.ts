@@ -12,7 +12,11 @@ export const runtime = 'nodejs';
 const SITE = 'https://wyxgolfsupply.com';
 
 function variantId(variant: ProductVariant) {
-  return variant.sku?.trim() || variant.id.replace('gid://shopify/ProductVariant/', 'wyx-');
+  return variant.sku?.trim() || variant.id.replace('gid://shopify/ProductVariant/', 'wyx-variant-');
+}
+
+function productGroupId(product: Product) {
+  return product.id.replace('gid://shopify/Product/', 'wyx-product-').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 50);
 }
 
 function option(variant: ProductVariant, names: string[]) {
@@ -34,9 +38,8 @@ function itemXml(product: Product, variant: ProductVariant) {
   const size = option(variant, ['size', 'shoe size', 'waist']);
   const color = option(variant, ['color', 'colour']);
   const gtin = variant.barcode?.trim() || '';
-  const mpn = variant.sku?.trim() || '';
   const category = categoryFor(product);
-  const group = product.variants.filter((item) => !item.id.startsWith('demo-')).length > 1 ? product.handle : '';
+  const hasVariants = product.variants.filter((item) => !item.id.startsWith('demo-')).length > 1;
 
   return `
     <item>
@@ -51,11 +54,10 @@ function itemXml(product: Product, variant: ProductVariant) {
       <g:brand>${escapeXml(supplierName(product))}</g:brand>
       <g:google_product_category>Sporting Goods &gt; Outdoor Recreation &gt; Golf</g:google_product_category>
       <g:product_type>${escapeXml(category)}</g:product_type>
-      ${group ? `<g:item_group_id>${escapeXml(group)}</g:item_group_id>` : ''}
+      ${hasVariants ? `<g:item_group_id>${escapeXml(productGroupId(product))}</g:item_group_id>` : ''}
       ${size ? `<g:size>${escapeXml(size)}</g:size>` : ''}
       ${color ? `<g:color>${escapeXml(color)}</g:color>` : ''}
       ${gtin ? `<g:gtin>${escapeXml(gtin)}</g:gtin>` : ''}
-      ${mpn ? `<g:mpn>${escapeXml(mpn)}</g:mpn>` : ''}
     </item>`;
 }
 
