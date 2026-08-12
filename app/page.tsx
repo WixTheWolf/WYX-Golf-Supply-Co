@@ -3,190 +3,192 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
 import { EmailCapture } from '@/components/EmailCapture';
-import { apparelLeadProducts } from '@/lib/apparelEdit';
 import { availableProducts, categoryFor } from '@/lib/catalog';
-import { coreMerchProducts } from '@/lib/merchandisingFilters';
+import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
+import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
 
-const photography = {
-  hero: 'https://images.unsplash.com/photo-1684599995533-3ffecba8fb81?auto=format&fit=crop&w=2600&q=90',
-  walking: 'https://images.unsplash.com/photo-1693163532134-5ea6c80b58a3?auto=format&fit=crop&w=2200&q=88',
-  cart: 'https://images.unsplash.com/photo-1713729372679-7feb052d74a6?auto=format&fit=crop&w=2200&q=88'
-};
-
 export const metadata: Metadata = {
-  title: 'Modern Golf Apparel & Gear',
-  description: 'WYX Golf Supply Co. is a modern golf apparel and gear edit for the course, the trip, and everything after the round.',
+  title: 'The Coolest Golf Gear, Apparel & Accessories',
+  description: 'WYX Golf Supply Co. is an opinionated golf shop for standout apparel, footwear, tech, bags, trip gear and accessories.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'WYX Golf Supply Co. | Golf, Better Dressed.',
-    description: 'A smaller, sharper edit of modern golf apparel, headwear, gloves, headcovers and trip gear.',
-    url: 'https://wyxgolfsupply.com',
-    images: [{ url: photography.hero }]
+    title: 'WYX Golf Supply Co. | The Good Stuff in Golf.',
+    description: 'A sharp multi-brand edit of golf apparel, tech, bags, accessories and trip gear.',
+    url: 'https://wyxgolfsupply.com'
   }
 };
+
+function find(products: Product[], handle: string) {
+  return products.find((product) => product.handle === handle);
+}
+
+function imageFor(product: Product | undefined, index = 0) {
+  return product?.images[index]?.url || product?.featuredImage?.url || null;
+}
 
 export default async function Home() {
   const available = availableProducts(await getProducts());
   const core = sortByQuality(coreMerchProducts(available));
-  const apparel = apparelLeadProducts(available, 6);
-  const pimento = available.find((product) => product.handle === 'pimento-waffle');
-  const helloFriends = available.find((product) => product.handle === 'hello-friends-t-shirt');
-  const apparelCampaignImage = pimento?.images[1]?.url || pimento?.featuredImage?.url || photography.walking;
-  const apparelDetailImage = helloFriends?.images[1]?.url || helloFriends?.featuredImage?.url || apparelCampaignImage;
-  const accessories = core
-    .filter((product) => !['Apparel', 'Headwear', 'Gloves'].includes(categoryFor(product)))
-    .slice(0, 6);
-  const lookFinishers = core
-    .filter((product) => ['Headwear', 'Gloves'].includes(categoryFor(product)))
-    .slice(0, 4);
+  const heroProducts = firstBuyProducts(core).slice(0, 12);
+  const pimento = find(available, 'pimento-waffle');
+  const hat = find(available, 'augusta-bear-hat');
+  const headcover = find(available, 'topographic-carolina-blue-driver-headcover') || find(available, 'evil-ape');
+  const game = find(available, 'golf-or-die-game-set');
+  const towel = find(available, 'blue-ridge-golf-co-golf-towels');
+  const glove = find(available, 'dartee-golf-glove');
 
-  const stories = [
+  const heroMain = imageFor(pimento, 1) || imageFor(pimento, 0);
+  const heroAlt = imageFor(hat, 0) || imageFor(headcover, 0);
+  const heroThird = imageFor(headcover, 0) || imageFor(game, 0);
+
+  const apparel = core.filter((product) => categoryFor(product) === 'Apparel').slice(0, 6);
+  const bagAndAccessories = core.filter((product) => ['Accessories', 'Towels', 'Grips', 'Gloves', 'Headwear'].includes(categoryFor(product))).slice(0, 8);
+
+  const departments = [
     {
-      label: 'ON COURSE',
-      title: 'The first tee is still a first impression.',
-      copy: 'Start with the garment, not the accessory. Texture, fit and color set the whole look.',
+      number: '01',
+      label: 'APPAREL',
+      title: 'Polos, layers, bottoms & the stuff you wear after.',
       href: '/apparel',
-      action: 'Shop apparel',
-      image: apparelCampaignImage,
-      alt: 'WYX golf apparel editorial product photography'
+      image: imageFor(pimento, 0),
+      status: `${apparel.length || 'NEW'} LIVE PICKS`
     },
     {
-      label: 'OFF COURSE',
-      title: 'Golf style should survive the 19th hole.',
-      copy: 'Tees, layers and finishing pieces for the hours when the scorecard is already in the trash.',
-      href: '/apparel',
-      action: 'Shop off-course style',
-      image: apparelDetailImage,
-      alt: 'WYX golf lifestyle apparel photography'
+      number: '02',
+      label: 'FOOTWEAR',
+      title: 'Golf shoes that do not look like orthopedic equipment.',
+      href: '/products',
+      image: heroAlt,
+      status: 'SOURCING NOW'
     },
     {
-      label: 'THE TRIP',
-      title: 'Pack fewer things. Like every one of them.',
-      copy: 'Golf-weekend gear for airports, rental carts, long days and the group photo when the round is over.',
+      number: '03',
+      label: 'TECH',
+      title: 'Rangefinders, GPS, launch monitors & smart golf toys.',
+      href: '/golf-tech',
+      image: imageFor(game, 0) || heroThird,
+      status: 'SOURCING NOW'
+    },
+    {
+      number: '04',
+      label: 'BAGS + TRIP',
+      title: 'The gear that makes the airport, cart and trunk better.',
       href: '/golf-trip-gear',
-      action: 'Pack the trip',
-      image: photography.cart,
-      alt: 'Golf cart and bag beside the course'
+      image: imageFor(towel, 0) || heroThird,
+      status: 'BUILDING THE EDIT'
+    },
+    {
+      number: '05',
+      label: 'ACCESSORIES',
+      title: 'The small things people ask about when they see your bag.',
+      href: '/products?category=Accessories',
+      image: heroThird,
+      status: `${bagAndAccessories.length} LIVE PICKS`
+    },
+    {
+      number: '06',
+      label: 'GIFTS',
+      title: 'Golf gifts that are not another sleeve of logo balls.',
+      href: '/golf-gifts',
+      image: imageFor(glove, 0) || imageFor(hat, 0),
+      status: 'WYX-APPROVED'
     }
   ];
 
   return (
-    <div className="fashion-home">
-      <section className="fashion-hero fashion-home-hero">
-        <Image src={photography.hero} alt="Golf bag and cart on a golf course at sunset" fill priority sizes="100vw" />
-        <span className="fashion-hero-overlay" />
-        <div className="fashion-hero-copy">
-          <p className="eyebrow">WYX GOLF SUPPLY CO.</p>
-          <h1>PLAY WELL.<br />DRESS BETTER.</h1>
-          <p>Modern golf apparel and gear for the course, the trip, and the rest of the day. Smaller drops. Better pieces. No pro-shop costume.</p>
+    <div className="wyx-storefront">
+      <section className="wyx-mega-hero">
+        <div className="wyx-mega-copy">
+          <p className="eyebrow">WYX GOLF SUPPLY CO. / CURATED FOR GOLFERS</p>
+          <h1>THE GOOD STUFF.<br />ALL OF IT.</h1>
+          <p className="wyx-mega-lede">The coolest apparel, golf tech, footwear, bags and accessories we can find. No endless supplier feed. No pro-shop filler. Just the things worth knowing about.</p>
           <div className="actions">
-            <Link className="button primary" href="/apparel">SHOP APPAREL</Link>
-            <Link className="button secondary" href="/products">SHOP THE EDIT</Link>
+            <Link className="button primary" href="/products">SHOP WHAT&apos;S LIVE</Link>
+            <Link className="button secondary" href="/apparel">SHOP APPAREL</Link>
+          </div>
+          <div className="wyx-mega-proof">
+            <span>MULTI-BRAND</span><span>SMALLER EDITS</span><span>SHOPIFY CHECKOUT</span><span>WYX TASTE TEST</span>
           </div>
         </div>
-        <div className="fashion-hero-note">EST. FOR WEEKEND GOLFERS / WYX</div>
+        <div className="wyx-mega-images" aria-label="WYX product edit">
+          {heroMain && <div className="wyx-shot wyx-shot-main"><Image src={heroMain} alt="WYX apparel selection" fill priority sizes="(max-width: 900px) 100vw, 48vw" /></div>}
+          {heroAlt && <div className="wyx-shot wyx-shot-small"><Image src={heroAlt} alt="WYX golf headwear selection" fill priority sizes="(max-width: 900px) 50vw, 24vw" /></div>}
+          {heroThird && <div className="wyx-shot wyx-shot-small"><Image src={heroThird} alt="WYX golf accessory selection" fill priority sizes="(max-width: 900px) 50vw, 24vw" /></div>}
+        </div>
       </section>
 
-      <section className="fashion-principles home-principles" aria-label="WYX brand principles">
-        <div><span>01</span><strong>Apparel first.</strong><p>Build the outfit before the accessories.</p></div>
-        <div><span>02</span><strong>Fewer, better.</strong><p>A real edit instead of an endless feed.</p></div>
-        <div><span>03</span><strong>Golf context.</strong><p>Course, clubhouse, trip—not studio fantasy.</p></div>
-        <div><span>04</span><strong>Personality allowed.</strong><p>Enough character to make the bag and fit yours.</p></div>
+      <section className="wyx-marquee" aria-label="WYX departments">
+        <span>APPAREL</span><i>✦</i><span>FOOTWEAR</span><i>✦</i><span>GOLF TECH</span><i>✦</i><span>BAGS</span><i>✦</i><span>ACCESSORIES</span><i>✦</i><span>TRIP GEAR</span>
       </section>
 
-      {apparel.length > 0 && (
-        <section className="fashion-section fashion-product-section" id="new-apparel">
-          <div className="fashion-section-heading">
-            <div>
-              <p className="eyebrow">NEW APPAREL</p>
-              <h2>BUILD THE FIT FIRST.</h2>
-            </div>
-            <p>Layers, tees and finishing pieces lead the new WYX. The permanent wardrobe grows from here: polos, shorts, pants and lightweight outerwear next.</p>
+      {heroProducts.length > 0 && (
+        <section className="wyx-edit-section">
+          <div className="wyx-edit-heading">
+            <div><p className="eyebrow">THE WYX EDIT / AVAILABLE NOW</p><h2>START WITH THE STUFF WE&apos;D ACTUALLY BUY.</h2></div>
+            <p>We are deliberately making this harder on ourselves: fewer products, stronger opinions, better brands. These are the current pieces that survive the cut.</p>
           </div>
-          <div className="fashion-product-grid">
-            {apparel.map((product) => <ProductCard key={product.id} product={product} />)}
+          <div className="wyx-feature-grid">
+            {heroProducts.slice(0, 8).map((product, index) => (
+              <div key={product.id} className={index === 0 || index === 5 ? 'wyx-feature-large' : ''}>
+                <ProductCard product={product} />
+              </div>
+            ))}
           </div>
-          <div className="fashion-section-action"><Link className="text-link" href="/apparel">SHOP ALL APPAREL →</Link></div>
+          <div className="wyx-section-link"><Link className="text-link" href="/products">SEE THE FULL LIVE EDIT →</Link></div>
         </section>
       )}
 
-      <section className="fashion-campaign">
-        <div className="fashion-campaign-photo">
-          <Image src={apparelCampaignImage} alt="WYX golf apparel editorial photography" fill sizes="(max-width: 900px) 100vw, 62vw" />
+      <section className="wyx-departments">
+        <div className="wyx-department-intro">
+          <p className="eyebrow">THE NEW WYX / ONE SHOP</p>
+          <h2>GOLF HAS DEPARTMENTS. SO DO WE.</h2>
+          <p>WYX is expanding into the categories a modern golfer actually shops together. We will not open a department with junk just to make the nav look full.</p>
         </div>
-        <div className="fashion-campaign-copy">
-          <p className="eyebrow">THE WYX UNIFORM</p>
-          <h2>LOOK LIKE YOURSELF. JUST BETTER AT GOLF.</h2>
-          <p>The strongest golf style is not louder. It is more considered: fit, texture, color, one or two pieces with a point of view, and nothing that feels borrowed from a corporate scramble.</p>
-          <Link className="button ink" href="/apparel">SHOP THE APPAREL EDIT</Link>
-        </div>
-      </section>
-
-      <section className="fashion-section fashion-story-section">
-        <div className="fashion-section-heading compact">
-          <div><p className="eyebrow">SHOP BY MOMENT</p><h2>THE WHOLE GOLF DAY.</h2></div>
-          <p>The outfit, the bag and the trip should feel like the same person bought them.</p>
-        </div>
-        <div className="fashion-story-grid">
-          {stories.map((story) => (
-            <Link href={story.href} className="fashion-story-card" key={story.label}>
-              <Image src={story.image} alt={story.alt} fill sizes="(max-width: 900px) 100vw, 33vw" />
-              <span className="fashion-story-shade" />
-              <div>
-                <small>{story.label}</small>
-                <h3>{story.title}</h3>
-                <p>{story.copy}</p>
-                <strong>{story.action} →</strong>
-              </div>
+        <div className="wyx-department-grid">
+          {departments.map((department) => (
+            <Link className="wyx-department-card" href={department.href} key={department.label}>
+              {department.image && <Image src={department.image} alt="" fill sizes="(max-width: 900px) 100vw, 50vw" />}
+              <span className="wyx-department-shade" />
+              <div className="wyx-department-top"><small>{department.number}</small><small>{department.status}</small></div>
+              <div className="wyx-department-copy"><strong>{department.label}</strong><h3>{department.title}</h3><span>EXPLORE →</span></div>
             </Link>
           ))}
         </div>
       </section>
 
-      {lookFinishers.length > 0 && (
-        <section className="fashion-section fashion-product-section fashion-sand-section">
-          <div className="fashion-section-heading compact">
-            <div><p className="eyebrow">FINISH THE LOOK</p><h2>HEADWEAR & GLOVES.</h2></div>
-            <p>The small pieces that make the outfit feel intentional.</p>
-          </div>
-          <div className="fashion-product-grid compact-grid">
-            {lookFinishers.map((product) => <ProductCard key={product.id} product={product} />)}
-          </div>
-        </section>
-      )}
+      <section className="wyx-radar">
+        <div>
+          <p className="eyebrow">ON THE WYX RADAR</p>
+          <h2>WHAT WE&apos;RE HUNTING NEXT.</h2>
+        </div>
+        <div className="wyx-radar-list">
+          <div><span>01</span><strong>THE POLO</strong><p>Premium fabric. Great collar. No corporate outing energy.</p></div>
+          <div><span>02</span><strong>THE BOTTOMS</strong><p>Shorts and pants that fit like actual clothes, not uniform pants.</p></div>
+          <div><span>03</span><strong>THE SHOE</strong><p>Walkable, clean, distinctive. Something you would wear to the parking lot on purpose.</p></div>
+          <div><span>04</span><strong>THE TECH</strong><p>Rangefinders, GPS and practice tech that earn the space in your bag.</p></div>
+          <div><span>05</span><strong>THE BAG</strong><p>A premium carry or trip bag that can become a WYX signature piece.</p></div>
+        </div>
+      </section>
 
-      {accessories.length > 0 && (
-        <section className="fashion-section fashion-product-section">
-          <div className="fashion-section-heading">
-            <div><p className="eyebrow">THE BAG EDIT</p><h2>THEN MAKE THE BAG MATCH.</h2></div>
-            <p>Headcovers, towels, markers and useful golf-trip pieces still matter. They just no longer get to define the entire brand.</p>
-          </div>
-          <div className="fashion-product-grid">
-            {accessories.map((product) => <ProductCard key={product.id} product={product} />)}
-          </div>
-          <div className="fashion-section-action"><Link className="text-link" href="/products">SHOP ALL WYX →</Link></div>
-        </section>
-      )}
-
-      <section className="fashion-manifesto home-manifesto">
-        <p className="eyebrow">WYX / THE POINT OF VIEW</p>
-        <h2>GOLF HAS ENOUGH STUFF. WYX IS HERE TO MAKE THE STUFF WORTH OWNING EASIER TO FIND.</h2>
-        <div className="fashion-manifesto-grid">
-          <div><span>FIT</span><p>The garment has to look right before the logo matters.</p></div>
-          <div><span>FUNCTION</span><p>If it comes to the course, it needs a reason to be there.</p></div>
-          <div><span>FEEL</span><p>Golf gear should make the weekend feel a little better.</p></div>
+      <section className="wyx-statement">
+        <div className="wyx-statement-kicker">WYX / THE STANDARD</div>
+        <h2>IF IT&apos;S BORING, CHEAP-LOOKING, GIMMICKY OR ALREADY EVERYWHERE, IT DOESN&apos;T BELONG HERE.</h2>
+        <div className="wyx-statement-links">
+          <Link href="/the-bag-test">HOW WE PICK →</Link>
+          <Link href="/golf-trip-gear">TRIP GEAR →</Link>
+          <Link href="/golf-gifts">GOLF GIFTS →</Link>
         </div>
       </section>
 
       <EmailCapture
         source="home"
-        campaign="apparel_first"
-        title="GET THE NEXT WYX DROP FIRST."
-        body="Apparel, golf-trip gear, new merchants and the pieces that make the WYX edit."
+        campaign="wyx_one_shop"
+        title="GET THE GOOD STUFF FIRST."
+        body="New brands, apparel drops, golf tech, trip gear and the products that actually make the WYX cut."
       />
     </div>
   );
