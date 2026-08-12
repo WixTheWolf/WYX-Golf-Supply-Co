@@ -1,7 +1,7 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import { trackEvent } from '@/lib/analytics';
+import { identifyEmail, trackEvent } from '@/lib/analytics';
 
 type EmailCaptureProps = {
   source: string;
@@ -13,8 +13,8 @@ type EmailCaptureProps = {
 export function EmailCapture({
   source,
   campaign,
-  title = 'Join The WYX Launch List.',
-  body = 'Get launch drops, useful golf finds, and first-sale offers before they disappear.'
+  title = 'JOIN THE WYX LIST.',
+  body = 'Get new premium golf finds, useful gear, and the products worth knowing about.'
 }: EmailCaptureProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -25,11 +25,12 @@ export function EmailCapture({
     setStatus('loading');
     setMessage('');
     const form = new FormData(event.currentTarget);
+    const submittedEmail = email.trim().toLowerCase();
     const response = await fetch('/api/marketing/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        email,
+        email: submittedEmail,
         source,
         campaign,
         consent: form.get('consent') === 'on',
@@ -42,10 +43,11 @@ export function EmailCapture({
       setMessage(json.error || 'Unable to subscribe right now.');
       return;
     }
+    identifyEmail(submittedEmail, { source, campaign, WYXSubscriber: true });
+    trackEvent('Lead', { content_name: campaign, source, klaviyo: { Source: source, Campaign: campaign } });
     setStatus('success');
-    setMessage('You are on the list. Use WYX10 at checkout today.');
+    setMessage('You are on the WYX list.');
     setEmail('');
-    trackEvent('Lead', { content_name: campaign, source });
   }
 
   return (
