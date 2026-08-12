@@ -19,7 +19,7 @@ body{
     radial-gradient(circle at 8% 38%,rgba(83,111,88,.14),transparent 32rem),
     var(--fx-bg);
 }
-body:before{opacity:.06;background-size:120px 120px}
+body:before{opacity:.035;background-size:140px 140px}
 
 h1,h2{font-family:var(--font-display),Georgia,serif;font-weight:600;letter-spacing:-.055em}
 h3{letter-spacing:-.045em}
@@ -45,39 +45,102 @@ h3{letter-spacing:-.045em}
 .button.primary{box-shadow:none}
 .button.primary:hover{box-shadow:0 14px 36px rgba(210,221,162,.13)}
 
+/* Photography-led homepage. The technology stays underneath; the customer sees golf. */
 .future-hero{
-  min-height:min(860px,88vh);
-  background:linear-gradient(125deg,rgba(16,31,21,.58),rgba(7,13,9,.12) 58%);
+  position:relative;
+  min-height:min(900px,91vh);
+  overflow:hidden;
+  isolation:isolate;
+  background:#09100c;
 }
-.future-hero:before{
-  width:min(72vw,900px);
-  right:-16vw;
-  top:-38%;
-  border:0;
-  box-shadow:none;
-  background:radial-gradient(circle,rgba(210,221,162,.12),rgba(197,177,128,.035) 45%,transparent 68%);
+.future-hero:before,.future-hero:after{display:none}
+.future-hero-environment{
+  position:absolute!important;
+  inset:0;
+  z-index:-3;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 55%;
+  filter:saturate(.82) contrast(1.02);
+  transform:scale(1.01);
 }
-.future-hero:after{content:"WYX";color:rgba(244,240,231,.025);right:.01em;bottom:-.2em}
-.future-hero-copy{padding-bottom:1.5rem}
-.future-hero h1{max-width:8.5ch}
+.future-hero-shade{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(90deg,rgba(5,10,7,.94) 0%,rgba(5,10,7,.79) 39%,rgba(5,10,7,.34) 67%,rgba(5,10,7,.22) 100%),
+    linear-gradient(0deg,rgba(5,10,7,.78),transparent 48%);
+}
+.future-hero-copy{position:relative;z-index:2;padding-bottom:1.5rem;text-shadow:0 2px 30px rgba(0,0,0,.32)}
+.future-hero h1{max-width:8.2ch;color:#fffaf0}
 .future-hero h1 em{color:var(--fx-acid);font-style:italic}
-.future-hero-lede{color:#c0c7bf;max-width:620px}
-.future-proof{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2rem;color:#c9cfc8;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.future-hero-lede{color:#e0e2dc;max-width:620px;font-size:clamp(1.04rem,1.7vw,1.28rem)}
+.future-proof{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2rem;color:#d4d9d3;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .future-proof span{display:flex;align-items:center;gap:.45rem}
 .future-proof span:before{content:"•";color:var(--fx-acid)}
-.future-feature-card{border-radius:20px;border-color:rgba(244,240,231,.13)}
-.future-feature-info{padding:1.6rem}
+.future-feature{position:relative;z-index:3;align-self:end;padding-bottom:.4rem}
+.future-feature-card{
+  min-height:465px;
+  max-height:61vh;
+  border-radius:18px;
+  border:1px solid rgba(244,240,231,.24);
+  background:rgba(8,15,10,.88);
+  box-shadow:0 35px 90px rgba(0,0,0,.48);
+}
+.future-feature-card img{filter:saturate(.95) contrast(1.03)}
+.future-feature-info{padding:1.55rem}
 .future-feature-info small{color:var(--fx-acid)}
 
-.future-marquee{background:#0d1510}
-.future-marquee span{color:#aeb8af;letter-spacing:.16em}
+.future-marquee{background:#0d1510;border-color:rgba(244,240,231,.1)}
+.future-marquee span{color:#b7c0b8;letter-spacing:.16em}
+
+/* Real golf environment editorial break */
+.future-field-story{
+  width:min(1480px,94vw);
+  margin:clamp(2.5rem,5vw,5rem) auto clamp(4.5rem,9vw,9rem);
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(300px,.72fr);
+  grid-template-rows:minmax(310px,46vw) auto;
+  gap:clamp(1rem,2vw,1.7rem);
+  align-items:stretch;
+}
+.future-field-photo{position:relative;overflow:hidden;background:#121b14;border-radius:18px}
+.future-field-photo img{object-fit:cover;filter:saturate(.82) contrast(1.03)}
+.future-field-photo-main{grid-row:1 / span 2;min-height:650px}
+.future-field-photo-main img{object-position:center center}
+.future-field-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(1.5rem,4vw,3.4rem) clamp(.4rem,2vw,1.8rem);
+}
+.future-field-copy h2{max-width:8ch;margin:.2rem 0 1.15rem;font-size:clamp(3rem,5.6vw,6.2rem)}
+.future-field-copy>p:not(.eyebrow){font-size:clamp(1rem,1.35vw,1.17rem);line-height:1.68;color:#bdc5be;max-width:40rem}
+.future-field-copy .text-link{margin-top:1rem;align-self:flex-start}
+.future-field-photo-detail{min-height:315px}
+.future-field-photo-detail img{object-position:center 58%}
 
 .future-section-head h2{max-width:11ch}
 .future-section-head>p{color:#aeb7af}
-.future-mode{border-radius:18px;background:linear-gradient(150deg,#172319,#0a100c 76%)}
-.future-mode:before{border-color:rgba(210,221,162,.13)}
+
+/* Shop the actual golf situation, not abstract category boxes. */
+.future-mode{
+  border-radius:18px;
+  background:#101810;
+  min-height:440px;
+}
+.future-mode:before{display:none}
+.future-mode-photo{position:relative;isolation:isolate;padding:1.45rem;overflow:hidden}
+.future-mode-photo>img{position:absolute!important;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;filter:saturate(.8) contrast(1.02);transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.future-mode-overlay{position:absolute;inset:0;z-index:-2;background:linear-gradient(0deg,rgba(5,9,6,.94) 2%,rgba(5,9,6,.48) 56%,rgba(5,9,6,.16) 100%)}
+.future-mode-photo:hover>img{transform:scale(1.04);filter:saturate(.95) contrast(1.04)}
 .future-mode:hover{border-color:rgba(210,221,162,.38)}
-.future-mode h3{font-family:var(--font-display),Georgia,serif;font-weight:600}
+.future-mode h3{font-family:var(--font-display),Georgia,serif;font-weight:600;color:#fffaf1;text-shadow:0 2px 18px rgba(0,0,0,.34)}
+.future-mode p{color:#e1e3dc;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.future-mode strong{color:#fffaf1}
+.future-mode-index{color:var(--fx-acid)}
 
 .future-editorial-band{
   padding:clamp(4.5rem,8vw,7rem) max(4vw,calc((100vw - 1380px)/2));
@@ -117,26 +180,34 @@ h3{letter-spacing:-.045em}
   line-height:1;
   letter-spacing:-.045em;
 }
-.product-price-display.premium-price .product-price-first-order{
-  margin:0;
-  color:#9fa9a1;
-  font-size:.78rem;
-  line-height:1.45;
-}
-.product-price-display.premium-price .product-price-first-order strong{
-  color:var(--fx-acid-soft);
-  font-weight:750;
-}
+.product-price-display.premium-price .product-price-first-order{margin:0;color:#9fa9a1;font-size:.78rem;line-height:1.45}
+.product-price-display.premium-price .product-price-first-order strong{color:var(--fx-acid-soft);font-weight:750}
 
 .site-footer{background:#0b120e;border-top-color:var(--fx-line);padding-top:3rem;padding-bottom:3rem}
 .footer-brand{color:var(--fx-text)}
 .footer-note{color:#99a49b!important}
 
+@media(max-width:1050px){
+  .future-hero{grid-template-columns:1fr;min-height:auto;padding-top:clamp(6rem,11vw,8rem)}
+  .future-feature{width:min(540px,82vw);justify-self:end}
+  .future-feature-card{min-height:400px}
+}
 @media(max-width:900px){
   .future-editorial-grid{grid-template-columns:1fr}
+  .future-field-story{grid-template-columns:1fr;grid-template-rows:auto}
+  .future-field-photo-main{grid-row:auto;min-height:68vw}
+  .future-field-copy{padding:1.5rem .25rem 2rem}
+  .future-field-photo-detail{min-height:52vw}
 }
 @media(max-width:650px){
-  .future-hero{min-height:auto;padding-top:4.5rem}
-  .future-feature-card{min-height:420px}
+  .future-hero{min-height:760px;padding-top:4.5rem;padding-bottom:2.2rem;align-content:end}
+  .future-hero-shade{background:linear-gradient(0deg,rgba(5,10,7,.96) 0%,rgba(5,10,7,.75) 58%,rgba(5,10,7,.2) 100%)}
+  .future-hero-environment{object-position:62% center}
+  .future-feature{display:none}
+  .future-hero h1{font-size:clamp(3.6rem,17vw,5.5rem)}
   .future-proof{gap:.45rem 1rem}
+  .future-field-story{width:92vw;margin-top:3rem}
+  .future-field-photo-main{min-height:88vw}
+  .future-field-photo-detail{min-height:68vw}
+  .future-mode{min-height:410px}
 }
