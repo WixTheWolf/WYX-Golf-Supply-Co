@@ -31,10 +31,7 @@ const confirmedSupplierVendors = [
 
 const blockedSupplierVendors = ['GolfbaysUSA'];
 
-/**
- * WYX is an opinionated multi-brand golf shop, not an endless supplier catalog.
- * Products earn a public slot through quality, usefulness, personality, or trip value.
- */
+/** WYX is an opinionated multi-brand golf shop, not an endless supplier catalog. */
 export const futureAssortmentHandles = new Set([
   ...apparelEditHandles,
   'classic-leather-edition-walnut-brown-midnight-black',
@@ -100,26 +97,23 @@ export function isHomepageProduct(product: Product) {
     && categoryFor(product) !== 'Golf Balls';
 }
 
-/**
- * Intentional merchant order: strongest apparel and premium objects first,
- * personality gear second, utility products after that.
- */
+/** Lead with the best visual/product mix we can actually sell now; basics come later. */
 export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
     'pimento-waffle',
     'classic-leather-edition-walnut-brown-midnight-black',
     'topographic-edition-pure-white-embroidered-carolina-blue',
     'augusta-bear-hat',
-    'hello-friends-t-shirt',
+    'evil-ape',
+    'golf-or-die-game-set',
+    'dartee-golf-glove',
+    'magnet-caddie',
+    'dude-abides-v2-mallet-putter-cover',
+    'guerrilla-chief-driver-cover',
+    'blue-ridge-golf-co-golf-towels',
     'mossy-condor',
     'black-birdie',
-    'dartee-golf-glove',
-    'evil-ape',
-    'dude-abides-v2-mallet-putter-cover',
-    'golf-or-die-game-set',
-    'magnet-caddie',
-    'blue-ridge-golf-co-golf-towels',
-    'guerrilla-chief-driver-cover',
+    'hello-friends-t-shirt',
     'mafia-mallet-putter-cover',
     'two-sided-metal-golf-ball-marker-5-color-combo-pack',
     'three-rail-ball-marker',
