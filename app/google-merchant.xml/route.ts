@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { categoryFor, saleReadyProducts, supplierName } from '@/lib/catalog';
-import { escapeXml, productDescription, productUrl } from '@/lib/feed';
+import { escapeXml, productUrl } from '@/lib/feed';
+import { productBuyerPromise } from '@/lib/merchandising';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { getProducts } from '@/lib/shopify/products';
 import { cleanText } from '@/lib/text';
@@ -12,7 +13,7 @@ export const runtime = 'nodejs';
 const SITE = 'https://wyxgolfsupply.com';
 
 function variantId(variant: ProductVariant) {
-  return variant.sku?.trim() || variant.id.replace('gid://shopify/ProductVariant/', 'wyx-variant-');
+  return variant.id.replace('gid://shopify/ProductVariant/', 'wyx-variant-');
 }
 
 function productGroupId(product: Product) {
@@ -32,14 +33,45 @@ function variantTitle(product: Product, variant: ProductVariant) {
   return details.length ? `${base} - ${details.join(' / ')}` : base;
 }
 
-function itemXml(product: Product, variant: ProductVariant) {
+function normalizedGtin(value: string | null | undefined) {
+  const digits = String(value || '').replace(/\D/g, '');
+  if (![8, 12, 13, 14].includes(digits.length)) return '';
+  const body = digits.slice(0, -1);
+  const expected = Number(digits.at(-1));
+  let sum = 0;
+  for (let index = body.length - 1, position = 0; index >= 0; index -= 1, position += 1) {
+    sum += Number(body[index]) * (position % 2 === 0 ? 3 : 1);
+  }
+  const check = (10 - (sum % 10)) % 10;
+  return check === expected ? digits : '';
+}
+
+function trustedGtinCounts(products: Product[]) {
+  const counts = new Map<string, number>();
+  for (const product of products) {
+    for (const variant of product.variants) {
+      const gtin = normalizedGtin(variant.barcode);
+      if (gtin) counts.set(gtin, (counts.get(gtin) || 0) + 1);
+    }
+  }
+  return counts;
+}
+
+function merchantDescription(product: Product) {
+  return cleanText(productBuyerPromise(product)).replace(/\s+/g, ' ').trim().slice(0, 1200) || `Shop ${cleanText(product.title)} at WYX Golf Supply Co.`;
+}
+
+function itemXml(product: Product, variant: ProductVariant, gtinCounts: Map<string, number>) {
   const image = variant.image?.url || product.featuredImage?.url || product.images[0]?.url || '';
-  const description = productDescription(product) || `Shop ${cleanText(product.title)} at WYX Golf Supply Co.`;
+  const description = merchantDescription(product);
   const size = option(variant, ['size', 'shoe size', 'waist']);
   const color = option(variant, ['color', 'colour']);
-  const gtin = variant.barcode?.trim() || '';
+  const candidateGtin = normalizedGtin(variant.barcode);
+  const gtin = candidateGtin && gtinCounts.get(candidateGtin) === 1 ? candidateGtin : '';
   const category = categoryFor(product);
   const hasVariants = product.variants.filter((item) => !item.id.startsWith('demo-')).length > 1;
+  const isApparel = category === 'Apparel' || category === 'Footwear' || category === 'Headwear' || category === 'Gloves';
+  const explicitGender = /women'?s|ladies/i.test(`${product.title} ${product.description}`) ? 'female' : /men'?s/i.test(`${product.title} ${product.description}`) ? 'male' : '';
 
   return `
     <item>
@@ -57,16 +89,19 @@ function itemXml(product: Product, variant: ProductVariant) {
       ${hasVariants ? `<g:item_group_id>${escapeXml(productGroupId(product))}</g:item_group_id>` : ''}
       ${size ? `<g:size>${escapeXml(size)}</g:size>` : ''}
       ${color ? `<g:color>${escapeXml(color)}</g:color>` : ''}
+      ${isApparel ? '<g:age_group>adult</g:age_group>' : ''}
+      ${explicitGender ? `<g:gender>${explicitGender}</g:gender>` : ''}
       ${gtin ? `<g:gtin>${escapeXml(gtin)}</g:gtin>` : ''}
     </item>`;
 }
 
 export async function GET() {
   const products = coreMerchProducts(saleReadyProducts(await getProducts({ fresh: true })));
+  const gtinCounts = trustedGtinCounts(products);
   const items = products.flatMap((product) =>
     product.variants
       .filter((variant) => !variant.id.startsWith('demo-'))
-      .map((variant) => itemXml(product, variant))
+      .map((variant) => itemXml(product, variant, gtinCounts))
   ).join('');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
