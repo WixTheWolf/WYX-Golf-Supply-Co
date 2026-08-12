@@ -123,11 +123,11 @@ export default async function GolfTripGearPage() {
             <p className="eyebrow">THE CURRENT TRIP EDIT</p>
             <h2>GEAR WE&apos;D ACTUALLY PACK.</h2>
           </div>
-          <Link className="text-link" href="/products">Shop Drop 01</Link>
+          <Link className="text-link" href="/products">Shop All WYX</Link>
         </div>
         {products.length > 0
           ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div>
-          : <p>Trip picks are being refreshed. Browse Drop 01 for currently available gear.</p>
+          : <p>Trip picks are being refreshed. Browse the live WYX shop for currently available gear.</p>
         }
       </section>
 
@@ -149,8 +149,8 @@ export default async function GolfTripGearPage() {
       <EmailCapture
         source="golf-trip-gear"
         campaign="golf_trip_gear"
-        title="GET THE NEXT TRIP DROP."
-        body="New trip gear, Bag Test picks, and the pieces that make the next golf weekend easier."
+        title="GET NEW TRIP GEAR FIRST."
+        body="New travel gear, premium picks, and the pieces that make the next golf weekend easier."
       />
     </>
   );
