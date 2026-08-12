@@ -61,26 +61,26 @@ export default async function Home() {
     {
       number: '02',
       label: 'FOOTWEAR',
-      title: 'Golf shoes that do not look like orthopedic equipment.',
-      href: '/products',
+      title: 'Golf shoes worth walking 36 holes in.',
+      href: '#wyx-radar',
       image: heroAlt,
-      status: 'SUPPLIER ONBOARDING'
+      status: 'COMING NEXT'
     },
     {
       number: '03',
       label: 'TECH',
       title: 'Rangefinders, GPS, launch monitors & smart golf toys.',
-      href: '/golf-tech',
+      href: '#wyx-radar',
       image: imageFor(game, 0) || heroThird,
-      status: 'SUPPLIER ONBOARDING'
+      status: 'COMING NEXT'
     },
     {
       number: '04',
       label: 'BAGS + TRIP',
-      title: 'The gear that makes the airport, cart and trunk better.',
+      title: 'Better carry bags, travel gear and weekend essentials.',
       href: '/golf-trip-gear',
       image: imageFor(towel, 0) || heroThird,
-      status: 'BUILDING THE EDIT'
+      status: 'THE EDIT IS GROWING'
     },
     {
       number: '05',
@@ -93,10 +93,10 @@ export default async function Home() {
     {
       number: '06',
       label: 'GIFTS',
-      title: 'Golf gifts that are not another sleeve of logo balls.',
+      title: 'Golf gifts worth giving to somebody who actually plays.',
       href: '/golf-gifts',
       image: imageFor(glove, 0) || imageFor(hat, 0),
-      status: 'WYX-APPROVED'
+      status: 'WYX PICKS'
     }
   ];
 
@@ -104,15 +104,15 @@ export default async function Home() {
     <div className="wyx-storefront">
       <section className="wyx-mega-hero">
         <div className="wyx-mega-copy">
-          <p className="eyebrow">WYX GOLF SUPPLY CO. / CURATED FOR GOLFERS</p>
-          <h1>THE GOOD STUFF.<br />ALL OF IT.</h1>
-          <p className="wyx-mega-lede">The coolest apparel, golf tech, footwear, bags and accessories we can find. No endless supplier feed. No pro-shop filler. Just the things worth knowing about.</p>
+          <p className="eyebrow">WYX GOLF SUPPLY CO. / THE EDIT</p>
+          <h1>GOLF&apos;S BEST STUFF.<br />ONE PLACE.</h1>
+          <p className="wyx-mega-lede">Polos worth wearing. Shoes worth walking in. Tech that earns space in the bag. Accessories you actually want to show off. WYX cuts through the noise and keeps the golf products worth knowing about.</p>
           <div className="actions">
-            <Link className="button primary" href="/products">SHOP WHAT&apos;S LIVE</Link>
+            <Link className="button primary" href="/products">SHOP THE LIVE EDIT</Link>
             <Link className="button secondary" href="/apparel">SHOP APPAREL</Link>
           </div>
           <div className="wyx-mega-proof">
-            <span>MULTI-BRAND</span><span>SMALLER EDITS</span><span>SHOPIFY CHECKOUT</span><span>WYX TASTE TEST</span>
+            <span>PREMIUM BRANDS</span><span>INDEPENDENT PICKS</span><span>BETTER GOLF GEAR</span><span>NO FILLER</span>
           </div>
         </div>
         <div className="wyx-mega-images" aria-label="WYX product edit">
@@ -129,8 +129,8 @@ export default async function Home() {
       {heroProducts.length > 0 && (
         <section className="wyx-edit-section">
           <div className="wyx-edit-heading">
-            <div><p className="eyebrow">THE WYX EDIT / AVAILABLE NOW</p><h2>START WITH THE STUFF WE&apos;D ACTUALLY BUY.</h2></div>
-            <p>We are deliberately making this harder on ourselves: fewer products, stronger opinions, better brands. These are the current pieces that survive the cut.</p>
+            <div><p className="eyebrow">AVAILABLE NOW</p><h2>THE CURRENT WYX PICKS.</h2></div>
+            <p>The products on the shelf today that best match where WYX is headed: better materials, stronger design, useful golf function and enough personality to be worth owning.</p>
           </div>
           <div className="wyx-feature-grid">
             {heroProducts.slice(0, 8).map((product, index) => (
@@ -139,15 +139,15 @@ export default async function Home() {
               </div>
             ))}
           </div>
-          <div className="wyx-section-link"><Link className="text-link" href="/products">SEE THE FULL LIVE EDIT →</Link></div>
+          <div className="wyx-section-link"><Link className="text-link" href="/products">SHOP EVERYTHING AVAILABLE →</Link></div>
         </section>
       )}
 
       <section className="wyx-departments">
         <div className="wyx-department-intro">
-          <p className="eyebrow">THE NEW WYX / ONE SHOP</p>
-          <h2>GOLF HAS DEPARTMENTS. SO DO WE.</h2>
-          <p>WYX is expanding into the categories a modern golfer actually shops together. We will not open a department with junk just to make the nav look full.</p>
+          <p className="eyebrow">SHOP WYX</p>
+          <h2>FROM THE FIRST TEE TO THE FLIGHT HOME.</h2>
+          <p>One place for the golf wardrobe, the shoes, the technology, the bag and the trip. We add categories when the products are good enough—not just because we can fill a page.</p>
         </div>
         <div className="wyx-department-grid">
           {departments.map((department) => (
@@ -161,26 +161,26 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="wyx-radar">
+      <section className="wyx-radar" id="wyx-radar">
         <div>
-          <p className="eyebrow">PREMIUM PRODUCT RADAR</p>
-          <h2>THE PRODUCTS WYX IS TRYING TO GET.</h2>
-          <p>These are not pretend WYX inventory. They are verified, premium targets with real customer proof and a legitimate retailer or wholesale path. They become buyable here only after supplier approval.</p>
+          <p className="eyebrow">NEXT ON WYX</p>
+          <h2>THE PREMIUM PRODUCTS ON OUR RADAR.</h2>
+          <p>Highly rated products and brands we want in the WYX mix. They are not for sale here yet; they move into the shop only when the product, pricing and retailer relationship all make sense.</p>
         </div>
         <div className="wyx-radar-list">
-          {premiumTargets.slice(0, 7).map((target, index) => (
+          {premiumTargets.slice(0, 8).map((target, index) => (
             <div key={`${target.brand}-${target.product}`}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <strong>{target.brand}<br />{target.product}</strong>
-              <p>{target.rating ? `${target.rating} · ` : ''}{target.reviews ? `${target.reviews} · ` : ''}{target.price} · {target.proof} <b>{target.status}</b></p>
+              <p>{target.rating ? `${target.rating} · ` : ''}{target.reviews ? `${target.reviews} · ` : ''}{target.price} · {target.proof}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="wyx-statement">
-        <div className="wyx-statement-kicker">WYX / THE STANDARD</div>
-        <h2>IF IT&apos;S BORING, CHEAP-LOOKING, GIMMICKY OR ALREADY EVERYWHERE, IT DOESN&apos;T BELONG HERE.</h2>
+        <div className="wyx-statement-kicker">THE WYX STANDARD</div>
+        <h2>GOOD ENOUGH FOR A PRO SHOP ISN&apos;T GOOD ENOUGH FOR WYX.</h2>
         <div className="wyx-statement-links">
           <Link href="/the-bag-test">HOW WE PICK →</Link>
           <Link href="/golf-trip-gear">TRIP GEAR →</Link>
@@ -192,7 +192,7 @@ export default async function Home() {
         source="home"
         campaign="wyx_one_shop"
         title="GET THE GOOD STUFF FIRST."
-        body="New brands, apparel drops, golf tech, trip gear and the products that actually make the WYX cut."
+        body="New brands, apparel, golf tech, bags and the products that make the WYX cut."
       />
     </div>
   );
