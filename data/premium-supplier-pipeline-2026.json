@@ -1,0 +1,122 @@
+{
+  "updatedAt": "2026-08-12T15:40:00-07:00",
+  "status": "outreach_sent_waiting_for_replies",
+  "rules": [
+    "Do not list a premium third-party brand without an approved retailer, wholesale, affiliate, or fulfillment relationship.",
+    "Do not replace a safely fulfilled live item until the replacement has verified margin, inventory, imagery rights, return terms, and fulfillment.",
+    "Prefer fewer stronger products over expanding SKU count.",
+    "No same-day follow-up after initial supplier outreach."
+  ],
+  "suppliers": [
+    {
+      "brand": "TRUE linkswear",
+      "email": "wholesale@truelinkswear.com",
+      "sentAt": "2026-08-12T12:17:04-07:00",
+      "status": "sent_waiting",
+      "priority": 1,
+      "targetProducts": ["TRUE Original 1.2", "TRUE OG3 Pro"],
+      "department": "Footwear",
+      "approvalChecklist": ["wholesale margin", "MAP terms", "drop shipping or special orders", "size inventory feed", "returns", "image/content rights"]
+    },
+    {
+      "brand": "Holderness & Bourne",
+      "email": "support@holdernessandbourne.com",
+      "sentAt": "2026-08-12T12:17:09-07:00",
+      "status": "sent_waiting",
+      "priority": 1,
+      "targetProducts": ["The Hicks Shirt", "The Harwood Short", "The McDaniel 5 Pocket Pant"],
+      "department": "Apparel",
+      "approvalChecklist": ["retailer eligibility", "opening order", "wholesale margin", "MAP terms", "online resale rules", "returns", "product photography rights"]
+    },
+    {
+      "brand": "Sunday Golf",
+      "email": "support@sundaygolf.com",
+      "sentAt": "2026-08-12T12:17:14-07:00",
+      "status": "sent_waiting",
+      "priority": 1,
+      "targetProducts": ["Ryder Full Size Stand Bag"],
+      "department": "Bags & Trip",
+      "approvalChecklist": ["wholesale price", "MOQ", "MAP", "drop ship or special order", "returns", "image rights"]
+    },
+    {
+      "brand": "Grooveit",
+      "email": "info@grooveitbrush.com",
+      "sentAt": "2026-08-12T12:17:20-07:00",
+      "status": "sent_waiting",
+      "priority": 1,
+      "targetProducts": ["The Wet Club Scrub"],
+      "department": "Club Care",
+      "approvalChecklist": ["wholesale price", "case MOQ", "MAP", "fulfillment lead time", "returns", "image rights"]
+    },
+    {
+      "brand": "KENTWOOL",
+      "email": "WRoach@kentwool.com",
+      "sentAt": "2026-08-12T12:17:26-07:00",
+      "status": "sent_waiting",
+      "priority": 2,
+      "targetProducts": ["Men's Classic Ankle"],
+      "department": "Apparel",
+      "approvalChecklist": ["wholesale price", "MOQ", "MAP", "size/color assortment", "returns", "image rights"]
+    },
+    {
+      "brand": "Blue Tees Golf",
+      "email": "sales-support@blueteesgolf.com",
+      "sentAt": "2026-08-12T12:17:31-07:00",
+      "status": "sent_waiting",
+      "priority": 1,
+      "targetProducts": ["Captain Pro Connected GPS Rangefinder", "Player Pro GPS Speaker", "Rainmaker Portable Launch Monitor"],
+      "department": "Golf Tech",
+      "approvalChecklist": ["authorized online resale", "wholesale margin", "MAP", "warranty responsibilities", "inventory/fulfillment", "returns", "image rights"]
+    }
+  ],
+  "replacementQueue": [
+    {
+      "current": "Tri-Fold Microfiber Golf Towel",
+      "action": "demote_then_replace",
+      "replacementTarget": "premium magnetic towel or stronger branded towel",
+      "reason": "basic low-ticket marketplace presentation does not support the premium WYX promise"
+    },
+    {
+      "current": "Stick Grips Golf Camo Golf Grip",
+      "action": "demote_then_replace",
+      "replacementTarget": "Grooveit Wet Club Scrub or a proven club-care hero",
+      "reason": "too niche to carry the club-care department"
+    },
+    {
+      "current": "Bamboo Performance Golf Tees - 50 Pack",
+      "action": "keep_as_add_on_only",
+      "replacementTarget": "premium apparel, footwear or tech in primary merchandising positions",
+      "reason": "useful add-on but not a destination product"
+    },
+    {
+      "current": "Dartee belt-heavy apparel mix",
+      "action": "reduce_prominence",
+      "replacementTarget": "Holderness & Bourne polos, shorts and pants plus KENTWOOL socks",
+      "reason": "belts cannot substitute for a credible apparel department"
+    },
+    {
+      "current": "Hello Friends T-Shirt",
+      "action": "secondary_only",
+      "replacementTarget": "premium polo or lightweight layer",
+      "reason": "culture tee is useful depth but should not lead premium apparel"
+    },
+    {
+      "current": "no live footwear department",
+      "action": "fill_when_approved",
+      "replacementTarget": "TRUE Original 1.2 and TRUE OG3 Pro",
+      "reason": "footwear is a major one-stop-shop credibility gap"
+    },
+    {
+      "current": "no live golf-tech department",
+      "action": "fill_when_approved",
+      "replacementTarget": "Blue Tees Captain Pro, Player Pro and Rainmaker",
+      "reason": "technology is a core modern golf shopping category"
+    },
+    {
+      "current": "no premium bag anchor",
+      "action": "fill_when_approved",
+      "replacementTarget": "Sunday Golf Ryder",
+      "reason": "a recognizable premium bag raises trust across the entire assortment"
+    }
+  ]
+}
