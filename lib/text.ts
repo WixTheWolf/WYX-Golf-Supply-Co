@@ -12,7 +12,20 @@ const replacements: Array<[RegExp, string]> = [
 ];
 
 const clearerProductNames: Record<string, string> = {
-  'Volcanic Ash': 'Volcanic Ash Golf Belt'
+  'Volcanic Ash': 'Volcanic Ash Golf Belt',
+  'Sahara Sunset': 'Sahara Sunset Golf Belt',
+  'Black Birdie': 'Black Birdie Golf Belt',
+  'Twister Grey': 'Twister Grey Golf Belt',
+  'Crimson Dune': 'Crimson Dune Golf Belt',
+  'Mossy Condor': 'Mossy Condor Golf Belt',
+  'Bone Dry': 'Bone Dry Golf Belt',
+  'Sea Swell Blue': 'Sea Swell Blue Golf Belt',
+  'Gray Eyed Gator': 'Gray Eyed Gator Golf Belt',
+  'Charcoal Mirage': 'Charcoal Mirage Golf Belt',
+  'Bayou Brown Gator': 'Bayou Brown Gator Golf Belt',
+  'Looper': 'Looper Golf Tee',
+  'Legalize Mulligans': 'Legalize Mulligans Tee',
+  'Pimento Waffle': 'Pimento Waffle Golf Layer'
 };
 
 function repairUtf8Mojibake(value: string) {
