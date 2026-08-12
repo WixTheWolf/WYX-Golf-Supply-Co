@@ -31,7 +31,7 @@ export function MobileProductStickyBar({ title, variants }: Props) {
   return (
     <div className="mobile-sticky-atc" aria-label="Sticky mobile purchase bar">
       <div>
-        {pricing && <strong>{pricing.formattedSale}</strong>}
+        {pricing && <strong>{pricing.formattedBase}</strong>}
         <span>{title}</span>
       </div>
       <div className="mobile-sticky-actions">
