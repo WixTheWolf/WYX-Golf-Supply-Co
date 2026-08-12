@@ -101,6 +101,33 @@ h3{letter-spacing:-.045em}
 .filter-row a.active,.filter-row a:hover{background:var(--fx-acid);color:var(--fx-black)}
 .trust-list span{border-radius:8px}
 
+.product-price-display.premium-price{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:.3rem;
+  margin:.45rem 0 1.25rem;
+}
+.product-price-display.premium-price .product-price-base{
+  display:block;
+  color:var(--fx-text);
+  font-family:var(--font-display),Georgia,serif;
+  font-size:clamp(2rem,4vw,3.15rem);
+  font-weight:600;
+  line-height:1;
+  letter-spacing:-.045em;
+}
+.product-price-display.premium-price .product-price-first-order{
+  margin:0;
+  color:#9fa9a1;
+  font-size:.78rem;
+  line-height:1.45;
+}
+.product-price-display.premium-price .product-price-first-order strong{
+  color:var(--fx-acid-soft);
+  font-weight:750;
+}
+
 .site-footer{background:#0b120e;border-top-color:var(--fx-line);padding-top:3rem;padding-bottom:3rem}
 .footer-brand{color:var(--fx-text)}
 .footer-note{color:#99a49b!important}
