@@ -59,88 +59,52 @@ export default async function ApparelPage() {
         <div><span>01</span><strong>Golf first.</strong><p>Built around the places golfers actually wear it.</p></div>
         <div><span>02</span><strong>Quiet confidence.</strong><p>Fewer loud logos. Better texture, fit and color.</p></div>
         <div><span>03</span><strong>Whole-day wear.</strong><p>Course, travel day, clubhouse, dinner.</p></div>
-        <div><span>04</span><strong>Small drops.</strong><p>Enough choice to build a look. Never endless racks.</p></div>
+        <div><span>04</span><strong>Small edits.</strong><p>Enough choice to build a look. Never endless racks.</p></div>
       </section>
 
       {lead.length > 0 && (
         <section id="new-apparel" className="fashion-section fashion-product-section">
           <div className="fashion-section-heading">
-            <div>
-              <p className="eyebrow">NEW TO WYX</p>
-              <h2>THE APPAREL WE&apos;RE BUILDING AROUND.</h2>
-            </div>
+            <div><p className="eyebrow">NEW TO WYX</p><h2>THE APPAREL WE&apos;RE BUILDING AROUND.</h2></div>
             <p>The first edit starts with actual tops and layers, then uses stronger finishing pieces to complete the wardrobe. Polos, shorts, pants and lightweight outerwear are the next permanent lanes—not fifty versions of the same shirt.</p>
           </div>
-          <div className="fashion-product-grid">
-            {lead.map((product) => <ProductCard key={product.id} product={product} />)}
-          </div>
+          <div className="fashion-product-grid">{lead.map((product) => <ProductCard key={product.id} product={product} />)}</div>
         </section>
       )}
 
       <section className="fashion-editorial-split">
-        <div className="fashion-editorial-photo">
-          <Image src={editorialPhoto} alt="WYX golf clothing editorial detail" fill sizes="(max-width: 900px) 100vw, 56vw" />
-        </div>
-        <div className="fashion-editorial-copy">
-          <p className="eyebrow">THE WYX UNIFORM</p>
-          <h2>COURSE CLOTHES. WITHOUT THE COSTUME.</h2>
-          <p>Golf style works best when the pieces look natural together. One strong layer. One clean finishing detail. A hat or glove with some personality. Nothing screaming for attention.</p>
-          <Link className="text-link" href="/the-bag-test">WHY WYX CURATES →</Link>
-        </div>
+        <div className="fashion-editorial-photo"><Image src={editorialPhoto} alt="WYX golf clothing editorial detail" fill sizes="(max-width: 900px) 100vw, 56vw" /></div>
+        <div className="fashion-editorial-copy"><p className="eyebrow">THE WYX UNIFORM</p><h2>COURSE CLOTHES. WITHOUT THE COSTUME.</h2><p>Golf style works best when the pieces look natural together. One strong layer. One clean finishing detail. A hat or glove with some personality. Nothing screaming for attention.</p><Link className="text-link" href="/the-bag-test">WHY WYX CURATES →</Link></div>
       </section>
 
       {topsAndLayers.length > 0 && (
         <section className="fashion-section fashion-product-section">
-          <div className="fashion-section-heading compact">
-            <div><p className="eyebrow">TOPS & LAYERS</p><h2>START AT THE TOP.</h2></div>
-            <p>The pieces that set the tone for the whole fit.</p>
-          </div>
-          <div className="fashion-product-grid compact-grid">
-            {topsAndLayers.map((product) => <ProductCard key={product.id} product={product} />)}
-          </div>
+          <div className="fashion-section-heading compact"><div><p className="eyebrow">TOPS & LAYERS</p><h2>START AT THE TOP.</h2></div><p>The pieces that set the tone for the whole fit.</p></div>
+          <div className="fashion-product-grid compact-grid">{topsAndLayers.map((product) => <ProductCard key={product.id} product={product} />)}</div>
         </section>
       )}
 
       {finishing.length > 0 && (
         <section className="fashion-section fashion-product-section fashion-sand-section">
-          <div className="fashion-section-heading">
-            <div><p className="eyebrow">FINISHING PIECES</p><h2>THE DETAILS DO MORE THAN ANOTHER LOGO.</h2></div>
-            <p>Belts and understated finishing pieces give WYX a more complete wardrobe instead of a wall of interchangeable polos.</p>
-          </div>
-          <div className="fashion-product-grid">
-            {finishing.map((product) => <ProductCard key={product.id} product={product} />)}
-          </div>
+          <div className="fashion-section-heading"><div><p className="eyebrow">FINISHING PIECES</p><h2>THE DETAILS DO MORE THAN ANOTHER LOGO.</h2></div><p>Belts and understated finishing pieces give WYX a more complete wardrobe instead of a wall of interchangeable polos.</p></div>
+          <div className="fashion-product-grid">{finishing.map((product) => <ProductCard key={product.id} product={product} />)}</div>
         </section>
       )}
 
       {supporting.length > 0 && (
         <section className="fashion-section fashion-product-section">
-          <div className="fashion-section-heading compact">
-            <div><p className="eyebrow">COMPLETE THE LOOK</p><h2>HEADWEAR & GLOVES.</h2></div>
-            <Link className="text-link" href="/products">SHOP THE FULL EDIT →</Link>
-          </div>
-          <div className="fashion-product-grid compact-grid">
-            {supporting.map((product) => <ProductCard key={product.id} product={product} />)}
-          </div>
+          <div className="fashion-section-heading compact"><div><p className="eyebrow">COMPLETE THE LOOK</p><h2>HEADWEAR & GLOVES.</h2></div><Link className="text-link" href="/products">SHOP THE FULL EDIT →</Link></div>
+          <div className="fashion-product-grid compact-grid">{supporting.map((product) => <ProductCard key={product.id} product={product} />)}</div>
         </section>
       )}
 
       <section className="fashion-manifesto">
         <p className="eyebrow">WYX / GOLF SUPPLY</p>
         <h2>THE GOAL ISN&apos;T TO LOOK LIKE A GOLFER. IT&apos;S TO LOOK GOOD WHILE PLAYING GOLF.</h2>
-        <div className="fashion-manifesto-links">
-          <Link href="/products">SHOP EVERYTHING</Link>
-          <Link href="/golf-trip-gear">PACK THE TRIP</Link>
-          <Link href="/golf-gifts">GIVE GOLF BETTER</Link>
-        </div>
+        <div className="fashion-manifesto-links"><Link href="/products">SHOP EVERYTHING</Link><Link href="/golf-trip-gear">PACK THE TRIP</Link><Link href="/golf-gifts">GIVE GOLF BETTER</Link></div>
       </section>
 
-      <EmailCapture
-        source="apparel"
-        campaign="apparel_edit"
-        title="GET THE NEXT APPAREL DROP FIRST."
-        body="New apparel, limited edits, trip gear, and the pieces that make the WYX cut."
-      />
+      <EmailCapture source="apparel" campaign="apparel_edit" title="GET NEW WYX APPAREL FIRST." body="New apparel, premium brands, trip gear, and the pieces that make the WYX cut." />
     </div>
   );
 }
