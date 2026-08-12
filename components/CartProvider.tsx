@@ -10,7 +10,7 @@ import { KitUpsellBanner } from '@/components/KitUpsellBanner';
 import { trackEvent } from '@/lib/analytics';
 import { cartPromoState } from '@/lib/cartPromo';
 import { money } from '@/lib/demo';
-import type { Cart } from '@/types/shopify';
+import type { Cart, CartLine } from '@/types/shopify';
 
 type CartLineInput = { merchandiseId: string; quantity: number };
 type CartContextValue = {
@@ -45,12 +45,68 @@ async function callCart(method: string, body?: Record<string, unknown>) {
   return json.cart as Cart | null;
 }
 
+function gaItem(line: CartLine) {
+  return {
+    item_id: line.merchandise.id,
+    item_name: line.merchandise.product.title,
+    item_variant: line.merchandise.title,
+    price: Number(line.merchandise.price.amount),
+    quantity: line.quantity
+  };
+}
+
+function klaviyoItem(line: CartLine) {
+  const price = Number(line.merchandise.price.amount);
+  return {
+    ProductID: line.merchandise.id,
+    ProductName: line.merchandise.product.title,
+    ProductVariant: line.merchandise.title,
+    Quantity: line.quantity,
+    ItemPrice: price,
+    RowTotal: Number(line.cost.totalAmount.amount),
+    ProductURL: `https://wyxgolfsupply.com/products/${line.merchandise.product.handle}`,
+    ImageURL: line.merchandise.product.featuredImage?.url
+  };
+}
+
+function cartValue(lines: CartLine[]) {
+  return lines.reduce((sum, line) => sum + Number(line.cost.totalAmount.amount), 0);
+}
+
 function trackCartAdd(cart: Cart, contentIds: string[], contentType: string) {
+  const addedLines = cart.lines.filter((line) => contentIds.includes(line.merchandise.id));
+  const lines = addedLines.length ? addedLines : cart.lines;
   trackEvent('AddToCart', {
     content_ids: contentIds,
     content_type: contentType,
+    value: cartValue(lines),
+    currency: cart.cost.subtotalAmount.currencyCode,
+    items: lines.map(gaItem),
+    klaviyo: {
+      $value: Number(cart.cost.subtotalAmount.amount),
+      ItemNames: cart.lines.map((line) => line.merchandise.product.title),
+      CheckoutURL: cart.checkoutUrl,
+      Items: cart.lines.map(klaviyoItem),
+      AddedItems: lines.map(klaviyoItem)
+    }
+  });
+}
+
+function trackCheckout(cart: Cart) {
+  trackEvent('InitiateCheckout', {
     value: Number(cart.cost.subtotalAmount.amount),
-    currency: cart.cost.subtotalAmount.currencyCode
+    currency: cart.cost.subtotalAmount.currencyCode,
+    num_items: cart.totalQuantity,
+    content_ids: cart.lines.map((line) => line.merchandise.id),
+    contents: cart.lines.map((line) => ({ id: line.merchandise.id, quantity: line.quantity })),
+    items: cart.lines.map(gaItem),
+    klaviyo: {
+      $event_id: `${cart.id}-${Date.now()}`,
+      $value: Number(cart.cost.subtotalAmount.amount),
+      ItemNames: cart.lines.map((line) => line.merchandise.product.title),
+      CheckoutURL: cart.checkoutUrl,
+      Items: cart.lines.map(klaviyoItem)
+    }
   });
 }
 
@@ -126,12 +182,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem(cartStorageKey, next.id);
         setCart(next);
         trackCartAdd(next, lines.map((line) => line.merchandiseId), 'product_group');
-        trackEvent('InitiateCheckout', {
-          value: Number(next.cost.subtotalAmount.amount),
-          currency: next.cost.subtotalAmount.currencyCode,
-          num_items: next.totalQuantity,
-          content_ids: lines.map((line) => line.merchandiseId)
-        });
+        trackCheckout(next);
         window.location.href = next.checkoutUrl;
       }
     } catch (caught) {
@@ -150,12 +201,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem(cartStorageKey, next.id);
         setCart(next);
         trackCartAdd(next, [merchandiseId], 'product');
-        trackEvent('InitiateCheckout', {
-          value: Number(next.cost.subtotalAmount.amount),
-          currency: next.cost.subtotalAmount.currencyCode,
-          num_items: next.totalQuantity,
-          content_ids: [merchandiseId]
-        });
+        trackCheckout(next);
         window.location.href = next.checkoutUrl;
       }
     } catch (caught) {
@@ -207,13 +253,7 @@ function CartDrawer() {
 
   function checkout() {
     if (!cart?.checkoutUrl) return;
-    trackEvent('InitiateCheckout', {
-      value: Number(cart.cost.subtotalAmount.amount),
-      currency: cart.cost.subtotalAmount.currencyCode,
-      num_items: cart.totalQuantity,
-      content_ids: cart.lines.map((line) => line.merchandise.id),
-      contents: cart.lines.map((line) => ({ id: line.merchandise.id, quantity: line.quantity }))
-    });
+    trackCheckout(cart);
     window.location.href = cart.checkoutUrl;
   }
 
