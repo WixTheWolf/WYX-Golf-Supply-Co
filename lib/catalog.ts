@@ -3,19 +3,19 @@ import { hasVerifiedFulfillment } from '@/lib/fulfillmentReadiness';
 import { isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasMisleadingProductMedia, hasKnownImageMismatch } from '@/lib/productReadiness';
 
-export const catalogCategories = ['All', 'Golf Balls', 'Gloves', 'Grips', 'Towels', 'Training Aids', 'Golf Tech', 'Club Care', 'Headwear', 'Apparel', 'Accessories'] as const;
+export const catalogCategories = ['All', 'Apparel', 'Headwear', 'Gloves', 'Accessories', 'Towels', 'Grips', 'Club Care', 'Training Aids', 'Golf Tech', 'Golf Balls'] as const;
 
 const rules: Array<[Exclude<(typeof catalogCategories)[number], 'All'>, string[]]> = [
-  ['Golf Balls', ['golf balls', 'golf ball set', 'prank ball']],
+  ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel', 'sock', 'socks', 'quarter zip', 'pullover', 'belt', 'waffle layer', 'golf layer']],
+  ['Headwear', ['hat', 'cap', 'headwear']],
   ['Gloves', ['glove']],
-  ['Grips', ['grip', 'overgrip']],
+  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter', 'retriever', 'ball retriever', 'pouch', 'organizer', 'shoe bag', 'tumbler', 'rain hood', 'sunglasses', 'arm sleeve', 'cup holder', 'umbrella holder', 'cart mount']],
   ['Towels', ['towel']],
+  ['Grips', ['grip', 'overgrip']],
+  ['Club Care', ['club care', 'club brush', 'brush cleaner', 'groove cleaner', 'groove sharpener', 'wedge tool', 'grip solvent']],
   ['Training Aids', ['training aid', 'training aids', 'putting mirror', 'alignment mirror', 'putting gate', 'putting mat', 'putting arc', 'alignment stick', 'swing trainer', 'swing tempo', 'tempo trainer', 'chipping net', 'divot board', 'short game', 'range gear', 'impact bag']],
   ['Golf Tech', ['golf tech', 'rangefinder', 'laser rangefinder', 'gps speaker', 'golf gps', 'launch monitor', 'phone mount', 'gps watch', 'golf watch']],
-  ['Club Care', ['club care', 'club brush', 'brush cleaner', 'groove cleaner', 'groove sharpener', 'wedge tool', 'grip solvent']],
-  ['Headwear', ['hat', 'cap', 'headwear']],
-  ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel', 'sock', 'socks', 'quarter zip', 'pullover', 'belt']],
-  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter', 'retriever', 'ball retriever', 'pouch', 'organizer', 'shoe bag', 'tumbler', 'rain hood', 'sunglasses', 'arm sleeve', 'cup holder', 'umbrella holder', 'cart mount']]
+  ['Golf Balls', ['golf balls', 'golf ball set', 'prank ball']]
 ];
 
 type ClassifiableProduct = Pick<Product, 'title' | 'productType' | 'vendor' | 'tags'>;
@@ -95,6 +95,9 @@ export function categoryFor(product: ClassifiableProduct) {
 
   const content = searchable(product);
 
+  // Known golf layers can arrive from supplier feeds with a generic product type.
+  if (content.includes('pimento waffle')) return 'Apparel';
+  if (content.includes('hello friends t-shirt')) return 'Apparel';
   if (content.includes('groove sharpener') || content.includes('club face pick') || content.includes('club maintenance') || content.includes('spike wrench')) return 'Club Care';
   if (content.includes('ball retriever')) return 'Accessories';
   if (content.includes('ball marker') || content.includes('hat clip ball marker')) return 'Accessories';
