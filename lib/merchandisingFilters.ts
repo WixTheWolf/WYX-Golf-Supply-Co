@@ -48,8 +48,8 @@ export const futureAssortmentHandles = new Set([
   'augusta-bear-hat',
   'golf-or-die-game-set',
   'dartee-golf-glove',
+  'volcanic-ash',
   'park-paisley-womens-gold-golf-glove',
-  'pulse-golf-overgrip-tape',
   'stick-grips-golf-camo-golf-grip',
   'tri-fold-microfiber-golf-towel',
   'blue-ridge-golf-co-golf-towels',
@@ -112,6 +112,7 @@ export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
     'evil-ape',
     'augusta-bear-hat',
+    'volcanic-ash',
     'topographic-carolina-blue-driver-headcover',
     'dude-abides-v2-mallet-putter-cover',
     'dartee-golf-glove',
@@ -124,7 +125,6 @@ export function firstBuyProducts(products: Product[]) {
     'three-rail-ball-marker',
     'glove-accessory-caddie-black',
     'stick-grips-golf-camo-golf-grip',
-    'pulse-golf-overgrip-tape',
     'tri-fold-microfiber-golf-towel',
     'bamboo-performance-golf-tees-50-pack'
   ];
