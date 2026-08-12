@@ -4,11 +4,11 @@ import { EmailCapture } from '@/components/EmailCapture';
 
 export const metadata: Metadata = {
   title: 'The Roo Valuables Pouch',
-  description: 'Join the waitlist for The Roo, a WYX valuables pouch concept for keys, wallet, tees, markers, cash, and small golf-bag essentials.',
+  description: 'Join the interest list for The Roo, a WYX valuables-pouch concept for keys, wallet, tees, markers, cash, and small golf-bag essentials.',
   alternates: { canonical: '/the-roo' },
   openGraph: {
     title: 'The Roo Valuables Pouch | WYX Golf Supply Co.',
-    description: 'Join the waitlist for The Roo, a valuables pouch concept for keys, wallet, tees, markers, and small bag essentials.',
+    description: 'Join the interest list for The Roo, a valuables-pouch concept for keys, wallet, tees, markers, and small bag essentials.',
     url: '/the-roo'
   }
 };
@@ -18,19 +18,19 @@ export default function TheRoo() {
     <>
       <section className="collection-hero">
         <div>
-          <p className="eyebrow">Coming Soon</p>
+          <p className="eyebrow">WYX CONCEPT</p>
           <h1>The Roo Valuables Pouch</h1>
           <p>A better home for keys, wallet, tees, markers, cash, and the tiny stuff that disappears in every golf bag.</p>
           <div className="actions">
-            <Link className="button primary" href="#roo-waitlist">Join The Roo Waitlist</Link>
+            <Link className="button primary" href="#roo-waitlist">Join The Interest List</Link>
             <Link className="button secondary dark" href="/golf-trip-gear">Shop Trip Gear</Link>
           </div>
         </div>
         <div className="collection-proof">
-          <span>Waitlist only</span>
-          <span>No preorder yet</span>
-          <span>Golf trip concept</span>
-          <span>Sourcing in progress</span>
+          <span>Concept only</span>
+          <span>Nothing charged today</span>
+          <span>No preorder</span>
+          <span>We&apos;ll email if it becomes real</span>
         </div>
       </section>
 
@@ -39,13 +39,12 @@ export default function TheRoo() {
           <p className="eyebrow">Why It Exists</p>
           <h2>The Little Stuff Needs A Home.</h2>
         </div>
-        <p>The Roo is being developed as a compact valuables pouch for golf trips, bachelor party weekends, league nights, and anyone tired of digging for keys under loose tees and receipts. It will stay waitlist-only until photos, pricing, shipping, and returns are confirmed and it passes the Bag Test.</p>
+        <p>The Roo is a WYX concept for golfers who want one compact place for valuables and loose bag essentials. It will not become a product until the design, materials, pricing, photography, fulfillment, and return experience are good enough to put the WYX name on.</p>
       </section>
 
       <section id="roo-waitlist">
-        <EmailCapture source="the-roo" campaign="the_roo_waitlist" title="Join The Roo Waitlist." body="Get the first note when The Roo sourcing is confirmed and the first pouch drop is ready." />
+        <EmailCapture source="the-roo" campaign="the_roo_interest" title="Interested In The Roo?" body="Leave your email and we&apos;ll send one note if The Roo becomes a real WYX product." />
       </section>
     </>
   );
 }
-
