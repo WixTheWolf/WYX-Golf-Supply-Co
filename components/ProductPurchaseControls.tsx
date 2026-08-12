@@ -13,13 +13,11 @@ type ProductPurchaseControlsProps = {
 type OptionSelections = Record<string, string>;
 
 export function ProductPurchaseControls({ variants, productTitle, compact = false }: ProductPurchaseControlsProps) {
-  const availableVariants = useMemo(
-    () => variants.filter((variant) => variant.availableForSale && !variant.id.startsWith('demo-')),
-    [variants]
-  );
-  const requiresChoice = availableVariants.length > 1;
-  const optionNames = useMemo(() => getOptionNames(availableVariants), [availableVariants]);
-  const hasStructuredOptions = requiresChoice && optionNames.length > 0;
+  const realVariants = useMemo(() => variants.filter((variant) => !variant.id.startsWith('demo-')), [variants]);
+  const availableVariants = useMemo(() => realVariants.filter((variant) => variant.availableForSale), [realVariants]);
+  const optionNames = useMemo(() => getOptionNames(realVariants), [realVariants]);
+  const hasStructuredOptions = realVariants.length > 1 && optionNames.length > 0;
+  const requiresChoice = hasStructuredOptions || availableVariants.length > 1;
   const [selections, setSelections] = useState<OptionSelections>({});
   const [fallbackVariantId, setFallbackVariantId] = useState(requiresChoice ? '' : availableVariants[0]?.id || '');
   const selectedVariant = hasStructuredOptions
@@ -51,22 +49,48 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
       {hasStructuredOptions && (
         <fieldset className="variant-selector">
           <legend>Choose your option</legend>
-          <div style={{ display: 'grid', gridTemplateColumns: optionNames.length > 1 && !compact ? 'repeat(auto-fit, minmax(180px, 1fr))' : '1fr', gap: compact ? '.55rem' : '.75rem' }}>
+          <div className="variant-option-groups">
             {optionNames.map((name) => {
-              const values = valuesForOption(availableVariants, name, selections);
+              const values = valuesForOption(realVariants, name, selections);
+              const buttonStyle = isButtonOption(name);
               return (
-                <label key={name} style={{ display: 'grid', gap: '.38rem' }}>
-                  <span style={{ color: '#aeb9b0', fontSize: compact ? '.62rem' : '.68rem', fontWeight: 850, letterSpacing: '.12em', textTransform: 'uppercase' }}>{cleanOptionName(name)}</span>
-                  <select
-                    aria-label={`${cleanOptionName(name)} for ${productTitle}`}
-                    value={selections[name] || ''}
-                    onChange={(event) => selectOption(name, event.target.value)}
-                    style={selectStyle(compact)}
-                  >
-                    <option value="">Select {cleanOptionName(name).toLowerCase()}</option>
-                    {values.map((value) => <option value={value} key={value}>{cleanOptionValue(value)}</option>)}
-                  </select>
-                </label>
+                <div className="variant-option-group" key={name}>
+                  <span className="variant-option-label">{cleanOptionName(name)}</span>
+                  {buttonStyle ? (
+                    <div className="variant-chip-row" role="group" aria-label={`${cleanOptionName(name)} for ${productTitle}`}>
+                      {values.map((value) => {
+                        const available = optionValueIsAvailable(realVariants, name, value, selections);
+                        const selected = selections[name] === value;
+                        return (
+                          <button
+                            type="button"
+                            key={value}
+                            className={`variant-chip${selected ? ' selected' : ''}${available ? '' : ' unavailable'}`}
+                            aria-pressed={selected}
+                            disabled={!available}
+                            onClick={() => selectOption(name, value)}
+                          >
+                            {cleanOptionValue(value)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <select
+                      className="variant-select"
+                      aria-label={`${cleanOptionName(name)} for ${productTitle}`}
+                      value={selections[name] || ''}
+                      onChange={(event) => selectOption(name, event.target.value)}
+                    >
+                      <option value="">Select {cleanOptionName(name).toLowerCase()}</option>
+                      {values.map((value) => (
+                        <option value={value} key={value} disabled={!optionValueIsAvailable(realVariants, name, value, selections)}>
+                          {cleanOptionValue(value)}{optionValueIsAvailable(realVariants, name, value, selections) ? '' : ' — Sold out'}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -77,10 +101,10 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
         <fieldset className="variant-selector">
           <legend>Choose option</legend>
           <select
+            className="variant-select"
             aria-label={`Choose an option for ${productTitle}`}
             value={fallbackVariantId}
             onChange={(event) => setFallbackVariantId(event.target.value)}
-            style={selectStyle(compact)}
           >
             <option value="">Select an option</option>
             {availableVariants.map((variant) => (
@@ -98,7 +122,7 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
         </>
       ) : requiresChoice ? (
         <>
-          {!compact && <p className="selected-variant-note">Choose your options to continue.</p>}
+          {!compact && <p className="selected-variant-note">Choose the available option you want to continue.</p>}
           <button className="button primary full" disabled>Select Options</button>
         </>
       ) : null}
@@ -125,15 +149,27 @@ function findMatchingVariant(variants: ProductVariant[], optionNames: string[], 
 
 function valuesForOption(variants: ProductVariant[], optionName: string, selections: OptionSelections) {
   const otherSelections = Object.entries(selections).filter(([name, value]) => name !== optionName && value);
-  const values = variants
-    .filter((variant) => otherSelections.every(([name, value]) => optionValue(variant, name) === value))
-    .map((variant) => optionValue(variant, optionName))
-    .filter((value): value is string => Boolean(value));
+  const matching = variants.filter((variant) => otherSelections.every(([name, value]) => optionValue(variant, name) === value));
+  const values = matching.map((variant) => optionValue(variant, optionName)).filter((value): value is string => Boolean(value));
   return [...new Set(values)];
+}
+
+function optionValueIsAvailable(variants: ProductVariant[], optionName: string, value: string, selections: OptionSelections) {
+  const otherSelections = Object.entries(selections).filter(([name, selected]) => name !== optionName && selected);
+  return variants.some((variant) =>
+    variant.availableForSale
+    && optionValue(variant, optionName) === value
+    && otherSelections.every(([name, selected]) => optionValue(variant, name) === selected)
+  );
 }
 
 function optionValue(variant: ProductVariant, name: string) {
   return variant.selectedOptions?.find((option) => option.name === name)?.value;
+}
+
+function isButtonOption(name: string) {
+  const normalized = cleanOptionName(name).toLowerCase();
+  return normalized === 'size' || normalized === 'waist' || normalized === 'shoe size';
 }
 
 function cleanOptionName(name: string) {
@@ -142,23 +178,6 @@ function cleanOptionName(name: string) {
 
 function cleanOptionValue(value: string) {
   return value.replace(/\s*\(Lefty Golfer\)\s*/i, ' · Lefty Golfer').trim();
-}
-
-function selectStyle(compact: boolean) {
-  return {
-    width: '100%',
-    minHeight: compact ? 42 : 50,
-    padding: compact ? '0.55rem 0.7rem' : '0.75rem 0.9rem',
-    border: '1px solid rgba(230,255,225,.18)',
-    borderRadius: 3,
-    background: '#0c110d',
-    color: '#f2f6ef',
-    font: 'inherit',
-    fontSize: compact ? '.72rem' : '.86rem',
-    fontWeight: 700,
-    letterSpacing: '.03em',
-    cursor: 'pointer'
-  } as const;
 }
 
 function variantLabel(variant: ProductVariant) {
