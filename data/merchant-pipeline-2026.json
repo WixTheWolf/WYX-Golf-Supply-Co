@@ -1,14 +1,44 @@
 {
   "updated": "2026-08-11",
-  "strategy": "Replace generic feed merchandise with fewer, more distinctive golf products from established specialty merchants. Prioritize products that photograph well, solve a clear golf problem, support golf-trip culture, or can become WYX-exclusive.",
+  "strategy": "Build WYX as an apparel-led golf lifestyle store. Prioritize a complete but tightly edited wardrobe first: polos, tees, layers, shorts, pants, belts, headwear and gloves. Add premium bag, trip and custom accessories only when they reinforce the same visual identity. Reject generic feed filler even when it is technically sale-ready.",
   "rules": {
     "autoPublish": false,
     "supplierApprovalRequired": true,
     "priceChangesRequireApproval": true,
     "minimumBrandFitScore": 8,
-    "preferredLandedMarginNote": "Validate wholesale cost, shipping, fees, MAP and expected gross margin before approval. Do not infer margin from retail pricing."
+    "preferredLandedMarginNote": "Validate wholesale cost, shipping, fees, MAP, territory restrictions and expected gross margin before approval. Do not infer margin from retail pricing."
   },
   "merchants": [
+    {
+      "merchant": "Holderness & Bourne",
+      "priority": "A+",
+      "brandFitScore": 10,
+      "status": "qualified-wholesale-inquiry",
+      "lanes": ["premium polos", "performance layers", "quarter zips", "sweaters", "pants", "shorts", "headwear"],
+      "why": "Best fit for the refined side of the new WYX apparel direction: restrained golf styling, strong wardrobe architecture and a current Green Grass program that explicitly welcomes clubs and shops interested in carrying the brand.",
+      "wholesaleUrl": "https://holdernessandbourne.com/pages/green-grass",
+      "nextAction": "Request retailer terms only after approval; first evaluate one core polo, one layer and one bottom as a three-piece premium test capsule."
+    },
+    {
+      "merchant": "Straight Down",
+      "priority": "A",
+      "brandFitScore": 9,
+      "status": "qualified-established-wholesale",
+      "lanes": ["polos", "quarter zips", "pullovers", "outerwear", "pants", "shorts", "women's golf apparel"],
+      "why": "Provides the wardrobe depth WYX currently lacks. Straight Down has an established wholesale business and a broad current golf-apparel catalog, making it a practical source for filling polos, layers and bottoms without going back to commodity feeds.",
+      "wholesaleUrl": "https://www.straightdown.com/",
+      "nextAction": "Verify current small-retailer opening terms and line-sheet access; evaluate one understated polo, one waffle/quarter-zip layer and one pant or short before any commitment."
+    },
+    {
+      "merchant": "Sunday Swagger",
+      "priority": "B+",
+      "brandFitScore": 8,
+      "status": "qualified-retailer-program",
+      "lanes": ["pattern polos", "lifestyle pieces", "women's polos", "youth polos", "graphic tees", "headwear"],
+      "why": "Useful as a controlled personality lane rather than the foundation of WYX. The brand actively supports retailers and says it is sold in more than 600 green-grass locations and boutiques.",
+      "wholesaleUrl": "https://sundayswagger.com/pages/wholesale-corporate",
+      "nextAction": "Treat as a one-or-two-style seasonal accent only; avoid turning WYX into a wall of novelty-print polos."
+    },
     {
       "merchant": "PRG Golf",
       "priority": "A+",
@@ -17,7 +47,7 @@
       "lanes": ["custom headcovers", "ball markers", "divot tools", "towels", "pouches", "WYX private-label accessories"],
       "why": "Strong route to distinctive accessories and future WYX-branded products instead of commodity inventory.",
       "wholesaleUrl": "https://prg-golf.com/pages/wholesale",
-      "nextAction": "Request wholesale/custom terms, MOQ, lead times, decoration options, MAP terms and sample pricing."
+      "nextAction": "Request wholesale/custom terms only after approval; prioritize a future WYX headcover, towel or marker capsule."
     },
     {
       "merchant": "Seamus Golf",
@@ -25,9 +55,9 @@
       "brandFitScore": 10,
       "status": "qualified-research",
       "lanes": ["hand-forged ball marks", "pitch tools", "bag tags", "headcovers", "valuables pouches", "scorecard holders", "shoe bags", "dopp kits"],
-      "why": "High-craft golf products with real material character; ideal for premium editorial photography and a higher-end WYX assortment.",
+      "why": "High-craft golf products with real material character; ideal for premium editorial photography and the elevated accessory layer around WYX apparel.",
       "wholesaleUrl": "https://www.seamusgolf.com/pages/wholesale",
-      "nextAction": "Request wholesale account and samples; prioritize one forged accessory and one sewn travel/bag item."
+      "nextAction": "Request wholesale account and samples only after approval; prioritize one forged accessory and one sewn travel/bag item."
     },
     {
       "merchant": "ASHER Golf",
@@ -35,9 +65,9 @@
       "brandFitScore": 10,
       "status": "qualified-wholesale",
       "lanes": ["premium golf gloves", "limited-color gloves", "glove caddies", "modern headwear", "select apparel", "custom products"],
-      "why": "A direct fit for WYX: modern visual identity, an established wholesale program, customizable products, and gloves/accessories that already look like real golf editorial merchandise.",
+      "why": "A direct fit for WYX: modern visual identity, an established wholesale program, customizable products, and gloves/accessories that can finish the apparel story instead of competing with it.",
       "wholesaleUrl": "https://www.ashergolf.com/pages/wholesale-accounts",
-      "nextAction": "Request wholesale login and terms; price one AAA Cabretta glove family, one visual glove drop and the premium glove caddie."
+      "nextAction": "Request wholesale login and terms only after approval; price one premium glove family and one visual glove drop."
     },
     {
       "merchant": "Bluegrass Fairway",
@@ -45,9 +75,9 @@
       "brandFitScore": 10,
       "status": "qualified-wholesale",
       "lanes": ["Horween leather scorecard holders", "valuables pouches", "waxed-canvas shoe bags", "headcovers", "rangefinder cases", "duffels", "needlepoint belts"],
-      "why": "Handcrafted leather, waxed canvas and heritage materials add the craftsmanship and texture WYX currently lacks. Strong candidate for premium halo merchandise and golf-trip editorial storytelling.",
+      "why": "Handcrafted leather, waxed canvas and heritage materials add craftsmanship and texture around the clothing. Strong candidate for premium halo merchandise and golf-trip editorial storytelling.",
       "wholesaleUrl": "https://www.bluegrassfairway.com/pages/wholesale-inquiry",
-      "nextAction": "Request a small-account quote and wholesale terms; prioritize one scorecard holder, one valuables pouch and one travel piece."
+      "nextAction": "Request a small-account quote only after approval; prioritize one scorecard holder, one valuables pouch and one travel piece."
     },
     {
       "merchant": "Sunday Golf",
@@ -55,9 +85,9 @@
       "brandFitScore": 9,
       "status": "qualified-research",
       "lanes": ["Sunday bags", "golf-trip bags", "coolers", "travel accessories", "custom bags"],
-      "why": "Strong fit for WYX trip positioning and a practical way to add a higher-ticket hero product without becoming an equipment retailer.",
+      "why": "Strong fit for WYX trip positioning and a practical way to add a higher-ticket hero product after the apparel foundation is stronger.",
       "wholesaleUrl": "https://sundaygolf.com/pages/wholesale",
-      "nextAction": "Price a six-unit test order and compare shipping, margin, colors and customization options."
+      "nextAction": "Price a six-unit test order only after approval and compare shipping, margin, colors and customization options."
     },
     {
       "merchant": "Pins & Aces",
@@ -65,9 +95,9 @@
       "brandFitScore": 9,
       "status": "existing-vendor-expand-selectively",
       "lanes": ["headcovers", "magnetic accessories", "caddies", "golf gifts", "custom headcovers"],
-      "why": "Already represented in WYX and proven fit. Expand only with distinctive products that improve the assortment instead of duplicating existing utility pieces.",
+      "why": "Already represented in WYX. Expand only with distinctive products that support the apparel-led brand instead of rebuilding an accessories-heavy catalog.",
       "wholesaleUrl": "https://pinsandaces.com/pages/wholesale",
-      "nextAction": "Review current wholesale assortment for one magnetic cleaning product and one visual hero piece."
+      "nextAction": "Review current wholesale assortment for one magnetic cleaning product and one visual hero piece only after the apparel gaps are filled."
     },
     {
       "merchant": "Western Birch Golf",
@@ -75,9 +105,9 @@
       "brandFitScore": 9,
       "status": "qualified-custom",
       "lanes": ["premium wooden tees", "WYX custom tees", "trip packs", "tournament packs"],
-      "why": "Tees should be supporting merchandise, but Western Birch turns a commodity into something visually ownable and gives WYX a clear private-label path.",
+      "why": "Supporting merchandise only. Western Birch gives WYX a future private-label path without relying on generic tee inventory.",
       "wholesaleUrl": "https://westernbirch.com/",
-      "nextAction": "Do not add another generic tee SKU. Price a small WYX custom run only when the brand is ready for private-label packaging."
+      "nextAction": "Do not add another generic tee SKU. Price a small WYX custom run only when the apparel identity is established."
     },
     {
       "merchant": "Swannies Golf",
@@ -85,9 +115,9 @@
       "brandFitScore": 8,
       "status": "qualified-research",
       "lanes": ["modern golf hats", "duffle bags", "polos", "layers"],
-      "why": "Useful route to improve WYX headwear and trip apparel without adding a large generic clothing catalog.",
+      "why": "Useful route for modern headwear and selective apparel without requiring a large generic clothing catalog.",
       "wholesaleUrl": "https://swannies.co/pages/corporate-wholesale",
-      "nextAction": "Request wholesale terms and evaluate one hat plus one trip-bag/apparel test product."
+      "nextAction": "Verify wholesale terms and evaluate one hat plus one apparel test product after approval."
     },
     {
       "merchant": "Dormie Workshop",
@@ -95,7 +125,7 @@
       "brandFitScore": 9,
       "status": "halo-research-resale-terms-unverified",
       "lanes": ["premium leather headcovers", "putter covers", "statement golf accessories"],
-      "why": "Potential halo merchandise that makes the store feel expensive and distinctive even if volume is low.",
+      "why": "Potential halo merchandise once apparel carries the brand identity.",
       "wholesaleUrl": "https://dormieworkshop.com/",
       "nextAction": "Verify reseller/corporate terms before considering any listing."
     },
@@ -105,18 +135,24 @@
       "brandFitScore": 8,
       "status": "strategic-partnership-only",
       "lanes": ["apparel", "headwear", "collaboration"],
-      "why": "Strong style benchmark, but standard wholesale availability is not the preferred route. Treat as a future collaboration conversation, not core sourcing.",
+      "why": "Strong style benchmark, but standard wholesale availability is not the preferred route. Treat as a future collaboration conversation rather than assumed inventory.",
       "wholesaleUrl": "https://devereuxgolf.com/",
       "nextAction": "No action until WYX has stronger sales volume or a collaboration concept."
     }
   ],
   "targetAssortmentGaps": [
+    "one premium solid or micro-pattern polo",
+    "one expressive but wearable polo",
+    "one lightweight quarter zip or textured layer",
+    "one performance short",
+    "one golf pant",
+    "one casual golf tee",
+    "one premium rope or unstructured hat",
+    "premium glove family with stronger visual identity",
     "premium magnetic towel",
     "magnetic wet club brush",
     "premium divot or pitch tool",
     "valuables pouch",
-    "premium glove family with stronger visual identity",
-    "second standout golf hat",
     "real golf-trip bag or duffle",
     "premium scorecard or yardage-book holder",
     "one higher-ticket travel hero",
