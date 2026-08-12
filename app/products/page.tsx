@@ -30,7 +30,7 @@ export default async function Products({ searchParams }: { searchParams: { categ
       <section className="page-hero compact shop-fashion-hero">
         <p className="eyebrow">SHOP WYX</p>
         <h1>{category && category !== 'All' ? category.toUpperCase() : 'THE FULL EDIT.'}</h1>
-        <p>Apparel leads. The good bag stuff stays. Everything here has been cut down to a WYX-sized assortment instead of exposing the whole supplier feed.</p>
+        <p>A smaller, sharper selection of golf apparel, headwear, headcovers, gloves, trip gear and bag upgrades. Everything here is available now and has a reason to be here.</p>
         {!category && <div className="actions shop-hero-actions"><Link className="button ink" href="/apparel">SHOP APPAREL</Link><Link className="text-link" href="/golf-trip-gear">PACK THE TRIP →</Link></div>}
       </section>
 
