@@ -33,13 +33,15 @@ const apparelSizing: SizingGuide = {
     { label: 'L', detail: 'Chest 42–44"' },
     { label: 'XL', detail: 'Chest 46–48"' },
   ],
-  tip: 'Weekend polos and quarter-zips run true to size. Size up if you layer heavily or prefer a relaxed cart fit.',
+  tip: 'Use the listed garment size as the starting point and review the product options before checkout.',
 };
 
 export function sizingGuideFor(category: string, title: string): SizingGuide | null {
   const text = `${category} ${title}`.toLowerCase();
   if (category === 'Gloves' || text.includes('glove')) return gloveSizing;
   if (category === 'Headwear' || /\b(hat|cap)\b/.test(text)) return hatSizing;
+  // Belts need product-specific waist/trim guidance. Never reuse shirt chest sizing.
+  if (/\bbelt\b/.test(text) || title.toLowerCase() === 'volcanic ash') return null;
   if (category === 'Apparel' || /\b(polo|shirt|hoodie|quarter|jacket|sock)\b/.test(text)) return apparelSizing;
   return null;
 }
