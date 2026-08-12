@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useCart } from './CartProvider';
 import type { ProductVariant } from '@/types/shopify';
 
@@ -27,17 +27,6 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
     : availableVariants.find((variant) => variant.id === fallbackVariantId);
   const selectedVariantId = selectedVariant?.id || '';
   const { add, buyNow, loading, error } = useCart();
-
-  useEffect(() => {
-    if (!requiresChoice) return;
-    const root = document.documentElement;
-    if (selectedVariantId) root.dataset.wyxSelectedProductVariant = selectedVariantId;
-    else delete root.dataset.wyxSelectedProductVariant;
-    window.dispatchEvent(new CustomEvent('wyx:variant-selected', { detail: { variantId: selectedVariantId } }));
-    return () => {
-      delete root.dataset.wyxSelectedProductVariant;
-    };
-  }, [requiresChoice, selectedVariantId]);
 
   async function addSelected() {
     if (!selectedVariantId) return;
