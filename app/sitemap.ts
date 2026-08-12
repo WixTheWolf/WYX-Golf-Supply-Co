@@ -7,6 +7,7 @@ import { getProducts } from '@/lib/shopify/products';
 const evergreenPages = [
   '',
   '/products',
+  '/apparel',
   '/weekend-golfer-bag-upgrade-kit',
   '/golf-trip-gear',
   '/golf-gifts',
