@@ -9,6 +9,7 @@ import './premium.css';
 import './fashion.css';
 import './department-store.css';
 import './typography.css';
+import './polish.css';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
