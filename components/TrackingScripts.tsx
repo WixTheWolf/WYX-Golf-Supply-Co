@@ -4,6 +4,7 @@ const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const tiktokPixelId = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
+const klaviyoPublicKey = process.env.NEXT_PUBLIC_KLAVIYO_PUBLIC_API_KEY;
 
 export function TrackingScripts() {
   return (
@@ -20,6 +21,12 @@ export function TrackingScripts() {
         <Script id="wyx-meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${metaPixelId}');fbq('track','PageView');`}
         </Script>
+      )}
+      {klaviyoPublicKey && (
+        <>
+          <Script id="wyx-klaviyo-queue" strategy="afterInteractive">{`window.klaviyo=window.klaviyo||[];`}</Script>
+          <Script src={`https://static.klaviyo.com/onsite/js/${klaviyoPublicKey}/klaviyo.js`} strategy="afterInteractive" />
+        </>
       )}
       {tiktokPixelId && (
         <Script id="wyx-tiktok-pixel" strategy="afterInteractive">
