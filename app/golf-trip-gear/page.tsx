@@ -92,7 +92,7 @@ export default async function GolfTripGearPage() {
         <Image src={tripPhoto} alt="Golf cart and golf bag on the course during a golf trip" fill priority sizes="100vw" />
         <span className="trip-photo-hero-overlay" />
         <div className="trip-photo-hero-copy">
-          <p className="eyebrow">TRIP MODE</p>
+          <p className="eyebrow">TRIP MODE / WYX</p>
           <h1>PACK FOR THE WEEKEND, NOT THE CATALOG.</h1>
           <p>Airports. Rental carts. 36-hole days. Strange weather. One hotel room full of golf bags. Bring fewer things, but make every one of them earn the luggage space.</p>
           <div className="actions">
