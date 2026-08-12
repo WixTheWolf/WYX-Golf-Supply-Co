@@ -11,7 +11,7 @@
   "merchants": [
     {
       "merchant": "PRG Golf",
-      "priority": "A",
+      "priority": "A+",
       "brandFitScore": 10,
       "status": "qualified-research",
       "lanes": ["custom headcovers", "ball markers", "divot tools", "towels", "pouches", "WYX private-label accessories"],
@@ -21,13 +21,33 @@
     },
     {
       "merchant": "Seamus Golf",
-      "priority": "A",
+      "priority": "A+",
       "brandFitScore": 10,
       "status": "qualified-research",
       "lanes": ["hand-forged ball marks", "pitch tools", "bag tags", "headcovers", "valuables pouches", "scorecard holders", "shoe bags", "dopp kits"],
       "why": "High-craft golf products with real material character; ideal for premium editorial photography and a higher-end WYX assortment.",
       "wholesaleUrl": "https://www.seamusgolf.com/pages/wholesale",
       "nextAction": "Request wholesale account and samples; prioritize one forged accessory and one sewn travel/bag item."
+    },
+    {
+      "merchant": "ASHER Golf",
+      "priority": "A+",
+      "brandFitScore": 10,
+      "status": "qualified-wholesale",
+      "lanes": ["premium golf gloves", "limited-color gloves", "glove caddies", "modern headwear", "select apparel", "custom products"],
+      "why": "A direct fit for WYX: modern visual identity, an established wholesale program, customizable products, and gloves/accessories that already look like real golf editorial merchandise.",
+      "wholesaleUrl": "https://www.ashergolf.com/pages/wholesale-accounts",
+      "nextAction": "Request wholesale login and terms; price one AAA Cabretta glove family, one visual glove drop and the premium glove caddie."
+    },
+    {
+      "merchant": "Bluegrass Fairway",
+      "priority": "A+",
+      "brandFitScore": 10,
+      "status": "qualified-wholesale",
+      "lanes": ["Horween leather scorecard holders", "valuables pouches", "waxed-canvas shoe bags", "headcovers", "rangefinder cases", "duffels", "needlepoint belts"],
+      "why": "Handcrafted leather, waxed canvas and heritage materials add the craftsmanship and texture WYX currently lacks. Strong candidate for premium halo merchandise and golf-trip editorial storytelling.",
+      "wholesaleUrl": "https://www.bluegrassfairway.com/pages/wholesale-inquiry",
+      "nextAction": "Request a small-account quote and wholesale terms; prioritize one scorecard holder, one valuables pouch and one travel piece."
     },
     {
       "merchant": "Sunday Golf",
@@ -48,6 +68,16 @@
       "why": "Already represented in WYX and proven fit. Expand only with distinctive products that improve the assortment instead of duplicating existing utility pieces.",
       "wholesaleUrl": "https://pinsandaces.com/pages/wholesale",
       "nextAction": "Review current wholesale assortment for one magnetic cleaning product and one visual hero piece."
+    },
+    {
+      "merchant": "Western Birch Golf",
+      "priority": "B+",
+      "brandFitScore": 9,
+      "status": "qualified-custom",
+      "lanes": ["premium wooden tees", "WYX custom tees", "trip packs", "tournament packs"],
+      "why": "Tees should be supporting merchandise, but Western Birch turns a commodity into something visually ownable and gives WYX a clear private-label path.",
+      "wholesaleUrl": "https://westernbirch.com/",
+      "nextAction": "Do not add another generic tee SKU. Price a small WYX custom run only when the brand is ready for private-label packaging."
     },
     {
       "merchant": "Swannies Golf",
@@ -85,10 +115,12 @@
     "magnetic wet club brush",
     "premium divot or pitch tool",
     "valuables pouch",
+    "premium glove family with stronger visual identity",
     "second standout golf hat",
     "real golf-trip bag or duffle",
+    "premium scorecard or yardage-book holder",
     "one higher-ticket travel hero",
     "WYX-exclusive headcover",
-    "WYX-exclusive towel or marker"
+    "WYX-exclusive towel, marker or tee pack"
   ]
 }
