@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 import { execSync } from 'node:child_process';
-import { readFileSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
 import { isAuthorizedAdminRequest, unauthorizedResponse } from '@/lib/adminAuth';
 
 export const dynamic = 'force-dynamic';
@@ -11,19 +9,34 @@ export async function GET(request: Request) {
   if (!isAuthorizedAdminRequest(request)) return unauthorizedResponse();
 
   try {
-    execSync('npm run overnight:ops', {
+    const output = execSync('npm run overnight:ops', {
       cwd: process.cwd(),
       encoding: 'utf8',
-      stdio: 'pipe',
+      stdio: ['pipe', 'pipe', 'pipe'],
       timeout: 280_000,
+      env: { ...process.env, FORCE_COLOR: '0' },
     });
 
-    const briefingPath = join(process.cwd(), 'data', 'morning-briefing.json');
-    const briefing = existsSync(briefingPath) ? JSON.parse(readFileSync(briefingPath, 'utf8')) : {};
-
-    return NextResponse.json({ ok: true, briefing });
+    return NextResponse.json({ ok: true, briefing: briefingFromOutput(output) });
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Overnight ops failed';
-    return NextResponse.json({ ok: false, error: message.slice(-500) }, { status: 500 });
+    const err = error as { stdout?: string; stderr?: string; message?: string };
+    const output = typeof err.stdout === 'string' ? err.stdout : '';
+    const message = [err.stderr, err.message].filter(Boolean).join('\n') || 'Overnight ops failed';
+    return NextResponse.json({
+      ok: false,
+      briefing: briefingFromOutput(output),
+      error: message.slice(-800),
+    }, { status: 500 });
+  }
+}
+
+function briefingFromOutput(output: string) {
+  const marker = 'WYX_BRIEFING_JSON=';
+  const line = output.split(/\r?\n/).reverse().find((entry) => entry.startsWith(marker));
+  if (!line) return { status: 'unknown', summary: 'WYX system check completed without a parseable briefing.' };
+  try {
+    return JSON.parse(line.slice(marker.length));
+  } catch {
+    return { status: 'unknown', summary: 'WYX system check returned an invalid briefing payload.' };
   }
 }
