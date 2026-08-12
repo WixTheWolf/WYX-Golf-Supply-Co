@@ -6,6 +6,7 @@ import './globals.css';
 import './store.css';
 import './future.css';
 import './premium.css';
+import './fashion.css';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
@@ -20,24 +21,24 @@ const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3f
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
   applicationName: 'WYX Golf Supply Co.',
-  title: { default: 'Modern Golf Gear, Gifts & Bag Upgrades | WYX Golf Supply Co.', template: '%s | WYX Golf Supply Co.' },
-  description: 'A tight edit of modern golf gear, gifts, headcovers, gloves, trip gear and bag upgrades selected for real rounds. Less golf shop. More gear drop.',
-  keywords: ['modern golf gear', 'golf headcovers', 'golf trip gear', 'golf gifts', 'golf grips', 'golf bag accessories', 'golf gloves'],
+  title: { default: 'Modern Golf Apparel & Gear | WYX Golf Supply Co.', template: '%s | WYX Golf Supply Co.' },
+  description: 'Modern golf apparel and gear for the course, the trip, and everything after the round. Smaller drops, better pieces, and a sharp WYX point of view.',
+  keywords: ['modern golf apparel', 'golf clothing', 'golf layers', 'golf belts', 'golf headwear', 'golf trip gear', 'golf gifts', 'golf accessories'],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   openGraph: {
     siteName: 'WYX Golf Supply Co.',
     type: 'website',
     url: 'https://wyxgolfsupply.com',
-    title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.',
-    description: 'Modern golf gear, gifts, trip gear and bag upgrades selected to earn a place in the bag.',
+    title: 'WYX Golf Supply Co. | Golf, Better Dressed.',
+    description: 'A smaller, sharper edit of modern golf apparel, headwear, gloves, headcovers and trip gear.',
     images: [{ url: golfEnvironmentImage, width: 1800, height: 1200, alt: 'Golf bag and cart on a golf course at sunset' }]
   },
-  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.', description: 'A hard edit of modern golf gear for the bag, the trip, and the round.', images: [golfEnvironmentImage] }
+  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co. | Golf, Better Dressed.', description: 'Modern golf apparel and gear for the course, the trip, and the rest of the day.', images: [golfEnvironmentImage] }
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0a110d'
+  themeColor: '#f2efe7'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -55,18 +56,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer className="site-footer">
             <div>
               <Link className="footer-brand" href="/">WYX <span>Golf Supply</span></Link>
-              <p>Less golf shop. More gear drop.</p>
+              <p>Golf, better dressed.</p>
               <p className="footer-note">First WYX order? <strong>WYX10</strong> requests 10% off when eligible at Shopify checkout.</p>
               <p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>
             </div>
             <nav aria-label="Shop navigation">
-              <Link href="/products">Drop 01</Link>
-              <Link href="/weekend-golfer-bag-upgrade-kit">The Kit</Link>
+              <Link href="/apparel">Apparel</Link>
+              <Link href="/products">Shop</Link>
+              <Link href="/products?category=Headwear">Headwear</Link>
+              <Link href="/products?category=Accessories">Accessories</Link>
               <Link href="/golf-trip-gear">Trip Gear</Link>
               <Link href="/golf-gifts">Gifts</Link>
-              <Link href="/the-bag-test">Bag Test</Link>
             </nav>
             <nav aria-label="Company navigation">
+              <Link href="/the-bag-test">The WYX Edit</Link>
               <Link href="/shipping-returns">Shipping & Returns</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/contact">Contact</Link>
