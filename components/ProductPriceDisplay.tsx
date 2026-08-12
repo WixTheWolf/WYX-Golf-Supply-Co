@@ -8,14 +8,16 @@ type Props = {
 };
 
 export function ProductPriceDisplay({ price, showSavings = true, large = true }: Props) {
-  const { formattedBase, formattedSale, savings } = priceWithWyx10(price);
+  const { formattedBase, formattedSale } = priceWithWyx10(price);
 
   return (
-    <div className={`product-price-display${large ? ' large' : ''}`}>
-      <span className="product-price-sale">{formattedSale}</span>
-      <span className="product-price-was">{formattedBase}</span>
-      <span className="product-price-code">with WYX10</span>
-      {showSavings && <p className="product-price-savings">You save {savings} on your first order.</p>}
+    <div className={`product-price-display premium-price${large ? ' large' : ''}`}>
+      <span className="product-price-base">{formattedBase}</span>
+      {showSavings && (
+        <p className="product-price-first-order">
+          First WYX order? <strong>{formattedSale}</strong> with WYX10 when eligible.
+        </p>
+      )}
     </div>
   );
 }
