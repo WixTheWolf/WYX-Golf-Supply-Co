@@ -2,10 +2,10 @@ import { siteUrl } from '@/lib/marketing';
 
 const storeName = 'WYX Golf Supply Co.';
 const description = 'Less golf shop. More gear drop. A tight edit of modern golf gear, gifts, trip gear and bag upgrades selected for real rounds.';
+const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3ffecba8fb81?auto=format&fit=crop&w=1600&q=84';
 
 export function SeoJsonLd() {
   const logo = `${siteUrl}/icon.svg`;
-  const image = `${siteUrl}/images/boys-weekend-hero.png`;
 
   const data = [
     {
@@ -15,7 +15,7 @@ export function SeoJsonLd() {
       name: storeName,
       url: siteUrl,
       logo,
-      image,
+      image: golfEnvironmentImage,
       description,
       email: 'support@wyxgolfsupply.com',
       priceRange: '$$'
@@ -27,6 +27,7 @@ export function SeoJsonLd() {
       name: storeName,
       url: siteUrl,
       logo,
+      image: golfEnvironmentImage,
       description
     },
     {
