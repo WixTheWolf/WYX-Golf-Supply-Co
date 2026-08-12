@@ -11,6 +11,7 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 const SITE = 'https://wyxgolfsupply.com';
+const wearableCategories = new Set(['Apparel', 'Footwear', 'Headwear', 'Gloves']);
 
 function variantId(variant: ProductVariant) {
   return variant.id.replace('gid://shopify/ProductVariant/', 'wyx-variant-');
@@ -61,17 +62,23 @@ function merchantDescription(product: Product) {
   return cleanText(productBuyerPromise(product)).replace(/\s+/g, ' ').trim().slice(0, 1200) || `Shop ${cleanText(product.title)} at WYX Golf Supply Co.`;
 }
 
+function isPreorderVariant(variant: ProductVariant) {
+  return /\bpre[- ]?order\b/i.test(variant.title);
+}
+
 function itemXml(product: Product, variant: ProductVariant, gtinCounts: Map<string, number>) {
   const image = variant.image?.url || product.featuredImage?.url || product.images[0]?.url || '';
   const description = merchantDescription(product);
-  const size = option(variant, ['size', 'shoe size', 'waist']);
+  const category = categoryFor(product);
+  const isWearable = wearableCategories.has(category);
+  const size = isWearable ? option(variant, ['size', 'shoe size', 'waist']) : '';
   const color = option(variant, ['color', 'colour']);
   const candidateGtin = normalizedGtin(variant.barcode);
   const gtin = candidateGtin && gtinCounts.get(candidateGtin) === 1 ? candidateGtin : '';
-  const category = categoryFor(product);
   const hasVariants = product.variants.filter((item) => !item.id.startsWith('demo-')).length > 1;
-  const isApparel = category === 'Apparel' || category === 'Footwear' || category === 'Headwear' || category === 'Gloves';
-  const explicitGender = /women'?s|ladies/i.test(`${product.title} ${product.description}`) ? 'female' : /men'?s/i.test(`${product.title} ${product.description}`) ? 'male' : '';
+  const explicitGender = isWearable
+    ? (/women'?s|ladies/i.test(`${product.title} ${product.description}`) ? 'female' : /men'?s/i.test(`${product.title} ${product.description}`) ? 'male' : '')
+    : '';
 
   return `
     <item>
@@ -89,7 +96,7 @@ function itemXml(product: Product, variant: ProductVariant, gtinCounts: Map<stri
       ${hasVariants ? `<g:item_group_id>${escapeXml(productGroupId(product))}</g:item_group_id>` : ''}
       ${size ? `<g:size>${escapeXml(size)}</g:size>` : ''}
       ${color ? `<g:color>${escapeXml(color)}</g:color>` : ''}
-      ${isApparel ? '<g:age_group>adult</g:age_group>' : ''}
+      ${isWearable ? '<g:age_group>adult</g:age_group>' : ''}
       ${explicitGender ? `<g:gender>${explicitGender}</g:gender>` : ''}
       ${gtin ? `<g:gtin>${escapeXml(gtin)}</g:gtin>` : ''}
     </item>`;
@@ -101,6 +108,8 @@ export async function GET() {
   const items = products.flatMap((product) =>
     product.variants
       .filter((variant) => !variant.id.startsWith('demo-'))
+      // Do not advertise a preorder as available inventory until WYX has an explicit availability date.
+      .filter((variant) => !isPreorderVariant(variant))
       .map((variant) => itemXml(product, variant, gtinCounts))
   ).join('');
 
