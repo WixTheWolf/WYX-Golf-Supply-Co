@@ -9,7 +9,7 @@ export function Header() {
   return (
     <>
       <div className="announcement">
-        <span>NEW / THE APPAREL EDIT</span> · FIRST WYX ORDER? WYX10 · <Link href="/apparel">SHOP APPAREL</Link>
+        <span>THE APPAREL EDIT / LIVE</span> · GOLF, BETTER DRESSED · <Link href="/apparel">SHOP THE DROP</Link>
       </div>
       <header className="site-header">
         <Link className="brand" href="/"><strong>WYX</strong><span>GOLF SUPPLY</span></Link>
