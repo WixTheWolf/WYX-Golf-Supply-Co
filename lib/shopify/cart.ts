@@ -1,6 +1,6 @@
 import type { Cart } from '@/types/shopify';
 import { hasShopify, shopifyFetch } from './client';
-import { CART_CREATE, CART_DISCOUNT_CODES_UPDATE, CART_LINES_ADD, CART_LINES_REMOVE, CART_LINES_UPDATE, CART_QUERY } from './queries';
+import { CART_ATTRIBUTES_UPDATE, CART_CREATE, CART_DISCOUNT_CODES_UPDATE, CART_LINES_ADD, CART_LINES_REMOVE, CART_LINES_UPDATE, CART_QUERY } from './queries';
 
 const launchCode = 'WYX10';
 const storefrontDomain = 'wyxgolfsupply.com';
@@ -14,9 +14,7 @@ function checkoutUrl(url: string) {
   try {
     const parsed = new URL(url);
     const isStorefrontHost = parsed.hostname === storefrontDomain || parsed.hostname.endsWith(`.${storefrontDomain}`);
-    if (isStorefrontHost) {
-      parsed.hostname = checkoutDomain;
-    }
+    if (isStorefrontHost) parsed.hostname = checkoutDomain;
     return parsed.toString();
   } catch {
     return url;
@@ -28,6 +26,7 @@ function cart(c: any): Cart {
     id: c.id,
     checkoutUrl: checkoutUrl(c.checkoutUrl),
     totalQuantity: c.totalQuantity,
+    attributes: c.attributes || [],
     discountCodes: c.discountCodes || [],
     cost: c.cost,
     lines: (c.lines?.edges || []).map((e: any) => line(e.node))
@@ -42,7 +41,6 @@ function errs(payload: any) {
 async function tryApplyLaunchCode(nextCart: Cart) {
   const alreadyApplied = nextCart.discountCodes?.some((discount) => discount.code.toUpperCase() === launchCode && discount.applicable);
   if (alreadyApplied) return nextCart;
-
   try {
     const data = await shopifyFetch<any>(CART_DISCOUNT_CODES_UPDATE, { cartId: nextCart.id, discountCodes: [launchCode] });
     errs(data);
@@ -82,6 +80,17 @@ export async function addLines(cartId: string, lines: { merchandiseId: string; q
   const d = await shopifyFetch<any>(CART_LINES_ADD, { cartId, lines });
   errs(d);
   return tryApplyLaunchCode(cart(d.cartLinesAdd.cart));
+}
+
+export async function updateCartAttributes(cartId: string, attributes: Array<{ key: string; value: string }>) {
+  const safe = attributes
+    .filter((attribute) => attribute.key && attribute.value)
+    .slice(0, 20)
+    .map((attribute) => ({ key: attribute.key.slice(0, 80), value: attribute.value.slice(0, 1000) }));
+  if (!safe.length) return getCart(cartId);
+  const d = await shopifyFetch<any>(CART_ATTRIBUTES_UPDATE, { cartId, attributes: safe });
+  errs(d);
+  return cart(d.cartAttributesUpdate.cart);
 }
 
 export async function updateLine(cartId: string, lineId: string, quantity: number) {
