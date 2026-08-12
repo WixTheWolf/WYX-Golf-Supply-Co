@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { isAuthorizedAdminRequest, unauthorizedResponse } from '@/lib/adminAuth';
 import { availableProducts, hasSaleReadyMedia } from '@/lib/catalog';
 import { fulfillmentBlocker } from '@/lib/fulfillmentReadiness';
-import { coreMerchProducts } from '@/lib/merchandisingFilters';
+import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { shopifyAdminFetch } from '@/lib/shopify/adminClient';
 import { shopifyFetch } from '@/lib/shopify/client';
 import { CART_CREATE } from '@/lib/shopify/queries';
@@ -10,6 +10,14 @@ import { getProducts } from '@/lib/shopify/products';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
+
+const FLAGSHIP_KIT_HANDLES = [
+  'tri-fold-microfiber-golf-towel',
+  'two-sided-metal-golf-ball-marker-5-color-combo-pack',
+  'bamboo-performance-golf-tees-50-pack',
+  'glove-accessory-caddie-black',
+  'magnet-caddie'
+];
 
 type Check = {
   name: string;
@@ -40,6 +48,27 @@ export async function GET(request: Request) {
       name: 'Current-drop safety gate',
       ok: unsafeCurrentDrop.length === 0,
       detail: unsafeCurrentDrop.length ? `Blocked: ${unsafeCurrentDrop.map((product) => product.handle).join(', ')}` : 'Every current-drop product passed fulfillment and media gates.',
+    });
+
+    const homepageHeroes = firstBuyProducts(currentDrop).slice(0, 8);
+    checks.push({
+      name: 'Homepage merchandising',
+      ok: homepageHeroes.length >= 8,
+      detail: homepageHeroes.length >= 8
+        ? `Eight hero-worthy products are available: ${homepageHeroes.map((product) => product.handle).join(', ')}`
+        : `Only ${homepageHeroes.length} hero-worthy products are currently available.`,
+    });
+
+    const kitProducts = FLAGSHIP_KIT_HANDLES
+      .map((handle) => currentDrop.find((product) => product.handle === handle))
+      .filter(Boolean);
+    const kitVariantSafe = kitProducts.every((product) => product && product.variants.filter((variant) => variant.availableForSale && !variant.id.startsWith('demo-')).length === 1);
+    checks.push({
+      name: 'Flagship kit readiness',
+      ok: kitProducts.length === FLAGSHIP_KIT_HANDLES.length && kitVariantSafe,
+      detail: kitProducts.length === FLAGSHIP_KIT_HANDLES.length && kitVariantSafe
+        ? 'All five kit pieces are live and each has one checkout-ready variant, so the kit does not guess size, hand, or color.'
+        : `Kit is not promotion-ready. Live pieces: ${kitProducts.length}/${FLAGSHIP_KIT_HANDLES.length}; single-variant safe: ${kitVariantSafe}.`,
     });
 
     const firstVariant = currentDrop
@@ -87,6 +116,7 @@ export async function GET(request: Request) {
       'Approve or map new DSers products before they enter the public assortment.',
       'Review supplier-review products before promotion.',
       'Do not auto-publish products merely because a supplier feed says they are available.',
+      'Do not promote the flagship kit unless all five no-guess pieces pass the readiness check.',
     ],
   };
 
