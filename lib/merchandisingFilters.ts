@@ -11,7 +11,6 @@ const hiddenHandles = new Set([
   'gulf-stream-gator',
   'white-braid',
   'layup-t-shirt',
-  // Duplicate/filler cuts from the 2026 WYX edit. Keep one strong version, not every colorway/set.
   'glove-accessory-caddie-gray',
   'blue-ridge-golf-ball-markers-set-of-2',
   'carolina-blue-two-sided-golf-ball-marker-2-pack'
@@ -33,17 +32,17 @@ const confirmedSupplierVendors = [
 const blockedSupplierVendors = ['GolfbaysUSA'];
 
 /**
- * WYX is a fashion-led golf edit, not an endless supplier catalog.
- * Apparel establishes the visual identity; great bag gear supports it.
- * A manually-reviewed product can also be admitted with wyx-core/wyx-featured.
+ * WYX is an opinionated multi-brand golf shop, not an endless supplier catalog.
+ * Products earn a public slot through quality, usefulness, personality, or trip value.
  */
 export const futureAssortmentHandles = new Set([
   ...apparelEditHandles,
+  'classic-leather-edition-walnut-brown-midnight-black',
+  'topographic-edition-pure-white-embroidered-carolina-blue',
   'evil-ape',
   'guerrilla-chief-driver-cover',
   'dude-abides-v2-mallet-putter-cover',
   'mafia-mallet-putter-cover',
-  'topographic-carolina-blue-driver-headcover',
   'augusta-bear-hat',
   'golf-or-die-game-set',
   'dartee-golf-glove',
@@ -102,23 +101,20 @@ export function isHomepageProduct(product: Product) {
 }
 
 /**
- * Intentional merchandising order: apparel first, then style-setting accessories,
- * then utility. WYX should read like a modern golf brand before it reads like a store.
+ * Intentional merchant order: strongest apparel and premium objects first,
+ * personality gear second, utility products after that.
  */
 export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
     'pimento-waffle',
-    'hello-friends-t-shirt',
-    'looper',
-    'legalize-mulligans',
-    'volcanic-ash',
-    'mossy-condor',
-    'sea-swell-blue',
-    'black-birdie',
+    'classic-leather-edition-walnut-brown-midnight-black',
+    'topographic-edition-pure-white-embroidered-carolina-blue',
     'augusta-bear-hat',
+    'hello-friends-t-shirt',
+    'mossy-condor',
+    'black-birdie',
     'dartee-golf-glove',
     'evil-ape',
-    'topographic-carolina-blue-driver-headcover',
     'dude-abides-v2-mallet-putter-cover',
     'golf-or-die-game-set',
     'magnet-caddie',
@@ -152,13 +148,13 @@ export function giftableProducts(products: Product[], limit = 12) {
 
 export function bagUpgradeProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care', 'Headwear', 'Apparel'].includes(categoryFor(product)))
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care', 'Headwear', 'Apparel', 'Bags'].includes(categoryFor(product)))
     .slice(0, limit);
 }
 
 export function tripProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt|game|tee|waffle/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt|game|tee|waffle|bag|duff/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
     .slice(0, limit);
 }
 
@@ -176,8 +172,8 @@ export function dadGiftProducts(products: Product[], limit = 12) {
     let score = 0;
     if (price <= 60) score += 4;
     if (price <= 35) score += 3;
-    if (['Towels', 'Accessories', 'Golf Balls', 'Gloves', 'Grips', 'Apparel', 'Headwear'].includes(category)) score += 3;
-    if (/marker|towel|glove|grip|ball|caddie|scorecard|alignment|hat|cap|headcover|game|shirt|waffle|belt/i.test(`${product.title} ${(product.tags || []).join(' ')}`)) score += 2;
+    if (['Towels', 'Accessories', 'Golf Balls', 'Gloves', 'Grips', 'Apparel', 'Headwear', 'Bags'].includes(category)) score += 3;
+    if (/marker|towel|glove|grip|ball|caddie|scorecard|alignment|hat|cap|headcover|game|shirt|waffle|belt|bag/i.test(`${product.title} ${(product.tags || []).join(' ')}`)) score += 2;
     return score;
   };
   return products
