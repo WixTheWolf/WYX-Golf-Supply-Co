@@ -1,7 +1,7 @@
 import { siteUrl } from '@/lib/marketing';
 
 const storeName = 'WYX Golf Supply Co.';
-const description = 'A curated online golf shop for useful golf gifts, trip gear, hats, apparel, and bag upgrades for weekend golfers.';
+const description = 'Less golf shop. More gear drop. A tight edit of modern golf gear, gifts, trip gear and bag upgrades selected for real rounds.';
 
 export function SeoJsonLd() {
   const logo = `${siteUrl}/icon.svg`;
