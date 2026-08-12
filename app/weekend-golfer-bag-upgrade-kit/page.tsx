@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { EmailCapture } from '@/components/EmailCapture';
 import { KitAddButton } from '@/components/KitAddButton';
-import { ShareWyx } from '@/components/ShareWyx';
 import { ProductCard } from '@/components/ProductCard';
 import { productPrice, siteUrl } from '@/lib/feed';
 import { getProduct } from '@/lib/shopify/products';
@@ -12,73 +11,75 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "The Weekend Golfer's Bag Upgrade Kit",
-  description: 'Five practical golf bag upgrades in one cart: towel, marker, grip refresh, tee restock, and accessory caddie. Live Shopify availability and editable checkout.',
+  description: 'Five practical golf bag upgrades in one editable cart: towel, marker set, tee restock, glove caddie and quick-access bag caddie.',
   alternates: { canonical: '/weekend-golfer-bag-upgrade-kit' },
   openGraph: {
     title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
-    description: 'Five useful bag upgrades, one easier order. Review every item before secure Shopify checkout.',
+    description: 'Five useful bag upgrades, one easier first WYX order. Review every item before secure Shopify checkout.',
     url: '/weekend-golfer-bag-upgrade-kit'
   }
 };
 
+// All five picks intentionally use a single checkout-ready variant so the one-click
+// kit cannot silently guess a size, handedness, or color for the customer.
 const KIT_HANDLES = [
   'tri-fold-microfiber-golf-towel',
-  'three-rail-ball-marker',
-  'pulse-golf-overgrip-tape',
+  'two-sided-metal-golf-ball-marker-5-color-combo-pack',
   'bamboo-performance-golf-tees-50-pack',
-  'glove-accessory-caddie-gray'
+  'glove-accessory-caddie-black',
+  'magnet-caddie'
 ];
 
 const itemNotes: Record<string, string> = {
-  'tri-fold-microfiber-golf-towel': 'A bag-ready towel for club faces, golf balls, and grips during the round.',
-  'three-rail-ball-marker': 'A simple green-side essential that is easy to carry and easy to gift.',
-  'pulse-golf-overgrip-tape': 'A practical option for golfers who like refreshing grip feel without replacing the entire setup.',
-  'bamboo-performance-golf-tees-50-pack': 'A straightforward tee restock so the everyday bag starts the next round ready.',
-  'glove-accessory-caddie-gray': 'A dedicated place for gloves and the small items that otherwise disappear into a bag pocket.'
+  'tri-fold-microfiber-golf-towel': 'The everyday clean-up piece for club faces, golf balls, grips, and wet rounds.',
+  'two-sided-metal-golf-ball-marker-5-color-combo-pack': 'A five-marker set that covers your bag, your foursome, or the next golf gift.',
+  'bamboo-performance-golf-tees-50-pack': 'A simple 50-tee restock so the bag starts the next round ready.',
+  'glove-accessory-caddie-black': 'A dedicated parking spot for gloves and the small items that normally disappear into a pocket.',
+  'magnet-caddie': 'Quick-access organization for the pieces you do not want buried when it is your turn to hit.'
 };
 
 const whoItsFor = [
   {
-    title: 'Weekend Golfers',
-    body: 'For the golfer whose bag works fine but has a few obvious weak spots: worn accessories, loose small items, and basics that need a refresh.'
+    title: 'The Bag That Is Almost Dialed',
+    body: 'For the golfer who already has the clubs and bag handled but keeps living with the same small annoyances every round.'
   },
   {
-    title: 'Gift Buyers',
-    body: 'Five understandable golf items are easier to get right than guessing a club, shaft, putter shape, or other highly personal equipment choice.'
+    title: 'The Easy Golf Gift',
+    body: 'Five understandable golf accessories are easier to buy well than guessing a club, shaft, putter shape, or apparel size.'
   },
   {
-    title: 'Newer Golfers',
-    body: 'A straightforward way to cover several bag basics without trying to learn the entire golf-accessory aisle first.'
+    title: 'The First WYX Order',
+    body: 'A clean way to understand the brand: useful pieces, a little personality, and no mystery product hiding inside the bundle.'
   }
 ];
 
 const whyItWorks = [
   {
-    title: 'One Add, Five Separate Items',
-    body: 'The kit adds each available product to the cart individually. Nothing is hidden inside a mystery bundle.'
+    title: 'Five Pieces, Five Jobs',
+    body: 'Clean the gear, mark the ball, restock tees, organize the glove, and keep quick-access items where you can actually reach them.'
   },
   {
-    title: 'Edit Before You Pay',
-    body: 'Change quantities or remove anything that does not fit. The cart stays transparent all the way to Shopify checkout.'
+    title: 'One Click, Separate Items',
+    body: 'The kit adds each product separately. You can review quantities and remove anything before payment.'
   },
   {
-    title: 'Live Availability',
-    body: 'The page is built from the current Shopify catalog. If an item is not available for sale, it is not included in the kit cart.'
+    title: 'No Variant Guessing',
+    body: 'The one-click kit is built from products that do not require WYX to guess your size, handedness, or preferred fit.'
   }
 ];
 
 const faq = [
   {
     q: 'Is this a real bundle or separate items?',
-    a: 'The kit is a one-click way to add separate products together. You can review, remove, or change quantities before checkout.'
+    a: 'It is a one-click group of five separate products. You can review quantities or remove an item before checkout.'
   },
   {
     q: 'What happens if one of the five items is unavailable?',
-    a: 'The page only adds products Shopify currently marks available for sale. If one is unavailable, the page shows the remaining available picks instead of silently substituting something else.'
+    a: 'WYX does not promote a partial flagship kit. If one of the five pieces is unavailable, the page moves into restock mode instead of silently substituting another product.'
   },
   {
     q: 'How does WYX10 work on the kit?',
-    a: 'The WYX cart requests WYX10 automatically. Shopify shows whether the code applied, and the final price is confirmed before payment.'
+    a: 'The WYX cart requests WYX10 automatically. Shopify confirms whether the first-order offer applies before payment.'
   },
   {
     q: 'How long does shipping take?',
@@ -95,15 +96,10 @@ export default async function BagUpgradeKitPage() {
     .filter(Boolean)
     .map((variant) => ({ merchandiseId: variant!.id, quantity: 1 }));
 
+  const kitReady = products.length === KIT_HANDLES.length && lines.length === KIT_HANDLES.length;
   const total = products.reduce((sum, product) => sum + Number(productPrice(product).amount), 0);
   const formattedTotal = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total);
-  const formattedSale = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total * 0.9);
-
-  const ctaLabel = products.length === KIT_HANDLES.length
-    ? 'Add The Full Kit'
-    : products.length > 0
-      ? 'Add Available Kit Picks'
-      : 'Join The Kit Drop';
+  const formattedFirstOrder = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(total * 0.9);
 
   const jsonLd = [
     {
@@ -156,24 +152,28 @@ export default async function BagUpgradeKitPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="page-hero compact">
-        <p className="eyebrow">Start Here</p>
+        <p className="eyebrow">THE FIRST WYX ORDER</p>
         <h1>The Weekend Golfer&apos;s Bag Upgrade Kit</h1>
-        <p>Five small upgrades with five obvious jobs: clean the gear, mark the ball, refresh grip feel, restock the tees, and organize the loose stuff. One cart, no mystery bundle.</p>
+        <p>Five small upgrades with five obvious jobs. No club fitting. No apparel sizing. No mystery bundle. Just the stuff that makes an everyday golf bag work a little better.</p>
         {products.length > 0 && (
           <div className="lp-price-block" style={{ marginTop: '1rem' }}>
-            <span className="lp-price-sale">{formattedSale}</span>
-            <span className="lp-price-was">{formattedTotal}</span>
-            <span className="lp-price-code">with WYX10 when eligible</span>
+            <span className="lp-price-sale">{formattedTotal}</span>
+            {kitReady && <span className="lp-price-code">First WYX order: {formattedFirstOrder} with WYX10 when eligible</span>}
           </div>
         )}
-        {lines.length > 0 && (
+        {kitReady ? (
           <div style={{ marginTop: '1.25rem', maxWidth: '420px' }}>
-            <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Available Kit — ${formattedSale}`} showBuyNow />
+            <KitAddButton lines={lines} label="Add The Full Kit" buyNowLabel={`Buy The Kit — ${formattedTotal}`} showBuyNow />
+          </div>
+        ) : (
+          <div className="actions">
+            <Link className="button primary" href="/products">Shop Drop 01</Link>
+            <a className="button secondary dark" href="#bag-upgrade-kit-waitlist">Get The Restock Note</a>
           </div>
         )}
         <div className="intent-proof-grid" aria-label="Kit benefits">
-          <span>{products.length} of {KIT_HANDLES.length} picks available now</span>
-          <span>WYX10 requested automatically</span>
+          <span>{kitReady ? '5 of 5 picks available now' : `${products.length} of 5 picks available — restock mode`}</span>
+          <span>No size or handedness guessing</span>
           <span>Edit every item before payment</span>
           <span>Secure Shopify checkout</span>
         </div>
@@ -181,20 +181,20 @@ export default async function BagUpgradeKitPage() {
 
       <section className="section reveal" aria-labelledby="problem-heading">
         <div className="section-heading">
-          <p className="eyebrow">The Idea</p>
-          <h2 id="problem-heading">Fix The Small Stuff First.</h2>
+          <p className="eyebrow">THE IDEA</p>
+          <h2 id="problem-heading">FIX THE SMALL STUFF FIRST.</h2>
         </div>
-        <p>You do not need another giant golf purchase to make the bag better. A few practical accessories can remove the annoyances you deal with every round — and they are much easier to buy for yourself or give as a gift.</p>
+        <p>You do not need another giant golf purchase to make the bag better. The towel, tees, markers, glove storage, and quick-access pieces are the things you touch all round — so we built the first WYX kit around them.</p>
       </section>
 
       <section className="section product-section">
         <div className="section-heading split">
           <div>
-            <p className="eyebrow">What&apos;s Available — {products.length} Items</p>
+            <p className="eyebrow">WHAT&apos;S IN IT — {products.length} PIECES</p>
             <h2>{formattedTotal}</h2>
-            <p>Each item lands in the cart separately. Review the products, variants, quantities, discount, shipping options, and final price before payment.</p>
+            <p>Every item stays visible and separate in the cart. Review quantities, discount eligibility, shipping options, and the final price before payment.</p>
           </div>
-          {products.length > 0 && <KitAddButton lines={lines} label={ctaLabel} buyNowLabel={`Buy Available Kit — ${formattedSale}`} showBuyNow />}
+          {kitReady && <KitAddButton lines={lines} label="Add The Full Kit" buyNowLabel={`Buy The Kit — ${formattedTotal}`} showBuyNow />}
         </div>
         {products.length > 0
           ? <div className="product-grid">
@@ -205,19 +205,19 @@ export default async function BagUpgradeKitPage() {
                 </div>
               ))}
             </div>
-          : <p>The current five-piece kit is unavailable. Join the list below and keep browsing the live bag-upgrade catalog.</p>}
-        {products.length > 0 && (
+          : <p>The kit is currently in restock mode. Browse Drop 01 or join the list below and we will send the next kit update.</p>}
+        {kitReady && (
           <div className="kit-add-footer">
-            <KitAddButton lines={lines} label={`Add ${products.length} Available Picks`} buyNowLabel={`Buy Available Kit — ${formattedSale}`} showBuyNow />
-            <p className="kit-add-note">Products are added individually. WYX requests WYX10 automatically; Shopify confirms the discount and shipping before payment.</p>
+            <KitAddButton lines={lines} label="Add The Full Kit" buyNowLabel={`Buy The Kit — ${formattedTotal}`} showBuyNow />
+            <p className="kit-add-note">WYX requests WYX10 automatically; Shopify confirms discount eligibility and shipping before payment.</p>
           </div>
         )}
       </section>
 
       <section className="section reveal" aria-labelledby="who-its-for-heading">
         <div className="section-heading">
-          <p className="eyebrow">Who It&apos;s For</p>
-          <h2 id="who-its-for-heading">An Easier First WYX Order.</h2>
+          <p className="eyebrow">WHO IT&apos;S FOR</p>
+          <h2 id="who-its-for-heading">AN EASY YES FOR THE EVERYDAY GOLFER.</h2>
         </div>
         <div className="care-step-grid">
           {whoItsFor.map((item) => (
@@ -231,8 +231,8 @@ export default async function BagUpgradeKitPage() {
 
       <section className="section reveal" aria-labelledby="why-kit-heading">
         <div className="section-heading">
-          <p className="eyebrow">No Bundle Games</p>
-          <h2 id="why-kit-heading">You Can See Exactly What You&apos;re Buying.</h2>
+          <p className="eyebrow">NO BUNDLE GAMES</p>
+          <h2 id="why-kit-heading">YOU CAN SEE EXACTLY WHAT YOU&apos;RE BUYING.</h2>
         </div>
         <div className="care-step-grid">
           {whyItWorks.map((item) => (
@@ -244,26 +244,22 @@ export default async function BagUpgradeKitPage() {
         </div>
       </section>
 
-      <section className="section reveal">
-        <ShareWyx path="/weekend-golfer-bag-upgrade-kit" />
-      </section>
-
       <section className="dark-section reveal" aria-labelledby="kit-promise-heading">
         <div>
-          <p className="eyebrow">The Bag Test Promise</p>
-          <h2 id="kit-promise-heading">If The Order Is Wrong, We&apos;ll Help Make It Right.</h2>
+          <p className="eyebrow">THE BAG TEST PROMISE</p>
+          <h2 id="kit-promise-heading">THE KIT SHOULD SOLVE FIVE SMALL PROBLEMS — NOT CREATE A SIXTH.</h2>
           <div className="actions">
             <Link className="button primary" href="/the-bag-test">Read The Bag Test</Link>
-            <Link className="button secondary dark" href="/shipping-returns">Shipping &amp; Returns</Link>
+            <Link className="button secondary dark" href="/shipping-returns">Shipping & Returns</Link>
           </div>
         </div>
-        <p>WYX is built around gear with a clear reason to be in the bag. If something arrives damaged or incorrect, use the support path in our shipping and returns policy so we can help.</p>
+        <p>If something arrives damaged or incorrect, use the WYX support path and include your order number and photos so we can help. No scavenger hunt for customer service.</p>
       </section>
 
       <section className="section reveal" aria-labelledby="kit-faq-heading">
         <div className="section-heading">
-          <p className="eyebrow">Quick Questions</p>
-          <h2 id="kit-faq-heading">Kit FAQ.</h2>
+          <p className="eyebrow">QUICK QUESTIONS</p>
+          <h2 id="kit-faq-heading">KIT FAQ.</h2>
         </div>
         <div className="care-step-grid">
           {faq.map((item) => (
@@ -279,17 +275,17 @@ export default async function BagUpgradeKitPage() {
         <EmailCapture
           source="bag-upgrade-kit"
           campaign="bag_upgrade_kit_waitlist"
-          title={products.length < KIT_HANDLES.length ? 'Get The Full Kit Restock Note.' : 'Get The Next Bag Test Drop First.'}
-          body={products.length < KIT_HANDLES.length
-            ? 'Join the WYX list and we will send product and kit updates when the assortment changes.'
-            : 'Join the WYX list for new kit drops, trip gear, and Bag Test picks.'}
+          title={kitReady ? 'Get The Next Kit Drop First.' : 'Get The Full Kit Restock Note.'}
+          body={kitReady
+            ? 'Join the WYX list for the next bag kit, trip gear, and Bag Test picks.'
+            : 'Join the WYX list and we will send a note when all five kit pieces are back together.'}
         />
       </section>
 
       <section className="section reveal" aria-label="More ways to shop">
         <div className="section-heading">
-          <p className="eyebrow">Want To Build Your Own?</p>
-          <h2>Shop Bag Upgrades Individually.</h2>
+          <p className="eyebrow">WANT TO BUILD YOUR OWN?</p>
+          <h2>SHOP BAG UPGRADES INDIVIDUALLY.</h2>
         </div>
         <div className="actions">
           <Link className="button primary" href="/bag-upgrades">Shop Bag Upgrades</Link>
