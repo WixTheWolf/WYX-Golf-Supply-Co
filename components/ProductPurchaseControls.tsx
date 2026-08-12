@@ -51,7 +51,7 @@ export function ProductPurchaseControls({ variants, productTitle, compact = fals
       {hasStructuredOptions && (
         <fieldset className="variant-selector">
           <legend>Choose your option</legend>
-          <div style={{ display: 'grid', gridTemplateColumns: optionNames.length > 1 && !compact ? 'repeat(2, minmax(0, 1fr))' : '1fr', gap: compact ? '.55rem' : '.75rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: optionNames.length > 1 && !compact ? 'repeat(auto-fit, minmax(180px, 1fr))' : '1fr', gap: compact ? '.55rem' : '.75rem' }}>
             {optionNames.map((name) => {
               const values = valuesForOption(availableVariants, name, selections);
               return (
