@@ -1,21 +1,15 @@
 import type { Product } from '@/types/shopify';
 
+// Keep the live apparel edit tight until WYX has deeper polos, bottoms and layers.
+// A wall of belt colorways makes the store look like a supplier feed, not a retailer.
 export const apparelEditHandles = [
   'pimento-waffle',
   'hello-friends-t-shirt',
   'looper',
   'legalize-mulligans',
-  'volcanic-ash',
-  'sahara-sunset',
-  'black-birdie',
-  'twister-grey',
-  'crimson-dune',
   'mossy-condor',
-  'bone-dry',
-  'sea-swell-blue',
-  'gray-eyed-gator',
-  'charcoal-mirage',
-  'bayou-brown-gator'
+  'black-birdie',
+  'sea-swell-blue'
 ] as const;
 
 export const apparelLeadHandles = [
@@ -23,8 +17,8 @@ export const apparelLeadHandles = [
   'hello-friends-t-shirt',
   'looper',
   'legalize-mulligans',
-  'volcanic-ash',
-  'mossy-condor'
+  'mossy-condor',
+  'black-birdie'
 ] as const;
 
 const topsAndLayersHandles = new Set([
@@ -35,17 +29,9 @@ const topsAndLayersHandles = new Set([
 ]);
 
 const finishingApparelHandles = new Set([
-  'volcanic-ash',
-  'sahara-sunset',
-  'black-birdie',
-  'twister-grey',
-  'crimson-dune',
   'mossy-condor',
-  'bone-dry',
-  'sea-swell-blue',
-  'gray-eyed-gator',
-  'charcoal-mirage',
-  'bayou-brown-gator'
+  'black-birdie',
+  'sea-swell-blue'
 ]);
 
 function byHandleOrder(products: Product[], handles: readonly string[]) {
