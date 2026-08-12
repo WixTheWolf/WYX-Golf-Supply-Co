@@ -5,7 +5,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const CONFIRM = 'wyx-orders-paid-measurement-20260812';
-const URI = 'https://wyxgolfsupply.com/api/webhooks/shopify/orders-paid';
+const URI = 'https://wyx-golf-supply-co.vercel.app/api/webhooks/shopify/orders-paid';
 
 const LIST = `#graphql
 query OrdersPaidWebhooks($topics: [WebhookSubscriptionTopic!], $uri: String) {
@@ -23,19 +23,14 @@ mutation OrdersPaidWebhookCreate($topic: WebhookSubscriptionTopic!, $webhookSubs
 }`;
 
 export async function GET(request: NextRequest) {
-  if (request.nextUrl.searchParams.get('confirm') !== CONFIRM) {
-    return NextResponse.json({ ok: false }, { status: 404 });
-  }
+  if (request.nextUrl.searchParams.get('confirm') !== CONFIRM) return NextResponse.json({ ok: false }, { status: 404 });
 
   try {
     const existing = await shopifyAdminFetch<any>(LIST, { topics: ['ORDERS_PAID'], uri: URI });
     const current = existing.webhookSubscriptions?.nodes || [];
     if (current.length) return NextResponse.json({ ok: true, status: 'already_registered', subscriptions: current });
 
-    const created = await shopifyAdminFetch<any>(CREATE, {
-      topic: 'ORDERS_PAID',
-      webhookSubscription: { uri: URI }
-    });
+    const created = await shopifyAdminFetch<any>(CREATE, { topic: 'ORDERS_PAID', webhookSubscription: { uri: URI } });
     const errors = getUserErrors(created);
     if (errors.length) return NextResponse.json({ ok: false, status: 'shopify_error', errors }, { status: 400 });
 
