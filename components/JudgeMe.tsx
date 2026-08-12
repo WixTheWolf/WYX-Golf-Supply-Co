@@ -24,12 +24,14 @@ type JudgeMeReviewsProps = {
 export function JudgeMeProductReviews({ productId, productTitle }: JudgeMeReviewsProps) {
   if (!publicToken) return null;
   return (
-    <div
-      className="jdgm-widget jdgm-review-widget"
-      data-id={productId}
-      data-product-title={productTitle}
-      data-auto-install="false"
-    />
+    <section className="section reveal">
+      <div
+        className="jdgm-widget jdgm-review-widget"
+        data-id={productId}
+        data-product-title={productTitle}
+        data-auto-install="false"
+      />
+    </section>
   );
 }
 
