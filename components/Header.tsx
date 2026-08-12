@@ -9,16 +9,17 @@ export function Header() {
   return (
     <>
       <div className="announcement">
-        <span>THE APPAREL EDIT / LIVE</span> · GOLF, BETTER DRESSED · <Link href="/apparel">SHOP THE DROP</Link>
+        <span>THE GOOD STUFF IN GOLF</span> · ONE SHARP EDIT · <Link href="/products">SHOP WHAT&apos;S LIVE</Link>
       </div>
       <header className="site-header">
         <Link className="brand" href="/"><strong>WYX</strong><span>GOLF SUPPLY</span></Link>
         <nav className="nav-links" aria-label="Primary navigation">
           <Link href="/products">Shop</Link>
           <Link href="/apparel">Apparel</Link>
-          <Link href="/products?category=Headwear">Headwear</Link>
+          <Link href="/products?category=Golf%20Tech">Tech</Link>
+          <Link href="/products?category=Bags">Bags</Link>
           <Link href="/products?category=Accessories">Accessories</Link>
-          <Link href="/golf-trip-gear">Trip Gear</Link>
+          <Link href="/golf-trip-gear">Trip</Link>
           <Link href="/golf-gifts">Gifts</Link>
         </nav>
         <button className="header-cta" onClick={() => setOpen(true)} aria-label={`Open cart with ${count} items`}>
