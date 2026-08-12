@@ -103,18 +103,28 @@ export function isHomepageProduct(product: Product) {
     && categoryFor(product) !== 'Golf Balls';
 }
 
+/**
+ * The order below is intentional merchandising, not a catalog sort.
+ * WYX leads with personality and giftability, then utility. Cheap restock items
+ * remain in the store but should not define the first impression.
+ */
 export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
     'evil-ape',
-    'golf-or-die-game-set',
     'augusta-bear-hat',
-    'dude-abides-v2-mallet-putter-cover',
     'topographic-carolina-blue-driver-headcover',
-    'three-rail-ball-marker',
-    'magnet-caddie',
+    'dude-abides-v2-mallet-putter-cover',
     'dartee-golf-glove',
-    'pulse-golf-overgrip-tape',
+    'golf-or-die-game-set',
+    'magnet-caddie',
     'blue-ridge-golf-co-golf-towels',
+    'guerrilla-chief-driver-cover',
+    'mafia-mallet-putter-cover',
+    'two-sided-metal-golf-ball-marker-5-color-combo-pack',
+    'three-rail-ball-marker',
+    'glove-accessory-caddie-black',
+    'stick-grips-golf-camo-golf-grip',
+    'pulse-golf-overgrip-tape',
     'tri-fold-microfiber-golf-towel',
     'bamboo-performance-golf-tees-50-pack'
   ];
