@@ -12,6 +12,7 @@ const specificCopy: Record<string, string> = {
   'augusta-bear-hat': 'Course-ready headwear with enough personality to live in the regular weekend rotation after the round is over.',
   'golf-or-die-game-set': 'A golf-group add for trips and casual rounds when the point is not only the score — it gives the foursome something else to talk about all day.',
   'dartee-golf-glove': 'An easy everyday golf upgrade at a price that makes sense for something good golfers replace more often than they admit.',
+  'volcanic-ash': 'A statement golf belt from Dartee that gives the outfit one strong piece instead of adding more logos everywhere else.',
   'park-paisley-womens-gold-golf-glove': 'A golf glove that treats a round-to-round essential like something worth making visually interesting.',
   'pulse-golf-overgrip-tape': 'A simple way to refresh grip feel without committing to a full regrip project — best for golfers who like tinkering with feel and traction.',
   'stick-grips-golf-camo-golf-grip': 'A grip option for the golfer who wants function at the hands and a little more personality in the setup.',
@@ -41,6 +42,7 @@ const specificValueBullets: Record<string, string[]> = {
   'augusta-bear-hat': ['Works on the course and after the round', 'Easy personality piece without touching equipment setup', 'Giftable when fit options are understood'],
   'golf-or-die-game-set': ['Built for golf groups and trip rounds', 'Adds something social without changing the actual game', 'A memorable group gift or trip-table addition'],
   'dartee-golf-glove': ['Useful round-to-round consumable', 'Easy first-order add for golfers who know their size', 'Lower-cost way to try a new golf brand'],
+  'volcanic-ash': ['A higher-impact style piece than another logo polo', 'Built for the golfer who wants course-to-weekend personality', 'Sold here as one Shopify option; contact WYX before ordering if you need fit confirmation'],
   'park-paisley-womens-gold-golf-glove': ['A more expressive take on an everyday golf essential', 'Useful for rounds and practice sessions', 'Confirm hand and size before purchase'],
   'pulse-golf-overgrip-tape': ['Refreshes feel without a full regrip', 'Compact enough to keep with practice or maintenance gear', 'Best for golfers comfortable experimenting with grip feel'],
   'stick-grips-golf-camo-golf-grip': ['Adds feel and personality at the hands', 'Useful when refreshing an existing club setup', 'Check compatibility before installation'],
@@ -93,7 +95,7 @@ export function productBestFor(product: Product) {
   const text = productText(product);
   if (product.handle === 'tri-fold-microfiber-golf-towel') return ['Weekend rounds', 'Range sessions', 'Golf gifts', 'A cleaner, more organized bag'];
   if (category === 'Headwear' || /hat|cap/.test(text)) return ['Weekend rounds', 'Golf trips', 'Golf gifts', 'Course-to-weekend style'];
-  if (category === 'Apparel' || /shirt|polo|hoodie|belt/.test(text)) return ['Weekend golfers', 'Golf trips', 'Gift buyers who know the size', 'Course-to-weekend outfits'];
+  if (category === 'Apparel' || /shirt|polo|hoodie|belt/.test(text)) return ['Weekend golfers', 'Golf trips', 'Gift buyers who know the fit', 'Course-to-weekend outfits'];
   if (category === 'Club Care' || category === 'Towels') return ['Weekend rounds', 'Range sessions', 'Club care', 'Better bag-maintenance habits'];
   if (category === 'Training Aids') return ['Range sessions', 'At-home practice when appropriate', 'Golfers who like structured drills', 'Practice-focused gifts'];
   if (category === 'Golf Tech') return ['On-course information', 'Practice feedback', 'Golf trips', 'Tech-oriented golfers'];
@@ -106,17 +108,19 @@ export function productBestFor(product: Product) {
 export function productFaq(product: Product) {
   const category = categoryFor(product);
   const text = productText(product);
-  const categoryQuestion: [string, string] = category === 'Headwear' || /hat|cap/.test(text)
-    ? ['Is this a good golf gift?', 'Headwear can be a lower-risk golf gift than club-specific equipment. Review the available fit and size information before ordering.']
-    : category === 'Apparel' || /shirt|polo|hoodie|belt/.test(text)
-      ? ['How should I think about apparel sizing?', 'Review the product options and sizing information before purchase. If you are unsure, a non-sized accessory may be the safer gift.']
-      : category === 'Golf Balls'
-        ? ['Who should buy golf balls as a gift?', 'Golf balls are a practical gift when you know the golfer will use the specific model or type offered on the product page.']
-        : category === 'Towels' || category === 'Club Care'
-          ? ['Why buy club-care gear?', 'Towels and basic club-care tools make it easier to keep equipment clean and the bag organized between rounds.']
-          : category === 'Training Aids'
-            ? ['How should I use a training aid?', 'Pick one drill or practice goal and use the aid consistently for that purpose. A tool is most useful when it supports a clear practice plan.']
-            : ['Who is this best for?', 'This is aimed at golfers and gift shoppers who want useful gear with a clear place in a normal golf setup.'];
+  const categoryQuestion: [string, string] = product.handle === 'volcanic-ash'
+    ? ['How do I confirm fit?', 'This item is currently sold through WYX as a single Shopify option. If you need fit confirmation before ordering, contact WYX support and we will help before checkout.']
+    : category === 'Headwear' || /hat|cap/.test(text)
+      ? ['Is this a good golf gift?', 'Headwear can be a lower-risk golf gift than club-specific equipment. Review the available fit and size information before ordering.']
+      : category === 'Apparel' || /shirt|polo|hoodie|belt/.test(text)
+        ? ['How should I think about apparel sizing?', 'Review the product options and sizing information before purchase. If you are unsure, a non-sized accessory may be the safer gift.']
+        : category === 'Golf Balls'
+          ? ['Who should buy golf balls as a gift?', 'Golf balls are a practical gift when you know the golfer will use the specific model or type offered on the product page.']
+          : category === 'Towels' || category === 'Club Care'
+            ? ['Why buy club-care gear?', 'Towels and basic club-care tools make it easier to keep equipment clean and the bag organized between rounds.']
+            : category === 'Training Aids'
+              ? ['How should I use a training aid?', 'Pick one drill or practice goal and use the aid consistently for that purpose. A tool is most useful when it supports a clear practice plan.']
+              : ['Who is this best for?', 'This is aimed at golfers and gift shoppers who want useful gear with a clear place in a normal golf setup.'];
 
   return [
     categoryQuestion,
