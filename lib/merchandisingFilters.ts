@@ -10,9 +10,7 @@ const hiddenHandles = new Set([
   'josh-kelley-signature-low-taper-fade',
   'gulf-stream-gator',
   'white-braid',
-  'legalize-mulligans',
   'layup-t-shirt',
-  'looper',
   // Duplicate/filler cuts from the 2026 WYX edit. Keep one strong version, not every colorway/set.
   'glove-accessory-caddie-gray',
   'blue-ridge-golf-ball-markers-set-of-2',
@@ -111,6 +109,8 @@ export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
     'pimento-waffle',
     'hello-friends-t-shirt',
+    'looper',
+    'legalize-mulligans',
     'volcanic-ash',
     'mossy-condor',
     'sea-swell-blue',
