@@ -104,8 +104,8 @@ export default async function ProductPage({ params }: { params: { handle: string
   const lifestyleUrls = lifestyleImagesFor(product.handle, productCategory, shopifyUrls);
   const images = lifestyleUrls.map((url) => {
     const existing = product.images.find((img) => img.url === url) || (product.featuredImage?.url === url ? product.featuredImage : null);
-    return existing || { url, altText: `${title} lifestyle` };
-  }).slice(0, 4);
+    return existing || { url, altText: title };
+  }).slice(0, 6);
   const sizingGuide = sizingGuideFor(productCategory, title);
   const reasons = productValueBullets(product);
   const faqs = productFaq(product);
@@ -156,7 +156,7 @@ export default async function ProductPage({ params }: { params: { handle: string
       ]) }} />
 
       <nav className="breadcrumbs" aria-label="Breadcrumb">
-        <Link href="/products">Drop 01</Link><span>/</span>
+        <Link href="/products">Shop</Link><span>/</span>
         <Link href={`/products?category=${encodeURIComponent(productCategory)}`}>{productCategory}</Link><span>/</span>
         <span>{title}</span>
       </nav>
@@ -228,7 +228,7 @@ export default async function ProductPage({ params }: { params: { handle: string
 
       <JudgeMeProductReviews productId={product.id} productTitle={title} />
 
-      <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="GET DROP 02 FIRST." body="New gear, trip picks, and the products that make the next WYX edit." />
+      <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="GET NEW WYX PICKS FIRST." body="New gear, premium brands, trip picks, and the products worth knowing about." />
     </>
   );
 }
