@@ -5,6 +5,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { EmailCapture } from '@/components/EmailCapture';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
+import { premiumTargets } from '@/lib/premiumTargets';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 import type { Product } from '@/types/shopify';
@@ -36,7 +37,7 @@ export default async function Home() {
   const heroProducts = firstBuyProducts(core).slice(0, 12);
   const pimento = find(available, 'pimento-waffle');
   const hat = find(available, 'augusta-bear-hat');
-  const headcover = find(available, 'topographic-carolina-blue-driver-headcover') || find(available, 'evil-ape');
+  const headcover = find(available, 'topographic-edition-pure-white-embroidered-carolina-blue') || find(available, 'evil-ape');
   const game = find(available, 'golf-or-die-game-set');
   const towel = find(available, 'blue-ridge-golf-co-golf-towels');
   const glove = find(available, 'dartee-golf-glove');
@@ -63,7 +64,7 @@ export default async function Home() {
       title: 'Golf shoes that do not look like orthopedic equipment.',
       href: '/products',
       image: heroAlt,
-      status: 'SOURCING NOW'
+      status: 'SUPPLIER ONBOARDING'
     },
     {
       number: '03',
@@ -71,7 +72,7 @@ export default async function Home() {
       title: 'Rangefinders, GPS, launch monitors & smart golf toys.',
       href: '/golf-tech',
       image: imageFor(game, 0) || heroThird,
-      status: 'SOURCING NOW'
+      status: 'SUPPLIER ONBOARDING'
     },
     {
       number: '04',
@@ -162,15 +163,18 @@ export default async function Home() {
 
       <section className="wyx-radar">
         <div>
-          <p className="eyebrow">ON THE WYX RADAR</p>
-          <h2>WHAT WE&apos;RE HUNTING NEXT.</h2>
+          <p className="eyebrow">PREMIUM PRODUCT RADAR</p>
+          <h2>THE PRODUCTS WYX IS TRYING TO GET.</h2>
+          <p>These are not pretend WYX inventory. They are verified, premium targets with real customer proof and a legitimate retailer or wholesale path. They become buyable here only after supplier approval.</p>
         </div>
         <div className="wyx-radar-list">
-          <div><span>01</span><strong>THE POLO</strong><p>Premium fabric. Great collar. No corporate outing energy.</p></div>
-          <div><span>02</span><strong>THE BOTTOMS</strong><p>Shorts and pants that fit like actual clothes, not uniform pants.</p></div>
-          <div><span>03</span><strong>THE SHOE</strong><p>Walkable, clean, distinctive. Something you would wear to the parking lot on purpose.</p></div>
-          <div><span>04</span><strong>THE TECH</strong><p>Rangefinders, GPS and practice tech that earn the space in your bag.</p></div>
-          <div><span>05</span><strong>THE BAG</strong><p>A premium carry or trip bag that can become a WYX signature piece.</p></div>
+          {premiumTargets.slice(0, 7).map((target, index) => (
+            <div key={`${target.brand}-${target.product}`}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{target.brand}<br />{target.product}</strong>
+              <p>{target.rating ? `${target.rating} · ` : ''}{target.reviews ? `${target.reviews} · ` : ''}{target.price} · {target.proof} <b>{target.status}</b></p>
+            </div>
+          ))}
         </div>
       </section>
 
