@@ -1,23 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { availableProducts } from '@/lib/catalog';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
-import { addLine, addLines, createCart, createCartWithLines, getCart, removeLine, updateLine } from '@/lib/shopify/cart';
+import { addLine, addLines, createCart, createCartWithLines, getCart, removeLine, updateCartAttributes, updateLine } from '@/lib/shopify/cart';
 import { getProducts } from '@/lib/shopify/products';
 
 type CartLineInput = { merchandiseId: string; quantity: number };
+type CartAttributeInput = { key: string; value: string };
 
 async function allowedVariantIds() {
   const products = coreMerchProducts(availableProducts(await getProducts()));
-  return new Set(
-    products.flatMap((product) => product.variants.filter((variant) => variant.availableForSale).map((variant) => variant.id))
-  );
+  return new Set(products.flatMap((product) => product.variants.filter((variant) => variant.availableForSale).map((variant) => variant.id)));
 }
 
 async function assertAllowedMerchandise(ids: string[]) {
   if (!ids.length || ids.some((id) => !id)) throw new Error('No purchasable product was selected.');
   const allowed = await allowedVariantIds();
   const blocked = ids.filter((id) => !allowed.has(id));
-  if (blocked.length) throw new Error('One or more products are not currently part of the WYX drop.');
+  if (blocked.length) throw new Error('One or more products are not currently available from WYX.');
 }
 
 async function sanitizeCart(cart: any) {
@@ -63,6 +62,12 @@ export async function POST(req: NextRequest) {
 export async function PATCH(req: NextRequest) {
   try {
     const b = await req.json();
+    if (Array.isArray(b.attributes)) {
+      const attributes = (b.attributes as CartAttributeInput[])
+        .filter((attribute) => attribute && typeof attribute.key === 'string' && typeof attribute.value === 'string')
+        .filter((attribute) => attribute.key.startsWith('_wyx_'));
+      return NextResponse.json({ cart: await sanitizeCart(await updateCartAttributes(b.cartId, attributes)) });
+    }
     return NextResponse.json({ cart: await sanitizeCart(await updateLine(b.cartId, b.lineId, b.quantity)) });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 400 });
@@ -83,9 +88,7 @@ async function withFreshCartFallback<T>(operation: () => Promise<T>, fallback: (
     return await operation();
   } catch (error) {
     const message = error instanceof Error ? error.message.toLowerCase() : '';
-    if (message.includes('cart') || message.includes('not found') || message.includes('invalid')) {
-      return fallback();
-    }
+    if (message.includes('cart') || message.includes('not found') || message.includes('invalid')) return fallback();
     throw error;
   }
 }
