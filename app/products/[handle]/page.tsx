@@ -22,9 +22,11 @@ import { productPrice, siteUrl } from '@/lib/feed';
 import { productBuyerPromise, productFaq, productValueBullets } from '@/lib/merchandising';
 import { coreMerchProducts, isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasKnownImageMismatch } from '@/lib/productReadiness';
+import { productQualityScore } from '@/lib/productQuality';
 import { getProduct, getProducts } from '@/lib/shopify/products';
 import { supportEmail } from '@/lib/support';
 import { cleanText } from '@/lib/text';
+import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
 
@@ -51,6 +53,23 @@ export async function generateMetadata({ params }: { params: { handle: string } 
   };
 }
 
+const relatedCategoryOrder: Record<string, string[]> = {
+  Apparel: ['Headwear', 'Accessories', 'Towels', 'Gloves', 'Grips'],
+  Headwear: ['Apparel', 'Accessories', 'Gloves', 'Towels', 'Grips'],
+  Gloves: ['Headwear', 'Towels', 'Accessories', 'Apparel', 'Grips'],
+  Towels: ['Accessories', 'Headwear', 'Gloves', 'Apparel', 'Grips'],
+  Grips: ['Gloves', 'Towels', 'Accessories', 'Headwear', 'Apparel'],
+  Accessories: ['Headwear', 'Gloves', 'Towels', 'Apparel', 'Grips']
+};
+
+function complementaryScore(sourceCategory: string, item: Product) {
+  const category = categoryFor(item);
+  const order = relatedCategoryOrder[sourceCategory] || ['Accessories', 'Headwear', 'Gloves', 'Towels', 'Apparel', 'Grips'];
+  const position = order.indexOf(category);
+  const categoryScore = position === -1 ? 0 : (order.length - position) * 25;
+  return categoryScore + productQualityScore(item);
+}
+
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const product = await getProduct(params.handle);
   if (!product || !product.availableForSale || !hasSaleReadyMedia(product) || isHiddenFromCoreStorefront(product) || hasKnownImageMismatch(product)) notFound();
@@ -59,21 +78,26 @@ export default async function ProductPage({ params }: { params: { handle: string
   const allProducts = coreMerchProducts(availableProducts(await getProducts()));
   const complementaryPool = allProducts
     .filter((item) => item.handle !== product.handle && item.availableForSale && categoryFor(item) !== productCategory)
-    .sort((a, b) => Number(productPrice(a).amount) - Number(productPrice(b).amount));
+    .sort((a, b) => complementaryScore(productCategory, b) - complementaryScore(productCategory, a));
   const related = complementaryPool
     .filter((item, index, items) => items.findIndex((candidate) => categoryFor(candidate) === categoryFor(item)) === index)
     .slice(0, 3);
 
   const availableVariants = product.variants.filter((item) => item.availableForSale && !item.id.startsWith('demo-'));
   const variant = availableVariants[0];
-  const canPairInline = availableVariants.length === 1;
-  const pairProduct = allProducts
-    .filter((item) => item.handle !== product.handle && item.availableForSale && categoryFor(item) !== productCategory)
-    .filter((item) => Number(productPrice(item).amount) <= 25)
-    .sort((a, b) => Number(productPrice(a).amount) - Number(productPrice(b).amount))
-    .find((item) => item.variants.some((v) => v.availableForSale));
-  const pairVariant = pairProduct?.variants.find((v) => v.availableForSale);
-  const pairTotal = pairProduct ? Number(productPrice(product).amount) + Number(productPrice(pairProduct).amount) : 0;
+  const productAmount = Number(productPrice(product).amount);
+  const canPairInline = availableVariants.length === 1 && productAmount <= 75 && productCategory !== 'Apparel';
+  const pairProduct = canPairInline
+    ? complementaryPool
+        .filter((item) => {
+          const available = item.variants.filter((v) => v.availableForSale && !v.id.startsWith('demo-'));
+          const price = Number(productPrice(item).amount);
+          return available.length === 1 && price >= 15 && price <= 35;
+        })
+        .find(Boolean)
+    : undefined;
+  const pairVariant = pairProduct?.variants.find((v) => v.availableForSale && !v.id.startsWith('demo-'));
+  const pairTotal = pairProduct ? productAmount + Number(productPrice(pairProduct).amount) : 0;
 
   const title = cleanText(product.title);
   const shopifyUrls = (product.images.length ? product.images : product.featuredImage ? [product.featuredImage] : []).map((img) => img.url);
