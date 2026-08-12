@@ -182,13 +182,111 @@ p {
   object-fit: cover;
 }
 
-/* Light WYX home cards should feel calm, not disappear into the background. */
 .wyx-feature-grid .product-card {
   background: transparent;
 }
 
 .wyx-feature-grid .product-card-body {
   padding: 1rem 0 0;
+}
+
+/* ---------- Product option controls ---------- */
+.variant-selector {
+  margin: 1.2rem 0 1rem;
+  padding: 0;
+  border: 0;
+}
+
+.variant-selector > legend {
+  margin-bottom: .8rem;
+  color: var(--wyx-ink);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.variant-option-groups {
+  display: grid;
+  gap: 1rem;
+}
+
+.variant-option-group {
+  display: grid;
+  gap: .55rem;
+}
+
+.variant-option-label {
+  color: var(--wyx-muted);
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.variant-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+
+.variant-chip {
+  min-width: 58px;
+  min-height: 46px;
+  padding: .7rem .95rem;
+  border: 1px solid rgba(17, 23, 20, .32);
+  border-radius: 0;
+  background: rgba(255, 255, 255, .32);
+  color: var(--wyx-ink);
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.variant-chip:hover:not(:disabled),
+.variant-chip.selected {
+  border-color: var(--wyx-ink);
+  background: var(--wyx-ink);
+  color: #fff;
+}
+
+.variant-chip.unavailable,
+.variant-chip:disabled {
+  position: relative;
+  border-color: rgba(17, 23, 20, .12);
+  background: rgba(255, 255, 255, .16);
+  color: #9a9e9a;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.variant-select {
+  width: 100%;
+  min-height: 50px;
+  padding: .75rem .9rem;
+  border: 1px solid rgba(17, 23, 20, .26);
+  border-radius: 0;
+  background: rgba(255, 255, 255, .34);
+  color: var(--wyx-ink);
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.variant-select:focus,
+.variant-chip:focus-visible {
+  outline: 2px solid var(--wyx-accent);
+  outline-offset: 2px;
+}
+
+.purchase-panel .selected-variant-note {
+  margin: .5rem 0 .8rem;
+  color: var(--wyx-muted);
+  font-size: .78rem;
 }
 
 /* ---------- Calm hover behavior ---------- */
@@ -300,5 +398,11 @@ p {
 
   .wyx-department-card {
     min-height: 500px;
+  }
+
+  .variant-chip {
+    min-width: 54px;
+    min-height: 44px;
+    padding: .65rem .8rem;
   }
 }
