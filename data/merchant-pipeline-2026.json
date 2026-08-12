@@ -1,0 +1,94 @@
+{
+  "updated": "2026-08-11",
+  "strategy": "Replace generic feed merchandise with fewer, more distinctive golf products from established specialty merchants. Prioritize products that photograph well, solve a clear golf problem, support golf-trip culture, or can become WYX-exclusive.",
+  "rules": {
+    "autoPublish": false,
+    "supplierApprovalRequired": true,
+    "priceChangesRequireApproval": true,
+    "minimumBrandFitScore": 8,
+    "preferredLandedMarginNote": "Validate wholesale cost, shipping, fees, MAP and expected gross margin before approval. Do not infer margin from retail pricing."
+  },
+  "merchants": [
+    {
+      "merchant": "PRG Golf",
+      "priority": "A",
+      "brandFitScore": 10,
+      "status": "qualified-research",
+      "lanes": ["custom headcovers", "ball markers", "divot tools", "towels", "pouches", "WYX private-label accessories"],
+      "why": "Strong route to distinctive accessories and future WYX-branded products instead of commodity inventory.",
+      "wholesaleUrl": "https://prg-golf.com/pages/wholesale",
+      "nextAction": "Request wholesale/custom terms, MOQ, lead times, decoration options, MAP terms and sample pricing."
+    },
+    {
+      "merchant": "Seamus Golf",
+      "priority": "A",
+      "brandFitScore": 10,
+      "status": "qualified-research",
+      "lanes": ["hand-forged ball marks", "pitch tools", "bag tags", "headcovers", "valuables pouches", "scorecard holders", "shoe bags", "dopp kits"],
+      "why": "High-craft golf products with real material character; ideal for premium editorial photography and a higher-end WYX assortment.",
+      "wholesaleUrl": "https://www.seamusgolf.com/pages/wholesale",
+      "nextAction": "Request wholesale account and samples; prioritize one forged accessory and one sewn travel/bag item."
+    },
+    {
+      "merchant": "Sunday Golf",
+      "priority": "A",
+      "brandFitScore": 9,
+      "status": "qualified-research",
+      "lanes": ["Sunday bags", "golf-trip bags", "coolers", "travel accessories", "custom bags"],
+      "why": "Strong fit for WYX trip positioning and a practical way to add a higher-ticket hero product without becoming an equipment retailer.",
+      "wholesaleUrl": "https://sundaygolf.com/pages/wholesale",
+      "nextAction": "Price a six-unit test order and compare shipping, margin, colors and customization options."
+    },
+    {
+      "merchant": "Pins & Aces",
+      "priority": "A",
+      "brandFitScore": 9,
+      "status": "existing-vendor-expand-selectively",
+      "lanes": ["headcovers", "magnetic accessories", "caddies", "golf gifts", "custom headcovers"],
+      "why": "Already represented in WYX and proven fit. Expand only with distinctive products that improve the assortment instead of duplicating existing utility pieces.",
+      "wholesaleUrl": "https://pinsandaces.com/pages/wholesale",
+      "nextAction": "Review current wholesale assortment for one magnetic cleaning product and one visual hero piece."
+    },
+    {
+      "merchant": "Swannies Golf",
+      "priority": "B+",
+      "brandFitScore": 8,
+      "status": "qualified-research",
+      "lanes": ["modern golf hats", "duffle bags", "polos", "layers"],
+      "why": "Useful route to improve WYX headwear and trip apparel without adding a large generic clothing catalog.",
+      "wholesaleUrl": "https://swannies.co/pages/corporate-wholesale",
+      "nextAction": "Request wholesale terms and evaluate one hat plus one trip-bag/apparel test product."
+    },
+    {
+      "merchant": "Dormie Workshop",
+      "priority": "B",
+      "brandFitScore": 9,
+      "status": "halo-research-resale-terms-unverified",
+      "lanes": ["premium leather headcovers", "putter covers", "statement golf accessories"],
+      "why": "Potential halo merchandise that makes the store feel expensive and distinctive even if volume is low.",
+      "wholesaleUrl": "https://dormieworkshop.com/",
+      "nextAction": "Verify reseller/corporate terms before considering any listing."
+    },
+    {
+      "merchant": "Devereux Golf",
+      "priority": "C",
+      "brandFitScore": 8,
+      "status": "strategic-partnership-only",
+      "lanes": ["apparel", "headwear", "collaboration"],
+      "why": "Strong style benchmark, but standard wholesale availability is not the preferred route. Treat as a future collaboration conversation, not core sourcing.",
+      "wholesaleUrl": "https://devereuxgolf.com/",
+      "nextAction": "No action until WYX has stronger sales volume or a collaboration concept."
+    }
+  ],
+  "targetAssortmentGaps": [
+    "premium magnetic towel",
+    "magnetic wet club brush",
+    "premium divot or pitch tool",
+    "valuables pouch",
+    "second standout golf hat",
+    "real golf-trip bag or duffle",
+    "one higher-ticket travel hero",
+    "WYX-exclusive headcover",
+    "WYX-exclusive towel or marker"
+  ]
+}
