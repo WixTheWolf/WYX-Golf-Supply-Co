@@ -3,10 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
-import { availableProducts, categoryFor } from '@/lib/catalog';
+import { availableProducts } from '@/lib/catalog';
 import { siteUrl } from '@/lib/feed';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
-import { productQualityScore } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
@@ -41,6 +40,21 @@ const occasions = [
   { label: 'Golf Tournament Prizes', href: '/golf-tournament-prizes' }
 ];
 
+const giftEditHandles = [
+  'evil-ape',
+  'augusta-bear-hat',
+  'volcanic-ash',
+  'topographic-carolina-blue-driver-headcover',
+  'dude-abides-v2-mallet-putter-cover',
+  'dartee-golf-glove',
+  'golf-or-die-game-set',
+  'magnet-caddie',
+  'three-rail-ball-marker',
+  'two-sided-metal-golf-ball-marker-5-color-combo-pack',
+  'blue-ridge-golf-co-golf-towels',
+  'park-paisley-womens-gold-golf-glove'
+];
+
 const faqs: [string, string][] = [
   ['What makes a good golf gift?', 'The safest golf gifts have a clear job or a strong personality and do not require knowing the golfer’s exact club specs. Headcovers, towels, markers, hats, games and bag accessories are usually easier to get right than performance equipment.'],
   ['What should I buy for a golfer who already has everything?', 'Look at the things a golfer sees or touches every round: the top of the bag, the glove, the towel, the marker, the hat, and the small accessories that make a trip easier. Upgrade something familiar instead of inventing a new gadget problem.'],
@@ -57,21 +71,11 @@ const jsonLd = {
   }))
 };
 
-function giftScore(product: Awaited<ReturnType<typeof getProducts>>[number]) {
-  let score = productQualityScore(product);
-  const category = categoryFor(product);
-  const text = `${product.title} ${(product.tags || []).join(' ')}`;
-  if (/headcover|putter cover|hat|game|marker|glove|caddie/i.test(text)) score += 24;
-  if (['Headwear', 'Gloves', 'Accessories'].includes(category)) score += 10;
-  if (/towel|grip|tee/i.test(text)) score += 4;
-  return score;
-}
-
 export default async function GolfGiftsPage() {
   const curated = coreMerchProducts(availableProducts(await getProducts()));
-  const products = [...curated]
-    .sort((a, b) => giftScore(b) - giftScore(a))
-    .slice(0, 12);
+  const products = giftEditHandles
+    .map((handle) => curated.find((product) => product.handle === handle))
+    .filter(Boolean) as typeof curated;
 
   return (
     <>
