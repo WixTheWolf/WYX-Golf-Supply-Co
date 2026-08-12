@@ -3,18 +3,20 @@ import { hasVerifiedFulfillment } from '@/lib/fulfillmentReadiness';
 import { isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasMisleadingProductMedia, hasKnownImageMismatch } from '@/lib/productReadiness';
 
-export const catalogCategories = ['All', 'Apparel', 'Headwear', 'Gloves', 'Accessories', 'Towels', 'Grips', 'Club Care', 'Training Aids', 'Golf Tech', 'Golf Balls'] as const;
+export const catalogCategories = ['All', 'Apparel', 'Footwear', 'Headwear', 'Bags', 'Golf Tech', 'Accessories', 'Gloves', 'Towels', 'Grips', 'Training Aids', 'Club Care', 'Golf Balls'] as const;
 
 const rules: Array<[Exclude<(typeof catalogCategories)[number], 'All'>, string[]]> = [
-  ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel', 'sock', 'socks', 'quarter zip', 'pullover', 'belt', 'waffle layer', 'golf layer']],
+  ['Footwear', ['golf shoe', 'golf shoes', 'spikeless', 'spiked shoe', 'footwear']],
+  ['Bags', ['golf bag', 'stand bag', 'cart bag', 'carry bag', 'sunday bag', 'travel bag', 'duffle', 'duffel']],
+  ['Apparel', ['polo', 'shirt', 'hoodie', 'apparel', 'sock', 'socks', 'short', 'shorts', 'pant', 'pants', 'trouser', 'quarter zip', 'pullover', 'belt', 'waffle layer', 'golf layer']],
   ['Headwear', ['hat', 'cap', 'headwear']],
   ['Gloves', ['glove']],
-  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'bag', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter', 'retriever', 'ball retriever', 'pouch', 'organizer', 'shoe bag', 'tumbler', 'rain hood', 'sunglasses', 'arm sleeve', 'cup holder', 'umbrella holder', 'cart mount']],
+  ['Golf Tech', ['golf tech', 'rangefinder', 'laser rangefinder', 'gps speaker', 'golf gps', 'launch monitor', 'phone mount', 'gps watch', 'golf watch']],
+  ['Accessories', ['accessory', 'marker', 'divot', 'tee', 'tool', 'flask', 'cooler', 'caddie', 'headcover', 'putter cover', 'driver cover', 'retriever', 'ball retriever', 'pouch', 'organizer', 'tumbler', 'rain hood', 'sunglasses', 'arm sleeve', 'cup holder', 'umbrella holder', 'cart mount']],
   ['Towels', ['towel']],
   ['Grips', ['grip', 'overgrip']],
   ['Club Care', ['club care', 'club brush', 'brush cleaner', 'groove cleaner', 'groove sharpener', 'wedge tool', 'grip solvent']],
   ['Training Aids', ['training aid', 'training aids', 'putting mirror', 'alignment mirror', 'putting gate', 'putting mat', 'putting arc', 'alignment stick', 'swing trainer', 'swing tempo', 'tempo trainer', 'chipping net', 'divot board', 'short game', 'range gear', 'impact bag']],
-  ['Golf Tech', ['golf tech', 'rangefinder', 'laser rangefinder', 'gps speaker', 'golf gps', 'launch monitor', 'phone mount', 'gps watch', 'golf watch']],
   ['Golf Balls', ['golf balls', 'golf ball set', 'prank ball']]
 ];
 
@@ -25,6 +27,15 @@ const productTypeCategoryMap: Record<string, Exclude<(typeof catalogCategories)[
   hats: 'Headwear',
   hat: 'Headwear',
   cap: 'Headwear',
+  footwear: 'Footwear',
+  'golf shoes': 'Footwear',
+  'golf shoe': 'Footwear',
+  shoes: 'Footwear',
+  'golf bags': 'Bags',
+  'golf bag': 'Bags',
+  'stand bag': 'Bags',
+  'cart bag': 'Bags',
+  'travel bag': 'Bags',
   apparel: 'Apparel',
   'golf belt': 'Apparel',
   belt: 'Apparel',
@@ -63,11 +74,8 @@ function typeCategory(product: ClassifiableProduct) {
   return productTypeCategoryMap[type];
 }
 
-const blockedPublicVendors = new Set([
-  'GolfbaysUSA'
-]);
-
-const weakPublicTerms = /simulator|hitting mat|impact screen|enclosure|display rack|bungee|protective case|foam triangle|pelmet|rubber ball tray/i;
+const blockedPublicVendors = new Set(['GolfbaysUSA']);
+const weakPublicTerms = /simulator enclosure|impact screen|display rack|bungee|foam triangle|pelmet|rubber ball tray/i;
 
 function publicPriceAllowed(product: Product) {
   const prices = product.variants.map((variant) => Number(variant.price.amount)).filter(Number.isFinite);
@@ -75,11 +83,12 @@ function publicPriceAllowed(product: Product) {
   const category = categoryFor(product);
   const text = searchable(product);
   if (price <= 0) return false;
-  if (category === 'Golf Tech' || /rangefinder|gps|launch monitor/.test(text)) return price <= 350;
-  if (category === 'Training Aids' || /training|trainer|putting|alignment|swing|tempo|chipping/.test(text)) return price <= 200;
-  if (/golf bag|premium bag|stand bag|cart bag|travel bag/.test(text)) return price <= 400;
-  if (category === 'Apparel' || category === 'Headwear') return price <= 150;
-  return price <= 150;
+  if (category === 'Golf Tech' || /rangefinder|gps|launch monitor/.test(text)) return price <= 700;
+  if (category === 'Training Aids' || /training|trainer|putting|alignment|swing|tempo|chipping/.test(text)) return price <= 300;
+  if (category === 'Bags') return price <= 500;
+  if (category === 'Footwear') return price <= 300;
+  if (category === 'Apparel' || category === 'Headwear') return price <= 200;
+  return price <= 180;
 }
 
 function passesPublicCatalogGate(product: Product) {
@@ -95,7 +104,8 @@ export function categoryFor(product: ClassifiableProduct) {
 
   const content = searchable(product);
 
-  // Known golf layers can arrive from supplier feeds with a generic product type.
+  if (/golf shoes?|spikeless|spiked shoe|footwear/.test(content)) return 'Footwear';
+  if (/golf bag|stand bag|cart bag|carry bag|sunday bag|travel bag|duffle|duffel/.test(content)) return 'Bags';
   if (content.includes('pimento waffle')) return 'Apparel';
   if (content.includes('hello friends t-shirt')) return 'Apparel';
   if (content.includes('groove sharpener') || content.includes('club face pick') || content.includes('club maintenance') || content.includes('spike wrench')) return 'Club Care';
