@@ -33,6 +33,10 @@ export default async function Home() {
   const available = availableProducts(await getProducts());
   const core = sortByQuality(coreMerchProducts(available));
   const apparel = apparelLeadProducts(available, 6);
+  const pimento = available.find((product) => product.handle === 'pimento-waffle');
+  const helloFriends = available.find((product) => product.handle === 'hello-friends-t-shirt');
+  const apparelCampaignImage = pimento?.images[1]?.url || pimento?.featuredImage?.url || photography.walking;
+  const apparelDetailImage = helloFriends?.images[1]?.url || helloFriends?.featuredImage?.url || apparelCampaignImage;
   const accessories = core
     .filter((product) => !['Apparel', 'Headwear', 'Gloves'].includes(categoryFor(product)))
     .slice(0, 6);
@@ -44,20 +48,20 @@ export default async function Home() {
     {
       label: 'ON COURSE',
       title: 'The first tee is still a first impression.',
-      copy: 'Performance without the uniform. Pieces that belong in a real round and still feel like you.',
+      copy: 'Start with the garment, not the accessory. Texture, fit and color set the whole look.',
       href: '/apparel',
       action: 'Shop apparel',
-      image: photography.walking,
-      alt: 'Golfer walking the golf course carrying a golf bag'
+      image: apparelCampaignImage,
+      alt: 'WYX golf apparel editorial product photography'
     },
     {
       label: 'OFF COURSE',
       title: 'Golf style should survive the 19th hole.',
-      copy: 'Layers, finishing pieces and headwear selected for the hours before and after the scorecard matters.',
-      href: '/products',
-      action: 'Shop the edit',
-      image: photography.hero,
-      alt: 'Golf bag and cart on a course at sunset'
+      copy: 'Tees, layers and finishing pieces for the hours when the scorecard is already in the trash.',
+      href: '/apparel',
+      action: 'Shop off-course style',
+      image: apparelDetailImage,
+      alt: 'WYX golf lifestyle apparel photography'
     },
     {
       label: 'THE TRIP',
@@ -101,7 +105,7 @@ export default async function Home() {
               <p className="eyebrow">NEW APPAREL</p>
               <h2>BUILD THE FIT FIRST.</h2>
             </div>
-            <p>WYX is moving beyond bag accessories. The apparel edit starts with course-ready layers, tees and finishing pieces, then grows into a full golf wardrobe in deliberate drops.</p>
+            <p>Layers, tees and finishing pieces lead the new WYX. The permanent wardrobe grows from here: polos, shorts, pants and lightweight outerwear next.</p>
           </div>
           <div className="fashion-product-grid">
             {apparel.map((product) => <ProductCard key={product.id} product={product} />)}
@@ -112,7 +116,7 @@ export default async function Home() {
 
       <section className="fashion-campaign">
         <div className="fashion-campaign-photo">
-          <Image src={photography.walking} alt="Golfer walking a fairway with a golf bag" fill sizes="(max-width: 900px) 100vw, 62vw" />
+          <Image src={apparelCampaignImage} alt="WYX golf apparel editorial photography" fill sizes="(max-width: 900px) 100vw, 62vw" />
         </div>
         <div className="fashion-campaign-copy">
           <p className="eyebrow">THE WYX UNIFORM</p>
