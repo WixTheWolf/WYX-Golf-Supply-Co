@@ -57,9 +57,11 @@ export default async function ProductPage({ params }: { params: { handle: string
 
   const productCategory = categoryFor(product);
   const allProducts = coreMerchProducts(availableProducts(await getProducts()));
-  const related = allProducts
-    .filter((item) => item.handle !== product.handle && item.availableForSale)
-    .sort((a, b) => Number(categoryFor(b) === productCategory) - Number(categoryFor(a) === productCategory))
+  const complementaryPool = allProducts
+    .filter((item) => item.handle !== product.handle && item.availableForSale && categoryFor(item) !== productCategory)
+    .sort((a, b) => Number(productPrice(a).amount) - Number(productPrice(b).amount));
+  const related = complementaryPool
+    .filter((item, index, items) => items.findIndex((candidate) => categoryFor(candidate) === categoryFor(item)) === index)
     .slice(0, 3);
 
   const availableVariants = product.variants.filter((item) => item.availableForSale && !item.id.startsWith('demo-'));
