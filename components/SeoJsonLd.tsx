@@ -1,7 +1,7 @@
 import { siteUrl } from '@/lib/marketing';
 
 const storeName = 'WYX Golf Supply Co.';
-const description = 'Less golf shop. More gear drop. A tight edit of modern golf gear, gifts, trip gear and bag upgrades selected for real rounds.';
+const description = 'Modern golf apparel and gear for the course, the trip, and everything after the round. A smaller, sharper WYX edit.';
 const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3ffecba8fb81?auto=format&fit=crop&w=1600&q=84';
 
 export function SeoJsonLd() {
@@ -44,11 +44,11 @@ export function SeoJsonLd() {
       '@id': `${siteUrl}/#offer-catalog`,
       name: 'WYX Golf Supply Co. product categories',
       itemListElement: [
-        { '@type': 'OfferCatalog', name: 'Golf Gifts', url: `${siteUrl}/golf-gifts` },
+        { '@type': 'OfferCatalog', name: 'Golf Apparel', url: `${siteUrl}/apparel` },
+        { '@type': 'OfferCatalog', name: 'Golf Headwear', url: `${siteUrl}/products?category=Headwear` },
+        { '@type': 'OfferCatalog', name: 'Golf Accessories', url: `${siteUrl}/products?category=Accessories` },
         { '@type': 'OfferCatalog', name: 'Golf Trip Gear', url: `${siteUrl}/golf-trip-gear` },
-        { '@type': 'OfferCatalog', name: 'Golf Hats', url: `${siteUrl}/products?category=Headwear` },
-        { '@type': 'OfferCatalog', name: 'Golf Apparel', url: `${siteUrl}/products?category=Apparel` },
-        { '@type': 'OfferCatalog', name: 'Golf Bag Upgrades', url: `${siteUrl}/bag-upgrades` }
+        { '@type': 'OfferCatalog', name: 'Golf Gifts', url: `${siteUrl}/golf-gifts` }
       ]
     }
   ];
