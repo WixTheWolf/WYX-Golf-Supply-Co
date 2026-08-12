@@ -54,7 +54,7 @@ async function subscribeToKlaviyo(email: string, source: string, campaign: strin
     headers: {
       Authorization: `Klaviyo-API-Key ${privateKey}`,
       'Content-Type': 'application/vnd.api+json',
-      revision: process.env.KLAVIYO_API_REVISION || '2024-07-15'
+      revision: process.env.KLAVIYO_API_REVISION || '2026-07-15'
     },
     body: JSON.stringify({
       data: {
@@ -141,9 +141,9 @@ export async function POST(request: Request) {
 
   const email = clean(body.email).toLowerCase();
   const source = clean(body.source) || 'storefront';
-  const campaign = clean(body.campaign) || 'launch-list';
+  const campaign = clean(body.campaign) || 'wyx-list';
   const now = new Date().toISOString();
-  const tags = Array.from(new Set(['wyx-email-subscriber', 'wyx-launch-list', `wyx-source:${source}`, `wyx-campaign:${campaign}`]));
+  const tags = Array.from(new Set(['wyx-email-subscriber', `wyx-source:${source}`, `wyx-campaign:${campaign}`]));
 
   try {
     const klaviyo = await subscribeToKlaviyo(email, source, campaign, now).catch((error) => ({ ok: false, error: error instanceof Error ? error.message : 'Klaviyo failed' }));
@@ -162,7 +162,7 @@ export async function POST(request: Request) {
     const errors = getUserErrors(result);
     if (errors.length) {
       const message = errors.map((error: any) => error.message).join(', ');
-      if (/already|taken|exists/i.test(message)) return NextResponse.json({ ok: true, status: 'existing' });
+      if (/already|taken|exists/i.test(message)) return NextResponse.json({ ok: true, status: 'existing', klaviyo });
       return responseError(message);
     }
 
