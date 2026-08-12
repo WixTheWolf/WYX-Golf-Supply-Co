@@ -7,11 +7,11 @@ import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
-const MIN_CATEGORY_CHIP_COUNT = 2;
+const MIN_CATEGORY_CHIP_COUNT = 1;
 
 export const metadata: Metadata = {
-  title: 'Drop 01 — Modern Golf Gear',
-  description: 'Shop WYX Drop 01 — a tight edit of headcovers, gloves, golf gifts, trip gear, markers, towels and bag upgrades selected for real rounds.',
+  title: 'Shop WYX — Golf Apparel & Gear',
+  description: 'Shop the WYX edit of modern golf apparel, headwear, gloves, headcovers, trip gear and useful bag accessories.',
   alternates: { canonical: '/products' }
 };
 
@@ -27,10 +27,11 @@ export default async function Products({ searchParams }: { searchParams: { categ
 
   return (
     <>
-      <section className="page-hero compact">
-        <p className="eyebrow">WYX / DROP 01</p>
-        <h1>{rankedCatalog.length} PIECES. NO FILLER.</h1>
-        <p>A deliberately small golf assortment. Personality up front, utility underneath, and the inexpensive restock pieces where they belong: supporting the bag instead of defining the brand.</p>
+      <section className="page-hero compact shop-fashion-hero">
+        <p className="eyebrow">SHOP WYX</p>
+        <h1>{category && category !== 'All' ? category.toUpperCase() : 'THE FULL EDIT.'}</h1>
+        <p>Apparel leads. The good bag stuff stays. Everything here has been cut down to a WYX-sized assortment instead of exposing the whole supplier feed.</p>
+        {!category && <div className="actions shop-hero-actions"><Link className="button ink" href="/apparel">SHOP APPAREL</Link><Link className="text-link" href="/golf-trip-gear">PACK THE TRIP →</Link></div>}
       </section>
 
       <nav className="filter-row" aria-label="Product categories">
@@ -50,7 +51,7 @@ export default async function Products({ searchParams }: { searchParams: { categ
         <div className="results-heading">
           <div>
             <p className="eyebrow">AVAILABLE NOW</p>
-            <h2>{category && category !== 'All' ? category : 'The full edit'}</h2>
+            <h2>{category && category !== 'All' ? category : 'WYX right now'}</h2>
           </div>
           <p>{products.length} pieces</p>
         </div>
