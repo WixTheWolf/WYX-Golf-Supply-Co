@@ -5,6 +5,7 @@ import { ScrollRevealInit } from '@/components/ScrollRevealInit';
 import './globals.css';
 import './store.css';
 import './future.css';
+import './premium.css';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
@@ -18,8 +19,8 @@ const displayFont = Fraunces({ subsets: ['latin'], variable: '--font-display', d
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
   applicationName: 'WYX Golf Supply Co.',
-  title: { default: 'WYX Golf Supply Co. | Future Golf Gear', template: '%s | WYX Golf Supply Co.' },
-  description: 'A hard edit of modern golf gear: headcovers, grips, gloves, trip gear and bag upgrades selected for real rounds. No filler. Secure Shopify checkout.',
+  title: { default: 'Modern Golf Gear, Gifts & Bag Upgrades | WYX Golf Supply Co.', template: '%s | WYX Golf Supply Co.' },
+  description: 'A tight edit of modern golf gear, gifts, headcovers, gloves, trip gear and bag upgrades selected for real rounds. Less golf shop. More gear drop.',
   keywords: ['modern golf gear', 'golf headcovers', 'golf trip gear', 'golf gifts', 'golf grips', 'golf bag accessories', 'golf gloves'],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
@@ -27,15 +28,15 @@ export const metadata: Metadata = {
     siteName: 'WYX Golf Supply Co.',
     type: 'website',
     url: 'https://wyxgolfsupply.com',
-    title: 'WYX Golf Supply Co. | Future Golf Gear',
-    description: 'The golf drop for people who are done scrolling through filler. Curated headcovers, grips, gloves, trip gear and bag upgrades.',
+    title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.',
+    description: 'Modern golf gear, gifts, trip gear and bag upgrades selected to earn a place in the bag.',
     images: [{ url: '/images/boys-weekend-hero.png', width: 1536, height: 1024, alt: 'WYX Golf Supply Co.' }]
   },
-  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co. | Future Golf Gear', description: 'A hard edit of modern golf gear for real rounds.', images: ['/images/boys-weekend-hero.png'] }
+  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.', description: 'A hard edit of modern golf gear for the bag, the trip, and the round.', images: ['/images/boys-weekend-hero.png'] }
 };
 
 export const viewport: Viewport = {
-  themeColor: '#050705'
+  themeColor: '#0a110d'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -53,19 +54,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer className="site-footer">
             <div>
               <Link className="footer-brand" href="/">WYX <span>Golf Supply</span></Link>
-              <p>Future golf gear. Curated hard.</p>
-              <p className="footer-note">First order: <strong>WYX10</strong> requests 10% off at Shopify checkout.</p>
+              <p>Less golf shop. More gear drop.</p>
+              <p className="footer-note">First WYX order? <strong>WYX10</strong> requests 10% off when eligible at Shopify checkout.</p>
               <p className="footer-note">Support: <a href={`mailto:${supportEmail}`}>{supportEmail}</a></p>
             </div>
             <nav aria-label="Shop navigation">
-              <Link href="/products">The Drop</Link>
+              <Link href="/products">Drop 01</Link>
               <Link href="/weekend-golfer-bag-upgrade-kit">The Kit</Link>
-              <Link href="/golf-trip-gear">Trip Mode</Link>
+              <Link href="/golf-trip-gear">Trip Gear</Link>
               <Link href="/golf-gifts">Gifts</Link>
               <Link href="/the-bag-test">Bag Test</Link>
             </nav>
             <nav aria-label="Company navigation">
-              <Link href="/shipping-returns">Shipping</Link>
+              <Link href="/shipping-returns">Shipping & Returns</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/contact">Contact</Link>
               <Link href="/privacy">Privacy</Link>
