@@ -4,20 +4,18 @@ import Link from 'next/link';
 import { EmailCapture } from '@/components/EmailCapture';
 import { ProductCard } from '@/components/ProductCard';
 import { availableProducts } from '@/lib/catalog';
-import { imageMap } from '@/lib/demo';
 import { isImpulseProduct, productPriceLabel, siteUrl } from '@/lib/feed';
-import { fathersDayDaysLeft, isFathersDayWindow } from '@/lib/fathersDay';
 import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Golf Deals Under $60',
-  description: 'Shop WYX Golf Supply Co. golf deals, bag upgrades, ball markers, grips, gloves, and accessories under $60.',
+  title: 'Golf Gear Under $60',
+  description: 'Shop WYX golf gear, bag upgrades, ball markers, grips, gloves, headcovers and accessories under $60.',
   alternates: { canonical: '/deals' },
   openGraph: {
-    title: 'Golf Deals Under $60 | WYX Golf Supply Co.',
-    description: 'Bag upgrades, ball markers, grips, gloves, and accessories under $60. Use WYX10 for 10% off.',
+    title: 'Golf Gear Under $60 | WYX Golf Supply Co.',
+    description: 'Useful golf gear, gifts and bag upgrades under $60 from the current WYX edit.',
     url: '/deals'
   }
 };
@@ -26,27 +24,20 @@ export default async function Deals() {
   const catalog = availableProducts(await getProducts());
   const deals = catalog.filter(isImpulseProduct).slice(0, 12);
   const topPicks = deals.slice(0, 3);
-  const daysLeft = fathersDayDaysLeft();
-  const fathersDay = isFathersDayWindow();
 
   return (
     <>
-      {fathersDay && (
-        <div className="urgency-strip" role="banner">
-          <strong>Father&apos;s Day · June 21</strong> — {daysLeft} days left · <Link href="/weekend-golfer-bag-upgrade-kit?discount=WYX10">Bag Upgrade Kit</Link>
-        </div>
-      )}
       <section className="deal-hero">
         <div>
-          <p className="eyebrow">WYX Launch Deals</p>
-          <h1>Launch Deals For A Better Bag.</h1>
-          <p>Use WYX10 for 10% off your first golf bag upgrade while the launch offer is active.</p>
+          <p className="eyebrow">WYX UNDER $60</p>
+          <h1>SMALLER GEAR. EASY YES.</h1>
+          <p>Useful golf gifts, bag upgrades and accessories that do not require a major equipment decision. First WYX order? WYX10 requests 10% off when eligible.</p>
           <div className="actions">
-            <Link className="button primary" href="#deal-grid">Shop The Deals</Link>
+            <Link className="button primary" href="#deal-grid">Shop Under $60</Link>
             <Link className="button secondary dark" href="/products">Browse All Gear</Link>
           </div>
         </div>
-        <div className="deal-card-stack" aria-label="Featured launch deal picks">
+        <div className="deal-card-stack" aria-label="Featured under-$60 picks">
           {topPicks.map((product) => (
             <Link className="deal-pick" href={`/products/${product.handle}`} key={product.id}>
               {product.featuredImage && <Image src={product.featuredImage.url} alt={product.featuredImage.altText || product.title} width={110} height={110} />}
@@ -57,45 +48,28 @@ export default async function Deals() {
         </div>
       </section>
 
-      <section className="deal-strip" aria-label="Why shop WYX deals">
-        <span>Launch code WYX10</span>
+      <section className="deal-strip" aria-label="Why shop WYX under $60">
+        <span>Useful golf gifts</span>
         <span>Easy first cart</span>
-        <span>Gift-ready picks</span>
-        <span>Built for everyday rounds</span>
+        <span>Bag upgrades</span>
+        <span>Available now</span>
       </section>
 
       <section id="deal-grid" className="section product-section">
         <div className="section-heading split">
-          <div>
-            <p className="eyebrow">Better Bag Deals</p>
-            <h2>Small Gear. Easy Yes.</h2>
-          </div>
+          <div><p className="eyebrow">UNDER $60</p><h2>GOOD GEAR WITHOUT A BIG COMMITMENT.</h2></div>
           <Link className="text-link" href="/products">Shop Full Catalog</Link>
         </div>
-        {deals.length ? <div className="product-grid">{deals.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>Deal products are being prepared.</p>}
+        {deals.length ? <div className="product-grid">{deals.map((product) => <ProductCard key={product.id} product={product} />)}</div> : <p>No under-$60 picks are available right now.</p>}
       </section>
 
-      <EmailCapture source="deals" campaign="deals_launch_list" title="Want The Next Deal Drop?" body="Join the list for practical golf accessories, under-$60 picks, and launch offers." />
+      <EmailCapture source="deals" campaign="under_60" title="GET NEW WYX VALUE PICKS FIRST." body="Useful golf accessories, gifts, and premium finds when they earn a spot." />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        name: 'WYX Golf Deals Under $60',
-        description: metadata.description,
+        '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'WYX Golf Gear Under $60', description: metadata.description,
         url: `${siteUrl}/deals`,
-        image: `${siteUrl}${imageMap.hero}`,
-        mainEntity: deals.map((product) => ({
-          '@type': 'Product',
-          name: product.title,
-          url: `${siteUrl}/products/${product.handle}`,
-          image: product.featuredImage?.url,
-          offers: {
-            '@type': 'Offer',
-            price: product.priceRange.minVariantPrice.amount,
-            priceCurrency: product.priceRange.minVariantPrice.currencyCode,
-            availability: 'https://schema.org/InStock'
-          }
-        }))
+        mainEntity: deals.map((product) => ({ '@type': 'Product', name: product.title, url: `${siteUrl}/products/${product.handle}`, image: product.featuredImage?.url,
+          offers: { '@type': 'Offer', price: product.priceRange.minVariantPrice.amount, priceCurrency: product.priceRange.minVariantPrice.currencyCode, availability: 'https://schema.org/InStock' } }))
       }) }} />
     </>
   );
