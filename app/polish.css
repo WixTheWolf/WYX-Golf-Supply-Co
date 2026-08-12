@@ -1,0 +1,304 @@
+/* Final WYX visual polish layer.
+   Loaded last so legacy theme files cannot reintroduce low contrast or uneven card rhythm. */
+
+:root {
+  --wyx-bg: #ece8de;
+  --wyx-surface: #f7f4ec;
+  --wyx-ink: #111714;
+  --wyx-text: #26312b;
+  --wyx-muted: #667068;
+  --wyx-line: rgba(17, 23, 20, 0.16);
+  --wyx-accent: #bddb43;
+}
+
+body {
+  background: var(--wyx-bg);
+  color: var(--wyx-ink);
+}
+
+/* ---------- Global visual rhythm ---------- */
+.section,
+.page-hero,
+.store-hero,
+.store-section,
+.fashion-section,
+.wyx-edit-section,
+.wyx-departments,
+.wyx-radar {
+  width: min(1440px, 92vw);
+}
+
+.section,
+.store-section,
+.fashion-section,
+.wyx-edit-section,
+.wyx-departments,
+.wyx-radar {
+  padding-top: clamp(4rem, 7vw, 7.5rem);
+  padding-bottom: clamp(4rem, 7vw, 7.5rem);
+}
+
+p {
+  color: var(--wyx-muted);
+}
+
+/* ---------- Product cards: readable at rest ---------- */
+.product-card,
+.editorial-product-card {
+  color: var(--wyx-ink);
+}
+
+.product-card-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  color: var(--wyx-ink);
+}
+
+.product-card .product-meta,
+.editorial-product-card .product-meta {
+  margin: 0 0 .55rem;
+  color: #72815d !important;
+  opacity: 1 !important;
+  font-size: .62rem;
+  letter-spacing: .14em;
+}
+
+.product-card h3,
+.product-card h3 a,
+.editorial-product-card h3,
+.editorial-product-card h3 a {
+  color: var(--wyx-ink) !important;
+  opacity: 1 !important;
+  text-decoration: none;
+}
+
+.product-card h3 {
+  min-height: 2.7em;
+  margin: 0 0 .55rem;
+  line-height: 1.12;
+}
+
+.product-card .buy-reason,
+.editorial-product-card .buy-reason {
+  color: var(--wyx-muted) !important;
+  opacity: 1 !important;
+  line-height: 1.55;
+}
+
+.product-card .price,
+.editorial-product-card .price {
+  color: var(--wyx-text) !important;
+  opacity: 1 !important;
+  font-weight: 750;
+}
+
+.product-card .text-link,
+.editorial-product-card .text-link {
+  color: var(--wyx-ink) !important;
+  opacity: 1 !important;
+  text-decoration-color: var(--wyx-accent);
+}
+
+.product-card .text-link:hover,
+.editorial-product-card .text-link:hover {
+  color: #415313 !important;
+}
+
+.product-card-footer {
+  margin-top: auto;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  border-top-color: var(--wyx-line) !important;
+}
+
+.product-card .button.full,
+.product-card .button.primary.full {
+  width: 100%;
+  min-height: 50px;
+  margin-top: .6rem;
+  border: 1px solid var(--wyx-ink) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--wyx-ink) !important;
+  box-shadow: none !important;
+}
+
+.product-card .button.full:hover,
+.product-card .button.primary.full:hover {
+  background: var(--wyx-ink) !important;
+  color: #fff !important;
+  transform: none !important;
+}
+
+/* Keep text stable. Hover should enhance, never reveal hidden information. */
+.product-card:hover h3,
+.product-card:hover h3 a,
+.product-card:hover .price,
+.product-card:hover .product-meta,
+.product-card:hover .buy-reason {
+  color: inherit;
+  opacity: 1;
+}
+
+/* ---------- Symmetrical product grids ---------- */
+.product-grid,
+.editorial-product-grid,
+.store-grid,
+.fashion-product-grid,
+.wyx-feature-grid {
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+  gap: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.wyx-feature-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.wyx-feature-grid > div,
+.wyx-feature-grid > div.wyx-feature-large {
+  grid-column: auto !important;
+  min-width: 0;
+}
+
+.wyx-feature-grid .product-card,
+.product-grid .product-card,
+.store-grid .product-card,
+.fashion-product-grid .product-card {
+  height: 100%;
+}
+
+.wyx-feature-grid .product-card img,
+.wyx-feature-grid .wyx-feature-large .product-card img,
+.product-grid .product-card img,
+.store-grid .product-card img,
+.fashion-product-grid .product-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5 !important;
+  object-fit: cover;
+}
+
+/* Light WYX home cards should feel calm, not disappear into the background. */
+.wyx-feature-grid .product-card {
+  background: transparent;
+}
+
+.wyx-feature-grid .product-card-body {
+  padding: 1rem 0 0;
+}
+
+/* ---------- Calm hover behavior ---------- */
+.product-card,
+.editorial-product-card {
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.product-card:hover,
+.editorial-product-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-card img,
+.editorial-product-card img {
+  transition: transform .4s cubic-bezier(.2,.7,.2,1);
+}
+
+.product-card:hover img,
+.editorial-product-card:hover img {
+  transform: scale(1.018);
+}
+
+/* ---------- Headings / section alignment ---------- */
+.wyx-edit-heading,
+.wyx-department-intro,
+.fashion-section-heading {
+  align-items: end;
+}
+
+.wyx-edit-heading > p,
+.wyx-department-intro > p,
+.fashion-section-heading > p {
+  max-width: 44ch;
+}
+
+.wyx-department-grid {
+  gap: 1px;
+}
+
+.wyx-department-card {
+  min-height: 600px;
+}
+
+.wyx-department-top {
+  align-items: center;
+}
+
+.wyx-radar-list > div {
+  min-height: 88px;
+  align-items: center;
+}
+
+/* ---------- Buttons / controls ---------- */
+.button,
+.header-cta {
+  line-height: 1;
+}
+
+.filter-row {
+  gap: .5rem;
+}
+
+.filter-row a,
+.filter-row button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------- Responsive symmetry ---------- */
+@media (max-width: 1100px) {
+  .wyx-feature-grid,
+  .product-grid,
+  .editorial-product-grid,
+  .store-grid,
+  .fashion-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .section,
+  .page-hero,
+  .store-hero,
+  .store-section,
+  .fashion-section,
+  .wyx-edit-section,
+  .wyx-departments,
+  .wyx-radar {
+    width: min(100% - 2rem, 1440px);
+  }
+
+  .wyx-feature-grid,
+  .product-grid,
+  .editorial-product-grid,
+  .store-grid,
+  .fashion-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card-body {
+    min-height: 0;
+  }
+
+  .product-card h3 {
+    min-height: 0;
+  }
+
+  .wyx-department-card {
+    min-height: 500px;
+  }
+}
