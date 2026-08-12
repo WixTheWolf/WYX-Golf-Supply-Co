@@ -1,25 +1,9 @@
-import { imageMap } from '@/lib/starterProducts';
-
-/** Category lifestyle / flat-lay fallbacks when Shopify has only supplier photos. */
-const categoryLifestyle: Record<string, string> = {
-  Headwear: imageMap.ropeHat,
-  Apparel: imageMap.polo,
-  Towels: imageMap.towel,
-  Accessories: imageMap.leather,
-  'Club Care': imageMap.care,
-  'Training Aids': imageMap.iron,
-  Grips: imageMap.care,
-  Gloves: imageMap.leather,
-};
-
-const handleLifestyle: Record<string, string> = {
-  'tri-fold-microfiber-golf-towel': imageMap.towel,
-  'weekend-golfer-bag-upgrade-kit': imageMap.walk,
-};
-
-export function lifestyleImagesFor(handle: string, category: string, productImages: string[]) {
-  const lifestyle = handleLifestyle[handle] || categoryLifestyle[category] || imageMap.leather;
-  const unique = new Set(productImages.filter(Boolean));
-  if (!unique.has(lifestyle)) unique.add(lifestyle);
-  return [...unique].slice(0, 4);
+/**
+ * PDP galleries must only show images that belong to the actual product.
+ * Lifestyle/editorial photography can live elsewhere on WYX, but it must never
+ * be injected into a sellable product gallery unless the supplier/product data
+ * explicitly provides it for that product.
+ */
+export function lifestyleImagesFor(_handle: string, _category: string, productImages: string[]) {
+  return [...new Set(productImages.filter(Boolean))].slice(0, 6);
 }
