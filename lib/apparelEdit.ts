@@ -3,6 +3,8 @@ import type { Product } from '@/types/shopify';
 export const apparelEditHandles = [
   'pimento-waffle',
   'hello-friends-t-shirt',
+  'looper',
+  'legalize-mulligans',
   'volcanic-ash',
   'sahara-sunset',
   'black-birdie',
@@ -19,15 +21,17 @@ export const apparelEditHandles = [
 export const apparelLeadHandles = [
   'pimento-waffle',
   'hello-friends-t-shirt',
+  'looper',
+  'legalize-mulligans',
   'volcanic-ash',
-  'mossy-condor',
-  'sea-swell-blue',
-  'black-birdie'
+  'mossy-condor'
 ] as const;
 
 const topsAndLayersHandles = new Set([
   'pimento-waffle',
-  'hello-friends-t-shirt'
+  'hello-friends-t-shirt',
+  'looper',
+  'legalize-mulligans'
 ]);
 
 const finishingApparelHandles = new Set([
