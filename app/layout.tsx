@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
-import { Fraunces, Inter } from 'next/font/google';
+import { Archivo, Manrope } from 'next/font/google';
 import { ScrollRevealInit } from '@/components/ScrollRevealInit';
 import './globals.css';
 import './store.css';
@@ -8,6 +8,7 @@ import './future.css';
 import './premium.css';
 import './fashion.css';
 import './department-store.css';
+import './typography.css';
 import { CartProvider } from '@/components/CartProvider';
 import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
@@ -15,8 +16,8 @@ import { JudgeMeScripts } from '@/components/JudgeMe';
 import { TrackingScripts } from '@/components/TrackingScripts';
 import { supportEmail } from '@/lib/support';
 
-const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-const displayFont = Fraunces({ subsets: ['latin'], variable: '--font-display', display: 'swap', weight: ['500', '600'], style: ['normal', 'italic'] });
+const sansFont = Manrope({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+const displayFont = Archivo({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3ffecba8fb81?auto=format&fit=crop&w=1800&q=86';
 
 export const metadata: Metadata = {
