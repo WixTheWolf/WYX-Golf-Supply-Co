@@ -11,7 +11,12 @@ const hiddenHandles = new Set([
   'white-braid',
   'legalize-mulligans',
   'layup-t-shirt',
-  'looper'
+  'looper',
+  // Duplicate/filler cuts from the 2026 WYX edit. Keep one strong version, not every colorway/set.
+  'glove-accessory-caddie-gray',
+  'blue-ridge-golf-ball-markers-set-of-2',
+  'carolina-blue-two-sided-golf-ball-marker-2-pack',
+  'hello-friends-t-shirt'
 ]);
 
 const confirmedSupplierVendors = [
@@ -50,13 +55,9 @@ export const futureAssortmentHandles = new Set([
   'blue-ridge-golf-co-golf-towels',
   'magnet-caddie',
   'glove-accessory-caddie-black',
-  'glove-accessory-caddie-gray',
   'three-rail-ball-marker',
-  'blue-ridge-golf-ball-markers-set-of-2',
-  'carolina-blue-two-sided-golf-ball-marker-2-pack',
   'two-sided-metal-golf-ball-marker-5-color-combo-pack',
-  'bamboo-performance-golf-tees-50-pack',
-  'hello-friends-t-shirt'
+  'bamboo-performance-golf-tees-50-pack'
 ]);
 
 const homepageBlockedHandles = new Set(['park-paisley-womens-gold-golf-glove']);
@@ -115,8 +116,7 @@ export function firstBuyProducts(products: Product[]) {
     'pulse-golf-overgrip-tape',
     'blue-ridge-golf-co-golf-towels',
     'tri-fold-microfiber-golf-towel',
-    'bamboo-performance-golf-tees-50-pack',
-    'hello-friends-t-shirt'
+    'bamboo-performance-golf-tees-50-pack'
   ];
   return heroHandles
     .map((handle) => products.find((product) => product.handle === handle))
@@ -132,24 +132,25 @@ export function premiumBagProducts(products: Product[]) {
 export function giftableProducts(products: Product[], limit = 12) {
   return products
     .filter((product) => isFutureAssortmentProduct(product) && Number(productPrice(product).amount) <= 60 && isBuyTodayProduct(product))
+    .filter((product) => !isHiddenFromCoreStorefront(product))
     .slice(0, limit);
 }
 
 export function bagUpgradeProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care', 'Headwear', 'Apparel'].includes(categoryFor(product)))
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && ['Golf Balls', 'Gloves', 'Grips', 'Towels', 'Accessories', 'Club Care', 'Headwear', 'Apparel'].includes(categoryFor(product)))
     .slice(0, limit);
 }
 
 export function tripProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt|game|tee/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt|game|tee/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
     .slice(0, limit);
 }
 
 export function practiceProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product))
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product))
     .filter((product) => ['Training Aids'].includes(categoryFor(product)) || /alignment|putting mirror|swing trainer|tempo|practice|range gear/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
     .slice(0, limit);
 }
@@ -166,13 +167,13 @@ export function dadGiftProducts(products: Product[], limit = 12) {
     return score;
   };
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product))
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product))
     .sort((a, b) => dadScore(b) - dadScore(a))
     .slice(0, limit);
 }
 
 export function giftUnder25Products(products: Product[], limit = 12) {
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && Number(productPrice(product).amount) <= 25)
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && Number(productPrice(product).amount) <= 25)
     .slice(0, limit);
 }
