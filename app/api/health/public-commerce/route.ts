@@ -4,6 +4,8 @@ import { shopifyAdminFetch } from '@/lib/shopify/adminClient';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
+const paidWebhookUri = 'https://wyx-golf-supply-co.vercel.app/api/webhooks/shopify/orders-paid';
+
 function present(names: string[]) {
   return names.some((name) => Boolean(process.env[name]));
 }
@@ -48,7 +50,7 @@ async function paidWebhookStatus() {
       query PublicCommercePaidWebhookHealth($topics: [WebhookSubscriptionTopic!], $uri: String) {
         webhookSubscriptions(first: 10, topics: $topics, uri: $uri) { nodes { id topic uri } }
       }
-    `, { topics: ['ORDERS_PAID'], uri: 'https://wyxgolfsupply.com/api/webhooks/shopify/orders-paid' });
+    `, { topics: ['ORDERS_PAID'], uri: paidWebhookUri });
     const nodes = data.webhookSubscriptions?.nodes || [];
     return { readable: true, registered: nodes.length > 0, count: nodes.length };
   } catch {
