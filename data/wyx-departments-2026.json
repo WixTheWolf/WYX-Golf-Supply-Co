@@ -1,0 +1,116 @@
+{
+  "updated": "2026-08-11",
+  "positioning": "WYX is an opinionated multi-brand golf shop: the coolest products worth knowing about across apparel, footwear, golf tech, bags, trip gear and accessories. Curation is the product. Do not fill a department with weak inventory just to make it look complete.",
+  "principles": [
+    "Legitimate retailer, wholesale, affiliate or fulfillment rights before listing a third-party product for sale.",
+    "No generic marketplace filler when a recognizable or genuinely distinctive specialist product can fill the same job.",
+    "Use actual product and lifestyle photography whenever possible; avoid generic fairway stock photography as the primary selling image.",
+    "Prefer a small number of hero products per department over dozens of interchangeable variants.",
+    "Do not publish unverified DSers products.",
+    "Every product should pass at least one test: looks excellent, solves a real golf problem, improves a trip, or sparks conversation."
+  ],
+  "departments": [
+    {
+      "name": "Apparel",
+      "priority": 1,
+      "targetLiveSkus": "18-28",
+      "mustHave": [
+        "2-3 premium polos",
+        "1-2 expressive but wearable polos",
+        "2 performance shorts",
+        "1-2 golf pants",
+        "2 lightweight layers or quarter zips",
+        "2 casual golf tees",
+        "2 sock styles",
+        "2-3 belts or finishing pieces",
+        "2 hats"
+      ],
+      "targetPartners": [
+        { "brand": "Holderness & Bourne", "status": "wholesale-inquiry", "role": "premium foundation" },
+        { "brand": "Straight Down", "status": "wholesale-research", "role": "wardrobe depth" },
+        { "brand": "Sunday Swagger", "status": "retailer-program", "role": "controlled personality" },
+        { "brand": "ASHER Golf", "status": "wholesale", "role": "gloves/headwear/select apparel" }
+      ]
+    },
+    {
+      "name": "Footwear",
+      "priority": 2,
+      "targetLiveSkus": "4-8",
+      "mustHave": [
+        "one clean white or bone spikeless shoe",
+        "one darker travel-friendly shoe",
+        "one performance-first walking shoe",
+        "one distinctive statement option"
+      ],
+      "targetPartners": [
+        { "brand": "TRUE linkswear", "status": "retail-partner-program", "role": "primary target; retailer program supports special orders and drop shipping" },
+        { "brand": "G/FORE", "status": "authorization-research", "role": "style benchmark / possible future premium account" },
+        { "brand": "Payntr Golf", "status": "retailer-research", "role": "performance footwear candidate" }
+      ]
+    },
+    {
+      "name": "Golf Tech",
+      "priority": 3,
+      "targetLiveSkus": "5-10",
+      "mustHave": [
+        "premium laser rangefinder",
+        "GPS speaker or wearable",
+        "portable launch monitor",
+        "magnetic phone or GPS accessory",
+        "one genuinely useful practice-tech item"
+      ],
+      "targetPartners": [
+        { "brand": "Blue Tees Golf", "status": "wholesale-account-research", "role": "best current multi-product tech target" },
+        { "brand": "Garmin Golf", "status": "authorized-seller-required", "role": "premium benchmark; do not list without authorization" },
+        { "brand": "Bushnell Golf", "status": "dealer-or-affiliate-research", "role": "rangefinder benchmark and possible affiliate bridge" }
+      ]
+    },
+    {
+      "name": "Bags & Trip",
+      "priority": 4,
+      "targetLiveSkus": "6-12",
+      "mustHave": [
+        "premium carry or Sunday bag",
+        "travel cover or trip bag",
+        "duffel",
+        "shoe bag",
+        "valuables pouch",
+        "cooler or cart-trip item"
+      ],
+      "targetPartners": [
+        { "brand": "Sunday Golf", "status": "wholesale", "role": "primary bag and trip target" },
+        { "brand": "Seamus Golf", "status": "wholesale", "role": "premium sewn travel and bag goods" },
+        { "brand": "Bluegrass Fairway", "status": "wholesale", "role": "heritage leather and waxed-canvas trip goods" }
+      ]
+    },
+    {
+      "name": "Accessories",
+      "priority": 5,
+      "targetLiveSkus": "12-20",
+      "mustHave": [
+        "premium forged or distinctive ball marker",
+        "divot tool",
+        "magnetic towel",
+        "wet club brush",
+        "one standout driver headcover",
+        "one standout putter cover",
+        "glove caddie or organizer",
+        "trip game",
+        "premium tees or small WYX private-label item"
+      ],
+      "targetPartners": [
+        { "brand": "Seamus Golf", "status": "wholesale", "role": "forged and crafted accessories" },
+        { "brand": "PRG Golf", "status": "wholesale/custom", "role": "future WYX private-label accessories" },
+        { "brand": "Pins & Aces", "status": "existing-vendor", "role": "select magnetic and visual accessories" },
+        { "brand": "Western Birch", "status": "custom-research", "role": "future WYX tee packs" }
+      ]
+    }
+  ],
+  "doNotDo": [
+    "Do not publish a category of generic AliExpress products to make the store look bigger.",
+    "Do not list premium brands without reseller authorization or an approved affiliate relationship.",
+    "Do not create fake product photos, specs, MSRP, inventory status or performance claims.",
+    "Do not let one supplier dominate the visual identity of WYX.",
+    "Do not call a belt-heavy assortment a complete apparel collection."
+  ]
+}
