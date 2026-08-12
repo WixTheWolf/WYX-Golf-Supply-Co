@@ -12,6 +12,12 @@ import { getProducts } from '@/lib/shopify/products';
 
 export const revalidate = 300;
 
+const golfPhotography = {
+  hero: 'https://images.unsplash.com/photo-1684599995533-3ffecba8fb81?auto=format&fit=crop&w=2400&q=86',
+  walking: 'https://images.unsplash.com/photo-1693163532134-5ea6c80b58a3?auto=format&fit=crop&w=1900&q=86',
+  cart: 'https://images.unsplash.com/photo-1713729372679-7feb052d74a6?auto=format&fit=crop&w=1900&q=86',
+};
+
 export const metadata: Metadata = {
   title: 'Modern Golf Gear, Gifts & Bag Upgrades',
   description: 'Less golf shop. More gear drop. Shop a tight edit of headcovers, gloves, golf gifts, trip gear and bag upgrades selected for real rounds.',
@@ -20,6 +26,7 @@ export const metadata: Metadata = {
     title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.',
     description: 'The stuff worth putting in your bag: modern headcovers, gloves, golf gifts, trip gear and small upgrades selected by golfers.',
     url: 'https://wyxgolfsupply.com',
+    images: [{ url: golfPhotography.hero }],
   },
 };
 
@@ -36,41 +43,57 @@ export default async function Home() {
       copy: 'Useful upgrades, personality pieces, and the small stuff you notice every single round.',
       href: '/weekend-golfer-bag-upgrade-kit',
       action: 'Start with the kit',
+      image: golfPhotography.walking,
+      alt: 'Golfer walking a golf course carrying a golf bag',
     },
     {
       index: '02 / THE TRIP',
       title: 'Pack For The Weekend.',
-      copy: 'Golf-trip gear for airports, rental carts, 36-hole days, and everything after the last putt drops.',
+      copy: 'Gear for airports, rental carts, 36-hole days, and everything after the last putt drops.',
       href: '/golf-trip-gear',
       action: 'Shop trip gear',
+      image: golfPhotography.cart,
+      alt: 'Golf cart and golf bag on the course',
     },
     {
       index: '03 / THE GIFT',
       title: 'Give Golf Better.',
-      copy: 'Headcovers, games, markers, gloves, and useful golf gear that does not feel like a panic buy.',
+      copy: 'Headcovers, games, markers, gloves, and useful gear that does not feel like a panic buy.',
       href: '/golf-gifts',
       action: 'Find a gift',
+      image: golfPhotography.hero,
+      alt: 'Golf bag and cart at sunset on a golf course',
     },
   ];
 
-  const ticker = ['HEADCOVERS', 'GLOVES', 'TRIP GEAR', 'BAG UPGRADES', 'GOLF GIFTS', 'NO FILLER'];
+  const ticker = ['FIRST TEE', 'THE BAG', 'THE TRIP', 'THE CART', 'THE CLUBHOUSE', 'DROP 01'];
 
   return (
     <div className="future-home">
       <section className="future-hero">
+        <Image
+          className="future-hero-environment"
+          src={golfPhotography.hero}
+          alt="Golf bag and cart on a golf course at sunset"
+          fill
+          priority
+          sizes="100vw"
+        />
+        <div className="future-hero-shade" />
+
         <div className="future-hero-copy">
           <p className="eyebrow">WYX GOLF SUPPLY</p>
           <h1>LESS GOLF SHOP. <em>MORE GEAR DROP.</em></h1>
           <p className="future-hero-lede">
-            The stuff worth putting in your bag. Headcovers, gloves, gifts, trip gear, and small upgrades selected for golfers who would rather buy fewer things and like them more.
+            Golf gear should look right where it actually lives — on the bag, in the cart, at the first tee, and on the weekend away. We keep the pieces worth carrying and leave the catalog filler behind.
           </p>
           <div className="future-actions">
             <Link className="button primary" href="/products">SHOP DROP 01</Link>
-            <Link className="button secondary" href="/golf-trip-gear">EXPLORE TRIP GEAR</Link>
+            <Link className="button secondary" href="/golf-trip-gear">PACK THE TRIP</Link>
           </div>
           <div className="future-proof" aria-label="WYX shopping principles">
             <span>{catalog.length}-piece edit</span>
-            <span>Curated by use, not catalog size</span>
+            <span>Selected for real rounds</span>
             <span>Secure Shopify checkout</span>
           </div>
         </div>
@@ -83,12 +106,12 @@ export default async function Home() {
                 alt={feature.featuredImage.altText || feature.title}
                 fill
                 priority
-                sizes="(max-width: 1050px) 92vw, 38vw"
+                sizes="(max-width: 1050px) 82vw, 31vw"
               />
               <div className="future-feature-info">
-                <small>DROP 01 / FEATURED</small>
+                <small>DROP 01 / BAG PERSONALITY</small>
                 <strong>{feature.title}</strong>
-                <span>{money(productPrice(feature))} · VIEW PRODUCT →</span>
+                <span>{money(productPrice(feature))} · SHOP IT →</span>
               </div>
             </Link>
           </div>
@@ -100,6 +123,21 @@ export default async function Home() {
           {[...ticker, ...ticker].map((item, index) => <span key={`${item}-${index}`}><b>●</b> {item}</span>)}
         </div>
       </div>
+
+      <section className="future-field-story" aria-label="WYX golf environment">
+        <div className="future-field-photo future-field-photo-main">
+          <Image src={golfPhotography.walking} alt="Golfer walking the golf course with a golf bag" fill sizes="(max-width: 900px) 100vw, 58vw" />
+        </div>
+        <div className="future-field-copy">
+          <p className="eyebrow">WHERE THE PRODUCT HAS TO WORK</p>
+          <h2>THE COURSE IS THE SHOWROOM.</h2>
+          <p>A headcover is not a product tile. A towel is not a spec sheet. A hat is not a dropdown. Golf gear gets dragged through dew, airports, cart paths, 36-hole days, and the group photo after the round. That is the standard we buy against.</p>
+          <Link className="text-link" href="/the-bag-test">SEE HOW WYX PICKS GEAR →</Link>
+        </div>
+        <div className="future-field-photo future-field-photo-detail">
+          <Image src={golfPhotography.cart} alt="Golf cart and golf bag beside the course" fill sizes="(max-width: 900px) 100vw, 34vw" />
+        </div>
+      </section>
 
       {drop.length > 0 && (
         <section className="future-section" id="drop">
@@ -120,17 +158,19 @@ export default async function Home() {
         </section>
       )}
 
-      <section className="future-section">
+      <section className="future-section future-situation-section">
         <div className="future-section-head">
           <div>
             <p className="eyebrow">SHOP THE SITUATION</p>
             <h2>START WITH WHAT YOU&apos;RE DOING NEXT.</h2>
           </div>
-          <p>No department-store maze. Build the bag, pack the trip, or find a golf gift that actually lands.</p>
+          <p>Build the bag, pack the trip, or find a golf gift that actually lands. The context matters more than the category name.</p>
         </div>
         <div className="future-mode-grid">
           {modes.map((mode) => (
-            <Link href={mode.href} className="future-mode" key={mode.title}>
+            <Link href={mode.href} className="future-mode future-mode-photo" key={mode.title}>
+              <Image src={mode.image} alt={mode.alt} fill sizes="(max-width: 900px) 100vw, 33vw" />
+              <span className="future-mode-overlay" />
               <span className="future-mode-index">{mode.index}</span>
               <div>
                 <h3>{mode.title}</h3>
