@@ -25,7 +25,9 @@ const clearerProductNames: Record<string, string> = {
   'Bayou Brown Gator': 'Bayou Brown Gator Golf Belt',
   'Looper': 'Looper Golf Tee',
   'Legalize Mulligans': 'Legalize Mulligans Tee',
-  'Pimento Waffle': 'Pimento Waffle Golf Layer'
+  'Pimento Waffle': 'Pimento Waffle Golf Layer',
+  'Classic Leather Edition - Walnut Brown / Midnight Black': 'Classic Leather Golf Headcover - Walnut / Black',
+  'Topographic Edition - Pure White / Embroidered Carolina Blue': 'Topographic Golf Headcover - White / Carolina Blue'
 };
 
 function repairUtf8Mojibake(value: string) {
