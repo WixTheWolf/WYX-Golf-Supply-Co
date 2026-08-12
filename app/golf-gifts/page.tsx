@@ -28,7 +28,7 @@ const budgets = [
   { label: 'Easy Add-Ons', href: '/golf-gifts-under-25', desc: 'Small golf gifts and bag extras that are useful without requiring club specs.' },
   { label: 'Gifts Under $60', href: '/golf-gifts-under-60', desc: 'Headcovers, markers, gloves and accessories in the easiest gift range.' },
   { label: 'Bag Upgrades', href: '/bag-upgrades', desc: 'Useful gear for golfers who would rather improve the setup than collect novelty junk.' },
-  { label: 'Drop 01', href: '/products', desc: 'The complete current WYX edit, including the pieces we would show a golfer first.' }
+  { label: 'Shop All WYX', href: '/products', desc: 'The complete current WYX edit, including the pieces we would show a golfer first.' }
 ];
 
 const occasions = [
@@ -129,11 +129,11 @@ export default async function GolfGiftsPage() {
             <p className="eyebrow">THE CURRENT GIFT EDIT</p>
             <h2>THE ONES WE&apos;D ACTUALLY WRAP.</h2>
           </div>
-          <Link className="text-link" href="/products">Shop Drop 01</Link>
+          <Link className="text-link" href="/products">Shop All WYX</Link>
         </div>
         {products.length > 0
           ? <div className="product-grid">{products.map((product) => <ProductCard key={product.id} product={product} />)}</div>
-          : <p>Gift picks are being refreshed. Browse Drop 01 for currently available gear.</p>
+          : <p>Gift picks are being refreshed. Browse the live WYX shop for currently available gear.</p>
         }
       </section>
 
@@ -175,8 +175,8 @@ export default async function GolfGiftsPage() {
       <EmailCapture
         source="golf-gifts"
         campaign="golf_gifts"
-        title="GET THE NEXT GIFT DROP."
-        body="New headcovers, trip gear, Bag Test picks, and the pieces worth sending to another golfer."
+        title="GET THE BEST NEW GOLF GIFTS FIRST."
+        body="New headcovers, trip gear, premium picks, and the pieces worth sending to another golfer."
       />
     </>
   );
