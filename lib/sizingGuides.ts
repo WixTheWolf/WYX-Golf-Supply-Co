@@ -36,12 +36,27 @@ const apparelSizing: SizingGuide = {
   tip: 'Use the listed garment size as the starting point and review the product options before checkout.',
 };
 
+const knownBeltTitles = new Set([
+  'volcanic ash',
+  'sahara sunset',
+  'black birdie',
+  'twister grey',
+  'crimson dune',
+  'mossy condor',
+  'bone dry',
+  'sea swell blue',
+  'gray eyed gator',
+  'charcoal mirage',
+  'bayou brown gator'
+]);
+
 export function sizingGuideFor(category: string, title: string): SizingGuide | null {
+  const normalizedTitle = title.toLowerCase().replace(/ golf belt$/, '');
   const text = `${category} ${title}`.toLowerCase();
   if (category === 'Gloves' || text.includes('glove')) return gloveSizing;
   if (category === 'Headwear' || /\b(hat|cap)\b/.test(text)) return hatSizing;
-  // Belts need product-specific waist/trim guidance. Never reuse shirt chest sizing.
-  if (/\bbelt\b/.test(text) || title.toLowerCase() === 'volcanic ash') return null;
-  if (category === 'Apparel' || /\b(polo|shirt|hoodie|quarter|jacket|sock)\b/.test(text)) return apparelSizing;
+  // Belts need the supplier's product-specific waist/trim guidance. Never reuse shirt chest sizing.
+  if (/\bbelt\b/.test(text) || knownBeltTitles.has(normalizedTitle)) return null;
+  if (category === 'Apparel' || /\b(polo|shirt|hoodie|quarter|jacket|sock|tee|waffle)\b/.test(text)) return apparelSizing;
   return null;
 }
