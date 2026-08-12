@@ -4,6 +4,7 @@ import type { NextRequest } from 'next/server';
 const CORE_INDEXABLE_PATHS = new Set([
   '/',
   '/products',
+  '/apparel',
   '/weekend-golfer-bag-upgrade-kit',
   '/golf-trip-gear',
   '/golf-gifts',
