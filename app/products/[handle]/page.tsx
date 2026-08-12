@@ -112,10 +112,11 @@ export default async function ProductPage({ params }: { params: { handle: string
   const description = productBuyerPromise(product);
   const shipEstimate = fulfillmentTrustLabel(product);
   const productUrl = `${siteUrl}/products/${product.handle}`;
+  const brand = supplierName(product);
 
   return (
     <>
-      <ProductViewTracker productId={product.id} variantId={variant?.id} title={title} handle={product.handle} price={product.priceRange.minVariantPrice} category={productCategory} />
+      <ProductViewTracker productId={product.id} variantId={variant?.id} title={title} handle={product.handle} price={product.priceRange.minVariantPrice} category={productCategory} brand={brand} imageUrl={images[0]?.url} />
       <TrustBar compact />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
         {
@@ -127,7 +128,7 @@ export default async function ProductPage({ params }: { params: { handle: string
           image: images.map((image) => image.url),
           description,
           category: productCategory,
-          brand: { '@type': 'Brand', name: supplierName(product) },
+          brand: { '@type': 'Brand', name: brand },
           seller: { '@type': 'OnlineStore', name: 'WYX Golf Supply Co.', url: siteUrl },
           offers: availableVariants.map((item) => ({
             '@type': 'Offer',
@@ -170,7 +171,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </div>
 
         <div className="purchase-panel">
-          <p className="eyebrow">{supplierName(product)} / {productCategory}</p>
+          <p className="eyebrow">{brand} / {productCategory}</p>
           <ProductBadge product={product} />
           <h1>{title}</h1>
           <ProductPriceDisplay price={product.priceRange.minVariantPrice} />
