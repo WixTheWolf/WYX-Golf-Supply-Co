@@ -90,10 +90,10 @@ export default async function GolfGiftsPage() {
         }
       }) }} />
 
-      <section className="gift-photo-hero">
+      <section className="trip-photo-hero">
         <Image src={giftPhoto} alt="Golfer walking a golf course carrying a golf bag" fill priority sizes="100vw" />
-        <span className="gift-photo-hero-overlay" />
-        <div className="gift-photo-hero-copy">
+        <span className="trip-photo-hero-overlay" />
+        <div className="trip-photo-hero-copy">
           <p className="eyebrow">GIVE GOLF BETTER</p>
           <h1>BUY THE THING HE&apos;LL ACTUALLY BRING TO THE COURSE.</h1>
           <p>The best golf gift shows up again next Saturday. Start with the visible, useful parts of the game: the headcover, the glove, the marker, the hat, the towel, the trip.</p>
