@@ -11,6 +11,10 @@ const replacements: Array<[RegExp, string]> = [
   [/\s+/g, ' ']
 ];
 
+const clearerProductNames: Record<string, string> = {
+  'Volcanic Ash': 'Volcanic Ash Golf Belt'
+};
+
 function repairUtf8Mojibake(value: string) {
   return value.replace(/[\u00c2-\u00f4][\u0080-\u00bf]+/g, (match) => {
     try {
@@ -23,5 +27,6 @@ function repairUtf8Mojibake(value: string) {
 
 export function cleanText(value: string | null | undefined) {
   const repaired = repairUtf8Mojibake(repairUtf8Mojibake(String(value || '')));
-  return replacements.reduce((text, [pattern, replacement]) => text.replace(pattern, replacement), repaired).trim();
+  const cleaned = replacements.reduce((text, [pattern, replacement]) => text.replace(pattern, replacement), repaired).trim();
+  return clearerProductNames[cleaned] || cleaned;
 }
