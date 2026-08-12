@@ -12,7 +12,6 @@ import { getProducts } from '@/lib/shopify/products';
 export const revalidate = 300;
 
 const coursePhoto = 'https://images.unsplash.com/photo-1693163532134-5ea6c80b58a3?auto=format&fit=crop&w=2400&q=88';
-const cartPhoto = 'https://images.unsplash.com/photo-1713729372679-7feb052d74a6?auto=format&fit=crop&w=2200&q=88';
 
 export const metadata: Metadata = {
   title: 'Golf Apparel — The WYX Edit',
@@ -32,6 +31,10 @@ export default async function ApparelPage() {
   const lead = apparelLeadProducts(available, 6);
   const topsAndLayers = topsAndLayersProducts(apparel);
   const finishing = finishingApparelProducts(available, 8);
+  const pimento = apparel.find((product) => product.handle === 'pimento-waffle');
+  const helloFriends = apparel.find((product) => product.handle === 'hello-friends-t-shirt');
+  const apparelHero = pimento?.images[0]?.url || pimento?.featuredImage?.url || coursePhoto;
+  const editorialPhoto = pimento?.images[2]?.url || helloFriends?.featuredImage?.url || apparelHero;
   const supporting = sortByQuality(coreMerchProducts(available))
     .filter((product) => ['Headwear', 'Gloves'].includes(categoryFor(product)))
     .slice(0, 4);
@@ -39,7 +42,7 @@ export default async function ApparelPage() {
   return (
     <div className="fashion-page">
       <section className="fashion-hero fashion-hero-apparel">
-        <Image src={coursePhoto} alt="Golfer walking a fairway carrying a golf bag" fill priority sizes="100vw" />
+        <Image src={apparelHero} alt="WYX golf apparel editorial photography" fill priority sizes="100vw" />
         <span className="fashion-hero-overlay" />
         <div className="fashion-hero-copy">
           <p className="eyebrow">THE WYX APPAREL EDIT</p>
@@ -66,7 +69,7 @@ export default async function ApparelPage() {
               <p className="eyebrow">NEW TO WYX</p>
               <h2>THE APPAREL WE&apos;RE BUILDING AROUND.</h2>
             </div>
-            <p>The first apparel edit is deliberately mixed: layers and tees up top, stronger finishing pieces underneath. As the assortment grows, polos, shorts and lightweight outerwear become the next permanent lanes.</p>
+            <p>The first edit starts with actual tops and layers, then uses stronger finishing pieces to complete the wardrobe. Polos, shorts, pants and lightweight outerwear are the next permanent lanes—not fifty versions of the same shirt.</p>
           </div>
           <div className="fashion-product-grid">
             {lead.map((product) => <ProductCard key={product.id} product={product} />)}
@@ -76,7 +79,7 @@ export default async function ApparelPage() {
 
       <section className="fashion-editorial-split">
         <div className="fashion-editorial-photo">
-          <Image src={cartPhoto} alt="Golf cart and golf bag on the course" fill sizes="(max-width: 900px) 100vw, 56vw" />
+          <Image src={editorialPhoto} alt="WYX golf clothing editorial detail" fill sizes="(max-width: 900px) 100vw, 56vw" />
         </div>
         <div className="fashion-editorial-copy">
           <p className="eyebrow">THE WYX UNIFORM</p>
