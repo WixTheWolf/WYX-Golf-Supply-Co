@@ -17,4 +17,4 @@ export type Product = {
   productType?: string;
 };
 export type CartLine = { id: string; quantity: number; merchandise: { id: string; title: string; product: { title: string; handle: string; featuredImage?: ShopifyImage | null }; price: Money }; cost: { totalAmount: Money } };
-export type Cart = { id: string; checkoutUrl: string; totalQuantity: number; discountCodes?: Array<{ code: string; applicable: boolean }>; cost: { subtotalAmount: Money; totalAmount: Money }; lines: CartLine[] };
+export type Cart = { id: string; checkoutUrl: string; totalQuantity: number; attributes?: Array<{ key: string; value?: string | null }>; discountCodes?: Array<{ code: string; applicable: boolean }>; cost: { subtotalAmount: Money; totalAmount: Money }; lines: CartLine[] };
