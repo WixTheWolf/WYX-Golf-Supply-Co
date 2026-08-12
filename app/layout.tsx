@@ -15,6 +15,7 @@ import { supportEmail } from '@/lib/support';
 
 const sansFont = Inter({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 const displayFont = Fraunces({ subsets: ['latin'], variable: '--font-display', display: 'swap', weight: ['500', '600'], style: ['normal', 'italic'] });
+const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3ffecba8fb81?auto=format&fit=crop&w=1800&q=86';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
@@ -30,9 +31,9 @@ export const metadata: Metadata = {
     url: 'https://wyxgolfsupply.com',
     title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.',
     description: 'Modern golf gear, gifts, trip gear and bag upgrades selected to earn a place in the bag.',
-    images: [{ url: '/images/boys-weekend-hero.png', width: 1536, height: 1024, alt: 'WYX Golf Supply Co.' }]
+    images: [{ url: golfEnvironmentImage, width: 1800, height: 1200, alt: 'Golf bag and cart on a golf course at sunset' }]
   },
-  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.', description: 'A hard edit of modern golf gear for the bag, the trip, and the round.', images: ['/images/boys-weekend-hero.png'] }
+  twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co. | Less Golf Shop. More Gear Drop.', description: 'A hard edit of modern golf gear for the bag, the trip, and the round.', images: [golfEnvironmentImage] }
 };
 
 export const viewport: Viewport = {
