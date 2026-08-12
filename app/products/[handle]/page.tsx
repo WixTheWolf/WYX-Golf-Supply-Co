@@ -62,7 +62,9 @@ export default async function ProductPage({ params }: { params: { handle: string
     .sort((a, b) => Number(categoryFor(b) === productCategory) - Number(categoryFor(a) === productCategory))
     .slice(0, 3);
 
-  const variant = product.variants.find((item) => item.availableForSale);
+  const availableVariants = product.variants.filter((item) => item.availableForSale && !item.id.startsWith('demo-'));
+  const variant = availableVariants[0];
+  const canPairInline = availableVariants.length === 1;
   const pairProduct = allProducts
     .filter((item) => item.handle !== product.handle && item.availableForSale && categoryFor(item) !== productCategory)
     .filter((item) => Number(productPrice(item).amount) <= 25)
@@ -101,7 +103,7 @@ export default async function ProductPage({ params }: { params: { handle: string
           category: productCategory,
           brand: { '@type': 'Brand', name: supplierName(product) },
           seller: { '@type': 'OnlineStore', name: 'WYX Golf Supply Co.', url: siteUrl },
-          offers: product.variants.filter((item) => item.availableForSale).map((item) => ({
+          offers: availableVariants.map((item) => ({
             '@type': 'Offer',
             url: productUrl,
             priceCurrency: item.price.currencyCode,
@@ -158,7 +160,7 @@ export default async function ProductPage({ params }: { params: { handle: string
           <ProductPurchaseControls variants={product.variants} productTitle={title} />
           {sizingGuide && <SizingGuidePanel guide={sizingGuide} />}
 
-          {pairProduct && variant && pairVariant && (
+          {canPairInline && pairProduct && variant && pairVariant && (
             <div className="conversion-panel" aria-label="Complete the pair bundle">
               <strong>Pair It</strong>
               <p>
@@ -198,9 +200,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </section>
       )}
 
-      <section className="section reveal">
-        <JudgeMeProductReviews productId={product.id} productTitle={title} />
-      </section>
+      <JudgeMeProductReviews productId={product.id} productTitle={title} />
 
       <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="Get The Next Drop." body="New gear, trip picks, and the products that make the WYX edit." />
     </>
