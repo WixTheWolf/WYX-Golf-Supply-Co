@@ -19,7 +19,7 @@ import { availableProducts, categoryFor, hasSaleReadyMedia, supplierName } from 
 import { money } from '@/lib/demo';
 import { fulfillmentTrustLabel } from '@/lib/fulfillment';
 import { productPrice, siteUrl } from '@/lib/feed';
-import { productBestFor, productBuyerPromise, productFaq } from '@/lib/merchandising';
+import { productBuyerPromise, productFaq, productValueBullets } from '@/lib/merchandising';
 import { coreMerchProducts, isHiddenFromCoreStorefront } from '@/lib/merchandisingFilters';
 import { hasKnownImageMismatch } from '@/lib/productReadiness';
 import { getProduct, getProducts } from '@/lib/shopify/products';
@@ -83,7 +83,7 @@ export default async function ProductPage({ params }: { params: { handle: string
     return existing || { url, altText: `${title} lifestyle` };
   }).slice(0, 4);
   const sizingGuide = sizingGuideFor(productCategory, title);
-  const bestFor = productBestFor(product);
+  const reasons = productValueBullets(product);
   const faqs = productFaq(product);
   const description = productBuyerPromise(product);
   const shipEstimate = fulfillmentTrustLabel(product);
@@ -132,7 +132,7 @@ export default async function ProductPage({ params }: { params: { handle: string
       ]) }} />
 
       <nav className="breadcrumbs" aria-label="Breadcrumb">
-        <Link href="/products">Shop</Link><span>/</span>
+        <Link href="/products">Drop 01</Link><span>/</span>
         <Link href={`/products?category=${encodeURIComponent(productCategory)}`}>{productCategory}</Link><span>/</span>
         <span>{title}</span>
       </nav>
@@ -146,7 +146,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </div>
 
         <div className="purchase-panel">
-          <p className="eyebrow">{productCategory}</p>
+          <p className="eyebrow">{supplierName(product)} / {productCategory}</p>
           <ProductBadge product={product} />
           <h1>{title}</h1>
           <ProductPriceDisplay price={product.priceRange.minVariantPrice} />
@@ -154,9 +154,9 @@ export default async function ProductPage({ params }: { params: { handle: string
 
           <div className="trust-list" aria-label="Purchase confidence">
             {shipEstimate && <span>{shipEstimate}</span>}
-            <span>Shipping shown before payment</span>
+            <span>Clear shipping & returns</span>
             <span>Secure Shopify checkout</span>
-            <span>Returns help from WYX</span>
+            <span>WYX support after purchase</span>
           </div>
 
           <ProductPurchaseControls variants={product.variants} productTitle={title} />
@@ -166,7 +166,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             <div className="conversion-panel" aria-label="Complete the pair bundle">
               <strong>Pair It</strong>
               <p>
-                Add the <Link href={`/products/${pairProduct.handle}`}>{cleanText(pairProduct.title)}</Link> ({money(productPrice(pairProduct))}) — {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(pairTotal)} total before WYX10.
+                Add the <Link href={`/products/${pairProduct.handle}`}>{cleanText(pairProduct.title)}</Link> ({money(productPrice(pairProduct))}) — {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(pairTotal)} total before any eligible first-order offer.
               </p>
               <KitAddButton
                 lines={[{ merchandiseId: variant.id, quantity: 1 }, { merchandiseId: pairVariant.id, quantity: 1 }]}
@@ -177,12 +177,12 @@ export default async function ProductPage({ params }: { params: { handle: string
 
           <div className="detail-list">
             <section>
-              <h2>Good For</h2>
-              <ul>{bestFor.map((item) => <li key={item}>{item}</li>)}</ul>
+              <h2>Why WYX Picked It</h2>
+              <ul>{reasons.map((item) => <li key={item}>{item}</li>)}</ul>
             </section>
             <section>
               <h2>Shipping & Returns</h2>
-              <p>Shipping rates and delivery estimates are shown before payment. If something arrives damaged or incorrect, contact WYX support at <a href={`mailto:${supportEmail}`}>{supportEmail}</a> with your order number and photos so we can help.</p>
+              <p>Shipping options and delivery estimates are shown before payment. For return eligibility or help with an order, read the <Link className="text-link" href="/shipping-returns">WYX shipping & returns policy</Link> or contact <a className="text-link" href={`mailto:${supportEmail}`}>{supportEmail}</a>.</p>
             </section>
             <section>
               <h2>Quick Questions</h2>
@@ -196,15 +196,15 @@ export default async function ProductPage({ params }: { params: { handle: string
 
       {related.length > 0 && (
         <section className="section">
-          <p className="eyebrow">Pair It With</p>
-          <h2>Build The Bag Around It.</h2>
+          <p className="eyebrow">PAIR IT WITH</p>
+          <h2>BUILD THE BAG AROUND IT.</h2>
           <div className="product-grid">{related.map((item) => <ProductCard key={item.id} product={item} />)}</div>
         </section>
       )}
 
       <JudgeMeProductReviews productId={product.id} productTitle={title} />
 
-      <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="Get The Next Drop." body="New gear, trip picks, and the products that make the WYX edit." />
+      <EmailCapture source="product-page" campaign={`product_${product.handle}`} title="GET DROP 02 FIRST." body="New gear, trip picks, and the products that make the next WYX edit." />
     </>
   );
 }
