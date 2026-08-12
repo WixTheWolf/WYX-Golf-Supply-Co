@@ -31,6 +31,7 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 const cartStorageKey = 'wyx_cart_id';
+const attributionStorageKey = 'wyx_first_touch';
 
 export function useCart() {
   const context = useContext(CartContext);
@@ -46,13 +47,7 @@ async function callCart(method: string, body?: Record<string, unknown>) {
 }
 
 function gaItem(line: CartLine) {
-  return {
-    item_id: line.merchandise.id,
-    item_name: line.merchandise.product.title,
-    item_variant: line.merchandise.title,
-    price: Number(line.merchandise.price.amount),
-    quantity: line.quantity
-  };
+  return { item_id: line.merchandise.id, item_name: line.merchandise.product.title, item_variant: line.merchandise.title, price: Number(line.merchandise.price.amount), quantity: line.quantity };
 }
 
 function klaviyoItem(line: CartLine) {
@@ -110,6 +105,46 @@ function trackCheckout(cart: Cart) {
   });
 }
 
+function cookieValue(name: string) {
+  if (typeof document === 'undefined') return '';
+  const prefix = `${name}=`;
+  const part = document.cookie.split(';').map((item) => item.trim()).find((item) => item.startsWith(prefix));
+  return part ? decodeURIComponent(part.slice(prefix.length)) : '';
+}
+
+function googleClientId() {
+  const value = cookieValue('_ga');
+  const parts = value.split('.');
+  return parts.length >= 4 ? parts.slice(-2).join('.') : '';
+}
+
+function captureFirstTouch() {
+  if (typeof window === 'undefined') return;
+  if (sessionStorage.getItem(attributionStorageKey)) return;
+  sessionStorage.setItem(attributionStorageKey, JSON.stringify({ landing: window.location.href, referrer: document.referrer || '' }));
+}
+
+function attributionAttributes() {
+  if (typeof window === 'undefined') return [];
+  captureFirstTouch();
+  let firstTouch: { landing?: string; referrer?: string } = {};
+  try { firstTouch = JSON.parse(sessionStorage.getItem(attributionStorageKey) || '{}'); } catch { firstTouch = {}; }
+  const values = [
+    ['_wyx_ga_client_id', googleClientId()],
+    ['_wyx_fbp', cookieValue('_fbp')],
+    ['_wyx_fbc', cookieValue('_fbc')],
+    ['_wyx_landing', firstTouch.landing || window.location.href],
+    ['_wyx_referrer', firstTouch.referrer || '']
+  ] as const;
+  return values.filter(([, value]) => Boolean(value)).map(([key, value]) => ({ key, value: value.slice(0, 1000) }));
+}
+
+async function cartWithAttribution(cart: Cart) {
+  const attributes = attributionAttributes();
+  if (!attributes.length) return cart;
+  try { return (await callCart('PATCH', { cartId: cart.id, attributes })) || cart; } catch { return cart; }
+}
+
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<Cart | null>(null);
   const [open, setOpen] = useState(false);
@@ -127,122 +162,80 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     try {
       const response = await fetch(`/api/cart?cartId=${encodeURIComponent(id)}`);
       const json = await response.json();
-      if (!response.ok || !json.cart) {
-        clearStoredCart();
-        return;
-      }
+      if (!response.ok || !json.cart) { clearStoredCart(); return; }
       setCart(json.cart);
-    } catch {
-      clearStoredCart();
-    }
+    } catch { clearStoredCart(); }
   }, [clearStoredCart]);
 
   const add = useCallback(async (merchandiseId: string) => {
-    setLoading(true);
-    setError(null);
+    setLoading(true); setError(null);
     try {
       const next = await callCart('POST', { cartId: localStorage.getItem(cartStorageKey), merchandiseId, quantity: 1 });
       if (next) {
-        localStorage.setItem(cartStorageKey, next.id);
-        setCart(next);
-        setOpen(true);
-        trackCartAdd(next, [merchandiseId], 'product');
+        localStorage.setItem(cartStorageKey, next.id); setCart(next); setOpen(true); trackCartAdd(next, [merchandiseId], 'product');
       }
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Unable to add item.');
-    } finally {
-      setLoading(false);
-    }
+    } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to add item.'); }
+    finally { setLoading(false); }
   }, []);
 
   const addMany = useCallback(async (lines: CartLineInput[]) => {
-    setLoading(true);
-    setError(null);
+    setLoading(true); setError(null);
     try {
       const next = await callCart('POST', { cartId: localStorage.getItem(cartStorageKey), lines });
       if (next) {
-        localStorage.setItem(cartStorageKey, next.id);
-        setCart(next);
-        setOpen(true);
-        trackCartAdd(next, lines.map((line) => line.merchandiseId), 'product_group');
+        localStorage.setItem(cartStorageKey, next.id); setCart(next); setOpen(true); trackCartAdd(next, lines.map((line) => line.merchandiseId), 'product_group');
       }
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Unable to add kit.');
-    } finally {
-      setLoading(false);
-    }
+    } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to add kit.'); }
+    finally { setLoading(false); }
   }, []);
 
   const buyNowMany = useCallback(async (lines: CartLineInput[]) => {
-    setLoading(true);
-    setError(null);
+    setLoading(true); setError(null);
     try {
       const next = await callCart('POST', { lines });
       if (next?.checkoutUrl) {
-        localStorage.setItem(cartStorageKey, next.id);
-        setCart(next);
-        trackCartAdd(next, lines.map((line) => line.merchandiseId), 'product_group');
-        trackCheckout(next);
-        window.location.href = next.checkoutUrl;
+        const attributed = await cartWithAttribution(next);
+        localStorage.setItem(cartStorageKey, attributed.id); setCart(attributed);
+        trackCartAdd(attributed, lines.map((line) => line.merchandiseId), 'product_group'); trackCheckout(attributed);
+        window.location.href = attributed.checkoutUrl;
       }
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Unable to start checkout.');
-    } finally {
-      setLoading(false);
-    }
+    } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to start checkout.'); }
+    finally { setLoading(false); }
   }, []);
 
   const buyNow = useCallback(async (merchandiseId: string) => {
-    setLoading(true);
-    setError(null);
+    setLoading(true); setError(null);
     try {
       const next = await callCart('POST', { merchandiseId, quantity: 1 });
       if (next?.checkoutUrl) {
-        localStorage.setItem(cartStorageKey, next.id);
-        setCart(next);
-        trackCartAdd(next, [merchandiseId], 'product');
-        trackCheckout(next);
-        window.location.href = next.checkoutUrl;
+        const attributed = await cartWithAttribution(next);
+        localStorage.setItem(cartStorageKey, attributed.id); setCart(attributed);
+        trackCartAdd(attributed, [merchandiseId], 'product'); trackCheckout(attributed);
+        window.location.href = attributed.checkoutUrl;
       }
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Unable to start checkout.');
-    } finally {
-      setLoading(false);
-    }
+    } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to start checkout.'); }
+    finally { setLoading(false); }
   }, []);
 
   const update = useCallback(async (lineId: string, quantity: number) => {
     if (!cart) return;
     setLoading(true);
-    try {
-      const next = await callCart('PATCH', { cartId: cart.id, lineId, quantity });
-      if (next) setCart(next);
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Unable to update item.');
-    } finally {
-      setLoading(false);
-    }
+    try { const next = await callCart('PATCH', { cartId: cart.id, lineId, quantity }); if (next) setCart(next); }
+    catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to update item.'); }
+    finally { setLoading(false); }
   }, [cart]);
 
   const remove = useCallback(async (lineId: string) => {
     if (!cart) return;
     setLoading(true);
-    try {
-      const next = await callCart('DELETE', { cartId: cart.id, lineId });
-      if (next) setCart(next);
-    } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Unable to remove item.');
-    } finally {
-      setLoading(false);
-    }
+    try { const next = await callCart('DELETE', { cartId: cart.id, lineId }); if (next) setCart(next); }
+    catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to remove item.'); }
+    finally { setLoading(false); }
   }, [cart]);
 
-  useEffect(() => { void refresh(); }, [refresh]);
+  useEffect(() => { captureFirstTouch(); void refresh(); }, [refresh]);
 
-  const value = useMemo(
-    () => ({ cart, open, count: cart?.totalQuantity || 0, loading, error, setOpen, add, buyNow, addMany, buyNowMany, refresh, update, remove }),
-    [cart, open, loading, error, add, buyNow, addMany, buyNowMany, refresh, update, remove]
-  );
+  const value = useMemo(() => ({ cart, open, count: cart?.totalQuantity || 0, loading, error, setOpen, add, buyNow, addMany, buyNowMany, refresh, update, remove }), [cart, open, loading, error, add, buyNow, addMany, buyNowMany, refresh, update, remove]);
 
   return <CartContext.Provider value={value}>{children}<CartAbandonGuard /><CartDrawer /></CartContext.Provider>;
 }
@@ -251,10 +244,11 @@ function CartDrawer() {
   const { cart, open, setOpen, loading, error, update, remove } = useCart();
   const promo = cartPromoState(cart);
 
-  function checkout() {
+  async function checkout() {
     if (!cart?.checkoutUrl) return;
-    trackCheckout(cart);
-    window.location.href = cart.checkoutUrl;
+    const attributed = await cartWithAttribution(cart);
+    trackCheckout(attributed);
+    window.location.href = attributed.checkoutUrl;
   }
 
   return (
@@ -269,8 +263,7 @@ function CartDrawer() {
               {line.merchandise.product.featuredImage && <Image src={line.merchandise.product.featuredImage.url} alt={line.merchandise.product.featuredImage.altText || line.merchandise.product.title} width={86} height={86} />}
               <div>
                 <Link href={`/products/${line.merchandise.product.handle}`}>{line.merchandise.product.title}</Link>
-                <p>{line.merchandise.title}</p>
-                <p>{money(line.cost.totalAmount)}</p>
+                <p>{line.merchandise.title}</p><p>{money(line.cost.totalAmount)}</p>
                 <div className="qty">
                   <button onClick={() => line.quantity > 1 ? update(line.id, line.quantity - 1) : remove(line.id)} aria-label="Decrease quantity">-</button>
                   <span>{line.quantity}</span>
