@@ -4,6 +4,24 @@ import type { Product } from '@/types/shopify';
 const productText = (product: Product) => `${product.title} ${product.productType} ${(product.tags || []).join(' ')}`.toLowerCase();
 
 const specificCopy: Record<string, string> = {
+  'evil-ape': 'A conversation-starting golf piece for the player who wants the bag to have some personality without turning it into a costume.',
+  'guerrilla-chief-driver-cover': 'A driver cover with enough personality to change the look of the whole bag while still doing the basic job well: protecting the club you reach for most.',
+  'dude-abides-v2-mallet-putter-cover': 'A mallet cover with a point of view — easy to gift, easy to spot, and a lot more memorable than another plain black putter cover.',
+  'mafia-mallet-putter-cover': 'A mallet putter cover that turns a practical piece of protection into one of the most visible personality pieces in the bag.',
+  'topographic-carolina-blue-driver-headcover': 'A clean topographic driver cover for golfers who want the bag to look more considered without going full novelty.',
+  'augusta-bear-hat': 'Course-ready headwear with enough personality to live in the regular weekend rotation after the round is over.',
+  'golf-or-die-game-set': 'A golf-group add for trips and casual rounds when the point is not only the score — it gives the foursome something else to talk about all day.',
+  'dartee-golf-glove': 'An easy everyday golf upgrade at a price that makes sense for something good golfers replace more often than they admit.',
+  'park-paisley-womens-gold-golf-glove': 'A golf glove that treats a round-to-round essential like something worth making visually interesting.',
+  'pulse-golf-overgrip-tape': 'A simple way to refresh grip feel without committing to a full regrip project — best for golfers who like tinkering with feel and traction.',
+  'stick-grips-golf-camo-golf-grip': 'A grip option for the golfer who wants function at the hands and a little more personality in the setup.',
+  'tri-fold-microfiber-golf-towel': 'A compact everyday towel for club faces, golf balls, grips, and wet rounds — the kind of unglamorous piece that earns its place by getting used.',
+  'blue-ridge-golf-co-golf-towels': 'A better-looking towel option for the golfer who wants the basic bag utility without making the setup look generic.',
+  'magnet-caddie': 'A clean quick-access solution for gloves and small bag gear that you would rather not dig through a pocket to find.',
+  'glove-accessory-caddie-black': 'A dedicated parking spot for gloves and small accessories so the useful stuff stays visible instead of disappearing into the bag.',
+  'three-rail-ball-marker': 'A small green-side essential with enough visual identity to feel like a real golf gift instead of checkout-line filler.',
+  'two-sided-metal-golf-ball-marker-5-color-combo-pack': 'Five two-sided markers for the golfer who likes options, loses one occasionally, or needs an easy small gift for the group.',
+  'bamboo-performance-golf-tees-50-pack': 'A straightforward tee restock that belongs in the supporting cast of a good golf bag — inexpensive, useful, and easy to throw into an order.',
   'magnetic-cart-phone-mount': 'A cart-ready phone mount for keeping a device visible instead of loose in a cup holder or bag pocket.',
   'divot-board-swing-trainer': 'A compact practice surface designed to make strike-location and low-point work easier to see during practice.',
   'pop-up-chipping-net-3-target': 'A portable chipping target for adding structure to backyard or short-game practice.',
@@ -14,11 +32,31 @@ const specificCopy: Record<string, string> = {
   'windproof-cart-umbrella-holder': 'A cart accessory designed to hold a compatible umbrella so your hands stay free when conditions change.'
 };
 
+const specificValueBullets: Record<string, string[]> = {
+  'evil-ape': ['Makes a visible part of the bag feel personal', 'Easy gift for the golfer who already owns the basics', 'No sizing or club-fitting decision required'],
+  'guerrilla-chief-driver-cover': ['Protects the driver while adding bag personality', 'High-visibility upgrade you notice every round', 'Easy gift when you know the player uses a standard driver'],
+  'dude-abides-v2-mallet-putter-cover': ['Built for a mallet-style putter', 'Turns a protective piece into a personality piece', 'Easy golf-trip or birthday gift when putter shape is known'],
+  'mafia-mallet-putter-cover': ['Built for a mallet-style putter', 'Protective gear with a stronger point of view', 'Easy way to change the look of the bag without changing equipment'],
+  'topographic-carolina-blue-driver-headcover': ['Clean visual upgrade for the top of the bag', 'Protects the driver from normal bag wear', 'Lower buying risk than performance equipment'],
+  'augusta-bear-hat': ['Works on the course and after the round', 'Easy personality piece without touching equipment setup', 'Giftable when fit options are understood'],
+  'golf-or-die-game-set': ['Built for golf groups and trip rounds', 'Adds something social without changing the actual game', 'A memorable group gift or trip-table addition'],
+  'dartee-golf-glove': ['Useful round-to-round consumable', 'Easy first-order add for golfers who know their size', 'Lower-cost way to try a new golf brand'],
+  'park-paisley-womens-gold-golf-glove': ['A more expressive take on an everyday golf essential', 'Useful for rounds and practice sessions', 'Confirm hand and size before purchase'],
+  'pulse-golf-overgrip-tape': ['Refreshes feel without a full regrip', 'Compact enough to keep with practice or maintenance gear', 'Best for golfers comfortable experimenting with grip feel'],
+  'stick-grips-golf-camo-golf-grip': ['Adds feel and personality at the hands', 'Useful when refreshing an existing club setup', 'Check compatibility before installation'],
+  'tri-fold-microfiber-golf-towel': ['Clips easily to many golf bags', 'Useful for club faces, golf balls, grips, and hands', 'Low-fuss item that can stay in the everyday bag'],
+  'blue-ridge-golf-co-golf-towels': ['Useful every round without looking like generic range gear', 'Easy gift with no sizing decision', 'Works for clubs, golf balls, grips, and wet conditions'],
+  'magnet-caddie': ['Keeps quick-access gear outside the bag pocket', 'Small footprint with an obvious on-course job', 'Easy add-on to a bag-upgrade order'],
+  'glove-accessory-caddie-black': ['Gives gloves and small accessories a dedicated home', 'Helps keep useful gear visible and easier to grab', 'Simple bag-organization upgrade with no sizing risk'],
+  'three-rail-ball-marker': ['Small enough to live in the bag permanently', 'Useful on every putting green', 'Easy gift or prize-table piece'],
+  'two-sided-metal-golf-ball-marker-5-color-combo-pack': ['Five markers in one purchase', 'Useful for the bag, foursome, or gift drawer', 'No size or fit decision required'],
+  'bamboo-performance-golf-tees-50-pack': ['Fifty-tee bag restock', 'Simple consumable add-on for a larger order', 'No fit or compatibility decision for normal tee use']
+};
+
 export function productBuyerPromise(product: Product) {
   const category = categoryFor(product);
   const text = productText(product);
   if (specificCopy[product.handle]) return specificCopy[product.handle];
-  if (product.handle === 'tri-fold-microfiber-golf-towel') return 'A compact microfiber towel for club faces, golf balls, grips, and everyday bag carry.';
   if (/golf bag/i.test(text)) return 'A full-bag storage upgrade for golfers who want a cleaner, more organized setup.';
   if (category === 'Headwear' || /hat|cap/.test(text)) return 'Course-ready headwear that can move from the range to the round to the rest of the weekend.';
   if (category === 'Apparel' || /shirt|polo|hoodie|belt/.test(text)) return 'Golf-oriented apparel for rounds, travel days, and the hours before or after the course.';
@@ -36,7 +74,7 @@ export function productBuyerPromise(product: Product) {
 export function productValueBullets(product: Product) {
   const category = categoryFor(product);
   const text = productText(product);
-  if (product.handle === 'tri-fold-microfiber-golf-towel') return ['Clips easily to many golf bags', 'Useful for club faces, golf balls, grips, and hands', 'Low-fuss item that can stay in the everyday bag'];
+  if (specificValueBullets[product.handle]) return specificValueBullets[product.handle];
   if (/golf bag/i.test(text)) return ['Adds dedicated storage for a full golf setup', 'Useful for golfers reorganizing or replacing an older bag', 'Review the product configuration and dimensions before purchase'];
   if (category === 'Headwear' || /hat|cap/.test(text)) return ['Easy course-to-weekend use', 'Lower buying friction than club-specific equipment', 'Pairs naturally with towels, markers, gloves, and apparel'];
   if (category === 'Apparel' || /shirt|polo|hoodie|belt/.test(text)) return ['Built around golf and weekend wear', 'Review available sizing or variant options before purchase', 'Pairs naturally with headwear and bag accessories'];
