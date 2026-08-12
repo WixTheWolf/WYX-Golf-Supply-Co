@@ -1,3 +1,4 @@
+import { apparelEditHandles } from '@/lib/apparelEdit';
 import { categoryFor } from '@/lib/catalog';
 import { productPrice } from '@/lib/feed';
 import { isBuyTodayProduct, isPremiumGolfBag } from '@/lib/productQuality';
@@ -15,8 +16,7 @@ const hiddenHandles = new Set([
   // Duplicate/filler cuts from the 2026 WYX edit. Keep one strong version, not every colorway/set.
   'glove-accessory-caddie-gray',
   'blue-ridge-golf-ball-markers-set-of-2',
-  'carolina-blue-two-sided-golf-ball-marker-2-pack',
-  'hello-friends-t-shirt'
+  'carolina-blue-two-sided-golf-ball-marker-2-pack'
 ]);
 
 const confirmedSupplierVendors = [
@@ -35,11 +35,12 @@ const confirmedSupplierVendors = [
 const blockedSupplierVendors = ['GolfbaysUSA'];
 
 /**
- * WYX is intentionally a tight edit, not an endless supplier catalog.
- * These are the products that currently earn a place in the public drop.
+ * WYX is a fashion-led golf edit, not an endless supplier catalog.
+ * Apparel establishes the visual identity; great bag gear supports it.
  * A manually-reviewed product can also be admitted with wyx-core/wyx-featured.
  */
 export const futureAssortmentHandles = new Set([
+  ...apparelEditHandles,
   'evil-ape',
   'guerrilla-chief-driver-cover',
   'dude-abides-v2-mallet-putter-cover',
@@ -48,7 +49,6 @@ export const futureAssortmentHandles = new Set([
   'augusta-bear-hat',
   'golf-or-die-game-set',
   'dartee-golf-glove',
-  'volcanic-ash',
   'park-paisley-womens-gold-golf-glove',
   'stick-grips-golf-camo-golf-grip',
   'tri-fold-microfiber-golf-towel',
@@ -104,18 +104,22 @@ export function isHomepageProduct(product: Product) {
 }
 
 /**
- * The order below is intentional merchandising, not a catalog sort.
- * WYX leads with personality and giftability, then utility. Cheap restock items
- * remain in the store but should not define the first impression.
+ * Intentional merchandising order: apparel first, then style-setting accessories,
+ * then utility. WYX should read like a modern golf brand before it reads like a store.
  */
 export function firstBuyProducts(products: Product[]) {
   const heroHandles = [
-    'evil-ape',
-    'augusta-bear-hat',
+    'pimento-waffle',
+    'hello-friends-t-shirt',
     'volcanic-ash',
+    'mossy-condor',
+    'sea-swell-blue',
+    'black-birdie',
+    'augusta-bear-hat',
+    'dartee-golf-glove',
+    'evil-ape',
     'topographic-carolina-blue-driver-headcover',
     'dude-abides-v2-mallet-putter-cover',
-    'dartee-golf-glove',
     'golf-or-die-game-set',
     'magnet-caddie',
     'blue-ridge-golf-co-golf-towels',
@@ -154,7 +158,7 @@ export function bagUpgradeProducts(products: Product[], limit = 12) {
 
 export function tripProducts(products: Product[], limit = 12) {
   return products
-    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt|game|tee/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
+    .filter((product) => isFutureAssortmentProduct(product) && isBuyTodayProduct(product) && !isHiddenFromCoreStorefront(product) && /marker|towel|ball|caddie|glove|grip|headcover|hat|cap|shirt|polo|hoodie|belt|game|tee|waffle/i.test(`${product.title} ${product.productType} ${(product.tags || []).join(' ')}`))
     .slice(0, limit);
 }
 
@@ -172,8 +176,8 @@ export function dadGiftProducts(products: Product[], limit = 12) {
     let score = 0;
     if (price <= 60) score += 4;
     if (price <= 35) score += 3;
-    if (['Towels', 'Accessories', 'Golf Balls', 'Gloves', 'Grips'].includes(category)) score += 3;
-    if (/marker|towel|glove|grip|ball|caddie|scorecard|alignment|hat|cap|headcover|game/i.test(`${product.title} ${(product.tags || []).join(' ')}`)) score += 2;
+    if (['Towels', 'Accessories', 'Golf Balls', 'Gloves', 'Grips', 'Apparel', 'Headwear'].includes(category)) score += 3;
+    if (/marker|towel|glove|grip|ball|caddie|scorecard|alignment|hat|cap|headcover|game|shirt|waffle|belt/i.test(`${product.title} ${(product.tags || []).join(' ')}`)) score += 2;
     return score;
   };
   return products
