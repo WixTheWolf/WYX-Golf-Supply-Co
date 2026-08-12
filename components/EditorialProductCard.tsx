@@ -15,7 +15,7 @@ export function EditorialProductCard({ product, featured = false }: { product: P
       </Link>
       <div>
         <p className="eyebrow">{product.tags?.some((t) => t.toLowerCase() === 'hidden-gem') ? 'Hidden Gem' : 'Short List'}</p>
-        <h3><Link href={`/products/${product.handle}`}>{title}</Link></h3>
+        <h3><Link href={`/products/${product.handle}`} style={{ color: '#f2f6ef', textDecoration: 'none' }}>{title}</Link></h3>
         <p>{shortReason(product)}</p>
         <div className="product-card-footer">
           <span className="price">
