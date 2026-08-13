@@ -16,9 +16,9 @@ export function Header() {
         <nav className="nav-links" aria-label="Primary navigation">
           <Link href="/products">Shop</Link>
           <Link href="/apparel">Apparel</Link>
-          <Link href="/products?category=Golf%20Tech">Tech</Link>
-          <Link href="/products?category=Bags">Bags</Link>
+          <Link href="/golf-headcovers">Headcovers</Link>
           <Link href="/products?category=Accessories">Accessories</Link>
+          <Link href="/golf-gloves">Gloves</Link>
           <Link href="/golf-trip-gear">Trip</Link>
           <Link href="/golf-gifts">Gifts</Link>
         </nav>
