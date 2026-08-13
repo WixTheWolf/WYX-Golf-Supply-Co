@@ -4,6 +4,18 @@ type KlaviyoQueue = Array<unknown> & {
   identify?: (params: Record<string, unknown>) => unknown;
 };
 
+type Attribution = {
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  ref?: string;
+  referrer_host?: string;
+  landing_path?: string;
+};
+
+const ATTRIBUTION_KEY = 'wyx:first-touch-attribution';
+
 export function trackEvent(name: string, params: AnalyticsParams = {}) {
   if (typeof window === 'undefined') return;
   const w = window as typeof window & {
@@ -13,7 +25,8 @@ export function trackEvent(name: string, params: AnalyticsParams = {}) {
     klaviyo?: KlaviyoQueue;
   };
 
-  const { klaviyo, ...shared } = params;
+  const { klaviyo, ...provided } = params;
+  const shared = { ...getAttribution(), ...provided };
 
   void fetch('/api/analytics/event', {
     method: 'POST',
@@ -25,18 +38,66 @@ export function trackEvent(name: string, params: AnalyticsParams = {}) {
   w.gtag?.('event', gaEventName(name), shared);
   w.fbq?.('track', metaEventName(name), shared);
   w.ttq?.track?.(tiktokEventName(name), shared);
-  trackKlaviyo(w.klaviyo, klaviyoEventName(name), klaviyo || shared);
+  trackKlaviyo(w.klaviyo, klaviyoEventName(name), { ...getAttribution(), ...(klaviyo || provided) });
 }
 
 export function identifyEmail(email: string, properties: Record<string, unknown> = {}) {
   if (typeof window === 'undefined' || !email) return;
   const w = window as typeof window & { klaviyo?: KlaviyoQueue };
-  const payload = { email, ...properties };
+  const payload = { email, ...getAttribution(), ...properties };
   if (typeof w.klaviyo?.identify === 'function') {
     void w.klaviyo.identify(payload);
     return;
   }
   if (Array.isArray(w.klaviyo)) w.klaviyo.push(['identify', payload]);
+}
+
+function getAttribution(): Attribution {
+  if (typeof window === 'undefined') return {};
+
+  try {
+    const existing = window.sessionStorage.getItem(ATTRIBUTION_KEY);
+    if (existing) return JSON.parse(existing) as Attribution;
+  } catch {
+    // Continue with a fresh attribution snapshot when session storage is unavailable.
+  }
+
+  const search = new URLSearchParams(window.location.search);
+  const currentHost = window.location.hostname.replace(/^www\./, '');
+  let referrerHost = '';
+  try {
+    const referrer = document.referrer ? new URL(document.referrer) : null;
+    const candidate = referrer?.hostname.replace(/^www\./, '') || '';
+    if (candidate && candidate !== currentHost) referrerHost = candidate;
+  } catch {
+    referrerHost = '';
+  }
+
+  const attribution: Attribution = compact({
+    utm_source: cleanParam(search.get('utm_source')),
+    utm_medium: cleanParam(search.get('utm_medium')),
+    utm_campaign: cleanParam(search.get('utm_campaign')),
+    utm_content: cleanParam(search.get('utm_content')),
+    ref: cleanParam(search.get('ref')),
+    referrer_host: cleanParam(referrerHost),
+    landing_path: `${window.location.pathname}${window.location.search}`.slice(0, 240)
+  });
+
+  try {
+    window.sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(attribution));
+  } catch {
+    // Attribution still works for the current event even if storage is unavailable.
+  }
+
+  return attribution;
+}
+
+function compact(value: Attribution): Attribution {
+  return Object.fromEntries(Object.entries(value).filter(([, item]) => Boolean(item))) as Attribution;
+}
+
+function cleanParam(value: string | null) {
+  return value ? value.trim().slice(0, 120) : undefined;
 }
 
 function trackKlaviyo(client: KlaviyoQueue | undefined, eventName: string | undefined, params: Record<string, unknown>) {
