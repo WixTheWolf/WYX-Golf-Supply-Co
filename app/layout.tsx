@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import { Archivo, Manrope } from 'next/font/google';
+import { Suspense } from 'react';
 import { ScrollRevealInit } from '@/components/ScrollRevealInit';
 import './globals.css';
 import './store.css';
@@ -15,6 +16,7 @@ import { Header } from '@/components/Header';
 import { SeoJsonLd } from '@/components/SeoJsonLd';
 import { JudgeMeScripts } from '@/components/JudgeMe';
 import { TrackingScripts } from '@/components/TrackingScripts';
+import { RouteViewTracker } from '@/components/RouteViewTracker';
 import { supportEmail } from '@/lib/support';
 
 const sansFont = Manrope({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
@@ -24,7 +26,7 @@ const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3f
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
   applicationName: 'WYX Golf Supply Co.',
-  title: { default: 'Premium Golf Apparel, Headcovers & Accessories | WYX', template: '%s | WYX Golf Supply Co.' },
+  title: { default: 'Premium Golf Apparel, Headcovers & Accessories | WYX', template: '%s' },
   description: 'A sharp multi-brand golf edit of apparel, headcovers, gloves, trip gear, gifts and accessories worth owning.',
   keywords: ['golf apparel', 'golf headcovers', 'golf gloves', 'golf trip gear', 'golf gifts', 'golf accessories', 'premium golf gear'],
   alternates: { canonical: '/' },
@@ -52,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollRevealInit />
         <SeoJsonLd />
         <TrackingScripts />
+        <Suspense fallback={null}><RouteViewTracker /></Suspense>
         <JudgeMeScripts />
         <CartProvider>
           <Header />

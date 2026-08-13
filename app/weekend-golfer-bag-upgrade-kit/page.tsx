@@ -10,7 +10,7 @@ import { cleanText } from '@/lib/text';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "The Weekend Golfer's Bag Upgrade Kit",
+  title: "The Weekend Golfer's Bag Upgrade Kit | WYX Golf Supply Co.",
   description: 'Five practical golf bag upgrades in one editable cart: towel, marker set, tee restock, glove caddie and quick-access bag caddie.',
   alternates: { canonical: '/weekend-golfer-bag-upgrade-kit' },
   openGraph: {

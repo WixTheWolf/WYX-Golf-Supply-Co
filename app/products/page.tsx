@@ -10,7 +10,7 @@ export const revalidate = 300;
 const MIN_CATEGORY_CHIP_COUNT = 1;
 
 export const metadata: Metadata = {
-  title: 'Shop WYX — Golf Apparel & Gear',
+  title: 'Shop WYX — Golf Apparel & Gear | WYX Golf Supply Co.',
   description: 'Shop the WYX edit of modern golf apparel, headwear, gloves, headcovers, trip gear and useful bag accessories.',
   alternates: { canonical: '/products' }
 };

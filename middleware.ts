@@ -9,22 +9,8 @@ const CORE_INDEXABLE_PATHS = new Set([
   '/golf-trip-gear',
   '/golf-gifts',
   '/golf-gifts-under-60',
-  '/scramble-prizes',
-  '/bachelor-party-golf-gifts',
-  '/bag-essentials',
-  '/bag-upgrades',
-  '/golf-training-aids',
-  '/golf-practice-gear',
-  '/golf-tech',
-  '/golf-club-care',
-  '/golf-hats',
-  '/golf-apparel',
   '/golf-gloves',
-  '/golf-towels',
-  '/golf-ball-markers',
   '/golf-headcovers',
-  '/golf-bag-accessories',
-  '/best-golf-accessories',
   '/the-bag-test',
   '/about',
   '/story',
@@ -39,6 +25,14 @@ const INDEXABLE_KITS = new Set([
   '/kits/bag-upgrade-kit'
 ]);
 
+const PERMANENT_REDIRECTS = new Map([
+  ['/open', '/'],
+  ['/first-sale', '/products'],
+  ['/fathers-day-golf-gifts', '/golf-gifts'],
+  ['/last-minute-fathers-day-golf-gifts', '/golf-gifts'],
+  ['/lp/fathers-day', '/golf-gifts']
+]);
+
 function shouldIndex(pathname: string) {
   if (CORE_INDEXABLE_PATHS.has(pathname)) return true;
   if (INDEXABLE_KITS.has(pathname)) return true;
@@ -48,13 +42,16 @@ function shouldIndex(pathname: string) {
 }
 
 export function middleware(request: NextRequest) {
-  const response = NextResponse.next();
   const pathname = request.nextUrl.pathname.replace(/\/$/, '') || '/';
+  const redirectPath = PERMANENT_REDIRECTS.get(pathname);
+  const response = redirectPath
+    ? NextResponse.redirect(new URL(`${redirectPath}${request.nextUrl.search}`, request.url), 308)
+    : NextResponse.next();
 
   // The repo still contains a large legacy SEO/content layer with stale product,
   // price, and fulfillment claims. Keep those pages accessible for audit/redirect
   // work, but do not let search engines index them until they are rewritten.
-  if (!shouldIndex(pathname)) response.headers.set('X-Robots-Tag', 'noindex, follow');
+  if (!redirectPath && !shouldIndex(pathname)) response.headers.set('X-Robots-Tag', 'noindex, follow');
 
   const ref = request.nextUrl.searchParams.get('ref') || request.nextUrl.searchParams.get('utm_campaign')?.replace(/^ref_/, '');
   if (ref) {

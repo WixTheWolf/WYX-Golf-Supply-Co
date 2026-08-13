@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: { handle: string } 
   if (!product) return { title: 'Product' };
   const description = productBuyerPromise(product);
   return {
-    title: cleanText(product.title),
+    title: { absolute: `${cleanText(product.title)} | WYX Golf Supply Co.` },
     description,
     alternates: { canonical: `/products/${product.handle}` },
     openGraph: {

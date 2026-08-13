@@ -18,7 +18,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const collection = getLandingCollection(params.slug);
   return collection ? {
-    title: collection.seoTitle,
+    title: `${collection.seoTitle} | WYX Golf Supply Co.`,
     description: collection.metaDescription,
     alternates: { canonical: `/collections/${collection.slug}` }
   } : { title: 'Collection' };
