@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <>
+    <div className="lux-secondary">
       <section className="page-hero">
         <p className="eyebrow">About WYX</p>
         <h1>One Independent Point Of View On Golf&apos;s Best Stuff.</h1>
@@ -45,6 +45,6 @@ export default function About() {
           <div className="actions"><Link className="button primary" href="/shipping-returns">Shipping &amp; Returns</Link><Link className="button secondary" href="/contact">Contact WYX</Link></div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
