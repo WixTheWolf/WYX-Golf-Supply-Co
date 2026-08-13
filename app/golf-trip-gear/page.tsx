@@ -14,7 +14,7 @@ export const revalidate = 300;
 const tripPhoto = 'https://images.unsplash.com/photo-1713729372679-7feb052d74a6?auto=format&fit=crop&w=2200&q=86';
 
 export const metadata: Metadata = {
-  title: 'Golf Trip Gear for Weekend Golf Trips',
+  title: 'Golf Trip Gear for Weekend Golf Trips | WYX Golf Supply Co.',
   description: 'A tight edit of golf-trip gear for travel days, long rounds, changing conditions, and better-organized bags.',
   alternates: { canonical: '/golf-trip-gear' },
   openGraph: {

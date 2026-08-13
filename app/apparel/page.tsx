@@ -14,7 +14,7 @@ export const revalidate = 300;
 const coursePhoto = 'https://images.unsplash.com/photo-1693163532134-5ea6c80b58a3?auto=format&fit=crop&w=2400&q=88';
 
 export const metadata: Metadata = {
-  title: 'Golf Apparel — The WYX Edit',
+  title: 'Golf Apparel — The WYX Edit | WYX Golf Supply Co.',
   description: 'Shop the WYX golf apparel edit: course-to-weekend layers, tees, belts, gloves and headwear selected for modern golf.',
   alternates: { canonical: '/apparel' },
   openGraph: {

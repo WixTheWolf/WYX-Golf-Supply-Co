@@ -49,8 +49,8 @@ const whatThatMeans = [
     body: 'You will not see promises that a product lowers your score, fixes your swing, or extends a part’s life by a specific number of seasons. Just a clear description of what it does.'
   },
   {
-    title: 'A Real Guarantee',
-    body: 'Every order is covered by The Bag Test Promise: if it arrives damaged, incorrect, or not what you expected, contact us within 30 days and we will help make it right.'
+    title: 'Responsive Support',
+    body: 'If an order arrives damaged or incorrect, contact WYX promptly with the order number and clear photos. For other return questions, eligibility can vary by item and is confirmed by support.'
   }
 ];
 
@@ -65,7 +65,7 @@ const faq = [
   },
   {
     q: 'What happens if I am not happy with an order?',
-    a: 'The Bag Test Promise covers every order: if it arrives damaged, incorrect, or does not match what you expected, contact us within 30 days and we will help make it right.'
+    a: 'Contact WYX support with your order number. Return eligibility can vary by item, especially for personalized or final-sale products, and support will confirm the correct next step.'
   }
 ];
 
@@ -107,8 +107,8 @@ export default function TheBagTest() {
         <div className="collection-proof">
           <span>One standard, every product</span>
           <span>No fake reviews</span>
-          <span>30-day Bag Test Promise</span>
-          <span>WYX10 saves 10%</span>
+          <span>Straightforward customer support</span>
+          <span>WYX10 for eligible first orders</span>
         </div>
       </section>
 
@@ -150,7 +150,7 @@ export default function TheBagTest() {
             <Link className="button primary" href="/weekend-golfer-bag-upgrade-kit">Shop The Bag Upgrade Kit</Link>
           </div>
         </div>
-        <p>We build kits and gift picks around gear golfers actually use. If your order arrives damaged, incorrect, or does not match what you expected, contact us within 30 days and we&apos;ll help make it right.</p>
+        <p>We build kits and gift picks around gear golfers actually use. If an order arrives damaged or incorrect, contact us promptly with your order number and clear photos. For other return questions, support will confirm eligibility and the correct next step.</p>
       </section>
 
       <section className="section reveal" aria-labelledby="bag-test-faq-heading">

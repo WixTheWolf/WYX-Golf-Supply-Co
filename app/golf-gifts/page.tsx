@@ -13,7 +13,7 @@ export const revalidate = 300;
 const giftPhoto = 'https://images.unsplash.com/photo-1693163532134-5ea6c80b58a3?auto=format&fit=crop&w=2200&q=86';
 
 export const metadata: Metadata = {
-  title: 'Golf Gifts That Actually Get Used',
+  title: 'Golf Gifts That Actually Get Used | WYX Golf Supply Co.',
   description: 'A hard edit of golf gifts for real rounds and golf trips: headcovers, gloves, hats, markers, games, towels and bag upgrades selected by WYX.',
   alternates: { canonical: '/golf-gifts' },
   openGraph: {
@@ -25,19 +25,19 @@ export const metadata: Metadata = {
 };
 
 const budgets = [
-  { label: 'Easy Add-Ons', href: '/golf-gifts-under-25', desc: 'Small golf gifts and bag extras that are useful without requiring club specs.' },
+  { label: 'Easy Add-Ons', href: '/products?category=Accessories', desc: 'Small golf gifts and bag extras that are useful without requiring club specs.' },
   { label: 'Gifts Under $60', href: '/golf-gifts-under-60', desc: 'Headcovers, markers, gloves and accessories in the easiest gift range.' },
-  { label: 'Bag Upgrades', href: '/bag-upgrades', desc: 'Useful gear for golfers who would rather improve the setup than collect novelty junk.' },
+  { label: 'Bag Upgrade Kit', href: '/weekend-golfer-bag-upgrade-kit', desc: 'Five live products grouped into one editable cart, with every item visible before checkout.' },
   { label: 'Shop All WYX', href: '/products', desc: 'The complete current WYX edit, including the pieces we would show a golfer first.' }
 ];
 
 const occasions = [
-  { label: 'Golf Gifts for Dad', href: '/golf-gifts-for-dad' },
-  { label: 'Golf Gifts for Men', href: '/golf-gifts-for-men' },
-  { label: 'Golf Gifts for Women', href: '/golf-gifts-for-women' },
-  { label: 'Golf Birthday Gifts', href: '/golf-birthday-gifts' },
-  { label: 'Golf Corporate Gifts', href: '/golf-corporate-gifts' },
-  { label: 'Golf Tournament Prizes', href: '/golf-tournament-prizes' }
+  { label: 'Headcovers', href: '/golf-headcovers' },
+  { label: 'Golf Gloves', href: '/golf-gloves' },
+  { label: 'Golf Trip Gear', href: '/golf-trip-gear' },
+  { label: 'Golf Apparel', href: '/apparel' },
+  { label: 'Bag Accessories', href: '/products?category=Accessories' },
+  { label: 'Shop All WYX', href: '/products' }
 ];
 
 const giftEditHandles = [
@@ -140,7 +140,7 @@ export default async function GolfGiftsPage() {
       <section className="section reveal" aria-labelledby="occasions-heading">
         <div className="section-heading">
           <p className="eyebrow">NEED A SHORTCUT?</p>
-          <h2 id="occasions-heading">SHOP BY RECIPIENT OR OCCASION.</h2>
+          <h2 id="occasions-heading">SHOP BY GIFT TYPE.</h2>
         </div>
         <div className="care-step-grid">
           {occasions.map((occasion) => (

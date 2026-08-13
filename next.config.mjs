@@ -10,9 +10,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/fathers-day-golf-gifts', destination: '/golf-gifts-for-dad', permanent: true },
-      { source: '/last-minute-fathers-day-golf-gifts', destination: '/golf-gifts-for-dad', permanent: true },
-      { source: '/lp/fathers-day', destination: '/golf-gifts-for-dad', permanent: true },
+      { source: '/fathers-day-golf-gifts', destination: '/golf-gifts', permanent: true },
+      { source: '/last-minute-fathers-day-golf-gifts', destination: '/golf-gifts', permanent: true },
+      { source: '/lp/fathers-day', destination: '/golf-gifts', permanent: true },
       { source: '/open', destination: '/', permanent: true },
       { source: '/short-list', destination: '/#wyx-radar', permanent: true },
       { source: '/swing-correction', destination: '/products', permanent: true },

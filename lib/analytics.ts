@@ -110,7 +110,7 @@ function trackKlaviyo(client: KlaviyoQueue | undefined, eventName: string | unde
 }
 
 function gaEventName(name: string) {
-  return ({ ViewContent: 'view_item', AddToCart: 'add_to_cart', InitiateCheckout: 'begin_checkout', Purchase: 'purchase', Lead: 'generate_lead' } as Record<string, string>)[name] || name;
+  return ({ PageView: 'page_view', ViewContent: 'view_item', AddToCart: 'add_to_cart', InitiateCheckout: 'begin_checkout', Purchase: 'purchase', Lead: 'generate_lead' } as Record<string, string>)[name] || name;
 }
 
 function metaEventName(name: string) {
@@ -118,9 +118,9 @@ function metaEventName(name: string) {
 }
 
 function tiktokEventName(name: string) {
-  return ({ ViewContent: 'ViewContent', AddToCart: 'AddToCart', InitiateCheckout: 'InitiateCheckout', Purchase: 'CompletePayment', Lead: 'SubmitForm' } as Record<string, string>)[name] || name;
+  return ({ PageView: 'PageView', ViewContent: 'ViewContent', AddToCart: 'AddToCart', InitiateCheckout: 'InitiateCheckout', Purchase: 'CompletePayment', Lead: 'SubmitForm' } as Record<string, string>)[name] || name;
 }
 
 function klaviyoEventName(name: string) {
-  return ({ ViewContent: 'Viewed Product', AddToCart: 'Added to Cart', InitiateCheckout: 'Started Checkout', Purchase: 'Placed Order', Lead: 'Signed Up' } as Record<string, string>)[name];
+  return ({ PageView: 'Viewed Page', ViewContent: 'Viewed Product', AddToCart: 'Added to Cart', InitiateCheckout: 'Started Checkout', Purchase: 'Placed Order', Lead: 'Signed Up' } as Record<string, string>)[name];
 }

@@ -16,42 +16,42 @@ const faqGroups: Array<{ heading: string; items: Array<[string, string]> }> = [
   {
     heading: 'Shopping & Products',
     items: [
-      ['What golf products does WYX carry?', 'WYX carries golf gloves, ball markers, magnetic hat clips, golf towels, alignment sticks, putting mirrors, swing tempo trainers, rangefinders, grip tape, bamboo tees, club brushes, scorecard holders, shoe bags, golf balls, and apparel including hats, polos, quarter-zips, and socks.'],
-      ['What should I buy first?', 'Start with the products you use every round: a clean towel, a reliable glove, and a milled ball marker. These three upgrade the bag immediately. Use WYX10 for 10% off your first order.'],
-      ['Are products actually in stock and purchasable?', 'Every product on wyxgolfsupply.com is available through Shopify checkout. Pages only appear for items with inventory, real images, and a live buyable variant.'],
-      ['What is WYX10?', 'WYX10 is the WYX launch discount code. Enter it at checkout for 10% off eligible products sitewide. No minimum order required.'],
+      ['What golf products does WYX carry?', 'WYX keeps a focused live edit of golf apparel, headcovers, gloves, towels, grips, gifts, and useful bag accessories. The selection changes as inventory and supplier approvals change.'],
+      ['What should I buy first?', 'Start with something the golfer already uses every round, such as a towel, glove, marker, headcover, or simple bag accessory. The live shop is the source of truth for current products and prices.'],
+      ['Are products actually in stock and purchasable?', 'Live product options are pulled from Shopify. Sold-out variants are disabled, and Shopify confirms final availability before payment.'],
+      ['What is WYX10?', 'WYX10 requests 10% off a first WYX order when eligible. Shopify confirms whether the offer applies before payment.'],
     ]
   },
   {
     heading: 'Golf Gifts',
     items: [
-      ['What are the best golf gifts under $60?', 'Top picks under $60 with no sizing risk: milled ball marker set ($18–$24), golf towel with clip ($28–$34), alignment sticks ($22), grip tape ($16). Stack 2–3 for a complete gift bundle.'],
-      ['What is a good last-minute Father\'s Day golf gift?', 'A magnetic hat clip + ball marker ($24) ships in 1–2 business days with no sizing risk. Pair with grip tape or a towel for under $50. Father\'s Day is June 21 — order by June 18 for standard delivery.'],
-      ['What golf gifts do not require sizing?', 'Ball markers, hat clips, towels, grip tape, alignment sticks, putting mirrors, bamboo tees, scorecard holders, club brushes, and shoe bags require no sizing. Golf balls and gloves do — check product listings.'],
-      ['Are golf accessories good gifts for coworkers?', 'Yes. Ball markers, towels, and grip tape are practical, priced $15–$40, and require no sizing. Safe for any skill level. Use WYX10 for 10% off.'],
+      ['What are the best golf gifts under $60?', 'Look for current towels, markers, gloves, headcovers, and compact bag accessories under $60. Use the live price on each product page rather than an older gift-guide price.'],
+      ['What is a good last-minute golf gift?', 'Choose a product with no fit decision, then check the delivery estimate at Shopify checkout. A smaller package is not a guarantee of faster arrival.'],
+      ['What golf gifts do not require sizing?', 'Headcovers, towels, markers, games, and many bag accessories usually avoid apparel sizing. Always review the live product options before purchase.'],
+      ['Are golf accessories good gifts for coworkers?', 'Yes. A useful, non-sized accessory is usually easier to buy for a group than apparel or performance equipment.'],
     ]
   },
   {
     heading: 'Shipping & Returns',
     items: [
       ['When do I see shipping cost and timing?', 'Shipping options, delivery estimates, and rates are shown at checkout before any payment is entered.'],
-      ['How long does WYX shipping take?', 'Most orders ship within 1–2 business days. Standard delivery is typically 3–5 business days. Expedited options shown at checkout.'],
-      ['What is the return policy?', 'WYX supports returns on products that arrive damaged or significantly different from the listing. Email support@wyxgolfsupply.com with your order number. Full policy at Shipping & Returns.'],
+      ['How long does WYX shipping take?', 'Timing varies by product, fulfillment partner, destination, and shipping method. Use the product page and the delivery estimate shown at checkout as the current source of truth.'],
+      ['What is the return policy?', 'Return eligibility can vary by item, especially for personalized or final-sale products. Email support@wyxgolfsupply.com with your order number so WYX can confirm the correct next step.'],
     ]
   },
   {
     heading: 'Products & Gear',
     items: [
-      ['What size golf glove should I buy?', 'Golf gloves are sized S, M, ML, L, XL. Measure dominant hand width across the knuckles. The glove should fit snugly with no bunching at the fingertips.'],
-      ['What is cabretta leather?', 'Cabretta leather is from a specific type of sheepskin that produces a thin, soft hide. It provides a near-barehand feel and is the standard for premium golf gloves at every level of play.'],
-      ['What are alignment sticks used for?', 'Alignment sticks go on the ground at the range to check ball position, stance, target alignment, and swing path. Used by every PGA Tour player and every serious amateur.'],
+      ['What size golf glove should I buy?', 'Use the size and hand options shown on the live product page. A glove should fit close to the hand without loose material at the fingertips; contact WYX before ordering if you need exact measurements.'],
+      ['What is cabretta leather?', 'Cabretta is a soft, thin leather commonly used in premium golf gloves because it preserves feel between the hand and the grip.'],
+      ['What are alignment sticks used for?', 'Alignment sticks can help check target line, stance direction, and ball position during practice. Follow the drill instructions that come with the product or your coach’s guidance.'],
       ['What is a putting alignment mirror?', 'A putting mirror is a flat reflective surface placed at address that shows eye position, shoulder alignment, and putter face angle — the three most common putting setup errors. Works on any flat surface.'],
     ]
   },
   {
     heading: 'About WYX',
     items: [
-      ['Who is WYX Golf Supply Co. for?', 'WYX is for weekend golfers, golf trip planners, gift shoppers, scramble teams, and anyone who wants practical golf gear without a generic catalog. Brand line: gear for the boys, the trip, and the bag.'],
+      ['Who is WYX Golf Supply Co. for?', 'WYX is for golfers, trip planners, gift shoppers, and scramble groups who want a smaller, sharper edit instead of a giant generic catalog.'],
       ['Where is WYX based?', 'WYX Golf Supply Co. is a US-based curated golf shop. Customer support: support@wyxgolfsupply.com.'],
     ]
   }
@@ -96,7 +96,7 @@ export default function FAQ() {
           Need more help? Email <a href="mailto:support@wyxgolfsupply.com">support@wyxgolfsupply.com</a> or read the{' '}
           <Link className="text-link" href="/shipping-returns">Shipping &amp; Returns policy</Link>.
           {' '}Shop <Link className="text-link" href="/golf-gifts">golf gifts</Link> or{' '}
-          <Link className="text-link" href="/fathers-day-golf-gifts">Father&apos;s Day gifts</Link>.
+          <Link className="text-link" href="/golf-trip-gear">golf trip gear</Link>.
         </p>
       </section>
     </>

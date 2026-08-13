@@ -13,7 +13,7 @@ import type { Product } from '@/types/shopify';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'The Coolest Golf Gear, Apparel & Accessories',
+  title: 'The Coolest Golf Gear, Apparel & Accessories | WYX Golf Supply Co.',
   description: 'WYX Golf Supply Co. is an opinionated golf shop for standout apparel, footwear, tech, bags, trip gear and accessories.',
   alternates: { canonical: '/' },
   openGraph: {

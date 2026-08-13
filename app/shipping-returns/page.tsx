@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { supportEmail } from '@/lib/support';
 
-export const metadata: Metadata = { title: 'Shipping & Returns', description: 'Shipping and returns guidance for WYX Golf Supply Co.', alternates: { canonical: '/shipping-returns' }, openGraph: { title: 'Shipping & Returns | WYX Golf Supply Co.', description: 'Shipping and returns guidance for WYX Golf Supply Co.', url: '/shipping-returns' } };
+export const metadata: Metadata = { title: 'Shipping & Returns | WYX Golf Supply Co.', description: 'Shipping and returns guidance for WYX Golf Supply Co.', alternates: { canonical: '/shipping-returns' }, openGraph: { title: 'Shipping & Returns | WYX Golf Supply Co.', description: 'Shipping and returns guidance for WYX Golf Supply Co.', url: '/shipping-returns' } };
 const policies = [
   ['Order Handling', 'Timing can vary by item and destination, and the latest estimate is shown at checkout before you place your order.'],
   ['Shipping', 'Shipping options, rates, and delivery estimates are calculated before you place your order.'],
