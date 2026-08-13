@@ -3,6 +3,7 @@ import { extraPosts } from './journalExtra';
 import { phase3Posts } from './journalPhase3';
 import { phase4Posts } from './journalPhase4';
 import { phase5Posts } from './journalPhase5';
+import { featuredPosts } from './featuredJournal';
 
 export const posts = [
   {
@@ -817,7 +818,7 @@ export const posts = [
   }
 ];
 
-export const allPosts = [...posts, ...extraPosts, ...phase3Posts, ...phase4Posts, ...phase5Posts];
+export const allPosts = [...featuredPosts, ...posts, ...extraPosts, ...phase3Posts, ...phase4Posts, ...phase5Posts];
 
 export function getPost(slug: string) {
   return allPosts.find((post) => post.slug === slug);

@@ -78,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
             <nav aria-label="Company navigation">
               <Link href="/about">About WYX</Link>
+              <Link href="/journal">The Edit</Link>
               <Link href="/the-bag-test">How WYX Picks</Link>
               <Link href="/golf-gifts">Gifts</Link>
               <Link href="/shipping-returns">Shipping & Returns</Link>
