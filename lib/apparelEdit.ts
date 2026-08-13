@@ -9,7 +9,8 @@ export const apparelEditHandles = [
   'legalize-mulligans',
   'mossy-condor',
   'black-birdie',
-  'sea-swell-blue'
+  'sea-swell-blue',
+  'volcanic-ash'
 ] as const;
 
 export const apparelLeadHandles = [
@@ -31,7 +32,8 @@ const topsAndLayersHandles = new Set([
 const finishingApparelHandles = new Set([
   'mossy-condor',
   'black-birdie',
-  'sea-swell-blue'
+  'sea-swell-blue',
+  'volcanic-ash'
 ]);
 
 function byHandleOrder(products: Product[], handles: readonly string[]) {

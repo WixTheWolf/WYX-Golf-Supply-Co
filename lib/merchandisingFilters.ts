@@ -36,6 +36,7 @@ export const futureAssortmentHandles = new Set([
   ...apparelEditHandles,
   'classic-leather-edition-walnut-brown-midnight-black',
   'topographic-edition-pure-white-embroidered-carolina-blue',
+  'topographic-carolina-blue-driver-headcover',
   'evil-ape',
   'guerrilla-chief-driver-cover',
   'dude-abides-v2-mallet-putter-cover',
@@ -45,13 +46,15 @@ export const futureAssortmentHandles = new Set([
   'dartee-golf-glove',
   'park-paisley-womens-gold-golf-glove',
   'stick-grips-golf-camo-golf-grip',
+  'pulse-golf-overgrip-tape',
   'tri-fold-microfiber-golf-towel',
   'blue-ridge-golf-co-golf-towels',
   'magnet-caddie',
   'glove-accessory-caddie-black',
   'three-rail-ball-marker',
   'two-sided-metal-golf-ball-marker-5-color-combo-pack',
-  'bamboo-performance-golf-tees-50-pack'
+  'bamboo-performance-golf-tees-50-pack',
+  'volcanic-ash'
 ]);
 
 const homepageBlockedHandles = new Set(['park-paisley-womens-gold-golf-glove']);
@@ -103,6 +106,7 @@ export function firstBuyProducts(products: Product[]) {
     'pimento-waffle',
     'classic-leather-edition-walnut-brown-midnight-black',
     'topographic-edition-pure-white-embroidered-carolina-blue',
+    'topographic-carolina-blue-driver-headcover',
     'augusta-bear-hat',
     'evil-ape',
     'golf-or-die-game-set',
@@ -119,6 +123,7 @@ export function firstBuyProducts(products: Product[]) {
     'three-rail-ball-marker',
     'glove-accessory-caddie-black',
     'stick-grips-golf-camo-golf-grip',
+    'pulse-golf-overgrip-tape',
     'tri-fold-microfiber-golf-towel',
     'bamboo-performance-golf-tees-50-pack'
   ];

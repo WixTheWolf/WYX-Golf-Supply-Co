@@ -17,6 +17,7 @@ import { SeoJsonLd } from '@/components/SeoJsonLd';
 import { JudgeMeScripts } from '@/components/JudgeMe';
 import { TrackingScripts } from '@/components/TrackingScripts';
 import { RouteViewTracker } from '@/components/RouteViewTracker';
+import { TrustBar } from '@/components/TrustBar';
 import { supportEmail } from '@/lib/support';
 
 const sansFont = Manrope({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <Header />
           <main id="main-content">{children}</main>
+          <TrustBar compact />
           <footer className="site-footer">
             <div>
               <Link className="footer-brand" href="/">WYX <span>Golf Supply</span></Link>
@@ -75,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/golf-trip-gear">Trip Gear</Link>
             </nav>
             <nav aria-label="Company navigation">
+              <Link href="/about">About WYX</Link>
               <Link href="/the-bag-test">How WYX Picks</Link>
               <Link href="/golf-gifts">Gifts</Link>
               <Link href="/shipping-returns">Shipping & Returns</Link>
