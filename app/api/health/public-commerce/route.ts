@@ -91,6 +91,8 @@ export async function GET() {
     : { live: false, stage: 'configuration', error: 'missing_configuration', scopes: [] as string[] };
   const adminLive = adminConnection.live;
   const scopes = new Set(adminConnection.scopes);
+  const canWriteCustomerLeads = scopes.has('write_customers');
+  const canWriteMetaobjectLeads = scopes.has('write_metaobjects') && scopes.has('write_metaobject_definitions');
   const discount = adminLive ? await wyx10Status() : { readable: false, exists: null, active: null };
   const paidOrderWebhook = adminLive ? await paidWebhookStatus() : { readable: false, registered: null };
 
@@ -107,7 +109,9 @@ export async function GET() {
   const email = {
     klaviyoServer: present(['KLAVIYO_PRIVATE_API_KEY']) && present(['KLAVIYO_LIST_ID']),
     klaviyoOnsite: present(['NEXT_PUBLIC_KLAVIYO_PUBLIC_API_KEY']),
-    shopifyLeadCapture: adminLive && scopes.has('write_customers')
+    shopifyLeadCapture: adminLive && (canWriteCustomerLeads || canWriteMetaobjectLeads),
+    shopifyCustomerCapture: adminLive && canWriteCustomerLeads,
+    shopifyMetaobjectFallback: adminLive && canWriteMetaobjectLeads
   };
 
   return NextResponse.json({
@@ -124,7 +128,11 @@ export async function GET() {
         readCustomers: scopes.has('read_customers'),
         writeCustomers: scopes.has('write_customers'),
         readOrders: scopes.has('read_orders') || scopes.has('read_all_orders'),
-        writeWebhooks: scopes.has('write_webhooks')
+        writeWebhooks: scopes.has('write_webhooks'),
+        readMetaobjects: scopes.has('read_metaobjects'),
+        writeMetaobjects: scopes.has('write_metaobjects'),
+        readMetaobjectDefinitions: scopes.has('read_metaobject_definitions'),
+        writeMetaobjectDefinitions: scopes.has('write_metaobject_definitions')
       }
     },
     discount: { code: 'WYX10', ...discount },
