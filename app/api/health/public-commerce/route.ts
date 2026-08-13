@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { shopifyAdminFetch } from '@/lib/shopify/adminClient';
+import { getAdminAccessToken } from '@/lib/shopify/adminToken';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -10,14 +11,35 @@ function present(names: string[]) {
   return names.some((name) => Boolean(process.env[name]));
 }
 
-async function adminConnectionIsLive() {
+function classifyAdminError(error: unknown) {
+  const message = error instanceof Error ? error.message : String(error || '');
+  if (/shop_not_permitted/i.test(message)) return 'shop_not_permitted';
+  if (/invalid_client|client credentials|client_secret|client_id/i.test(message)) return 'client_credentials';
+  if (/401|unauthorized|access token/i.test(message)) return 'unauthorized';
+  if (/access scope|access denied|forbidden|403/i.test(message)) return 'scope_or_permission';
+  if (/token exchange/i.test(message)) return 'token_exchange';
+  if (/graphql/i.test(message)) return 'graphql';
+  return 'unknown';
+}
+
+async function adminConnectionStatus() {
   try {
-    const data = await shopifyAdminFetch<{ shop: { id: string } }>(`#graphql
-      query PublicCommerceAdminHealth { shop { id } }
+    await getAdminAccessToken();
+  } catch (error) {
+    return { live: false, stage: 'token_exchange', error: classifyAdminError(error), scopes: [] as string[] };
+  }
+
+  try {
+    const data = await shopifyAdminFetch<any>(`#graphql
+      query PublicCommerceAdminHealth {
+        shop { id }
+        currentAppInstallation { accessScopes { handle } }
+      }
     `);
-    return Boolean(data?.shop?.id);
-  } catch {
-    return false;
+    const scopes = (data?.currentAppInstallation?.accessScopes || []).map((scope: any) => String(scope?.handle || '')).filter(Boolean);
+    return { live: Boolean(data?.shop?.id), stage: 'graphql', error: null, scopes };
+  } catch (error) {
+    return { live: false, stage: 'graphql', error: classifyAdminError(error), scopes: [] as string[] };
   }
 }
 
@@ -64,7 +86,11 @@ export async function GET() {
   const adminDomain = present(['SHOPIFY_STORE_DOMAIN', 'NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN', 'SHOPIFY_SHOP_DOMAIN', 'SHOPIFY_DOMAIN']);
   const adminToken = present(['SHOPIFY_ADMIN_ACCESS_TOKEN', 'ADMIN_API_ACCESS_TOKEN', 'SHOPIFY_ACCESS_TOKEN']);
   const adminClientCredentials = present(['SHOPIFY_CLIENT_ID']) && present(['SHOPIFY_CLIENT_SECRET']);
-  const adminLive = adminDomain && (adminToken || adminClientCredentials) ? await adminConnectionIsLive() : false;
+  const adminConnection = adminDomain && (adminToken || adminClientCredentials)
+    ? await adminConnectionStatus()
+    : { live: false, stage: 'configuration', error: 'missing_configuration', scopes: [] as string[] };
+  const adminLive = adminConnection.live;
+  const scopes = new Set(adminConnection.scopes);
   const discount = adminLive ? await wyx10Status() : { readable: false, exists: null, active: null };
   const paidOrderWebhook = adminLive ? await paidWebhookStatus() : { readable: false, registered: null };
 
@@ -81,13 +107,26 @@ export async function GET() {
   const email = {
     klaviyoServer: present(['KLAVIYO_PRIVATE_API_KEY']) && present(['KLAVIYO_LIST_ID']),
     klaviyoOnsite: present(['NEXT_PUBLIC_KLAVIYO_PUBLIC_API_KEY']),
-    shopifyLeadCapture: adminLive
+    shopifyLeadCapture: adminLive && scopes.has('write_customers')
   };
 
   return NextResponse.json({
     ok: storefrontDomain && storefrontToken,
     storefront: { domain: storefrontDomain, token: storefrontToken },
-    admin: { domain: adminDomain, token: adminToken, clientCredentials: adminClientCredentials, live: adminLive },
+    admin: {
+      domain: adminDomain,
+      token: adminToken,
+      clientCredentials: adminClientCredentials,
+      live: adminLive,
+      stage: adminConnection.stage,
+      error: adminConnection.error,
+      capabilities: {
+        readCustomers: scopes.has('read_customers'),
+        writeCustomers: scopes.has('write_customers'),
+        readOrders: scopes.has('read_orders') || scopes.has('read_all_orders'),
+        writeWebhooks: scopes.has('write_webhooks')
+      }
+    },
     discount: { code: 'WYX10', ...discount },
     purchaseMeasurement: { shopifyPaidOrderWebhook: paidOrderWebhook },
     merchantFeed: { ready: true, path: '/google-merchant.xml' },
