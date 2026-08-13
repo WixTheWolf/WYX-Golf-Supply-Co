@@ -24,9 +24,9 @@ const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3f
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
   applicationName: 'WYX Golf Supply Co.',
-  title: { default: 'The Coolest Golf Gear, Apparel & Accessories | WYX', template: '%s | WYX Golf Supply Co.' },
-  description: 'An opinionated multi-brand golf shop for standout apparel, footwear, golf tech, bags, trip gear, gifts and accessories.',
-  keywords: ['golf apparel', 'golf polos', 'golf shorts', 'golf pants', 'golf shoes', 'golf tech', 'golf gadgets', 'golf bags', 'golf trip gear', 'golf gifts', 'golf accessories'],
+  title: { default: 'Premium Golf Apparel, Headcovers & Accessories | WYX', template: '%s | WYX Golf Supply Co.' },
+  description: 'A sharp multi-brand golf edit of apparel, headcovers, gloves, trip gear, gifts and accessories worth owning.',
+  keywords: ['golf apparel', 'golf headcovers', 'golf gloves', 'golf trip gear', 'golf gifts', 'golf accessories', 'premium golf gear'],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   openGraph: {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://wyxgolfsupply.com',
     title: 'WYX Golf Supply Co. | The Good Stuff in Golf.',
-    description: 'A sharp multi-brand edit of golf apparel, footwear, tech, bags, accessories and trip gear.',
+    description: 'A sharp multi-brand edit of golf apparel, headcovers, gloves, accessories and trip gear.',
     images: [{ url: golfEnvironmentImage, width: 1800, height: 1200, alt: 'Golf bag and cart on a golf course at sunset' }]
   },
   twitter: { card: 'summary_large_image', title: 'WYX Golf Supply Co. | The Good Stuff in Golf.', description: 'The golf products worth knowing about, in one place.', images: [golfEnvironmentImage] }
@@ -66,8 +66,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav aria-label="Shop navigation">
               <Link href="/products">Shop All</Link>
               <Link href="/apparel">Apparel</Link>
-              <Link href="/products?category=Golf%20Tech">Golf Tech</Link>
-              <Link href="/products?category=Bags">Bags</Link>
+              <Link href="/golf-headcovers">Headcovers</Link>
+              <Link href="/golf-gloves">Gloves</Link>
               <Link href="/products?category=Accessories">Accessories</Link>
               <Link href="/golf-trip-gear">Trip Gear</Link>
             </nav>
