@@ -3,6 +3,17 @@ import { getUserErrors, shopifyAdminFetch } from '@/lib/shopify/adminClient';
 
 export const dynamic = 'force-dynamic';
 
+const CUSTOMER_FIND = `#graphql
+query CustomerFind($query: String!) {
+  customers(first: 1, query: $query) {
+    nodes {
+      id
+      email
+      emailMarketingConsent { marketingState marketingOptInLevel consentUpdatedAt }
+    }
+  }
+}`;
+
 const CUSTOMER_CREATE = `#graphql
 mutation CustomerCreate($input: CustomerInput!) {
   customerCreate(input: $input) {
@@ -12,6 +23,26 @@ mutation CustomerCreate($input: CustomerInput!) {
       tags
       emailMarketingConsent { marketingState marketingOptInLevel consentUpdatedAt }
     }
+    userErrors { field message }
+  }
+}`;
+
+const CUSTOMER_CONSENT_UPDATE = `#graphql
+mutation CustomerConsentUpdate($input: CustomerEmailMarketingConsentUpdateInput!) {
+  customerEmailMarketingConsentUpdate(input: $input) {
+    customer {
+      id
+      email
+      emailMarketingConsent { marketingState marketingOptInLevel consentUpdatedAt }
+    }
+    userErrors { field message code }
+  }
+}`;
+
+const TAGS_ADD = `#graphql
+mutation CustomerTagsAdd($id: ID!, $tags: [String!]!) {
+  tagsAdd(id: $id, tags: $tags) {
+    node { id }
     userErrors { field message }
   }
 }`;
@@ -42,6 +73,15 @@ function clean(value: unknown) {
 
 function responseError(message: string, status = 400) {
   return NextResponse.json({ ok: false, error: message }, { status });
+}
+
+function exactEmailQuery(email: string) {
+  const escaped = email.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  return `email:"${escaped}"`;
+}
+
+function userErrorMessage(payload: Record<string, any>) {
+  return getUserErrors(payload).map((error: any) => error.message).filter(Boolean).join(', ');
 }
 
 async function subscribeToKlaviyo(email: string, source: string, campaign: string, now: string) {
@@ -93,6 +133,63 @@ async function subscribeToKlaviyo(email: string, source: string, campaign: strin
   return { ok: true, status: 'klaviyo_subscribed' };
 }
 
+async function findCustomer(email: string) {
+  const data = await shopifyAdminFetch<any>(CUSTOMER_FIND, { query: exactEmailQuery(email) });
+  return data?.customers?.nodes?.[0] || null;
+}
+
+async function updateCustomerConsent(customerId: string, tags: string[], now: string) {
+  const consentResult = await shopifyAdminFetch<any>(CUSTOMER_CONSENT_UPDATE, {
+    input: {
+      customerId,
+      emailMarketingConsent: {
+        marketingState: 'SUBSCRIBED',
+        marketingOptInLevel: 'SINGLE_OPT_IN',
+        consentUpdatedAt: now
+      }
+    }
+  });
+  const consentErrors = getUserErrors(consentResult);
+  if (consentErrors.length) throw new Error(consentErrors.map((error: any) => error.message).join(', '));
+
+  const tagsResult = await shopifyAdminFetch<any>(TAGS_ADD, { id: customerId, tags });
+  const tagErrors = getUserErrors(tagsResult);
+  if (tagErrors.length) throw new Error(tagErrors.map((error: any) => error.message).join(', '));
+}
+
+async function syncShopifySubscriber(email: string, source: string, campaign: string, now: string, tags: string[]) {
+  let customer = await findCustomer(email);
+  if (customer?.id) {
+    await updateCustomerConsent(customer.id, tags, now);
+    return { ok: true, status: 'shopify_updated' };
+  }
+
+  const input = {
+    email,
+    tags,
+    emailMarketingConsent: {
+      marketingState: 'SUBSCRIBED',
+      marketingOptInLevel: 'SINGLE_OPT_IN',
+      consentUpdatedAt: now
+    },
+    note: `Subscribed through WYX storefront. Source: ${source}. Campaign: ${campaign}.`
+  };
+
+  const result = await shopifyAdminFetch<any>(CUSTOMER_CREATE, { input });
+  const errors = getUserErrors(result);
+  if (!errors.length && result?.customerCreate?.customer?.id) return { ok: true, status: 'shopify_created' };
+
+  const message = errors.map((error: any) => error.message).join(', ');
+  if (/already|taken|exists/i.test(message)) {
+    customer = await findCustomer(email);
+    if (customer?.id) {
+      await updateCustomerConsent(customer.id, tags, now);
+      return { ok: true, status: 'shopify_updated_after_race' };
+    }
+  }
+  throw new Error(message || 'Shopify customer subscription failed.');
+}
+
 async function ensureLeadDefinition() {
   const result = await shopifyAdminFetch<any>(LEAD_DEFINITION_CREATE, {
     definition: {
@@ -131,6 +228,7 @@ async function createLeadMetaobject(email: string, source: string, campaign: str
   });
   const errors = getUserErrors(result);
   if (errors.length) throw new Error(errors.map((error: any) => error.message).join(', '));
+  return { ok: true, status: 'lead_saved' };
 }
 
 export async function POST(request: Request) {
@@ -145,38 +243,23 @@ export async function POST(request: Request) {
   const now = new Date().toISOString();
   const tags = Array.from(new Set(['wyx-email-subscriber', `wyx-source:${source}`, `wyx-campaign:${campaign}`]));
 
+  const klaviyo = await subscribeToKlaviyo(email, source, campaign, now)
+    .catch((error) => ({ ok: false, error: error instanceof Error ? error.message : 'Klaviyo failed' }));
+
   try {
-    const klaviyo = await subscribeToKlaviyo(email, source, campaign, now).catch((error) => ({ ok: false, error: error instanceof Error ? error.message : 'Klaviyo failed' }));
-    const input = {
-      email,
-      tags,
-      emailMarketingConsent: {
-        marketingState: 'SUBSCRIBED',
-        marketingOptInLevel: 'SINGLE_OPT_IN',
-        consentUpdatedAt: now
-      },
-      note: `Subscribed through WYX storefront. Source: ${source}. Campaign: ${campaign}.`
-    };
-
-    const result = await shopifyAdminFetch<any>(CUSTOMER_CREATE, { input });
-    const errors = getUserErrors(result);
-    if (errors.length) {
-      const message = errors.map((error: any) => error.message).join(', ');
-      if (/already|taken|exists/i.test(message)) return NextResponse.json({ ok: true, status: 'existing', klaviyo });
-      return responseError(message);
+    const shopify = await syncShopifySubscriber(email, source, campaign, now, tags);
+    return NextResponse.json({ ok: true, status: shopify.status, shopify, klaviyo });
+  } catch (shopifyError) {
+    try {
+      const fallback = await createLeadMetaobject(email, source, campaign, now);
+      return NextResponse.json({ ok: true, status: fallback.status, shopify: { ok: false }, klaviyo });
+    } catch (fallbackError) {
+      if (klaviyo?.ok) return NextResponse.json({ ok: true, status: 'klaviyo_only', klaviyo });
+      console.error('[WYX marketing subscribe] Persistence failed', {
+        shopify: shopifyError instanceof Error ? shopifyError.message : 'unknown',
+        fallback: fallbackError instanceof Error ? fallbackError.message : 'unknown'
+      });
+      return responseError('Email signup is temporarily unavailable. Please try again shortly.', 503);
     }
-
-    return NextResponse.json({ ok: true, status: 'created', klaviyo });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Subscription failed.';
-    if (/write_customers|customerCreate/i.test(message)) {
-      try {
-        await createLeadMetaobject(email, source, campaign, now);
-        return NextResponse.json({ ok: true, status: 'lead_saved' });
-      } catch (fallbackError) {
-        return responseError(fallbackError instanceof Error ? fallbackError.message : 'Lead save failed.', 500);
-      }
-    }
-    return responseError(error instanceof Error ? error.message : 'Subscription failed.', 500);
   }
 }
