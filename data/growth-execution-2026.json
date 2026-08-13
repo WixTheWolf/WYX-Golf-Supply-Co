@@ -1,0 +1,68 @@
+{
+  "updatedAt": "2026-08-13T11:16:00-07:00",
+  "objective": "Turn WYX from a polished storefront into a measured ecommerce operation without bloating the catalog.",
+  "catalogPolicy": {
+    "mode": "one_in_one_out",
+    "rule": "Do not increase the core public SKU count when approving ordinary third-party products. Every new ordinary product should replace a weaker current product or fill a currently empty strategic department with a deliberate corresponding demotion.",
+    "exceptions": [
+      "A genuinely differentiated WYX-exclusive or private-label product",
+      "A category-defining product that fills an empty strategic department such as footwear, bags or golf tech"
+    ],
+    "firstReplacementTargets": [
+      "Stick Grips Golf Camo Golf Grip",
+      "Tri-Fold Microfiber Golf Towel",
+      "Bamboo Performance Golf Tees - 50 Pack",
+      "Hello Friends T-Shirt",
+      "excess Dartee belt prominence"
+    ]
+  },
+  "supplierPriority": [
+    {
+      "brand": "Grooveit",
+      "rank": 1,
+      "reason": "Official wholesale program explicitly welcomes online golf retailers and publishes wholesale case options.",
+      "plannedSwap": "Grooveit Wet Club Scrub replaces the weak club-care/grip hero position once retailer terms and fulfillment are verified."
+    },
+    {
+      "brand": "Sunday Golf",
+      "rank": 2,
+      "reason": "Official wholesale program has a six-unit MOQ and provides a credible premium bag anchor.",
+      "plannedSwap": "Ryder becomes the first premium bag anchor while a weak accessory loses primary merchandising prominence."
+    },
+    {
+      "brand": "TRUE linkswear",
+      "rank": 3,
+      "reason": "Fills the empty footwear department with a recognized independent golf brand."
+    },
+    {
+      "brand": "Holderness & Bourne",
+      "rank": 4,
+      "reason": "Would materially improve apparel quality, but wholesale terms restrict some paid digital promotion and therefore need careful review before activation."
+    },
+    {
+      "brand": "Blue Tees Golf",
+      "rank": 5,
+      "reason": "Fills golf tech but requires explicit authorized online resale, MAP and warranty terms."
+    },
+    {
+      "brand": "KENTWOOL",
+      "rank": 6,
+      "reason": "Strong premium supporting apparel item but less category-defining than the first five opportunities."
+    }
+  ],
+  "measurement": {
+    "internalAttribution": "First-touch UTM/ref attribution is persisted per browser session and attached to WYX funnel events.",
+    "metaPixel": "live",
+    "shopifyPaidOrderWebhook": "registered",
+    "ga4": "account_setup_required",
+    "klaviyo": "account_setup_required",
+    "merchantCenter": "account_setup_required",
+    "merchantFeed": "https://wyxgolfsupply.com/google-merchant.xml"
+  },
+  "campaignLinks": {
+    "friends_text": "https://wyxgolfsupply.com/go?source=personal&medium=text&campaign=soft-launch&content=bag-kit&ref=soft-launch-text",
+    "instagram_bio": "https://wyxgolfsupply.com/go?source=instagram&medium=organic-social&campaign=soft-launch&content=bio&ref=instagram-bio",
+    "golf_group": "https://wyxgolfsupply.com/go?source=golf-group&medium=community&campaign=soft-launch&content=bag-kit&ref=golf-group",
+    "shop_general": "https://wyxgolfsupply.com/go?to=shop&source=organic&medium=share&campaign=soft-launch&content=shop-all&ref=shop-share"
+  }
+}
