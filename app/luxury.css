@@ -12,6 +12,8 @@
     --wyx-oat: #ded5c4;
     --wyx-brass: #b7a65a;
     --wyx-acid: #d9e36b;
+    --wyx-page-gutter: clamp(20px, 4vw, 64px);
+    --wyx-section-y: clamp(80px, calc(60px + 4.5vw), 144px);
     --wyx-ease-out: cubic-bezier(.22, 1, .36, 1);
     --wyx-ease-in-out: cubic-bezier(.76, 0, .24, 1);
   }
@@ -26,7 +28,7 @@
   }
 
   ::selection { background: var(--wyx-acid); color: var(--wyx-ink); }
-  :focus-visible { outline: 2px solid var(--wyx-acid); outline-offset: 4px; }
+  :focus-visible { outline: 2px solid var(--wyx-acid); outline-offset: 3px; box-shadow: 0 0 0 5px var(--wyx-ink); }
 }
 
 @layer components {
@@ -59,8 +61,8 @@
   .lux-button-dark { @apply inline-flex min-h-12 items-center justify-center gap-3 border border-transparent bg-forest px-6 text-[11px] font-extrabold uppercase tracking-label text-paper no-underline transition-all duration-300 ease-editorial hover:-translate-y-0.5 hover:bg-ink hover:shadow-lift disabled:cursor-not-allowed disabled:opacity-50; }
   .lux-button-outline { @apply inline-flex min-h-12 items-center justify-center gap-3 border border-current bg-transparent px-6 text-[11px] font-extrabold uppercase tracking-label no-underline transition-all duration-300 ease-editorial hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-50; }
 
-  .lux-page-pad { @apply px-5 sm:px-8 lg:px-12 2xl:px-16; }
-  .lux-section { @apply lux-page-pad mx-auto max-w-editorial py-20 sm:py-28 lg:py-36; }
+  .lux-page-pad { padding-inline: var(--wyx-page-gutter); }
+  .lux-section { width: min(100%, 1440px); margin-inline: auto; padding: var(--wyx-section-y) var(--wyx-page-gutter); }
 
   .lux-skeleton {
     @apply animate-pulse bg-oat/70;
@@ -109,9 +111,9 @@
 .lux-header__nav a { position: relative; }
 .lux-header__nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -9px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .3s var(--wyx-ease-out); }
 .lux-header__nav a:hover::after, .lux-header__nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
-.lux-header__bag { display: flex; gap: 10px; align-items: center; cursor: pointer; }
+.lux-header__bag { min-height: 44px; display: flex; gap: 10px; align-items: center; cursor: pointer; }
 .lux-header__bag span { display: grid; place-items: center; min-width: 27px; height: 27px; border: 1px solid currentColor; border-radius: 50%; font-size: 8px; }
-.lux-header__menu { display: none; border: 0; background: transparent; padding: 4px; color: var(--wyx-ink); }
+.lux-header__menu { min-width: 44px; min-height: 44px; display: none; place-items: center; border: 0; background: transparent; padding: 4px; color: var(--wyx-ink); }
 
 .lux-menu { position: fixed; inset: 0; z-index: 100; display: grid; grid-template-columns: minmax(280px, 520px) 1fr; }
 .lux-menu__backdrop { grid-column: 2; grid-row: 1; border: 0; background: rgba(10, 17, 13, .64); backdrop-filter: blur(4px); }
@@ -419,7 +421,7 @@
 @media (max-width: 900px) {
   .lux-header { min-height: 64px; grid-template-columns: 32px 1fr auto; gap: 14px; }
   .lux-header__nav { display: none; }
-  .lux-header__menu { display: block; cursor: pointer; }
+  .lux-header__menu { display: grid; cursor: pointer; }
   .lux-brand { justify-self: center; }
   .lux-announcement span:nth-of-type(2), .lux-announcement i:nth-of-type(2) { display: none; }
   .lux-footer { grid-template-columns: 1.3fr 1fr; }
@@ -460,6 +462,12 @@
   .lux-secondary .care-step-grid, .lux-standard .care-step-grid { grid-template-columns: 1fr 1fr; }
 }
 
+@media (max-width: 650px) {
+  /* The legacy storefront reserved this space on every route. The sticky PDP
+     purchase bar already owns its own safe spacing. */
+  body { padding-bottom: 0; }
+}
+
 @media (max-width: 560px) {
   .lux-announcement { gap: 8px; font-size: 8px; letter-spacing: .1em; }
   .lux-announcement span:first-child, .lux-announcement i:first-of-type { display: none; }
@@ -471,16 +479,19 @@
   .lux-menu { grid-template-columns: 1fr; }
   .lux-menu__backdrop { display: none; }
   .lux-hero__inset { top: 5%; left: auto; right: 18px; width: 42vw; border-width: 1px; }
-  .lux-hero__copy { bottom: 38px; }
+  .lux-hero__copy { left: 20px; bottom: max(32px, env(safe-area-inset-bottom)); max-width: calc(100% - 40px); }
   .lux-hero__copy > p { font-size: 8px; }
+  .lux-hero__copy h1 { font-size: clamp(48px, 15vw, 68px); line-height: .84; }
   .lux-hero__lede { display: none; }
-  .lux-hero__actions { margin-top: 22px; }
-  .lux-product-card__quick { opacity: 1; transform: none; min-height: 42px; }
+  .lux-hero__actions { flex-wrap: wrap; gap: 14px 22px; margin-top: 22px; }
+  .lux-product-card__quick { opacity: 1; transform: none; min-height: 44px; }
   .lux-proof p { min-height: 90px; padding: 20px 16px; }
   .lux-current__head, .lux-journal__head { grid-template-columns: 1fr; align-items: start; }
+  .lux-current__head h2, .lux-journal__head h2 { font-size: clamp(48px, 16vw, 72px); }
   .lux-current__head > div:last-child, .lux-journal__head > p { justify-self: start; }
   .lux-current__grid { grid-template-columns: 1fr; gap: 54px; }
   .lux-manifesto__copy { padding-inline: 24px; }
+  .lux-manifesto__copy h2, .lux-radar__title h2, .lux-home > .email-capture h2 { font-size: clamp(54px, 17vw, 78px); }
   .lux-manifesto__copy > div { align-items: flex-start; flex-direction: column; }
   .lux-radar__list > div { grid-template-columns: 27px 1fr auto; gap: 10px; padding-inline: 20px; }
   .lux-radar__list p { display: none; }
@@ -488,6 +499,7 @@
   .lux-home > .email-capture { padding-inline: 24px; }
   .lux-home > .email-capture form { grid-template-columns: 1fr; }
   .lux-home > .email-capture .button { margin-top: 12px; }
+  .lux-shop-hero h1 { font-size: clamp(60px, 19vw, 86px); }
   .lux-filter { top: 64px; padding-inline: 18px; }
   .lux-filter a { min-height: 56px; }
   .lux-shop-grid__products { grid-template-columns: 1fr; gap: 55px; }
@@ -505,6 +517,8 @@
   .lux-secondary .page-hero, .lux-standard .collection-hero { padding-inline: 22px; }
   .lux-secondary .page-hero .actions, .lux-standard .collection-hero .actions { align-items: stretch; flex-direction: column; }
   .lux-secondary .care-step-grid, .lux-standard .care-step-grid { grid-template-columns: 1fr; }
+  .lux-footer nav a { min-height: 44px; display: flex; align-items: center; }
+  .mobile-sticky-atc { padding-bottom: max(.7rem, env(safe-area-inset-bottom)); }
 }
 
 /* Keep navigation continuity quiet and fast. */
