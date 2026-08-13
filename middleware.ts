@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { indexableJournalSlugs } from '@/lib/indexableJournal';
 
 const CORE_INDEXABLE_PATHS = new Set([
   '/',
@@ -17,8 +18,11 @@ const CORE_INDEXABLE_PATHS = new Set([
   '/faq',
   '/shipping-returns',
   '/contact',
-  '/privacy'
+  '/privacy',
+  '/journal'
 ]);
+
+const INDEXABLE_JOURNAL_PATHS = new Set(indexableJournalSlugs.map((slug) => `/journal/${slug}`));
 
 const INDEXABLE_KITS = new Set([
   '/kits/golf-trip-kit',
@@ -36,6 +40,7 @@ const PERMANENT_REDIRECTS = new Map([
 function shouldIndex(pathname: string) {
   if (CORE_INDEXABLE_PATHS.has(pathname)) return true;
   if (INDEXABLE_KITS.has(pathname)) return true;
+  if (INDEXABLE_JOURNAL_PATHS.has(pathname)) return true;
   if (pathname.startsWith('/products/')) return true;
   if (pathname.startsWith('/collections/')) return true;
   return false;

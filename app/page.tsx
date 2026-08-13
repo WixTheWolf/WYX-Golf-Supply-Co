@@ -9,6 +9,7 @@ import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters'
 import { premiumTargets } from '@/lib/premiumTargets';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
+import { featuredPosts } from '@/lib/featuredJournal';
 import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
@@ -181,6 +182,29 @@ export default async function Home() {
           <Link className="button primary" href="/about">READ THE WYX STORY</Link>
           <Link className="button secondary dark" href="/the-bag-test">SEE THE WYX STANDARD</Link>
         </div>
+      </section>
+
+      <section className="section reveal" aria-labelledby="field-notes-heading">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">THE EDIT / FIELD NOTES</p>
+            <h2 id="field-notes-heading">BUY LESS. CHOOSE BETTER.</h2>
+          </div>
+          <p>Independent buying guides, packing lists, and bag-care notes written to help golfers make a better choice—not to manufacture another reason to shop.</p>
+        </div>
+        <div className="journal-grid">
+          {featuredPosts.slice(0, 3).map((post) => (
+            <article className="journal-card" key={post.slug}>
+              <Image src={post.image} alt={post.title} width={900} height={675} sizes="(max-width: 900px) 100vw, 33vw" />
+              <div>
+                <h3>{post.title}</h3>
+                <p>{post.description}</p>
+                <Link className="text-link" href={`/journal/${post.slug}`}>READ THE GUIDE →</Link>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="wyx-section-link"><Link className="text-link" href="/journal">EXPLORE THE EDIT →</Link></div>
       </section>
 
       <section className="wyx-radar" id="wyx-radar">

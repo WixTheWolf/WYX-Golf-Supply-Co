@@ -3,6 +3,7 @@ import { availableProducts } from '@/lib/catalog';
 import { landingCollections } from '@/lib/collections';
 import { coreMerchProducts } from '@/lib/merchandisingFilters';
 import { getProducts } from '@/lib/shopify/products';
+import { indexableJournalSlugs } from '@/lib/indexableJournal';
 
 const evergreenPages = [
   '',
@@ -22,7 +23,8 @@ const evergreenPages = [
   '/faq',
   '/shipping-returns',
   '/contact',
-  '/privacy'
+  '/privacy',
+  '/journal'
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -31,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = [
     ...evergreenPages,
     ...landingCollections.map((collection) => `/collections/${collection.slug}`),
+    ...indexableJournalSlugs.map((slug) => `/journal/${slug}`),
     ...products.map((product) => `/products/${product.handle}`)
   ];
 
