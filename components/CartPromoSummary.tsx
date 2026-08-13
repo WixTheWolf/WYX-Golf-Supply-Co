@@ -7,7 +7,7 @@ export function CartPromoSummary({ cart }: { cart: Cart | null }) {
   const promo = cartPromoState(cart);
 
   if (!cart?.lines.length) {
-    return <p className="promo-note">First order? Use <strong>{promo.code}</strong> for the advertised 10% offer.</p>;
+    return <p className="promo-note">New to WYX? Try <strong>{promo.code}</strong> for 10% off your first order.</p>;
   }
 
   if (promo.applied && promo.savings > 0) {
@@ -19,8 +19,8 @@ export function CartPromoSummary({ cart }: { cart: Cart | null }) {
   }
 
   if (promo.applied) {
-    return <p className="promo-note promo-applied"><strong>{promo.code} applied</strong> — Shopify will confirm the final discount at checkout.</p>;
+    return <p className="promo-note promo-applied"><strong>{promo.code} applied.</strong></p>;
   }
 
-  return <p className="promo-note"><strong>{promo.code}</strong> was not applied automatically. Enter it at checkout if this is your first order.</p>;
+  return <p className="promo-note">New to WYX? Enter <strong>{promo.code}</strong> at checkout for 10% off your first order.</p>;
 }
