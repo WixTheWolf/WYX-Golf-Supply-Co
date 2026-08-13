@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
 import { EmailCapture } from '@/components/EmailCapture';
+import { TrustBar } from '@/components/TrustBar';
 import { availableProducts, categoryFor } from '@/lib/catalog';
 import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { premiumTargets } from '@/lib/premiumTargets';
@@ -122,6 +123,8 @@ export default async function Home() {
         </div>
       </section>
 
+      <TrustBar />
+
       <section className="wyx-marquee" aria-label="WYX departments">
         <span>APPAREL</span><i>✦</i><span>FOOTWEAR</span><i>✦</i><span>GOLF TECH</span><i>✦</i><span>BAGS</span><i>✦</i><span>ACCESSORIES</span><i>✦</i><span>TRIP GEAR</span>
       </section>
@@ -158,6 +161,25 @@ export default async function Home() {
               <div className="wyx-department-copy"><strong>{department.label}</strong><h3>{department.title}</h3><span>EXPLORE →</span></div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="section reveal" aria-labelledby="curator-heading">
+        <div className="section-heading split">
+          <div>
+            <p className="eyebrow">FROM THE CURATOR</p>
+            <h2 id="curator-heading">THE SHOP IS SMALL ON PURPOSE.</h2>
+          </div>
+          <p>WYX is an independent golf shop with one editorial point of view. A product earns the shelf only when the listing is clear, the inventory is live, the media is honest, and the piece adds something useful or genuinely good-looking to the game.</p>
+        </div>
+        <div className="care-step-grid">
+          <div className="care-step-card"><strong>Current Inventory</strong><p>Product options come from Shopify. Sold-out variants are disabled before checkout.</p></div>
+          <div className="care-step-card"><strong>Clear Buying Guidance</strong><p>Why WYX picked it, fit or compatibility notes, and the details that matter before it reaches the bag.</p></div>
+          <div className="care-step-card"><strong>Real Support</strong><p>Shipping estimates appear before payment, and WYX support handles damaged, incorrect, and return questions directly.</p></div>
+        </div>
+        <div className="actions" style={{ marginTop: '1.5rem' }}>
+          <Link className="button primary" href="/about">READ THE WYX STORY</Link>
+          <Link className="button secondary dark" href="/the-bag-test">SEE THE WYX STANDARD</Link>
         </div>
       </section>
 
