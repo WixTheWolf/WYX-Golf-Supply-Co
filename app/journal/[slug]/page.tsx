@@ -1,10 +1,11 @@
 import type {Metadata} from 'next';import Image from 'next/image';import Link from 'next/link';import {notFound} from 'next/navigation';import {getPost,allPosts as posts} from '@/lib/journal';
-export function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}export async function generateMetadata({params}:{params:{slug:string}}):Promise<Metadata>{const p=getPost(params.slug);if(!p)return{title:'Journal'};
+export function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const p=getPost(slug);if(!p)return{title:'Journal'};
 return{title:p.seo,description:p.description,alternates:{canonical:`/journal/${p.slug}`},openGraph:{title:p.seo,description:p.description,url:`/journal/${p.slug}`,images:[p.image]}}}
 const siteUrl = 'https://wyxgolfsupply.com';
 
-export default function Article({params}:{params:{slug:string}}){
-  const p = getPost(params.slug);
+export default async function Article({params}:{params:Promise<{slug:string}>}){
+  const {slug}=await params;
+  const p = getPost(slug);
   if(!p) notFound();
   const publication = p as typeof p & {datePublished?: string; dateModified?: string};
   const jsonLd = {

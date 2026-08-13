@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { EmailCapture } from '@/components/EmailCapture';
@@ -10,6 +9,7 @@ import { MobileProductStickyBar } from '@/components/MobileProductStickyBar';
 import { ProductPriceDisplay } from '@/components/ProductPriceDisplay';
 import { ProductPurchaseControls } from '@/components/ProductPurchaseControls';
 import { ProductViewTracker } from '@/components/ProductViewTracker';
+import { ProductGallery } from '@/components/ProductGallery';
 import { JudgeMeProductReviews } from '@/components/JudgeMe';
 import { TrustBar } from '@/components/TrustBar';
 import { SizingGuidePanel } from '@/components/SizingGuidePanel';
@@ -30,8 +30,9 @@ import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
 
-export async function generateMetadata({ params }: { params: { handle: string } }): Promise<Metadata> {
-  const product = await getProduct(params.handle);
+export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }): Promise<Metadata> {
+  const { handle } = await params;
+  const product = await getProduct(handle);
   if (!product) return { title: 'Product' };
   const description = productBuyerPromise(product);
   return {
@@ -70,9 +71,11 @@ function complementaryScore(sourceCategory: string, item: Product) {
   return categoryScore + productQualityScore(item);
 }
 
-export default async function ProductPage({ params }: { params: { handle: string } }) {
-  const product = await getProduct(params.handle);
-  if (!product || !product.availableForSale || !hasSaleReadyMedia(product) || isHiddenFromCoreStorefront(product) || hasKnownImageMismatch(product)) notFound();
+export default async function ProductPage({ params }: { params: Promise<{ handle: string }> }) {
+  const { handle } = await params;
+  const product = await getProduct(handle);
+  const isDemo = product?.id.startsWith('demo-');
+  if (!product || !product.availableForSale || (!isDemo && !hasSaleReadyMedia(product)) || isHiddenFromCoreStorefront(product) || hasKnownImageMismatch(product)) notFound();
 
   const productCategory = categoryFor(product);
   const allProducts = coreMerchProducts(availableProducts(await getProducts()));
@@ -162,15 +165,10 @@ export default async function ProductPage({ params }: { params: { handle: string
         <span>{title}</span>
       </nav>
 
-      <section className="product-detail">
-        <div className="gallery">
-          {images.map((image, index) => (
-            <Image key={image.url} className={index === 0 ? 'gallery-main' : ''} src={image.url} alt={cleanText(image.altText) || title} width={1200} height={900} priority={index === 0} />
-          ))}
-          {!images.length && <div className="image-placeholder gallery-main">Product image coming soon</div>}
-        </div>
+      <section className="product-detail lux-pdp">
+        <ProductGallery images={images} title={title} />
 
-        <div className="purchase-panel">
+        <div className="purchase-panel lux-pdp__panel">
           <p className="eyebrow">{brand} / {productCategory}</p>
           <ProductBadge product={product} />
           <h1>{title}</h1>
@@ -220,10 +218,10 @@ export default async function ProductPage({ params }: { params: { handle: string
       <MobileProductStickyBar title={title} variants={product.variants} />
 
       {related.length > 0 && (
-        <section className="section">
+        <section className="section lux-related">
           <p className="eyebrow">PAIR IT WITH</p>
           <h2>BUILD THE BAG AROUND IT.</h2>
-          <div className="product-grid">{related.map((item) => <ProductCard key={item.id} product={item} />)}</div>
+          <div className="lux-related__grid">{related.map((item, index) => <ProductCard key={item.id} product={item} index={index} />)}</div>
         </section>
       )}
 

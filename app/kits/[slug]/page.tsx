@@ -18,8 +18,9 @@ export function generateStaticParams() {
   return kitDefinitions.map((kit) => ({ slug: kit.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const kit = kitBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const kit = kitBySlug(slug);
   if (!kit) return { title: 'Kit' };
   return {
     title: `${kit.title} | WYX Golf Supply Co.`,
@@ -29,8 +30,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function KitPage({ params }: { params: { slug: string } }) {
-  const kit = kitBySlug(params.slug);
+export default async function KitPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const kit = kitBySlug(slug);
   if (!kit) notFound();
   const catalog = sortByQuality(coreMerchProducts(availableProducts(await getProducts())));
   const products = kitProducts(catalog, kit, 4);

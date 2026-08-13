@@ -1,28 +1,26 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ProductCard } from '@/components/ProductCard';
+import { ArrowLink } from '@/components/ArrowLink';
+import { EditorialHero } from '@/components/EditorialHero';
+import { EditorialStory, type StoryItem } from '@/components/EditorialStory';
 import { EmailCapture } from '@/components/EmailCapture';
-import { TrustBar } from '@/components/TrustBar';
-import { availableProducts, categoryFor } from '@/lib/catalog';
+import { ProductCard } from '@/components/ProductCard';
+import { Reveal } from '@/components/Reveal';
+import { availableProducts } from '@/lib/catalog';
+import { featuredPosts } from '@/lib/featuredJournal';
 import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { premiumTargets } from '@/lib/premiumTargets';
 import { sortByQuality } from '@/lib/productQuality';
 import { getProducts } from '@/lib/shopify/products';
-import { featuredPosts } from '@/lib/featuredJournal';
 import type { Product } from '@/types/shopify';
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'The Coolest Golf Gear, Apparel & Accessories | WYX Golf Supply Co.',
-  description: 'WYX Golf Supply Co. is an opinionated golf shop for standout apparel, footwear, tech, bags, trip gear and accessories.',
+  title: 'Golf’s Best Stuff. One Place. | WYX Golf Supply Co.',
+  description: 'A sharp independent edit of premium golf apparel, headcovers, gloves, trip gear and accessories that earn their place.',
   alternates: { canonical: '/' },
-  openGraph: {
-    title: 'WYX Golf Supply Co. | The Good Stuff in Golf.',
-    description: 'A sharp multi-brand edit of golf apparel, tech, bags, accessories and trip gear.',
-    url: 'https://wyxgolfsupply.com'
-  }
 };
 
 function find(products: Product[], handle: string) {
@@ -36,210 +34,99 @@ function imageFor(product: Product | undefined, index = 0) {
 export default async function Home() {
   const available = availableProducts(await getProducts());
   const core = sortByQuality(coreMerchProducts(available));
-  const heroProducts = firstBuyProducts(core).slice(0, 12);
-  const pimento = find(available, 'pimento-waffle');
-  const hat = find(available, 'augusta-bear-hat');
-  const headcover = find(available, 'topographic-edition-pure-white-embroidered-carolina-blue') || find(available, 'evil-ape');
-  const game = find(available, 'golf-or-die-game-set');
-  const towel = find(available, 'blue-ridge-golf-co-golf-towels');
-  const glove = find(available, 'dartee-golf-glove');
+  const preferred = firstBuyProducts(core);
+  const products = (preferred.length ? preferred : core).slice(0, 12);
+  const livePimento = find(available, 'pimento-waffle');
+  const liveHat = find(available, 'augusta-bear-hat');
+  const pimento = livePimento || find(available, 'long-game-rope-hat') || products[0];
+  const hat = liveHat || products[1];
+  const headcover = find(available, 'topographic-edition-pure-white-embroidered-carolina-blue') || products[2];
+  const game = find(available, 'golf-or-die-game-set') || products[3];
+  const towel = find(available, 'blue-ridge-golf-co-golf-towels') || products[4];
+  const glove = find(available, 'dartee-golf-glove') || products[5];
 
-  const heroMain = imageFor(pimento, 1) || imageFor(pimento, 0);
-  const heroAlt = imageFor(hat, 0) || imageFor(headcover, 0);
-  const heroThird = imageFor(headcover, 0) || imageFor(game, 0);
+  const heroMain = livePimento
+    ? imageFor(livePimento, 1) || imageFor(livePimento)
+    : '/images/boys-weekend-hero.png';
+  const heroInset = liveHat
+    ? imageFor(liveHat)
+    : '/images/rope-hat-product.png';
+  const storyProducts = [pimento, headcover, glove, towel].filter((product): product is Product => Boolean(product));
+  const stories: StoryItem[] = storyProducts.map((product, index) => ({
+    number: String(index + 1).padStart(2, '0'),
+    kicker: ['Material first', 'Bag presence', 'Feel matters', 'Useful by design'][index] || 'WYX selected',
+    title: product.title,
+    body: [
+      'A texture-rich layer that looks considered without looking overworked. It moves easily from the first tee to whatever happens after eighteen.',
+      'The small details carry the whole thing: clean embroidery, a better palette, and just enough personality to make the bag feel like yours.',
+      'Equipment you touch on every shot should feel right. This one clears the bar for grip, construction, and visual restraint.',
+      'An everyday course essential, rebuilt with better material, a sharper point of view, and no unnecessary noise.',
+    ][index],
+    href: `/products/${product.handle}`,
+    image: imageFor(product, index === 0 ? 1 : 0) || imageFor(product) || heroMain || '',
+  })).filter((item) => Boolean(item.image));
 
-  const apparel = core.filter((product) => categoryFor(product) === 'Apparel').slice(0, 6);
-  const bagAndAccessories = core.filter((product) => ['Accessories', 'Towels', 'Grips', 'Gloves', 'Headwear'].includes(categoryFor(product))).slice(0, 8);
-
-  const departments = [
-    {
-      number: '01',
-      label: 'APPAREL',
-      title: 'Polos, layers, bottoms & the stuff you wear after.',
-      href: '/apparel',
-      image: imageFor(pimento, 0),
-      status: `${apparel.length || 'NEW'} LIVE PICKS`
-    },
-    {
-      number: '02',
-      label: 'FOOTWEAR',
-      title: 'Golf shoes worth walking 36 holes in.',
-      href: '#wyx-radar',
-      image: heroAlt,
-      status: 'COMING NEXT'
-    },
-    {
-      number: '03',
-      label: 'TECH',
-      title: 'Rangefinders, GPS, launch monitors & smart golf toys.',
-      href: '#wyx-radar',
-      image: imageFor(game, 0) || heroThird,
-      status: 'COMING NEXT'
-    },
-    {
-      number: '04',
-      label: 'BAGS + TRIP',
-      title: 'Better carry bags, travel gear and weekend essentials.',
-      href: '/golf-trip-gear',
-      image: imageFor(towel, 0) || heroThird,
-      status: 'THE EDIT IS GROWING'
-    },
-    {
-      number: '05',
-      label: 'ACCESSORIES',
-      title: 'The small things people ask about when they see your bag.',
-      href: '/products?category=Accessories',
-      image: heroThird,
-      status: `${bagAndAccessories.length} LIVE PICKS`
-    },
-    {
-      number: '06',
-      label: 'GIFTS',
-      title: 'Golf gifts worth giving to somebody who actually plays.',
-      href: '/golf-gifts',
-      image: imageFor(glove, 0) || imageFor(hat, 0),
-      status: 'WYX PICKS'
-    }
-  ];
+  if (!heroMain || !heroInset || !pimento) return null;
 
   return (
-    <div className="wyx-storefront">
-      <section className="wyx-mega-hero">
-        <div className="wyx-mega-copy">
-          <p className="eyebrow">WYX GOLF SUPPLY CO. / THE EDIT</p>
-          <h1>GOLF&apos;S BEST STUFF.<br />ONE PLACE.</h1>
-          <p className="wyx-mega-lede">Polos worth wearing. Shoes worth walking in. Tech that earns space in the bag. Accessories you actually want to show off. WYX cuts through the noise and keeps the golf products worth knowing about.</p>
-          <div className="actions">
-            <Link className="button primary" href="/products">SHOP THE LIVE EDIT</Link>
-            <Link className="button secondary" href="/apparel">SHOP APPAREL</Link>
-          </div>
-          <div className="wyx-mega-proof">
-            <span>PREMIUM BRANDS</span><span>INDEPENDENT PICKS</span><span>BETTER GOLF GEAR</span><span>NO FILLER</span>
-          </div>
-        </div>
-        <div className="wyx-mega-images" aria-label="WYX product edit">
-          {heroMain && <div className="wyx-shot wyx-shot-main"><Image src={heroMain} alt="WYX apparel selection" fill priority sizes="(max-width: 900px) 100vw, 48vw" /></div>}
-          {heroAlt && <div className="wyx-shot wyx-shot-small"><Image src={heroAlt} alt="WYX golf headwear selection" fill priority sizes="(max-width: 900px) 50vw, 24vw" /></div>}
-          {heroThird && <div className="wyx-shot wyx-shot-small"><Image src={heroThird} alt="WYX golf accessory selection" fill priority sizes="(max-width: 900px) 50vw, 24vw" /></div>}
-        </div>
-      </section>
-
-      <TrustBar />
-
-      <section className="wyx-marquee" aria-label="WYX departments">
-        <span>APPAREL</span><i>✦</i><span>FOOTWEAR</span><i>✦</i><span>GOLF TECH</span><i>✦</i><span>BAGS</span><i>✦</i><span>ACCESSORIES</span><i>✦</i><span>TRIP GEAR</span>
-      </section>
-
-      {heroProducts.length > 0 && (
-        <section className="wyx-edit-section">
-          <div className="wyx-edit-heading">
-            <div><p className="eyebrow">AVAILABLE NOW</p><h2>THE CURRENT WYX PICKS.</h2></div>
-            <p>The products on the shelf today that best match where WYX is headed: better materials, stronger design, useful golf function and enough personality to be worth owning.</p>
-          </div>
-          <div className="wyx-feature-grid">
-            {heroProducts.slice(0, 8).map((product, index) => (
-              <div key={product.id} className={index === 0 || index === 5 ? 'wyx-feature-large' : ''}>
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
-          <div className="wyx-section-link"><Link className="text-link" href="/products">SHOP EVERYTHING AVAILABLE →</Link></div>
-        </section>
-      )}
-
-      <section className="wyx-departments">
-        <div className="wyx-department-intro">
-          <p className="eyebrow">SHOP WYX</p>
-          <h2>FROM THE FIRST TEE TO THE FLIGHT HOME.</h2>
-          <p>One place for the golf wardrobe, the shoes, the technology, the bag and the trip. We add categories when the products are good enough—not just because we can fill a page.</p>
-        </div>
-        <div className="wyx-department-grid">
-          {departments.map((department) => (
-            <Link className="wyx-department-card" href={department.href} key={department.label}>
-              {department.image && <Image src={department.image} alt="" fill sizes="(max-width: 900px) 100vw, 50vw" />}
-              <span className="wyx-department-shade" />
-              <div className="wyx-department-top"><small>{department.number}</small><small>{department.status}</small></div>
-              <div className="wyx-department-copy"><strong>{department.label}</strong><h3>{department.title}</h3><span>EXPLORE →</span></div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="section reveal" aria-labelledby="curator-heading">
-        <div className="section-heading split">
-          <div>
-            <p className="eyebrow">FROM THE CURATOR</p>
-            <h2 id="curator-heading">THE SHOP IS SMALL ON PURPOSE.</h2>
-          </div>
-          <p>WYX is an independent golf shop with one editorial point of view. A product earns the shelf only when the listing is clear, the inventory is live, the media is honest, and the piece adds something useful or genuinely good-looking to the game.</p>
-        </div>
-        <div className="care-step-grid">
-          <div className="care-step-card"><strong>Current Inventory</strong><p>Product options come from Shopify. Sold-out variants are disabled before checkout.</p></div>
-          <div className="care-step-card"><strong>Clear Buying Guidance</strong><p>Why WYX picked it, fit or compatibility notes, and the details that matter before it reaches the bag.</p></div>
-          <div className="care-step-card"><strong>Real Support</strong><p>Shipping estimates appear before payment, and WYX support handles damaged, incorrect, and return questions directly.</p></div>
-        </div>
-        <div className="actions" style={{ marginTop: '1.5rem' }}>
-          <Link className="button primary" href="/about">READ THE WYX STORY</Link>
-          <Link className="button secondary dark" href="/the-bag-test">SEE THE WYX STANDARD</Link>
-        </div>
-      </section>
-
-      <section className="section reveal" aria-labelledby="field-notes-heading">
-        <div className="section-heading split">
-          <div>
-            <p className="eyebrow">THE EDIT / FIELD NOTES</p>
-            <h2 id="field-notes-heading">BUY LESS. CHOOSE BETTER.</h2>
-          </div>
-          <p>Independent buying guides, packing lists, and bag-care notes written to help golfers make a better choice—not to manufacture another reason to shop.</p>
-        </div>
-        <div className="journal-grid">
-          {featuredPosts.slice(0, 3).map((post) => (
-            <article className="journal-card" key={post.slug}>
-              <Image src={post.image} alt={post.title} width={900} height={675} sizes="(max-width: 900px) 100vw, 33vw" />
-              <div>
-                <h3>{post.title}</h3>
-                <p>{post.description}</p>
-                <Link className="text-link" href={`/journal/${post.slug}`}>READ THE GUIDE →</Link>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="wyx-section-link"><Link className="text-link" href="/journal">EXPLORE THE EDIT →</Link></div>
-      </section>
-
-      <section className="wyx-radar" id="wyx-radar">
-        <div>
-          <p className="eyebrow">NEXT ON WYX</p>
-          <h2>THE PREMIUM PRODUCTS ON OUR RADAR.</h2>
-          <p>Highly rated products and brands we want in the WYX mix. They are not for sale here yet; they move into the shop only when the product, pricing and retailer relationship all make sense.</p>
-        </div>
-        <div className="wyx-radar-list">
-          {premiumTargets.slice(0, 8).map((target, index) => (
-            <div key={`${target.brand}-${target.product}`}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <strong>{target.brand}<br />{target.product}</strong>
-              <p>{target.rating ? `${target.rating} · ` : ''}{target.reviews ? `${target.reviews} · ` : ''}{target.price} · {target.proof}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="wyx-statement">
-        <div className="wyx-statement-kicker">THE WYX STANDARD</div>
-        <h2>GOOD ENOUGH FOR A PRO SHOP ISN&apos;T GOOD ENOUGH FOR WYX.</h2>
-        <div className="wyx-statement-links">
-          <Link href="/the-bag-test">HOW WE PICK →</Link>
-          <Link href="/golf-trip-gear">TRIP GEAR →</Link>
-          <Link href="/golf-gifts">GOLF GIFTS →</Link>
-        </div>
-      </section>
-
-      <EmailCapture
-        source="home"
-        campaign="wyx_one_shop"
-        title="GET THE GOOD STUFF FIRST."
-        body="New brands, apparel, golf tech, bags and the products that make the WYX cut."
+    <div className="lux-home">
+      <EditorialHero
+        mainImage={heroMain}
+        insetImage={heroInset}
+        productTitle={pimento.title}
+        productDescription="Quietly technical. Tactile enough to notice. Exactly the kind of on-and-off-course layer that earns the WYX mark."
+        productHref={`/products/${pimento.handle}`}
+        position="50% 42%"
       />
+
+      <section className="lux-proof" aria-label="WYX shopping promises">
+        <p><strong>01</strong><span>Ruthlessly selected</span><small>Every product earns the shelf.</small></p>
+        <p><strong>02</strong><span>Secure checkout</span><small>Protected by Shopify.</small></p>
+        <p><strong>03</strong><span>Easy returns</span><small>30 days to make the call.</small></p>
+        <p><strong>04</strong><span>First order</span><small>Use WYX10 when eligible.</small></p>
+      </section>
+
+      <section className="lux-current lux-section" id="current-edit">
+        <Reveal className="lux-current__head">
+          <div><p className="lux-kicker">Available now / The current edit</p><h2 className="lux-display">The picks<br />worth knowing.</h2></div>
+          <div><p>A deliberately short list of better golf things. Strong design, honest utility, and enough character to be worth carrying.</p><ArrowLink href="/products">Shop every live pick</ArrowLink></div>
+        </Reveal>
+        <div className="lux-current__grid">
+          {products.slice(0, 8).map((product, index) => <ProductCard product={product} index={index} priority={index < 2} key={product.id} />)}
+        </div>
+      </section>
+
+      <EditorialStory items={stories} />
+
+      <section className="lux-manifesto">
+        <Reveal className="lux-manifesto__copy">
+          <p className="lux-kicker">The WYX standard / 001</p>
+          <h2 className="lux-display">Small<br />on purpose.</h2>
+          <p>WYX is not trying to carry everything. We look for the pieces that make golf feel better, travel smarter, and the bag a little more personal. If it is here, there is a reason.</p>
+          <div><Link className="lux-button-primary" href="/the-bag-test">How we choose</Link><ArrowLink href="/about">Meet WYX</ArrowLink></div>
+        </Reveal>
+        {imageFor(game) && <div className="lux-manifesto__image"><Image src={imageFor(game)!} alt={game?.title || 'A WYX golf pick'} fill sizes="(max-width: 900px) 100vw, 50vw" /></div>}
+      </section>
+
+      <section className="lux-journal lux-section">
+        <Reveal className="lux-journal__head"><div><p className="lux-kicker">The Edit / Field notes</p><h2 className="lux-display">Read before<br />you buy.</h2></div><p>Course-style notes, honest buying guides, and trip lists for golfers who would rather choose once and choose well.</p></Reveal>
+        <div className="lux-journal__grid">
+          {featuredPosts.slice(0, 3).map((post, index) => (
+            <Reveal className="lux-journal__card" delay={index * .07} key={post.slug}>
+              <Link href={`/journal/${post.slug}`}><div><Image src={post.image} alt={post.title} fill sizes="(max-width: 720px) 100vw, 33vw" /></div><span>Field note / 0{index + 1}</span><h3>{post.title}</h3><p>{post.description}</p><b>Read the story</b></Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="lux-radar" id="wyx-radar">
+        <div className="lux-radar__title"><p className="lux-kicker">Next on WYX / The radar</p><h2 className="lux-display">Worth<br />watching.</h2><p>The products and brands we are talking to, testing, or waiting for. Nothing goes live until the terms and the product both make sense.</p></div>
+        <div className="lux-radar__list">
+          {premiumTargets.slice(0, 6).map((target, index) => <div key={`${target.brand}-${target.product}`}><span>0{index + 1}</span><strong>{target.brand}<small>{target.product}</small></strong><p>{target.price}</p><em>{index < 2 ? 'Priority' : 'On the radar'}</em></div>)}
+        </div>
+      </section>
+
+      <EmailCapture source="home" campaign="wyx_luxury_edit" title="GET THE GOOD STUFF FIRST." body="Drop alerts, field notes, and the next product to earn a place in the edit." />
     </div>
   );
 }

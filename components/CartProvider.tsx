@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { LockSimple, Minus, Plus, X } from '@phosphor-icons/react';
+import { AnimatePresence, m } from 'framer-motion';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { CartAbandonGuard } from '@/components/CartAbandonGuard';
 import { CartCrossSell } from '@/components/CartCrossSell';
@@ -168,7 +170,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [clearStoredCart]);
 
   const add = useCallback(async (merchandiseId: string) => {
-    setLoading(true); setError(null);
+    setOpen(true); setLoading(true); setError(null);
     try {
       const next = await callCart('POST', { cartId: localStorage.getItem(cartStorageKey), merchandiseId, quantity: 1 });
       if (next) {
@@ -179,7 +181,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const addMany = useCallback(async (lines: CartLineInput[]) => {
-    setLoading(true); setError(null);
+    setOpen(true); setLoading(true); setError(null);
     try {
       const next = await callCart('POST', { cartId: localStorage.getItem(cartStorageKey), lines });
       if (next) {
@@ -244,6 +246,15 @@ function CartDrawer() {
   const { cart, open, setOpen, loading, error, update, remove } = useCart();
   const promo = cartPromoState(cart);
 
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => { document.body.style.overflow = previous; window.removeEventListener('keydown', closeOnEscape); };
+  }, [open, setOpen]);
+
   async function checkout() {
     if (!cart?.checkoutUrl) return;
     const attributed = await cartWithAttribution(cart);
@@ -252,37 +263,39 @@ function CartDrawer() {
   }
 
   return (
-    <aside className={`cart-drawer ${open ? 'open' : ''}`} aria-hidden={!open} {...(!open ? { inert: true } : {})}>
-      <div className="cart-head"><h2>Your Bag</h2><button onClick={() => setOpen(false)} aria-label="Close cart">Close</button></div>
-      <CartPromoSummary cart={cart} />
-      {error && <p className="error" role="alert">{error}</p>}
-      {!cart?.lines.length ? <p className="muted">Your bag is empty. Let's fix that before the next tee time.</p> : (
-        <div className="cart-lines">
-          {cart.lines.map((line) => (
-            <div className="cart-line" key={line.id}>
-              {line.merchandise.product.featuredImage && <Image src={line.merchandise.product.featuredImage.url} alt={line.merchandise.product.featuredImage.altText || line.merchandise.product.title} width={86} height={86} />}
-              <div>
-                <Link href={`/products/${line.merchandise.product.handle}`}>{line.merchandise.product.title}</Link>
-                <p>{line.merchandise.title}</p><p>{money(line.cost.totalAmount)}</p>
-                <div className="qty">
-                  <button onClick={() => line.quantity > 1 ? update(line.id, line.quantity - 1) : remove(line.id)} aria-label="Decrease quantity">-</button>
-                  <span>{line.quantity}</span>
-                  <button onClick={() => update(line.id, line.quantity + 1)} aria-label="Increase quantity">+</button>
-                  <button onClick={() => remove(line.id)}>Remove</button>
+    <AnimatePresence>
+      {open && (
+        <>
+          <m.button className="lux-cart-backdrop" aria-label="Close bag" onClick={() => setOpen(false)} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+          <m.aside className="lux-cart" role="dialog" aria-modal="true" aria-label="Your bag" initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', stiffness: 360, damping: 36 }}>
+            <div className="lux-cart__head"><div><p>WYX / Your bag</p><h2>Bag <span>{String(cart?.totalQuantity || 0).padStart(2, '0')}</span></h2></div><button onClick={() => setOpen(false)} aria-label="Close bag"><X size={21} /></button></div>
+            <CartPromoSummary cart={cart} />
+            {error && <p className="lux-cart__error" role="alert">{error}</p>}
+            <div className="lux-cart__body cart-scrollbar">
+              {loading && !cart?.lines.length ? <div className="lux-cart__loading"><span /><span /><span /></div> : !cart?.lines.length ? (
+                <div className="lux-cart__empty"><p>Nothing in the bag.<br />A clean slate.</p><span>Start with the picks that have already earned their place.</span><Link href="/products" onClick={() => setOpen(false)}>Shop the current edit</Link></div>
+              ) : (
+                <div className="lux-cart__lines">
+                  {cart.lines.map((line) => (
+                    <m.div className="lux-cart__line" key={line.id} layout>
+                      <Link href={`/products/${line.merchandise.product.handle}`} onClick={() => setOpen(false)}>{line.merchandise.product.featuredImage && <Image src={line.merchandise.product.featuredImage.url} alt={line.merchandise.product.featuredImage.altText || line.merchandise.product.title} fill sizes="110px" />}</Link>
+                      <div><Link href={`/products/${line.merchandise.product.handle}`} onClick={() => setOpen(false)}>{line.merchandise.product.title}</Link><p>{line.merchandise.title}</p><strong>{money(line.cost.totalAmount)}</strong><div className="lux-cart__qty"><button onClick={() => line.quantity > 1 ? update(line.id, line.quantity - 1) : remove(line.id)} aria-label="Decrease quantity"><Minus size={12} /></button><span>{line.quantity}</span><button onClick={() => update(line.id, line.quantity + 1)} aria-label="Increase quantity"><Plus size={12} /></button><button onClick={() => remove(line.id)}>Remove</button></div></div>
+                    </m.div>
+                  ))}
                 </div>
-              </div>
+              )}
+              <CartCrossSell />
+              {cart && <KitUpsellBanner subtotal={Number(cart.cost.subtotalAmount.amount)} compact />}
             </div>
-          ))}
-        </div>
+            <div className="lux-cart__foot">
+              {cart && <p><LockSimple size={13} /> Shipping options and delivery timing are confirmed before payment.</p>}
+              <div><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></div>
+              <button disabled={!cart?.checkoutUrl || loading} onClick={checkout}>{loading ? 'Updating bag…' : promo.applied ? 'Checkout — WYX10 Applied' : 'Secure checkout'}</button>
+              <Link href="/cart" onClick={() => setOpen(false)}>View full bag</Link>
+            </div>
+          </m.aside>
+        </>
       )}
-      <CartCrossSell />
-      {cart && <KitUpsellBanner subtotal={Number(cart.cost.subtotalAmount.amount)} compact />}
-      <div className="cart-foot">
-        {cart && <p className="promo-note">Shipping options, rates, and delivery estimates are confirmed before payment.</p>}
-        <p><span>Subtotal</span><strong>{cart ? money(cart.cost.subtotalAmount) : '$0.00'}</strong></p>
-        <button className="button primary" disabled={!cart?.checkoutUrl || loading} onClick={checkout}>{promo.applied ? 'Checkout — WYX10 Applied' : 'Secure Checkout'}</button>
-        <Link href="/cart">View Bag</Link>
-      </div>
-    </aside>
+    </AnimatePresence>
   );
 }

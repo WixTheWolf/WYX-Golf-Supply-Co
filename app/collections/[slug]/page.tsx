@@ -15,8 +15,9 @@ export function generateStaticParams() {
   return landingCollections.map((collection) => ({ slug: collection.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const collection = getLandingCollection(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const collection = getLandingCollection(slug);
   return collection ? {
     title: `${collection.seoTitle} | WYX Golf Supply Co.`,
     description: collection.metaDescription,
@@ -24,8 +25,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   } : { title: 'Collection' };
 }
 
-export default async function CollectionPage({ params }: { params: { slug: string } }) {
-  const collection = getLandingCollection(params.slug);
+export default async function CollectionPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const collection = getLandingCollection(slug);
   if (!collection) notFound();
   const catalog = sortByQuality(availableProducts(await getProducts()));
   const products = catalog.filter(collection.match);

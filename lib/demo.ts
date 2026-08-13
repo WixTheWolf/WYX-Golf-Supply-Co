@@ -12,16 +12,16 @@ export const demoProducts: Product[] = starterProducts.map((product) => ({
   description: product.description,
   descriptionHtml: `<p>${product.description}</p>`,
   vendor: 'WYX Golf Supply Co.',
-  availableForSale: false,
+  availableForSale: true,
   featuredImage: { url: product.image, altText: product.title },
   images: [
     { url: product.image, altText: product.title },
     { url: imageMap.hero, altText: 'Coastal golf at golden hour' },
     { url: imageMap.leather, altText: 'WYX golf accessory detail' }
   ],
-  variants: [{ id: `demo-variant-${product.handle}`, title: 'Default Title', availableForSale: false, price: usd(product.price) }],
+  variants: [{ id: `demo-variant-${product.handle}`, title: 'Default Title', availableForSale: true, price: usd(product.price) }],
   priceRange: { minVariantPrice: usd(product.price) },
-  tags: [product.badge, ...product.tags],
+  tags: [product.badge, 'wyx-core', ...product.tags],
   productType: product.productType
 }));
 

@@ -94,6 +94,7 @@ export default function TheBagTest() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
+      <div className="lux-standard">
       <section className="collection-hero">
         <div>
           <p className="eyebrow">How We Decide</p>
@@ -174,6 +175,7 @@ export default function TheBagTest() {
         title="Get The Next Drop Before Your Foursome Does."
         body="Join the WYX list for new golf gifts, trip gear, and launch discounts."
       />
+      </div>
     </>
   );
 }
