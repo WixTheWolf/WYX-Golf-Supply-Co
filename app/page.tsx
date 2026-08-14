@@ -45,7 +45,6 @@ export default async function Home() {
   const towel = find(available, 'blue-ridge-golf-co-golf-towels') || products[4];
   const glove = find(available, 'dartee-golf-glove') || products[5];
 
-  const heroProductImage = imageFor(pimento) || '/images/rope-hat-product.png';
   const heroVariant = pimento?.variants.find((variant) => variant.availableForSale);
   const heroVariantId = pimento?.variants.length === 1 || heroVariant?.title === 'Default Title' ? heroVariant?.id : undefined;
   const fieldImage = '/images/walking-golfer-lifestyle..png';
@@ -64,12 +63,11 @@ export default async function Home() {
     image: imageFor(product, index === 0 ? 1 : 0) || imageFor(product) || fieldImage,
   })).filter((item) => Boolean(item.image));
 
-  if (!heroProductImage || !pimento) return null;
+  if (!pimento) return null;
 
   return (
     <div className="lux-home">
       <EditorialHero
-        productImage={heroProductImage}
         productTitle={pimento.title}
         productPrice={money(pimento.priceRange.minVariantPrice)}
         productHref={`/products/${pimento.handle}`}
