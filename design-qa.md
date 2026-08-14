@@ -1,42 +1,53 @@
-# WYX Cinematic Homepage — Design QA
+# WYX Full-Bleed Field Film — Design QA
 
 ## Target and method
 
-- Reference: `docs/design-source-cinematic-home.webp` (selected WYX contact-sheet direction).
-- Implementation: homepage at a 1363 × 936 desktop viewport plus a 390 × 844 mobile viewport.
-- Comparison: reference and working homepage were rendered together in a temporary same-viewport browser comparison board. The board was removed after QA.
-- Primary journey exercised in the browser: hero film, play/pause, film scrubber, product action, cart drawer, Escape dismissal, focus restoration, and responsive layout.
+- Source visual truth: `/workspace/scratch/c91efa0a02b6/upload/e47e7f97-26fc-4e8b-86d7-dbe729e35d6c.png` — the user-provided Safari failure capture.
+- Source pixels: `2047 × 1331`, including macOS and Safari chrome. The page-content region represents an approximately `1024 × 586` CSS-pixel Safari viewport at Retina density.
+- Rendered implementation: Vercel preview deployment `dpl_HGANCa14Bp7FF4zY9jvUx1EinqVt`, commit `71fc845d9a1b47a0c3c07d7c4978a9c5185cb833`.
+- Implementation capture: browser-rendered homepage at `1363 × 936` CSS pixels, DPR `1`, top-of-page state. The protected preview URL is the durable implementation reference; the viewport capture was emitted and inspected in the cloud browser.
+- Density normalization: the source was inspected at original Retina pixels and interpreted at half-density for layout; the implementation was captured at DPR `1`. Because the browser surface does not expose viewport resizing, the exact Safari dimensions were additionally validated against the short-desktop media query (`max-width: 1100px`, `max-height: 720px`) and the measured safe-area geometry. No pixel-for-pixel claim is made across different browser chrome or densities.
+- Full-view comparison evidence: source and implementation viewport captures were opened together in one comparison input. Focused regions were not separated because the headline, navigation, product panel, scene rail, and first-section boundary were all clearly readable in the full-view input.
 
-## Pass 1 — findings and corrections
+## Pass 1 — source failure findings and corrections
 
-| Severity | Surface | Finding | Correction |
-| --- | --- | --- | --- |
-| P1 | Typography / layout | The initial display face was not condensed enough at the target scale, clipping the final letters of “ROUND” and “STARTS” and weakening headline comprehension. | Self-hosted the WYX Condensed face through `next/font/local`, then optically condensed the four display lines while preserving their target height and left alignment. |
-| P1 | Motion / image quality | The first full-screen film cut contained black transition intervals that read as loading failures. | Rebuilt the field film as a 10.4-second H.264 sequence with overlapping bag, course, and product scenes and 0.6-second crossfades. |
-| P2 | Content / conversion | The live product name was forced into one line and visibly truncated in the commerce panel. | Replaced single-line ellipsis with a two-line clamp and tightened the responsive optical size. |
-| P2 | Color / imagery | The right product frame was too dark when inactive and the product disappeared into the surface. | Raised the inactive product exposure while keeping the active/hover lift distinct. |
-| P2 | Behavior / accessibility | The field-film dialog did not initially suppress the persistent header or explicitly restore keyboard focus. | Hide the cinematic header while the modal is open, autofocus the close control, dismiss with Escape, restore body scroll, and return focus to the originating film button. |
-| P2 | Mobile | The invalid mobile inset declaration could leave the frame target extending under metadata. | Replaced it with an explicit bottom offset and verified the horizontal film cards at 390 px. |
+| Severity | Surface | Source evidence | Correction | Post-fix evidence |
+| --- | --- | --- | --- | --- |
+| P0 | Typography / responsive layout | “THE ROUND STARTS HERE” was clipped by a fixed off-canvas display column at the user’s Safari width. | Removed the contact-sheet title column and horizontal scale hack. The new two-line heading lives inside the main safe-area grid, uses a viewport-capped condensed size, and only clips vertically for entrance motion. | Both line containers report equal `scrollWidth` and `clientWidth`; the full headline is visible in every sampled film scene. |
+| P1 | Motion / composition | The first screen read as three static cards rather than one cinematic experience. | Replaced the contact sheet with one full-bleed, looping 10.4-second field film with bag, first-tee, and product scenes plus a scene rail that scrubs to each chapter. | Browser playback reached `readyState 4`, advanced continuously, and synchronized the active scene from `01` through `03`. |
+| P1 | Brand / navigation | The cream header broke the dark film mood and separated navigation from the hero. | Forced the home header onto an ink glass surface with paper typography, including a robust home-content selector fallback. | Browser-computed header values are `rgba(4, 7, 5, 0.82)` and `rgb(251, 248, 240)`. |
+| P1 | Commerce / image quality | The third frame exposed a live product cutout on a flat gray background, making the hero feel like a catalog collage. | Removed the product image from the hero and replaced it with a compact, text-first live edit panel with title, rationale, price, and direct commerce action. | “PIMENTO WAFFLE” and `$59.99` remain fully readable without introducing a low-quality image well. |
+| P2 | Short desktop resilience | The original desktop layout assumed enough height for a 820px contact sheet and pushed key conversion content below the visible Safari window. | Added a `max-height: 720px` desktop composition with reduced optical type, compact actions/product panel, and a 64px rail while retaining a `560px` minimum hero. | The calculated Safari failure viewport keeps the two-line heading, both CTAs, product action, and film rail in the first hero composition without horizontal overflow. |
 
 ## Pass 2 — final comparison
 
-- **Fonts and typography:** headline family, condensation, line height, cream tone, and optical scale now preserve the reference’s oversized editorial impact while keeping all four words readable. Small caps, metadata, and commerce hierarchy remain consistent.
-- **Spacing and layout:** the left display column, three-frame deck, numbered top rule, bottom notes, commerce block, and scrubber retain the target hierarchy. Grid gaps, dividers, frame edges, and vertical rhythm remain crisp at the tested desktop viewport.
-- **Viewport resilience:** the 390 × 844 pass resolves the desktop contact sheet into a legible stacked headline plus horizontal film rail. Navigation collapses to the existing menu pattern, tap targets remain practical, metadata wraps without collision, and the commerce action remains full-width.
-- **Colors and tokens:** ink, forest, warm paper, and acid-lime accents match the intended luxury field-film palette. Active and focus states retain sufficient differentiation without introducing unrelated status colors.
-- **Image quality and asset fidelity:** all three visible frames use real WYX photographic assets with art-directed crops and no CSS illustration substitutes. Desktop loads the 186 KB motion loop after image readiness; mobile, reduced-motion, and data-saver users retain the still image.
-- **Copy and content:** live Shopify product title and price replace concept placeholders. The headline, field notes, tee-time data, and calls to action are coherent in the storefront context.
-- **Icons:** Phosphor icons use one family and consistent stroke/fill treatment for film, expand, wind, close, pause, and directional actions.
-- **States and interactions:** active-frame scrub works by pointer and keyboard; play/pause updates its accessible label; the full-screen film opens, plays, closes, and restores focus; the product action opens the cart optimistically. Without local Shopify credentials, the existing branded cart error state appears rather than a silent failure.
-- **Accessibility:** semantic heading/region structure, alt text, labelled controls, visible focus styles, Escape dismissal, focus restoration, 44 px-plus primary targets, reduced-motion handling, and data-saver handling were verified.
-- **Performance:** production build succeeds; homepage route is 8.37 KB with 165 KB first-load JavaScript. Hero videos are H.264, muted, inline, and lightweight (186 KB loop; 433 KB full film). Animation is transform/opacity-first and pointer response uses motion values rather than React renders.
-- **AI shortcut artifacts:** none found. The implementation uses real photography, live catalog data, the existing navigation/cart system, real icons, and the established WYX design tokens.
+- **Fonts and typography:** the self-hosted WYX Condensed face is fully readable, materially large, and no longer depends on independent horizontal scaling. The two-line hierarchy, `.79` line height, cream tone, and small-cap metadata preserve the editorial aggression without sacrificing comprehension.
+- **Spacing and layout:** the safe-area grid owns both headline and commerce. Responsive gutters, a bounded right rail, compact short-viewport rules, and a full-width bottom scene rail prevent collisions and restore a deliberate vertical rhythm.
+- **Viewport resilience:** desktop browser evidence shows no document-level horizontal overflow (`scrollWidth` equals the content width). The exact Safari-sized breakpoint has explicit type and spacing caps; phone layouts switch to a single flex column with wrapped actions and a full-width commerce panel.
+- **Colors and tokens:** the final hero uses ink, paper, and acid-lime from the WYX system. Dark translucent surfaces preserve film continuity; acid is reserved for chapter state, focus, and conversion.
+- **Image quality and asset fidelity:** the hero uses the real WYX bag, coastal golfer, and hat scenes in the lightweight H.264 film. The priority `next/image` poster protects LCP; the film crossfades only after it can play. No placeholder, CSS illustration, or inline SVG substitute is present.
+- **Copy and content:** “THE ROUND STARTS HERE.” is complete. Supporting copy communicates the WYX proposition, and the live Shopify product title/price remain product-specific and readable.
+- **Icons:** Phosphor Arrow, Play, Pause, Wind, and Close icons share one family and consistent optical weight.
+- **States and interactions:** scene `03` seeks the film to approximately `7.15s`; play/pause changes the native media state; the full-screen film opens, autofocuses Close, dismisses with Escape, restores focus to “Watch field film,” and restores page scrolling.
+- **Accessibility:** one semantic H1, labelled scene/toggle/dialog controls, visible focus styling, keyboard dismissal, focus restoration, reduced-motion behavior, data-saver behavior, and practical primary target sizes are present.
+- **Performance:** `npm run build` succeeds with 255 generated routes. Homepage output is `7.37 kB` with `164 kB` first-load JavaScript. The 433KB film is not bundled into JavaScript and loads with `preload="metadata"` over the priority poster.
+- **AI shortcut artifacts:** none found. The build uses live catalog data, real brand photography, real icon components, the existing cart/navigation system, and established tokens.
 
-## Verification
+## Primary interactions tested
 
-- `npx tsc --noEmit` — passed.
-- `npm run build` — passed (Next.js 15.5.23; 255 static pages generated).
+- Film autoplay and scene synchronization.
+- Scene-rail seek to the current edit.
+- Play and pause control.
+- Full-screen film open, Escape close, and focus restoration.
+- Dark home navigation computed styles.
+- Headline line-box overflow and document-level horizontal overflow.
+
+## Console and build verification
+
+- `./node_modules/.bin/tsc --noEmit` — passed.
+- `npm run build` — passed (Next.js 15.5.23; 255 routes generated).
 - `git diff --check` — passed.
-- Browser console — no application errors; only the cloud-browser extension diagnostic and a pre-existing Framer scroll-container warning were observed.
+- Vercel preview — `READY`.
+- Browser console — no application errors. Only the cloud-browser extension metadata diagnostic was present.
 
 final result: passed
