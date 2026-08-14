@@ -5,7 +5,8 @@ export const motionTokens = {
     instant: 0.16,
     quick: 0.28,
     standard: 0.52,
-    cinematic: 0.86
+    cinematic: 0.86,
+    scene: 1.18
   },
   ease: {
     out: [0.22, 1, 0.36, 1] as const,
@@ -13,7 +14,8 @@ export const motionTokens = {
   },
   spring: {
     tactile: { type: 'spring', stiffness: 380, damping: 32, mass: 0.72 } as Transition,
-    soft: { type: 'spring', stiffness: 170, damping: 26, mass: 0.9 } as Transition
+    soft: { type: 'spring', stiffness: 170, damping: 26, mass: 0.9 } as Transition,
+    glide: { type: 'spring', stiffness: 105, damping: 24, mass: 1.08 } as Transition
   }
 };
 

@@ -5,6 +5,7 @@ import { ArrowLink } from '@/components/ArrowLink';
 import { EditorialHero } from '@/components/EditorialHero';
 import { EditorialStory, type StoryItem } from '@/components/EditorialStory';
 import { EmailCapture } from '@/components/EmailCapture';
+import { MotionTicker } from '@/components/MotionTicker';
 import { ProductCard } from '@/components/ProductCard';
 import { Reveal } from '@/components/Reveal';
 import { availableProducts } from '@/lib/catalog';
@@ -85,6 +86,8 @@ export default async function Home() {
         <p><strong>03</strong><span>Easy returns</span><small>30 days to make the call.</small></p>
         <p><strong>04</strong><span>First order</span><small>Use WYX10 when eligible.</small></p>
       </section>
+
+      <MotionTicker />
 
       <section className="lux-current lux-section" id="current-edit">
         <Reveal className="lux-current__head">

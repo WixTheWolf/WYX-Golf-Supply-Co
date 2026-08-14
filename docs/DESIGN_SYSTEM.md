@@ -32,17 +32,20 @@ Narrow-screen display sizes are optically capped rather than mechanically scaled
 | Quick | `280ms` | Menus and route exits |
 | Standard | `520ms` | Content reveal and image changes |
 | Cinematic | `860ms` | Hero entrances only |
+| Scene | `1180ms` | Long-form editorial choreography |
 | Tactile spring | `380 / 32 / .72` | Drawers and direct manipulation |
 | Soft spring | `170 / 26 / .9` | Scroll progress and ambient response |
+| Glide spring | `105 / 24 / 1.08` | Cursor-reactive and low-frequency depth |
 
 All motion uses `prefers-reduced-motion`, Framer Motion user reduction, transform/opacity-first animation, and one-time viewport entrances.
 
 ## Components
 
-- `MotionProvider` and `PageTransition`: one lazy animation boundary, route continuity, global scroll progress.
-- `EditorialHero`: server-supplied LCP asset, restrained parallax, editorial product rail.
-- `ProductCard`: secondary-image reveal, quick add, option routing, consistent product metadata.
-- `EditorialStory`: sticky product narrative on desktop, linear visual-first story on mobile.
+- `MotionProvider` and `PageTransition`: one lazy animation boundary, branded route curtain, route continuity, and global scroll progress.
+- `EditorialHero`: server-supplied LCP fallback, progressive 1.6 MB field film, playback control, masked type entrance, restrained scroll depth, and a cursor-reactive editorial inset.
+- `MotionTicker`: continuous editorial signal on capable devices and a static, fully legible line under reduced motion.
+- `ProductCard`: cursor depth, secondary-image reveal, animated quick-add confirmation, option routing, and consistent product metadata.
+- `EditorialStory`: sticky product narrative with section progress and directional image wipes on desktop, linear visual-first story on mobile.
 - `ProductGallery`: fluid gallery state, keyboard-focusable image controls, responsive thumbnails.
 - `CartProvider`: optimistic drawer opening, branded pending/empty/error states, Shopify checkout handoff.
 - `Reveal`: reusable one-time section entrance with reduced-motion support.
@@ -51,5 +54,6 @@ All motion uses `prefers-reduced-motion`, Framer Motion user reduction, transfor
 
 - WCAG 2.2 AA color contrast, visible acid focus rings, semantic controls, labelled dialogs, and Escape dismissal.
 - Server Components own product discovery and catalog data. Client components are limited to motion and commerce interactions.
-- The primary hero image alone uses `next/image` priority and `fetchPriority="high"`; the editorial inset and below-fold product imagery load normally so they do not compete with LCP.
-- Animation uses transform and opacity; backdrop blur is limited to compact navigation and modal layers.
+- The primary hero image alone uses `next/image` priority and `fetchPriority="high"`. Hero video is progressively enabled after hydration only on wide viewports, is disabled for data-saver and reduced-motion users, and uses `preload="metadata"` so it does not compete with LCP.
+- The field film is muted, inline, looped, pausable, H.264 encoded, and paired with a lightweight poster. Mobile retains the art-directed product image instead of paying the video transfer cost.
+- Animation uses transform, opacity, and clip-path; pointer response is driven by motion values rather than React renders. Backdrop blur is limited to compact navigation and modal layers.
