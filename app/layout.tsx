@@ -51,7 +51,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sansFont.variable} ${displayFont.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${sansFont.variable} ${displayFont.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <ScrollRevealInit />

@@ -48,8 +48,31 @@ The responsive hardening did not change the desktop hero composition compared ab
 - Primary interactions retested: cart drawer open/close, homepage navigation, gallery and purchase-panel rendering, loading/empty states, and live Shopify-backed PDP controls.
 - Production build: 255 routes generated successfully; homepage route payload 3.68 kB, shared first-load JavaScript 103 kB.
 
-## Remaining findings
+## 2026 motion edition comparison
 
-No actionable P0, P1, or P2 findings remain. A fresh raster capture at every physical handset size is not necessary for the unchanged art direction; the narrow-screen pass is governed by explicit fluid tokens, media constraints, safe-area rules, and minimum target sizes.
+The live production homepage and the motion build were captured at the same 1363 × 936 viewport and submitted together in one visual comparison input. Combined evidence: `/workspace/scratch/c91efa0a02b6/generated_images/exec-e1d03651-bcc7-43b8-a634-7ce537b33097.png` (1536 × 1024 px). This pass treats the current live site as the composition and brand reference while evaluating the requested film and motion layer.
+
+| Priority | Finding | Resolution |
+| --- | --- | --- |
+| P1 | A global legacy heading rule forced the sticky editorial story title to ink on forest, creating materially low contrast. | Added an explicit paper-color story title and confirmed the computed color is `rgb(251, 248, 240)` in the live browser state. The dark Radar title received the same explicit treatment. |
+| P2 | Continuous motion needed a user-controlled stop and a deliberate low-bandwidth fallback. | Added a labelled play/pause control; the film only hydrates on viewports above 760px and is disabled for reduced-motion and data-saver users. Mobile retains the art-directed static LCP image. |
+| P2 | The first ticker implementation could settle at its final transform after hot replacement. | Moved the infinite editorial ticker to a compositor-only CSS keyframe with hover pause and an explicit reduced-motion stop. Browser sampling confirmed different transform matrices 650ms apart. |
+| P2 | Quick add could visually report success after a failed cart request. | Changed `add` to return an explicit success boolean; the animated “Added to bag” acknowledgement now appears only after Shopify confirms the cart update. |
+| P3 | Scroll observers warned when measuring a statically positioned story container, and Next flagged the smooth-scroll contract. | Made the story root positioned and declared `data-scroll-behavior="smooth"` on the document element. |
+
+## Motion and interaction verification
+
+- Field film: real 1600 × 900 H.264 MP4, 9.2 seconds, 1,586,089 bytes, muted, inline, looped, `preload="metadata"`, lightweight poster, and progressively crossfaded over the server-rendered LCP image.
+- Playback: browser state reached readyState 4 and advanced continuously; the labelled control changed the media from playing to paused and back to playing.
+- Hero choreography: masked two-line headline entrance, inset clip reveal, product-rail slide, cursor-reactive inset spring, and scroll-linked media depth use transform/opacity-first animation.
+- Product interaction: pointer sampling produced a live 3D transform matrix and revealed the quick action at full opacity; touch layouts retain the always-visible 44px action.
+- Editorial story: scrolling changed the active story from “The Long Game Rope Hat” to “The WYX Golf Hoodie”; the section progress meter resolved to a 0.5202 scale at the sampled midpoint.
+- Route continuity: local product navigation rendered the cinematic PDP and the branded curtain completed at a zero-width transform instead of obstructing content.
+- Motion accessibility: Framer Motion uses `reducedMotion="user"`; video and continuous animation are removed under `prefers-reduced-motion`; controls remain semantic and keyboard-focusable.
+- Production build: 255 routes generated successfully; homepage route payload 5.92 kB, shared first-load JavaScript 103 kB, and total homepage first-load JavaScript 162 kB. The 1.6 MB film is not part of the JavaScript bundle and is requested only after hydration on eligible wide viewports.
+
+## Final visual judgment
+
+The split hero, lower-left display hierarchy, product rail, CTA positions, trust boundary, palette, typography, and editorial restraint remain continuous with the live reference. The motion build changes the hero from a product-texture still to a brand-world field film without changing the page’s buying hierarchy. The pause control is visible but subordinate, copy remains legible across every sampled film frame, and no actionable P0, P1, or P2 visual findings remain.
 
 Final result: passed

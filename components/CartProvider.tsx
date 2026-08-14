@@ -22,7 +22,7 @@ type CartContextValue = {
   loading: boolean;
   error: string | null;
   setOpen: (value: boolean) => void;
-  add: (id: string) => Promise<void>;
+  add: (id: string) => Promise<boolean>;
   buyNow: (id: string) => Promise<void>;
   addMany: (lines: CartLineInput[]) => Promise<void>;
   buyNowMany: (lines: CartLineInput[]) => Promise<void>;
@@ -170,14 +170,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [clearStoredCart]);
 
   const add = useCallback(async (merchandiseId: string) => {
+    let successful = false;
     setOpen(true); setLoading(true); setError(null);
     try {
       const next = await callCart('POST', { cartId: localStorage.getItem(cartStorageKey), merchandiseId, quantity: 1 });
       if (next) {
         localStorage.setItem(cartStorageKey, next.id); setCart(next); setOpen(true); trackCartAdd(next, [merchandiseId], 'product');
+        successful = true;
       }
     } catch (caught) { setError(caught instanceof Error ? caught.message : 'Unable to add item.'); }
     finally { setLoading(false); }
+    return successful;
   }, []);
 
   const addMany = useCallback(async (lines: CartLineInput[]) => {
