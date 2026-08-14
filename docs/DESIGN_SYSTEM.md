@@ -42,7 +42,7 @@ All motion uses `prefers-reduced-motion`, Framer Motion user reduction, transfor
 ## Components
 
 - `MotionProvider` and `PageTransition`: one lazy animation boundary, branded route curtain, route continuity, and global scroll progress.
-- `EditorialHero`: a three-frame cinematic contact sheet, server-supplied LCP fallbacks, a 186 KB progressive first-tee loop, a 433 KB full-screen field film, playback control, keyboard-safe dialog focus, a direct product action, masked type entrance, restrained scroll depth, and cursor-reactive editorial depth.
+- `EditorialHero`: one full-bleed 433 KB field film with three scrub-able chapters, a priority image poster, a two-line safe-area headline, a text-first live commerce panel, playback control, keyboard-safe dialog focus, masked type entrance, and restrained scroll depth.
 - `MotionTicker`: continuous editorial signal on capable devices and a static, fully legible line under reduced motion.
 - `ProductCard`: cursor depth, secondary-image reveal, animated quick-add confirmation, option routing, and consistent product metadata.
 - `EditorialStory`: sticky product narrative with section progress and directional image wipes on desktop, linear visual-first story on mobile.
@@ -54,6 +54,6 @@ All motion uses `prefers-reduced-motion`, Framer Motion user reduction, transfor
 
 - WCAG 2.2 AA color contrast, visible acid focus rings, semantic controls, labelled dialogs, and Escape dismissal.
 - Server Components own product discovery and catalog data. Client components are limited to motion and commerce interactions.
-- Art-directed hero images use responsive `next/image` sizes and only the opening frames receive priority. The hero loop is progressively enabled after hydration only on wide viewports, is disabled for data-saver and reduced-motion users, and uses `preload="metadata"` so it does not compete with LCP.
-- The field film is muted, inline, looped, pausable, H.264 encoded, and paired with a lightweight poster. Mobile retains the art-directed product image instead of paying the video transfer cost.
-- Animation uses transform, opacity, and clip-path; pointer response is driven by motion values rather than React renders. Backdrop blur is limited to compact navigation and modal layers.
+- The art-directed hero poster is the only priority image. The film is progressively enabled after hydration, disabled for data-saver and reduced-motion users, and uses `preload="metadata"` so it does not compete with LCP.
+- The field film is muted, inline, looped, pausable, H.264 encoded, and paired with a lightweight poster. Desktop and mobile share the same film world; reduced-motion and low-bandwidth users retain the still composition.
+- Animation uses transform, opacity, and clip-path. Backdrop blur is limited to compact navigation, the commerce panel, the scene rail, and modal layers.
