@@ -1,36 +1,46 @@
 'use client';
 
-import { ArrowDown, ArrowUpRight, Pause, Play } from '@phosphor-icons/react';
-import { m, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { ArrowRight, ArrowsOut, Pause, Play, Wind, X } from '@phosphor-icons/react';
+import { AnimatePresence, m, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import { motionTokens } from '@/lib/motion';
+import { useCart } from './CartProvider';
 
 type Props = {
-  mainImage: string;
-  insetImage: string;
+  productImage: string;
   productTitle: string;
-  productDescription: string;
+  productPrice: string;
   productHref: string;
-  position?: string;
+  variantId?: string;
 };
 
-export function EditorialHero({ mainImage, insetImage, productTitle, productDescription, productHref, position = '50% 50%' }: Props) {
-  const ref = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+const frameTransition = { duration: motionTokens.duration.cinematic, ease: motionTokens.ease.out };
+
+export function EditorialHero({ productImage, productTitle, productPrice, productHref, variantId }: Props) {
+  const heroRef = useRef<HTMLElement>(null);
+  const fieldFilmRef = useRef<HTMLVideoElement>(null);
+  const filmTriggerRef = useRef<HTMLButtonElement>(null);
+  const filmCloseRef = useRef<HTMLButtonElement>(null);
+  const filmWasOpenRef = useRef(false);
   const reducedMotion = useReducedMotion();
+  const { add } = useCart();
+  const [activeFrame, setActiveFrame] = useState(1);
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const copyY = useTransform(scrollYProgress, [0, 1], ['0%', '-7%']);
-  const mediaY = useTransform(scrollYProgress, [0, 1], ['0%', '5%']);
-  const mediaScale = useTransform(scrollYProgress, [0, 1], [1, 1.055]);
-  const insetX = useMotionValue(0);
-  const insetY = useMotionValue(0);
-  const insetSpringX = useSpring(insetX, motionTokens.spring.soft);
-  const insetSpringY = useSpring(insetY, motionTokens.spring.soft);
+  const [filmOpen, setFilmOpen] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [added, setAdded] = useState(false);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const deckX = useSpring(pointerX, motionTokens.spring.glide);
+  const deckY = useSpring(pointerY, motionTokens.spring.glide);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '-12%']);
+  const framesY = useTransform(scrollYProgress, [0, 1], ['0%', '5%']);
+  const framesScale = useTransform(scrollYProgress, [0, 1], [1, 1.025]);
 
   useEffect(() => {
     const connection = navigator as Navigator & { connection?: { saveData?: boolean } };
@@ -41,20 +51,46 @@ export function EditorialHero({ mainImage, insetImage, productTitle, productDesc
     return () => wideViewport.removeEventListener('change', sync);
   }, [reducedMotion]);
 
+  useEffect(() => {
+    if (!filmOpen) {
+      if (filmWasOpenRef.current) filmTriggerRef.current?.focus();
+      filmWasOpenRef.current = false;
+      return;
+    }
+    filmWasOpenRef.current = true;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setFilmOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.requestAnimationFrame(() => filmCloseRef.current?.focus());
+    window.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [filmOpen]);
+
+  useEffect(() => {
+    if (!added) return;
+    const timer = window.setTimeout(() => setAdded(false), 2200);
+    return () => window.clearTimeout(timer);
+  }, [added]);
+
   function reactToPointer(event: PointerEvent<HTMLElement>) {
     if (reducedMotion || event.pointerType === 'touch') return;
     const bounds = event.currentTarget.getBoundingClientRect();
-    insetX.set(((event.clientX - bounds.left) / bounds.width - .5) * 12);
-    insetY.set(((event.clientY - bounds.top) / bounds.height - .5) * 10);
+    pointerX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 8);
+    pointerY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 6);
   }
 
   function resetPointer() {
-    insetX.set(0);
-    insetY.set(0);
+    pointerX.set(0);
+    pointerY.set(0);
   }
 
   async function toggleFilm() {
-    const video = videoRef.current;
+    const video = fieldFilmRef.current;
     if (!video) return;
     if (video.paused) {
       await video.play();
@@ -65,57 +101,64 @@ export function EditorialHero({ mainImage, insetImage, productTitle, productDesc
     }
   }
 
+  async function addFeaturedProduct() {
+    if (!variantId || adding) return;
+    setAdding(true);
+    const success = await add(variantId);
+    setAdding(false);
+    if (success) setAdded(true);
+  }
+
   return (
-    <section className="lux-hero" ref={ref} onPointerMove={reactToPointer} onPointerLeave={resetPointer}>
-      <m.div className="lux-hero__image" style={{ y: mediaY, scale: mediaScale }}>
-        <Image src={mainImage} alt="A golfer wearing a selection from the WYX edit" fill priority fetchPriority="high" sizes="(max-width: 900px) 100vw, 78vw" style={{ objectPosition: position }} />
-        {videoEnabled && (
-          <video
-            ref={videoRef}
-            className={videoReady ? 'lux-hero__film is-ready' : 'lux-hero__film'}
-            src="/video/wyx-field-film.mp4"
-            poster="/video/wyx-field-film-poster.webp"
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            onCanPlay={() => setVideoReady(true)}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-          />
-        )}
+    <section className="cine-hero" ref={heroRef} onPointerMove={reactToPointer} onPointerLeave={resetPointer} aria-labelledby="cine-hero-title">
+      <m.div className="cine-title" style={{ y: titleY }} aria-hidden="true">
+        {['The', 'Round', 'Starts', 'Here.'].map((line, index) => (
+          <span key={line}><m.i initial={{ y: '112%' }} animate={{ y: 0 }} transition={{ ...frameTransition, delay: 0.08 + index * 0.07 }}>{line}</m.i></span>
+        ))}
       </m.div>
-      <div className="lux-hero__shade" />
-      <m.div className="lux-hero__inset" style={{ x: insetSpringX, y: insetSpringY }} initial={{ opacity: 0, scale: .9, clipPath: 'inset(0 100% 0 0)' }} animate={{ opacity: 1, scale: 1, clipPath: 'inset(0 0% 0 0)' }} transition={{ delay: .48, duration: .78, ease: motionTokens.ease.out }}>
-        <Image src={insetImage} alt="A close-up from the current WYX edit" fill sizes="(max-width: 900px) 38vw, 18vw" />
+
+      <h1 className="sr-only" id="cine-hero-title">The round starts here.</h1>
+
+      <m.div className="cine-deck" style={{ x: deckX, y: deckY }}>
+        <div className="cine-deck__labels" aria-hidden="true"><span>01</span><span>02</span><span>03</span><em>WYX 400 / Field film</em></div>
+
+        <m.div className="cine-frames" style={{ y: framesY, scale: framesScale }}>
+          <m.article className={`cine-frame cine-frame--detail ${activeFrame === 0 ? 'is-active' : ''}`} initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }} animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }} transition={{ ...frameTransition, delay: 0.16 }} onPointerEnter={() => setActiveFrame(0)}>
+            <button type="button" className="cine-frame__hit" onClick={() => setActiveFrame(0)} aria-label="Focus on WYX bag details"><Image src="/images/leather-bag-detail.png" alt="Forest leather WYX golf bag with brass hardware" fill priority fetchPriority="high" sizes="(max-width: 760px) 82vw, 31vw" /></button>
+            <span className="cine-frame__note">WYX Field Notes</span><span className="cine-frame__stock">400 / 11</span>
+          </m.article>
+
+          <m.article className={`cine-frame cine-frame--field ${activeFrame === 1 ? 'is-active' : ''}`} initial={{ opacity: 0, clipPath: 'inset(100% 0 0 0)' }} animate={{ opacity: 1, clipPath: 'inset(0% 0 0 0)' }} transition={{ ...frameTransition, delay: 0.24 }} onPointerEnter={() => setActiveFrame(1)}>
+            <button ref={filmTriggerRef} type="button" className="cine-frame__hit" onClick={() => setFilmOpen(true)} aria-label="Open the WYX field film">
+              <Image src="/images/walking-golfer-lifestyle..png" alt="Golfer walking toward a coastal first tee at golden hour" fill priority fetchPriority="high" sizes="(max-width: 760px) 82vw, 32vw" />
+              {videoEnabled && <video ref={fieldFilmRef} className={videoReady ? 'cine-frame__film is-ready' : 'cine-frame__film'} src="/video/wyx-first-tee-loop.mp4" poster="/images/walking-golfer-lifestyle..png" muted autoPlay loop playsInline preload="metadata" aria-hidden="true" onCanPlay={() => setVideoReady(true)} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} />}
+              <span className="cine-frame__play"><Play size={13} weight="fill" /> Play field film</span><ArrowsOut className="cine-frame__expand" size={17} aria-hidden="true" />
+            </button>
+            <span className="cine-frame__stock">400 / 12</span>
+          </m.article>
+
+          <m.article className={`cine-frame cine-frame--product ${activeFrame === 2 ? 'is-active' : ''}`} initial={{ opacity: 0, clipPath: 'inset(0 0 0 100%)' }} animate={{ opacity: 1, clipPath: 'inset(0 0 0 0%)' }} transition={{ ...frameTransition, delay: 0.32 }} onPointerEnter={() => setActiveFrame(2)}>
+            <Link className="cine-frame__hit" href={productHref} aria-label={`View ${productTitle}`}><Image src={productImage} alt={productTitle} fill priority sizes="(max-width: 760px) 82vw, 25vw" /><span className="cine-frame__product-copy"><small>Current edit / 03</small><strong>{productTitle}</strong><b>{productPrice}</b></span></Link>
+            <span className="cine-frame__stock">400 / 12</span>
+          </m.article>
+        </m.div>
       </m.div>
-      <m.div className="lux-hero__copy" style={{ y: copyY }}>
-        <m.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .18, duration: .5, ease: motionTokens.ease.out }}>WYX Golf Supply Co. / The Edit</m.p>
-        <h1 aria-label="Golf's best stuff. One place.">
-          <span className="lux-hero__line"><m.span initial={{ y: '112%' }} animate={{ y: 0 }} transition={{ delay: .1, duration: .82, ease: motionTokens.ease.out }}>Golf&apos;s best stuff.</m.span></span>
-          <span className="lux-hero__line"><m.span initial={{ y: '112%' }} animate={{ y: 0 }} transition={{ delay: .18, duration: .82, ease: motionTokens.ease.out }}>One place.</m.span></span>
-        </h1>
-        <m.p className="lux-hero__lede" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .54, duration: .58, ease: motionTokens.ease.out }}>Polos worth wearing. Bag details worth showing off. WYX cuts through the noise and keeps the golf products worth knowing about.</m.p>
-        <m.div className="lux-hero__actions" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .64, duration: .55, ease: motionTokens.ease.out }}><Link href="/products">Shop the edit <ArrowUpRight size={14} weight="bold" /></Link><Link href="/apparel">Explore apparel</Link></m.div>
-      </m.div>
-      <m.aside className="lux-hero__rail" initial={{ x: '100%' }} animate={{ x: 0 }} transition={{ delay: .18, duration: .82, ease: motionTokens.ease.out }}>
-        <div className="lux-hero__rail-top"><span>Available now</span><span>01 — 04</span></div>
-        <div>
-          <p>WYX Pick / 001</p>
-          <h2>{productTitle}</h2>
-          <p>{productDescription}</p>
-          <Link href={productHref}>Shop the pick <ArrowUpRight size={14} weight="bold" /></Link>
+
+      <m.div className="cine-meta" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ ...frameTransition, delay: 0.42 }}>
+        <div className="cine-meta__notes"><p>WYX Field Notes / Vol. 04</p><div><span>Tee time <strong>6:42 PM</strong></span><span>Hole 01 <strong>418 YDS</strong></span><span><Wind size={15} /> Wind <strong>7 MPH</strong></span></div></div>
+        <div className="cine-meta__buy">
+          <small>Shop the edit</small><Link href={productHref}>{productTitle} <span>/ {productPrice}</span></Link>
+          {variantId ? <button type="button" onClick={addFeaturedProduct} disabled={adding}>{added ? 'Added to bag' : adding ? 'Adding…' : `Add to bag — ${productPrice}`} <ArrowRight size={17} weight="bold" /></button> : <Link className="cine-meta__buy-link" href={productHref}>Choose options <ArrowRight size={17} weight="bold" /></Link>}
         </div>
-        <a className="lux-hero__scroll" href="#current-edit"><ArrowDown size={15} /> Scroll to explore</a>
-      </m.aside>
-      {videoEnabled && (
-        <m.button className="lux-hero__film-control" type="button" onClick={toggleFilm} aria-label={isPlaying ? 'Pause field film' : 'Play field film'} initial={{ opacity: 0 }} animate={{ opacity: videoReady ? 1 : 0 }} transition={{ duration: .35 }}>
-          {isPlaying ? <Pause size={12} weight="fill" /> : <Play size={12} weight="fill" />}
-          <span>Field film / 00:09</span>
-        </m.button>
-      )}
+        <div className="cine-scrub"><span>Drag to scrub</span><input aria-label="Scrub through WYX field notes" type="range" min="0" max="2" step="1" value={activeFrame} onChange={(event) => setActiveFrame(Number(event.target.value))} /><b>0{activeFrame + 1}</b>{videoEnabled && <button type="button" className="cine-meta__film-toggle" onClick={toggleFilm} aria-label={isPlaying ? 'Pause field film' : 'Play field film'}>{isPlaying ? <Pause size={13} weight="fill" /> : <Play size={13} weight="fill" />}</button>}</div>
+      </m.div>
+
+      <AnimatePresence>
+        {filmOpen && <m.div className="cine-film-modal" role="dialog" aria-modal="true" aria-label="WYX field film" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <m.div className="cine-film-modal__media" initial={{ clipPath: 'inset(50% 0 50% 0)' }} animate={{ clipPath: 'inset(0% 0 0% 0)' }} exit={{ clipPath: 'inset(50% 0 50% 0)' }} transition={{ duration: 0.72, ease: motionTokens.ease.inOut }}><video src="/video/wyx-field-film-v2.mp4" poster="/video/wyx-field-film-poster.webp" autoPlay muted loop playsInline /></m.div>
+          <div className="cine-film-modal__chrome"><p>WYX Field Film <span>/ 00:10</span></p><button ref={filmCloseRef} type="button" onClick={() => setFilmOpen(false)} aria-label="Close field film"><X size={22} /></button><strong>The round<br />starts here.</strong></div>
+        </m.div>}
+      </AnimatePresence>
     </section>
   );
 }

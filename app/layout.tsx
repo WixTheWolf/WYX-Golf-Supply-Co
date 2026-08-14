@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
 import Link from 'next/link';
-import { Archivo, Manrope } from 'next/font/google';
 import { Suspense } from 'react';
 import { ScrollRevealInit } from '@/components/ScrollRevealInit';
 import './globals.css';
@@ -22,9 +22,24 @@ import { TrustBar } from '@/components/TrustBar';
 import { MotionProvider, PageTransition } from '@/components/MotionProvider';
 import { supportEmail } from '@/lib/support';
 
-const sansFont = Manrope({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
-const displayFont = Archivo({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const golfEnvironmentImage = 'https://images.unsplash.com/photo-1684599995533-3ffecba8fb81?auto=format&fit=crop&w=1800&q=86';
+
+const wyxDisplay = localFont({
+  src: '../public/fonts/wyx-display-condensed.otf',
+  variable: '--font-wyx-display',
+  display: 'swap',
+  preload: true
+});
+
+const wyxSans = localFont({
+  src: [
+    { path: '../public/fonts/wyx-sans-regular.otf', weight: '400', style: 'normal' },
+    { path: '../public/fonts/wyx-sans-bold.otf', weight: '700', style: 'normal' }
+  ],
+  variable: '--font-wyx-sans',
+  display: 'swap',
+  preload: true
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://wyxgolfsupply.com'),
@@ -51,7 +66,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${sansFont.variable} ${displayFont.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${wyxDisplay.variable} ${wyxSans.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <ScrollRevealInit />

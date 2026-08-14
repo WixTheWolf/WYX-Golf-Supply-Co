@@ -20,6 +20,7 @@ const links = [
 export function Header() {
   const { count, setOpen } = useCart();
   const pathname = usePathname();
+  const cinematicHome = pathname === '/';
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => setMenuOpen(false), [pathname]);
@@ -30,12 +31,8 @@ export function Header() {
 
   return (
     <>
-      <div className="lux-announcement">
-        <span>Free shipping over $100</span><i aria-hidden="true" />
-        <span>Easy 30-day returns</span><i aria-hidden="true" />
-        <Link href="/products">Shop the live edit</Link>
-      </div>
-      <header className="lux-header">
+      {!cinematicHome && <div className="lux-announcement"><span>Free shipping over $100</span><i aria-hidden="true" /><span>Easy 30-day returns</span><i aria-hidden="true" /><Link href="/products">Shop the live edit</Link></div>}
+      <header className={`lux-header ${cinematicHome ? 'lux-header--cinematic' : ''}`}>
         <button className="lux-header__menu" onClick={() => setMenuOpen(true)} aria-label="Open menu" aria-expanded={menuOpen}>
           <List size={22} weight="bold" />
         </button>

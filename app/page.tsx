@@ -9,6 +9,7 @@ import { MotionTicker } from '@/components/MotionTicker';
 import { ProductCard } from '@/components/ProductCard';
 import { Reveal } from '@/components/Reveal';
 import { availableProducts } from '@/lib/catalog';
+import { money } from '@/lib/demo';
 import { featuredPosts } from '@/lib/featuredJournal';
 import { coreMerchProducts, firstBuyProducts } from '@/lib/merchandisingFilters';
 import { premiumTargets } from '@/lib/premiumTargets';
@@ -38,20 +39,16 @@ export default async function Home() {
   const preferred = firstBuyProducts(core);
   const products = (preferred.length ? preferred : core).slice(0, 12);
   const livePimento = find(available, 'pimento-waffle');
-  const liveHat = find(available, 'augusta-bear-hat');
   const pimento = livePimento || find(available, 'long-game-rope-hat') || products[0];
-  const hat = liveHat || products[1];
   const headcover = find(available, 'topographic-edition-pure-white-embroidered-carolina-blue') || products[2];
   const game = find(available, 'golf-or-die-game-set') || products[3];
   const towel = find(available, 'blue-ridge-golf-co-golf-towels') || products[4];
   const glove = find(available, 'dartee-golf-glove') || products[5];
 
-  const heroMain = livePimento
-    ? imageFor(livePimento, 1) || imageFor(livePimento)
-    : '/images/boys-weekend-hero.png';
-  const heroInset = liveHat
-    ? imageFor(liveHat)
-    : '/images/rope-hat-product.png';
+  const heroProductImage = imageFor(pimento) || '/images/rope-hat-product.png';
+  const heroVariant = pimento?.variants.find((variant) => variant.availableForSale);
+  const heroVariantId = pimento?.variants.length === 1 || heroVariant?.title === 'Default Title' ? heroVariant?.id : undefined;
+  const fieldImage = '/images/walking-golfer-lifestyle..png';
   const storyProducts = [pimento, headcover, glove, towel].filter((product): product is Product => Boolean(product));
   const stories: StoryItem[] = storyProducts.map((product, index) => ({
     number: String(index + 1).padStart(2, '0'),
@@ -64,20 +61,19 @@ export default async function Home() {
       'An everyday course essential, rebuilt with better material, a sharper point of view, and no unnecessary noise.',
     ][index],
     href: `/products/${product.handle}`,
-    image: imageFor(product, index === 0 ? 1 : 0) || imageFor(product) || heroMain || '',
+    image: imageFor(product, index === 0 ? 1 : 0) || imageFor(product) || fieldImage,
   })).filter((item) => Boolean(item.image));
 
-  if (!heroMain || !heroInset || !pimento) return null;
+  if (!heroProductImage || !pimento) return null;
 
   return (
     <div className="lux-home">
       <EditorialHero
-        mainImage={heroMain}
-        insetImage={heroInset}
+        productImage={heroProductImage}
         productTitle={pimento.title}
-        productDescription="Quietly technical. Tactile enough to notice. Exactly the kind of on-and-off-course layer that earns the WYX mark."
+        productPrice={money(pimento.priceRange.minVariantPrice)}
         productHref={`/products/${pimento.handle}`}
-        position="50% 42%"
+        variantId={heroVariantId}
       />
 
       <section className="lux-proof" aria-label="WYX shopping promises">
