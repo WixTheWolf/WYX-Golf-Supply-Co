@@ -1,78 +1,42 @@
-# WYX Redesign — Design QA
+# WYX Cinematic Homepage — Design QA
 
-Reference: selected Direction 2 visual (`/workspace/scratch/c91efa0a02b6/generated_images/exec-34197bb1-b4f7-43fa-8c9c-cdc7f24c8bcf.png`, 1487 × 1058 px).
+## Target and method
 
-Implementation comparison evidence: `/workspace/scratch/c91efa0a02b6/generated_images/exec-83e1784e-b83b-42a9-8405-b5b28ea33efb.png` (1536 × 1024 px comparison board containing the browser-rendered implementation).
+- Reference: `docs/design-source-cinematic-home.webp` (selected WYX contact-sheet direction).
+- Implementation: homepage at a 1363 × 936 desktop viewport plus a 390 × 844 mobile viewport.
+- Comparison: reference and working homepage were rendered together in a temporary same-viewport browser comparison board. The board was removed after QA.
+- Primary journey exercised in the browser: hero film, play/pause, film scrubber, product action, cart drawer, Escape dismissal, focus restoration, and responsive layout.
 
-Viewport: 1363 × 936 CSS px at device-pixel ratio 1, homepage at top of page. The source and implementation were inspected together in two comparison passes. The comparison board normalizes both captures into one image; focused regions cover the hero headline, inset, product rail, CTAs, and first-section boundary.
+## Pass 1 — findings and corrections
 
-## Pass 1 findings
-
-| Priority | Finding | Resolution |
-| --- | --- | --- |
-| P1 | Hero LCP image was visually covered by an unintended stacking context. | Removed transform ownership from the image layer and made layer order explicit. |
-| P1 | Headline scale pushed editorial copy and first conversion action too low. | Reduced desktop display scale and hero height; restored supporting copy and dual CTA. |
-| P1 | Inset read as a tall product card instead of the reference's editorial detail crop. | Changed to a horizontal 1.52:1 crop with a restrained brass rule. |
-| P2 | First purchasable content did not appear early enough. | Reduced hero height and retained the compact trust strip at the fold. |
-| P2 | Demo catalog fallback left the local prototype visually empty. | Enabled realistic non-purchasable demo merchandising while production continues to use live Shopify data. |
-
-## Final comparison
-
-| Check | Result |
-| --- | --- |
-| Split hero and narrow product rail | Pass |
-| Headline hierarchy and lower-left placement | Pass |
-| Horizontal inset detail | Pass |
-| Supporting copy and dual CTA | Pass |
-| Next-section visibility | Pass |
-
-## Responsive spacing hardening
-
-| Priority | Finding | Resolution | Post-fix evidence |
+| Severity | Surface | Finding | Correction |
 | --- | --- | --- | --- |
-| P2 | A legacy mobile rule reserved `92px` below every route, including pages without a sticky purchase bar. | Reset the global body padding through `650px`; the PDP panel continues to reserve its own purchase-bar space. | The active media path now resolves `body` to `padding-bottom: 0`; the production build completes across all 255 routes. |
-| P2 | Display minimums were too large for several 320–360px content wells, risking clipped words in the Radar, Manifesto, newsletter, and Shop hero. | Added narrow-screen optical caps and a wrapped hero-action layout. | All narrow-screen display clamps now resolve between `48px` and `60px` at 320px, with 20–24px page gutters and no fixed-width text container. |
-| P2 | Menu, bag, quick-add, and footer links did not consistently meet a comfortable mobile target size. | Set primary navigation and commerce controls to a minimum `44px` target and added safe-area padding to the sticky purchase control. | Component and media-query rules explicitly enforce `44px` minimum dimensions. |
-| P3 | The decorative hero inset competed with the LCP image for preload priority. | Kept high priority only on the primary hero image. | The inset now remains responsive but lazy-loads normally. |
+| P1 | Typography / layout | The initial display face was not condensed enough at the target scale, clipping the final letters of “ROUND” and “STARTS” and weakening headline comprehension. | Self-hosted the WYX Condensed face through `next/font/local`, then optically condensed the four display lines while preserving their target height and left alignment. |
+| P1 | Motion / image quality | The first full-screen film cut contained black transition intervals that read as loading failures. | Rebuilt the field film as a 10.4-second H.264 sequence with overlapping bag, course, and product scenes and 0.6-second crossfades. |
+| P2 | Content / conversion | The live product name was forced into one line and visibly truncated in the commerce panel. | Replaced single-line ellipsis with a two-line clamp and tightened the responsive optical size. |
+| P2 | Color / imagery | The right product frame was too dark when inactive and the product disappeared into the surface. | Raised the inactive product exposure while keeping the active/hover lift distinct. |
+| P2 | Behavior / accessibility | The field-film dialog did not initially suppress the persistent header or explicitly restore keyboard focus. | Hide the cinematic header while the modal is open, autofocus the close control, dismiss with Escape, restore body scroll, and return focus to the originating film button. |
+| P2 | Mobile | The invalid mobile inset declaration could leave the frame target extending under metadata. | Replaced it with an explicit bottom offset and verified the horizontal film cards at 390 px. |
 
-The responsive hardening did not change the desktop hero composition compared above. Page gutters now interpolate from 20px to 64px and section spacing from 80px to 144px, avoiding abrupt density changes between phone, tablet, laptop, and wide-desktop widths.
+## Pass 2 — final comparison
 
-## Functional verification
+- **Fonts and typography:** headline family, condensation, line height, cream tone, and optical scale now preserve the reference’s oversized editorial impact while keeping all four words readable. Small caps, metadata, and commerce hierarchy remain consistent.
+- **Spacing and layout:** the left display column, three-frame deck, numbered top rule, bottom notes, commerce block, and scrubber retain the target hierarchy. Grid gaps, dividers, frame edges, and vertical rhythm remain crisp at the tested desktop viewport.
+- **Viewport resilience:** the 390 × 844 pass resolves the desktop contact sheet into a legible stacked headline plus horizontal film rail. Navigation collapses to the existing menu pattern, tap targets remain practical, metadata wraps without collision, and the commerce action remains full-width.
+- **Colors and tokens:** ink, forest, warm paper, and acid-lime accents match the intended luxury field-film palette. Active and focus states retain sufficient differentiation without introducing unrelated status colors.
+- **Image quality and asset fidelity:** all three visible frames use real WYX photographic assets with art-directed crops and no CSS illustration substitutes. Desktop loads the 186 KB motion loop after image readiness; mobile, reduced-motion, and data-saver users retain the still image.
+- **Copy and content:** live Shopify product title and price replace concept placeholders. The headline, field notes, tee-time data, and calls to action are coherent in the storefront context.
+- **Icons:** Phosphor icons use one family and consistent stroke/fill treatment for film, expand, wind, close, pause, and directional actions.
+- **States and interactions:** active-frame scrub works by pointer and keyboard; play/pause updates its accessible label; the full-screen film opens, plays, closes, and restores focus; the product action opens the cart optimistically. Without local Shopify credentials, the existing branded cart error state appears rather than a silent failure.
+- **Accessibility:** semantic heading/region structure, alt text, labelled controls, visible focus styles, Escape dismissal, focus restoration, 44 px-plus primary targets, reduced-motion handling, and data-saver handling were verified.
+- **Performance:** production build succeeds; homepage route is 8.37 KB with 165 KB first-load JavaScript. Hero videos are H.264, muted, inline, and lightweight (186 KB loop; 433 KB full film). Animation is transform/opacity-first and pointer response uses motion values rather than React renders.
+- **AI shortcut artifacts:** none found. The implementation uses real photography, live catalog data, the existing navigation/cart system, real icons, and the established WYX design tokens.
 
-- Homepage, shop, and product detail routes render without application console errors in a clean browser session.
-- Cart drawer opens, closes, reports empty state, and exposes the disabled checkout state correctly.
-- Shop renders 35 local catalog cards across 11 visible category filters; production remains Shopify-driven.
-- Product detail navigation renders the cinematic gallery and purchasing panel.
-- Accessibility spot check: one H1, one main landmark, no duplicate IDs, no unnamed buttons or links, no missing image alt attributes, and no horizontal overflow at the verified desktop viewport.
-- Fresh post-hardening browser render: 1363 × 936 CSS px, DPR 1, 1348px document width, one H1, one main landmark, no unintended horizontal overflow, and no application console errors.
-- Primary interactions retested: cart drawer open/close, homepage navigation, gallery and purchase-panel rendering, loading/empty states, and live Shopify-backed PDP controls.
-- Production build: 255 routes generated successfully; homepage route payload 3.68 kB, shared first-load JavaScript 103 kB.
+## Verification
 
-## 2026 motion edition comparison
+- `npx tsc --noEmit` — passed.
+- `npm run build` — passed (Next.js 15.5.23; 255 static pages generated).
+- `git diff --check` — passed.
+- Browser console — no application errors; only the cloud-browser extension diagnostic and a pre-existing Framer scroll-container warning were observed.
 
-The live production homepage and the motion build were captured at the same 1363 × 936 viewport and submitted together in one visual comparison input. Combined evidence: `/workspace/scratch/c91efa0a02b6/generated_images/exec-e1d03651-bcc7-43b8-a634-7ce537b33097.png` (1536 × 1024 px). This pass treats the current live site as the composition and brand reference while evaluating the requested film and motion layer.
-
-| Priority | Finding | Resolution |
-| --- | --- | --- |
-| P1 | A global legacy heading rule forced the sticky editorial story title to ink on forest, creating materially low contrast. | Added an explicit paper-color story title and confirmed the computed color is `rgb(251, 248, 240)` in the live browser state. The dark Radar title received the same explicit treatment. |
-| P2 | Continuous motion needed a user-controlled stop and a deliberate low-bandwidth fallback. | Added a labelled play/pause control; the film only hydrates on viewports above 760px and is disabled for reduced-motion and data-saver users. Mobile retains the art-directed static LCP image. |
-| P2 | The first ticker implementation could settle at its final transform after hot replacement. | Moved the infinite editorial ticker to a compositor-only CSS keyframe with hover pause and an explicit reduced-motion stop. Browser sampling confirmed different transform matrices 650ms apart. |
-| P2 | Quick add could visually report success after a failed cart request. | Changed `add` to return an explicit success boolean; the animated “Added to bag” acknowledgement now appears only after Shopify confirms the cart update. |
-| P3 | Scroll observers warned when measuring a statically positioned story container, and Next flagged the smooth-scroll contract. | Made the story root positioned and declared `data-scroll-behavior="smooth"` on the document element. |
-
-## Motion and interaction verification
-
-- Field film: real 1600 × 900 H.264 MP4, 9.2 seconds, 1,586,089 bytes, muted, inline, looped, `preload="metadata"`, lightweight poster, and progressively crossfaded over the server-rendered LCP image.
-- Playback: browser state reached readyState 4 and advanced continuously; the labelled control changed the media from playing to paused and back to playing.
-- Hero choreography: masked two-line headline entrance, inset clip reveal, product-rail slide, cursor-reactive inset spring, and scroll-linked media depth use transform/opacity-first animation.
-- Product interaction: pointer sampling produced a live 3D transform matrix and revealed the quick action at full opacity; touch layouts retain the always-visible 44px action.
-- Editorial story: scrolling changed the active story from “The Long Game Rope Hat” to “The WYX Golf Hoodie”; the section progress meter resolved to a 0.5202 scale at the sampled midpoint.
-- Route continuity: local product navigation rendered the cinematic PDP and the branded curtain completed at a zero-width transform instead of obstructing content.
-- Motion accessibility: Framer Motion uses `reducedMotion="user"`; video and continuous animation are removed under `prefers-reduced-motion`; controls remain semantic and keyboard-focusable.
-- Production build: 255 routes generated successfully; homepage route payload 5.92 kB, shared first-load JavaScript 103 kB, and total homepage first-load JavaScript 162 kB. The 1.6 MB film is not part of the JavaScript bundle and is requested only after hydration on eligible wide viewports.
-
-## Final visual judgment
-
-The split hero, lower-left display hierarchy, product rail, CTA positions, trust boundary, palette, typography, and editorial restraint remain continuous with the live reference. The motion build changes the hero from a product-texture still to a brand-world field film without changing the page’s buying hierarchy. The pause control is visible but subordinate, copy remains legible across every sampled film frame, and no actionable P0, P1, or P2 visual findings remain.
-
-Final result: passed
+final result: passed
