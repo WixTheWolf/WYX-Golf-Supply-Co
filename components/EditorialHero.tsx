@@ -28,7 +28,7 @@ export function EditorialHero({ mainImage, insetImage, productTitle, productDesc
       </div>
       <div className="lux-hero__shade" />
       <m.div className="lux-hero__inset" initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .28, duration: .7, ease: motionTokens.ease.out }}>
-        <Image src={insetImage} alt="A close-up from the current WYX edit" fill priority sizes="(max-width: 900px) 38vw, 18vw" />
+        <Image src={insetImage} alt="A close-up from the current WYX edit" fill sizes="(max-width: 900px) 38vw, 18vw" />
       </m.div>
       <m.div className="lux-hero__copy" style={{ y: copyY }} initial={{ opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .12, duration: .72, ease: motionTokens.ease.out }}>
         <p>WYX Golf Supply Co. / The Edit</p>

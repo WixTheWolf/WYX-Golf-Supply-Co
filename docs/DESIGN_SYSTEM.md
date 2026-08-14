@@ -20,7 +20,9 @@
 | `brass` | `#b7a65a` | Editorial metadata |
 | `acid` | `#d9e36b` | Focus, progress, conversion accent |
 
-Display typography uses Archivo at heavy weights and tight optical spacing. Manrope carries body, commerce metadata, and controls. The core page gutters are `20 / 32 / 48 / 64px`; the editorial content limit is `1680px`.
+Display typography uses Archivo at heavy weights and tight optical spacing. Manrope carries body, commerce metadata, and controls. Page gutters scale fluidly from `20px` to `64px`; section spacing scales from `80px` to `144px`; the editorial content limit is `1440px`.
+
+Narrow-screen display sizes are optically capped rather than mechanically scaled. At `320–560px`, long editorial words stay inside the frame, hero actions may wrap without losing order, and every primary navigation or commerce target is at least `44px` tall. Safe-area insets are respected by the hero and sticky purchase controls.
 
 ## Motion tokens
 
@@ -49,5 +51,5 @@ All motion uses `prefers-reduced-motion`, Framer Motion user reduction, transfor
 
 - WCAG 2.2 AA color contrast, visible acid focus rings, semantic controls, labelled dialogs, and Escape dismissal.
 - Server Components own product discovery and catalog data. Client components are limited to motion and commerce interactions.
-- Hero media uses `next/image`, `priority`, `fetchPriority="high"`, and responsive sizes. Product imagery below the fold is lazy by default.
+- The primary hero image alone uses `next/image` priority and `fetchPriority="high"`; the editorial inset and below-fold product imagery load normally so they do not compete with LCP.
 - Animation uses transform and opacity; backdrop blur is limited to compact navigation and modal layers.
