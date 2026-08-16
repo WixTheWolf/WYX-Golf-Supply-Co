@@ -13,14 +13,34 @@ function normalizeShopifyDomain(value?: string) {
   return clean;
 }
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}, init: RequestInit = { cache: 'no-store' }): Promise<T> {
   if (!hasShopify) throw new Error('Shopify env vars missing. Demo data is active.');
-  const res = await fetch(`https://${domain}/api/${version}/graphql.json`, {
+
+  const request = () => fetch(`https://${domain}/api/${version}/graphql.json`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': token! },
     body: JSON.stringify({ query, variables }),
     ...init
   });
+
+  let res: Response;
+  try {
+    res = await request();
+  } catch (error) {
+    // Shopify occasionally resets or times out a Storefront API connection.
+    // One short retry avoids turning a transient network blip into a broken PDP.
+    await wait(250);
+    res = await request();
+  }
+
+  if (res.status >= 500) {
+    await wait(250);
+    res = await request();
+  }
+  if (!res.ok) throw new Error(`Shopify Storefront API returned ${res.status}`);
+
   const json = await res.json();
   if (json.errors) throw new Error(json.errors.map((e: { message: string }) => e.message).join(', '));
   return json.data;
