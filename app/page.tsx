@@ -77,7 +77,7 @@ export default async function Home() {
       <section className="lux-proof" aria-label="WYX shopping promises">
         <p><strong>01</strong><span>Ruthlessly selected</span><small>Every product earns the shelf.</small></p>
         <p><strong>02</strong><span>Secure checkout</span><small>Protected by Shopify.</small></p>
-        <p><strong>03</strong><span>Easy returns</span><small>30 days to make the call.</small></p>
+        <p><strong>03</strong><span>Clear policies</span><small>Eligibility varies by item.</small></p>
         <p><strong>04</strong><span>First order</span><small>Use WYX10 when eligible.</small></p>
       </section>
 
